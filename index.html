@@ -64,7 +64,7 @@ header .badge {
 .kpi-book .fallback { width: 44px; height: 62px; background: var(--bg4); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
 .cover-img { transition: transform 0.2s ease, box-shadow 0.2s ease; transform-origin: left center; image-rendering: high-quality; }
 .cover-img:hover { transform: scale(2); box-shadow: 0 8px 32px rgba(0,0,0,0.7); z-index: 100; position: relative; }
-.cal-day { border-radius:6px;padding:4px;min-height:52px;cursor:pointer;transition:background 0.15s;position:relative;background:var(--bg3); }
+.cal-day { border-radius:6px;padding:4px;min-height:64px;cursor:pointer;transition:background 0.15s;position:relative;background:var(--bg3); }
 .cal-day:hover { background:var(--bg4); }
 .cal-day.active { background:rgba(139,124,248,0.15);border:1px solid rgba(139,124,248,0.4); }
 .cal-day.selected { background:rgba(139,124,248,0.3);border:1px solid var(--purple); }
@@ -1834,10 +1834,19 @@ function buildCalendar() {
     const barW = totalPag ? Math.round(totalPag/maxPag*100) : 0;
     const isSelected = calSelected === dateStr;
 
+    // Agrupa por livro
+    const byBook = {};
+    entries.forEach(e => { byBook[e.livro] = (byBook[e.livro]||0) + e.paginas; });
+    const livrosHtml = Object.entries(byBook).map(([livro, pags]) => {
+      const nomeAbrev = livro.length > 14 ? livro.slice(0,13)+'…' : livro;
+      return `<div style="font-size:9px;color:var(--text);line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
+        <span style="color:var(--teal);font-weight:700">${pags}p</span> ${nomeAbrev}
+      </div>`;
+    }).join('');
+
     html += `<div class="cal-day${totalPag?' active':''}${isSelected?' selected':''}" onclick="calSelect('${dateStr}')">
       <div class="cal-day-num">${day}</div>
-      ${totalPag ? `<div class="cal-day-pag">${totalPag}p</div>
-      <div class="cal-day-bar" style="width:${barW}%"></div>` : ''}
+      ${totalPag ? `${livrosHtml}<div class="cal-day-bar" style="width:${barW}%"></div>` : ''}
     </div>`;
   }
 
