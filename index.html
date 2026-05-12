@@ -411,23 +411,23 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
 
     <!-- Dia da semana -->
     <div class="card" style="display:flex;flex-direction:column;gap:0;">
-      <div class="card-title">📆 Páginas por Dia da Semana</div>
+      <div class="card-title">📆 Dia da Semana & Livros por Mês</div>
       <div class="ctrl" style="margin-bottom:10px;">
         <label>Ano:</label>
-        <select id="selWd" onchange="buildWd()">
+        <select id="selWd" onchange="buildWd();buildLivrosMes()">
           <option value="total">Total</option>
         </select>
       </div>
-      <div style="margin-bottom:10px;">
-        <div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Média (págs/dia)</div>
+      <div style="margin-bottom:8px;">
+        <div style="font-size:10px;color:var(--muted);margin-bottom:4px;">Média págs/dia</div>
         <div id="wdAvg" class="wd-bars"></div>
       </div>
-      <div style="border-top:1px solid var(--border);padding-top:12px;">
-        <div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Total de páginas</div>
+      <div style="border-top:1px solid var(--border);padding-top:8px;margin-bottom:8px;">
+        <div style="font-size:10px;color:var(--muted);margin-bottom:4px;">Total de páginas</div>
         <div id="wdSum" class="wd-bars"></div>
       </div>
-      <div style="border-top:1px solid var(--border);padding-top:12px;margin-top:8px;">
-        <div style="font-size:11px;color:var(--muted);margin-bottom:6px;">Livros concluídos por mês</div>
+      <div style="border-top:1px solid var(--border);padding-top:8px;">
+        <div style="font-size:10px;color:var(--muted);margin-bottom:4px;">Livros concluídos por mês</div>
         <div id="livrosMes" class="wd-bars"></div>
       </div>
     </div>
@@ -1191,39 +1191,37 @@ buildLivrosMes();
 } // fim inicializarGraficos
 
 function buildLivrosMes() {
-  // Conta livros concluídos por mês usando o mês de finalização das sessões
-  // Usa o último registro de sessão de cada livro como mês de conclusão
   const meses = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+  const yr = document.getElementById('selWd')?.value || 'total';
 
   // Pega último dia de sessão por livro
   const ultimaSessao = {};
   (window._sessoes || []).forEach(s => {
     if (!s.data) return;
-    if (!ultimaSessao[s.livro] || s.data > ultimaSessao[s.livro]) {
+    if (!ultimaSessao[s.livro] || s.data > ultimaSessao[s.livro])
       ultimaSessao[s.livro] = s.data;
-    }
   });
 
-  // Filtra só livros concluídos e conta por mês/ano
+  // Filtra livros concluídos e conta por mês
   const byMesAno = {};
   (window._livros || []).filter(l => l.status === 'Completo').forEach(l => {
     const data = ultimaSessao[l.livro];
     if (!data) return;
-    const yr  = data.slice(0,4);
+    const livroAno = data.slice(0,4);
+    if (yr !== 'total' && livroAno !== yr) return;
     const mon = parseInt(data.slice(5,7)) - 1;
-    const key = `${yr}-${String(mon+1).padStart(2,'0')}`;
+    const key = `${livroAno}-${String(mon+1).padStart(2,'0')}`;
     byMesAno[key] = (byMesAno[key] || 0) + 1;
   });
 
-  // Ordena e pega últimos 18 meses
   const sorted = Object.keys(byMesAno).sort().slice(-18);
   const el = document.getElementById('livrosMes');
-  if (!el) return;
+  if (!el || sorted.length === 0) { if(el) el.innerHTML = '<div style="color:var(--muted);font-size:11px;padding:8px">Nenhum livro concluído</div>'; return; }
   const maxV = Math.max(...sorted.map(k => byMesAno[k]), 1);
   el.innerHTML = '';
   sorted.forEach(k => {
-    const [yr, mo] = k.split('-');
-    const label = meses[parseInt(mo)-1] + '/' + yr.slice(2);
+    const [y, mo] = k.split('-');
+    const label = meses[parseInt(mo)-1] + '/' + y.slice(2);
     const v = byMesAno[k];
     const h = Math.max(6, Math.round(v/maxV * 70));
     el.innerHTML += `
