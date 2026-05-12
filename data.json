@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-12T04:31:29.753Z",
+  "geradoEm": "2026-05-12T04:36:14.135Z",
   "meta": {
     "total": 28,
     "lidos": 7,
@@ -7,6 +7,7 @@
     "paginasTotal": 15855,
     "paginasLidas": 4653,
     "paginasFaltando": 11202,
+    "mediaDiaria": 69.2,
     "dataPrevistoInicial": "27/11/2026",
     "dataPrevistoAtual": "21/10/2026"
   },
@@ -8734,6 +8735,16 @@
       "totalPag": 602,
       "pagAtual": 30,
       "pct": 0.05
+    }
+  ],
+  "lendo": [
+    {
+      "livro": "A Cidade de Bronze",
+      "ordem": 59,
+      "status": "Lendo",
+      "totalPag": 641,
+      "pagAtual": 278,
+      "pct": 0.434
     }
   ],
   "aguardando": [
