@@ -1074,6 +1074,11 @@ const AUTOR_MAP = {
     document.getElementById('bookInfoNome').textContent = book;
     document.getElementById('bookInfoAutor').textContent = autorNome;
 
+    // Ano de leitura — último ano com sessão desse livro
+    const anosLidos = [...new Set(rows.map(r => r.d?.slice(0,4)).filter(Boolean))].sort();
+    const anoLabel = anosLidos.length === 1 ? anosLidos[0] : anosLidos.length > 1 ? `${anosLidos[0]} – ${anosLidos[anosLidos.length-1]}` : '—';
+    document.getElementById('bookInfoAutor').textContent = `${autorNome} · ${anoLabel}`;
+
     const stats = document.getElementById('bookInfoStats');
     stats.innerHTML = `
       <div style="background:var(--bg3);border-radius:8px;padding:8px;text-align:center;">
