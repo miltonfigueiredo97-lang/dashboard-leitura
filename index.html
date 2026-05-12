@@ -329,30 +329,52 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
     </div>
   </div>
 
-  <div class="grid2" style="margin-bottom:16px;">
+  <div class="grid4" style="margin-bottom:16px;">
     <div class="kpi" style="--accent:#ffd166">
       <div class="kpi-book">
-        <img id="imgBig" src="https://covers.openlibrary.org/b/title/Palavras+de+Radiancia-M.jpg" alt="capa"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="fallback" style="display:none">📖</div>
+        <div class="fallback" style="display:flex">📖</div>
         <div>
           <div class="kpi-icon" style="font-size:14px;margin-bottom:3px;">📖 MAIOR LIVRO</div>
           <div class="kpi-val" style="font-size:24px;" id="kpi-maior-val">—</div>
           <div class="kpi-lbl">páginas</div>
           <div class="kpi-sub" id="kpi-maior-nome">—</div>
+          <div class="kpi-sub" id="kpi-maior-autor" style="color:var(--muted);font-size:10px;">—</div>
         </div>
       </div>
     </div>
     <div class="kpi" style="--accent:#f88c6a">
       <div class="kpi-book">
-        <img id="imgSmall" src="https://covers.openlibrary.org/b/title/A+Esperanca+de+Elantris-M.jpg" alt="capa"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="fallback" style="display:none">📕</div>
+        <div class="fallback" style="display:flex">📕</div>
         <div>
           <div class="kpi-icon" style="font-size:14px;margin-bottom:3px;">📕 MENOR LIVRO</div>
           <div class="kpi-val" style="font-size:24px;" id="kpi-menor-val">—</div>
           <div class="kpi-lbl">páginas</div>
           <div class="kpi-sub" id="kpi-menor-nome">—</div>
+          <div class="kpi-sub" id="kpi-menor-autor" style="color:var(--muted);font-size:10px;">—</div>
+        </div>
+      </div>
+    </div>
+    <div class="kpi" style="--accent:#4ecdc4">
+      <div class="kpi-book">
+        <div class="fallback" style="display:flex">⭐</div>
+        <div>
+          <div class="kpi-icon" style="font-size:14px;margin-bottom:3px;">⭐ MELHOR AVALIADO</div>
+          <div class="kpi-val" style="font-size:24px;" id="kpi-melhor-val">—</div>
+          <div class="kpi-lbl">nota geral</div>
+          <div class="kpi-sub" id="kpi-melhor-nome">—</div>
+          <div class="kpi-sub" id="kpi-melhor-autor" style="color:var(--muted);font-size:10px;">—</div>
+        </div>
+      </div>
+    </div>
+    <div class="kpi" style="--accent:#e56cff">
+      <div class="kpi-book">
+        <div class="fallback" style="display:flex">💀</div>
+        <div>
+          <div class="kpi-icon" style="font-size:14px;margin-bottom:3px;">💀 PIOR AVALIADO</div>
+          <div class="kpi-val" style="font-size:24px;" id="kpi-pior-val">—</div>
+          <div class="kpi-lbl">nota geral</div>
+          <div class="kpi-sub" id="kpi-pior-nome">—</div>
+          <div class="kpi-sub" id="kpi-pior-autor" style="color:var(--muted);font-size:10px;">—</div>
         </div>
       </div>
     </div>
@@ -487,6 +509,46 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
 // ════════════════════════════════════════════════
 const DATA_URL = '/data.json';
 
+
+const AUTOR_MAP = {
+  'Palavras de Radiancia':'Brandon Sanderson','Ritmo de Guerra':'Brandon Sanderson',
+  'Ventos e Verdade':'Brandon Sanderson','O Caminho dos reis':'Brandon Sanderson',
+  'O Caminho dos Reis':'Brandon Sanderson','Sacramentadora':'Brandon Sanderson',
+  'Warbreaker':'Brandon Sanderson','Elantris':'Brandon Sanderson',
+  'A Esperança de Elantris':'Brandon Sanderson','Chama de Ferro':'Brandon Sanderson',
+  'Mistborn 1º Era Livro 2':'Brandon Sanderson','Mistborn 1º Era Livro 3':'Brandon Sanderson',
+  'Mistborn 2º Era Livro 1':'Brandon Sanderson','Mistborn - Historia Screta':'Brandon Sanderson',
+  'Yumi e o Pintor de Pesadelos':'Brandon Sanderson','Dawnshard':'Brandon Sanderson',
+  'Tress A Garota do mar Esmeralda':'Brandon Sanderson',
+  'O Temor do Sabio':'Patrick Rothfuss','O nome do Vento':'Patrick Rothfuss',
+  'Nevernight':'Jay Kristoff','Godsgrave':'Jay Kristoff',
+  'Six of Crows':'Leigh Bardugo','Sombra e Ossos':'Leigh Bardugo',
+  'Sol e Tormenta':'Leigh Bardugo','Ruina e Ascensão':'Leigh Bardugo',
+  'O Aprendiz de Assassino':'Robin Hobb','A flecha de Fogo':'Robin Hobb',
+  'Meio Rei':'Joe Abercrombie','A Descoberta das Bruxas':'Deborah Harkness',
+  'O Principe Cruel':'Holly Black','Eu sou o numero 4':'Pittacus Lore',
+  'Eu sou o Numero 4':'Pittacus Lore','O poder dos seis':'Pittacus Lore',
+  'O Poder dos Seis':'Pittacus Lore','Ascenção dos Nove':'Pittacus Lore',
+  'Quarta Asa':'Rebecca Yarros','Guerra da Papoula':'R.F. Kuang',
+  'A Casa de Hades':'Rick Riordan','O Sangue do Olimpo':'Rick Riordan',
+  'Jardins da Lua - Imperio Malazano':'Steven Erikson',
+  'Carl O Explorador de Masmorras':'Adrian Collins',
+  'Of Blood and Fire':'Ryan Cahill',
+  'The Echoes Saga - Rise of the Ranger':'Phil Tucker',
+  'Songs of Chaos - Ascendant':'Michael R. Miller',
+  'The Sword of Kaigen':'M.L. Wang','Murtagh':'Christopher Paolini',
+  'Harry Potter - A Pedra Filosofal':'J.K. Rowling',
+  'o Feiticeiro de Terramar':'Ursula K. Le Guin',
+  'O Sobrinho do Mago':'C.S. Lewis','O Leão a Feiticeira e Guarda-Roupa':'C.S. Lewis',
+  'O Inimigo do Mundo':'Robert Jordan','Leruth':'Autor Independente',
+  'Edgeshard':'David Estes','Cinco Laminas Partidas':'Mai Corland',
+  'Rei dos Espinhos':'Mark Lawrence','Herdeiros do Tempo':'Adrian Tchaikovsky',
+  'Eragon':'Christopher Paolini',
+  'A Cidade de Bronze':'Deborah Harkness',
+  'Daevabad Trilogy':'S.A. Chakraborty',
+};
+
+
 async function carregarDados() {
   try {
     const resp = await fetch(DATA_URL + '?t=' + Date.now());
@@ -614,10 +676,29 @@ function inicializar(d) {
   const livrosLidos = (d.livros||[]).filter(l => l.status === 'Completo' && l.totalPag > 0);
   if (livrosLidos.length) {
     const sorted = [...livrosLidos].sort((a,b) => b.totalPag - a.totalPag);
-    document.getElementById('kpi-maior-val').textContent  = sorted[0].totalPag.toLocaleString('pt-BR');
-    document.getElementById('kpi-maior-nome').textContent = sorted[0].livro;
-    document.getElementById('kpi-menor-val').textContent  = sorted[sorted.length-1].totalPag.toLocaleString('pt-BR');
-    document.getElementById('kpi-menor-nome').textContent = sorted[sorted.length-1].livro;
+    const maior = sorted[0];
+    const menor = sorted[sorted.length-1];
+    document.getElementById('kpi-maior-val').textContent   = maior.totalPag.toLocaleString('pt-BR');
+    document.getElementById('kpi-maior-nome').textContent  = maior.livro;
+    document.getElementById('kpi-maior-autor').textContent = maior.autor || AUTOR_MAP[maior.livro] || '';
+    document.getElementById('kpi-menor-val').textContent   = menor.totalPag.toLocaleString('pt-BR');
+    document.getElementById('kpi-menor-nome').textContent  = menor.livro;
+    document.getElementById('kpi-menor-autor').textContent = menor.autor || AUTOR_MAP[menor.livro] || '';
+  }
+
+  // Melhor e pior avaliado
+  if (NOTES && NOTES.length) {
+    const notasSorted = [...NOTES].sort((a,b) => b.media - a.media);
+    const melhor = notasSorted[0];
+    const pior   = notasSorted[notasSorted.length-1];
+    const melhorLivro = (d.livros||[]).find(l => l.livro === melhor.livro);
+    const piorLivro   = (d.livros||[]).find(l => l.livro === pior.livro);
+    document.getElementById('kpi-melhor-val').textContent   = melhor.media.toFixed(1);
+    document.getElementById('kpi-melhor-nome').textContent  = melhor.livro;
+    document.getElementById('kpi-melhor-autor').textContent = melhorLivro?.autor || AUTOR_MAP[melhor.livro] || '';
+    document.getElementById('kpi-pior-val').textContent     = pior.media.toFixed(1);
+    document.getElementById('kpi-pior-nome').textContent    = pior.livro;
+    document.getElementById('kpi-pior-autor').textContent   = piorLivro?.autor || AUTOR_MAP[pior.livro] || '';
   }
 
   // Meta
@@ -1015,44 +1096,6 @@ function baseScales(xRot) {
 // ════════════════════════════════════════════════
 // 6. BOOK CHART + BOOK INFO
 // ════════════════════════════════════════════════
-const AUTOR_MAP = {
-  'Palavras de Radiancia':'Brandon Sanderson','Ritmo de Guerra':'Brandon Sanderson',
-  'Ventos e Verdade':'Brandon Sanderson','O Caminho dos reis':'Brandon Sanderson',
-  'O Caminho dos Reis':'Brandon Sanderson','Sacramentadora':'Brandon Sanderson',
-  'Warbreaker':'Brandon Sanderson','Elantris':'Brandon Sanderson',
-  'A Esperança de Elantris':'Brandon Sanderson','Chama de Ferro':'Brandon Sanderson',
-  'Mistborn 1º Era Livro 2':'Brandon Sanderson','Mistborn 1º Era Livro 3':'Brandon Sanderson',
-  'Mistborn 2º Era Livro 1':'Brandon Sanderson','Mistborn - Historia Screta':'Brandon Sanderson',
-  'Yumi e o Pintor de Pesadelos':'Brandon Sanderson','Dawnshard':'Brandon Sanderson',
-  'Tress A Garota do mar Esmeralda':'Brandon Sanderson',
-  'O Temor do Sabio':'Patrick Rothfuss','O nome do Vento':'Patrick Rothfuss',
-  'Nevernight':'Jay Kristoff','Godsgrave':'Jay Kristoff',
-  'Six of Crows':'Leigh Bardugo','Sombra e Ossos':'Leigh Bardugo',
-  'Sol e Tormenta':'Leigh Bardugo','Ruina e Ascensão':'Leigh Bardugo',
-  'O Aprendiz de Assassino':'Robin Hobb','A flecha de Fogo':'Robin Hobb',
-  'Meio Rei':'Joe Abercrombie','A Descoberta das Bruxas':'Deborah Harkness',
-  'O Principe Cruel':'Holly Black','Eu sou o numero 4':'Pittacus Lore',
-  'Eu sou o Numero 4':'Pittacus Lore','O poder dos seis':'Pittacus Lore',
-  'O Poder dos Seis':'Pittacus Lore','Ascenção dos Nove':'Pittacus Lore',
-  'Quarta Asa':'Rebecca Yarros','Guerra da Papoula':'R.F. Kuang',
-  'A Casa de Hades':'Rick Riordan','O Sangue do Olimpo':'Rick Riordan',
-  'Jardins da Lua - Imperio Malazano':'Steven Erikson',
-  'Carl O Explorador de Masmorras':'Adrian Collins',
-  'Of Blood and Fire':'Ryan Cahill',
-  'The Echoes Saga - Rise of the Ranger':'Phil Tucker',
-  'Songs of Chaos - Ascendant':'Michael R. Miller',
-  'The Sword of Kaigen':'M.L. Wang','Murtagh':'Christopher Paolini',
-  'Harry Potter - A Pedra Filosofal':'J.K. Rowling',
-  'o Feiticeiro de Terramar':'Ursula K. Le Guin',
-  'O Sobrinho do Mago':'C.S. Lewis','O Leão a Feiticeira e Guarda-Roupa':'C.S. Lewis',
-  'O Inimigo do Mundo':'Robert Jordan','Leruth':'Autor Independente',
-  'Edgeshard':'David Estes','Cinco Laminas Partidas':'Mai Corland',
-  'Rei dos Espinhos':'Mark Lawrence','Herdeiros do Tempo':'Adrian Tchaikovsky',
-  'Eragon':'Christopher Paolini',
-  'A Cidade de Bronze':'Deborah Harkness',
-  'Daevabad Trilogy':'S.A. Chakraborty',
-};
-
 (function() {
   const sel = document.getElementById('selBook');
   const books = Object.keys(BOOK_DAILY).sort();
