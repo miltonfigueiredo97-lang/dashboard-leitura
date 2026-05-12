@@ -520,13 +520,71 @@ function coverUrl(isbn, size='M') {
   return `https://covers.openlibrary.org/b/isbn/${isbn}-${size}.jpg`;
 }
 
-function coverImg(isbn, fallback='📖', cls='') {
-  if (!isbn) return `<span style="font-size:32px">${fallback}</span>`;
-  return `<img src="${coverUrl(isbn)}" class="${cls}"
+// Monta URL da Google Books por ISBN
+function gbIsbnUrl(isbn) {
+  return `https://books.google.com/books?vid=ISBN${isbn}&printsec=frontcover&img=1&zoom=1`;
+}
+
+// Monta URL da Google Books por título+autor (busca)
+function gbTitleUrl(titulo, autor) {
+  const q = encodeURIComponent(`intitle:${titulo}${autor ? ' inauthor:'+autor : ''}`);
+  return `https://www.googleapis.com/books/v1/volumes?q=${q}&maxResults=1&fields=items(volumeInfo(imageLinks))`;
+}
+
+// Cria elemento de imagem com fallback em cascata: OpenLibrary → Google Books → emoji
+function coverImg(isbn, fallback='📖', cls='', titulo='', autor='') {
+  if (!isbn && !titulo) return `<span style="font-size:32px">${fallback}</span>`;
+
+  const olUrl = isbn ? `https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg` : '';
+  const gbUrl = isbn ? `https://books.google.com/books?vid=ISBN${isbn}&printsec=frontcover&img=1&zoom=1` : '';
+
+  const id = 'capa_' + Math.random().toString(36).slice(2,8);
+  const fallbackSpan = `<span id="${id}_fb" style="font-size:32px;display:none">${fallback}</span>`;
+
+  if (!isbn) {
+    // Sem ISBN: vai direto para Google Books por título
+    const imgEl = `<img id="${id}" src="" style="width:52px;height:72px;object-fit:cover;border-radius:4px;flex-shrink:0;display:none" alt="capa">`;
+    setTimeout(() => {
+      fetch(gbTitleUrl(titulo, autor))
+        .then(r => r.json())
+        .then(d => {
+          const url = d?.items?.[0]?.volumeInfo?.imageLinks?.thumbnail;
+          if (url) {
+            const el = document.getElementById(id);
+            const fb = document.getElementById(id+'_fb');
+            if (el) { el.src = url; el.style.display = ''; }
+            if (fb) fb.style.display = 'none';
+          }
+        }).catch(()=>{});
+    }, 100);
+    return imgEl + fallbackSpan;
+  }
+
+  return `<img id="${id}" src="${olUrl}" class="${cls}"
     style="width:52px;height:72px;object-fit:cover;border-radius:4px;flex-shrink:0"
-    onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+    onerror="
+      if(this.dataset.tried==='ol'){
+        this.style.display='none';
+        document.getElementById('${id}_fb').style.display='block';
+      } else {
+        this.dataset.tried='ol';
+        this.src='${gbUrl}';
+      }
+    "
     alt="capa">
-  <span style="font-size:32px;display:none">${fallback}</span>`;
+  ${fallbackSpan}`;
+}
+
+// Miniatura para ranking
+function coverThumb(isbn) {
+  if (!isbn) return '';
+  const olUrl = `https://covers.openlibrary.org/b/isbn/${isbn}-S.jpg`;
+  const gbUrl = `https://books.google.com/books?vid=ISBN${isbn}&printsec=frontcover&img=1&zoom=5`;
+  const id = 'th_' + isbn;
+  return `<img id="${id}" src="${olUrl}"
+    style="width:28px;height:40px;object-fit:cover;border-radius:3px;flex-shrink:0"
+    onerror="if(this.dataset.tried==='ol'){this.style.display='none';}else{this.dataset.tried='ol';this.src='${gbUrl}';}"
+    alt="">`;
 }
 
 const AUTOR_MAP = {
@@ -887,9 +945,7 @@ function buildRanking() {
     const scoreLabel = tema === 'all' ? b.score.toFixed(1) : `${b.score.toFixed(1)} <span style="font-size:9px;opacity:0.7">(${b.media.toFixed(1)} geral)</span>`;
     const rankLivro = (window._livros||[]).find(l => l.livro === b.livro);
     const rankIsbn  = rankLivro?.isbn || '';
-    const capaHtml  = rankIsbn
-      ? `<img src="${coverUrl(rankIsbn,'S')}" style="width:28px;height:40px;object-fit:cover;border-radius:3px;flex-shrink:0" onerror="this.style.display='none'">`
-      : '';
+    const capaHtml  = rankIsbn ? coverThumb(rankIsbn) : '';
     el.innerHTML += `
       <div class="rank-item">
         ${capaHtml}
@@ -1296,7 +1352,7 @@ function baseScales(xRot) {
 
     const info = document.getElementById('bookInfo');
     info.style.display = 'block';
-    document.getElementById('bookInfoCapa').innerHTML    = coverImg(livroData?.isbn, '📖');
+    document.getElementById('bookInfoCapa').innerHTML    = coverImg(livroData?.isbn, '📖', '', book, autorNome);
     document.getElementById('bookInfoNome').textContent  = book;
     document.getElementById('bookInfoAutor').textContent = autorNome;
     // Ano de leitura
