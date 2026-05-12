@@ -765,6 +765,11 @@ function baseScales(xRot) {
 // ════════════════════════════════════════════════
 // 3. RANKING
 // ════════════════════════════════════════════════
+const YC = ['#8b7cf8','#f88c6a','#4ecdc4','#ffd166'];
+const WD_LABELS = ['Seg','Ter','Qua','Qui','Sex','Sáb','Dom'];
+const WD_COLORS = ['#8b7cf8','#8b7cf8','#8b7cf8','#8b7cf8','#8b7cf8','#f88c6a','#ffd166'];
+const DONUT_COLORS = ['#8b7cf8','#f88c6a','#4ecdc4','#ffd166','#e56cff','#56cfff','#ff6b9d','#a8e063','#f9c74f','#90e0ef'];
+
 let rankMode = 'best';
 
 function updateBtns() {
@@ -774,26 +779,27 @@ function updateBtns() {
 
 function buildRanking() {
   const yr = document.getElementById('selNotasAno').value;
+  // NOTES from JSON has fields: livro, media, ano
   let pool = yr==='all' ? NOTES : NOTES.filter(b => String(b.ano)===yr);
-  const sorted = [...pool].sort((a,b) => rankMode==='best' ? b.avg-a.avg : a.avg-b.avg);
+  const sorted = [...pool].sort((a,b) => rankMode==='best' ? b.media-a.media : a.media-b.media);
   const top = sorted.slice(0,15);
-  const maxA = top[0]?.avg || 10;
+  const maxA = top[0]?.media || 10;
   const medals = ['🥇','🥈','🥉'];
   const el = document.getElementById('rankList');
   el.innerHTML = '';
   top.forEach((b,i) => {
-    const pct = Math.round(b.avg/maxA*100);
+    const pct = Math.round(b.media/maxA*100);
     const col = rankMode==='best' ? (i<3?['#ffd166','#c0c0c0','#cd7f32'][i]:'#8b7cf8') : '#f88c6a';
     el.innerHTML += `
       <div class="rank-item">
         <span class="rank-num">${i<3?'':('#'+(i+1))}</span>
         <span class="rank-medal">${medals[i]||''}</span>
         <div style="flex:1;min-width:0">
-          <div class="rank-name" title="${b.n}">${b.n}</div>
+          <div class="rank-name" title="${b.livro}">${b.livro}</div>
           <span class="rank-year">${b.ano}</span>
         </div>
         <div class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar-fill" style="width:${pct}%;background:${col}"></div></div></div>
-        <span class="rank-score" style="color:${col}">${b.avg.toFixed(1)}</span>
+        <span class="rank-score" style="color:${col}">${b.media.toFixed(1)}</span>
       </div>`;
   });
 }
