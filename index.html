@@ -1664,10 +1664,46 @@ function buildStreaks() {
   const list = document.getElementById('streakList');
   list.innerHTML = '';
   [...streaks].reverse().slice(0,5).forEach(s => {
-    const pags = sess.filter(r => s.includes(r.data)).reduce((a,r)=>a+r.paginas,0);
-    list.innerHTML += `<div style="display:flex;justify-content:space-between;align-items:center;padding:4px 8px;background:var(--bg3);border-radius:6px;">
-      <span style="font-size:11px;color:var(--muted)">${fmtDate(s[0])} → ${fmtDate(s[s.length-1])}</span>
-      <span style="font-size:12px;font-weight:700;color:var(--purple)">${s.length}d · ${pags.toLocaleString('pt-BR')}p</span>
+    const sessDia = sess.filter(r => s.includes(r.data));
+    const totalPags = sessDia.reduce((a,r)=>a+r.paginas,0);
+    const totalMin  = Math.round(sessDia.reduce((a,r)=>a+r.minutos,0));
+    // Livros únicos nessa sequência
+    const livrosSeq = {};
+    sessDia.forEach(r => {
+      if (!livrosSeq[r.livro]) livrosSeq[r.livro] = {pags:0, min:0};
+      livrosSeq[r.livro].pags += r.paginas;
+      livrosSeq[r.livro].min  += r.minutos;
+    });
+
+    let livrosHtml = Object.entries(livrosSeq).map(([livro, v]) => {
+      const ld = (window._livros||[]).find(l=>l.livro===livro);
+      const isbn = ld?.isbn || '';
+      const capa = isbn ? `<img src="https://covers.openlibrary.org/b/isbn/${isbn}-S.jpg"
+        style="width:24px;height:34px;object-fit:cover;border-radius:3px;flex-shrink:0"
+        onerror="this.style.display='none'" alt="">` : '';
+      return `<div style="display:flex;align-items:center;gap:6px;padding:4px 0;border-top:1px solid var(--border)">
+        ${capa}
+        <div style="flex:1;min-width:0">
+          <div style="font-size:11px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${livro}</div>
+          <div style="font-size:10px;color:var(--muted)">${ld?.autor||''}</div>
+        </div>
+        <div style="text-align:right;flex-shrink:0">
+          <div style="font-size:12px;font-weight:700;color:var(--teal)">${v.pags}p</div>
+          <div style="font-size:10px;color:var(--muted)">${Math.round(v.min)}min</div>
+        </div>
+      </div>`;
+    }).join('');
+
+    list.innerHTML += `<div style="background:var(--bg3);border-radius:8px;padding:10px;margin-bottom:8px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+        <span style="font-size:12px;font-weight:700;color:var(--text)">${fmtDate(s[0])} → ${fmtDate(s[s.length-1])}</span>
+        <div style="display:flex;gap:8px;">
+          <span style="font-size:11px;color:var(--purple);font-weight:700">📅 ${s.length} dias</span>
+          <span style="font-size:11px;color:var(--teal);font-weight:700">📄 ${totalPags.toLocaleString('pt-BR')}p</span>
+          <span style="font-size:11px;color:var(--yellow);font-weight:700">⏱ ${totalMin}min</span>
+        </div>
+      </div>
+      ${livrosHtml}
     </div>`;
   });
 }
@@ -1851,18 +1887,25 @@ function calSelect(dateStr, reopen) {
   Object.entries(byBook).forEach(([livro, v]) => {
     const livroData = (window._livros||[]).find(l=>l.livro===livro);
     const isbn = livroData?.isbn || '';
-    const capa = isbn ? `<img src="https://covers.openlibrary.org/b/isbn/${isbn}-S.jpg"
-      style="width:28px;height:40px;object-fit:cover;border-radius:3px;flex-shrink:0"
-      onerror="this.style.display='none'" alt="">` : '';
-    listHtml += `<div style="display:flex;align-items:center;gap:10px;padding:8px;background:var(--bg2);border-radius:8px;margin-bottom:6px;">
+    const capa = isbn ? `<img src="https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg"
+      style="width:48px;height:68px;object-fit:cover;border-radius:6px;flex-shrink:0;box-shadow:2px 2px 8px rgba(0,0,0,0.4)"
+      onerror="this.style.display='none'" alt="">` : '<div style="width:48px;height:68px;background:var(--bg3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">📖</div>';
+    const horas = v.min >= 60 ? `${Math.floor(v.min/60)}h ${Math.round(v.min%60)}min` : `${Math.round(v.min)}min`;
+    listHtml += `<div style="display:flex;align-items:center;gap:14px;padding:12px;background:var(--bg2);border-radius:10px;margin-bottom:8px;">
       ${capa}
       <div style="flex:1;min-width:0">
-        <div style="font-size:13px;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${livro}</div>
-        <div style="font-size:11px;color:var(--muted)">${livroData?.autor||''}</div>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:14px;font-weight:700;color:var(--teal)">${v.pags} págs</div>
-        <div style="font-size:10px;color:var(--muted)">${Math.round(v.min)} min</div>
+        <div style="font-size:15px;font-weight:700;color:var(--text);line-height:1.3;margin-bottom:3px;">${livro}</div>
+        <div style="font-size:12px;color:var(--muted);margin-bottom:10px;">${livroData?.autor||''}</div>
+        <div style="display:flex;gap:16px;">
+          <div>
+            <div style="font-size:20px;font-weight:700;color:var(--teal)">${v.pags}</div>
+            <div style="font-size:10px;color:var(--muted)">páginas</div>
+          </div>
+          <div>
+            <div style="font-size:20px;font-weight:700;color:var(--yellow)">${horas}</div>
+            <div style="font-size:10px;color:var(--muted)">tempo lido</div>
+          </div>
+        </div>
       </div>
     </div>`;
   });
