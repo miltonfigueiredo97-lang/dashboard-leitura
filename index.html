@@ -887,6 +887,27 @@ function baseScales(xRot) {
   let chart = null;
   const ctx = document.getElementById('cMonthly').getContext('2d');
 
+  // Plugin para linhas verticais nos meses de dezembro
+  const dezPlugin = {
+    id: 'dezLines',
+    afterDraw(chart) {
+      const { ctx: c, chartArea: { top, bottom }, scales: { x } } = chart;
+      chart.data.labels.forEach((label, i) => {
+        if (!label.startsWith('Dez')) return;
+        const xPos = x.getPixelForValue(i);
+        c.save();
+        c.beginPath();
+        c.strokeStyle = 'rgba(255,255,255,0.25)';
+        c.lineWidth = 1;
+        c.setLineDash([4, 3]);
+        c.moveTo(xPos, top);
+        c.lineTo(xPos, bottom);
+        c.stroke();
+        c.restore();
+      });
+    }
+  };
+
   function render() {
     const s = parseInt(selFrom.value), e = parseInt(selTo.value);
     if (s >= e) return;
@@ -910,7 +931,8 @@ function baseScales(xRot) {
         responsive:true, maintainAspectRatio:false,
         plugins:{ legend:{display:false}, tooltip:{...TT, callbacks:{label:c=>` ${c.parsed.y.toLocaleString('pt-BR')} páginas`}} },
         scales: baseScales(45)
-      }
+      },
+      plugins: [dezPlugin]
     });
   }
 
