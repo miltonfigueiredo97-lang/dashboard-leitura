@@ -670,6 +670,29 @@ function inicializar(d) {
 // Variáveis globais dos gráficos
 let MONTHLY, YEARS, WD_AVG, WD_SUM, NOTES, COLECOES, BOOK_DAILY;
 
+const TT = {
+  backgroundColor:'#1e2535',
+  borderColor:'#2a3248',
+  borderWidth:1,
+  titleColor:'#e2e8f0',
+  bodyColor:'#8892a8',
+  padding:10
+};
+const GRID_COLOR = 'rgba(42,50,72,0.6)';
+const TICK_COLOR = '#8892a8';
+
+function baseScales(xRot) {
+  return {
+    x: { ticks:{ color:TICK_COLOR, font:{size:10}, maxRotation: xRot||0 }, grid:{ color:GRID_COLOR } },
+    y: { ticks:{ color:TICK_COLOR }, grid:{ color:GRID_COLOR }, beginAtZero:true }
+  };
+}
+
+const YC = ['#8b7cf8','#f88c6a','#4ecdc4','#ffd166'];
+const WD_LABELS = ['Seg','Ter','Qua','Qui','Sex','Sáb','Dom'];
+const WD_COLORS = ['#8b7cf8','#8b7cf8','#8b7cf8','#8b7cf8','#8b7cf8','#f88c6a','#ffd166'];
+const DONUT_COLORS = ['#8b7cf8','#f88c6a','#4ecdc4','#ffd166','#e56cff','#56cfff','#ff6b9d','#a8e063','#f9c74f','#90e0ef'];
+
 function renderizarGraficos(dados) {
   MONTHLY   = dados.MONTHLY;
   YEARS     = dados.YEARS;
@@ -686,16 +709,6 @@ function inicializarGraficos() {
 // ════════════════════════════════════════════════
 // CHART DEFAULTS
 // ════════════════════════════════════════════════
-const TT = {
-  backgroundColor:'#1e2535',
-  borderColor:'#2a3248',
-  borderWidth:1,
-  titleColor:'#e2e8f0',
-  bodyColor:'#8892a8',
-  padding:10
-};
-const GRID_COLOR = 'rgba(42,50,72,0.6)';
-const TICK_COLOR = '#8892a8';
 
 function baseScales(xRot) {
   return {
@@ -778,10 +791,6 @@ function baseScales(xRot) {
 // ════════════════════════════════════════════════
 // 3. RANKING
 // ════════════════════════════════════════════════
-const YC = ['#8b7cf8','#f88c6a','#4ecdc4','#ffd166'];
-const WD_LABELS = ['Seg','Ter','Qua','Qui','Sex','Sáb','Dom'];
-const WD_COLORS = ['#8b7cf8','#8b7cf8','#8b7cf8','#8b7cf8','#8b7cf8','#f88c6a','#ffd166'];
-const DONUT_COLORS = ['#8b7cf8','#f88c6a','#4ecdc4','#ffd166','#e56cff','#56cfff','#ff6b9d','#a8e063','#f9c74f','#90e0ef'];
 
 let rankMode = 'best';
 
