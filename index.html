@@ -223,126 +223,16 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
 </header>
 
 <div class="lendo-wrap">
-  <div class="lendo-inner">
-
-    <!-- Pausado 1: A Descoberta das Bruxas -->
-    <div class="lendo-card pausado">
-      <div class="lendo-tag">⏸️ Pausado</div>
-      <div class="lendo-book-title">A Descoberta das Bruxas</div>
-      <div class="lendo-stats">
-        <div class="lendo-stat">
-          <span class="lendo-stat-val" style="color:var(--orange)">254</span>
-          <span class="lendo-stat-lbl">Página atual</span>
-        </div>
-        <div class="lendo-stat">
-          <span class="lendo-stat-val">861</span>
-          <span class="lendo-stat-lbl">Total de páginas</span>
-        </div>
-        <div class="lendo-stat">
-          <span class="lendo-stat-val" style="color:var(--yellow)">~5</span>
-          <span class="lendo-stat-lbl">Dias para acabar</span>
-        </div>
-        <div class="lendo-stat">
-          <span class="lendo-stat-val">12,9</span>
-          <span class="lendo-stat-lbl">Dias totais previstos</span>
-        </div>
-        <div class="lendo-stat">
-          <span class="lendo-stat-val">12h46</span>
-          <span class="lendo-stat-lbl">Tempo total previsto</span>
-        </div>
-        <div class="lendo-stat">
-          <span class="lendo-stat-val" style="color:var(--purple)">9h00</span>
-          <span class="lendo-stat-lbl">Tempo já lido</span>
-        </div>
-      </div>
-      <div class="lendo-progress-wrap">
-        <div class="lendo-bar-bg">
-          <div class="lendo-bar-fg" style="width:29.5%;background:var(--orange)"></div>
-        </div>
-        <span class="lendo-pct-label">29,5%</span>
-      </div>
-      <div class="lendo-meta">
-        <span>Faltam: <b>607 páginas</b></span>
-        <span>Ritmo médio: <b>66,8 págs/dia</b></span>
-      </div>
-    </div>
-
-    <!-- Pausado 2: Rei dos Espinhos -->
-    <div class="lendo-card pausado">
-      <div class="lendo-tag">⏸️ Pausado</div>
-      <div class="lendo-book-title">Rei dos Espinhos</div>
-      <div class="lendo-stats">
-        <div class="lendo-stat">
-          <span class="lendo-stat-val" style="color:var(--orange)">30</span>
-          <span class="lendo-stat-lbl">Página atual</span>
-        </div>
-        <div class="lendo-stat">
-          <span class="lendo-stat-val">602</span>
-          <span class="lendo-stat-lbl">Total de páginas</span>
-        </div>
-        <div class="lendo-stat">
-          <span class="lendo-stat-val" style="color:var(--yellow)">~8</span>
-          <span class="lendo-stat-lbl">Dias para acabar</span>
-        </div>
-        <div class="lendo-stat">
-          <span class="lendo-stat-val">9,0</span>
-          <span class="lendo-stat-lbl">Dias totais previstos</span>
-        </div>
-        <div class="lendo-stat">
-          <span class="lendo-stat-val">8h55</span>
-          <span class="lendo-stat-lbl">Tempo total previsto</span>
-        </div>
-        <div class="lendo-stat">
-          <span class="lendo-stat-val" style="color:var(--purple)">8h28</span>
-          <span class="lendo-stat-lbl">Tempo já lido</span>
-        </div>
-      </div>
-      <div class="lendo-progress-wrap">
-        <div class="lendo-bar-bg">
-          <div class="lendo-bar-fg" style="width:5%;background:var(--orange)"></div>
-        </div>
-        <span class="lendo-pct-label">5,0%</span>
-      </div>
-      <div class="lendo-meta">
-        <span>Faltam: <b>572 páginas</b></span>
-        <span>Ritmo médio: <b>66,8 págs/dia</b></span>
-      </div>
-    </div>
-
-    <!-- Dica de leitura: A Alma do Imperador (random unread) -->
-    <div class="lendo-card dica">
-      <div class="lendo-tag">💡 Dica de Leitura</div>
-      <div class="lendo-book-title">A Alma do Imperador</div>
-      <div class="lendo-stats">
-        <div class="lendo-stat">
-          <span class="lendo-stat-val" style="color:var(--teal)">142</span>
-          <span class="lendo-stat-lbl">Total de páginas</span>
-        </div>
-        <div class="lendo-stat">
-          <span class="lendo-stat-val" style="color:var(--yellow)">~2,1</span>
-          <span class="lendo-stat-lbl">Dias para ler</span>
-        </div>
-        <div class="lendo-stat">
-          <span class="lendo-stat-val">2h06</span>
-          <span class="lendo-stat-lbl">Tempo estimado</span>
-        </div>
-      </div>
-      <div class="lendo-progress-wrap">
-        <div class="lendo-bar-bg">
-          <div class="lendo-bar-fg" style="width:0%;background:var(--teal)"></div>
-        </div>
-        <span class="lendo-pct-label teal">Não iniciado</span>
-      </div>
-      <div class="lendo-meta">
-        <span>Status: <b>Aguardando</b></span>
-        <span>Uma leitura rápida para encaixar na agenda!</span>
-      </div>
-    </div>
-
+  <div class="lendo-inner" id="lendo-cards">
+    <!-- preenchido dinamicamente pelo JS -->
   </div>
 </div>
 
 
+<div id="loading" style="text-align:center;padding:80px;color:var(--muted);font-size:16px;">
+  ⏳ Carregando dados da planilha...
+</div>
+<div id="app" style="display:none">
 <div class="page">
 
   <!-- ── KPIs ── -->
@@ -350,39 +240,39 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
   <div class="grid6" style="margin-bottom:16px;">
     <div class="kpi" style="--accent:#8b7cf8">
       <span class="kpi-icon">📄</span>
-      <div class="kpi-val">34.679</div>
+      <div class="kpi-val" id="kpi-paginas">—</div>
       <div class="kpi-lbl">Páginas Lidas</div>
       <div class="kpi-sub">total acumulado</div>
     </div>
     <div class="kpi" style="--accent:#f88c6a">
       <span class="kpi-icon">📚</span>
-      <div class="kpi-val">58</div>
+      <div class="kpi-val" id="kpi-livros">—</div>
       <div class="kpi-lbl">Livros Concluídos</div>
-      <div class="kpi-sub">+ 2 pausados</div>
+      <div class="kpi-sub">+ pausados</div>
     </div>
     <div class="kpi" style="--accent:#4ecdc4">
       <span class="kpi-icon">🎯</span>
-      <div class="kpi-val">1.017</div>
+      <div class="kpi-val" id="kpi-sessoes">—</div>
       <div class="kpi-lbl">Sessões</div>
       <div class="kpi-sub">registros individuais</div>
     </div>
     <div class="kpi" style="--accent:#ffd166">
       <span class="kpi-icon">⚡</span>
-      <div class="kpi-val">66,8</div>
+      <div class="kpi-val" id="kpi-pgdia">—</div>
       <div class="kpi-lbl">Págs/Dia média</div>
       <div class="kpi-sub">dias com leitura</div>
     </div>
     <div class="kpi" style="--accent:#e56cff">
       <span class="kpi-icon">⏱️</span>
-      <div class="kpi-val">555h</div>
+      <div class="kpi-val" id="kpi-horas">—</div>
       <div class="kpi-lbl">Horas Lidas</div>
-      <div class="kpi-sub">~33.300 minutos</div>
+      <div class="kpi-sub">tempo total</div>
     </div>
     <div class="kpi" style="--accent:#56cfff">
       <span class="kpi-icon">🏆</span>
-      <div class="kpi-val">462</div>
+      <div class="kpi-val" id="kpi-recorde">—</div>
       <div class="kpi-lbl">Recorde Diário</div>
-      <div class="kpi-sub">08 mar 2025</div>
+      <div class="kpi-sub">páginas em um dia</div>
     </div>
   </div>
 
@@ -394,9 +284,9 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
         <div class="fallback" style="display:none">📖</div>
         <div>
           <div class="kpi-icon" style="font-size:14px;margin-bottom:3px;">📖 MAIOR LIVRO</div>
-          <div class="kpi-val" style="font-size:24px;">1.679</div>
+          <div class="kpi-val" style="font-size:24px;" id="kpi-maior-val">—</div>
           <div class="kpi-lbl">páginas</div>
-          <div class="kpi-sub">Palavras de Radiância</div>
+          <div class="kpi-sub" id="kpi-maior-nome">—</div>
         </div>
       </div>
     </div>
@@ -407,9 +297,9 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
         <div class="fallback" style="display:none">📕</div>
         <div>
           <div class="kpi-icon" style="font-size:14px;margin-bottom:3px;">📕 MENOR LIVRO</div>
-          <div class="kpi-val" style="font-size:24px;">31</div>
+          <div class="kpi-val" style="font-size:24px;" id="kpi-menor-val">—</div>
           <div class="kpi-lbl">páginas</div>
-          <div class="kpi-sub">A Esperança de Elantris</div>
+          <div class="kpi-sub" id="kpi-menor-nome">—</div>
         </div>
       </div>
     </div>
@@ -526,29 +416,29 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
         <div class="ring-wrap">
           <svg width="120" height="120" viewBox="0 0 120 120">
             <circle cx="60" cy="60" r="50" fill="none" stroke="var(--bg3)" stroke-width="10"/>
-            <circle cx="60" cy="60" r="50" fill="none" stroke="var(--purple)" stroke-width="10"
+            <circle id="meta-ring-circle" cx="60" cy="60" r="50" fill="none" stroke="var(--purple)" stroke-width="10"
               stroke-dasharray="314.16" stroke-dashoffset="227.47" stroke-linecap="round"/>
           </svg>
           <div class="ring-center">
-            <div class="ring-pct">27,6%</div>
+            <div class="ring-pct" id="meta-ring-pct">—</div>
             <div class="ring-sub">páginas</div>
           </div>
         </div>
         <div class="meta-stats">
           <div class="meta-stat">
-            <div class="meta-stat-val" style="color:var(--purple)">4.375</div>
+            <div class="meta-stat-val" style="color:var(--purple)" id="meta-pag-lidas">—</div>
             <div class="meta-stat-lbl">Págs lidas</div>
           </div>
           <div class="meta-stat">
-            <div class="meta-stat-val" style="color:var(--orange)">11.480</div>
+            <div class="meta-stat-val" style="color:var(--orange)" id="meta-pag-falt">—</div>
             <div class="meta-stat-lbl">Págs faltando</div>
           </div>
           <div class="meta-stat">
-            <div class="meta-stat-val" style="color:var(--teal)">7 / 28</div>
+            <div class="meta-stat-val" style="color:var(--teal)" id="meta-livros">—</div>
             <div class="meta-stat-lbl">Livros lidos</div>
           </div>
           <div class="meta-stat">
-            <div class="meta-stat-val" style="color:var(--yellow)">49</div>
+            <div class="meta-stat-val" style="color:var(--yellow)" id="meta-pgdia">—</div>
             <div class="meta-stat-lbl">Págs/dia necessário</div>
           </div>
         </div>
@@ -556,8 +446,8 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
       <div class="meta-date">
         <div class="meta-date-icon">📅</div>
         <div>
-          <div class="meta-date-txt">Data prevista inicial: <b style="color:var(--teal)">27 Nov 2026</b></div>
-          <div class="meta-date-sub">Previsão atual com ritmo real: <b style="color:var(--yellow)">29 Nov 2026</b> · Meta final: 31/12/2026</div>
+          <div class="meta-date-txt">Data prevista inicial: <b style="color:var(--teal)" id="meta-data-ini">—</b></div>
+          <div class="meta-date-sub">Previsão atual: <b style="color:var(--yellow)" id="meta-data-atual">—</b> · Meta final: 31/12/2026</div>
         </div>
       </div>
     </div>
@@ -570,10 +460,213 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
   </div>
 
 </div><!-- /page -->
+</div><!-- /app -->
 
-<footer>Gerado a partir de <b>Livros_Base_de_Dados.xlsm</b> · Notas da aba NOTAS · Meta da aba Geral · mai/2026</footer>
+<footer>Dados carregados do Google Sheets · Atualizado em: <span id="footer-data">—</span></footer>
 
 <script>
+// ════════════════════════════════════════════════
+// CARREGA DADOS DO GITHUB E INICIALIZA O DASHBOARD
+// ════════════════════════════════════════════════
+const DATA_URL = 'https://raw.githubusercontent.com/miltonfigueiredo97-lang/dashboard-leitura/main/data.json';
+
+async function carregarDados() {
+  try {
+    const resp = await fetch(DATA_URL + '?t=' + Date.now());
+    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+    const d = await resp.json();
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    inicializar(d);
+  } catch(e) {
+    document.getElementById('loading').innerHTML =
+      '<p style="color:#f88c6a;padding:40px;text-align:center">⚠️ Erro ao carregar dados: ' + e.message + '<br><small>Verifique se o data.json está no repositório.</small></p>';
+  }
+}
+
+function inicializar(d) {
+  // Reconstrói as estruturas que os gráficos precisam a partir do JSON
+  const sessoes = d.sessoes || [];
+
+  // ── MONTHLY ─────────────────────────────────────────
+  const byMonth = {};
+  sessoes.forEach(s => {
+    if (!s.data) return;
+    const ym = s.data.slice(0,7); // "2024-03"
+    const [y, m] = ym.split('-');
+    const meses = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+    const label = meses[parseInt(m)-1] + '/' + y.slice(2);
+    byMonth[ym] = { label, v: (byMonth[ym]?.v || 0) + s.paginas };
+  });
+  const MONTHLY = Object.keys(byMonth).sort().map(k => ({ m: byMonth[k].label, v: byMonth[k].v }));
+
+  // ── YEARS ───────────────────────────────────────────
+  const byYear = {};
+  const byYearDay = {};
+  sessoes.forEach(s => {
+    const yr = s.ano || parseInt((s.data||'').slice(0,4));
+    if (!yr) return;
+    if (!byYear[yr]) byYear[yr] = { pag:0, sess:0, min:0, days:{} };
+    byYear[yr].pag  += s.paginas;
+    byYear[yr].sess += 1;
+    byYear[yr].min  += s.minutos || 0;
+    if (s.data) byYear[yr].days[s.data] = (byYear[yr].days[s.data]||0) + s.paginas;
+  });
+  const YEARS = Object.keys(byYear).sort().map(yr => {
+    const y = byYear[yr];
+    const dias = Object.values(y.days);
+    const pgdia = dias.length ? Math.round(dias.reduce((a,b)=>a+b,0)/dias.length*10)/10 : 0;
+    return { ano: parseInt(yr), pag: y.pag, sess: y.sess, pgdia, ppm: Math.round(y.min>0 ? y.pag/y.min*100)/100 : 0, horas: Math.round(y.min/60) };
+  });
+
+  // ── WEEKDAY ─────────────────────────────────────────
+  const wdNames = ['Seg','Ter','Qua','Qui','Sex','Sáb','Dom'];
+  function calcWd(filtroAno) {
+    const src = filtroAno ? sessoes.filter(s => s.ano === filtroAno) : sessoes;
+    const soma = [0,0,0,0,0,0,0], cnt = [0,0,0,0,0,0,0], total = [0,0,0,0,0,0,0];
+    src.forEach(s => {
+      if (!s.data) return;
+      const wd = (new Date(s.data + 'T12:00:00').getDay() + 6) % 7; // 0=Seg
+      soma[wd] += s.paginas; cnt[wd]++; total[wd] += s.paginas;
+    });
+    return {
+      avg: soma.map((v,i) => cnt[i] ? Math.round(v/cnt[i]*10)/10 : 0),
+      sum: total
+    };
+  }
+  const WD_ALL  = calcWd(null);
+  const WD_2024 = calcWd(2024);
+  const WD_2025 = calcWd(2025);
+  const WD_2026 = calcWd(2026);
+  const WD_AVG = { total: WD_ALL.avg,  2024: WD_2024.avg, 2025: WD_2025.avg, 2026: WD_2026.avg };
+  const WD_SUM = { total: WD_ALL.sum,  2024: WD_2024.sum, 2025: WD_2025.sum, 2026: WD_2026.sum };
+
+  // ── NOTES ────────────────────────────────────────────
+  const NOTES = (d.notas || []).sort((a,b) => b.media - a.media);
+
+  // ── COLECOES ─────────────────────────────────────────
+  const byCol = {};
+  sessoes.forEach(s => {
+    const c = s.colecao || 'Outros';
+    byCol[c] = (byCol[c] || 0) + s.paginas;
+  });
+  const colSort = Object.entries(byCol).sort((a,b) => b[1]-a[1]);
+  const top9 = colSort.slice(0,9);
+  const outros = colSort.slice(9).reduce((s,[,v]) => s+v, 0);
+  const COLECOES = [...top9.map(([c,p]) => ({c,p})), ...(outros>0 ? [{c:'Outros',p:outros}] : [])];
+
+  // ── BOOK DAILY ───────────────────────────────────────
+  const BOOK_DAILY = {};
+  sessoes.forEach(s => {
+    if (!s.livro || !s.data || !s.paginas) return;
+    if (!BOOK_DAILY[s.livro]) BOOK_DAILY[s.livro] = [];
+    const existing = BOOK_DAILY[s.livro].find(r => r.d === s.data);
+    if (existing) existing.p += s.paginas;
+    else BOOK_DAILY[s.livro].push({ d: s.data, p: s.paginas });
+  });
+  Object.keys(BOOK_DAILY).forEach(k => BOOK_DAILY[k].sort((a,b) => a.d.localeCompare(b.d)));
+
+  // ── KPIs ─────────────────────────────────────────────
+  const totalPags = sessoes.reduce((s,r) => s+r.paginas, 0);
+  const livrosCompletos = (d.livros||[]).filter(l => l.status === 'Completo').length;
+  const dayMap = {};
+  sessoes.forEach(s => { if (s.data) dayMap[s.data] = (dayMap[s.data]||0)+s.paginas; });
+  const diasVals = Object.values(dayMap);
+  const mediaParDia = diasVals.length ? Math.round(diasVals.reduce((a,b)=>a+b,0)/diasVals.length*10)/10 : 0;
+  const recorde = diasVals.length ? Math.max(...diasVals) : 0;
+  const horasTotais = Math.round(sessoes.reduce((s,r)=>s+(r.minutos||0),0)/60);
+
+  // Atualiza KPIs no HTML
+  document.getElementById('kpi-paginas').textContent   = totalPags.toLocaleString('pt-BR');
+  document.getElementById('kpi-livros').textContent    = livrosCompletos;
+  document.getElementById('kpi-sessoes').textContent   = sessoes.length.toLocaleString('pt-BR');
+  document.getElementById('kpi-pgdia').textContent     = mediaParDia.toFixed(1).replace('.',',');
+  document.getElementById('kpi-horas').textContent     = horasTotais + 'h';
+  document.getElementById('kpi-recorde').textContent   = recorde;
+
+  // Maior e menor livro
+  const byBook = {};
+  sessoes.forEach(s => { byBook[s.livro] = (byBook[s.livro]||0) + s.paginas; });
+  const bookEntries = Object.entries(byBook).filter(([,v])=>v>0).sort((a,b)=>b[1]-a[1]);
+  if (bookEntries.length) {
+    document.getElementById('kpi-maior-val').textContent  = bookEntries[0][1].toLocaleString('pt-BR');
+    document.getElementById('kpi-maior-nome').textContent = bookEntries[0][0];
+    document.getElementById('kpi-menor-val').textContent  = bookEntries[bookEntries.length-1][1].toLocaleString('pt-BR');
+    document.getElementById('kpi-menor-nome').textContent = bookEntries[bookEntries.length-1][0];
+  }
+
+  // Meta
+  const meta = d.meta || {};
+  const pctPag = meta.paginasTotal > 0 ? meta.paginasLidas/meta.paginasTotal : 0;
+  const ringOffset = 314.16 * (1 - pctPag);
+  document.getElementById('meta-ring-circle').setAttribute('stroke-dashoffset', ringOffset.toFixed(1));
+  document.getElementById('meta-ring-pct').textContent    = (pctPag*100).toFixed(1).replace('.',',') + '%';
+  document.getElementById('meta-pag-lidas').textContent   = (meta.paginasLidas||0).toLocaleString('pt-BR');
+  document.getElementById('meta-pag-falt').textContent    = (meta.paginasFaltando||0).toLocaleString('pt-BR');
+  document.getElementById('meta-livros').textContent      = (meta.lidos||0) + ' / ' + (meta.total||28);
+  document.getElementById('meta-pgdia').textContent       = Math.ceil((meta.paginasFaltando||0)/234);
+  document.getElementById('meta-data-ini').textContent    = meta.dataPrevistoInicial || '—';
+  document.getElementById('meta-data-atual').textContent  = meta.dataPrevistoAtual   || '—';
+
+  // Lendo atualmente
+  const pausados = d.pausados || [];
+  const agContainer = document.getElementById('lendo-cards');
+  agContainer.innerHTML = '';
+  if (pausados.length === 0) {
+    agContainer.innerHTML = '<div class="lendo-card dica"><div class="lendo-tag">📖 Nenhum livro em andamento</div></div>';
+  } else {
+    pausados.forEach(p => {
+      const faltam = p.totalPag - p.pagAtual;
+      const diasRest = Math.ceil(faltam / (mediaParDia||66.8));
+      const pctVal = Math.round((p.pct||0)*100*10)/10;
+      agContainer.innerHTML += `
+        <div class="lendo-card pausado">
+          <div class="lendo-tag">⏸️ Pausado</div>
+          <div class="lendo-book-title">${p.livro}</div>
+          <div class="lendo-stats">
+            <div class="lendo-stat"><span class="lendo-stat-val" style="color:var(--orange)">${p.pagAtual}</span><span class="lendo-stat-lbl">Página atual</span></div>
+            <div class="lendo-stat"><span class="lendo-stat-val">${p.totalPag}</span><span class="lendo-stat-lbl">Total de páginas</span></div>
+            <div class="lendo-stat"><span class="lendo-stat-val" style="color:var(--yellow)">~${diasRest}</span><span class="lendo-stat-lbl">Dias para acabar</span></div>
+          </div>
+          <div class="lendo-progress-wrap">
+            <div class="lendo-bar-bg"><div class="lendo-bar-fg" style="width:${Math.min(pctVal,100)}%;background:var(--orange)"></div></div>
+            <span class="lendo-pct-label">${pctVal}%</span>
+          </div>
+          <div class="lendo-meta"><span>Faltam: <b>${faltam.toLocaleString('pt-BR')} páginas</b></span></div>
+        </div>`;
+    });
+    // Dica aleatória
+    const ag = d.aguardando || [];
+    if (ag.length > 0) {
+      const dica = ag[Math.floor(Math.random()*ag.length)];
+      const diasDica = Math.ceil(dica.totalPag/(mediaParDia||66.8));
+      agContainer.innerHTML += `
+        <div class="lendo-card dica">
+          <div class="lendo-tag">💡 Dica de Leitura</div>
+          <div class="lendo-book-title">${dica.livro}</div>
+          <div class="lendo-stats">
+            <div class="lendo-stat"><span class="lendo-stat-val" style="color:var(--teal)">${dica.totalPag}</span><span class="lendo-stat-lbl">Total de páginas</span></div>
+            <div class="lendo-stat"><span class="lendo-stat-val" style="color:var(--yellow)">~${diasDica}</span><span class="lendo-stat-lbl">Dias para ler</span></div>
+          </div>
+          <div class="lendo-progress-wrap">
+            <div class="lendo-bar-bg"><div class="lendo-bar-fg" style="width:0%;background:var(--teal)"></div></div>
+            <span class="lendo-pct-label teal">Não iniciado</span>
+          </div>
+        </div>`;
+    }
+  }
+
+  // Atualiza rodapé com data de geração
+  if (d.geradoEm) {
+    const dt = new Date(d.geradoEm);
+    document.getElementById('footer-data').textContent = dt.toLocaleString('pt-BR');
+  }
+
+  // Passa os dados calculados para os gráficos
+  renderizarGraficos({ MONTHLY, YEARS, WD_AVG, WD_SUM, NOTES, COLECOES, BOOK_DAILY });
+}
+
+function renderizarGraficos({ MONTHLY, YEARS, WD_AVG, WD_SUM, NOTES, COLECOES, BOOK_DAILY }) {
 // ════════════════════════════════════════════════
 // DATA (all verified from Excel)
 // ════════════════════════════════════════════════
@@ -960,6 +1053,9 @@ buildWd('sum');
     }
   });
 })();
+} // fim renderizarGraficos
+
+carregarDados();
 </script>
 </body>
 </html>
