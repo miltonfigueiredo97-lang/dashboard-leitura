@@ -60,7 +60,7 @@ header .badge {
 
 /* book KPI */
 .kpi-book { display: flex; gap: 10px; align-items: flex-start; }
-.kpi-book img { width: 44px; height: 62px; object-fit: cover; border-radius: 4px; box-shadow: 2px 2px 8px rgba(0,0,0,.5); flex-shrink: 0; }
+.kpi-book img { width: 60px; height: 84px; object-fit: cover; border-radius: 4px; box-shadow: 2px 2px 8px rgba(0,0,0,.5); flex-shrink: 0; }
 .kpi-book .fallback { width: 44px; height: 62px; background: var(--bg4); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
 .cover-img { transition: transform 0.2s ease, box-shadow 0.2s ease; transform-origin: left center; image-rendering: high-quality; }
 .cover-img:hover { transform: scale(2); box-shadow: 0 8px 32px rgba(0,0,0,0.7); z-index: 100; position: relative; }
@@ -292,7 +292,7 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
 
   <!-- ── KPIs ── -->
   <div class="sec">📊 Visão Geral</div>
-  <div class="grid6" style="margin-bottom:8px;">
+  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-bottom:8px;">
     <div class="kpi" style="--accent:#8b7cf8">
       <span class="kpi-icon">📄</span>
       <div class="kpi-val" id="kpi-paginas">—</div>
@@ -363,8 +363,8 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
         <div style="min-width:0">
           <div class="kpi-val" style="font-size:28px;line-height:1;" id="kpi-maior-val">—</div>
           <div class="kpi-lbl" style="margin-bottom:6px;">páginas</div>
-          <div id="kpi-maior-nome" style="font-size:13px;font-weight:700;color:var(--text);line-height:1.3;word-break:break-word">—</div>
-          <div id="kpi-maior-autor" style="font-size:11px;color:var(--muted);margin-top:2px">—</div>
+          <div id="kpi-maior-nome" style="font-size:16px;font-weight:700;color:var(--text);line-height:1.3;word-break:break-word">—</div>
+          <div id="kpi-maior-autor" style="font-size:12px;color:var(--muted);margin-top:3px">—</div>
         </div>
       </div>
     </div>
@@ -375,8 +375,8 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
         <div style="min-width:0">
           <div class="kpi-val" style="font-size:28px;line-height:1;" id="kpi-menor-val">—</div>
           <div class="kpi-lbl" style="margin-bottom:6px;">páginas</div>
-          <div id="kpi-menor-nome" style="font-size:13px;font-weight:700;color:var(--text);line-height:1.3;word-break:break-word">—</div>
-          <div id="kpi-menor-autor" style="font-size:11px;color:var(--muted);margin-top:2px">—</div>
+          <div id="kpi-menor-nome" style="font-size:16px;font-weight:700;color:var(--text);line-height:1.3;word-break:break-word">—</div>
+          <div id="kpi-menor-autor" style="font-size:12px;color:var(--muted);margin-top:3px">—</div>
         </div>
       </div>
     </div>
@@ -387,8 +387,8 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
         <div style="min-width:0">
           <div class="kpi-val" style="font-size:28px;line-height:1;" id="kpi-melhor-val">—</div>
           <div class="kpi-lbl" style="margin-bottom:6px;">nota geral</div>
-          <div id="kpi-melhor-nome" style="font-size:13px;font-weight:700;color:var(--text);line-height:1.3;word-break:break-word">—</div>
-          <div id="kpi-melhor-autor" style="font-size:11px;color:var(--muted);margin-top:2px">—</div>
+          <div id="kpi-melhor-nome" style="font-size:16px;font-weight:700;color:var(--text);line-height:1.3;word-break:break-word">—</div>
+          <div id="kpi-melhor-autor" style="font-size:12px;color:var(--muted);margin-top:3px">—</div>
         </div>
       </div>
     </div>
@@ -399,8 +399,8 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
         <div style="min-width:0">
           <div class="kpi-val" style="font-size:28px;line-height:1;" id="kpi-pior-val">—</div>
           <div class="kpi-lbl" style="margin-bottom:6px;">nota geral</div>
-          <div id="kpi-pior-nome" style="font-size:13px;font-weight:700;color:var(--text);line-height:1.3;word-break:break-word">—</div>
-          <div id="kpi-pior-autor" style="font-size:11px;color:var(--muted);margin-top:2px">—</div>
+          <div id="kpi-pior-nome" style="font-size:16px;font-weight:700;color:var(--text);line-height:1.3;word-break:break-word">—</div>
+          <div id="kpi-pior-autor" style="font-size:12px;color:var(--muted);margin-top:3px">—</div>
         </div>
       </div>
     </div>
@@ -566,7 +566,7 @@ function coverImg(isbn, fallback='📖', cls='') {
   const olM = `https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg`;
 
   const html = `<img id="${uid}" src="${olL}" class="cover-img ${cls}"
-    style="width:52px;height:72px;object-fit:cover;border-radius:4px;flex-shrink:0"
+    style="width:60px;height:84px;object-fit:cover;border-radius:4px;flex-shrink:0"
     alt="capa">
   <span id="${uid}_fb" style="font-size:32px;display:none">${fallback}</span>`;
 
