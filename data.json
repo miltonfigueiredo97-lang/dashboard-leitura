@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-12T04:42:25.431Z",
+  "geradoEm": "2026-05-12T14:56:28.058Z",
   "meta": {
     "total": 28,
     "lidos": 7,
@@ -8208,6 +8208,7 @@
   "livros": [
     {
       "livro": "Livro",
+      "autor": "autor",
       "ordem": 0,
       "status": "STATUS",
       "totalPag": 0,
@@ -8216,6 +8217,7 @@
     },
     {
       "livro": "Quarta Asa",
+      "autor": "Rebecca Yarros",
       "ordem": 1,
       "status": "Completo",
       "totalPag": 713,
@@ -8224,6 +8226,7 @@
     },
     {
       "livro": "O nome do Vento",
+      "autor": "Patrick Rothfuss",
       "ordem": 2,
       "status": "Completo",
       "totalPag": 1006,
@@ -8232,6 +8235,7 @@
     },
     {
       "livro": "Nevernight",
+      "autor": "Jay Kristoff",
       "ordem": 3,
       "status": "Completo",
       "totalPag": 676,
@@ -8240,6 +8244,7 @@
     },
     {
       "livro": "Herdeiros do Tempo",
+      "autor": "Adrian Tchaikovsky",
       "ordem": 4,
       "status": "Completo",
       "totalPag": 299,
@@ -8248,6 +8253,7 @@
     },
     {
       "livro": "Sombra e Ossos",
+      "autor": "Leigh Bardugo",
       "ordem": 5,
       "status": "Completo",
       "totalPag": 327,
@@ -8256,6 +8262,7 @@
     },
     {
       "livro": "Sol e Tormenta",
+      "autor": "Leigh Bardugo",
       "ordem": 6,
       "status": "Completo",
       "totalPag": 404,
@@ -8264,6 +8271,7 @@
     },
     {
       "livro": "Ruina e Ascensão",
+      "autor": "Leigh Bardugo",
       "ordem": 7,
       "status": "Completo",
       "totalPag": 366,
@@ -8272,6 +8280,7 @@
     },
     {
       "livro": "Six of Crows",
+      "autor": "Leigh Bardugo",
       "ordem": 8,
       "status": "Completo",
       "totalPag": 563,
@@ -8280,6 +8289,7 @@
     },
     {
       "livro": "O Principe Cruel",
+      "autor": "Holly Black",
       "ordem": 9,
       "status": "Completo",
       "totalPag": 434,
@@ -8288,6 +8298,7 @@
     },
     {
       "livro": "Mushoku Tensei 12",
+      "autor": "Rifujin na Magonote",
       "ordem": 10,
       "status": "Completo",
       "totalPag": 261,
@@ -8296,6 +8307,7 @@
     },
     {
       "livro": "Mushoku Tensei 13",
+      "autor": "Rifujin na Magonote",
       "ordem": 11,
       "status": "Completo",
       "totalPag": 285,
@@ -8304,6 +8316,7 @@
     },
     {
       "livro": "Mushoku Tensei 14",
+      "autor": "Rifujin na Magonote",
       "ordem": 12,
       "status": "Completo",
       "totalPag": 265,
@@ -8312,6 +8325,7 @@
     },
     {
       "livro": "Mushoku Tensei 15",
+      "autor": "Rifujin na Magonote",
       "ordem": 13,
       "status": "Completo",
       "totalPag": 421,
@@ -8320,6 +8334,7 @@
     },
     {
       "livro": "Mushoku Tensei 16",
+      "autor": "Rifujin na Magonote",
       "ordem": 14,
       "status": "Completo",
       "totalPag": 388,
@@ -8328,6 +8343,7 @@
     },
     {
       "livro": "O Aprendiz de Assassino",
+      "autor": "Robin Hobb",
       "ordem": 15,
       "status": "Completo",
       "totalPag": 551,
@@ -8336,6 +8352,7 @@
     },
     {
       "livro": "A flecha de Fogo",
+      "autor": "Leonel Caldela",
       "ordem": 16,
       "status": "Completo",
       "totalPag": 1269,
@@ -8344,6 +8361,7 @@
     },
     {
       "livro": "Of Blood and Fire",
+      "autor": "Ryan Cahill",
       "ordem": 17,
       "status": "Completo",
       "totalPag": 481,
@@ -8352,6 +8370,7 @@
     },
     {
       "livro": "O Caminho dos Reis",
+      "autor": "Brandon Sanderson",
       "ordem": 18,
       "status": "Completo",
       "totalPag": 1240,
@@ -8360,6 +8379,7 @@
     },
     {
       "livro": "Leruth",
+      "autor": "Cyanide",
       "ordem": 19,
       "status": "Completo",
       "totalPag": 242,
@@ -8368,6 +8388,7 @@
     },
     {
       "livro": "Eu sou o Numero 4",
+      "autor": "Pittacus Lore",
       "ordem": 20,
       "status": "Completo",
       "totalPag": 362,
@@ -8376,6 +8397,7 @@
     },
     {
       "livro": "O Poder dos Seis",
+      "autor": "Pittacus Lore",
       "ordem": 21,
       "status": "Completo",
       "totalPag": 336,
@@ -8384,6 +8406,7 @@
     },
     {
       "livro": "Ascenção dos Nove",
+      "autor": "Pittacus Lore",
       "ordem": 22,
       "status": "Completo",
       "totalPag": 311,
@@ -8392,6 +8415,7 @@
     },
     {
       "livro": "A Descoberta das Bruxas",
+      "autor": "Deborah Harkness",
       "ordem": 23,
       "status": "Pausado",
       "totalPag": 861,
@@ -8400,6 +8424,7 @@
     },
     {
       "livro": "Cinco Laminas Partidas",
+      "autor": "Mai Corland",
       "ordem": 24,
       "status": "Completo",
       "totalPag": 507,
@@ -8408,6 +8433,7 @@
     },
     {
       "livro": "Palavras de Radiancia",
+      "autor": "Brandon Sanderson",
       "ordem": 25,
       "status": "Completo",
       "totalPag": 1679,
@@ -8416,6 +8442,7 @@
     },
     {
       "livro": "Edgeshard",
+      "autor": "Brandon Sanderson",
       "ordem": 26,
       "status": "Completo",
       "totalPag": 218,
@@ -8424,6 +8451,7 @@
     },
     {
       "livro": "Elantris",
+      "autor": "Brandon Sanderson",
       "ordem": 27,
       "status": "Completo",
       "totalPag": 802,
@@ -8432,6 +8460,7 @@
     },
     {
       "livro": "Chama de Ferro",
+      "autor": "Rebecca Yarros",
       "ordem": 28,
       "status": "Completo",
       "totalPag": 924,
@@ -8440,6 +8469,7 @@
     },
     {
       "livro": "A Esperança de Elantris",
+      "autor": "Brandon Sanderson",
       "ordem": 29,
       "status": "Completo",
       "totalPag": 31,
@@ -8448,6 +8478,7 @@
     },
     {
       "livro": "Sacramentadora",
+      "autor": "Brandon Sanderson",
       "ordem": 30,
       "status": "Completo",
       "totalPag": 1536,
@@ -8456,6 +8487,7 @@
     },
     {
       "livro": "Mistborn 1º Era Livro 2",
+      "autor": "Brandon Sanderson",
       "ordem": 31,
       "status": "Completo",
       "totalPag": 963,
@@ -8464,6 +8496,7 @@
     },
     {
       "livro": "Mistborn 1º Era Livro 3",
+      "autor": "Brandon Sanderson",
       "ordem": 32,
       "status": "Completo",
       "totalPag": 984,
@@ -8472,6 +8505,7 @@
     },
     {
       "livro": "Mistborn - Historia Screta",
+      "autor": "Jay Kristoff",
       "ordem": 32,
       "status": "Completo",
       "totalPag": 199,
@@ -8480,6 +8514,7 @@
     },
     {
       "livro": "Godsgrave",
+      "autor": "Mark Lawrence",
       "ordem": 33,
       "status": "Completo",
       "totalPag": 668,
@@ -8488,6 +8523,7 @@
     },
     {
       "livro": "Rei dos Espinhos",
+      "autor": "Steven Erikson",
       "ordem": 34,
       "status": "Pausado",
       "totalPag": 602,
@@ -8496,6 +8532,7 @@
     },
     {
       "livro": "Jardins da Lua - Imperio Malazano",
+      "autor": "Leonel Caldela",
       "ordem": 35,
       "status": "Completo",
       "totalPag": 863,
@@ -8504,6 +8541,7 @@
     },
     {
       "livro": "O Inimigo do Mundo",
+      "autor": "Joe Abercrombie",
       "ordem": 36,
       "status": "Completo",
       "totalPag": 713,
@@ -8512,6 +8550,7 @@
     },
     {
       "livro": "Meio Rei",
+      "autor": "Felipe Castilho",
       "ordem": 37,
       "status": "Completo",
       "totalPag": 352,
@@ -8520,6 +8559,7 @@
     },
     {
       "livro": "Ordem Vermelha - Filhos da Degradação",
+      "autor": "C. S. Lewis",
       "ordem": 38,
       "status": "Completo",
       "totalPag": 566,
@@ -8528,6 +8568,7 @@
     },
     {
       "livro": "O Sobrinho do Mago",
+      "autor": "C. S. Lewis",
       "ordem": 39,
       "status": "Completo",
       "totalPag": 249,
@@ -8536,6 +8577,7 @@
     },
     {
       "livro": "O Leão a Feiticeira e Guarda-Roupa",
+      "autor": "J. K. Rowling",
       "ordem": 40,
       "status": "Completo",
       "totalPag": 133,
@@ -8544,6 +8586,7 @@
     },
     {
       "livro": "Harry Potter - A Pedra Filosofal",
+      "autor": "Brandon Sanderson",
       "ordem": 41,
       "status": "Completo",
       "totalPag": 299,
@@ -8552,6 +8595,7 @@
     },
     {
       "livro": "Tress A Garota do mar Esmeralda",
+      "autor": "Brandon Sanderson",
       "ordem": 42,
       "status": "Completo",
       "totalPag": 440,
@@ -8560,6 +8604,7 @@
     },
     {
       "livro": "Mistborn 2º Era Livro 1",
+      "autor": "Brandon Sanderson",
       "ordem": 43,
       "status": "Completo",
       "totalPag": 423,
@@ -8568,6 +8613,7 @@
     },
     {
       "livro": "Dawnshard",
+      "autor": "Rick Riordan",
       "ordem": 44,
       "status": "Completo",
       "totalPag": 232,
@@ -8576,6 +8622,7 @@
     },
     {
       "livro": "A Casa de Hades",
+      "autor": "Rick Riordan",
       "ordem": 45,
       "status": "Completo",
       "totalPag": 618,
@@ -8584,6 +8631,7 @@
     },
     {
       "livro": "O Sangue do Olimpo",
+      "autor": "R. F. Kuang",
       "ordem": 46,
       "status": "Completo",
       "totalPag": 510,
@@ -8592,6 +8640,7 @@
     },
     {
       "livro": "Guerra da Papoula",
+      "autor": "Patrick Rothfuss",
       "ordem": 47,
       "status": "Completo",
       "totalPag": 639,
@@ -8600,6 +8649,7 @@
     },
     {
       "livro": "O Temor do Sabio",
+      "autor": "Brandon Sanderson",
       "ordem": 48,
       "status": "Completo",
       "totalPag": 960,
@@ -8608,6 +8658,7 @@
     },
     {
       "livro": "Ritmo de Guerra",
+      "autor": "Brandon Sanderson",
       "ordem": 49,
       "status": "Completo",
       "totalPag": 1232,
@@ -8616,6 +8667,7 @@
     },
     {
       "livro": "Ventos e Verdade",
+      "autor": "Brandon Sanderson",
       "ordem": 50,
       "status": "Completo",
       "totalPag": 1248,
@@ -8624,6 +8676,7 @@
     },
     {
       "livro": "Warbreaker",
+      "autor": "Christopher Paolini",
       "ordem": 51,
       "status": "Completo",
       "totalPag": 832,
@@ -8632,6 +8685,7 @@
     },
     {
       "livro": "Murtagh",
+      "autor": "M. L. Wang",
       "ordem": 52,
       "status": "Completo",
       "totalPag": 799,
@@ -8640,6 +8694,7 @@
     },
     {
       "livro": "The Sword of Kaigen",
+      "autor": "Brandon Sanderson",
       "ordem": 53,
       "status": "Completo",
       "totalPag": 650,
@@ -8648,6 +8703,7 @@
     },
     {
       "livro": "Yumi e o Pintor de Pesadelos",
+      "autor": "Michael R. Miller",
       "ordem": 54,
       "status": "Completo",
       "totalPag": 531,
@@ -8656,6 +8712,7 @@
     },
     {
       "livro": "Songs of Chaos - Ascendant",
+      "autor": "Matt Dinniman",
       "ordem": 55,
       "status": "Completo",
       "totalPag": 693,
@@ -8664,6 +8721,7 @@
     },
     {
       "livro": "Carl O Explorador de Masmorras",
+      "autor": "Philip C. Quaintrell",
       "ordem": 56,
       "status": "Completo",
       "totalPag": 594,
@@ -8672,6 +8730,7 @@
     },
     {
       "livro": "The Echoes Saga - Rise of the Ranger",
+      "autor": "Ursula K. Le Guin",
       "ordem": 57,
       "status": "Completo",
       "totalPag": 888,
@@ -8680,6 +8739,7 @@
     },
     {
       "livro": "o Feiticeiro de Terramar",
+      "autor": "S. A. Chakraborty",
       "ordem": 58,
       "status": "Completo",
       "totalPag": 220,
@@ -8688,6 +8748,7 @@
     },
     {
       "livro": "A Cidade de Bronze",
+      "autor": "Brandon Sanderson",
       "ordem": 59,
       "status": "Lendo",
       "totalPag": 641,
@@ -8696,6 +8757,7 @@
     },
     {
       "livro": "A Alma do Imperador",
+      "autor": "Ryan Cahill",
       "ordem": 0,
       "status": "Aguardando",
       "totalPag": 142,
@@ -8704,6 +8766,7 @@
     },
     {
       "livro": "Of Darkness and Light",
+      "autor": "Brandon Sanderson",
       "ordem": 0,
       "status": "Aguardando",
       "totalPag": 912,
@@ -8712,6 +8775,7 @@
     },
     {
       "livro": "The White Sand",
+      "autor": "Brandon Sanderson",
       "ordem": 0,
       "status": "Aguardando",
       "totalPag": 749,
@@ -8722,6 +8786,7 @@
   "pausados": [
     {
       "livro": "A Descoberta das Bruxas",
+      "autor": "Deborah Harkness",
       "ordem": 23,
       "status": "Pausado",
       "totalPag": 861,
@@ -8730,6 +8795,7 @@
     },
     {
       "livro": "Rei dos Espinhos",
+      "autor": "Steven Erikson",
       "ordem": 34,
       "status": "Pausado",
       "totalPag": 602,
@@ -8740,6 +8806,7 @@
   "lendo": [
     {
       "livro": "A Cidade de Bronze",
+      "autor": "Brandon Sanderson",
       "ordem": 59,
       "status": "Lendo",
       "totalPag": 641,
@@ -8750,6 +8817,7 @@
   "aguardando": [
     {
       "livro": "A Alma do Imperador",
+      "autor": "Ryan Cahill",
       "ordem": 0,
       "status": "Aguardando",
       "totalPag": 142,
@@ -8758,6 +8826,7 @@
     },
     {
       "livro": "Of Darkness and Light",
+      "autor": "Brandon Sanderson",
       "ordem": 0,
       "status": "Aguardando",
       "totalPag": 912,
@@ -8766,6 +8835,7 @@
     },
     {
       "livro": "The White Sand",
+      "autor": "Brandon Sanderson",
       "ordem": 0,
       "status": "Aguardando",
       "totalPag": 749,
