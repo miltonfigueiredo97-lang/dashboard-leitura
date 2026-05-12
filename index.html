@@ -1845,15 +1845,15 @@ function buildCalendar() {
 
   // Reopen detail if selected day is in this month
   if (calSelected?.startsWith(prefix)) {
-    calSelect(calSelected, true);
+    calShowDetail(calSelected);
   } else {
     document.getElementById('calDetail').style.display = 'none';
     calSelected = null;
   }
 }
 
-function calSelect(dateStr, reopen) {
-  if (calSelected === dateStr && !reopen) {
+function calSelect(dateStr) {
+  if (calSelected === dateStr) {
     calSelected = null;
     document.getElementById('calDetail').style.display = 'none';
     buildCalendar();
@@ -1861,6 +1861,9 @@ function calSelect(dateStr, reopen) {
   }
   calSelected = dateStr;
   buildCalendar();
+}
+
+function calShowDetail(dateStr) {
 
   const sess = window._sessoes || [];
   const entries = sess.filter(s => s.data === dateStr);
@@ -1913,6 +1916,7 @@ function calSelect(dateStr, reopen) {
   detail.style.display = 'block';
 }
 window.calSelect = calSelect;
+window.calShowDetail = calShowDetail;
 
 carregarDados();
 </script>
