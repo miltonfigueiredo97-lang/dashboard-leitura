@@ -64,6 +64,16 @@ header .badge {
 .kpi-book .fallback { width: 44px; height: 62px; background: var(--bg4); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
 .cover-img { transition: transform 0.2s ease, box-shadow 0.2s ease; transform-origin: left center; image-rendering: high-quality; }
 .cover-img:hover { transform: scale(2); box-shadow: 0 8px 32px rgba(0,0,0,0.7); z-index: 100; position: relative; }
+.cal-day { border-radius:6px;padding:4px;min-height:52px;cursor:pointer;transition:background 0.15s;position:relative;background:var(--bg3); }
+.cal-day:hover { background:var(--bg4); }
+.cal-day.active { background:rgba(139,124,248,0.15);border:1px solid rgba(139,124,248,0.4); }
+.cal-day.selected { background:rgba(139,124,248,0.3);border:1px solid var(--purple); }
+.cal-day-num { font-size:11px;color:var(--muted);font-weight:600; }
+.cal-day-pag { font-size:10px;color:var(--teal);font-weight:700;margin-top:2px; }
+.cal-day-bar { height:3px;border-radius:2px;margin-top:3px;background:var(--purple); }
+.cal-empty { min-height:52px; }
+.heat-cell { width:13px;height:13px;border-radius:2px;display:inline-block;cursor:pointer;transition:transform 0.1s; }
+.heat-cell:hover { transform:scale(1.4); }
 
 /* ── Cards ── */
 .card {
@@ -533,6 +543,68 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
       <div style="height:200px;position:relative;"><canvas id="cBook"></canvas></div>
     </div>
 
+  </div>
+
+  <!-- ── Heatmap Anual + Streak ── -->
+  <div class="sec">🔥 Atividade & Sequências</div>
+  <div class="grid2" style="margin-bottom:16px;">
+
+    <div class="card">
+      <div class="card-title">📅 Mapa de Calor Anual</div>
+      <div class="ctrl" style="margin-bottom:10px;">
+        <label>Ano:</label>
+        <select id="selHeatYear" onchange="buildHeatmap()">
+          <option value="2025">2025</option>
+        </select>
+      </div>
+      <div id="heatmapGrid" style="overflow-x:auto;"></div>
+      <div style="display:flex;align-items:center;gap:6px;margin-top:8px;font-size:10px;color:var(--muted);">
+        <span>Menos</span>
+        <div style="width:12px;height:12px;border-radius:2px;background:#1a2035"></div>
+        <div style="width:12px;height:12px;border-radius:2px;background:#1a3a5c"></div>
+        <div style="width:12px;height:12px;border-radius:2px;background:#1e5f8e"></div>
+        <div style="width:12px;height:12px;border-radius:2px;background:#2980b9"></div>
+        <div style="width:12px;height:12px;border-radius:2px;background:#8b7cf8"></div>
+        <span>Mais</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚡ Sequências de Leitura</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+        <div style="background:var(--bg3);border-radius:10px;padding:14px;text-align:center;">
+          <div style="font-size:36px;font-weight:700;color:var(--orange)" id="streakAtual">—</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:4px;">🔥 Streak Atual</div>
+          <div style="font-size:10px;color:var(--muted);">dias consecutivos</div>
+        </div>
+        <div style="background:var(--bg3);border-radius:10px;padding:14px;text-align:center;">
+          <div style="font-size:36px;font-weight:700;color:var(--purple)" id="streakRecorde">—</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:4px;">🏆 Recorde de Streak</div>
+          <div style="font-size:10px;color:var(--muted);" id="streakRecordeData">dias seguidos</div>
+        </div>
+      </div>
+      <div style="border-top:1px solid var(--border);padding-top:12px;">
+        <div style="font-size:11px;color:var(--muted);margin-bottom:8px;">Últimas sequências</div>
+        <div id="streakList" style="display:flex;flex-direction:column;gap:4px;"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── Calendário Mensal ── -->
+  <div class="sec">📆 Calendário de Leitura</div>
+  <div class="card" style="margin-bottom:16px;">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+      <button onclick="calNav(-1)" style="background:var(--bg3);border:none;color:var(--text);width:32px;height:32px;border-radius:8px;cursor:pointer;font-size:16px;">‹</button>
+      <div id="calTitle" style="font-size:16px;font-weight:700;color:var(--text);flex:1;text-align:center;"></div>
+      <button onclick="calNav(1)" style="background:var(--bg3);border:none;color:var(--text);width:32px;height:32px;border-radius:8px;cursor:pointer;font-size:16px;">›</button>
+    </div>
+    <div id="calGrid" style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;"></div>
+    <!-- Tooltip/popup para detalhes do dia -->
+    <div id="calDetail" style="display:none;margin-top:14px;background:var(--bg3);border-radius:10px;padding:14px;">
+      <div id="calDetailTitle" style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:10px;"></div>
+      <div id="calDetailList"></div>
+    </div>
   </div>
 
 </div><!-- /page -->
@@ -1495,6 +1567,9 @@ function baseScales(xRot) {
 buildRanking();
 buildWd();
 buildLivrosMes();
+buildStreaks();
+buildHeatmap();
+buildCalendar();
 
 } // fim inicializarGraficos
 
@@ -1540,6 +1615,262 @@ function buildLivrosMes() {
       </div>`;
   });
 }
+
+// ════════════════════════════════════════════════
+// STREAK — dias consecutivos de leitura
+// ════════════════════════════════════════════════
+function buildStreaks() {
+  const sess = window._sessoes || [];
+  const diasSet = [...new Set(sess.map(s => s.data).filter(Boolean))].sort();
+  if (!diasSet.length) return;
+
+  // Calcula todas as sequências
+  const streaks = [];
+  let cur = [diasSet[0]];
+  for (let i = 1; i < diasSet.length; i++) {
+    const prev = new Date(diasSet[i-1] + 'T12:00:00');
+    const curr = new Date(diasSet[i]   + 'T12:00:00');
+    const diff = (curr - prev) / 86400000;
+    if (diff === 1) {
+      cur.push(diasSet[i]);
+    } else {
+      streaks.push([...cur]);
+      cur = [diasSet[i]];
+    }
+  }
+  streaks.push(cur);
+
+  // Streak atual
+  const hoje = new Date();
+  const ontem = new Date(hoje.getTime() - 86400000);
+  const hojeStr  = hoje.toISOString().slice(0,10);
+  const ontemStr = ontem.toISOString().slice(0,10);
+  const ultimoStr = diasSet[diasSet.length-1];
+  let streakAtual = 0;
+  if (ultimoStr === hojeStr || ultimoStr === ontemStr) {
+    const last = streaks[streaks.length-1];
+    streakAtual = last.length;
+  }
+
+  // Recorde
+  const recorde = streaks.reduce((m, s) => s.length > m.length ? s : m, []);
+
+  document.getElementById('streakAtual').textContent    = streakAtual;
+  document.getElementById('streakRecorde').textContent  = recorde.length;
+  document.getElementById('streakRecordeData').textContent =
+    recorde.length ? `${fmtDate(recorde[0])} → ${fmtDate(recorde[recorde.length-1])}` : '';
+
+  // Últimas 5 sequências
+  const list = document.getElementById('streakList');
+  list.innerHTML = '';
+  [...streaks].reverse().slice(0,5).forEach(s => {
+    const pags = sess.filter(r => s.includes(r.data)).reduce((a,r)=>a+r.paginas,0);
+    list.innerHTML += `<div style="display:flex;justify-content:space-between;align-items:center;padding:4px 8px;background:var(--bg3);border-radius:6px;">
+      <span style="font-size:11px;color:var(--muted)">${fmtDate(s[0])} → ${fmtDate(s[s.length-1])}</span>
+      <span style="font-size:12px;font-weight:700;color:var(--purple)">${s.length}d · ${pags.toLocaleString('pt-BR')}p</span>
+    </div>`;
+  });
+}
+
+function fmtDate(d) {
+  return new Date(d+'T12:00:00').toLocaleDateString('pt-BR',{day:'2-digit',month:'short'});
+}
+
+// ════════════════════════════════════════════════
+// HEATMAP — mapa de calor anual tipo GitHub
+// ════════════════════════════════════════════════
+function buildHeatmap() {
+  const yr = parseInt(document.getElementById('selHeatYear')?.value || new Date().getFullYear());
+  const sess = window._sessoes || [];
+
+  // Agrupa páginas por dia
+  const dayMap = {};
+  sess.filter(s => s.data && s.data.startsWith(yr)).forEach(s => {
+    dayMap[s.data] = (dayMap[s.data]||0) + s.paginas;
+  });
+
+  const vals = Object.values(dayMap);
+  const maxVal = vals.length ? Math.max(...vals) : 1;
+
+  function getColor(v) {
+    if (!v) return '#1a2035';
+    const pct = v / maxVal;
+    if (pct < 0.2) return '#1a3a5c';
+    if (pct < 0.4) return '#1e5f8e';
+    if (pct < 0.7) return '#2980b9';
+    return '#8b7cf8';
+  }
+
+  // Gera semanas do ano
+  const start = new Date(yr, 0, 1);
+  const startDay = start.getDay(); // 0=dom
+  const meses = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+
+  let html = '<div style="display:flex;gap:3px;align-items:flex-start">';
+  // Labels dos meses
+  html += '<div style="display:flex;flex-direction:column;gap:0;margin-right:4px;">';
+  ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'].forEach(d => {
+    html += `<div style="height:16px;font-size:9px;color:var(--muted);line-height:16px;">${d}</div>`;
+  });
+  html += '</div>';
+
+  // Semanas
+  let d = new Date(yr, 0, 1);
+  d.setDate(d.getDate() - d.getDay()); // começa no domingo anterior
+
+  let prevMonth = -1;
+  while (d.getFullYear() <= yr) {
+    const month = d.getMonth();
+    html += '<div>';
+    // Label do mês no topo da coluna
+    html += `<div style="height:14px;font-size:9px;color:var(--muted);margin-bottom:2px;">${d.getDate()<=7 && d.getFullYear()===yr ? meses[month] : ''}</div>`;
+    // 7 dias da semana
+    for (let wd = 0; wd < 7; wd++) {
+      const dateStr = d.toISOString().slice(0,10);
+      const isThisYear = d.getFullYear() === yr;
+      const pags = dayMap[dateStr] || 0;
+      const color = isThisYear ? getColor(pags) : 'transparent';
+      const title = isThisYear && pags ? `${fmtDate(dateStr)}: ${pags} págs` : fmtDate(dateStr);
+      html += `<div class="heat-cell" style="background:${color};margin-bottom:3px;" title="${title}"></div>`;
+      d.setDate(d.getDate() + 1);
+    }
+    html += '</div>';
+    if (d.getFullYear() > yr) break;
+  }
+  html += '</div>';
+
+  document.getElementById('heatmapGrid').innerHTML = html;
+
+  // Popular seletor de anos
+  const sel = document.getElementById('selHeatYear');
+  const anos = [...new Set((window._sessoes||[]).map(s=>s.data?.slice(0,4)).filter(Boolean))].sort();
+  sel.innerHTML = '';
+  anos.forEach(a => sel.innerHTML += `<option value="${a}" ${a==yr?'selected':''}>${a}</option>`);
+}
+
+// ════════════════════════════════════════════════
+// CALENDÁRIO MENSAL
+// ════════════════════════════════════════════════
+let calYear  = new Date().getFullYear();
+let calMonth = new Date().getMonth();
+let calSelected = null;
+
+function calNav(dir) {
+  calMonth += dir;
+  if (calMonth > 11) { calMonth = 0; calYear++; }
+  if (calMonth < 0)  { calMonth = 11; calYear--; }
+  buildCalendar();
+}
+window.calNav = calNav;
+
+function buildCalendar() {
+  const sess = window._sessoes || [];
+  const meses = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+  const dias  = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+
+  document.getElementById('calTitle').textContent = `${meses[calMonth]} ${calYear}`;
+
+  // Agrupa sessões por dia nesse mês
+  const prefix = `${calYear}-${String(calMonth+1).padStart(2,'0')}`;
+  const dayData = {};
+  sess.filter(s => s.data?.startsWith(prefix)).forEach(s => {
+    if (!dayData[s.data]) dayData[s.data] = [];
+    dayData[s.data].push(s);
+  });
+
+  const maxPag = Math.max(...Object.values(dayData).map(v=>v.reduce((a,r)=>a+r.paginas,0)), 1);
+
+  const firstDay = new Date(calYear, calMonth, 1).getDay();
+  const daysInMonth = new Date(calYear, calMonth+1, 0).getDate();
+
+  let html = '';
+  // Cabeçalho
+  dias.forEach(d => {
+    html += `<div style="text-align:center;font-size:10px;font-weight:700;color:var(--muted);padding:4px 0;">${d}</div>`;
+  });
+  // Células vazias antes do dia 1
+  for (let i = 0; i < firstDay; i++) html += '<div class="cal-empty"></div>';
+
+  // Dias
+  for (let day = 1; day <= daysInMonth; day++) {
+    const dateStr = `${calYear}-${String(calMonth+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+    const entries = dayData[dateStr] || [];
+    const totalPag = entries.reduce((a,r)=>a+r.paginas,0);
+    const barW = totalPag ? Math.round(totalPag/maxPag*100) : 0;
+    const isSelected = calSelected === dateStr;
+
+    html += `<div class="cal-day${totalPag?' active':''}${isSelected?' selected':''}" onclick="calSelect('${dateStr}')">
+      <div class="cal-day-num">${day}</div>
+      ${totalPag ? `<div class="cal-day-pag">${totalPag}p</div>
+      <div class="cal-day-bar" style="width:${barW}%"></div>` : ''}
+    </div>`;
+  }
+
+  document.getElementById('calGrid').innerHTML = html;
+
+  // Reopen detail if selected day is in this month
+  if (calSelected?.startsWith(prefix)) {
+    calSelect(calSelected, true);
+  } else {
+    document.getElementById('calDetail').style.display = 'none';
+    calSelected = null;
+  }
+}
+
+function calSelect(dateStr, reopen) {
+  if (calSelected === dateStr && !reopen) {
+    calSelected = null;
+    document.getElementById('calDetail').style.display = 'none';
+    buildCalendar();
+    return;
+  }
+  calSelected = dateStr;
+  buildCalendar();
+
+  const sess = window._sessoes || [];
+  const entries = sess.filter(s => s.data === dateStr);
+  const d = new Date(dateStr + 'T12:00:00');
+  const label = d.toLocaleDateString('pt-BR', {weekday:'long', day:'2-digit', month:'long', year:'numeric'});
+
+  const detail = document.getElementById('calDetail');
+  const totalPag = entries.reduce((a,r)=>a+r.paginas,0);
+  const totalMin = entries.reduce((a,r)=>a+r.minutos,0);
+
+  document.getElementById('calDetailTitle').innerHTML =
+    `📅 ${label} — <span style="color:var(--teal)">${totalPag} páginas</span> · <span style="color:var(--yellow)">${Math.round(totalMin)}min</span>`;
+
+  let listHtml = '';
+  // Agrupa por livro
+  const byBook = {};
+  entries.forEach(e => {
+    if (!byBook[e.livro]) byBook[e.livro] = {pags:0, min:0};
+    byBook[e.livro].pags += e.paginas;
+    byBook[e.livro].min  += e.minutos;
+  });
+
+  Object.entries(byBook).forEach(([livro, v]) => {
+    const livroData = (window._livros||[]).find(l=>l.livro===livro);
+    const isbn = livroData?.isbn || '';
+    const capa = isbn ? `<img src="https://covers.openlibrary.org/b/isbn/${isbn}-S.jpg"
+      style="width:28px;height:40px;object-fit:cover;border-radius:3px;flex-shrink:0"
+      onerror="this.style.display='none'" alt="">` : '';
+    listHtml += `<div style="display:flex;align-items:center;gap:10px;padding:8px;background:var(--bg2);border-radius:8px;margin-bottom:6px;">
+      ${capa}
+      <div style="flex:1;min-width:0">
+        <div style="font-size:13px;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${livro}</div>
+        <div style="font-size:11px;color:var(--muted)">${livroData?.autor||''}</div>
+      </div>
+      <div style="text-align:right;flex-shrink:0">
+        <div style="font-size:14px;font-weight:700;color:var(--teal)">${v.pags} págs</div>
+        <div style="font-size:10px;color:var(--muted)">${Math.round(v.min)} min</div>
+      </div>
+    </div>`;
+  });
+
+  document.getElementById('calDetailList').innerHTML = listHtml || '<div style="color:var(--muted);font-size:12px">Nenhuma sessão registrada</div>';
+  detail.style.display = 'block';
+}
+window.calSelect = calSelect;
 
 carregarDados();
 </script>
