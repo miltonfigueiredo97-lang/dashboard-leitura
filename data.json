@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-12T18:53:04.921Z",
+  "geradoEm": "2026-05-12T19:33:40.294Z",
   "meta": {
     "total": 28,
     "lidos": 7,
     "faltando": 21,
     "paginasTotal": 15855,
-    "paginasLidas": 4653,
-    "paginasFaltando": 11202,
-    "mediaDiaria": 69.2,
+    "paginasLidas": 4703,
+    "paginasFaltando": 11152,
+    "mediaDiaria": 69.4,
     "dataPrevistoInicial": "27/11/2026",
-    "dataPrevistoAtual": "21/10/2026"
+    "dataPrevistoAtual": "20/10/2026"
   },
   "sessoes": [
     {
@@ -8203,6 +8203,14 @@
       "paginas": 34,
       "minutos": 30,
       "ano": 2026
+    },
+    {
+      "livro": "A Cidade de Bronze",
+      "colecao": "Daevabad Trilogy",
+      "data": "2026-05-10",
+      "paginas": 50,
+      "minutos": 30,
+      "ano": 2026
     }
   ],
   "livros": [
@@ -8813,8 +8821,8 @@
       "ordem": 59,
       "status": "Lendo",
       "totalPag": 641,
-      "pagAtual": 278,
-      "pct": 0.434
+      "pagAtual": 328,
+      "pct": 0.512
     },
     {
       "livro": "A Alma do Imperador",
@@ -9137,8 +9145,8 @@
       "ordem": 59,
       "status": "Lendo",
       "totalPag": 641,
-      "pagAtual": 278,
-      "pct": 0.434
+      "pagAtual": 328,
+      "pct": 0.512
     }
   ],
   "aguardando": [
