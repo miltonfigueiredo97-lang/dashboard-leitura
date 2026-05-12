@@ -542,11 +542,19 @@ function inicializar(d) {
   const WD_2024 = calcWd(2024);
   const WD_2025 = calcWd(2025);
   const WD_2026 = calcWd(2026);
-  const WD_AVG = { total: WD_ALL.avg,  2024: WD_2024.avg, 2025: WD_2025.avg, 2026: WD_2026.avg };
-  const WD_SUM = { total: WD_ALL.sum,  2024: WD_2024.sum, 2025: WD_2025.sum, 2026: WD_2026.sum };
+  const WD_AVG = { 'total': WD_ALL.avg, '2024': WD_2024.avg, '2025': WD_2025.avg, '2026': WD_2026.avg };
+  const WD_SUM = { 'total': WD_ALL.sum, '2024': WD_2024.sum, '2025': WD_2025.sum, '2026': WD_2026.sum };
 
   // ── NOTES ────────────────────────────────────────────
-  const NOTES = (d.notas || []).sort((a,b) => b.media - a.media);
+  // Enrich notas with real year from sessoes (ano field in NOTAS sheet is nota geral, not year)
+  const bookFinishYear = {};
+  sessoes.forEach(s => {
+    if (s.ano > 2000) bookFinishYear[s.livro] = Math.max(bookFinishYear[s.livro]||0, s.ano);
+  });
+  const NOTES = (d.notas || []).map(n => ({
+    ...n,
+    ano: bookFinishYear[n.livro] || n.ano || 0
+  })).sort((a,b) => b.media - a.media);
 
   // ── COLECOES ─────────────────────────────────────────
   const byCol = {};
@@ -663,8 +671,8 @@ function inicializar(d) {
     }
   }
 
-  // Armazena globalmente para buildBookInfo
-  window._livros  = d.livros  || [];
+  // Armazena globalmente para buildBookInfo (filtra linha de cabeçalho)
+  window._livros  = (d.livros || []).filter(l => l.totalPag > 0 && l.status !== 'STATUS');
   window._sessoes = sessoes;
 
   // Atualiza rodapé com data de geração
@@ -755,16 +763,17 @@ function buildRanking() {
 // 4. WEEKDAY BARS (HTML) — seletor único
 // ════════════════════════════════════════════════
 function buildWd() {
-  const yr = document.getElementById('selWd').value;
+  const yr = document.getElementById('selWd')?.value || 'total';
 
   ['avg','sum'].forEach(type => {
     const src  = type==='avg' ? WD_AVG : WD_SUM;
     const vals = src[yr] || src['total'] || [0,0,0,0,0,0,0];
-    const maxV = Math.max(...vals);
+    const maxV = Math.max(...vals, 1);
     const el   = document.getElementById(type==='avg' ? 'wdAvg' : 'wdSum');
+    if (!el) return;
     el.innerHTML = '';
     vals.forEach((v, i) => {
-      const h    = maxV > 0 ? Math.max(6, Math.round(v/maxV * 90)) : 6;
+      const h    = Math.max(6, Math.round(v/maxV * 90));
       const disp = type==='avg' ? v.toFixed(0) : v.toLocaleString('pt-BR');
       el.innerHTML += `
         <div class="wd-col">
@@ -1083,20 +1092,31 @@ const AUTOR_MAP = {
 // ════════════════════════════════════════════════
 (function() {
   const months = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
-  const data2024 = [2203,913,484,234,810,619,939,1687,1388,1830,280,210];
-  const data2025 = [2154,1105,2444,1790,872,884,1850,2983,1283,1136,1547,935];
-  const data2026 = [949,1299,744,744,0,0,0,0,0,0,0,0];
+
+  // Build monthly data per year from MONTHLY
+  const byYearMonth = {};
+  MONTHLY.forEach(d => {
+    // d.m = "Jan/24", extract year and month index
+    const parts = d.m.split('/');
+    const mon = parts[0];
+    const yr  = '20' + parts[1];
+    if (!byYearMonth[yr]) byYearMonth[yr] = new Array(12).fill(0);
+    const mIdx = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'].indexOf(mon);
+    if (mIdx >= 0) byYearMonth[yr][mIdx] = d.v;
+  });
+
+  const years = Object.keys(byYearMonth).sort();
+  const yColors = ['#8b7cf8','#f88c6a','#4ecdc4','#ffd166'];
+  const datasets = years.map((yr, i) => ({
+    label: yr,
+    data: byYearMonth[yr],
+    backgroundColor: yColors[i % yColors.length],
+    borderRadius: 4
+  }));
 
   new Chart(document.getElementById('cHeat').getContext('2d'), {
     type:'bar',
-    data:{
-      labels: months,
-      datasets:[
-        {label:'2024', data:data2024, backgroundColor:'#8b7cf8', borderRadius:4},
-        {label:'2025', data:data2025, backgroundColor:'#f88c6a', borderRadius:4},
-        {label:'2026', data:data2026, backgroundColor:'#4ecdc4', borderRadius:4}
-      ]
-    },
+    data:{ labels: months, datasets },
     options:{
       responsive:true, maintainAspectRatio:false,
       plugins:{
@@ -1125,7 +1145,6 @@ anosWd.forEach(a => {
 });
 
 buildRanking();
-buildWd();
 buildWd();
 
 } // fim inicializarGraficos
