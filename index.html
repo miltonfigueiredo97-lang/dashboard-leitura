@@ -325,7 +325,7 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
       <span class="kpi-icon">🏆</span>
       <div class="kpi-val" id="kpi-recorde">—</div>
       <div class="kpi-lbl">Recorde Diário</div>
-      <div class="kpi-sub">páginas em um dia</div>
+      <div class="kpi-sub" id="kpi-recorde-data">páginas em um dia</div>
     </div>
   </div>
 
@@ -662,6 +662,10 @@ function inicializar(d) {
   const diasVals = Object.values(dayMap);
   const mediaParDia = diasVals.length ? Math.round(diasVals.reduce((a,b)=>a+b,0)/diasVals.length*10)/10 : 0;
   const recorde = diasVals.length ? Math.max(...diasVals) : 0;
+  const recordeData = Object.entries(dayMap).find(([,v]) => v === recorde)?.[0] || '';
+  const recordeLabel = recordeData
+    ? new Date(recordeData + 'T12:00:00').toLocaleDateString('pt-BR', {day:'2-digit', month:'short', year:'numeric'})
+    : 'páginas em um dia';
   const horasTotais = Math.round(sessoes.reduce((s,r)=>s+(r.minutos||0),0)/60);
 
   // Atualiza KPIs no HTML
@@ -670,7 +674,8 @@ function inicializar(d) {
   document.getElementById('kpi-sessoes').textContent   = sessoes.length.toLocaleString('pt-BR');
   document.getElementById('kpi-pgdia').textContent     = mediaParDia.toFixed(1).replace('.',',');
   document.getElementById('kpi-horas').textContent     = horasTotais + 'h';
-  document.getElementById('kpi-recorde').textContent   = recorde;
+  document.getElementById('kpi-recorde').textContent      = recorde;
+  document.getElementById('kpi-recorde-data').textContent = recordeLabel;
 
   // Maior e menor livro — usa totalPag dos livros lidos (Completo)
   const livrosLidos = (d.livros||[]).filter(l => l.status === 'Completo' && l.totalPag > 0);
