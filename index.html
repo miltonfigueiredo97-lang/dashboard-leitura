@@ -605,33 +605,37 @@ function inicializar(d) {
   document.getElementById('meta-pag-lidas').textContent   = (meta.paginasLidas||0).toLocaleString('pt-BR');
   document.getElementById('meta-pag-falt').textContent    = (meta.paginasFaltando||0).toLocaleString('pt-BR');
   document.getElementById('meta-livros').textContent      = (meta.lidos||0) + ' / ' + (meta.total||28);
-  document.getElementById('meta-pgdia').textContent       = Math.ceil((meta.paginasFaltando||0)/234);
+  document.getElementById('meta-pgdia').textContent       = Math.ceil((meta.paginasFaltando||0)/(meta.mediaDiaria||50));
   document.getElementById('meta-data-ini').textContent    = meta.dataPrevistoInicial || '—';
   document.getElementById('meta-data-atual').textContent  = meta.dataPrevistoAtual   || '—';
 
-  // Lendo atualmente
-  const pausados = d.pausados || [];
+  // Lendo atualmente — mostra Lendo + Pausados + dica
+  const lendoAtual = [...(d.lendo || []), ...(d.pausados || [])];
   const agContainer = document.getElementById('lendo-cards');
   agContainer.innerHTML = '';
-  if (pausados.length === 0) {
+  if (lendoAtual.length === 0) {
     agContainer.innerHTML = '<div class="lendo-card dica"><div class="lendo-tag">📖 Nenhum livro em andamento</div></div>';
   } else {
-    pausados.forEach(p => {
+    lendoAtual.forEach(p => {
+      const isLendo = (d.lendo||[]).includes(p);
+      const tag = isLendo ? '📖 Lendo' : '⏸️ Pausado';
+      const cor = isLendo ? 'var(--teal)' : 'var(--orange)';
+      const classe = isLendo ? 'lendo' : 'pausado';
       const faltam = p.totalPag - p.pagAtual;
       const diasRest = Math.ceil(faltam / (mediaParDia||66.8));
       const pctVal = Math.round((p.pct||0)*100*10)/10;
       agContainer.innerHTML += `
-        <div class="lendo-card pausado">
-          <div class="lendo-tag">⏸️ Pausado</div>
+        <div class="lendo-card ${classe}">
+          <div class="lendo-tag">${tag}</div>
           <div class="lendo-book-title">${p.livro}</div>
           <div class="lendo-stats">
-            <div class="lendo-stat"><span class="lendo-stat-val" style="color:var(--orange)">${p.pagAtual}</span><span class="lendo-stat-lbl">Página atual</span></div>
+            <div class="lendo-stat"><span class="lendo-stat-val" style="color:${cor}">${p.pagAtual}</span><span class="lendo-stat-lbl">Página atual</span></div>
             <div class="lendo-stat"><span class="lendo-stat-val">${p.totalPag}</span><span class="lendo-stat-lbl">Total de páginas</span></div>
             <div class="lendo-stat"><span class="lendo-stat-val" style="color:var(--yellow)">~${diasRest}</span><span class="lendo-stat-lbl">Dias para acabar</span></div>
           </div>
           <div class="lendo-progress-wrap">
-            <div class="lendo-bar-bg"><div class="lendo-bar-fg" style="width:${Math.min(pctVal,100)}%;background:var(--orange)"></div></div>
-            <span class="lendo-pct-label">${pctVal}%</span>
+            <div class="lendo-bar-bg"><div class="lendo-bar-fg" style="width:${Math.min(pctVal,100)}%;background:${cor}"></div></div>
+            <span class="lendo-pct-label" style="color:${cor}">${pctVal}%</span>
           </div>
           <div class="lendo-meta"><span>Faltam: <b>${faltam.toLocaleString('pt-BR')} páginas</b></span></div>
         </div>`;
@@ -640,7 +644,7 @@ function inicializar(d) {
     const ag = d.aguardando || [];
     if (ag.length > 0) {
       const dica = ag[Math.floor(Math.random()*ag.length)];
-      const diasDica = Math.ceil(dica.totalPag/(mediaParDia||66.8));
+      const diasDica = Math.ceil((dica.totalPag||200)/(mediaParDia||66.8));
       agContainer.innerHTML += `
         <div class="lendo-card dica">
           <div class="lendo-tag">💡 Dica de Leitura</div>
@@ -1010,6 +1014,15 @@ function baseScales(xRot) {
 buildRanking();
 buildWd('avg');
 buildWd('sum');
+
+// Popular seletor de anos do ranking com anos reais das notas
+const selNotasAno = document.getElementById('selNotasAno');
+const anosNotas = [...new Set(NOTES.map(n => n.ano).filter(a => a > 2000))].sort();
+selNotasAno.innerHTML = '<option value="all">Todos os anos</option>';
+anosNotas.forEach(a => {
+  selNotasAno.innerHTML += `<option value="${a}">${a}</option>`;
+});
+buildRanking();
 
 } // fim inicializarGraficos
 
