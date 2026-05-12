@@ -794,8 +794,8 @@ function inicializar(d) {
     }
   }
 
-  // Armazena globalmente para buildBookInfo (filtra linha de cabeçalho)
-  window._livros  = (d.livros || []).filter(l => l.totalPag > 0 && l.status !== 'STATUS');
+  // Armazena globalmente para buildBookInfo (filtra só linha de cabeçalho)
+  window._livros  = (d.livros || []).filter(l => l.status !== 'STATUS' && l.livro !== 'Livro' && l.livro.length > 1);
   window._sessoes = sessoes;
 
   // Atualiza rodapé com data de geração
