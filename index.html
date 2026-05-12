@@ -678,7 +678,10 @@ function renderizarGraficos(dados) {
   NOTES     = dados.NOTES;
   COLECOES  = dados.COLECOES;
   BOOK_DAILY = dados.BOOK_DAILY;
+  inicializarGraficos();
+}
 
+function inicializarGraficos() {
 
 // ════════════════════════════════════════════════
 // CHART DEFAULTS
@@ -813,8 +816,6 @@ function buildRanking() {
       </div>`;
   });
 }
-buildRanking();
-
 // ════════════════════════════════════════════════
 // 4. WEEKDAY BARS (HTML)
 // ════════════════════════════════════════════════
@@ -838,8 +839,7 @@ function buildWd(type) {
       </div>`;
   });
 }
-buildWd('avg');
-buildWd('sum');
+
 
 // ════════════════════════════════════════════════
 // 5. DONUT
@@ -996,7 +996,12 @@ buildWd('sum');
     }
   });
 })();
-} // fim renderizarGraficos
+
+buildRanking();
+buildWd('avg');
+buildWd('sum');
+
+} // fim inicializarGraficos
 
 carregarDados();
 </script>
