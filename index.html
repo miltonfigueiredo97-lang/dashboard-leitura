@@ -322,18 +322,10 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
       <div class="kpi-val" id="kpi-recorde">—</div>
       <div class="kpi-lbl">Recorde Diário</div>
       <div class="kpi-sub" id="kpi-recorde-data">páginas em um dia</div>
+      <div id="kpi-recorde-livro" style="font-size:10px;color:var(--text);font-weight:600;margin-top:3px;line-height:1.3"></div>
+      <div id="kpi-recorde-autor" style="font-size:9px;color:var(--muted)"></div>
     </div>
-    <div class="kpi" style="--accent:#56cfff; display:none" id="kpi-recorde-livro-wrap">
-    </div>
-  </div>
-  <!-- Recorde livro card -->
-  <div style="background:var(--bg2);border-radius:12px;padding:10px 14px;margin-bottom:8px;display:flex;gap:12px;align-items:center;" id="kpi-recorde-livro-card">
-    <div style="font-size:22px">🏆</div>
-    <div>
-      <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px">Livro do Recorde</div>
-      <div id="kpi-recorde-livro" style="font-size:13px;font-weight:700;color:var(--text)">—</div>
-      <div id="kpi-recorde-autor" style="font-size:11px;color:var(--muted)">—</div>
-    </div>
+    <div style="display:none" id="kpi-recorde-livro-wrap"></div>
   </div>
   <!-- Livros por status -->
   <div class="grid4" style="margin-bottom:16px;">
@@ -814,15 +806,10 @@ function inicializar(d) {
   document.getElementById('kpi-sessoes').textContent    = sessoes.length.toLocaleString('pt-BR');
   document.getElementById('kpi-pgdia').textContent      = mediaParDia.toFixed(1).replace('.',',');
   document.getElementById('kpi-horas').textContent      = horasTotais + 'h';
-  document.getElementById('kpi-recorde').textContent    = recorde;
+  document.getElementById('kpi-recorde').textContent      = recorde;
   document.getElementById('kpi-recorde-data').textContent = recordeLabel;
-  if (recordeLivro) {
-    document.getElementById('kpi-recorde-livro').textContent = recordeLivro;
-    document.getElementById('kpi-recorde-autor').textContent = recordeAutor;
-  } else {
-    const card = document.getElementById('kpi-recorde-livro-card');
-    if (card) card.style.display = 'none';
-  }
+  document.getElementById('kpi-recorde-livro').textContent = recordeLivro;
+  document.getElementById('kpi-recorde-autor').textContent = recordeAutor;
 
   // Maior e menor livro — usa totalPag dos livros lidos (Completo)
   const livrosLidos = (d.livros||[]).filter(l => l.status === 'Completo' && l.totalPag > 0);
