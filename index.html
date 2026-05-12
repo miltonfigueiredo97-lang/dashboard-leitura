@@ -1029,10 +1029,11 @@ const AUTOR_MAP = {
     const info = document.getElementById('bookInfo');
     info.style.display = 'block';
     document.getElementById('bookInfoNome').textContent = book;
-    document.getElementById('bookInfoAutor').textContent = AUTOR_MAP[book] || '—';
+    document.getElementById('bookInfoAutor').textContent = autorNome;
 
     // Get book data from livros array
     const livroData = (window._livros||[]).find(l => l.livro === book);
+    const autorNome = livroData?.autor || AUTOR_MAP[book] || '—';
     const rows = BOOK_DAILY[book] || [];
     const pagLidas = rows.reduce((s,r)=>s+r.p, 0);
     const totalPag = livroData?.totalPag || 0;
