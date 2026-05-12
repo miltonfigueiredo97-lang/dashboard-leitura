@@ -332,7 +332,7 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
   <div class="grid4" style="margin-bottom:16px;">
     <div class="kpi" style="--accent:#ffd166">
       <div class="kpi-book">
-        <div class="fallback" style="display:flex">📖</div>
+        <div id="capa-maior" style="flex-shrink:0">📖</div>
         <div>
           <div class="kpi-icon" style="font-size:14px;margin-bottom:3px;">📖 MAIOR LIVRO</div>
           <div class="kpi-val" style="font-size:24px;" id="kpi-maior-val">—</div>
@@ -344,7 +344,7 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
     </div>
     <div class="kpi" style="--accent:#f88c6a">
       <div class="kpi-book">
-        <div class="fallback" style="display:flex">📕</div>
+        <div id="capa-menor" style="flex-shrink:0">📕</div>
         <div>
           <div class="kpi-icon" style="font-size:14px;margin-bottom:3px;">📕 MENOR LIVRO</div>
           <div class="kpi-val" style="font-size:24px;" id="kpi-menor-val">—</div>
@@ -356,7 +356,7 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
     </div>
     <div class="kpi" style="--accent:#4ecdc4">
       <div class="kpi-book">
-        <div class="fallback" style="display:flex">⭐</div>
+        <div id="capa-melhor" style="flex-shrink:0">⭐</div>
         <div>
           <div class="kpi-icon" style="font-size:14px;margin-bottom:3px;">⭐ MELHOR AVALIADO</div>
           <div class="kpi-val" style="font-size:24px;" id="kpi-melhor-val">—</div>
@@ -368,7 +368,7 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
     </div>
     <div class="kpi" style="--accent:#e56cff">
       <div class="kpi-book">
-        <div class="fallback" style="display:flex">💀</div>
+        <div id="capa-pior" style="flex-shrink:0">💀</div>
         <div>
           <div class="kpi-icon" style="font-size:14px;margin-bottom:3px;">💀 PIOR AVALIADO</div>
           <div class="kpi-val" style="font-size:24px;" id="kpi-pior-val">—</div>
@@ -484,8 +484,13 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
         <select id="selBook" onchange="buildBookChart();buildBookInfo()" style="flex:1;max-width:100%;"></select>
       </div>
       <div id="bookInfo" style="display:none;">
-        <div id="bookInfoNome" style="font-size:18px;font-weight:700;color:var(--text);margin-bottom:2px;"></div>
-        <div id="bookInfoAutor" style="font-size:12px;color:var(--muted);margin-bottom:12px;"></div>
+        <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:12px;">
+          <div id="bookInfoCapa" style="flex-shrink:0;font-size:32px;">📖</div>
+          <div>
+            <div id="bookInfoNome" style="font-size:18px;font-weight:700;color:var(--text);margin-bottom:2px;"></div>
+            <div id="bookInfoAutor" style="font-size:12px;color:var(--muted);"></div>
+          </div>
+        </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;" id="bookInfoStats"></div>
       </div>
     </div>
@@ -509,6 +514,20 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
 // ════════════════════════════════════════════════
 const DATA_URL = '/data.json';
 
+
+function coverUrl(isbn, size='M') {
+  if (!isbn) return '';
+  return `https://covers.openlibrary.org/b/isbn/${isbn}-${size}.jpg`;
+}
+
+function coverImg(isbn, fallback='📖', cls='') {
+  if (!isbn) return `<span style="font-size:32px">${fallback}</span>`;
+  return `<img src="${coverUrl(isbn)}" class="${cls}"
+    style="width:52px;height:72px;object-fit:cover;border-radius:4px;flex-shrink:0"
+    onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+    alt="capa">
+  <span style="font-size:32px;display:none">${fallback}</span>`;
+}
 
 const AUTOR_MAP = {
   'Palavras de Radiancia':'Brandon Sanderson','Ritmo de Guerra':'Brandon Sanderson',
@@ -686,9 +705,11 @@ function inicializar(d) {
     document.getElementById('kpi-maior-val').textContent   = maior.totalPag.toLocaleString('pt-BR');
     document.getElementById('kpi-maior-nome').textContent  = maior.livro;
     document.getElementById('kpi-maior-autor').textContent = maior.autor || AUTOR_MAP[maior.livro] || '';
+    document.getElementById('capa-maior').innerHTML        = coverImg(maior.isbn, '📖');
     document.getElementById('kpi-menor-val').textContent   = menor.totalPag.toLocaleString('pt-BR');
     document.getElementById('kpi-menor-nome').textContent  = menor.livro;
     document.getElementById('kpi-menor-autor').textContent = menor.autor || AUTOR_MAP[menor.livro] || '';
+    document.getElementById('capa-menor').innerHTML        = coverImg(menor.isbn, '📕');
   }
 
   // Melhor e pior avaliado
@@ -701,9 +722,11 @@ function inicializar(d) {
     document.getElementById('kpi-melhor-val').textContent   = melhor.media.toFixed(1);
     document.getElementById('kpi-melhor-nome').textContent  = melhor.livro;
     document.getElementById('kpi-melhor-autor').textContent = melhorLivro?.autor || AUTOR_MAP[melhor.livro] || '';
+    document.getElementById('capa-melhor').innerHTML        = coverImg(melhorLivro?.isbn, '⭐');
     document.getElementById('kpi-pior-val').textContent     = pior.media.toFixed(1);
     document.getElementById('kpi-pior-nome').textContent    = pior.livro;
     document.getElementById('kpi-pior-autor').textContent   = piorLivro?.autor || AUTOR_MAP[pior.livro] || '';
+    document.getElementById('capa-pior').innerHTML          = coverImg(piorLivro?.isbn, '💀');
   }
 
   // Meta
@@ -862,8 +885,14 @@ function buildRanking() {
     const pct = Math.round(b.score/maxA*100);
     const col = rankMode==='best' ? (i<3?['#ffd166','#c0c0c0','#cd7f32'][i]:'#8b7cf8') : '#f88c6a';
     const scoreLabel = tema === 'all' ? b.score.toFixed(1) : `${b.score.toFixed(1)} <span style="font-size:9px;opacity:0.7">(${b.media.toFixed(1)} geral)</span>`;
+    const rankLivro = (window._livros||[]).find(l => l.livro === b.livro);
+    const rankIsbn  = rankLivro?.isbn || '';
+    const capaHtml  = rankIsbn
+      ? `<img src="${coverUrl(rankIsbn,'S')}" style="width:28px;height:40px;object-fit:cover;border-radius:3px;flex-shrink:0" onerror="this.style.display='none'">`
+      : '';
     el.innerHTML += `
       <div class="rank-item">
+        ${capaHtml}
         <span class="rank-num">${i<3?'':('#'+(i+1))}</span>
         <span class="rank-medal">${medals[i]||''}</span>
         <div style="flex:1;min-width:0">
@@ -1171,10 +1200,10 @@ function baseScales(xRot) {
 
     const info = document.getElementById('bookInfo');
     info.style.display = 'block';
-    document.getElementById('bookInfoNome').textContent = book;
+    document.getElementById('bookInfoCapa').innerHTML    = coverImg(livroData?.isbn, '📖');
+    document.getElementById('bookInfoNome').textContent  = book;
     document.getElementById('bookInfoAutor').textContent = autorNome;
-
-    // Ano de leitura — último ano com sessão desse livro
+    // Ano de leitura
     const anosLidos = [...new Set(rows.map(r => r.d?.slice(0,4)).filter(Boolean))].sort();
     const anoLabel = anosLidos.length === 1 ? anosLidos[0] : anosLidos.length > 1 ? `${anosLidos[0]} – ${anosLidos[anosLidos.length-1]}` : '—';
     document.getElementById('bookInfoAutor').textContent = `${autorNome} · ${anoLabel}`;
