@@ -235,6 +235,59 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
 <div id="app" style="display:none">
 <div class="page">
 
+  <!-- ── 5. Meta 2026 + Heatmap ── -->
+  <div class="sec">🎯 Meta 2026 &amp; Heatmap</div>
+  <div class="grid2" style="margin-bottom:16px;">
+    <div class="card">
+      <div class="card-title">🎯 Meta 2026 — 28 Livros</div>
+      <div class="card-sub">Progresso em páginas e livros concluídos</div>
+      <div class="meta-row">
+        <div class="ring-wrap">
+          <svg width="120" height="120" viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="50" fill="none" stroke="var(--bg3)" stroke-width="10"/>
+            <circle id="meta-ring-circle" cx="60" cy="60" r="50" fill="none" stroke="var(--purple)" stroke-width="10"
+              stroke-dasharray="314.16" stroke-dashoffset="227.47" stroke-linecap="round"/>
+          </svg>
+          <div class="ring-center">
+            <div class="ring-pct" id="meta-ring-pct">—</div>
+            <div class="ring-sub">páginas</div>
+          </div>
+        </div>
+        <div class="meta-stats">
+          <div class="meta-stat">
+            <div class="meta-stat-val" style="color:var(--purple)" id="meta-pag-lidas">—</div>
+            <div class="meta-stat-lbl">Págs lidas</div>
+          </div>
+          <div class="meta-stat">
+            <div class="meta-stat-val" style="color:var(--orange)" id="meta-pag-falt">—</div>
+            <div class="meta-stat-lbl">Págs faltando</div>
+          </div>
+          <div class="meta-stat">
+            <div class="meta-stat-val" style="color:var(--teal)" id="meta-livros">—</div>
+            <div class="meta-stat-lbl">Livros lidos</div>
+          </div>
+          <div class="meta-stat">
+            <div class="meta-stat-val" style="color:var(--yellow)" id="meta-pgdia">—</div>
+            <div class="meta-stat-lbl">Págs/dia necessário</div>
+          </div>
+        </div>
+      </div>
+      <div class="meta-date">
+        <div class="meta-date-icon">📅</div>
+        <div>
+          <div class="meta-date-txt">Previsão atual: <b style="color:var(--yellow);font-size:15px;" id="meta-data-atual">—</b></div>
+          <div class="meta-date-sub">Previsão inicial: <b style="color:var(--teal)" id="meta-data-ini">—</b> · Meta final: 31/12/2026</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🗓️ Páginas por Mês — Comparativo</div>
+      <div class="card-sub">2024 vs 2025 vs 2026</div>
+      <div style="height:270px;position:relative;"><canvas id="cHeat"></canvas></div>
+    </div>
+  </div>
+
   <!-- ── KPIs ── -->
   <div class="sec">📊 Visão Geral</div>
   <div class="grid6" style="margin-bottom:16px;">
@@ -373,6 +426,10 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
         <div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Total de páginas</div>
         <div id="wdSum" class="wd-bars"></div>
       </div>
+      <div style="border-top:1px solid var(--border);padding-top:12px;margin-top:8px;">
+        <div style="font-size:11px;color:var(--muted);margin-bottom:6px;">Livros concluídos por mês</div>
+        <div id="livrosMes" class="wd-bars"></div>
+      </div>
     </div>
 
     <!-- Coleções -->
@@ -417,59 +474,6 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
       <div style="height:200px;position:relative;"><canvas id="cBook"></canvas></div>
     </div>
 
-  </div>
-
-  <!-- ── 5. Meta 2026 + Heatmap ── -->
-  <div class="sec">🎯 Meta 2026 &amp; Heatmap</div>
-  <div class="grid2" style="margin-bottom:16px;">
-    <div class="card">
-      <div class="card-title">🎯 Meta 2026 — 28 Livros</div>
-      <div class="card-sub">Progresso em páginas e livros concluídos</div>
-      <div class="meta-row">
-        <div class="ring-wrap">
-          <svg width="120" height="120" viewBox="0 0 120 120">
-            <circle cx="60" cy="60" r="50" fill="none" stroke="var(--bg3)" stroke-width="10"/>
-            <circle id="meta-ring-circle" cx="60" cy="60" r="50" fill="none" stroke="var(--purple)" stroke-width="10"
-              stroke-dasharray="314.16" stroke-dashoffset="227.47" stroke-linecap="round"/>
-          </svg>
-          <div class="ring-center">
-            <div class="ring-pct" id="meta-ring-pct">—</div>
-            <div class="ring-sub">páginas</div>
-          </div>
-        </div>
-        <div class="meta-stats">
-          <div class="meta-stat">
-            <div class="meta-stat-val" style="color:var(--purple)" id="meta-pag-lidas">—</div>
-            <div class="meta-stat-lbl">Págs lidas</div>
-          </div>
-          <div class="meta-stat">
-            <div class="meta-stat-val" style="color:var(--orange)" id="meta-pag-falt">—</div>
-            <div class="meta-stat-lbl">Págs faltando</div>
-          </div>
-          <div class="meta-stat">
-            <div class="meta-stat-val" style="color:var(--teal)" id="meta-livros">—</div>
-            <div class="meta-stat-lbl">Livros lidos</div>
-          </div>
-          <div class="meta-stat">
-            <div class="meta-stat-val" style="color:var(--yellow)" id="meta-pgdia">—</div>
-            <div class="meta-stat-lbl">Págs/dia necessário</div>
-          </div>
-        </div>
-      </div>
-      <div class="meta-date">
-        <div class="meta-date-icon">📅</div>
-        <div>
-          <div class="meta-date-txt">Previsão atual: <b style="color:var(--yellow);font-size:15px;" id="meta-data-atual">—</b></div>
-          <div class="meta-date-sub">Previsão inicial: <b style="color:var(--teal)" id="meta-data-ini">—</b> · Meta final: 31/12/2026</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-title">🗓️ Páginas por Mês — Comparativo</div>
-      <div class="card-sub">2024 vs 2025 vs 2026</div>
-      <div style="height:270px;position:relative;"><canvas id="cHeat"></canvas></div>
-    </div>
   </div>
 
 </div><!-- /page -->
@@ -1182,8 +1186,54 @@ const AUTOR_MAP = {
 
 buildRanking();
 buildWd();
+buildLivrosMes();
 
 } // fim inicializarGraficos
+
+function buildLivrosMes() {
+  // Conta livros concluídos por mês usando o mês de finalização das sessões
+  // Usa o último registro de sessão de cada livro como mês de conclusão
+  const meses = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+
+  // Pega último dia de sessão por livro
+  const ultimaSessao = {};
+  (window._sessoes || []).forEach(s => {
+    if (!s.data) return;
+    if (!ultimaSessao[s.livro] || s.data > ultimaSessao[s.livro]) {
+      ultimaSessao[s.livro] = s.data;
+    }
+  });
+
+  // Filtra só livros concluídos e conta por mês/ano
+  const byMesAno = {};
+  (window._livros || []).filter(l => l.status === 'Completo').forEach(l => {
+    const data = ultimaSessao[l.livro];
+    if (!data) return;
+    const yr  = data.slice(0,4);
+    const mon = parseInt(data.slice(5,7)) - 1;
+    const key = `${yr}-${String(mon+1).padStart(2,'0')}`;
+    byMesAno[key] = (byMesAno[key] || 0) + 1;
+  });
+
+  // Ordena e pega últimos 18 meses
+  const sorted = Object.keys(byMesAno).sort().slice(-18);
+  const el = document.getElementById('livrosMes');
+  if (!el) return;
+  const maxV = Math.max(...sorted.map(k => byMesAno[k]), 1);
+  el.innerHTML = '';
+  sorted.forEach(k => {
+    const [yr, mo] = k.split('-');
+    const label = meses[parseInt(mo)-1] + '/' + yr.slice(2);
+    const v = byMesAno[k];
+    const h = Math.max(6, Math.round(v/maxV * 70));
+    el.innerHTML += `
+      <div class="wd-col">
+        <span class="wd-val">${v}</span>
+        <div class="wd-bar" style="height:${h}px;background:#4ecdc4"></div>
+        <span class="wd-lbl" style="font-size:8px;">${label}</span>
+      </div>`;
+  });
+}
 
 carregarDados();
 </script>
