@@ -667,7 +667,17 @@ function inicializar(d) {
   renderizarGraficos({ MONTHLY, YEARS, WD_AVG, WD_SUM, NOTES, COLECOES, BOOK_DAILY });
 }
 
-function renderizarGraficos({ MONTHLY, YEARS, WD_AVG, WD_SUM, NOTES, COLECOES, BOOK_DAILY }) {
+// Variáveis globais dos gráficos
+let MONTHLY, YEARS, WD_AVG, WD_SUM, NOTES, COLECOES, BOOK_DAILY;
+
+function renderizarGraficos(dados) {
+  MONTHLY   = dados.MONTHLY;
+  YEARS     = dados.YEARS;
+  WD_AVG    = dados.WD_AVG;
+  WD_SUM    = dados.WD_SUM;
+  NOTES     = dados.NOTES;
+  COLECOES  = dados.COLECOES;
+  BOOK_DAILY = dados.BOOK_DAILY;
 
 
 // ════════════════════════════════════════════════
