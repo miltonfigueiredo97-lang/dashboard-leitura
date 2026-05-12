@@ -336,9 +336,19 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
       <div class="ctrl">
         <select id="selNotasAno" onchange="buildRanking()">
           <option value="all">Todos os anos</option>
-          <option value="2024">2024</option>
-          <option value="2025">2025</option>
-          <option value="2026">2026</option>
+        </select>
+        <select id="selNotasTema" onchange="buildRanking()">
+          <option value="all">Todos os critérios</option>
+          <option value="Diálogos">Diálogos</option>
+          <option value="Enredo">Enredo</option>
+          <option value="Estilo Visual">Estilo Visual</option>
+          <option value="Finalização">Finalização</option>
+          <option value="Imersão">Imersão</option>
+          <option value="Impacto Emocional">Impacto Emocional</option>
+          <option value="Originalidade">Originalidade</option>
+          <option value="Personagens">Personagens</option>
+          <option value="Ritmo">Ritmo</option>
+          <option value="Temas">Temas</option>
         </select>
         <button class="btn on" id="btnBest" onclick="rankMode='best';updateBtns();buildRanking()">🥇 Melhores</button>
         <button class="btn" id="btnWorst" onclick="rankMode='worst';updateBtns();buildRanking()">💀 Piores</button>
@@ -734,18 +744,34 @@ function updateBtns() {
 }
 
 function buildRanking() {
-  const yr = document.getElementById('selNotasAno').value;
-  // NOTES from JSON has fields: livro, media, ano
-  let pool = yr==='all' ? NOTES : NOTES.filter(b => String(b.ano)===yr);
-  const sorted = [...pool].sort((a,b) => rankMode==='best' ? b.media-a.media : a.media-b.media);
-  const top = sorted.slice(0,15);
-  const maxA = top[0]?.media || 10;
+  const yr   = document.getElementById('selNotasAno').value;
+  const tema = document.getElementById('selNotasTema')?.value || 'all';
+
+  let pool = yr === 'all' ? NOTES : NOTES.filter(b => String(b.ano) === yr);
+
+  // Calcula score pelo tema selecionado
+  const scored = pool.map(b => {
+    let score;
+    if (tema === 'all') {
+      score = b.media;
+    } else {
+      // criterios é objeto {Diálogos: 8, Enredo: 9, ...}
+      const val = b.criterios?.[tema];
+      score = val != null ? val : b.media;
+    }
+    return { ...b, score };
+  }).filter(b => b.score != null);
+
+  const sorted = [...scored].sort((a,b) => rankMode==='best' ? b.score-a.score : a.score-b.score);
+  const top    = sorted.slice(0, 15);
+  const maxA   = top[0]?.score || 10;
   const medals = ['🥇','🥈','🥉'];
-  const el = document.getElementById('rankList');
+  const el     = document.getElementById('rankList');
   el.innerHTML = '';
-  top.forEach((b,i) => {
-    const pct = Math.round(b.media/maxA*100);
+  top.forEach((b, i) => {
+    const pct = Math.round(b.score/maxA*100);
     const col = rankMode==='best' ? (i<3?['#ffd166','#c0c0c0','#cd7f32'][i]:'#8b7cf8') : '#f88c6a';
+    const scoreLabel = tema === 'all' ? b.score.toFixed(1) : `${b.score.toFixed(1)} <span style="font-size:9px;opacity:0.7">(${b.media.toFixed(1)} geral)</span>`;
     el.innerHTML += `
       <div class="rank-item">
         <span class="rank-num">${i<3?'':('#'+(i+1))}</span>
@@ -755,7 +781,7 @@ function buildRanking() {
           <span class="rank-year">${b.ano}</span>
         </div>
         <div class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar-fill" style="width:${pct}%;background:${col}"></div></div></div>
-        <span class="rank-score" style="color:${col}">${b.media.toFixed(1)}</span>
+        <span class="rank-score" style="color:${col}">${scoreLabel}</span>
       </div>`;
   });
 }
