@@ -62,8 +62,8 @@ header .badge {
 .kpi-book { display: flex; gap: 10px; align-items: flex-start; }
 .kpi-book img { width: 44px; height: 62px; object-fit: cover; border-radius: 4px; box-shadow: 2px 2px 8px rgba(0,0,0,.5); flex-shrink: 0; }
 .kpi-book .fallback { width: 44px; height: 62px; background: var(--bg4); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
-.cover-img { transition: transform 0.2s ease, box-shadow 0.2s ease; transform-origin: left center; }
-.cover-img:hover { transform: scale(1.5); box-shadow: 0 8px 24px rgba(0,0,0,0.6); z-index: 100; position: relative; }
+.cover-img { transition: transform 0.2s ease, box-shadow 0.2s ease; transform-origin: left center; image-rendering: high-quality; }
+.cover-img:hover { transform: scale(2); box-shadow: 0 8px 32px rgba(0,0,0,0.7); z-index: 100; position: relative; }
 
 /* ── Cards ── */
 .card {
@@ -292,18 +292,12 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
 
   <!-- ── KPIs ── -->
   <div class="sec">📊 Visão Geral</div>
-  <div class="grid6" style="margin-bottom:16px;">
+  <div class="grid6" style="margin-bottom:8px;">
     <div class="kpi" style="--accent:#8b7cf8">
       <span class="kpi-icon">📄</span>
       <div class="kpi-val" id="kpi-paginas">—</div>
       <div class="kpi-lbl">Páginas Lidas</div>
       <div class="kpi-sub">total acumulado</div>
-    </div>
-    <div class="kpi" style="--accent:#f88c6a">
-      <span class="kpi-icon">📚</span>
-      <div class="kpi-val" id="kpi-livros">—</div>
-      <div class="kpi-lbl">Livros Concluídos</div>
-      <div class="kpi-sub">+ pausados</div>
     </div>
     <div class="kpi" style="--accent:#4ecdc4">
       <span class="kpi-icon">🎯</span>
@@ -328,6 +322,44 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
       <div class="kpi-val" id="kpi-recorde">—</div>
       <div class="kpi-lbl">Recorde Diário</div>
       <div class="kpi-sub" id="kpi-recorde-data">páginas em um dia</div>
+    </div>
+    <div class="kpi" style="--accent:#56cfff; display:none" id="kpi-recorde-livro-wrap">
+    </div>
+  </div>
+  <!-- Recorde livro card -->
+  <div style="background:var(--bg2);border-radius:12px;padding:10px 14px;margin-bottom:8px;display:flex;gap:12px;align-items:center;" id="kpi-recorde-livro-card">
+    <div style="font-size:22px">🏆</div>
+    <div>
+      <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px">Livro do Recorde</div>
+      <div id="kpi-recorde-livro" style="font-size:13px;font-weight:700;color:var(--text)">—</div>
+      <div id="kpi-recorde-autor" style="font-size:11px;color:var(--muted)">—</div>
+    </div>
+  </div>
+  <!-- Livros por status -->
+  <div class="grid4" style="margin-bottom:16px;">
+    <div class="kpi" style="--accent:#4ecdc4">
+      <span class="kpi-icon">✅</span>
+      <div class="kpi-val" id="kpi-livros">—</div>
+      <div class="kpi-lbl">Concluídos</div>
+      <div class="kpi-sub">livros lidos</div>
+    </div>
+    <div class="kpi" style="--accent:#8b7cf8">
+      <span class="kpi-icon">📖</span>
+      <div class="kpi-val" id="kpi-lendo">—</div>
+      <div class="kpi-lbl">Lendo</div>
+      <div class="kpi-sub">em andamento</div>
+    </div>
+    <div class="kpi" style="--accent:#f88c6a">
+      <span class="kpi-icon">⏸️</span>
+      <div class="kpi-val" id="kpi-pausados">—</div>
+      <div class="kpi-lbl">Pausados</div>
+      <div class="kpi-sub">interrompidos</div>
+    </div>
+    <div class="kpi" style="--accent:#ffd166">
+      <span class="kpi-icon">📋</span>
+      <div class="kpi-val" id="kpi-aguardando">—</div>
+      <div class="kpi-lbl">Aguardando</div>
+      <div class="kpi-sub">na fila</div>
     </div>
   </div>
 
@@ -405,7 +437,8 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
 
   <!-- ── 3. Rankings e Distribuição ── -->
   <div class="sec">🏅 Rankings &amp; Distribuição</div>
-  <div class="grid4" style="margin-bottom:16px;">
+  <!-- Linha 1: Ranking + Dia da Semana -->
+  <div class="grid2" style="margin-bottom:16px;">
 
     <!-- Ranking notas -->
     <div class="card">
@@ -455,6 +488,11 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
         <div id="livrosMes" class="wd-bars"></div>
       </div>
     </div>
+
+  </div>
+
+  <!-- Linha 2: Coleções + Autores -->
+  <div class="grid2" style="margin-bottom:16px;">
 
     <!-- Coleções -->
     <div class="card">
@@ -522,106 +560,73 @@ function coverUrl(isbn, size='M') {
   return `https://covers.openlibrary.org/b/isbn/${isbn}-${size}.jpg`;
 }
 
-// Verifica se imagem é válida (não é a imagem "sem capa" da Open Library que tem 1x1px)
+// Verifica se imagem é válida (OL retorna 1x1 para ISBNs sem capa)
 function isValidCover(img) {
   return img.naturalWidth > 10 && img.naturalHeight > 10;
 }
 
-// Busca capa via Google Books API por título e retorna URL da thumbnail
-async function fetchGBooksCover(titulo, autor) {
-  try {
-    const q = encodeURIComponent(`intitle:"${titulo}"${autor ? ' inauthor:"'+autor+'"' : ''}`);
-    const r = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${q}&maxResults=1&fields=items(volumeInfo(imageLinks))`);
-    const d = await r.json();
-    const url = d?.items?.[0]?.volumeInfo?.imageLinks?.thumbnail;
-    return url ? url.replace('http:', 'https:') : null;
-  } catch(e) { return null; }
-}
+// Cria imagem com fallback: OL(L) → OL(M) → emoji
+function coverImg(isbn, fallback='📖', cls='') {
+  if (!isbn) return `<span style="font-size:32px">${fallback}</span>`;
 
-// Carrega capa com fallback completo: OL isbn → GB isbn → GB título → emoji
-function loadCover(el, isbn, fallbackEmoji, titulo, autor) {
-  const fbEl = el.nextElementSibling;
-
-  function showEmoji() {
-    el.style.display = 'none';
-    if (fbEl) fbEl.style.display = 'block';
-  }
-
-  async function tryGBTitle() {
-    const url = await fetchGBooksCover(titulo || '', autor || '');
-    if (url) {
-      el.src = url;
-      el.onerror = showEmoji;
-    } else {
-      showEmoji();
-    }
-  }
-
-  function tryGBIsbn() {
-    if (!isbn) { tryGBTitle(); return; }
-    const gbUrl = `https://books.google.com/books?vid=ISBN${isbn}&printsec=frontcover&img=1&zoom=1`;
-    el.onerror = () => tryGBTitle();
-    el.onload = () => { if (!isValidCover(el)) tryGBTitle(); };
-    el.src = gbUrl;
-  }
-
-  if (isbn) {
-    const olUrl = `https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg`;
-    el.onerror = tryGBIsbn;
-    el.onload = () => { if (!isValidCover(el)) tryGBIsbn(); };
-    el.src = olUrl;
-  } else {
-    tryGBTitle();
-  }
-}
-
-function coverImg(isbn, fallback='📖', cls='', titulo='', autor='') {
   const uid = 'cv_' + Math.random().toString(36).slice(2,8);
-  const html = `<img id="${uid}" src="" class="cover-img ${cls}"
-    style="width:52px;height:72px;object-fit:cover;border-radius:4px;flex-shrink:0;cursor:zoom-in"
+  const olL = `https://covers.openlibrary.org/b/isbn/${isbn}-L.jpg`;
+  const olM = `https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg`;
+
+  const html = `<img id="${uid}" src="${olL}" class="cover-img ${cls}"
+    style="width:52px;height:72px;object-fit:cover;border-radius:4px;flex-shrink:0"
     alt="capa">
   <span id="${uid}_fb" style="font-size:32px;display:none">${fallback}</span>`;
 
   setTimeout(() => {
     const el = document.getElementById(uid);
-    if (el) loadCover(el, isbn, fallback, titulo, autor);
-  }, 50);
+    const fb = document.getElementById(uid+'_fb');
+    if (!el) return;
+    el.onload = () => {
+      if (!isValidCover(el)) {
+        if (el.src.includes('-L.')) {
+          el.src = olM;
+        } else {
+          el.style.display = 'none';
+          if (fb) fb.style.display = 'block';
+        }
+      }
+    };
+    el.onerror = () => {
+      if (el.src.includes('-L.')) {
+        el.src = olM;
+      } else {
+        el.style.display = 'none';
+        if (fb) fb.style.display = 'block';
+      }
+    };
+  }, 10);
 
   return html;
 }
 
-function coverThumb(isbn, titulo, autor) {
-  if (!isbn && !titulo) return '';
+// Miniatura para ranking
+function coverThumb(isbn) {
+  if (!isbn) return '';
   const uid = 'th_' + Math.random().toString(36).slice(2,8);
+  const olM = `https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg`;
+  const olS = `https://covers.openlibrary.org/b/isbn/${isbn}-S.jpg`;
 
-  const html = `<img id="${uid}" src="" class="cover-img"
-    style="width:28px;height:40px;object-fit:cover;border-radius:3px;flex-shrink:0;cursor:zoom-in"
+  const html = `<img id="${uid}" src="${olM}" class="cover-img"
+    style="width:28px;height:40px;object-fit:cover;border-radius:3px;flex-shrink:0"
     alt="">`;
 
   setTimeout(() => {
     const el = document.getElementById(uid);
     if (!el) return;
-
-    async function tryGB() {
-      const url = await fetchGBooksCover(titulo || '', autor || '');
-      if (url) { el.src = url; el.onerror = () => el.style.display='none'; }
-      else el.style.display = 'none';
-    }
-
-    if (isbn) {
-      const olUrl = `https://covers.openlibrary.org/b/isbn/${isbn}-S.jpg`;
-      el.onerror = () => {
-        const gbUrl = `https://books.google.com/books?vid=ISBN${isbn}&printsec=frontcover&img=1&zoom=5`;
-        el.onerror = () => tryGB();
-        el.onload = () => { if (!isValidCover(el)) tryGB(); };
-        el.src = gbUrl;
-      };
-      el.onload = () => { if (!isValidCover(el)) el.onerror(); };
-      el.src = olUrl;
-    } else {
-      tryGB();
-    }
-  }, 50);
+    el.onload = () => { if (!isValidCover(el)) el.style.display = 'none'; };
+    el.onerror = () => {
+      if (el.src.includes('-M.')) {
+        el.src = olS;
+        el.onerror = () => el.style.display = 'none';
+      } else { el.style.display = 'none'; }
+    };
+  }, 10);
 
   return html;
 }
@@ -772,9 +777,19 @@ function inicializar(d) {
 
   // ── KPIs ─────────────────────────────────────────────
   const totalPags = sessoes.reduce((s,r) => s+r.paginas, 0);
-  const livrosCompletos = (d.livros||[]).filter(l => l.status === 'Completo').length;
+  const livrosCompletos  = (d.livros||[]).filter(l => l.status === 'Completo').length;
+  const livrosLendo      = (d.lendo||[]).length;
+  const livrosPausados   = (d.pausados||[]).length;
+  const livrosAguardando = (d.aguardando||[]).length;
+
   const dayMap = {};
-  sessoes.forEach(s => { if (s.data) dayMap[s.data] = (dayMap[s.data]||0)+s.paginas; });
+  const dayLivro = {}; // para descobrir qual livro foi lido no dia do recorde
+  sessoes.forEach(s => {
+    if (s.data) {
+      dayMap[s.data] = (dayMap[s.data]||0) + s.paginas;
+      if (!dayLivro[s.data]) dayLivro[s.data] = s.livro;
+    }
+  });
   const diasVals = Object.values(dayMap);
   const mediaParDia = diasVals.length ? Math.round(diasVals.reduce((a,b)=>a+b,0)/diasVals.length*10)/10 : 0;
   const recorde = diasVals.length ? Math.max(...diasVals) : 0;
@@ -782,16 +797,32 @@ function inicializar(d) {
   const recordeLabel = recordeData
     ? new Date(recordeData + 'T12:00:00').toLocaleDateString('pt-BR', {day:'2-digit', month:'short', year:'numeric'})
     : 'páginas em um dia';
-  const horasTotais = Math.round(sessoes.reduce((s,r)=>s+(r.minutos||0),0)/60);
+  const recordeLivro = dayLivro[recordeData] || '';
+  const recordeLivroData = (d.livros||[]).find(l => l.livro === recordeLivro);
+  const recordeAutor = recordeLivroData?.autor || AUTOR_MAP[recordeLivro] || '';
+
+  // Horas: soma dos minutos / 60
+  const minutosTotais = sessoes.reduce((s,r) => s+(r.minutos||0), 0);
+  const horasTotais = Math.round(minutosTotais / 60);
 
   // Atualiza KPIs no HTML
-  document.getElementById('kpi-paginas').textContent   = totalPags.toLocaleString('pt-BR');
-  document.getElementById('kpi-livros').textContent    = livrosCompletos;
-  document.getElementById('kpi-sessoes').textContent   = sessoes.length.toLocaleString('pt-BR');
-  document.getElementById('kpi-pgdia').textContent     = mediaParDia.toFixed(1).replace('.',',');
-  document.getElementById('kpi-horas').textContent     = horasTotais + 'h';
-  document.getElementById('kpi-recorde').textContent      = recorde;
+  document.getElementById('kpi-paginas').textContent    = totalPags.toLocaleString('pt-BR');
+  document.getElementById('kpi-livros').textContent     = livrosCompletos;
+  document.getElementById('kpi-lendo').textContent      = livrosLendo;
+  document.getElementById('kpi-pausados').textContent   = livrosPausados;
+  document.getElementById('kpi-aguardando').textContent = livrosAguardando;
+  document.getElementById('kpi-sessoes').textContent    = sessoes.length.toLocaleString('pt-BR');
+  document.getElementById('kpi-pgdia').textContent      = mediaParDia.toFixed(1).replace('.',',');
+  document.getElementById('kpi-horas').textContent      = horasTotais + 'h';
+  document.getElementById('kpi-recorde').textContent    = recorde;
   document.getElementById('kpi-recorde-data').textContent = recordeLabel;
+  if (recordeLivro) {
+    document.getElementById('kpi-recorde-livro').textContent = recordeLivro;
+    document.getElementById('kpi-recorde-autor').textContent = recordeAutor;
+  } else {
+    const card = document.getElementById('kpi-recorde-livro-card');
+    if (card) card.style.display = 'none';
+  }
 
   // Maior e menor livro — usa totalPag dos livros lidos (Completo)
   const livrosLidos = (d.livros||[]).filter(l => l.status === 'Completo' && l.totalPag > 0);
@@ -984,7 +1015,7 @@ function buildRanking() {
     const scoreLabel = tema === 'all' ? b.score.toFixed(1) : `${b.score.toFixed(1)} <span style="font-size:9px;opacity:0.7">(${b.media.toFixed(1)} geral)</span>`;
     const rankLivro = (window._livros||[]).find(l => l.livro === b.livro);
     const rankIsbn  = rankLivro?.isbn || '';
-    const capaHtml  = coverThumb(rankIsbn, b.livro, rankLivro?.autor || '');
+    const capaHtml  = rankIsbn ? coverThumb(rankIsbn) : '';
     el.innerHTML += `
       <div class="rank-item">
         ${capaHtml}
@@ -1391,7 +1422,7 @@ function baseScales(xRot) {
 
     const info = document.getElementById('bookInfo');
     info.style.display = 'block';
-    document.getElementById('bookInfoCapa').innerHTML    = coverImg(livroData?.isbn, '📖', '', book, autorNome);
+    document.getElementById('bookInfoCapa').innerHTML    = coverImg(livroData?.isbn, '📖');
     document.getElementById('bookInfoNome').textContent  = book;
     document.getElementById('bookInfoAutor').textContent = autorNome;
     // Ano de leitura
