@@ -1,12 +1,12 @@
 {
-  "geradoEm": "2026-05-12T04:13:20.837Z",
+  "geradoEm": "2026-05-12T04:21:25.158Z",
   "meta": {
     "total": 28,
-    "lidos": 0,
-    "faltando": 0,
-    "paginasTotal": 0,
-    "paginasLidas": 0,
-    "paginasFaltando": 0,
+    "lidos": 7,
+    "faltando": 21,
+    "paginasTotal": 15855,
+    "paginasLidas": 4653,
+    "paginasFaltando": 11202,
     "dataPrevistoInicial": "27/11/2026",
     "dataPrevistoAtual": ""
   },
