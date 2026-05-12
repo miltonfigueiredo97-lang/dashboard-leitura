@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-12T18:23:28.046Z",
+  "geradoEm": "2026-05-12T18:37:40.061Z",
   "meta": {
     "total": 28,
     "lidos": 7,
@@ -8229,7 +8229,7 @@
     {
       "livro": "O nome do Vento",
       "autor": "Patrick Rothfuss",
-      "isbn": "9788599296493",
+      "isbn": "9786555651850",
       "ordem": 2,
       "status": "Completo",
       "totalPag": 1006,
@@ -8239,7 +8239,7 @@
     {
       "livro": "Nevernight",
       "autor": "Jay Kristoff",
-      "isbn": "9788576573043",
+      "isbn": "9786588343203",
       "ordem": 3,
       "status": "Completo",
       "totalPag": 676,
@@ -8249,7 +8249,7 @@
     {
       "livro": "Herdeiros do Tempo",
       "autor": "João Paulo Coca",
-      "isbn": "9788576574248",
+      "isbn": "9781447273240",
       "ordem": 4,
       "status": "Completo",
       "totalPag": 299,
@@ -8259,7 +8259,7 @@
     {
       "livro": "Sombra e Ossos",
       "autor": "Leigh Bardugo",
-      "isbn": "9788580411461",
+      "isbn": "9788582353325",
       "ordem": 5,
       "status": "Completo",
       "totalPag": 327,
@@ -8269,7 +8269,7 @@
     {
       "livro": "Sol e Tormenta",
       "autor": "Leigh Bardugo",
-      "isbn": "9788580413038",
+      "isbn": "9786555352795",
       "ordem": 6,
       "status": "Completo",
       "totalPag": 404,
@@ -8279,7 +8279,7 @@
     {
       "livro": "Ruina e Ascensão",
       "autor": "Leigh Bardugo",
-      "isbn": "9788580414516",
+      "isbn": "9786555353631",
       "ordem": 7,
       "status": "Completo",
       "totalPag": 366,
@@ -8289,7 +8289,7 @@
     {
       "livro": "Six of Crows",
       "autor": "Leigh Bardugo",
-      "isbn": "9788580417012",
+      "isbn": "9788582353820",
       "ordem": 8,
       "status": "Completo",
       "totalPag": 563,
@@ -8299,7 +8299,7 @@
     {
       "livro": "O Principe Cruel",
       "autor": "Holly Black",
-      "isbn": "9788501118813",
+      "isbn": "9788501115553",
       "ordem": 9,
       "status": "Completo",
       "totalPag": 434,
@@ -8359,7 +8359,7 @@
     {
       "livro": "O Aprendiz de Assassino",
       "autor": "Robin Hobb",
-      "isbn": "9788556510044",
+      "isbn": "9788556510846",
       "ordem": 15,
       "status": "Completo",
       "totalPag": 551,
@@ -8369,7 +8369,7 @@
     {
       "livro": "A flecha de Fogo",
       "autor": "Leonel Caldela",
-      "isbn": "9788583650607",
+      "isbn": "9780007230914",
       "ordem": 16,
       "status": "Completo",
       "totalPag": 1269,
@@ -8379,7 +8379,7 @@
     {
       "livro": "Of Blood and Fire",
       "autor": "Ryan Cahill",
-      "isbn": "9781838381806",
+      "isbn": "9781916293700",
       "ordem": 17,
       "status": "Completo",
       "totalPag": 481,
@@ -8389,7 +8389,7 @@
     {
       "livro": "O Caminho dos Reis",
       "autor": "Brandon Sanderson",
-      "isbn": "9786589132103",
+      "isbn": "9786589132684",
       "ordem": 18,
       "status": "Completo",
       "totalPag": 1240,
@@ -8399,7 +8399,7 @@
     {
       "livro": "Leruth",
       "autor": "Cyanide",
-      "isbn": "9786500315097",
+      "isbn": "9786501035345",
       "ordem": 19,
       "status": "Completo",
       "totalPag": 242,
@@ -8409,7 +8409,7 @@
     {
       "livro": "Eu sou o Numero 4",
       "autor": "Pittacus Lore",
-      "isbn": "9780061969553",
+      "isbn": "9780062044921",
       "ordem": 20,
       "status": "Completo",
       "totalPag": 362,
@@ -8419,7 +8419,7 @@
     {
       "livro": "O Poder dos Seis",
       "autor": "Pittacus Lore",
-      "isbn": "9780061974557",
+      "isbn": "9780062044945",
       "ordem": 21,
       "status": "Completo",
       "totalPag": 336,
@@ -8429,7 +8429,7 @@
     {
       "livro": "Ascenção dos Nove",
       "autor": "Pittacus Lore",
-      "isbn": "9780061974571",
+      "isbn": "9780062073020",
       "ordem": 22,
       "status": "Completo",
       "totalPag": 311,
@@ -8439,7 +8439,7 @@
     {
       "livro": "A Descoberta das Bruxas",
       "autor": "Deborah Harkness",
-      "isbn": "9788580412055",
+      "isbn": "9788532526489",
       "ordem": 23,
       "status": "Pausado",
       "totalPag": 861,
@@ -8449,7 +8449,7 @@
     {
       "livro": "Cinco Laminas Partidas",
       "autor": "Mai Corland",
-      "isbn": "9786555657135",
+      "isbn": "9783104921037",
       "ordem": 24,
       "status": "Completo",
       "totalPag": 507,
@@ -8459,7 +8459,7 @@
     {
       "livro": "Palavras de Radiancia",
       "autor": "Brandon Sanderson",
-      "isbn": "9786589132110",
+      "isbn": "9786589132714",
       "ordem": 25,
       "status": "Completo",
       "totalPag": 1679,
@@ -8469,7 +8469,7 @@
     {
       "livro": "Edgedancer",
       "autor": "Brandon Sanderson",
-      "isbn": "9781473225039",
+      "isbn": "9780765387011",
       "ordem": 26,
       "status": "Aguardando",
       "totalPag": 218,
@@ -8479,7 +8479,7 @@
     {
       "livro": "Elantris",
       "autor": "Brandon Sanderson",
-      "isbn": "9788576861038",
+      "isbn": "9788580445046",
       "ordem": 27,
       "status": "Completo",
       "totalPag": 802,
@@ -8489,7 +8489,7 @@
     {
       "livro": "Chama de Ferro",
       "autor": "Rebecca Yarros",
-      "isbn": "9788542229431",
+      "isbn": "9788542227802",
       "ordem": 28,
       "status": "Completo",
       "totalPag": 924,
@@ -8499,7 +8499,7 @@
     {
       "livro": "A Esperança de Elantris",
       "autor": "Brandon Sanderson",
-      "isbn": "9788576861366",
+      "isbn": "9781250899361",
       "ordem": 29,
       "status": "Completo",
       "totalPag": 31,
@@ -8509,7 +8509,7 @@
     {
       "livro": "Sacramentadora",
       "autor": "Brandon Sanderson",
-      "isbn": "9786589131861",
+      "isbn": "9786589132967",
       "ordem": 30,
       "status": "Completo",
       "totalPag": 1536,
@@ -8519,7 +8519,7 @@
     {
       "livro": "Mistborn 1º Era Livro 2",
       "autor": "Brandon Sanderson",
-      "isbn": "9786589131878",
+      "isbn": "9786581339197",
       "ordem": 31,
       "status": "Completo",
       "totalPag": 963,
@@ -8529,7 +8529,7 @@
     {
       "livro": "Mistborn 1º Era Livro 3",
       "autor": "Brandon Sanderson",
-      "isbn": "9788576864411",
+      "isbn": "9786581339203",
       "ordem": 32,
       "status": "Completo",
       "totalPag": 984,
@@ -8539,7 +8539,7 @@
     {
       "livro": "Mistborn - Historia Screta",
       "autor": "Brandon Sanderson",
-      "isbn": "9786581339098",
+      "isbn": "9786581339091",
       "ordem": 32,
       "status": "Completo",
       "totalPag": 199,
@@ -8549,7 +8549,7 @@
     {
       "livro": "Godsgrave",
       "autor": "Mark Lawrence",
-      "isbn": "9788576574316",
+      "isbn": "9788592783709",
       "ordem": 33,
       "status": "Completo",
       "totalPag": 668,
@@ -8559,7 +8559,7 @@
     {
       "livro": "Rei dos Espinhos",
       "autor": "Steven Erikson",
-      "isbn": "9788580445312",
+      "isbn": "9780007423200",
       "ordem": 34,
       "status": "Pausado",
       "totalPag": 602,
@@ -8569,7 +8569,7 @@
     {
       "livro": "Jardins da Lua - Imperio Malazano",
       "autor": "Leonel Caldela",
-      "isbn": "9788576572008",
+      "isbn": "9780765348784",
       "ordem": 35,
       "status": "Completo",
       "totalPag": 863,
@@ -8579,7 +8579,7 @@
     {
       "livro": "O Inimigo do Mundo",
       "autor": "Joe Abercrombie",
-      "isbn": "9788583650614",
+      "isbn": "9780765345554",
       "ordem": 36,
       "status": "Completo",
       "totalPag": 713,
@@ -8589,7 +8589,7 @@
     {
       "livro": "Meio Rei",
       "autor": "Felipe Castilho",
-      "isbn": "9788568263549",
+      "isbn": "9788580454741",
       "ordem": 37,
       "status": "Completo",
       "totalPag": 352,
@@ -8599,7 +8599,7 @@
     {
       "livro": "Ordem Vermelha - Filhos da Degradação",
       "autor": "C. S. Lewis",
-      "isbn": "9788555340062",
+      "isbn": "9780345503800",
       "ordem": 38,
       "status": "Completo",
       "totalPag": 566,
@@ -8609,7 +8609,7 @@
     {
       "livro": "O Sobrinho do Mago",
       "autor": "C. S. Lewis",
-      "isbn": "9788578270692",
+      "isbn": "9780007115440",
       "ordem": 39,
       "status": "Completo",
       "totalPag": 249,
@@ -8619,7 +8619,7 @@
     {
       "livro": "O Leão a Feiticeira e Guarda-Roupa",
       "autor": "J. K. Rowling",
-      "isbn": "9788578271224",
+      "isbn": "9780007115427",
       "ordem": 40,
       "status": "Completo",
       "totalPag": 133,
@@ -8629,7 +8629,7 @@
     {
       "livro": "Harry Potter - A Pedra Filosofal",
       "autor": "Brandon Sanderson",
-      "isbn": "9788532511010",
+      "isbn": "9788532530783",
       "ordem": 41,
       "status": "Completo",
       "totalPag": 299,
@@ -8649,7 +8649,7 @@
     {
       "livro": "Mistborn 2º Era Livro 1",
       "autor": "Brandon Sanderson",
-      "isbn": "9788544106457",
+      "isbn": "9780765368553",
       "ordem": 43,
       "status": "Completo",
       "totalPag": 423,
@@ -8659,7 +8659,7 @@
     {
       "livro": "Dawnshard",
       "autor": "Rick Riordan",
-      "isbn": "9781803364674",
+      "isbn": "9780593198957",
       "ordem": 44,
       "status": "Completo",
       "totalPag": 232,
@@ -8669,7 +8669,7 @@
     {
       "livro": "A Casa de Hades",
       "autor": "Rick Riordan",
-      "isbn": "9781423146728",
+      "isbn": "9788580574210",
       "ordem": 45,
       "status": "Completo",
       "totalPag": 618,
@@ -8679,7 +8679,7 @@
     {
       "livro": "O Sangue do Olimpo",
       "autor": "R. F. Kuang",
-      "isbn": "9781423146773",
+      "isbn": "9788580575958",
       "ordem": 46,
       "status": "Completo",
       "totalPag": 510,
@@ -8689,7 +8689,7 @@
     {
       "livro": "Guerra da Papoula",
       "autor": "Patrick Rothfuss",
-      "isbn": "9788556510785",
+      "isbn": "9786555604344",
       "ordem": 47,
       "status": "Completo",
       "totalPag": 639,
@@ -8699,7 +8699,7 @@
     {
       "livro": "O Temor do Sabio",
       "autor": "Brandon Sanderson",
-      "isbn": "9788599296509",
+      "isbn": "9788580410327",
       "ordem": 48,
       "status": "Completo",
       "totalPag": 960,
@@ -8719,7 +8719,7 @@
     {
       "livro": "Ventos e Verdade",
       "autor": "Brandon Sanderson",
-      "isbn": "9780765360038",
+      "isbn": "9780765326379",
       "ordem": 50,
       "status": "Completo",
       "totalPag": 1248,
@@ -8739,7 +8739,7 @@
     {
       "livro": "Murtagh",
       "autor": "M. L. Wang",
-      "isbn": "9780593650868",
+      "isbn": "9780593650806",
       "ordem": 52,
       "status": "Completo",
       "totalPag": 799,
@@ -8749,7 +8749,7 @@
     {
       "livro": "The Sword of Kaigen",
       "autor": "Brandon Sanderson",
-      "isbn": "9781736202100",
+      "isbn": "9781733681940",
       "ordem": 53,
       "status": "Completo",
       "totalPag": 650,
@@ -8759,7 +8759,7 @@
     {
       "livro": "Yumi e o Pintor de Pesadelos",
       "autor": "Michael R. Miller",
-      "isbn": "9786589132189",
+      "isbn": "9781250905765",
       "ordem": 54,
       "status": "Completo",
       "totalPag": 531,
@@ -8769,7 +8769,7 @@
     {
       "livro": "Songs of Chaos - Ascendant",
       "autor": "Matt Dinniman",
-      "isbn": "9781957363479",
+      "isbn": "9781804362624",
       "ordem": 55,
       "status": "Completo",
       "totalPag": 693,
@@ -8779,7 +8779,7 @@
     {
       "livro": "Carl O Explorador de Masmorras",
       "autor": "Philip C. Quaintrell",
-      "isbn": "9780593820247",
+      "isbn": "9781739418601",
       "ordem": 56,
       "status": "Completo",
       "totalPag": 594,
@@ -8789,7 +8789,7 @@
     {
       "livro": "The Echoes Saga - Rise of the Ranger",
       "autor": "Ursula K. Le Guin",
-      "isbn": "9781912188314",
+      "isbn": "9781073408702",
       "ordem": 57,
       "status": "Completo",
       "totalPag": 888,
@@ -8799,7 +8799,7 @@
     {
       "livro": "o Feiticeiro de Terramar",
       "autor": "S. A. Chakraborty",
-      "isbn": "9788576570608",
+      "isbn": "9780547773742",
       "ordem": 58,
       "status": "Completo",
       "totalPag": 220,
@@ -8809,7 +8809,7 @@
     {
       "livro": "A Cidade de Bronze",
       "autor": "Brandon Sanderson",
-      "isbn": "9788592795474",
+      "isbn": "9780062678119",
       "ordem": 59,
       "status": "Lendo",
       "totalPag": 641,
@@ -8819,7 +8819,7 @@
     {
       "livro": "A Alma do Imperador",
       "autor": "Ryan Cahill",
-      "isbn": "9786589132196",
+      "isbn": "9780765360922",
       "ordem": 0,
       "status": "Aguardando",
       "totalPag": 142,
@@ -8829,7 +8829,7 @@
     {
       "livro": "Of Darkness and Light",
       "autor": "Brandon Sanderson",
-      "isbn": "9781838381820",
+      "isbn": "9781916293717",
       "ordem": 0,
       "status": "Aguardando",
       "totalPag": 912,
@@ -8839,10 +8839,270 @@
     {
       "livro": "The White Sand",
       "autor": "Brandon Sanderson",
-      "isbn": "9781938570087",
+      "isbn": "9781524165840",
       "ordem": 0,
       "status": "Aguardando",
       "totalPag": 749,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "Mistborn 2º Era Livro 2",
+      "autor": "Brandon Sanderson",
+      "isbn": "9780765391155",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 504,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "Mistborn 2º Era Livro 3",
+      "autor": "Brandon Sanderson",
+      "isbn": "9780765391162",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 558,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "Mistborn - The Lost Metal",
+      "autor": "Brandon Sanderson",
+      "isbn": "9780765391186",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 674,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "The Sunlit Man",
+      "autor": "Brandon Sanderson",
+      "isbn": "9781250899897",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 448,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "Shadows for Silence in The Forest of Hell",
+      "autor": "Brandon Sanderson",
+      "isbn": "9780765375421",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 73,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "Isles of The Emberdark",
+      "autor": "Brandon Sanderson",
+      "isbn": "9781250905697",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 533,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "Darkdawn",
+      "autor": "Jay Kristoff",
+      "isbn": "9781250301963",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 723,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "Ordem Vermelha - Crianças do Silencio",
+      "autor": "Felipe Castilho",
+      "isbn": "9780345503817",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 643,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "Harry Potter - Camara Secreta",
+      "autor": "J. K. Rowling",
+      "isbn": "9788532523051",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 252,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "A Republica do Dragão",
+      "autor": "R. F. Kuang",
+      "isbn": "9786555608397",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 788,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "O Ultimo Desejo",
+      "autor": "Andrzej Sapkowski",
+      "isbn": "9788578273743",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 399,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "O Olho do Mundo",
+      "autor": "Robert Jordan",
+      "isbn": "9788580573619",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 800,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "Meio Mundo",
+      "autor": "Joe Abercrombie",
+      "isbn": "9780385743785",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 442,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "Fúria vermelha",
+      "autor": "Pierce Brown",
+      "isbn": "9788525058225",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 515,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "A Sombra dos Deuses",
+      "autor": "John Gwynne",
+      "isbn": "9786581339333",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 641,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "O limite do céu",
+      "autor": "Jeferson Tenório",
+      "isbn": "9788554862701",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 478,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "The Devils",
+      "autor": "Joe Abercrombie",
+      "isbn": "9780593715840",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 565,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "Lendas do Mundo Emerso 1",
+      "autor": "Licia Troisi",
+      "isbn": "9788532527493",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 509,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "A Queda dos Cinco",
+      "autor": "Pittacus Lore",
+      "isbn": "9780062073051",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 259,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "A Vingança dos Sete",
+      "autor": "Pittacus Lore",
+      "isbn": "9780062387127",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 307,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "O Destino da Numero Dez",
+      "autor": "Pittacus Lore",
+      "isbn": "9780062387141",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 356,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "Unidos somos Um",
+      "autor": "Pittacus Lore",
+      "isbn": "9780062387165",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 392,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "Mushoku Tensei 17",
+      "autor": "Rifujin na Magonote",
+      "isbn": "9781685791919",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 326,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "Cidade dos Ossos",
+      "autor": "Cassandra Clare",
+      "isbn": "9788501087140",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 519,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "Crooked Kingdom",
+      "autor": "Leigh Bardugo",
+      "isbn": "9781250076953",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 655,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "Cidade da Lua Crescente",
+      "autor": "Sarah J. Maas",
+      "isbn": "9788501303783",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 896,
       "pagAtual": 0,
       "pct": 0
     }
@@ -8851,7 +9111,7 @@
     {
       "livro": "A Descoberta das Bruxas",
       "autor": "Deborah Harkness",
-      "isbn": "9788580412055",
+      "isbn": "9788532526489",
       "ordem": 23,
       "status": "Pausado",
       "totalPag": 861,
@@ -8861,7 +9121,7 @@
     {
       "livro": "Rei dos Espinhos",
       "autor": "Steven Erikson",
-      "isbn": "9788580445312",
+      "isbn": "9780007423200",
       "ordem": 34,
       "status": "Pausado",
       "totalPag": 602,
@@ -8873,7 +9133,7 @@
     {
       "livro": "A Cidade de Bronze",
       "autor": "Brandon Sanderson",
-      "isbn": "9788592795474",
+      "isbn": "9780062678119",
       "ordem": 59,
       "status": "Lendo",
       "totalPag": 641,
@@ -8885,7 +9145,7 @@
     {
       "livro": "Edgedancer",
       "autor": "Brandon Sanderson",
-      "isbn": "9781473225039",
+      "isbn": "9780765387011",
       "ordem": 26,
       "status": "Aguardando",
       "totalPag": 218,
@@ -8895,7 +9155,7 @@
     {
       "livro": "A Alma do Imperador",
       "autor": "Ryan Cahill",
-      "isbn": "9786589132196",
+      "isbn": "9780765360922",
       "ordem": 0,
       "status": "Aguardando",
       "totalPag": 142,
@@ -8905,7 +9165,7 @@
     {
       "livro": "Of Darkness and Light",
       "autor": "Brandon Sanderson",
-      "isbn": "9781838381820",
+      "isbn": "9781916293717",
       "ordem": 0,
       "status": "Aguardando",
       "totalPag": 912,
@@ -8915,10 +9175,270 @@
     {
       "livro": "The White Sand",
       "autor": "Brandon Sanderson",
-      "isbn": "9781938570087",
+      "isbn": "9781524165840",
       "ordem": 0,
       "status": "Aguardando",
       "totalPag": 749,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "Mistborn 2º Era Livro 2",
+      "autor": "Brandon Sanderson",
+      "isbn": "9780765391155",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 504,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "Mistborn 2º Era Livro 3",
+      "autor": "Brandon Sanderson",
+      "isbn": "9780765391162",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 558,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "Mistborn - The Lost Metal",
+      "autor": "Brandon Sanderson",
+      "isbn": "9780765391186",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 674,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "The Sunlit Man",
+      "autor": "Brandon Sanderson",
+      "isbn": "9781250899897",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 448,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "Shadows for Silence in The Forest of Hell",
+      "autor": "Brandon Sanderson",
+      "isbn": "9780765375421",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 73,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "Isles of The Emberdark",
+      "autor": "Brandon Sanderson",
+      "isbn": "9781250905697",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 533,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "Darkdawn",
+      "autor": "Jay Kristoff",
+      "isbn": "9781250301963",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 723,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "Ordem Vermelha - Crianças do Silencio",
+      "autor": "Felipe Castilho",
+      "isbn": "9780345503817",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 643,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "Harry Potter - Camara Secreta",
+      "autor": "J. K. Rowling",
+      "isbn": "9788532523051",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 252,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "A Republica do Dragão",
+      "autor": "R. F. Kuang",
+      "isbn": "9786555608397",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 788,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "O Ultimo Desejo",
+      "autor": "Andrzej Sapkowski",
+      "isbn": "9788578273743",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 399,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "O Olho do Mundo",
+      "autor": "Robert Jordan",
+      "isbn": "9788580573619",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 800,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "Meio Mundo",
+      "autor": "Joe Abercrombie",
+      "isbn": "9780385743785",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 442,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "Fúria vermelha",
+      "autor": "Pierce Brown",
+      "isbn": "9788525058225",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 515,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "A Sombra dos Deuses",
+      "autor": "John Gwynne",
+      "isbn": "9786581339333",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 641,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "O limite do céu",
+      "autor": "Jeferson Tenório",
+      "isbn": "9788554862701",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 478,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "The Devils",
+      "autor": "Joe Abercrombie",
+      "isbn": "9780593715840",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 565,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "Lendas do Mundo Emerso 1",
+      "autor": "Licia Troisi",
+      "isbn": "9788532527493",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 509,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "A Queda dos Cinco",
+      "autor": "Pittacus Lore",
+      "isbn": "9780062073051",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 259,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "A Vingança dos Sete",
+      "autor": "Pittacus Lore",
+      "isbn": "9780062387127",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 307,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "O Destino da Numero Dez",
+      "autor": "Pittacus Lore",
+      "isbn": "9780062387141",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 356,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "Unidos somos Um",
+      "autor": "Pittacus Lore",
+      "isbn": "9780062387165",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 392,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "Mushoku Tensei 17",
+      "autor": "Rifujin na Magonote",
+      "isbn": "9781685791919",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 326,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "Cidade dos Ossos",
+      "autor": "Cassandra Clare",
+      "isbn": "9788501087140",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 519,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "Crooked Kingdom",
+      "autor": "Leigh Bardugo",
+      "isbn": "9781250076953",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 655,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "Cidade da Lua Crescente",
+      "autor": "Sarah J. Maas",
+      "isbn": "9788501303783",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 896,
       "pagAtual": 0,
       "pct": 0
     }
