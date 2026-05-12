@@ -788,6 +788,25 @@ function buildWd() {
 
 function inicializarGraficos() {
 
+// Popular seletores imediatamente com os dados disponíveis
+(function() {
+  // Seletor anos ranking
+  const selNotasAno = document.getElementById('selNotasAno');
+  const anosNotas = [...new Set(YEARS.map(y => y.ano))].sort();
+  selNotasAno.innerHTML = '<option value="all">Todos os anos</option>';
+  anosNotas.forEach(a => {
+    selNotasAno.innerHTML += `<option value="${a}">${a}</option>`;
+  });
+
+  // Seletor anos dia da semana
+  const selWd = document.getElementById('selWd');
+  const anosWd = Object.keys(WD_AVG).filter(k => k !== 'total').sort();
+  selWd.innerHTML = '<option value="total">Total</option>';
+  anosWd.forEach(a => {
+    selWd.innerHTML += `<option value="${a}">${a}</option>`;
+  });
+})();
+
 // ════════════════════════════════════════════════
 // CHART DEFAULTS
 // ════════════════════════════════════════════════
@@ -1035,10 +1054,6 @@ const AUTOR_MAP = {
   window.buildBookInfo = function() {
     const book = sel.value;
     if (!book) return;
-    const info = document.getElementById('bookInfo');
-    info.style.display = 'block';
-    document.getElementById('bookInfoNome').textContent = book;
-    document.getElementById('bookInfoAutor').textContent = autorNome;
 
     // Get book data from livros array
     const livroData = (window._livros||[]).find(l => l.livro === book);
@@ -1053,6 +1068,11 @@ const AUTOR_MAP = {
     const mediaDia = diasLidos > 0 ? Math.round(pagLidas/diasLidos) : 0;
     const lendo = status === 'Lendo' || status === 'Pausado';
     const concluido = status === 'Completo';
+
+    const info = document.getElementById('bookInfo');
+    info.style.display = 'block';
+    document.getElementById('bookInfoNome').textContent = book;
+    document.getElementById('bookInfoAutor').textContent = autorNome;
 
     const stats = document.getElementById('bookInfoStats');
     stats.innerHTML = `
@@ -1092,16 +1112,13 @@ const AUTOR_MAP = {
 // ════════════════════════════════════════════════
 (function() {
   const months = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
-
-  // Build monthly data per year from MONTHLY
   const byYearMonth = {};
   MONTHLY.forEach(d => {
-    // d.m = "Jan/24", extract year and month index
     const parts = d.m.split('/');
     const mon = parts[0];
     const yr  = '20' + parts[1];
     if (!byYearMonth[yr]) byYearMonth[yr] = new Array(12).fill(0);
-    const mIdx = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'].indexOf(mon);
+    const mIdx = months.indexOf(mon);
     if (mIdx >= 0) byYearMonth[yr][mIdx] = d.v;
   });
 
@@ -1114,7 +1131,11 @@ const AUTOR_MAP = {
     borderRadius: 4
   }));
 
-  new Chart(document.getElementById('cHeat').getContext('2d'), {
+  const canv = document.getElementById('cHeat');
+  const existing = Chart.getChart(canv);
+  if (existing) existing.destroy();
+
+  new Chart(canv.getContext('2d'), {
     type:'bar',
     data:{ labels: months, datasets },
     options:{
@@ -1127,22 +1148,6 @@ const AUTOR_MAP = {
     }
   });
 })();
-
-// Popular seletor de anos do ranking com anos reais das notas
-const selNotasAno = document.getElementById('selNotasAno');
-const anosNotas = [...new Set(NOTES.map(n => n.ano).filter(a => a > 2000))].sort();
-selNotasAno.innerHTML = '<option value="all">Todos os anos</option>';
-anosNotas.forEach(a => {
-  selNotasAno.innerHTML += `<option value="${a}">${a}</option>`;
-});
-
-// Popular seletor de anos do dia da semana
-const selWd = document.getElementById('selWd');
-const anosWd = [...new Set(Object.keys(WD_AVG).filter(k => k !== 'total'))].sort();
-selWd.innerHTML = '<option value="total">Total</option>';
-anosWd.forEach(a => {
-  selWd.innerHTML += `<option value="${a}">${a}</option>`;
-});
 
 buildRanking();
 buildWd();
