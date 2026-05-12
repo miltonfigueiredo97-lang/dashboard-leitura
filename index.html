@@ -1132,8 +1132,18 @@ function baseScales(xRot) {
 // ════════════════════════════════════════════════
 (function() {
   const sel = document.getElementById('selBook');
-  const books = Object.keys(BOOK_DAILY).sort();
-  books.forEach(b => sel.innerHTML += `<option value="${b}">${b}</option>`);
+  // Inclui todos os livros (com ou sem sessões), ordenados por status e nome
+  const statusOrder = {'Lendo':0,'Pausado':1,'Completo':2,'Aguardando':3};
+  const allBooks = [...(window._livros||[])].sort((a,b) => {
+    const sa = statusOrder[a.status] ?? 9;
+    const sb = statusOrder[b.status] ?? 9;
+    if (sa !== sb) return sa - sb;
+    return a.livro.localeCompare(b.livro);
+  });
+  allBooks.forEach(b => {
+    const icon = b.status==='Lendo'?'📖':b.status==='Pausado'?'⏸️':b.status==='Completo'?'✅':'📋';
+    sel.innerHTML += `<option value="${b.livro}">${icon} ${b.livro}</option>`;
+  });
 
   let chart = null;
   const ctx = document.getElementById('cBook').getContext('2d');
@@ -1141,43 +1151,129 @@ function baseScales(xRot) {
   window.buildBookChart = function() {
     const book = sel.value;
     const rows = BOOK_DAILY[book] || [];
+    const livroData = (window._livros||[]).find(l => l.livro === book);
+    const status = livroData?.status || '';
     if (chart) chart.destroy();
-    const maxP = Math.max(...rows.map(r=>r.p), 1);
-    chart = new Chart(ctx, {
-      type:'bar',
-      data:{
-        labels: rows.map(r => {
-          const d = new Date(r.d + 'T12:00:00');
-          return d.toLocaleDateString('pt-BR',{day:'2-digit',month:'short'});
-        }),
-        datasets:[{
-          label:'Páginas',
-          data: rows.map(r=>r.p),
-          backgroundColor: rows.map(r => {
-            const alpha = 0.35 + 0.65*(r.p/maxP);
-            return `rgba(139,124,248,${alpha.toFixed(2)})`;
-          }),
-          borderColor:'rgba(139,124,248,0.8)',
-          borderWidth:1,
-          borderRadius:5
-        }]
-      },
-      options:{
-        responsive:true, maintainAspectRatio:false,
-        plugins:{
-          legend:{display:false},
-          tooltip:{...TT, callbacks:{
-            title: t => {
-              const row = rows[t[0].dataIndex];
-              const d = new Date(row.d + 'T12:00:00');
-              return d.toLocaleDateString('pt-BR',{weekday:'long',day:'2-digit',month:'long',year:'numeric'});
-            },
-            label: c => ` ${c.parsed.y} páginas`
-          }}
-        },
-        scales: baseScales(45)
+
+    const isPrevisao = (status === 'Aguardando') || (rows.length === 0);
+    const isEmAndamento = (status === 'Lendo' || status === 'Pausado') && rows.length > 0;
+
+    if (isPrevisao || isEmAndamento) {
+      // Gera previsão baseada na média diária por dia da semana
+      const pagLidas = rows.reduce((s,r)=>s+r.p, 0);
+      const totalPag = livroData?.totalPag || 300;
+      const pagFaltam = totalPag - pagLidas;
+
+      // Média por dia da semana (0=Dom...6=Sab) das sessões globais
+      const wdTotals = [0,0,0,0,0,0,0], wdCounts = [0,0,0,0,0,0,0];
+      (window._sessoes||[]).forEach(s => {
+        if (!s.data) return;
+        const wd = new Date(s.data + 'T12:00:00').getDay();
+        wdTotals[wd] += s.paginas;
+        wdCounts[wd]++;
+      });
+      const wdAvg = wdTotals.map((t,i) => wdCounts[i] > 0 ? Math.round(t/wdCounts[i]) : 30);
+
+      // Projeta a partir de hoje até acabar o livro
+      const today = new Date();
+      const forecastLabels = [], forecastData = [], forecastDates = [];
+      let pagesLeft = pagFaltam;
+      let day = new Date(today);
+      while (pagesLeft > 0 && forecastLabels.length < 120) {
+        const wd = day.getDay();
+        const pags = Math.min(wdAvg[wd], pagesLeft);
+        if (pags > 0) {
+          forecastLabels.push(day.toLocaleDateString('pt-BR',{day:'2-digit',month:'short'}));
+          forecastData.push(pags);
+          forecastDates.push(new Date(day));
+          pagesLeft -= pags;
+        }
+        day.setDate(day.getDate() + 1);
       }
-    });
+
+      // Combina lidas (real) + previsão
+      const realLabels = rows.map(r => new Date(r.d+'T12:00:00').toLocaleDateString('pt-BR',{day:'2-digit',month:'short'}));
+      const realData   = rows.map(r => r.p);
+      const allLabels  = [...realLabels, ...forecastLabels];
+      const allReal    = [...realData,   ...new Array(forecastLabels.length).fill(null)];
+      const allPrev    = [...new Array(realLabels.length).fill(null), ...forecastData];
+
+      const maxP = Math.max(...realData, ...forecastData, 1);
+
+      chart = new Chart(ctx, {
+        type:'bar',
+        data:{
+          labels: allLabels,
+          datasets:[
+            {
+              label:'Lido',
+              data: allReal,
+              backgroundColor: realData.map(v => {
+                const a = 0.35 + 0.65*(v/maxP);
+                return `rgba(139,124,248,${a.toFixed(2)})`;
+              }),
+              borderColor:'rgba(139,124,248,0.8)',
+              borderWidth:1, borderRadius:4
+            },
+            {
+              label:'Previsão',
+              data: allPrev,
+              backgroundColor: 'rgba(78,205,196,0.35)',
+              borderColor:'rgba(78,205,196,0.7)',
+              borderWidth:1, borderRadius:4,
+              borderDash:[4,3]
+            }
+          ]
+        },
+        options:{
+          responsive:true, maintainAspectRatio:false,
+          plugins:{
+            legend:{ labels:{color:TICK_COLOR, font:{size:10}} },
+            tooltip:{...TT, callbacks:{
+              label: c => c.dataset.label === 'Previsão'
+                ? ` ~${c.parsed.y} págs (previsão)`
+                : ` ${c.parsed.y} páginas lidas`
+            }}
+          },
+          scales: baseScales(45)
+        }
+      });
+
+    } else {
+      // Livro concluído — mostra histórico real
+      const maxP = Math.max(...rows.map(r=>r.p), 1);
+      chart = new Chart(ctx, {
+        type:'bar',
+        data:{
+          labels: rows.map(r => new Date(r.d+'T12:00:00').toLocaleDateString('pt-BR',{day:'2-digit',month:'short'})),
+          datasets:[{
+            label:'Páginas',
+            data: rows.map(r=>r.p),
+            backgroundColor: rows.map(r => {
+              const alpha = 0.35 + 0.65*(r.p/maxP);
+              return `rgba(139,124,248,${alpha.toFixed(2)})`;
+            }),
+            borderColor:'rgba(139,124,248,0.8)',
+            borderWidth:1, borderRadius:5
+          }]
+        },
+        options:{
+          responsive:true, maintainAspectRatio:false,
+          plugins:{
+            legend:{display:false},
+            tooltip:{...TT, callbacks:{
+              title: t => {
+                const row = rows[t[0].dataIndex];
+                const d = new Date(row.d + 'T12:00:00');
+                return d.toLocaleDateString('pt-BR',{weekday:'long',day:'2-digit',month:'long',year:'numeric'});
+              },
+              label: c => ` ${c.parsed.y} páginas`
+            }}
+          },
+          scales: baseScales(45)
+        }
+      });
+    }
   };
 
   window.buildBookInfo = function() {
