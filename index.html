@@ -997,6 +997,9 @@ function inicializar(d) {
 
 // Variáveis globais dos gráficos
 let MONTHLY, YEARS, WD_AVG, WD_SUM, NOTES, COLECOES, BOOK_DAILY;
+let calYear  = new Date().getFullYear();
+let calMonth = new Date().getMonth();
+let calSelected = null;
 
 const TT = {
   backgroundColor:'#1e2535',
@@ -1663,7 +1666,7 @@ function buildStreaks() {
   // Últimas 5 sequências
   const list = document.getElementById('streakList');
   list.innerHTML = '';
-  [...streaks].reverse().slice(0,5).forEach(s => {
+  [...streaks].reverse().filter(s => s.length > 1).slice(0,5).forEach(s => {
     const sessDia = sess.filter(r => s.includes(r.data));
     const totalPags = sessDia.reduce((a,r)=>a+r.paginas,0);
     const totalMin  = Math.round(sessDia.reduce((a,r)=>a+r.minutos,0));
@@ -1787,10 +1790,6 @@ function buildHeatmap() {
 // ════════════════════════════════════════════════
 // CALENDÁRIO MENSAL
 // ════════════════════════════════════════════════
-let calYear  = new Date().getFullYear();
-let calMonth = new Date().getMonth();
-let calSelected = null;
-
 function calNav(dir) {
   calMonth += dir;
   if (calMonth > 11) { calMonth = 0; calYear++; }
