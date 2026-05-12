@@ -349,30 +349,18 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
     <!-- Dia da semana -->
     <div class="card" style="display:flex;flex-direction:column;gap:0;">
       <div class="card-title">📆 Páginas por Dia da Semana</div>
-
+      <div class="ctrl" style="margin-bottom:10px;">
+        <label>Ano:</label>
+        <select id="selWd" onchange="buildWd()">
+          <option value="total">Total</option>
+        </select>
+      </div>
       <div style="margin-bottom:10px;">
-        <div class="ctrl">
-          <label>Média — Ano:</label>
-          <select id="selWdAvg" onchange="buildWd('avg')">
-            <option value="total">Total</option>
-            <option value="2024">2024</option>
-            <option value="2025">2025</option>
-            <option value="2026">2026</option>
-          </select>
-        </div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Média (págs/dia)</div>
         <div id="wdAvg" class="wd-bars"></div>
       </div>
-
       <div style="border-top:1px solid var(--border);padding-top:12px;">
-        <div class="ctrl">
-          <label>Total — Ano:</label>
-          <select id="selWdSum" onchange="buildWd('sum')">
-            <option value="total">Total</option>
-            <option value="2024">2024</option>
-            <option value="2025">2025</option>
-            <option value="2026">2026</option>
-          </select>
-        </div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Total de páginas</div>
         <div id="wdSum" class="wd-bars"></div>
       </div>
     </div>
@@ -397,13 +385,28 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
 
   <!-- ── 4. Leitura por Livro ── -->
   <div class="sec">📖 Progresso por Livro</div>
-  <div class="card" style="margin-bottom:16px;">
-    <div class="card-title">📖 Páginas Lidas por Dia</div>
-    <div class="ctrl">
-      <label>Livro:</label>
-      <select id="selBook" onchange="buildBookChart()"></select>
+  <div class="grid2" style="margin-bottom:16px;">
+
+    <!-- Seletor de livro com detalhes -->
+    <div class="card">
+      <div class="card-title">📚 Detalhes do Livro</div>
+      <div class="ctrl" style="margin-bottom:14px;">
+        <label>Livro:</label>
+        <select id="selBook" onchange="buildBookChart();buildBookInfo()" style="flex:1;max-width:100%;"></select>
+      </div>
+      <div id="bookInfo" style="display:none;">
+        <div id="bookInfoNome" style="font-size:18px;font-weight:700;color:var(--text);margin-bottom:2px;"></div>
+        <div id="bookInfoAutor" style="font-size:12px;color:var(--muted);margin-bottom:12px;"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;" id="bookInfoStats"></div>
+      </div>
     </div>
-    <div style="height:240px;position:relative;"><canvas id="cBook"></canvas></div>
+
+    <!-- Gráfico diário -->
+    <div class="card">
+      <div class="card-title">📖 Páginas Lidas por Dia</div>
+      <div style="height:200px;position:relative;"><canvas id="cBook"></canvas></div>
+    </div>
+
   </div>
 
   <!-- ── 5. Meta 2026 + Heatmap ── -->
@@ -446,8 +449,8 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
       <div class="meta-date">
         <div class="meta-date-icon">📅</div>
         <div>
-          <div class="meta-date-txt">Data prevista inicial: <b style="color:var(--teal)" id="meta-data-ini">—</b></div>
-          <div class="meta-date-sub">Previsão atual: <b style="color:var(--yellow)" id="meta-data-atual">—</b> · Meta final: 31/12/2026</div>
+          <div class="meta-date-txt">Previsão atual: <b style="color:var(--yellow);font-size:15px;" id="meta-data-atual">—</b></div>
+          <div class="meta-date-sub">Previsão inicial: <b style="color:var(--teal)" id="meta-data-ini">—</b> · Meta final: 31/12/2026</div>
         </div>
       </div>
     </div>
@@ -585,15 +588,14 @@ function inicializar(d) {
   document.getElementById('kpi-horas').textContent     = horasTotais + 'h';
   document.getElementById('kpi-recorde').textContent   = recorde;
 
-  // Maior e menor livro
-  const byBook = {};
-  sessoes.forEach(s => { byBook[s.livro] = (byBook[s.livro]||0) + s.paginas; });
-  const bookEntries = Object.entries(byBook).filter(([,v])=>v>0).sort((a,b)=>b[1]-a[1]);
-  if (bookEntries.length) {
-    document.getElementById('kpi-maior-val').textContent  = bookEntries[0][1].toLocaleString('pt-BR');
-    document.getElementById('kpi-maior-nome').textContent = bookEntries[0][0];
-    document.getElementById('kpi-menor-val').textContent  = bookEntries[bookEntries.length-1][1].toLocaleString('pt-BR');
-    document.getElementById('kpi-menor-nome').textContent = bookEntries[bookEntries.length-1][0];
+  // Maior e menor livro — usa totalPag dos livros lidos (Completo)
+  const livrosLidos = (d.livros||[]).filter(l => l.status === 'Completo' && l.totalPag > 0);
+  if (livrosLidos.length) {
+    const sorted = [...livrosLidos].sort((a,b) => b.totalPag - a.totalPag);
+    document.getElementById('kpi-maior-val').textContent  = sorted[0].totalPag.toLocaleString('pt-BR');
+    document.getElementById('kpi-maior-nome').textContent = sorted[0].livro;
+    document.getElementById('kpi-menor-val').textContent  = sorted[sorted.length-1].totalPag.toLocaleString('pt-BR');
+    document.getElementById('kpi-menor-nome').textContent = sorted[sorted.length-1].livro;
   }
 
   // Meta
@@ -660,6 +662,10 @@ function inicializar(d) {
         </div>`;
     }
   }
+
+  // Armazena globalmente para buildBookInfo
+  window._livros  = d.livros  || [];
+  window._sessoes = sessoes;
 
   // Atualiza rodapé com data de geração
   if (d.geradoEm) {
@@ -746,26 +752,27 @@ function buildRanking() {
   });
 }
 // ════════════════════════════════════════════════
-// 4. WEEKDAY BARS (HTML)
+// 4. WEEKDAY BARS (HTML) — seletor único
 // ════════════════════════════════════════════════
-function buildWd(type) {
-  const selId = type==='avg' ? 'selWdAvg' : 'selWdSum';
-  const elId  = type==='avg' ? 'wdAvg' : 'wdSum';
-  const src   = type==='avg' ? WD_AVG : WD_SUM;
-  const yr    = document.getElementById(selId).value;
-  const vals  = src[yr] || src.total;
-  const maxV  = Math.max(...vals);
-  const el    = document.getElementById(elId);
-  el.innerHTML = '';
-  vals.forEach((v, i) => {
-    const h = maxV > 0 ? Math.max(6, Math.round(v/maxV * 90)) : 6;
-    const disp = type==='avg' ? v.toFixed(0) : v.toLocaleString('pt-BR');
-    el.innerHTML += `
-      <div class="wd-col">
-        <span class="wd-val">${disp}</span>
-        <div class="wd-bar" style="height:${h}px;background:${WD_COLORS[i]}"></div>
-        <span class="wd-lbl">${WD_LABELS[i]}</span>
-      </div>`;
+function buildWd() {
+  const yr = document.getElementById('selWd').value;
+
+  ['avg','sum'].forEach(type => {
+    const src  = type==='avg' ? WD_AVG : WD_SUM;
+    const vals = src[yr] || src['total'] || [0,0,0,0,0,0,0];
+    const maxV = Math.max(...vals);
+    const el   = document.getElementById(type==='avg' ? 'wdAvg' : 'wdSum');
+    el.innerHTML = '';
+    vals.forEach((v, i) => {
+      const h    = maxV > 0 ? Math.max(6, Math.round(v/maxV * 90)) : 6;
+      const disp = type==='avg' ? v.toFixed(0) : v.toLocaleString('pt-BR');
+      el.innerHTML += `
+        <div class="wd-col">
+          <span class="wd-val">${disp}</span>
+          <div class="wd-bar" style="height:${h}px;background:${WD_COLORS[i]}"></div>
+          <span class="wd-lbl">${WD_LABELS[i]}</span>
+        </div>`;
+    });
   });
 }
 
@@ -926,8 +933,46 @@ function baseScales(xRot) {
 })();
 
 // ════════════════════════════════════════════════
-// 6. BOOK CHART
+// 6. BOOK CHART + BOOK INFO
 // ════════════════════════════════════════════════
+const AUTOR_MAP = {
+  'Palavras de Radiancia':'Brandon Sanderson','Ritmo de Guerra':'Brandon Sanderson',
+  'Ventos e Verdade':'Brandon Sanderson','O Caminho dos reis':'Brandon Sanderson',
+  'O Caminho dos Reis':'Brandon Sanderson','Sacramentadora':'Brandon Sanderson',
+  'Warbreaker':'Brandon Sanderson','Elantris':'Brandon Sanderson',
+  'A Esperança de Elantris':'Brandon Sanderson','Chama de Ferro':'Brandon Sanderson',
+  'Mistborn 1º Era Livro 2':'Brandon Sanderson','Mistborn 1º Era Livro 3':'Brandon Sanderson',
+  'Mistborn 2º Era Livro 1':'Brandon Sanderson','Mistborn - Historia Screta':'Brandon Sanderson',
+  'Yumi e o Pintor de Pesadelos':'Brandon Sanderson','Dawnshard':'Brandon Sanderson',
+  'Tress A Garota do mar Esmeralda':'Brandon Sanderson',
+  'O Temor do Sabio':'Patrick Rothfuss','O nome do Vento':'Patrick Rothfuss',
+  'Nevernight':'Jay Kristoff','Godsgrave':'Jay Kristoff',
+  'Six of Crows':'Leigh Bardugo','Sombra e Ossos':'Leigh Bardugo',
+  'Sol e Tormenta':'Leigh Bardugo','Ruina e Ascensão':'Leigh Bardugo',
+  'O Aprendiz de Assassino':'Robin Hobb','A flecha de Fogo':'Robin Hobb',
+  'Meio Rei':'Joe Abercrombie','A Descoberta das Bruxas':'Deborah Harkness',
+  'O Principe Cruel':'Holly Black','Eu sou o numero 4':'Pittacus Lore',
+  'Eu sou o Numero 4':'Pittacus Lore','O poder dos seis':'Pittacus Lore',
+  'O Poder dos Seis':'Pittacus Lore','Ascenção dos Nove':'Pittacus Lore',
+  'Quarta Asa':'Rebecca Yarros','Guerra da Papoula':'R.F. Kuang',
+  'A Casa de Hades':'Rick Riordan','O Sangue do Olimpo':'Rick Riordan',
+  'Jardins da Lua - Imperio Malazano':'Steven Erikson',
+  'Carl O Explorador de Masmorras':'Adrian Collins',
+  'Of Blood and Fire':'Ryan Cahill',
+  'The Echoes Saga - Rise of the Ranger':'Phil Tucker',
+  'Songs of Chaos - Ascendant':'Michael R. Miller',
+  'The Sword of Kaigen':'M.L. Wang','Murtagh':'Christopher Paolini',
+  'Harry Potter - A Pedra Filosofal':'J.K. Rowling',
+  'o Feiticeiro de Terramar':'Ursula K. Le Guin',
+  'O Sobrinho do Mago':'C.S. Lewis','O Leão a Feiticeira e Guarda-Roupa':'C.S. Lewis',
+  'O Inimigo do Mundo':'Robert Jordan','Leruth':'Autor Independente',
+  'Edgeshard':'David Estes','Cinco Laminas Partidas':'Mai Corland',
+  'Rei dos Espinhos':'Mark Lawrence','Herdeiros do Tempo':'Adrian Tchaikovsky',
+  'Eragon':'Christopher Paolini',
+  'A Cidade de Bronze':'Deborah Harkness',
+  'Daevabad Trilogy':'S.A. Chakraborty',
+};
+
 (function() {
   const sel = document.getElementById('selBook');
   const books = Object.keys(BOOK_DAILY).sort();
@@ -978,7 +1023,58 @@ function baseScales(xRot) {
     });
   };
 
+  window.buildBookInfo = function() {
+    const book = sel.value;
+    if (!book) return;
+    const info = document.getElementById('bookInfo');
+    info.style.display = 'block';
+    document.getElementById('bookInfoNome').textContent = book;
+    document.getElementById('bookInfoAutor').textContent = AUTOR_MAP[book] || '—';
+
+    // Get book data from livros array
+    const livroData = (window._livros||[]).find(l => l.livro === book);
+    const rows = BOOK_DAILY[book] || [];
+    const pagLidas = rows.reduce((s,r)=>s+r.p, 0);
+    const totalPag = livroData?.totalPag || 0;
+    const status = livroData?.status || '—';
+    const minutos = (window._sessoes||[]).filter(s=>s.livro===book).reduce((s,r)=>s+(r.minutos||0),0);
+    const horas = Math.round(minutos/60*10)/10;
+    const diasLidos = [...new Set(rows.map(r=>r.d))].length;
+    const mediaDia = diasLidos > 0 ? Math.round(pagLidas/diasLidos) : 0;
+    const lendo = status === 'Lendo' || status === 'Pausado';
+    const concluido = status === 'Completo';
+
+    const stats = document.getElementById('bookInfoStats');
+    stats.innerHTML = `
+      <div style="background:var(--bg3);border-radius:8px;padding:8px;text-align:center;">
+        <div style="font-size:18px;font-weight:700;color:var(--purple)">${totalPag.toLocaleString('pt-BR')}</div>
+        <div style="font-size:10px;color:var(--muted)">Páginas totais</div>
+      </div>
+      <div style="background:var(--bg3);border-radius:8px;padding:8px;text-align:center;">
+        <div style="font-size:18px;font-weight:700;color:var(--teal)">${pagLidas.toLocaleString('pt-BR')}</div>
+        <div style="font-size:10px;color:var(--muted)">${lendo ? 'Páginas lidas' : concluido ? 'Páginas lidas' : 'Páginas lidas'}</div>
+      </div>
+      <div style="background:var(--bg3);border-radius:8px;padding:8px;text-align:center;">
+        <div style="font-size:18px;font-weight:700;color:var(--yellow)">${horas}h</div>
+        <div style="font-size:10px;color:var(--muted)">${concluido ? 'Tempo lido' : 'Tempo estimado gasto'}</div>
+      </div>
+      <div style="background:var(--bg3);border-radius:8px;padding:8px;text-align:center;">
+        <div style="font-size:18px;font-weight:700;color:var(--orange)">${diasLidos}</div>
+        <div style="font-size:10px;color:var(--muted)">${concluido ? 'Dias lidos' : 'Dias lidos até agora'}</div>
+      </div>
+      ${lendo ? `
+      <div style="background:var(--bg3);border-radius:8px;padding:8px;text-align:center;grid-column:1/-1;">
+        <div style="font-size:18px;font-weight:700;color:var(--coral)">~${Math.ceil((totalPag-pagLidas)/Math.max(mediaDia,1))} dias</div>
+        <div style="font-size:10px;color:var(--muted)">Estimativa para terminar (${mediaDia} págs/dia)</div>
+      </div>` : ''}
+      <div style="background:var(--bg3);border-radius:8px;padding:8px;text-align:center;grid-column:1/-1;">
+        <div style="font-size:13px;font-weight:600;color:${status==='Completo'?'var(--teal)':status==='Lendo'?'var(--purple)':status==='Pausado'?'var(--orange)':'var(--muted)'}">${status}</div>
+        <div style="font-size:10px;color:var(--muted)">Status</div>
+      </div>`;
+  };
+
   buildBookChart();
+  buildBookInfo();
 })();
 
 // ════════════════════════════════════════════════
@@ -1011,10 +1107,6 @@ function baseScales(xRot) {
   });
 })();
 
-buildRanking();
-buildWd('avg');
-buildWd('sum');
-
 // Popular seletor de anos do ranking com anos reais das notas
 const selNotasAno = document.getElementById('selNotasAno');
 const anosNotas = [...new Set(NOTES.map(n => n.ano).filter(a => a > 2000))].sort();
@@ -1022,7 +1114,18 @@ selNotasAno.innerHTML = '<option value="all">Todos os anos</option>';
 anosNotas.forEach(a => {
   selNotasAno.innerHTML += `<option value="${a}">${a}</option>`;
 });
+
+// Popular seletor de anos do dia da semana
+const selWd = document.getElementById('selWd');
+const anosWd = [...new Set(Object.keys(WD_AVG).filter(k => k !== 'total'))].sort();
+selWd.innerHTML = '<option value="total">Total</option>';
+anosWd.forEach(a => {
+  selWd.innerHTML += `<option value="${a}">${a}</option>`;
+});
+
 buildRanking();
+buildWd();
+buildWd();
 
 } // fim inicializarGraficos
 
