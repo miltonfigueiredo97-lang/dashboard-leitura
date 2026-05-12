@@ -62,6 +62,8 @@ header .badge {
 .kpi-book { display: flex; gap: 10px; align-items: flex-start; }
 .kpi-book img { width: 44px; height: 62px; object-fit: cover; border-radius: 4px; box-shadow: 2px 2px 8px rgba(0,0,0,.5); flex-shrink: 0; }
 .kpi-book .fallback { width: 44px; height: 62px; background: var(--bg4); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+.cover-img { transition: transform 0.2s ease, box-shadow 0.2s ease; transform-origin: left center; }
+.cover-img:hover { transform: scale(1.5); box-shadow: 0 8px 24px rgba(0,0,0,0.6); z-index: 100; position: relative; }
 
 /* ── Cards ── */
 .card {
@@ -520,71 +522,108 @@ function coverUrl(isbn, size='M') {
   return `https://covers.openlibrary.org/b/isbn/${isbn}-${size}.jpg`;
 }
 
-// Monta URL da Google Books por ISBN
-function gbIsbnUrl(isbn) {
-  return `https://books.google.com/books?vid=ISBN${isbn}&printsec=frontcover&img=1&zoom=1`;
+// Verifica se imagem é válida (não é a imagem "sem capa" da Open Library que tem 1x1px)
+function isValidCover(img) {
+  return img.naturalWidth > 10 && img.naturalHeight > 10;
 }
 
-// Monta URL da Google Books por título+autor (busca)
-function gbTitleUrl(titulo, autor) {
-  const q = encodeURIComponent(`intitle:${titulo}${autor ? ' inauthor:'+autor : ''}`);
-  return `https://www.googleapis.com/books/v1/volumes?q=${q}&maxResults=1&fields=items(volumeInfo(imageLinks))`;
+// Busca capa via Google Books API por título e retorna URL da thumbnail
+async function fetchGBooksCover(titulo, autor) {
+  try {
+    const q = encodeURIComponent(`intitle:"${titulo}"${autor ? ' inauthor:"'+autor+'"' : ''}`);
+    const r = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${q}&maxResults=1&fields=items(volumeInfo(imageLinks))`);
+    const d = await r.json();
+    const url = d?.items?.[0]?.volumeInfo?.imageLinks?.thumbnail;
+    return url ? url.replace('http:', 'https:') : null;
+  } catch(e) { return null; }
 }
 
-// Cria elemento de imagem com fallback em cascata: OpenLibrary → Google Books → emoji
-function coverImg(isbn, fallback='📖', cls='', titulo='', autor='') {
-  if (!isbn && !titulo) return `<span style="font-size:32px">${fallback}</span>`;
+// Carrega capa com fallback completo: OL isbn → GB isbn → GB título → emoji
+function loadCover(el, isbn, fallbackEmoji, titulo, autor) {
+  const fbEl = el.nextElementSibling;
 
-  const olUrl = isbn ? `https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg` : '';
-  const gbUrl = isbn ? `https://books.google.com/books?vid=ISBN${isbn}&printsec=frontcover&img=1&zoom=1` : '';
-
-  const id = 'capa_' + Math.random().toString(36).slice(2,8);
-  const fallbackSpan = `<span id="${id}_fb" style="font-size:32px;display:none">${fallback}</span>`;
-
-  if (!isbn) {
-    // Sem ISBN: vai direto para Google Books por título
-    const imgEl = `<img id="${id}" src="" style="width:52px;height:72px;object-fit:cover;border-radius:4px;flex-shrink:0;display:none" alt="capa">`;
-    setTimeout(() => {
-      fetch(gbTitleUrl(titulo, autor))
-        .then(r => r.json())
-        .then(d => {
-          const url = d?.items?.[0]?.volumeInfo?.imageLinks?.thumbnail;
-          if (url) {
-            const el = document.getElementById(id);
-            const fb = document.getElementById(id+'_fb');
-            if (el) { el.src = url; el.style.display = ''; }
-            if (fb) fb.style.display = 'none';
-          }
-        }).catch(()=>{});
-    }, 100);
-    return imgEl + fallbackSpan;
+  function showEmoji() {
+    el.style.display = 'none';
+    if (fbEl) fbEl.style.display = 'block';
   }
 
-  return `<img id="${id}" src="${olUrl}" class="${cls}"
-    style="width:52px;height:72px;object-fit:cover;border-radius:4px;flex-shrink:0"
-    onerror="
-      if(this.dataset.tried==='ol'){
-        this.style.display='none';
-        document.getElementById('${id}_fb').style.display='block';
-      } else {
-        this.dataset.tried='ol';
-        this.src='${gbUrl}';
-      }
-    "
-    alt="capa">
-  ${fallbackSpan}`;
+  async function tryGBTitle() {
+    const url = await fetchGBooksCover(titulo || '', autor || '');
+    if (url) {
+      el.src = url;
+      el.onerror = showEmoji;
+    } else {
+      showEmoji();
+    }
+  }
+
+  function tryGBIsbn() {
+    if (!isbn) { tryGBTitle(); return; }
+    const gbUrl = `https://books.google.com/books?vid=ISBN${isbn}&printsec=frontcover&img=1&zoom=1`;
+    el.onerror = () => tryGBTitle();
+    el.onload = () => { if (!isValidCover(el)) tryGBTitle(); };
+    el.src = gbUrl;
+  }
+
+  if (isbn) {
+    const olUrl = `https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg`;
+    el.onerror = tryGBIsbn;
+    el.onload = () => { if (!isValidCover(el)) tryGBIsbn(); };
+    el.src = olUrl;
+  } else {
+    tryGBTitle();
+  }
 }
 
-// Miniatura para ranking
-function coverThumb(isbn) {
-  if (!isbn) return '';
-  const olUrl = `https://covers.openlibrary.org/b/isbn/${isbn}-S.jpg`;
-  const gbUrl = `https://books.google.com/books?vid=ISBN${isbn}&printsec=frontcover&img=1&zoom=5`;
-  const id = 'th_' + isbn;
-  return `<img id="${id}" src="${olUrl}"
-    style="width:28px;height:40px;object-fit:cover;border-radius:3px;flex-shrink:0"
-    onerror="if(this.dataset.tried==='ol'){this.style.display='none';}else{this.dataset.tried='ol';this.src='${gbUrl}';}"
+function coverImg(isbn, fallback='📖', cls='', titulo='', autor='') {
+  const uid = 'cv_' + Math.random().toString(36).slice(2,8);
+  const html = `<img id="${uid}" src="" class="cover-img ${cls}"
+    style="width:52px;height:72px;object-fit:cover;border-radius:4px;flex-shrink:0;cursor:zoom-in"
+    alt="capa">
+  <span id="${uid}_fb" style="font-size:32px;display:none">${fallback}</span>`;
+
+  setTimeout(() => {
+    const el = document.getElementById(uid);
+    if (el) loadCover(el, isbn, fallback, titulo, autor);
+  }, 50);
+
+  return html;
+}
+
+function coverThumb(isbn, titulo, autor) {
+  if (!isbn && !titulo) return '';
+  const uid = 'th_' + Math.random().toString(36).slice(2,8);
+
+  const html = `<img id="${uid}" src="" class="cover-img"
+    style="width:28px;height:40px;object-fit:cover;border-radius:3px;flex-shrink:0;cursor:zoom-in"
     alt="">`;
+
+  setTimeout(() => {
+    const el = document.getElementById(uid);
+    if (!el) return;
+
+    async function tryGB() {
+      const url = await fetchGBooksCover(titulo || '', autor || '');
+      if (url) { el.src = url; el.onerror = () => el.style.display='none'; }
+      else el.style.display = 'none';
+    }
+
+    if (isbn) {
+      const olUrl = `https://covers.openlibrary.org/b/isbn/${isbn}-S.jpg`;
+      el.onerror = () => {
+        const gbUrl = `https://books.google.com/books?vid=ISBN${isbn}&printsec=frontcover&img=1&zoom=5`;
+        el.onerror = () => tryGB();
+        el.onload = () => { if (!isValidCover(el)) tryGB(); };
+        el.src = gbUrl;
+      };
+      el.onload = () => { if (!isValidCover(el)) el.onerror(); };
+      el.src = olUrl;
+    } else {
+      tryGB();
+    }
+  }, 50);
+
+  return html;
 }
 
 const AUTOR_MAP = {
@@ -945,7 +984,7 @@ function buildRanking() {
     const scoreLabel = tema === 'all' ? b.score.toFixed(1) : `${b.score.toFixed(1)} <span style="font-size:9px;opacity:0.7">(${b.media.toFixed(1)} geral)</span>`;
     const rankLivro = (window._livros||[]).find(l => l.livro === b.livro);
     const rankIsbn  = rankLivro?.isbn || '';
-    const capaHtml  = rankIsbn ? coverThumb(rankIsbn) : '';
+    const capaHtml  = coverThumb(rankIsbn, b.livro, rankLivro?.autor || '');
     el.innerHTML += `
       <div class="rank-item">
         ${capaHtml}
