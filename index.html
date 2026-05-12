@@ -704,6 +704,68 @@ function renderizarGraficos(dados) {
   inicializarGraficos();
 }
 
+// ════════════════════════════════════════════════
+// 3. RANKING
+// ════════════════════════════════════════════════
+
+let rankMode = 'best';
+
+function updateBtns() {
+  document.getElementById('btnBest').className = 'btn' + (rankMode==='best'?' on':'');
+  document.getElementById('btnWorst').className = 'btn' + (rankMode==='worst'?' on':'');
+}
+
+function buildRanking() {
+  const yr = document.getElementById('selNotasAno').value;
+  // NOTES from JSON has fields: livro, media, ano
+  let pool = yr==='all' ? NOTES : NOTES.filter(b => String(b.ano)===yr);
+  const sorted = [...pool].sort((a,b) => rankMode==='best' ? b.media-a.media : a.media-b.media);
+  const top = sorted.slice(0,15);
+  const maxA = top[0]?.media || 10;
+  const medals = ['🥇','🥈','🥉'];
+  const el = document.getElementById('rankList');
+  el.innerHTML = '';
+  top.forEach((b,i) => {
+    const pct = Math.round(b.media/maxA*100);
+    const col = rankMode==='best' ? (i<3?['#ffd166','#c0c0c0','#cd7f32'][i]:'#8b7cf8') : '#f88c6a';
+    el.innerHTML += `
+      <div class="rank-item">
+        <span class="rank-num">${i<3?'':('#'+(i+1))}</span>
+        <span class="rank-medal">${medals[i]||''}</span>
+        <div style="flex:1;min-width:0">
+          <div class="rank-name" title="${b.livro}">${b.livro}</div>
+          <span class="rank-year">${b.ano}</span>
+        </div>
+        <div class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar-fill" style="width:${pct}%;background:${col}"></div></div></div>
+        <span class="rank-score" style="color:${col}">${b.media.toFixed(1)}</span>
+      </div>`;
+  });
+}
+// ════════════════════════════════════════════════
+// 4. WEEKDAY BARS (HTML)
+// ════════════════════════════════════════════════
+function buildWd(type) {
+  const selId = type==='avg' ? 'selWdAvg' : 'selWdSum';
+  const elId  = type==='avg' ? 'wdAvg' : 'wdSum';
+  const src   = type==='avg' ? WD_AVG : WD_SUM;
+  const yr    = document.getElementById(selId).value;
+  const vals  = src[yr] || src.total;
+  const maxV  = Math.max(...vals);
+  const el    = document.getElementById(elId);
+  el.innerHTML = '';
+  vals.forEach((v, i) => {
+    const h = maxV > 0 ? Math.max(6, Math.round(v/maxV * 90)) : 6;
+    const disp = type==='avg' ? v.toFixed(0) : v.toLocaleString('pt-BR');
+    el.innerHTML += `
+      <div class="wd-col">
+        <span class="wd-val">${disp}</span>
+        <div class="wd-bar" style="height:${h}px;background:${WD_COLORS[i]}"></div>
+        <span class="wd-lbl">${WD_LABELS[i]}</span>
+      </div>`;
+  });
+}
+
+
 function inicializarGraficos() {
 
 // ════════════════════════════════════════════════
@@ -787,67 +849,6 @@ function baseScales(xRot) {
   selTo.addEventListener('change', render);
   render();
 })();
-
-// ════════════════════════════════════════════════
-// 3. RANKING
-// ════════════════════════════════════════════════
-
-let rankMode = 'best';
-
-function updateBtns() {
-  document.getElementById('btnBest').className = 'btn' + (rankMode==='best'?' on':'');
-  document.getElementById('btnWorst').className = 'btn' + (rankMode==='worst'?' on':'');
-}
-
-function buildRanking() {
-  const yr = document.getElementById('selNotasAno').value;
-  // NOTES from JSON has fields: livro, media, ano
-  let pool = yr==='all' ? NOTES : NOTES.filter(b => String(b.ano)===yr);
-  const sorted = [...pool].sort((a,b) => rankMode==='best' ? b.media-a.media : a.media-b.media);
-  const top = sorted.slice(0,15);
-  const maxA = top[0]?.media || 10;
-  const medals = ['🥇','🥈','🥉'];
-  const el = document.getElementById('rankList');
-  el.innerHTML = '';
-  top.forEach((b,i) => {
-    const pct = Math.round(b.media/maxA*100);
-    const col = rankMode==='best' ? (i<3?['#ffd166','#c0c0c0','#cd7f32'][i]:'#8b7cf8') : '#f88c6a';
-    el.innerHTML += `
-      <div class="rank-item">
-        <span class="rank-num">${i<3?'':('#'+(i+1))}</span>
-        <span class="rank-medal">${medals[i]||''}</span>
-        <div style="flex:1;min-width:0">
-          <div class="rank-name" title="${b.livro}">${b.livro}</div>
-          <span class="rank-year">${b.ano}</span>
-        </div>
-        <div class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar-fill" style="width:${pct}%;background:${col}"></div></div></div>
-        <span class="rank-score" style="color:${col}">${b.media.toFixed(1)}</span>
-      </div>`;
-  });
-}
-// ════════════════════════════════════════════════
-// 4. WEEKDAY BARS (HTML)
-// ════════════════════════════════════════════════
-function buildWd(type) {
-  const selId = type==='avg' ? 'selWdAvg' : 'selWdSum';
-  const elId  = type==='avg' ? 'wdAvg' : 'wdSum';
-  const src   = type==='avg' ? WD_AVG : WD_SUM;
-  const yr    = document.getElementById(selId).value;
-  const vals  = src[yr] || src.total;
-  const maxV  = Math.max(...vals);
-  const el    = document.getElementById(elId);
-  el.innerHTML = '';
-  vals.forEach((v, i) => {
-    const h = maxV > 0 ? Math.max(6, Math.round(v/maxV * 90)) : 6;
-    const disp = type==='avg' ? v.toFixed(0) : v.toLocaleString('pt-BR');
-    el.innerHTML += `
-      <div class="wd-col">
-        <span class="wd-val">${disp}</span>
-        <div class="wd-bar" style="height:${h}px;background:${WD_COLORS[i]}"></div>
-        <span class="wd-lbl">${WD_LABELS[i]}</span>
-      </div>`;
-  });
-}
 
 
 // ════════════════════════════════════════════════
