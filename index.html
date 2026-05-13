@@ -591,50 +591,25 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
 
   </div>
 
-  <!-- ── Heatmap Anual + Streak ── -->
-  <div class="sec">🔥 Atividade & Sequências</div>
-  <div class="grid2" style="margin-bottom:16px;">
-
-    <div class="card">
-      <div class="card-title">📅 Mapa de Calor Anual</div>
-      <div class="ctrl" style="margin-bottom:10px;">
-        <label>Ano:</label>
-        <select id="selHeatYear" onchange="buildHeatmap()">
-          <option value="2025">2025</option>
-        </select>
+  <!-- ── Sequências ── -->
+  <div class="sec">⚡ Sequências de Leitura</div>
+  <div class="card" style="margin-bottom:16px;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+      <div style="background:var(--bg3);border-radius:10px;padding:14px;text-align:center;">
+        <div style="font-size:36px;font-weight:700;color:var(--orange)" id="streakAtual">—</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;">🔥 Streak Atual</div>
+        <div style="font-size:10px;color:var(--muted);">dias consecutivos</div>
       </div>
-      <div id="heatmapGrid" style="overflow-x:auto;min-height:130px;"></div>
-      <div style="display:flex;align-items:center;gap:6px;margin-top:8px;font-size:10px;color:var(--muted);">
-        <span>Menos</span>
-        <div style="width:12px;height:12px;border-radius:2px;background:#1a2035"></div>
-        <div style="width:12px;height:12px;border-radius:2px;background:#1a3a5c"></div>
-        <div style="width:12px;height:12px;border-radius:2px;background:#1e5f8e"></div>
-        <div style="width:12px;height:12px;border-radius:2px;background:#2980b9"></div>
-        <div style="width:12px;height:12px;border-radius:2px;background:#8b7cf8"></div>
-        <span>Mais</span>
+      <div style="background:var(--bg3);border-radius:10px;padding:14px;text-align:center;">
+        <div style="font-size:36px;font-weight:700;color:var(--purple)" id="streakRecorde">—</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;">🏆 Recorde de Streak</div>
+        <div style="font-size:10px;color:var(--muted);" id="streakRecordeData">dias seguidos</div>
       </div>
     </div>
-
-    <div class="card">
-      <div class="card-title">⚡ Sequências de Leitura</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
-        <div style="background:var(--bg3);border-radius:10px;padding:14px;text-align:center;">
-          <div style="font-size:36px;font-weight:700;color:var(--orange)" id="streakAtual">—</div>
-          <div style="font-size:11px;color:var(--muted);margin-top:4px;">🔥 Streak Atual</div>
-          <div style="font-size:10px;color:var(--muted);">dias consecutivos</div>
-        </div>
-        <div style="background:var(--bg3);border-radius:10px;padding:14px;text-align:center;">
-          <div style="font-size:36px;font-weight:700;color:var(--purple)" id="streakRecorde">—</div>
-          <div style="font-size:11px;color:var(--muted);margin-top:4px;">🏆 Recorde de Streak</div>
-          <div style="font-size:10px;color:var(--muted);" id="streakRecordeData">dias seguidos</div>
-        </div>
-      </div>
-      <div style="border-top:1px solid var(--border);padding-top:12px;">
-        <div style="font-size:11px;color:var(--muted);margin-bottom:8px;">Últimas sequências</div>
-        <div id="streakList" style="display:flex;flex-direction:column;gap:4px;"></div>
-      </div>
+    <div style="border-top:1px solid var(--border);padding-top:12px;">
+      <div style="font-size:11px;color:var(--muted);margin-bottom:8px;">Últimas sequências</div>
+      <div id="streakList" style="display:flex;flex-direction:column;gap:4px;"></div>
     </div>
-
   </div>
 
   <!-- ── Calendário Mensal ── -->
@@ -646,10 +621,30 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
       <button onclick="calNav(1)" style="background:var(--bg3);border:none;color:var(--text);width:32px;height:32px;border-radius:8px;cursor:pointer;font-size:16px;">›</button>
     </div>
     <div id="calGrid" style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;"></div>
-    <!-- Tooltip/popup para detalhes do dia -->
     <div id="calDetail" style="display:none;margin-top:14px;background:var(--bg3);border-radius:10px;padding:14px;">
       <div id="calDetailTitle" style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:10px;"></div>
       <div id="calDetailList"></div>
+    </div>
+  </div>
+
+  <!-- ── Mapa de Calor ── -->
+  <div class="sec">🔥 Mapa de Calor Anual</div>
+  <div class="card" style="margin-bottom:16px;">
+    <div class="ctrl" style="margin-bottom:10px;">
+      <label>Ano:</label>
+      <select id="selHeatYear" onchange="buildHeatmap()">
+        <option value="2025">2025</option>
+      </select>
+    </div>
+    <div id="heatmapGrid" style="overflow-x:auto;"></div>
+    <div style="display:flex;align-items:center;gap:6px;margin-top:8px;font-size:10px;color:var(--muted);">
+      <span>Menos</span>
+      <div style="width:12px;height:12px;border-radius:2px;background:#1a2035"></div>
+      <div style="width:12px;height:12px;border-radius:2px;background:#1a3a5c"></div>
+      <div style="width:12px;height:12px;border-radius:2px;background:#1e5f8e"></div>
+      <div style="width:12px;height:12px;border-radius:2px;background:#2980b9"></div>
+      <div style="width:12px;height:12px;border-radius:2px;background:#8b7cf8"></div>
+      <span>Mais</span>
     </div>
   </div>
 
