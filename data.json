@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-13T01:39:06.282Z",
+  "geradoEm": "2026-05-13T02:07:58.957Z",
   "metasPorAno": {
     "2024": {
       "total": 22,
@@ -16,13 +16,13 @@
       "dataPrevistoAtual": "Concluída!"
     },
     "2025": {
-      "total": 27,
-      "lidos": 26,
+      "total": 28,
+      "lidos": 27,
       "lendo": 0,
       "pausados": 0,
       "aguardando": 1,
-      "paginasTotal": 17896,
-      "paginasLidas": 17678,
+      "paginasTotal": 18820,
+      "paginasLidas": 18602,
       "paginasFaltando": 218,
       "faltando": 1,
       "mediaDiaria": 75.9,
@@ -8632,6 +8632,19 @@
       "pct": 1
     },
     {
+      "livro": "Chama de Ferro",
+      "autor": "Rebecca Yarros",
+      "isbn": "9788542227802",
+      "coverUrl": "https://m.media-amazon.com/images/I/91i+8KU2U5L.jpg",
+      "metaAno": "2025",
+      "depende": "",
+      "ordem": 28,
+      "status": "Completo",
+      "totalPag": 924,
+      "pagAtual": 924,
+      "pct": 1
+    },
+    {
       "livro": "A Esperança de Elantris",
       "autor": "Completo",
       "isbn": "9798200818761",
@@ -9863,834 +9876,886 @@
   "notas": [
     {
       "livro": "O nome do Vento",
-      "ano": 9,
-      "media": 8.72,
+      "ano": 2024,
+      "media": 8.75,
       "criterios": {
-        "Diálogos": 8,
-        "Enredo": 7,
-        "Estilo Visual": 8.5,
-        "Finalização": 10,
-        "Imersão": 8,
-        "Impacto Emocional": 10,
+        "Diálogos": 9,
+        "Enredo": 8,
+        "Estilo Visual": 7,
+        "Finalização": 8.5,
+        "Imersão": 10,
+        "Impacto Emocional": 8,
         "Originalidade": 10,
-        "Personagens": 8,
-        "Ritmo": 9
+        "Personagens": 10,
+        "Ritmo": 8,
+        "Temas": 9
       }
     },
     {
       "livro": "Nevernight",
-      "ano": 6,
-      "media": 7.78,
+      "ano": 2024,
+      "media": 7.6,
       "criterios": {
-        "Diálogos": 9,
-        "Enredo": 10,
-        "Estilo Visual": 7,
-        "Finalização": 8,
-        "Imersão": 5,
-        "Impacto Emocional": 9,
-        "Originalidade": 8,
-        "Personagens": 7,
-        "Ritmo": 7
+        "Diálogos": 6,
+        "Enredo": 9,
+        "Estilo Visual": 10,
+        "Finalização": 7,
+        "Imersão": 8,
+        "Impacto Emocional": 5,
+        "Originalidade": 9,
+        "Personagens": 8,
+        "Ritmo": 7,
+        "Temas": 7
       }
     },
     {
       "livro": "Quarta Asa",
-      "ano": 2,
-      "media": 5.94,
+      "ano": 2024,
+      "media": 5.55,
       "criterios": {
-        "Diálogos": 7,
-        "Enredo": 8,
-        "Estilo Visual": 9.5,
-        "Finalização": 4,
-        "Imersão": 2,
-        "Impacto Emocional": 9,
-        "Originalidade": 5,
+        "Diálogos": 2,
+        "Enredo": 7,
+        "Estilo Visual": 8,
+        "Finalização": 9.5,
+        "Imersão": 4,
+        "Impacto Emocional": 2,
+        "Originalidade": 9,
         "Personagens": 5,
-        "Ritmo": 4
+        "Ritmo": 5,
+        "Temas": 4
       }
     },
     {
       "livro": "Sol e Tormenta",
-      "ano": 5,
-      "media": 6.89,
+      "ano": 2024,
+      "media": 6.7,
       "criterios": {
-        "Diálogos": 8,
-        "Enredo": 9,
-        "Estilo Visual": 7,
+        "Diálogos": 5,
+        "Enredo": 8,
+        "Estilo Visual": 9,
         "Finalização": 7,
-        "Imersão": 5,
-        "Impacto Emocional": 7,
-        "Originalidade": 8,
-        "Personagens": 7,
-        "Ritmo": 4
+        "Imersão": 7,
+        "Impacto Emocional": 5,
+        "Originalidade": 7,
+        "Personagens": 8,
+        "Ritmo": 7,
+        "Temas": 4
       }
     },
     {
       "livro": "Sombra e Ossos",
-      "ano": 4,
-      "media": 6.78,
+      "ano": 2024,
+      "media": 6.5,
       "criterios": {
-        "Diálogos": 7,
+        "Diálogos": 4,
         "Enredo": 7,
-        "Estilo Visual": 8,
+        "Estilo Visual": 7,
         "Finalização": 8,
-        "Imersão": 4,
-        "Impacto Emocional": 7,
-        "Originalidade": 5,
-        "Personagens": 7,
-        "Ritmo": 8
+        "Imersão": 8,
+        "Impacto Emocional": 4,
+        "Originalidade": 7,
+        "Personagens": 5,
+        "Ritmo": 7,
+        "Temas": 8
       }
     },
     {
       "livro": "Herdeiros do Tempo",
-      "ano": 2,
-      "media": 4.11,
+      "ano": 2024,
+      "media": 3.9,
       "criterios": {
-        "Diálogos": 3,
-        "Enredo": 7,
+        "Diálogos": 2,
+        "Enredo": 3,
         "Estilo Visual": 7,
-        "Finalização": 2,
+        "Finalização": 7,
         "Imersão": 2,
-        "Impacto Emocional": 8,
-        "Originalidade": 3,
-        "Personagens": 4,
-        "Ritmo": 1
+        "Impacto Emocional": 2,
+        "Originalidade": 8,
+        "Personagens": 3,
+        "Ritmo": 4,
+        "Temas": 1
       }
     },
     {
       "livro": "Ruina e Ascensão",
-      "ano": 7,
-      "media": 6.89,
+      "ano": 2024,
+      "media": 6.9,
       "criterios": {
-        "Diálogos": 9,
-        "Enredo": 10,
-        "Estilo Visual": 7,
-        "Finalização": 6,
-        "Imersão": 4,
-        "Impacto Emocional": 5,
-        "Originalidade": 9,
-        "Personagens": 7,
-        "Ritmo": 5
+        "Diálogos": 7,
+        "Enredo": 9,
+        "Estilo Visual": 10,
+        "Finalização": 7,
+        "Imersão": 6,
+        "Impacto Emocional": 4,
+        "Originalidade": 5,
+        "Personagens": 9,
+        "Ritmo": 7,
+        "Temas": 5
       }
     },
     {
       "livro": "Six of Crows",
-      "ano": 8,
-      "media": 6.44,
+      "ano": 2024,
+      "media": 6.6,
       "criterios": {
-        "Diálogos": 9,
-        "Enredo": 7,
-        "Estilo Visual": 8,
-        "Finalização": 4,
+        "Diálogos": 8,
+        "Enredo": 9,
+        "Estilo Visual": 7,
+        "Finalização": 8,
         "Imersão": 4,
-        "Impacto Emocional": 8,
-        "Originalidade": 7,
-        "Personagens": 3,
-        "Ritmo": 8
+        "Impacto Emocional": 4,
+        "Originalidade": 8,
+        "Personagens": 7,
+        "Ritmo": 3,
+        "Temas": 8
       }
     },
     {
       "livro": "O Principe Cruel",
-      "ano": 2,
-      "media": 4.22,
+      "ano": 2024,
+      "media": 4,
       "criterios": {
-        "Diálogos": 4,
-        "Enredo": 2,
-        "Estilo Visual": 5,
-        "Finalização": 4,
-        "Imersão": 3,
-        "Impacto Emocional": 6,
-        "Originalidade": 2,
-        "Personagens": 6,
-        "Ritmo": 6
+        "Diálogos": 2,
+        "Enredo": 4,
+        "Estilo Visual": 2,
+        "Finalização": 5,
+        "Imersão": 4,
+        "Impacto Emocional": 3,
+        "Originalidade": 6,
+        "Personagens": 2,
+        "Ritmo": 6,
+        "Temas": 6
       }
     },
     {
       "livro": "A flecha de Fogo",
-      "ano": 9,
-      "media": 8.44,
+      "ano": 2024,
+      "media": 8.5,
       "criterios": {
         "Diálogos": 9,
-        "Enredo": 7,
-        "Estilo Visual": 9.5,
-        "Finalização": 9,
-        "Imersão": 8,
+        "Enredo": 9,
+        "Estilo Visual": 7,
+        "Finalização": 9.5,
+        "Imersão": 9,
         "Impacto Emocional": 8,
-        "Originalidade": 9.5,
-        "Personagens": 9,
-        "Ritmo": 7
+        "Originalidade": 8,
+        "Personagens": 9.5,
+        "Ritmo": 9,
+        "Temas": 7
       }
     },
     {
       "livro": "O Aprendiz de Assassino",
-      "ano": 7,
+      "ano": 2024,
       "media": 7,
       "criterios": {
-        "Diálogos": 9,
-        "Enredo": 8,
-        "Estilo Visual": 10,
-        "Finalização": 4,
-        "Imersão": 5,
-        "Impacto Emocional": 9,
-        "Originalidade": 6,
-        "Personagens": 4,
-        "Ritmo": 8
+        "Diálogos": 7,
+        "Enredo": 9,
+        "Estilo Visual": 8,
+        "Finalização": 10,
+        "Imersão": 4,
+        "Impacto Emocional": 5,
+        "Originalidade": 9,
+        "Personagens": 6,
+        "Ritmo": 4,
+        "Temas": 8
       }
     },
     {
       "livro": "Of Blood and Fire",
-      "ano": 6,
-      "media": 6.22,
+      "ano": 2024,
+      "media": 6.2,
       "criterios": {
-        "Diálogos": 7,
+        "Diálogos": 6,
         "Enredo": 7,
-        "Estilo Visual": 8,
-        "Finalização": 4,
+        "Estilo Visual": 7,
+        "Finalização": 8,
         "Imersão": 4,
         "Impacto Emocional": 4,
-        "Originalidade": 7,
-        "Personagens": 8,
-        "Ritmo": 7
+        "Originalidade": 4,
+        "Personagens": 7,
+        "Ritmo": 8,
+        "Temas": 7
       }
     },
     {
       "livro": "O Caminho dos Reis",
-      "ano": 9,
-      "media": 9.22,
+      "ano": 2024,
+      "media": 9.2,
       "criterios": {
         "Diálogos": 9,
-        "Enredo": 10,
-        "Estilo Visual": 9.5,
-        "Finalização": 9,
-        "Imersão": 8,
-        "Impacto Emocional": 9,
-        "Originalidade": 10,
-        "Personagens": 9.5,
-        "Ritmo": 9
+        "Enredo": 9,
+        "Estilo Visual": 10,
+        "Finalização": 9.5,
+        "Imersão": 9,
+        "Impacto Emocional": 8,
+        "Originalidade": 9,
+        "Personagens": 10,
+        "Ritmo": 9.5,
+        "Temas": 9
       }
     },
     {
       "livro": "Ascenção dos Nove",
-      "ano": 7,
-      "media": 7.61,
+      "ano": 2024,
+      "media": 7.55,
       "criterios": {
-        "Diálogos": 9,
+        "Diálogos": 7,
         "Enredo": 9,
-        "Estilo Visual": 7.5,
-        "Finalização": 8,
-        "Imersão": 6,
-        "Impacto Emocional": 7,
-        "Originalidade": 8,
-        "Personagens": 7,
-        "Ritmo": 7
+        "Estilo Visual": 9,
+        "Finalização": 7.5,
+        "Imersão": 8,
+        "Impacto Emocional": 6,
+        "Originalidade": 7,
+        "Personagens": 8,
+        "Ritmo": 7,
+        "Temas": 7
       }
     },
     {
       "livro": "Eu sou o Numero 4",
-      "ano": 4,
-      "media": 7,
+      "ano": 2024,
+      "media": 6.7,
       "criterios": {
-        "Diálogos": 9,
+        "Diálogos": 4,
         "Enredo": 9,
-        "Estilo Visual": 8,
+        "Estilo Visual": 9,
         "Finalização": 8,
-        "Imersão": 9,
-        "Impacto Emocional": 4,
+        "Imersão": 8,
+        "Impacto Emocional": 9,
         "Originalidade": 4,
-        "Personagens": 7,
-        "Ritmo": 5
+        "Personagens": 4,
+        "Ritmo": 7,
+        "Temas": 5
       }
     },
     {
       "livro": "O Poder dos Seis",
-      "ano": 6,
-      "media": 6.78,
+      "ano": 2024,
+      "media": 6.7,
       "criterios": {
-        "Diálogos": 7,
-        "Enredo": 9,
+        "Diálogos": 6,
+        "Enredo": 7,
         "Estilo Visual": 9,
-        "Finalização": 8,
-        "Imersão": 6,
-        "Impacto Emocional": 4,
-        "Originalidade": 6,
-        "Personagens": 7,
-        "Ritmo": 5
+        "Finalização": 9,
+        "Imersão": 8,
+        "Impacto Emocional": 6,
+        "Originalidade": 4,
+        "Personagens": 6,
+        "Ritmo": 7,
+        "Temas": 5
       }
     },
     {
       "livro": "Leruth",
-      "ano": 5,
-      "media": 5.22,
+      "ano": 2024,
+      "media": 5.2,
       "criterios": {
-        "Diálogos": 7,
-        "Enredo": 8,
-        "Estilo Visual": 6,
-        "Finalização": 4,
-        "Imersão": 2,
-        "Impacto Emocional": 5,
-        "Originalidade": 4,
-        "Personagens": 7,
-        "Ritmo": 4
+        "Diálogos": 5,
+        "Enredo": 7,
+        "Estilo Visual": 8,
+        "Finalização": 6,
+        "Imersão": 4,
+        "Impacto Emocional": 2,
+        "Originalidade": 5,
+        "Personagens": 4,
+        "Ritmo": 7,
+        "Temas": 4
       }
     },
     {
       "livro": "Palavras de Radiancia",
-      "ano": 8.5,
-      "media": 9.56,
+      "ano": 2025,
+      "media": 9.45,
       "criterios": {
-        "Diálogos": 10,
+        "Diálogos": 8.5,
         "Enredo": 10,
         "Estilo Visual": 10,
-        "Finalização": 9,
-        "Imersão": 8,
-        "Impacto Emocional": 10,
+        "Finalização": 10,
+        "Imersão": 9,
+        "Impacto Emocional": 8,
         "Originalidade": 10,
-        "Personagens": 9,
-        "Ritmo": 10
+        "Personagens": 10,
+        "Ritmo": 9,
+        "Temas": 10
       }
     },
     {
-      "livro": "Edgeshard",
-      "ano": 4,
-      "media": 6.33,
+      "livro": "Edgedancer",
+      "ano": 2025,
+      "media": 6.1,
       "criterios": {
-        "Diálogos": 7,
-        "Enredo": 5,
-        "Estilo Visual": 7,
-        "Finalização": 5,
+        "Diálogos": 4,
+        "Enredo": 7,
+        "Estilo Visual": 5,
+        "Finalização": 7,
         "Imersão": 5,
-        "Impacto Emocional": 8,
-        "Originalidade": 7,
-        "Personagens": 6,
-        "Ritmo": 7
+        "Impacto Emocional": 5,
+        "Originalidade": 8,
+        "Personagens": 7,
+        "Ritmo": 6,
+        "Temas": 7
       }
     },
     {
       "livro": "Cinco Laminas Partidas",
-      "ano": 6,
-      "media": 5.33,
+      "ano": 2025,
+      "media": 5.4,
       "criterios": {
-        "Diálogos": 5,
-        "Enredo": 8,
-        "Estilo Visual": 6,
-        "Finalização": 5,
-        "Imersão": 4,
+        "Diálogos": 6,
+        "Enredo": 5,
+        "Estilo Visual": 8,
+        "Finalização": 6,
+        "Imersão": 5,
         "Impacto Emocional": 4,
-        "Originalidade": 7,
-        "Personagens": 5,
-        "Ritmo": 4
+        "Originalidade": 4,
+        "Personagens": 7,
+        "Ritmo": 5,
+        "Temas": 4
       }
     },
     {
       "livro": "Elantris",
-      "ano": 6,
-      "media": 7.39,
+      "ano": 2025,
+      "media": 7.25,
       "criterios": {
-        "Diálogos": 7,
+        "Diálogos": 6,
         "Enredo": 7,
-        "Estilo Visual": 9,
-        "Finalização": 7,
+        "Estilo Visual": 7,
+        "Finalização": 9,
         "Imersão": 7,
-        "Impacto Emocional": 8,
-        "Originalidade": 7,
-        "Personagens": 6.5,
-        "Ritmo": 8
+        "Impacto Emocional": 7,
+        "Originalidade": 8,
+        "Personagens": 7,
+        "Ritmo": 6.5,
+        "Temas": 8
       }
     },
     {
       "livro": "A Esperança de Elantris",
-      "ano": 8,
-      "media": 6.78,
+      "ano": 2025,
+      "media": 6.9,
       "criterios": {
-        "Diálogos": 9,
-        "Enredo": 4,
-        "Estilo Visual": 7,
-        "Finalização": 6,
-        "Imersão": 9,
-        "Impacto Emocional": 7,
-        "Originalidade": 6,
+        "Diálogos": 8,
+        "Enredo": 9,
+        "Estilo Visual": 4,
+        "Finalização": 7,
+        "Imersão": 6,
+        "Impacto Emocional": 9,
+        "Originalidade": 7,
         "Personagens": 6,
-        "Ritmo": 7
+        "Ritmo": 6,
+        "Temas": 7
       }
     },
     {
       "livro": "Sacramentadora",
-      "ano": 9,
-      "media": 8.33,
+      "ano": 2025,
+      "media": 8.4,
       "criterios": {
-        "Diálogos": 8,
-        "Enredo": 9,
-        "Estilo Visual": 10,
-        "Finalização": 9.5,
-        "Imersão": 7,
-        "Impacto Emocional": 8,
-        "Originalidade": 8.5,
-        "Personagens": 8,
-        "Ritmo": 7
+        "Diálogos": 9,
+        "Enredo": 8,
+        "Estilo Visual": 9,
+        "Finalização": 10,
+        "Imersão": 9.5,
+        "Impacto Emocional": 7,
+        "Originalidade": 8,
+        "Personagens": 8.5,
+        "Ritmo": 8,
+        "Temas": 7
       }
     },
     {
       "livro": "Mistborn 1º Era Livro 3",
-      "ano": 8,
-      "media": 7.94,
+      "ano": 2025,
+      "media": 7.95,
       "criterios": {
-        "Diálogos": 7,
-        "Enredo": 9,
-        "Estilo Visual": 10,
-        "Finalização": 7,
-        "Imersão": 8.5,
-        "Impacto Emocional": 9,
-        "Originalidade": 8,
-        "Personagens": 7,
-        "Ritmo": 6
+        "Diálogos": 8,
+        "Enredo": 7,
+        "Estilo Visual": 9,
+        "Finalização": 10,
+        "Imersão": 7,
+        "Impacto Emocional": 8.5,
+        "Originalidade": 9,
+        "Personagens": 8,
+        "Ritmo": 7,
+        "Temas": 6
       }
     },
     {
       "livro": "Mistborn 1º Era Livro 2",
-      "ano": 4,
-      "media": 7.11,
+      "ano": 2025,
+      "media": 6.8,
       "criterios": {
-        "Diálogos": 5,
-        "Enredo": 7,
-        "Estilo Visual": 9,
-        "Finalização": 8,
-        "Imersão": 7,
-        "Impacto Emocional": 9,
-        "Originalidade": 6,
-        "Personagens": 7,
-        "Ritmo": 6
+        "Diálogos": 4,
+        "Enredo": 5,
+        "Estilo Visual": 7,
+        "Finalização": 9,
+        "Imersão": 8,
+        "Impacto Emocional": 7,
+        "Originalidade": 9,
+        "Personagens": 6,
+        "Ritmo": 7,
+        "Temas": 6
       }
     },
     {
       "livro": "Mistborn - Historia Screta",
-      "ano": 6,
-      "media": 6.44,
+      "ano": 2025,
+      "media": 6.4,
       "criterios": {
         "Diálogos": 6,
-        "Enredo": 7,
-        "Estilo Visual": 8,
-        "Finalização": 3,
+        "Enredo": 6,
+        "Estilo Visual": 7,
+        "Finalização": 8,
         "Imersão": 3,
-        "Impacto Emocional": 7,
+        "Impacto Emocional": 3,
         "Originalidade": 7,
-        "Personagens": 8,
-        "Ritmo": 9
+        "Personagens": 7,
+        "Ritmo": 8,
+        "Temas": 9
       }
     },
     {
       "livro": "Chama de Ferro",
-      "ano": 1,
-      "media": 5.67,
+      "ano": 2025,
+      "media": 5.2,
       "criterios": {
-        "Diálogos": 4,
-        "Enredo": 8,
+        "Diálogos": 1,
+        "Enredo": 4,
         "Estilo Visual": 8,
-        "Finalização": 5,
-        "Imersão": 3,
-        "Impacto Emocional": 6,
-        "Originalidade": 2,
-        "Personagens": 8,
-        "Ritmo": 7
+        "Finalização": 8,
+        "Imersão": 5,
+        "Impacto Emocional": 3,
+        "Originalidade": 6,
+        "Personagens": 2,
+        "Ritmo": 8,
+        "Temas": 7
       }
     },
     {
       "livro": "Godsgrave",
-      "ano": 7,
-      "media": 6.28,
+      "ano": 2025,
+      "media": 6.35,
       "criterios": {
-        "Diálogos": 8,
-        "Enredo": 9,
-        "Estilo Visual": 7.5,
-        "Finalização": 4,
-        "Imersão": 3,
-        "Impacto Emocional": 7,
+        "Diálogos": 7,
+        "Enredo": 8,
+        "Estilo Visual": 9,
+        "Finalização": 7.5,
+        "Imersão": 4,
+        "Impacto Emocional": 3,
         "Originalidade": 7,
-        "Personagens": 6,
-        "Ritmo": 5
+        "Personagens": 7,
+        "Ritmo": 6,
+        "Temas": 5
       }
     },
     {
       "livro": "Jardins da Lua - Imperio Malazano",
-      "ano": 1,
-      "media": 6.56,
+      "ano": 2025,
+      "media": 6,
       "criterios": {
-        "Diálogos": 9,
+        "Diálogos": 1,
         "Enredo": 9,
-        "Estilo Visual": 6,
-        "Finalização": 2,
-        "Imersão": 4,
-        "Impacto Emocional": 8,
-        "Originalidade": 9,
-        "Personagens": 3,
-        "Ritmo": 9
+        "Estilo Visual": 9,
+        "Finalização": 6,
+        "Imersão": 2,
+        "Impacto Emocional": 4,
+        "Originalidade": 8,
+        "Personagens": 9,
+        "Ritmo": 3,
+        "Temas": 9
       }
     },
     {
       "livro": "Meio Rei",
-      "ano": 8,
-      "media": 8.28,
+      "ano": 2025,
+      "media": 8.25,
       "criterios": {
-        "Diálogos": 9,
-        "Enredo": 9.5,
-        "Estilo Visual": 8.5,
-        "Finalização": 9,
-        "Imersão": 7,
-        "Impacto Emocional": 8,
+        "Diálogos": 8,
+        "Enredo": 9,
+        "Estilo Visual": 9.5,
+        "Finalização": 8.5,
+        "Imersão": 9,
+        "Impacto Emocional": 7,
         "Originalidade": 8,
-        "Personagens": 8.5,
-        "Ritmo": 7
+        "Personagens": 8,
+        "Ritmo": 8.5,
+        "Temas": 7
       }
     },
     {
       "livro": "Ordem Vermelha - Filhos da Degradação",
-      "ano": 7,
-      "media": 7,
-      "criterios": {
-        "Diálogos": 7,
-        "Enredo": 9,
-        "Estilo Visual": 7,
-        "Finalização": 7,
-        "Imersão": 4,
-        "Impacto Emocional": 8,
-        "Originalidade": 7,
-        "Personagens": 7,
-        "Ritmo": 7
-      }
-    },
-    {
-      "livro": "O Leão a Feiticeira e Guarda-Roupa",
-      "ano": 6,
-      "media": 6.44,
-      "criterios": {
-        "Diálogos": 7,
-        "Enredo": 6,
-        "Estilo Visual": 7,
-        "Finalização": 7,
-        "Imersão": 5,
-        "Impacto Emocional": 9,
-        "Originalidade": 6,
-        "Personagens": 7,
-        "Ritmo": 4
-      }
-    },
-    {
-      "livro": "O Inimigo do Mundo",
-      "ano": 5,
-      "media": 6,
-      "criterios": {
-        "Diálogos": 3,
-        "Enredo": 8,
-        "Estilo Visual": 5,
-        "Finalização": 7,
-        "Imersão": 7,
-        "Impacto Emocional": 9,
-        "Originalidade": 4,
-        "Personagens": 4,
-        "Ritmo": 7
-      }
-    },
-    {
-      "livro": "O Sobrinho do Mago",
-      "ano": 3,
-      "media": 6.11,
-      "criterios": {
-        "Diálogos": 4,
-        "Enredo": 4,
-        "Estilo Visual": 7,
-        "Finalização": 6,
-        "Imersão": 4,
-        "Impacto Emocional": 9,
-        "Originalidade": 7,
-        "Personagens": 9,
-        "Ritmo": 5
-      }
-    },
-    {
-      "livro": "Dawnshard",
-      "ano": 7,
-      "media": 7.89,
-      "criterios": {
-        "Diálogos": 8,
-        "Enredo": 8,
-        "Estilo Visual": 8.5,
-        "Finalização": 8,
-        "Imersão": 6,
-        "Impacto Emocional": 7.5,
-        "Originalidade": 8,
-        "Personagens": 8,
-        "Ritmo": 9
-      }
-    },
-    {
-      "livro": "Mistborn 2º Era Livro 1",
-      "ano": 8,
-      "media": 7.22,
-      "criterios": {
-        "Diálogos": 6,
-        "Enredo": 6,
-        "Estilo Visual": 8,
-        "Finalização": 8,
-        "Imersão": 7,
-        "Impacto Emocional": 7.5,
-        "Originalidade": 8,
-        "Personagens": 6.5,
-        "Ritmo": 8
-      }
-    },
-    {
-      "livro": "A Casa de Hades",
-      "ano": 6,
-      "media": 7.33,
-      "criterios": {
-        "Diálogos": 7,
-        "Enredo": 8.5,
-        "Estilo Visual": 9,
-        "Finalização": 7,
-        "Imersão": 8,
-        "Impacto Emocional": 5,
-        "Originalidade": 7,
-        "Personagens": 6.5,
-        "Ritmo": 8
-      }
-    },
-    {
-      "livro": "Tress A Garota do mar Esmeralda",
-      "ano": 7,
-      "media": 6.67,
-      "criterios": {
-        "Diálogos": 5,
-        "Enredo": 6,
-        "Estilo Visual": 7,
-        "Finalização": 7,
-        "Imersão": 5,
-        "Impacto Emocional": 7,
-        "Originalidade": 8,
-        "Personagens": 8,
-        "Ritmo": 7
-      }
-    },
-    {
-      "livro": "Harry Potter - A Pedra Filosofal",
-      "ano": 6,
-      "media": 6.67,
-      "criterios": {
-        "Diálogos": 8,
-        "Enredo": 6,
-        "Estilo Visual": 6,
-        "Finalização": 6,
-        "Imersão": 7.5,
-        "Impacto Emocional": 5.5,
-        "Originalidade": 7,
-        "Personagens": 7,
-        "Ritmo": 7
-      }
-    },
-    {
-      "livro": "Guerra da Papoula",
-      "ano": 6,
-      "media": 6.33,
-      "criterios": {
-        "Diálogos": 6,
-        "Enredo": 8,
-        "Estilo Visual": 7.5,
-        "Finalização": 5,
-        "Imersão": 3,
-        "Impacto Emocional": 5,
-        "Originalidade": 8,
-        "Personagens": 7.5,
-        "Ritmo": 7
-      }
-    },
-    {
-      "livro": "O Sangue do Olimpo",
-      "ano": 6,
-      "media": 6.17,
-      "criterios": {
-        "Diálogos": 7,
-        "Enredo": 8,
-        "Estilo Visual": 6,
-        "Finalização": 5.5,
-        "Imersão": 8,
-        "Impacto Emocional": 5,
-        "Originalidade": 5,
-        "Personagens": 4,
-        "Ritmo": 7
-      }
-    },
-    {
-      "livro": "O Temor do Sabio",
-      "ano": 9.5,
-      "media": 7.67,
-      "criterios": {
-        "Diálogos": 9,
-        "Enredo": 10,
-        "Estilo Visual": 10,
-        "Finalização": 9,
-        "Imersão": 4,
-        "Impacto Emocional": 7,
-        "Originalidade": 7,
-        "Personagens": 8,
-        "Ritmo": 5
-      }
-    },
-    {
-      "livro": "Ritmo de Guerra",
-      "ano": 10,
-      "media": 8.42,
-      "criterios": {
-        "Diálogos": 9.5,
-        "Enredo": 8.5,
-        "Estilo Visual": 10,
-        "Finalização": 8.5,
-        "Imersão": 7.8,
-        "Impacto Emocional": 8,
-        "Originalidade": 9,
-        "Personagens": 7.5,
-        "Ritmo": 7
-      }
-    },
-    {
-      "livro": "Ventos e Verdade",
-      "ano": 8,
-      "media": 8.44,
-      "criterios": {
-        "Diálogos": 9,
-        "Enredo": 10,
-        "Estilo Visual": 10,
-        "Finalização": 7,
-        "Imersão": 6,
-        "Impacto Emocional": 8.5,
-        "Originalidade": 10,
-        "Personagens": 8,
-        "Ritmo": 7.5
-      }
-    },
-    {
-      "livro": "Warbreaker",
-      "ano": 8,
-      "media": 7,
-      "criterios": {
-        "Diálogos": 9,
-        "Enredo": 8,
-        "Estilo Visual": 9,
-        "Finalização": 7,
-        "Imersão": 3,
-        "Impacto Emocional": 9,
-        "Originalidade": 7,
-        "Personagens": 5,
-        "Ritmo": 6
-      }
-    },
-    {
-      "livro": "Murtagh",
-      "ano": 7,
-      "media": 6.83,
-      "criterios": {
-        "Diálogos": 6,
-        "Enredo": 9,
-        "Estilo Visual": 8.5,
-        "Finalização": 6,
-        "Imersão": 6,
-        "Impacto Emocional": 7,
-        "Originalidade": 6,
-        "Personagens": 5,
-        "Ritmo": 8
-      }
-    },
-    {
-      "livro": "The Sword of Kaigen",
-      "ano": 3,
-      "media": 6.61,
-      "criterios": {
-        "Diálogos": 4,
-        "Enredo": 9,
-        "Estilo Visual": 6,
-        "Finalização": 6.5,
-        "Imersão": 8,
-        "Impacto Emocional": 6,
-        "Originalidade": 9,
-        "Personagens": 4,
-        "Ritmo": 7
-      }
-    },
-    {
-      "livro": "Yumi e o Pintor de Pesadelos",
-      "ano": 9,
-      "media": 8.67,
-      "criterios": {
-        "Diálogos": 8.5,
-        "Enredo": 9.5,
-        "Estilo Visual": 9.5,
-        "Finalização": 8,
-        "Imersão": 7,
-        "Impacto Emocional": 9,
-        "Originalidade": 9,
-        "Personagens": 9,
-        "Ritmo": 8.5
-      }
-    },
-    {
-      "livro": "Songs of Chaos - Ascendant",
-      "ano": 7,
-      "media": 8.5,
-      "criterios": {
-        "Diálogos": 9,
-        "Enredo": 10,
-        "Estilo Visual": 8,
-        "Finalização": 9,
-        "Imersão": 9,
-        "Impacto Emocional": 6,
-        "Originalidade": 9.5,
-        "Personagens": 8,
-        "Ritmo": 8
-      }
-    },
-    {
-      "livro": "Carl O Explorador de Masmorras",
-      "ano": 7,
-      "media": 7.33,
-      "criterios": {
-        "Diálogos": 9,
-        "Enredo": 6,
-        "Estilo Visual": 6,
-        "Finalização": 8,
-        "Imersão": 8,
-        "Impacto Emocional": 9,
-        "Originalidade": 7,
-        "Personagens": 7,
-        "Ritmo": 6
-      }
-    },
-    {
-      "livro": "The Echoes Saga - Rise of the Ranger",
-      "ano": 7,
-      "media": 8.56,
-      "criterios": {
-        "Diálogos": 9,
-        "Enredo": 9,
-        "Estilo Visual": 9.5,
-        "Finalização": 8,
-        "Imersão": 8.5,
-        "Impacto Emocional": 7,
-        "Originalidade": 9,
-        "Personagens": 8,
-        "Ritmo": 9
-      }
-    },
-    {
-      "livro": "o Feiticeiro de Terramar",
-      "ano": 5,
+      "ano": 2025,
       "media": 7,
       "criterios": {
         "Diálogos": 7,
         "Enredo": 7,
+        "Estilo Visual": 9,
+        "Finalização": 7,
+        "Imersão": 7,
+        "Impacto Emocional": 4,
+        "Originalidade": 8,
+        "Personagens": 7,
+        "Ritmo": 7,
+        "Temas": 7
+      }
+    },
+    {
+      "livro": "O Leão a Feiticeira e Guarda-Roupa",
+      "ano": 2025,
+      "media": 6.4,
+      "criterios": {
+        "Diálogos": 6,
+        "Enredo": 7,
         "Estilo Visual": 6,
         "Finalização": 7,
-        "Imersão": 5,
+        "Imersão": 7,
+        "Impacto Emocional": 5,
+        "Originalidade": 9,
+        "Personagens": 6,
+        "Ritmo": 7,
+        "Temas": 4
+      }
+    },
+    {
+      "livro": "O Inimigo do Mundo",
+      "ano": 2025,
+      "media": 5.9,
+      "criterios": {
+        "Diálogos": 5,
+        "Enredo": 3,
+        "Estilo Visual": 8,
+        "Finalização": 5,
+        "Imersão": 7,
+        "Impacto Emocional": 7,
+        "Originalidade": 9,
+        "Personagens": 4,
+        "Ritmo": 4,
+        "Temas": 7
+      }
+    },
+    {
+      "livro": "O Sobrinho do Mago",
+      "ano": 2025,
+      "media": 5.8,
+      "criterios": {
+        "Diálogos": 3,
+        "Enredo": 4,
+        "Estilo Visual": 4,
+        "Finalização": 7,
+        "Imersão": 6,
+        "Impacto Emocional": 4,
+        "Originalidade": 9,
+        "Personagens": 7,
+        "Ritmo": 9,
+        "Temas": 5
+      }
+    },
+    {
+      "livro": "Dawnshard",
+      "ano": 2025,
+      "media": 7.8,
+      "criterios": {
+        "Diálogos": 7,
+        "Enredo": 8,
+        "Estilo Visual": 8,
+        "Finalização": 8.5,
+        "Imersão": 8,
+        "Impacto Emocional": 6,
+        "Originalidade": 7.5,
+        "Personagens": 8,
+        "Ritmo": 8,
+        "Temas": 9
+      }
+    },
+    {
+      "livro": "Mistborn 2º Era Livro 1",
+      "ano": 2025,
+      "media": 7.3,
+      "criterios": {
+        "Diálogos": 8,
+        "Enredo": 6,
+        "Estilo Visual": 6,
+        "Finalização": 8,
+        "Imersão": 8,
+        "Impacto Emocional": 7,
+        "Originalidade": 7.5,
+        "Personagens": 8,
+        "Ritmo": 6.5,
+        "Temas": 8
+      }
+    },
+    {
+      "livro": "A Casa de Hades",
+      "ano": 2025,
+      "media": 7.2,
+      "criterios": {
+        "Diálogos": 6,
+        "Enredo": 7,
+        "Estilo Visual": 8.5,
+        "Finalização": 9,
+        "Imersão": 7,
         "Impacto Emocional": 8,
+        "Originalidade": 5,
+        "Personagens": 7,
+        "Ritmo": 6.5,
+        "Temas": 8
+      }
+    },
+    {
+      "livro": "Tress A Garota do mar Esmeralda",
+      "ano": 2025,
+      "media": 6.7,
+      "criterios": {
+        "Diálogos": 7,
+        "Enredo": 5,
+        "Estilo Visual": 6,
+        "Finalização": 7,
+        "Imersão": 7,
+        "Impacto Emocional": 5,
+        "Originalidade": 7,
+        "Personagens": 8,
+        "Ritmo": 8,
+        "Temas": 7
+      }
+    },
+    {
+      "livro": "Harry Potter - A Pedra Filosofal",
+      "ano": 2025,
+      "media": 6.6,
+      "criterios": {
+        "Diálogos": 6,
+        "Enredo": 8,
+        "Estilo Visual": 6,
+        "Finalização": 6,
+        "Imersão": 6,
+        "Impacto Emocional": 7.5,
+        "Originalidade": 5.5,
+        "Personagens": 7,
+        "Ritmo": 7,
+        "Temas": 7
+      }
+    },
+    {
+      "livro": "Guerra da Papoula",
+      "ano": 2025,
+      "media": 6.3,
+      "criterios": {
+        "Diálogos": 6,
+        "Enredo": 6,
+        "Estilo Visual": 8,
+        "Finalização": 7.5,
+        "Imersão": 5,
+        "Impacto Emocional": 3,
+        "Originalidade": 5,
+        "Personagens": 8,
+        "Ritmo": 7.5,
+        "Temas": 7
+      }
+    },
+    {
+      "livro": "O Sangue do Olimpo",
+      "ano": 2025,
+      "media": 6.15,
+      "criterios": {
+        "Diálogos": 6,
+        "Enredo": 7,
+        "Estilo Visual": 8,
+        "Finalização": 6,
+        "Imersão": 5.5,
+        "Impacto Emocional": 8,
+        "Originalidade": 5,
+        "Personagens": 5,
+        "Ritmo": 4,
+        "Temas": 7
+      }
+    },
+    {
+      "livro": "O Temor do Sabio",
+      "ano": 2025,
+      "media": 7.85,
+      "criterios": {
+        "Diálogos": 9.5,
+        "Enredo": 9,
+        "Estilo Visual": 10,
+        "Finalização": 10,
+        "Imersão": 9,
+        "Impacto Emocional": 4,
         "Originalidade": 7,
         "Personagens": 7,
-        "Ritmo": 9
+        "Ritmo": 8,
+        "Temas": 5
+      }
+    },
+    {
+      "livro": "Ritmo de Guerra",
+      "ano": 2025,
+      "media": 8.58,
+      "criterios": {
+        "Diálogos": 10,
+        "Enredo": 9.5,
+        "Estilo Visual": 8.5,
+        "Finalização": 10,
+        "Imersão": 8.5,
+        "Impacto Emocional": 7.8,
+        "Originalidade": 8,
+        "Personagens": 9,
+        "Ritmo": 7.5,
+        "Temas": 7
+      }
+    },
+    {
+      "livro": "Ventos e Verdade",
+      "ano": 2025,
+      "media": 8.4,
+      "criterios": {
+        "Diálogos": 8,
+        "Enredo": 9,
+        "Estilo Visual": 10,
+        "Finalização": 10,
+        "Imersão": 7,
+        "Impacto Emocional": 6,
+        "Originalidade": 8.5,
+        "Personagens": 10,
+        "Ritmo": 8,
+        "Temas": 7.5
+      }
+    },
+    {
+      "livro": "Warbreaker",
+      "ano": 2025,
+      "media": 7.1,
+      "criterios": {
+        "Diálogos": 8,
+        "Enredo": 9,
+        "Estilo Visual": 8,
+        "Finalização": 9,
+        "Imersão": 7,
+        "Impacto Emocional": 3,
+        "Originalidade": 9,
+        "Personagens": 7,
+        "Ritmo": 5,
+        "Temas": 6
+      }
+    },
+    {
+      "livro": "Murtagh",
+      "ano": 2026,
+      "media": 6.85,
+      "criterios": {
+        "Diálogos": 7,
+        "Enredo": 6,
+        "Estilo Visual": 9,
+        "Finalização": 8.5,
+        "Imersão": 6,
+        "Impacto Emocional": 6,
+        "Originalidade": 7,
+        "Personagens": 6,
+        "Ritmo": 5,
+        "Temas": 8
+      }
+    },
+    {
+      "livro": "The Sword of Kaigen",
+      "ano": 2026,
+      "media": 6.25,
+      "criterios": {
+        "Diálogos": 3,
+        "Enredo": 4,
+        "Estilo Visual": 9,
+        "Finalização": 6,
+        "Imersão": 6.5,
+        "Impacto Emocional": 8,
+        "Originalidade": 6,
+        "Personagens": 9,
+        "Ritmo": 4,
+        "Temas": 7
+      }
+    },
+    {
+      "livro": "Yumi e o Pintor de Pesadelos",
+      "ano": 2026,
+      "media": 8.7,
+      "criterios": {
+        "Diálogos": 9,
+        "Enredo": 8.5,
+        "Estilo Visual": 9.5,
+        "Finalização": 9.5,
+        "Imersão": 8,
+        "Impacto Emocional": 7,
+        "Originalidade": 9,
+        "Personagens": 9,
+        "Ritmo": 9,
+        "Temas": 8.5
+      }
+    },
+    {
+      "livro": "Songs of Chaos - Ascendant",
+      "ano": 2026,
+      "media": 8.35,
+      "criterios": {
+        "Diálogos": 7,
+        "Enredo": 9,
+        "Estilo Visual": 10,
+        "Finalização": 8,
+        "Imersão": 9,
+        "Impacto Emocional": 9,
+        "Originalidade": 6,
+        "Personagens": 9.5,
+        "Ritmo": 8,
+        "Temas": 8
+      }
+    },
+    {
+      "livro": "Carl O Explorador de Masmorras",
+      "ano": 2026,
+      "media": 7.3,
+      "criterios": {
+        "Diálogos": 7,
+        "Enredo": 9,
+        "Estilo Visual": 6,
+        "Finalização": 6,
+        "Imersão": 8,
+        "Impacto Emocional": 8,
+        "Originalidade": 9,
+        "Personagens": 7,
+        "Ritmo": 7,
+        "Temas": 6
+      }
+    },
+    {
+      "livro": "The Echoes Saga - Rise of the Ranger",
+      "ano": 2026,
+      "media": 8.4,
+      "criterios": {
+        "Diálogos": 7,
+        "Enredo": 9,
+        "Estilo Visual": 9,
+        "Finalização": 9.5,
+        "Imersão": 8,
+        "Impacto Emocional": 8.5,
+        "Originalidade": 7,
+        "Personagens": 9,
+        "Ritmo": 8,
+        "Temas": 9
+      }
+    },
+    {
+      "livro": "o Feiticeiro de Terramar",
+      "ano": 2026,
+      "media": 6.8,
+      "criterios": {
+        "Diálogos": 5,
+        "Enredo": 7,
+        "Estilo Visual": 7,
+        "Finalização": 6,
+        "Imersão": 7,
+        "Impacto Emocional": 5,
+        "Originalidade": 8,
+        "Personagens": 7,
+        "Ritmo": 7,
+        "Temas": 9
       }
     }
   ]
