@@ -62,8 +62,8 @@ header .badge {
 .kpi-book { display: flex; gap: 10px; align-items: flex-start; }
 .kpi-book img { width: 60px; height: 84px; object-fit: cover; border-radius: 4px; box-shadow: 2px 2px 8px rgba(0,0,0,.5); flex-shrink: 0; }
 .kpi-book .fallback { width: 44px; height: 62px; background: var(--bg4); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
-.cover-img { transition: transform 0.2s ease, box-shadow 0.2s ease; transform-origin: left center; image-rendering: high-quality; }
-.cover-img:hover { transform: scale(2); box-shadow: 0 8px 32px rgba(0,0,0,0.7); z-index: 100; position: relative; }
+.cover-img { transition: transform 0.2s ease, box-shadow 0.2s ease; transform-origin: left center; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; }
+.cover-img:hover { transform: scale(5); box-shadow: 0 8px 32px rgba(0,0,0,0.7); z-index: 999; position: relative; }
 .cal-day { border-radius:6px;padding:4px;min-height:64px;cursor:pointer;transition:background 0.15s;position:relative;background:var(--bg3); }
 .cal-day:hover { background:var(--bg4); }
 .cal-day.active { background:rgba(139,124,248,0.15);border:1px solid rgba(139,124,248,0.4); }
@@ -974,13 +974,10 @@ function inicializar(d) {
   const anosMetaDisp = Object.keys(metasPorAno).sort();
   const selMetaAno = document.getElementById('selMetaAno');
   selMetaAno.innerHTML = '';
-  // Adiciona ano atual se não existir
   const anosParaSel = anosMetaDisp.length ? anosMetaDisp : ['2026'];
   anosParaSel.forEach(a => {
     selMetaAno.innerHTML += `<option value="${a}" ${a==='2026'?'selected':''}>${a}</option>`;
   });
-  // Armazena dados globais para buildMeta
-  window._metaBase = d.meta || {};
   window._metasPorAno = metasPorAno;
   buildMeta();
 
@@ -2003,30 +2000,26 @@ window.calShowDetail = calShowDetail;
 
 function buildMeta() {
   const ano = document.getElementById('selMetaAno')?.value || '2026';
-  const base = window._metaBase || {};
-  const porAno = (window._metasPorAno || {})[ano] || {};
-  const isAnoAtual = ano === '2026';
+  const m = (window._metasPorAno || {})[ano] || {};
 
-  // Para o ano atual usa dados completos do meta base
-  const lidos     = isAnoAtual ? (base.lidos||0)          : (porAno.lidos||0);
-  const total     = base.total || 28;
-  const pagLidas  = isAnoAtual ? (base.paginasLidas||0)   : (porAno.paginas||0);
-  const pagTotal  = base.paginasTotal || 0;
-  const pagFalt   = isAnoAtual ? (base.paginasFaltando||0): Math.max(0, pagTotal - pagLidas);
-  const mediaDia  = base.mediaDiaria || 50;
-
-  const pctPag    = pagTotal > 0 ? pagLidas/pagTotal : (lidos/total);
+  const total      = m.total      || 0;
+  const lidos      = m.lidos      || 0;
+  const pagLidas   = m.paginasLidas   || 0;
+  const pagTotal   = m.paginasTotal   || 0;
+  const pagFalt    = m.paginasFaltando || 0;
+  const mediaDia   = m.mediaDiaria    || 0;
+  const pctPag     = pagTotal > 0 ? pagLidas / pagTotal : (total > 0 ? lidos / total : 0);
   const ringOffset = 314.16 * (1 - Math.min(pctPag, 1));
 
-  document.getElementById('metaCardTitle').textContent = `🎯 Meta ${ano} — ${total} Livros`;
+  document.getElementById('metaCardTitle').textContent   = `🎯 Meta ${ano} — ${total} Livros`;
   document.getElementById('meta-ring-circle').setAttribute('stroke-dashoffset', ringOffset.toFixed(1));
-  document.getElementById('meta-ring-pct').textContent  = (pctPag*100).toFixed(1).replace('.',',') + '%';
-  document.getElementById('meta-pag-lidas').textContent = pagLidas.toLocaleString('pt-BR');
-  document.getElementById('meta-pag-falt').textContent  = pagFalt.toLocaleString('pt-BR');
-  document.getElementById('meta-livros').textContent    = lidos + ' / ' + total;
-  document.getElementById('meta-pgdia').textContent     = isAnoAtual ? Math.ceil(pagFalt/mediaDia) : '—';
-  document.getElementById('meta-data-ini').textContent  = isAnoAtual ? (base.dataPrevistoInicial||'—') : '—';
-  document.getElementById('meta-data-atual').textContent= isAnoAtual ? (base.dataPrevistoAtual||'—')   : '—';
+  document.getElementById('meta-ring-pct').textContent   = (pctPag*100).toFixed(1).replace('.',',') + '%';
+  document.getElementById('meta-pag-lidas').textContent  = pagLidas.toLocaleString('pt-BR');
+  document.getElementById('meta-pag-falt').textContent   = pagFalt.toLocaleString('pt-BR');
+  document.getElementById('meta-livros').textContent     = lidos + ' / ' + total;
+  document.getElementById('meta-pgdia').textContent      = mediaDia > 0 && pagFalt > 0 ? Math.ceil(pagFalt / mediaDia) : '—';
+  document.getElementById('meta-data-ini').textContent   = '—';
+  document.getElementById('meta-data-atual').textContent = m.dataPrevistoAtual || '—';
 }
 window.buildMeta = buildMeta;
 
