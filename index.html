@@ -2143,12 +2143,8 @@ carregarDados();
     <h2>📖 Registrar Sessão</h2>
     <div class="pwa-field">
       <label>Livro</label>
-      <select id="s-livro"><option value="">Carregando...</option></select>
-    </div>
-    <div class="pwa-field">
-      <label>Coleção</label>
-      <input id="s-colecao" type="text" placeholder="Ex: Cosmere" list="lista-colecoes">
-      <datalist id="lista-colecoes"></datalist>
+      <input id="s-livro-busca" type="text" placeholder="Digite para buscar..." oninput="filtrarLivrosSessao(this.value)" autocomplete="off">
+      <select id="s-livro" size="4" style="margin-top:6px;height:auto;min-height:80px;" onchange="document.getElementById('s-livro-busca').value=this.options[this.selectedIndex]?.text?.replace(/^[📖⏸️📋] /,'')"></select>
     </div>
     <div class="pwa-field">
       <label>Data</label>
@@ -2218,6 +2214,10 @@ carregarDados();
     <div class="pwa-field">
       <label>Nome do Livro *</label>
       <input id="nl-nome" type="text" placeholder="Ex: O Caminho dos Reis">
+    </div>
+    <div class="pwa-field">
+      <label>Coleção</label>
+      <input id="nl-colecao" type="text" placeholder="Ex: Cosmere, Grishaverso...">
     </div>
     <div class="pwa-field">
       <label>Autor</label>
@@ -2291,7 +2291,7 @@ carregarDados();
 </div>
 
 <script>
-const API_URL = 'https://script.google.com/macros/s/AKfycbzuNZzuy8fzaql5xpecEG6yG2aXMdkkeDpPbkaTV_ro6f1TkixI37s8aJxO0lPqIYOM/exec';
+const API_URL = 'SUA_URL_DO_APPS_SCRIPT_AQUI';
 let fabOpen = false;
 let livrosCache = [];
 let colecoesCache = [];
@@ -2330,11 +2330,10 @@ document.querySelectorAll('.pwa-overlay').forEach(el => {
 async function carregarLivros() {
   if (livrosCache.length > 0) { popularSelects(); return; }
   try {
-    // Usa o data.json já disponível — sem problema de CORS
     const r = await fetch('/data.json');
     const d = await r.json();
     livrosCache = (d.livros || []).filter(l => l.livro && l.status !== 'STATUS');
-    // Coleta coleções únicas das sessões
+    // Inclui campo depende de cada livro
     const cols = new Set((d.sessoes||[]).map(s=>s.colecao).filter(Boolean));
     colecoesCache = [...cols].sort();
     popularSelects();
@@ -2344,20 +2343,68 @@ async function carregarLivros() {
 }
 
 function popularSelects() {
-  ['s-livro','n-livro','l-livro'].forEach(id => {
-    const sel = document.getElementById(id);
-    if (!sel) return;
-    sel.innerHTML = '<option value="">Selecione o livro...</option>';
+  // Sessão — todos exceto Concluídos (via filtro)
+  filtrarLivrosSessao('');
+
+  // Avaliação — apenas Concluídos
+  const selNota = document.getElementById('n-livro');
+  if (selNota) {
+    selNota.innerHTML = '<option value="">Selecione o livro...</option>';
+    livrosCache
+      .filter(l => l.status === 'Completo')
+      .forEach(l => {
+        selNota.innerHTML += `<option value="${l.livro}">✅ ${l.livro}</option>`;
+      });
+  }
+
+  // Atualizar — todos os livros
+  const selLivro = document.getElementById('l-livro');
+  if (selLivro) {
+    selLivro.innerHTML = '<option value="">Selecione o livro...</option>';
     livrosCache.forEach(l => {
-      sel.innerHTML += `<option value="${l.livro}">${l.livro}</option>`;
+      const icon = l.status==='Completo'?'✅':l.status==='Lendo'?'📖':l.status==='Pausado'?'⏸️':'📋';
+      selLivro.innerHTML += `<option value="${l.livro}">${icon} ${l.livro}</option>`;
     });
-  });
+  }
+
+  // Coleções datalist
   const dl = document.getElementById('lista-colecoes');
   if (dl) {
     dl.innerHTML = '';
     colecoesCache.forEach(c => { dl.innerHTML += `<option value="${c}">`; });
   }
 }
+
+function filtrarLivrosSessao(termo) {
+  const sel = document.getElementById('s-livro');
+  const livrosFiltrados = livrosCache
+    .filter(l => l.status !== 'Completo')
+    .filter(l => !termo || l.livro.toLowerCase().includes(termo.toLowerCase()));
+  sel.innerHTML = '<option value="">Selecione...</option>';
+  livrosFiltrados.forEach(l => {
+    const icon = l.status==='Lendo'?'📖':l.status==='Pausado'?'⏸️':'📋';
+    sel.innerHTML += `<option value="${l.livro}">${icon} ${l.livro}</option>`;
+  });
+  // Auto-seleciona se só tiver um resultado
+  if (livrosFiltrados.length === 1) sel.value = livrosFiltrados[0].livro;
+}
+document.addEventListener('change', e => {
+  if (e.target.id !== 's-livro') return;
+  const livro = e.target.value;
+  if (!livro) return;
+  const livroData = livrosCache.find(l => l.livro === livro);
+  const depende = livroData?.depende;
+  if (!depende) return;
+  const dependeData = livrosCache.find(l => l.livro === depende);
+  if (dependeData && dependeData.status !== 'Completo') {
+    mostrarMsg('s-msg', `⚠️ Atenção: este livro depende de "${depende}" que ainda não foi concluído.`, 'err');
+  } else {
+    const el = document.getElementById('s-msg');
+    if (el && el.textContent.includes('depende')) {
+      el.className = 'pwa-msg'; el.textContent = '';
+    }
+  }
+});
 
 // Calcula média ao digitar notas
 document.addEventListener('input', e => {
@@ -2384,7 +2431,6 @@ async function enviarSessao() {
       body: JSON.stringify({
         acao: 'registrarSessao',
         livro,
-        colecao:  document.getElementById('s-colecao').value,
         data:     document.getElementById('s-data').value,
         paginas:  Number(paginas),
         horas:    Number(document.getElementById('s-horas').value) || 0,
