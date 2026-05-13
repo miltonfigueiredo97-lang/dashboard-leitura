@@ -1828,14 +1828,14 @@ function buildHeatmap() {
   }
 
   const nWeeks = weeks.length;
-  const CELL = 13; // px por célula
-  const GAP  = 2;
-  const LEFT  = 20; // espaço para labels dos dias
-  const TOP   = 18; // espaço para labels dos meses
+  const CELL = 16; // px por célula — maior para melhor visual
+  const GAP  = 3;
+  const LEFT  = 22;
+  const TOP   = 20;
   const W = LEFT + nWeeks * (CELL + GAP);
-  const H = TOP  + 7    * (CELL + GAP);
+  const H = TOP  + 7 * (CELL + GAP);
 
-  let svg = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" style="display:block">`;
+  let svg = `<svg width="100%" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" style="display:block;height:${H}px">`;
 
   // Labels dos dias da semana
   ['D','S','T','Q','Q','S','S'].forEach((l, i) => {
