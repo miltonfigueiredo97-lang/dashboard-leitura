@@ -2274,21 +2274,51 @@ carregarDados();
     <h2>✏️ Atualizar Livro</h2>
     <div class="pwa-field">
       <label>Livro</label>
-      <select id="l-livro"><option value="">Carregando...</option></select>
+      <select id="l-livro" onchange="preencherDadosLivro(this.value)"><option value="">Selecione...</option></select>
     </div>
     <div class="pwa-field">
       <label>Status</label>
       <select id="l-status">
         <option value="">Manter atual</option>
-        <option value="Lendo">📖 Lendo</option>
-        <option value="Completo">✅ Completo</option>
-        <option value="Pausado">⏸️ Pausado</option>
         <option value="Aguardando">📋 Aguardando</option>
+        <option value="Lendo">📖 Lendo</option>
+        <option value="Pausado">⏸️ Pausado</option>
+        <option value="Completo">✅ Completo</option>
       </select>
     </div>
     <div class="pwa-field">
       <label>Página atual</label>
       <input id="l-pagina" type="number" min="0" placeholder="Deixe vazio para não alterar">
+    </div>
+    <div class="pwa-field">
+      <label>Autor</label>
+      <input id="l-autor" type="text" placeholder="Deixe vazio para não alterar">
+    </div>
+    <div class="pwa-row">
+      <div class="pwa-field">
+        <label>Total de Páginas</label>
+        <input id="l-paginas" type="number" min="1" placeholder="—">
+      </div>
+      <div class="pwa-field">
+        <label>Ano da Meta</label>
+        <input id="l-metaano" type="number" min="2023" max="2030" placeholder="—">
+      </div>
+      <div class="pwa-field">
+        <label>Ordem</label>
+        <input id="l-ordem" type="number" min="1" placeholder="—">
+      </div>
+    </div>
+    <div class="pwa-field">
+      <label>Dependência (livro anterior)</label>
+      <input id="l-depende" type="text" placeholder="Deixe vazio para não alterar">
+    </div>
+    <div class="pwa-field">
+      <label>URL da Capa</label>
+      <input id="l-capa" type="url" placeholder="Deixe vazio para não alterar">
+    </div>
+    <div class="pwa-field">
+      <label>ISBN</label>
+      <input id="l-isbn" type="text" placeholder="Deixe vazio para não alterar">
     </div>
     <div class="pwa-msg" id="l-msg"></div>
     <button class="pwa-btn" id="l-btn" onclick="enviarLivro()">✅ Atualizar</button>
@@ -2297,7 +2327,7 @@ carregarDados();
 </div>
 
 <script>
-const API_URL = 'https://script.google.com/macros/s/AKfycbzuNZzuy8fzaql5xpecEG6yG2aXMdkkeDpPbkaTV_ro6f1TkixI37s8aJxO0lPqIYOM/exec';
+const API_URL = 'SUA_URL_DO_APPS_SCRIPT_AQUI';
 let fabOpen = false;
 let livrosCache = [];
 let colecoesCache = [];
@@ -2535,34 +2565,64 @@ async function enviarNota() {
   btn.textContent = '✅ Salvar Avaliação';
 }
 
+function preencherDadosLivro(nome) {
+  if (!nome) return;
+  const l = livrosCache.find(x => x.livro === nome);
+  if (!l) return;
+  // Preenche campos com dados atuais
+  const statusEl = document.getElementById('l-status');
+  for (let i = 0; i < statusEl.options.length; i++) {
+    if (statusEl.options[i].value === l.status) { statusEl.selectedIndex = i; break; }
+  }
+  document.getElementById('l-pagina').value  = l.pagAtual || '';
+  document.getElementById('l-autor').value   = l.autor    || '';
+  document.getElementById('l-paginas').value = l.totalPag || '';
+  document.getElementById('l-metaano').value = l.metaAno  || '';
+  document.getElementById('l-ordem').value   = l.ordem    || '';
+  document.getElementById('l-depende').value = l.depende  || '';
+  document.getElementById('l-capa').value    = l.coverUrl || '';
+  document.getElementById('l-isbn').value    = l.isbn     || '';
+}
+
 async function enviarLivro() {
   const btn = document.getElementById('l-btn');
   const livro = document.getElementById('l-livro').value;
   if (!livro) { mostrarMsg('l-msg', 'Selecione o livro!', 'err'); return; }
 
   const body = { acao: 'atualizarLivro', livro };
-  const status = document.getElementById('l-status').value;
-  const pagina = document.getElementById('l-pagina').value;
-  if (status) body.status = status;
-  if (pagina) body.pagAtual = Number(pagina);
-  if (!status && !pagina) { mostrarMsg('l-msg', 'Altere pelo menos um campo!', 'err'); return; }
+  const status  = document.getElementById('l-status').value;
+  const pagina  = document.getElementById('l-pagina').value;
+  const autor   = document.getElementById('l-autor').value.trim();
+  const paginas = document.getElementById('l-paginas').value;
+  const metaAno = document.getElementById('l-metaano').value;
+  const ordem   = document.getElementById('l-ordem').value;
+  const depende = document.getElementById('l-depende').value.trim();
+  const capa    = document.getElementById('l-capa').value.trim();
+  const isbn    = document.getElementById('l-isbn').value.trim();
 
-  btn.disabled = true;
-  btn.textContent = 'Atualizando...';
+  if (status)  body.status  = status;
+  if (pagina)  body.pagAtual = Number(pagina);
+  if (autor)   body.autor   = autor;
+  if (paginas) body.paginas = Number(paginas);
+  if (metaAno) body.metaAno = metaAno;
+  if (ordem)   body.ordem   = Number(ordem);
+  if (depende) body.depende = depende;
+  if (capa)    body.capa    = capa;
+  if (isbn)    body.isbn    = isbn;
+
+  btn.disabled = true; btn.textContent = 'Atualizando...';
   try {
     const r = await fetch(API_URL, { method: 'POST', body: JSON.stringify(body) });
     const d = await r.json();
     if (d.ok) {
       mostrarMsg('l-msg', '✅ ' + d.msg, 'ok');
+      livrosCache = [];
       setTimeout(() => fecharModal('livro'), 2000);
     } else {
-      mostrarMsg('l-msg', '❌ ' + d.erro, 'err');
+      mostrarMsg('l-msg', '❌ ' + (d.erro || 'Erro desconhecido'), 'err');
     }
-  } catch(e) {
-    mostrarMsg('l-msg', '❌ Erro de conexão', 'err');
-  }
-  btn.disabled = false;
-  btn.textContent = '✅ Atualizar';
+  } catch(e) { mostrarMsg('l-msg', '❌ Erro de conexão', 'err'); }
+  btn.disabled = false; btn.textContent = '✅ Atualizar';
 }
 
 function mostrarMsg(id, texto, tipo) {
@@ -2597,8 +2657,15 @@ async function enviarNovoLivro() {
     const d = await r.json();
     if (d.ok) {
       mostrarMsg('nl-msg', '✅ ' + d.msg, 'ok');
-      livrosCache = []; // força reload
-      setTimeout(() => fecharModal('novoLivro'), 2000);
+      livrosCache = []; // força reload na próxima abertura
+      setTimeout(() => {
+        fecharModal('novoLivro');
+        // Limpa campos
+        ['nl-nome','nl-colecao','nl-autor','nl-paginas','nl-metaano','nl-ordem','nl-depende','nl-capa','nl-isbn'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.value = '';
+        });
+      }, 2000);
     } else {
       mostrarMsg('nl-msg', '❌ ' + d.erro, 'err');
     }
