@@ -2633,17 +2633,6 @@ async function confirmarExcluir() {
 
 const API_URL = 'https://script.google.com/macros/s/AKfycbzuNZzuy8fzaql5xpecEG6yG2aXMdkkeDpPbkaTV_ro6f1TkixI37s8aJxO0lPqIYOM/exec';
 let fabOpen = false;
-
-// Escuta evento de dados carregados do script 1
-window.addEventListener('dadosCarregados', () => {
-  try { buildRanking(); } catch(e){ console.error('buildRanking:', e.message); }
-  try { buildDonuts(); } catch(e){ console.error('buildDonuts:', e.message); }
-  try { buildWd(); } catch(e){ console.error('buildWd:', e.message); }
-  try { buildLivrosMes(); } catch(e){ console.error('buildLivrosMes:', e.message); }
-  try { buildStreaks(); } catch(e){ console.error('buildStreaks:', e.message); }
-  try { buildHeatmap(); } catch(e){ console.error('buildHeatmap:', e.message); }
-  try { buildCalendar(); } catch(e){ console.error('buildCalendar:', e.message); }
-});
 let livrosCache = [];
 let colecoesCache = [];
 
