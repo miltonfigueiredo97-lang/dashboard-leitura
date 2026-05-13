@@ -663,71 +663,70 @@ function isValidCover(img) {
   return img.naturalWidth > 10 && img.naturalHeight > 10;
 }
 
-// Cria imagem com fallback: OL(L) → OL(M) → emoji
-function coverImg(isbn, fallback='📖', cls='') {
-  if (!isbn) return `<span style="font-size:32px">${fallback}</span>`;
+function proxyUrl(url) {
+  if (!url) return '';
+  if (url.includes('openlibrary.org') || url.includes('wsrv.nl') || url.includes('weserv.nl') || url.includes('books.google')) return url;
+  return `https://wsrv.nl/?url=${encodeURIComponent(url)}&default=404`;
+}
 
+function coverImg(isbn, fallback='📖', cls='', customUrl='') {
   const uid = 'cv_' + Math.random().toString(36).slice(2,8);
-  const olL = `https://covers.openlibrary.org/b/isbn/${isbn}-L.jpg`;
-  const olM = `https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg`;
+  // Cascata de fontes para tentar
+  const sources = [];
+  if (customUrl) {
+    sources.push(customUrl);                          // URL direta
+    sources.push(proxyUrl(customUrl));                // URL via proxy
+  }
+  if (isbn) {
+    sources.push(`https://covers.openlibrary.org/b/isbn/${isbn}-L.jpg`);
+    sources.push(`https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg`);
+  }
 
-  const html = `<img id="${uid}" src="${olL}" class="cover-img ${cls}"
-    style="width:60px;height:84px;object-fit:cover;border-radius:4px;flex-shrink:0"
-    alt="capa">
+  const html = `<img id="${uid}" src="" class="cover-img ${cls}"
+    style="width:60px;height:84px;object-fit:cover;border-radius:4px;flex-shrink:0" alt="capa">
   <span id="${uid}_fb" style="font-size:32px;display:none">${fallback}</span>`;
 
   setTimeout(() => {
     const el = document.getElementById(uid);
     const fb = document.getElementById(uid+'_fb');
-    if (!el) return;
-    el.onload = () => {
-      if (!isValidCover(el)) {
-        if (el.src.includes('-L.')) {
-          el.src = olM;
-        } else {
-          el.style.display = 'none';
-          if (fb) fb.style.display = 'block';
-        }
-      }
-    };
-    el.onerror = () => {
-      if (el.src.includes('-L.')) {
-        el.src = olM;
-      } else {
-        el.style.display = 'none';
-        if (fb) fb.style.display = 'block';
-      }
-    };
+    if (!el || !sources.length) { if(fb) fb.style.display='block'; return; }
+    let idx = 0;
+    function tryNext() {
+      if (idx >= sources.length) { el.style.display='none'; if(fb) fb.style.display='block'; return; }
+      el.src = sources[idx++];
+      el.onload = () => { if (!isValidCover(el)) tryNext(); };
+      el.onerror = tryNext;
+    }
+    tryNext();
   }, 10);
-
   return html;
 }
 
-// Miniatura para ranking
-function coverThumb(isbn) {
-  if (!isbn) return '';
+function coverThumb(isbn, customUrl='') {
   const uid = 'th_' + Math.random().toString(36).slice(2,8);
-  const olM = `https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg`;
-  const olS = `https://covers.openlibrary.org/b/isbn/${isbn}-S.jpg`;
+  const sources = [];
+  if (customUrl) { sources.push(customUrl); sources.push(proxyUrl(customUrl)); }
+  if (isbn) sources.push(`https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg`);
+  if (!sources.length) return '';
 
-  const html = `<img id="${uid}" src="${olM}" class="cover-img"
-    style="width:28px;height:40px;object-fit:cover;border-radius:3px;flex-shrink:0"
-    alt="">`;
+  const html = `<img id="${uid}" src="" class="cover-img"
+    style="width:28px;height:40px;object-fit:cover;border-radius:3px;flex-shrink:0" alt="">`;
 
   setTimeout(() => {
     const el = document.getElementById(uid);
     if (!el) return;
-    el.onload = () => { if (!isValidCover(el)) el.style.display = 'none'; };
-    el.onerror = () => {
-      if (el.src.includes('-M.')) {
-        el.src = olS;
-        el.onerror = () => el.style.display = 'none';
-      } else { el.style.display = 'none'; }
-    };
+    let idx = 0;
+    function tryNext() {
+      if (idx >= sources.length) { el.style.display='none'; return; }
+      el.src = sources[idx++];
+      el.onload = () => { if (!isValidCover(el)) tryNext(); };
+      el.onerror = tryNext;
+    }
+    tryNext();
   }, 10);
-
   return html;
 }
+
 
 const AUTOR_MAP = {
   'Palavras de Radiancia':'Brandon Sanderson','Ritmo de Guerra':'Brandon Sanderson',
