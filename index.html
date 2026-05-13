@@ -660,22 +660,24 @@ function coverUrl(isbn, size='M') {
 
 // Verifica se imagem é válida (OL retorna 1x1 para ISBNs sem capa)
 function isValidCover(img) {
-  return img.naturalWidth > 10 && img.naturalHeight > 10;
+  // Se ainda está carregando, considera válida
+  if (!img.complete) return true;
+  // Imagem de 1x1 do Open Library = sem capa
+  return img.naturalWidth > 5 && img.naturalHeight > 5;
 }
 
 function proxyUrl(url) {
   if (!url) return '';
   if (url.includes('openlibrary.org') || url.includes('wsrv.nl') || url.includes('weserv.nl') || url.includes('books.google')) return url;
-  return `https://wsrv.nl/?url=${encodeURIComponent(url)}&default=404`;
+  return `https://wsrv.nl/?url=${encodeURIComponent(url)}`;
 }
 
 function coverImg(isbn, fallback='📖', cls='', customUrl='') {
   const uid = 'cv_' + Math.random().toString(36).slice(2,8);
-  // Cascata de fontes para tentar
   const sources = [];
   if (customUrl) {
-    sources.push(customUrl);                          // URL direta
-    sources.push(proxyUrl(customUrl));                // URL via proxy
+    sources.push(proxyUrl(customUrl)); // proxy primeiro para Amazon
+    if (proxyUrl(customUrl) !== customUrl) sources.push(customUrl); // depois direto
   }
   if (isbn) {
     sources.push(`https://covers.openlibrary.org/b/isbn/${isbn}-L.jpg`);
@@ -692,10 +694,20 @@ function coverImg(isbn, fallback='📖', cls='', customUrl='') {
     if (!el || !sources.length) { if(fb) fb.style.display='block'; return; }
     let idx = 0;
     function tryNext() {
-      if (idx >= sources.length) { el.style.display='none'; if(fb) fb.style.display='block'; return; }
-      el.src = sources[idx++];
-      el.onload = () => { if (!isValidCover(el)) tryNext(); };
+      if (idx >= sources.length) {
+        el.style.display='none';
+        if(fb) fb.style.display='block';
+        return;
+      }
+      const src = sources[idx++];
       el.onerror = tryNext;
+      el.onload = () => {
+        // Aguarda um tick para naturalWidth estar disponível
+        requestAnimationFrame(() => {
+          if (el.naturalWidth < 5 && el.naturalHeight < 5) tryNext();
+        });
+      };
+      el.src = src;
     }
     tryNext();
   }, 10);
@@ -705,7 +717,10 @@ function coverImg(isbn, fallback='📖', cls='', customUrl='') {
 function coverThumb(isbn, customUrl='') {
   const uid = 'th_' + Math.random().toString(36).slice(2,8);
   const sources = [];
-  if (customUrl) { sources.push(customUrl); sources.push(proxyUrl(customUrl)); }
+  if (customUrl) {
+    sources.push(proxyUrl(customUrl));
+    if (proxyUrl(customUrl) !== customUrl) sources.push(customUrl);
+  }
   if (isbn) sources.push(`https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg`);
   if (!sources.length) return '';
 
@@ -718,9 +733,14 @@ function coverThumb(isbn, customUrl='') {
     let idx = 0;
     function tryNext() {
       if (idx >= sources.length) { el.style.display='none'; return; }
-      el.src = sources[idx++];
-      el.onload = () => { if (!isValidCover(el)) tryNext(); };
+      const src = sources[idx++];
       el.onerror = tryNext;
+      el.onload = () => {
+        requestAnimationFrame(() => {
+          if (el.naturalWidth < 5 && el.naturalHeight < 5) tryNext();
+        });
+      };
+      el.src = src;
     }
     tryNext();
   }, 10);
