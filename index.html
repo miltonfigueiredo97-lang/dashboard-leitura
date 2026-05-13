@@ -48,7 +48,7 @@ header .badge {
 .kpi {
   background: var(--bg2); border: 1px solid var(--border);
   border-radius: 14px; padding: 18px;
-  position: relative; overflow: hidden;
+  position: relative; overflow: visible;
   transition: transform .15s;
 }
 .kpi:hover { transform: translateY(-2px); }
@@ -1733,9 +1733,8 @@ function buildStreaks() {
     let livrosHtml = Object.entries(livrosSeq).map(([livro, v]) => {
       const ld = (window._livros||[]).find(l=>l.livro===livro);
       const isbn = ld?.isbn || '';
-      const capa = isbn ? `<img src="https://covers.openlibrary.org/b/isbn/${isbn}-S.jpg"
-        style="width:24px;height:34px;object-fit:cover;border-radius:3px;flex-shrink:0"
-        onerror="this.style.display='none'" alt="">` : '';
+      const customUrl = ld?.coverUrl || '';
+      const capa = coverThumb(isbn, customUrl);
       return `<div style="display:flex;align-items:center;gap:6px;padding:4px 0;border-top:1px solid var(--border)">
         ${capa}
         <div style="flex:1;min-width:0">
@@ -1792,14 +1791,14 @@ function buildHeatmap() {
     return '#8b7cf8';
   }
 
-  // Gera semanas do ano — layout em grid preenchendo a largura
-  const start = new Date(yr, 0, 1);
+  // Gera semanas do ano — layout em grid CSS
   const meses = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+  const diasSemana = ['D','S','T','Q','Q','S','S'];
 
-  // Coleta todos os dias do ano organizados por semana
   let d = new Date(yr, 0, 1);
-  d.setDate(d.getDate() - d.getDay()); // começa no domingo anterior
+  d.setDate(d.getDate() - d.getDay()); // começa no domingo
 
+  // Coleta todas as semanas
   const weeks = [];
   while (true) {
     const week = [];
@@ -1811,39 +1810,39 @@ function buildHeatmap() {
     if (d.getFullYear() > yr) break;
   }
 
-  // Labels dos meses (coluna da semana onde cada mês começa)
-  let monthLabels = new Array(weeks.length).fill('');
+  // Label do mês: aparece na semana onde o 1º dia do mês cai
+  const monthLabel = new Array(weeks.length).fill('');
   weeks.forEach((week, wi) => {
     week.forEach(day => {
-      if (day.getFullYear() === yr && day.getDate() <= 7 && day.getDay() === 0) {
-        monthLabels[wi] = meses[day.getMonth()];
+      if (day.getFullYear() === yr && day.getDate() === 1) {
+        monthLabel[wi] = meses[day.getMonth()];
       }
     });
   });
 
-  // HTML: linha de labels dos meses + grid de células
-  let html = `<div style="display:flex;gap:3px;width:100%;box-sizing:border-box;">`;
+  // Monta HTML: labels dos dias + colunas de semana
+  let html = `<div style="display:flex;gap:2px;width:100%;">`;
 
-  // Labels dos dias da semana
-  html += `<div style="display:flex;flex-direction:column;gap:3px;margin-right:2px;padding-top:18px;">`;
-  ['D','S','T','Q','Q','S','S'].forEach((l,i) => {
-    html += `<div style="width:14px;height:16px;font-size:9px;color:var(--muted);line-height:16px;text-align:center;flex-shrink:0">${i%2===1?l:''}</div>`;
+  // Coluna de labels dos dias da semana
+  html += `<div style="display:flex;flex-direction:column;gap:2px;padding-top:18px;margin-right:2px;flex-shrink:0;">`;
+  diasSemana.forEach((l, i) => {
+    html += `<div style="height:13px;font-size:9px;color:var(--muted);line-height:13px;text-align:right;padding-right:2px;">${i%2===1?l:''}</div>`;
   });
   html += `</div>`;
 
   // Semanas
   weeks.forEach((week, wi) => {
-    html += `<div style="display:flex;flex-direction:column;gap:3px;flex:1;">`;
-    // Label do mês
-    html += `<div style="height:14px;font-size:9px;color:var(--muted);line-height:14px;white-space:nowrap;overflow:hidden">${monthLabels[wi]}</div>`;
-    // Células
+    html += `<div style="display:flex;flex-direction:column;gap:2px;flex:1;">`;
+    // Label do mês no topo
+    html += `<div style="height:14px;font-size:9px;color:var(--muted);line-height:14px;text-align:center;overflow:hidden;white-space:nowrap;">${monthLabel[wi]}</div>`;
+    // 7 células
     week.forEach(day => {
       const dateStr = day.toISOString().slice(0,10);
       const isThisYear = day.getFullYear() === yr;
-      const pags = dayMap[dateStr] || 0;
+      const pags = isThisYear ? (dayMap[dateStr] || 0) : 0;
       const color = isThisYear ? getColor(pags) : 'transparent';
-      const title = isThisYear && pags ? `${fmtDate(dateStr)}: ${pags} págs` : isThisYear ? fmtDate(dateStr) : '';
-      html += `<div class="heat-cell" style="background:${color};width:100%;height:16px;" title="${title}"></div>`;
+      const title = isThisYear ? (pags ? `${fmtDate(dateStr)}: ${pags} págs` : fmtDate(dateStr)) : '';
+      html += `<div class="heat-cell" style="background:${color};width:100%;height:13px;" title="${title}"></div>`;
     });
     html += `</div>`;
   });
@@ -1969,12 +1968,13 @@ function calShowDetail(dateStr) {
   Object.entries(byBook).forEach(([livro, v]) => {
     const livroData = (window._livros||[]).find(l=>l.livro===livro);
     const isbn = livroData?.isbn || '';
-    const capa = isbn ? `<img src="https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg"
-      style="width:48px;height:68px;object-fit:cover;border-radius:6px;flex-shrink:0;box-shadow:2px 2px 8px rgba(0,0,0,0.4)"
-      onerror="this.style.display='none'" alt="">` : '<div style="width:48px;height:68px;background:var(--bg3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">📖</div>';
+    const customUrl = livroData?.coverUrl || '';
+    const capaHtml = coverImg(isbn, '📖', '', customUrl)
+      .replace('width:60px;height:84px', 'width:48px;height:68px')
+      .replace('font-size:32px', 'font-size:22px');
     const horas = v.min >= 60 ? `${Math.floor(v.min/60)}h ${Math.round(v.min%60)}min` : `${Math.round(v.min)}min`;
     listHtml += `<div style="display:flex;align-items:center;gap:14px;padding:12px;background:var(--bg2);border-radius:10px;margin-bottom:8px;">
-      ${capa}
+      <div style="flex-shrink:0;display:flex;align-items:center;">${capaHtml}</div>
       <div style="flex:1;min-width:0">
         <div style="font-size:15px;font-weight:700;color:var(--text);line-height:1.3;margin-bottom:3px;">${livro}</div>
         <div style="font-size:12px;color:var(--muted);margin-bottom:10px;">${livroData?.autor||''}</div>
