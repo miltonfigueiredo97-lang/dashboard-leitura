@@ -1200,12 +1200,22 @@ function renderizarGraficos(dados) {
   NOTES     = dados.NOTES;
   COLECOES  = dados.COLECOES;
   BOOK_DAILY = dados.BOOK_DAILY;
-  // Destroi charts existentes pelo ID do canvas
+  // Destroi charts existentes
   ['cLine','cWdAvg','cWdSum','cDonut','cAutores','cBookChart'].forEach(id => {
     const el = document.getElementById(id);
     if (el) { const ch = Chart.getChart(el); if (ch) ch.destroy(); }
   });
   inicializarGraficos();
+  // Chama funções do script 2 após ambos os scripts terem carregado
+  setTimeout(() => {
+    try { buildDonuts(); } catch(e) { console.warn('buildDonuts:', e); }
+    try { buildRanking(); } catch(e) { console.warn('buildRanking:', e); }
+    try { buildWd(); } catch(e) { console.warn('buildWd:', e); }
+    try { buildLivrosMes(); } catch(e) { console.warn('buildLivrosMes:', e); }
+    try { buildStreaks(); } catch(e) { console.warn('buildStreaks:', e); }
+    try { buildHeatmap(); } catch(e) { console.warn('buildHeatmap:', e); }
+    try { buildCalendar(); } catch(e) { console.warn('buildCalendar:', e); }
+  }, 100);
 }
 
 // ════════════════════════════════════════════════
@@ -1785,14 +1795,6 @@ if (selDonutAno) {
   const anosDonut = [...new Set(sessoes.map(s=>s.ano).filter(a=>a>2000))].sort();
   anosDonut.forEach(a => selDonutAno.innerHTML += `<option value="${a}">${a}</option>`);
 }
-
-buildDonuts();
-buildRanking();
-buildWd();
-buildLivrosMes();
-buildStreaks();
-buildHeatmap();
-buildCalendar();
 
 } // fim inicializarGraficos
 
