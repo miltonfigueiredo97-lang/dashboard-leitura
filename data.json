@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-13T18:27:32.069Z",
+  "geradoEm": "2026-05-13T18:36:50.294Z",
   "metasPorAno": {
     "2024": {
       "total": 22,
@@ -12894,6 +12894,19 @@
       "totalPag": 224,
       "pagAtual": 0,
       "pct": 0
+    },
+    {
+      "livro": "Filhos do Éden",
+      "autor": "Eduardo Spohr",
+      "isbn": "",
+      "coverUrl": "https://m.media-amazon.com/images/I/81TxCo6t1NL.jpg",
+      "metaAno": "",
+      "depende": "A Batalha do Apocalipse",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 471,
+      "pagAtual": 0,
+      "pct": 0
     }
   ],
   "pausados": [
@@ -16057,6 +16070,19 @@
       "ordem": 0,
       "status": "Aguardando",
       "totalPag": 224,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "Filhos do Éden",
+      "autor": "Eduardo Spohr",
+      "isbn": "",
+      "coverUrl": "https://m.media-amazon.com/images/I/81TxCo6t1NL.jpg",
+      "metaAno": "",
+      "depende": "A Batalha do Apocalipse",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 471,
       "pagAtual": 0,
       "pct": 0
     }
