@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-13T18:36:50.294Z",
+  "geradoEm": "2026-05-13T18:45:23.448Z",
   "metasPorAno": {
     "2024": {
       "total": 22,
@@ -12896,7 +12896,7 @@
       "pct": 0
     },
     {
-      "livro": "Filhos do Éden",
+      "livro": "Herdeiros de Atlântida",
       "autor": "Eduardo Spohr",
       "isbn": "",
       "coverUrl": "https://m.media-amazon.com/images/I/81TxCo6t1NL.jpg",
@@ -12905,6 +12905,19 @@
       "ordem": 0,
       "status": "Aguardando",
       "totalPag": 471,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "Paraiso Perdido",
+      "autor": "Eduardo Spohr",
+      "isbn": "",
+      "coverUrl": "https://upload.wikimedia.org/wikipedia/pt/b/b7/Capa_do_livro_Filhos_do_%C3%89den_-_Para%C3%ADso_Perdido%2C_de_Eduardo_Spohr.png",
+      "metaAno": "",
+      "depende": "herdeiros de atlântida",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 560,
       "pagAtual": 0,
       "pct": 0
     }
@@ -16074,7 +16087,7 @@
       "pct": 0
     },
     {
-      "livro": "Filhos do Éden",
+      "livro": "Herdeiros de Atlântida",
       "autor": "Eduardo Spohr",
       "isbn": "",
       "coverUrl": "https://m.media-amazon.com/images/I/81TxCo6t1NL.jpg",
@@ -16083,6 +16096,19 @@
       "ordem": 0,
       "status": "Aguardando",
       "totalPag": 471,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "Paraiso Perdido",
+      "autor": "Eduardo Spohr",
+      "isbn": "",
+      "coverUrl": "https://upload.wikimedia.org/wikipedia/pt/b/b7/Capa_do_livro_Filhos_do_%C3%89den_-_Para%C3%ADso_Perdido%2C_de_Eduardo_Spohr.png",
+      "metaAno": "",
+      "depende": "herdeiros de atlântida",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 560,
       "pagAtual": 0,
       "pct": 0
     }
