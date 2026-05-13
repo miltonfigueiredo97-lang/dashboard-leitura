@@ -1793,7 +1793,7 @@ window.buildCalendar = buildCalendar;
 // Popular seletor de anos dos donuts
 const selDonutAno = document.getElementById('selDonutAno');
 if (selDonutAno) {
-  const anosDonut = [...new Set(sessoes.map(s=>s.ano).filter(a=>a>2000))].sort();
+  const anosDonut = [...new Set((window._sessoes||[]).map(s=>s.ano).filter(a=>a>2000))].sort();
   anosDonut.forEach(a => selDonutAno.innerHTML += `<option value="${a}">${a}</option>`);
 }
 
