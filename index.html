@@ -316,13 +316,25 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
             <div class="meta-stat-val" style="color:var(--yellow)" id="meta-pgdia">—</div>
             <div class="meta-stat-lbl">Págs/dia necessário</div>
           </div>
+          <div class="meta-stat" style="grid-column:1/-1">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div>
+                <div class="meta-stat-val" style="color:var(--coral,#f88c6a)" id="meta-ritmo">—</div>
+                <div class="meta-stat-lbl">🔥 Ritmo atual (últimos 30 dias)</div>
+              </div>
+              <div style="text-align:right">
+                <div class="meta-stat-val" style="color:var(--muted);font-size:12px" id="meta-media-ano">—</div>
+                <div class="meta-stat-lbl">Média anual</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="meta-date">
         <div class="meta-date-icon">📅</div>
         <div>
-          <div class="meta-date-txt">Previsão atual: <b style="color:var(--yellow);font-size:15px;" id="meta-data-atual">—</b></div>
-          <div class="meta-date-sub">Previsão inicial: <b style="color:var(--teal)" id="meta-data-ini">—</b> · Meta final: 31/12/2026</div>
+          <div class="meta-date-txt">Previsão pelo ritmo atual: <b style="color:var(--yellow);font-size:15px;" id="meta-data-atual">—</b></div>
+          <div class="meta-date-sub">Previsão inicial: <b style="color:var(--teal)" id="meta-data-ini">—</b> · Meta final: 31/12/<span id="meta-ano-final">2026</span></div>
         </div>
       </div>
     </div>
@@ -1013,7 +1025,18 @@ function inicializar(d) {
         </div>`;
     });
     // Dica aleatória
-    const ag = d.aguardando || [];
+    // Dica de leitura — filtra aguardando com regras
+    const anoAtual = new Date().getFullYear().toString();
+    const livrosLidos = new Set((d.livros||[]).filter(l => l.status === 'Completo').map(l => l.livro));
+    
+    const ag = (d.aguardando || []).filter(l => {
+      // Exclui metas de anos futuros
+      if (l.metaAno && parseInt(l.metaAno) > parseInt(anoAtual)) return false;
+      // Exclui se tem dependência e ela ainda não foi lida
+      if (l.depende && !livrosLidos.has(l.depende.trim())) return false;
+      return true;
+    });
+
     if (ag.length > 0) {
       const dica = ag[Math.floor(Math.random()*ag.length)];
       const diasDica = Math.ceil((dica.totalPag||200)/(mediaParDia||66.8));
@@ -1791,14 +1814,13 @@ function buildHeatmap() {
     return '#8b7cf8';
   }
 
-  // Gera semanas do ano — layout em grid CSS
+  // Heatmap — grade fixa 7 linhas (dias da semana) × N colunas (semanas)
   const meses = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
-  const diasSemana = ['D','S','T','Q','Q','S','S'];
 
   let d = new Date(yr, 0, 1);
   d.setDate(d.getDate() - d.getDay()); // começa no domingo
 
-  // Coleta todas as semanas
+  // Coleta semanas
   const weeks = [];
   while (true) {
     const week = [];
@@ -1810,45 +1832,52 @@ function buildHeatmap() {
     if (d.getFullYear() > yr) break;
   }
 
-  // Label do mês: aparece na semana onde o 1º dia do mês cai
-  const monthLabel = new Array(weeks.length).fill('');
+  const nWeeks = weeks.length;
+  const CELL = 13; // px por célula
+  const GAP  = 2;
+  const LEFT  = 20; // espaço para labels dos dias
+  const TOP   = 18; // espaço para labels dos meses
+  const W = LEFT + nWeeks * (CELL + GAP);
+  const H = TOP  + 7    * (CELL + GAP);
+
+  let svg = `<svg width="100%" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" style="display:block">`;
+
+  // Labels dos dias da semana
+  ['D','S','T','Q','Q','S','S'].forEach((l, i) => {
+    if (i % 2 === 0) return; // só S,Q,S
+    const y = TOP + i * (CELL + GAP) + CELL * 0.75;
+    svg += `<text x="${LEFT - 3}" y="${y}" font-size="9" fill="var(--muted)" text-anchor="end">${l}</text>`;
+  });
+
+  // Labels dos meses e células
+  let prevMonth = -1;
   weeks.forEach((week, wi) => {
-    week.forEach(day => {
-      if (day.getFullYear() === yr && day.getDate() === 1) {
-        monthLabel[wi] = meses[day.getMonth()];
+    const x = LEFT + wi * (CELL + GAP);
+    // Label do mês quando muda
+    const firstThisYear = week.find(day => day.getFullYear() === yr);
+    if (firstThisYear) {
+      const mo = firstThisYear.getMonth();
+      if (mo !== prevMonth) {
+        prevMonth = mo;
+        svg += `<text x="${x}" y="${TOP - 4}" font-size="9" fill="var(--muted)">${meses[mo]}</text>`;
       }
-    });
-  });
-
-  // Monta HTML: labels dos dias + colunas de semana
-  let html = `<div style="display:flex;gap:2px;width:100%;">`;
-
-  // Coluna de labels dos dias da semana
-  html += `<div style="display:flex;flex-direction:column;gap:2px;padding-top:18px;margin-right:2px;flex-shrink:0;">`;
-  diasSemana.forEach((l, i) => {
-    html += `<div style="height:13px;font-size:9px;color:var(--muted);line-height:13px;text-align:right;padding-right:2px;">${i%2===1?l:''}</div>`;
-  });
-  html += `</div>`;
-
-  // Semanas
-  weeks.forEach((week, wi) => {
-    html += `<div style="display:flex;flex-direction:column;gap:2px;flex:1;">`;
-    // Label do mês no topo
-    html += `<div style="height:14px;font-size:9px;color:var(--muted);line-height:14px;text-align:center;overflow:hidden;white-space:nowrap;">${monthLabel[wi]}</div>`;
-    // 7 células
-    week.forEach(day => {
-      const dateStr = day.toISOString().slice(0,10);
+    }
+    // Células
+    week.forEach((day, di) => {
+      const y = TOP + di * (CELL + GAP);
       const isThisYear = day.getFullYear() === yr;
+      const dateStr = day.toISOString().slice(0,10);
       const pags = isThisYear ? (dayMap[dateStr] || 0) : 0;
       const color = isThisYear ? getColor(pags) : 'transparent';
-      const title = isThisYear ? (pags ? `${fmtDate(dateStr)}: ${pags} págs` : fmtDate(dateStr)) : '';
-      html += `<div class="heat-cell" style="background:${color};width:100%;height:13px;" title="${title}"></div>`;
+      const tip = isThisYear ? (pags ? `${fmtDate(dateStr)}: ${pags} págs` : fmtDate(dateStr)) : '';
+      svg += `<rect x="${x}" y="${y}" width="${CELL}" height="${CELL}" rx="2" fill="${color}">
+        ${tip ? `<title>${tip}</title>` : ''}
+      </rect>`;
     });
-    html += `</div>`;
   });
 
-  html += `</div>`;
-  document.getElementById('heatmapGrid').innerHTML = html;
+  svg += `</svg>`;
+  document.getElementById('heatmapGrid').innerHTML = svg;
 
   // Popular seletor de anos
   const sel = document.getElementById('selHeatYear');
@@ -2007,7 +2036,8 @@ function buildMeta() {
   const pagLidas   = m.paginasLidas   || 0;
   const pagTotal   = m.paginasTotal   || 0;
   const pagFalt    = m.paginasFaltando || 0;
-  const mediaDia   = m.mediaDiaria    || 0;
+  const ritmo      = m.ritmoAtual  || 0;
+  const mediaDia   = m.mediaDiaria || 0;
   const pctPag     = pagTotal > 0 ? pagLidas / pagTotal : (total > 0 ? lidos / total : 0);
   const ringOffset = 314.16 * (1 - Math.min(pctPag, 1));
 
@@ -2017,9 +2047,13 @@ function buildMeta() {
   document.getElementById('meta-pag-lidas').textContent  = pagLidas.toLocaleString('pt-BR');
   document.getElementById('meta-pag-falt').textContent   = pagFalt.toLocaleString('pt-BR');
   document.getElementById('meta-livros').textContent     = lidos + ' / ' + total;
-  document.getElementById('meta-pgdia').textContent      = mediaDia > 0 && pagFalt > 0 ? Math.ceil(pagFalt / mediaDia) : '—';
+  document.getElementById('meta-pgdia').textContent      = ritmo > 0 && pagFalt > 0 ? Math.ceil(pagFalt / ritmo) : '—';
+  document.getElementById('meta-ritmo').textContent      = ritmo > 0 ? ritmo.toFixed(1) + ' págs/dia' : '—';
+  document.getElementById('meta-media-ano').textContent  = mediaDia > 0 ? mediaDia.toFixed(1) + ' págs/dia' : '—';
   document.getElementById('meta-data-ini').textContent   = '—';
   document.getElementById('meta-data-atual').textContent = m.dataPrevistoAtual || '—';
+  const anoFinalEl = document.getElementById('meta-ano-final');
+  if (anoFinalEl) anoFinalEl.textContent = ano;
 }
 window.buildMeta = buildMeta;
 
