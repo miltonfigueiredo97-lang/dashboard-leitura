@@ -603,7 +603,7 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
           <option value="2025">2025</option>
         </select>
       </div>
-      <div id="heatmapGrid" style="overflow-x:auto;"></div>
+      <div id="heatmapGrid" style="overflow-x:auto;min-height:130px;"></div>
       <div style="display:flex;align-items:center;gap:6px;margin-top:8px;font-size:10px;color:var(--muted);">
         <span>Menos</span>
         <div style="width:12px;height:12px;border-radius:2px;background:#1a2035"></div>
@@ -1840,7 +1840,7 @@ function buildHeatmap() {
   const W = LEFT + nWeeks * (CELL + GAP);
   const H = TOP  + 7    * (CELL + GAP);
 
-  let svg = `<svg width="100%" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" style="display:block">`;
+  let svg = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" style="display:block">`;
 
   // Labels dos dias da semana
   ['D','S','T','Q','Q','S','S'].forEach((l, i) => {
