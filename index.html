@@ -2260,15 +2260,6 @@ carregarDados();
       </div>
     </div>
     <div class="pwa-field">
-      <label>Status inicial</label>
-      <select id="nl-status">
-        <option value="Aguardando">📋 Aguardando</option>
-        <option value="Lendo">📖 Lendo</option>
-        <option value="Pausado">⏸️ Pausado</option>
-        <option value="Completo">✅ Completo</option>
-      </select>
-    </div>
-    <div class="pwa-field">
       <label>Livro anterior (dependência)</label>
       <input id="nl-depende" type="text" placeholder="Nome do livro que precisa ler antes">
     </div>
@@ -2820,7 +2811,6 @@ async function enviarNovoLivro() {
         paginas: Number(document.getElementById('nl-paginas').value) || 0,
         metaAno: document.getElementById('nl-metaano').value || '',
         ordem:   Number(document.getElementById('nl-ordem').value) || 0,
-        status:  document.getElementById('nl-status').value || 'Aguardando',
         depende: document.getElementById('nl-depende').value.trim(),
         capa:    document.getElementById('nl-capa').value.trim(),
         isbn:    document.getElementById('nl-isbn').value.trim(),
