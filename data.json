@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-13T01:07:56.273Z",
+  "geradoEm": "2026-05-13T01:12:36.803Z",
   "metasPorAno": {
     "2024": {
       "total": 22,
@@ -15,17 +15,17 @@
       "dataPrevistoAtual": "Concluída!"
     },
     "2025": {
-      "total": 29,
+      "total": 28,
       "lidos": 27,
       "lendo": 0,
-      "pausados": 1,
+      "pausados": 0,
       "aguardando": 1,
-      "paginasTotal": 19422,
-      "paginasLidas": 18632,
-      "paginasFaltando": 790,
-      "faltando": 2,
+      "paginasTotal": 18820,
+      "paginasLidas": 18602,
+      "paginasFaltando": 218,
+      "faltando": 1,
       "mediaDiaria": 75.9,
-      "dataPrevistoAtual": "23/05/2026"
+      "dataPrevistoAtual": "15/05/2026"
     },
     "2026": {
       "total": 28,
@@ -40,31 +40,18 @@
       "mediaDiaria": 55,
       "dataPrevistoAtual": "02/12/2026"
     },
-    "META": {
-      "total": 1,
-      "lidos": 0,
-      "lendo": 0,
-      "pausados": 0,
-      "aguardando": 0,
-      "paginasTotal": 0,
-      "paginasLidas": 0,
-      "paginasFaltando": 0,
-      "faltando": 1,
-      "mediaDiaria": 50,
-      "dataPrevistoAtual": "—"
-    },
     "AINDA NÃO DEFINIDO": {
-      "total": 9,
+      "total": 11,
       "lidos": 0,
       "lendo": 0,
-      "pausados": 0,
+      "pausados": 2,
       "aguardando": 9,
-      "paginasTotal": 4219,
-      "paginasLidas": 0,
-      "paginasFaltando": 4219,
-      "faltando": 9,
+      "paginasTotal": 5682,
+      "paginasLidas": 284,
+      "paginasFaltando": 5398,
+      "faltando": 11,
       "mediaDiaria": 50,
-      "dataPrevistoAtual": "05/08/2026"
+      "dataPrevistoAtual": "28/08/2026"
     }
   },
   "sessoes": [
@@ -8267,7 +8254,7 @@
       "autor": "autor",
       "isbn": "ISBN",
       "coverUrl": "url",
-      "metaAno": "META",
+      "metaAno": "",
       "ordem": 0,
       "status": "STATUS",
       "totalPag": 0,
@@ -8543,7 +8530,7 @@
       "autor": "Deborah Harkness",
       "isbn": "9788532526489",
       "coverUrl": "https://static.skeelo.com/remote/320/480/100/https://skoob.s3.amazonaws.com/livros/168133/A_DESCOBERTA_DAS_BRUXAS_1731531340168133SK-V11731531342B.jpg",
-      "metaAno": "",
+      "metaAno": "AINDA NÃO DEFINIDO",
       "ordem": 23,
       "status": "Pausado",
       "totalPag": 861,
@@ -8687,7 +8674,7 @@
       "autor": "Mark Lawrence",
       "isbn": "9780007423200",
       "coverUrl": "https://m.media-amazon.com/images/I/71MsUTWzVKL._AC_UF1000,1000_QL80_.jpg",
-      "metaAno": "2025",
+      "metaAno": "AINDA NÃO DEFINIDO",
       "ordem": 34,
       "status": "Pausado",
       "totalPag": 602,
@@ -9349,7 +9336,7 @@
       "autor": "Deborah Harkness",
       "isbn": "9788532526489",
       "coverUrl": "https://static.skeelo.com/remote/320/480/100/https://skoob.s3.amazonaws.com/livros/168133/A_DESCOBERTA_DAS_BRUXAS_1731531340168133SK-V11731531342B.jpg",
-      "metaAno": "",
+      "metaAno": "AINDA NÃO DEFINIDO",
       "ordem": 23,
       "status": "Pausado",
       "totalPag": 861,
@@ -9361,7 +9348,7 @@
       "autor": "Mark Lawrence",
       "isbn": "9780007423200",
       "coverUrl": "https://m.media-amazon.com/images/I/71MsUTWzVKL._AC_UF1000,1000_QL80_.jpg",
-      "metaAno": "2025",
+      "metaAno": "AINDA NÃO DEFINIDO",
       "ordem": 34,
       "status": "Pausado",
       "totalPag": 602,
