@@ -3,6 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0d1117">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Leitura">
+<link rel="manifest" href="/manifest.json">
 <title>📚 Dashboard de Leitura</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
@@ -2080,6 +2085,347 @@ function buildMeta() {
 window.buildMeta = buildMeta;
 
 carregarDados();
+</script>
+<!-- ── FAB + Modais PWA ── -->
+<style>
+.fab { position:fixed;bottom:24px;right:24px;width:60px;height:60px;border-radius:50%;background:var(--purple);border:none;color:white;font-size:28px;cursor:pointer;box-shadow:0 4px 20px rgba(139,124,248,0.5);z-index:1000;display:flex;align-items:center;justify-content:center;transition:transform .2s; }
+.fab:hover { transform:scale(1.1); }
+.fab-menu { position:fixed;bottom:96px;right:24px;display:flex;flex-direction:column;gap:12px;z-index:1000; }
+.fab-item { display:flex;align-items:center;gap:10px;justify-content:flex-end; }
+.fab-item button { width:48px;height:48px;border-radius:50%;border:none;color:white;font-size:20px;cursor:pointer;box-shadow:0 2px 12px rgba(0,0,0,0.3); }
+.fab-item span { background:rgba(0,0,0,0.7);color:white;padding:4px 10px;border-radius:6px;font-size:13px;white-space:nowrap; }
+.pwa-overlay { position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:2000;display:none;align-items:flex-end;justify-content:center; }
+.pwa-overlay.open { display:flex; }
+.pwa-modal { background:var(--bg2);border-radius:20px 20px 0 0;padding:24px;width:100%;max-width:560px;max-height:90vh;overflow-y:auto; }
+.pwa-modal h2 { font-size:20px;font-weight:700;margin-bottom:18px;color:var(--text); }
+.pwa-field { margin-bottom:14px; }
+.pwa-field label { display:block;font-size:13px;color:var(--muted);margin-bottom:5px; }
+.pwa-field input,.pwa-field select,.pwa-field textarea { width:100%;padding:10px 14px;background:var(--bg3);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:15px;box-sizing:border-box; }
+.pwa-field input[type=number] { -moz-appearance:textfield; }
+.pwa-row { display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px; }
+.pwa-criterio { display:flex;flex-direction:column;gap:4px; }
+.pwa-criterio label { font-size:12px;color:var(--muted); }
+.pwa-criterio input { text-align:center; }
+.pwa-btn { width:100%;padding:14px;background:var(--purple);border:none;border-radius:12px;color:white;font-size:16px;font-weight:700;cursor:pointer;margin-top:8px; }
+.pwa-btn:disabled { opacity:.5;cursor:not-allowed; }
+.pwa-btn-cancel { width:100%;padding:12px;background:var(--bg3);border:none;border-radius:12px;color:var(--muted);font-size:15px;cursor:pointer;margin-top:6px; }
+.pwa-msg { padding:12px;border-radius:10px;text-align:center;font-size:14px;margin-top:10px;display:none; }
+.pwa-msg.ok { background:rgba(78,205,196,0.15);color:var(--teal);display:block; }
+.pwa-msg.err { background:rgba(248,140,106,0.15);color:var(--orange);display:block; }
+</style>
+
+<!-- FAB principal -->
+<button class="fab" id="fabBtn" onclick="toggleFabMenu()">＋</button>
+
+<!-- Menu do FAB -->
+<div class="fab-menu" id="fabMenu" style="display:none">
+  <div class="fab-item">
+    <span>Registrar Sessão</span>
+    <button style="background:var(--purple)" onclick="abrirModal('sessao')">📖</button>
+  </div>
+  <div class="fab-item">
+    <span>Avaliar Livro</span>
+    <button style="background:var(--teal)" onclick="abrirModal('nota')">⭐</button>
+  </div>
+  <div class="fab-item">
+    <span>Atualizar Livro</span>
+    <button style="background:var(--orange)" onclick="abrirModal('livro')">✏️</button>
+  </div>
+</div>
+
+<!-- Modal: Registrar Sessão -->
+<div class="pwa-overlay" id="modalSessao">
+  <div class="pwa-modal">
+    <h2>📖 Registrar Sessão</h2>
+    <div class="pwa-field">
+      <label>Livro</label>
+      <select id="s-livro"><option value="">Carregando...</option></select>
+    </div>
+    <div class="pwa-field">
+      <label>Coleção</label>
+      <input id="s-colecao" type="text" placeholder="Ex: Cosmere" list="lista-colecoes">
+      <datalist id="lista-colecoes"></datalist>
+    </div>
+    <div class="pwa-field">
+      <label>Data</label>
+      <input id="s-data" type="date">
+    </div>
+    <div class="pwa-row">
+      <div class="pwa-field">
+        <label>Páginas lidas</label>
+        <input id="s-paginas" type="number" min="1" placeholder="0">
+      </div>
+      <div class="pwa-field">
+        <label>Horas</label>
+        <input id="s-horas" type="number" min="0" placeholder="0">
+      </div>
+      <div class="pwa-field">
+        <label>Minutos</label>
+        <input id="s-minutos" type="number" min="0" max="59" placeholder="0">
+      </div>
+    </div>
+    <div class="pwa-field" style="display:none">
+      <label>Segundos</label>
+      <input id="s-segundos" type="number" min="0" max="59" value="0">
+    </div>
+    <div class="pwa-msg" id="s-msg"></div>
+    <button class="pwa-btn" id="s-btn" onclick="enviarSessao()">✅ Salvar Sessão</button>
+    <button class="pwa-btn-cancel" onclick="fecharModal('sessao')">Cancelar</button>
+  </div>
+</div>
+
+<!-- Modal: Avaliar Livro -->
+<div class="pwa-overlay" id="modalNota">
+  <div class="pwa-modal">
+    <h2>⭐ Avaliar Livro</h2>
+    <div class="pwa-field">
+      <label>Livro</label>
+      <select id="n-livro"><option value="">Carregando...</option></select>
+    </div>
+    <div class="pwa-field">
+      <label>Ano de leitura</label>
+      <input id="n-ano" type="number" value="2026" min="2020" max="2030">
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
+      <div class="pwa-criterio"><label>Diálogos</label><input id="n-0" type="number" min="0" max="10" step="0.5" placeholder="0-10"></div>
+      <div class="pwa-criterio"><label>Enredo</label><input id="n-1" type="number" min="0" max="10" step="0.5" placeholder="0-10"></div>
+      <div class="pwa-criterio"><label>Estilo Visual</label><input id="n-2" type="number" min="0" max="10" step="0.5" placeholder="0-10"></div>
+      <div class="pwa-criterio"><label>Finalização</label><input id="n-3" type="number" min="0" max="10" step="0.5" placeholder="0-10"></div>
+      <div class="pwa-criterio"><label>Imersão</label><input id="n-4" type="number" min="0" max="10" step="0.5" placeholder="0-10"></div>
+      <div class="pwa-criterio"><label>Impacto Emocional</label><input id="n-5" type="number" min="0" max="10" step="0.5" placeholder="0-10"></div>
+      <div class="pwa-criterio"><label>Originalidade</label><input id="n-6" type="number" min="0" max="10" step="0.5" placeholder="0-10"></div>
+      <div class="pwa-criterio"><label>Personagens</label><input id="n-7" type="number" min="0" max="10" step="0.5" placeholder="0-10"></div>
+      <div class="pwa-criterio"><label>Ritmo</label><input id="n-8" type="number" min="0" max="10" step="0.5" placeholder="0-10"></div>
+      <div class="pwa-criterio"><label>Temas</label><input id="n-9" type="number" min="0" max="10" step="0.5" placeholder="0-10"></div>
+    </div>
+    <div style="background:var(--bg3);border-radius:10px;padding:10px;text-align:center;margin-bottom:10px;">
+      Média: <strong id="n-media" style="color:var(--teal);font-size:20px;">—</strong>
+    </div>
+    <div class="pwa-msg" id="n-msg"></div>
+    <button class="pwa-btn" id="n-btn" onclick="enviarNota()">✅ Salvar Avaliação</button>
+    <button class="pwa-btn-cancel" onclick="fecharModal('nota')">Cancelar</button>
+  </div>
+</div>
+
+<!-- Modal: Atualizar Livro -->
+<div class="pwa-overlay" id="modalLivro">
+  <div class="pwa-modal">
+    <h2>✏️ Atualizar Livro</h2>
+    <div class="pwa-field">
+      <label>Livro</label>
+      <select id="l-livro"><option value="">Carregando...</option></select>
+    </div>
+    <div class="pwa-field">
+      <label>Status</label>
+      <select id="l-status">
+        <option value="">Manter atual</option>
+        <option value="Lendo">📖 Lendo</option>
+        <option value="Completo">✅ Completo</option>
+        <option value="Pausado">⏸️ Pausado</option>
+        <option value="Aguardando">📋 Aguardando</option>
+      </select>
+    </div>
+    <div class="pwa-field">
+      <label>Página atual</label>
+      <input id="l-pagina" type="number" min="0" placeholder="Deixe vazio para não alterar">
+    </div>
+    <div class="pwa-msg" id="l-msg"></div>
+    <button class="pwa-btn" id="l-btn" onclick="enviarLivro()">✅ Atualizar</button>
+    <button class="pwa-btn-cancel" onclick="fecharModal('livro')">Cancelar</button>
+  </div>
+</div>
+
+<script>
+const API_URL = 'SUA_URL_DO_APPS_SCRIPT_AQUI';
+let fabOpen = false;
+let livrosCache = [];
+let colecoesCache = [];
+
+function toggleFabMenu() {
+  fabOpen = !fabOpen;
+  document.getElementById('fabMenu').style.display = fabOpen ? 'flex' : 'none';
+  document.getElementById('fabBtn').textContent = fabOpen ? '✕' : '＋';
+}
+
+function abrirModal(tipo) {
+  toggleFabMenu();
+  document.getElementById('modal' + tipo.charAt(0).toUpperCase() + tipo.slice(1)).classList.add('open');
+  if (tipo === 'sessao') {
+    // Data de hoje por padrão
+    document.getElementById('s-data').value = new Date().toISOString().slice(0,10);
+    carregarLivros();
+  }
+  if (tipo === 'nota' || tipo === 'livro') carregarLivros();
+}
+
+function fecharModal(tipo) {
+  document.getElementById('modal' + tipo.charAt(0).toUpperCase() + tipo.slice(1)).classList.remove('open');
+  ['s-msg','n-msg','l-msg'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) { el.className = 'pwa-msg'; el.textContent = ''; }
+  });
+}
+
+// Fecha modal ao clicar no overlay
+document.querySelectorAll('.pwa-overlay').forEach(el => {
+  el.addEventListener('click', e => { if (e.target === el) el.classList.remove('open'); });
+});
+
+async function carregarLivros() {
+  if (livrosCache.length > 0) { popularSelects(); return; }
+  try {
+    const r = await fetch(API_URL + '?acao=listarLivros');
+    const d = await r.json();
+    livrosCache = d.livros || [];
+    colecoesCache = d.colecoes || [];
+    popularSelects();
+  } catch(e) {
+    console.error('Erro ao carregar livros:', e);
+  }
+}
+
+function popularSelects() {
+  ['s-livro','n-livro','l-livro'].forEach(id => {
+    const sel = document.getElementById(id);
+    if (!sel) return;
+    sel.innerHTML = '<option value="">Selecione o livro...</option>';
+    livrosCache.forEach(l => {
+      sel.innerHTML += `<option value="${l.livro}">${l.livro}</option>`;
+    });
+  });
+  const dl = document.getElementById('lista-colecoes');
+  if (dl) {
+    dl.innerHTML = '';
+    colecoesCache.forEach(c => { dl.innerHTML += `<option value="${c}">`; });
+  }
+}
+
+// Calcula média ao digitar notas
+document.addEventListener('input', e => {
+  if (!e.target.id?.startsWith('n-')) return;
+  const vals = [0,1,2,3,4,5,6,7,8,9]
+    .map(i => parseFloat(document.getElementById('n-'+i)?.value) || 0)
+    .filter(v => v > 0);
+  const media = vals.length ? (vals.reduce((a,b)=>a+b,0)/vals.length).toFixed(1) : '—';
+  document.getElementById('n-media').textContent = media;
+});
+
+async function enviarSessao() {
+  const btn = document.getElementById('s-btn');
+  const msg = document.getElementById('s-msg');
+  const livro = document.getElementById('s-livro').value;
+  const paginas = document.getElementById('s-paginas').value;
+  if (!livro || !paginas) { mostrarMsg('s-msg', 'Preencha o livro e as páginas!', 'err'); return; }
+
+  btn.disabled = true;
+  btn.textContent = 'Salvando...';
+  try {
+    const r = await fetch(API_URL, {
+      method: 'POST',
+      body: JSON.stringify({
+        acao: 'registrarSessao',
+        livro,
+        colecao:  document.getElementById('s-colecao').value,
+        data:     document.getElementById('s-data').value,
+        paginas:  Number(paginas),
+        horas:    Number(document.getElementById('s-horas').value) || 0,
+        minutos:  Number(document.getElementById('s-minutos').value) || 0,
+        segundos: Number(document.getElementById('s-segundos').value) || 0,
+      })
+    });
+    const d = await r.json();
+    if (d.ok) {
+      mostrarMsg('s-msg', '✅ ' + d.msg, 'ok');
+      setTimeout(() => fecharModal('sessao'), 2000);
+    } else {
+      mostrarMsg('s-msg', '❌ ' + d.erro, 'err');
+    }
+  } catch(e) {
+    mostrarMsg('s-msg', '❌ Erro de conexão', 'err');
+  }
+  btn.disabled = false;
+  btn.textContent = '✅ Salvar Sessão';
+}
+
+async function enviarNota() {
+  const btn = document.getElementById('n-btn');
+  const livro = document.getElementById('n-livro').value;
+  if (!livro) { mostrarMsg('n-msg', 'Selecione o livro!', 'err'); return; }
+
+  const CRITERIOS = ['Diálogos','Enredo','Estilo Visual','Finalização','Imersão',
+                     'Impacto Emocional','Originalidade','Personagens','Ritmo','Temas'];
+  const criterios = {};
+  CRITERIOS.forEach((c, i) => {
+    const v = parseFloat(document.getElementById('n-'+i)?.value);
+    if (!isNaN(v) && v > 0) criterios[c] = v;
+  });
+
+  btn.disabled = true;
+  btn.textContent = 'Salvando...';
+  try {
+    const r = await fetch(API_URL, {
+      method: 'POST',
+      body: JSON.stringify({
+        acao: 'registrarNota',
+        livro,
+        ano: Number(document.getElementById('n-ano').value) || new Date().getFullYear(),
+        criterios
+      })
+    });
+    const d = await r.json();
+    if (d.ok) {
+      mostrarMsg('n-msg', '✅ ' + d.msg, 'ok');
+      setTimeout(() => fecharModal('nota'), 2000);
+    } else {
+      mostrarMsg('n-msg', '❌ ' + d.erro, 'err');
+    }
+  } catch(e) {
+    mostrarMsg('n-msg', '❌ Erro de conexão', 'err');
+  }
+  btn.disabled = false;
+  btn.textContent = '✅ Salvar Avaliação';
+}
+
+async function enviarLivro() {
+  const btn = document.getElementById('l-btn');
+  const livro = document.getElementById('l-livro').value;
+  if (!livro) { mostrarMsg('l-msg', 'Selecione o livro!', 'err'); return; }
+
+  const body = { acao: 'atualizarLivro', livro };
+  const status = document.getElementById('l-status').value;
+  const pagina = document.getElementById('l-pagina').value;
+  if (status) body.status = status;
+  if (pagina) body.pagAtual = Number(pagina);
+  if (!status && !pagina) { mostrarMsg('l-msg', 'Altere pelo menos um campo!', 'err'); return; }
+
+  btn.disabled = true;
+  btn.textContent = 'Atualizando...';
+  try {
+    const r = await fetch(API_URL, { method: 'POST', body: JSON.stringify(body) });
+    const d = await r.json();
+    if (d.ok) {
+      mostrarMsg('l-msg', '✅ ' + d.msg, 'ok');
+      setTimeout(() => fecharModal('livro'), 2000);
+    } else {
+      mostrarMsg('l-msg', '❌ ' + d.erro, 'err');
+    }
+  } catch(e) {
+    mostrarMsg('l-msg', '❌ Erro de conexão', 'err');
+  }
+  btn.disabled = false;
+  btn.textContent = '✅ Atualizar';
+}
+
+function mostrarMsg(id, texto, tipo) {
+  const el = document.getElementById(id);
+  el.textContent = texto;
+  el.className = 'pwa-msg ' + tipo;
+}
+
+// Service Worker para PWA
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js').catch(() => {});
+}
 </script>
 </body>
 </html>
