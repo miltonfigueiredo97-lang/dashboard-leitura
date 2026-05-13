@@ -607,8 +607,9 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
           <option value="total">Todos os anos</option>
         </select>
         <select id="selDonutModo" onchange="buildDonuts()" style="font-size:12px;padding:4px 8px;background:var(--bg3);border:1px solid var(--border);border-radius:6px;color:var(--text);">
-          <option value="lido">Só lidos</option>
-          <option value="tudo">Todos os livros</option>
+          <option value="lido">Págs lidas</option>
+          <option value="tudo">Págs totais</option>
+          <option value="livros">Nº de livros</option>
         </select>
       </div>
       <div style="height:190px;position:relative;"><canvas id="cDonut"></canvas></div>
@@ -1460,6 +1461,15 @@ function buildDonuts() {
       const col = s.colecao || 'Sem coleção';
       colMap[col] = (colMap[col]||0) + s.paginas;
     });
+  } else if (modo === 'livros') {
+    // Conta livros únicos por coleção (só lidos se ano filtrado)
+    const livrosFiltrados = ano === 'total' ? livros : livros.filter(l => {
+      return sessFiltradas.some(s => s.livro === l.livro);
+    });
+    livrosFiltrados.forEach(l => {
+      const col = l.colecao || sess.find(s=>s.livro===l.livro)?.colecao || 'Sem coleção';
+      colMap[col] = (colMap[col]||0) + 1;
+    });
   } else {
     livros.forEach(l => {
       const col = l.colecao || sess.find(s=>s.livro===l.livro)?.colecao || 'Sem coleção';
@@ -1471,6 +1481,7 @@ function buildDonuts() {
   const top9col = colSorted.slice(0,9);
   const outrosCol = colSorted.slice(9).reduce((s,[,p])=>s+p, 0);
   const COLS = [...top9col.map(([c,p])=>({c,p})), ...(outrosCol>0?[{c:'Outros',p:outrosCol}]:[])];
+  const colLabel = modo === 'livros' ? ' livros' : ' págs';
 
   // Agrupa por autor
   const autMap = {};
@@ -1478,6 +1489,12 @@ function buildDonuts() {
     sessFiltradas.forEach(s => {
       const aut = livros.find(x=>x.livro===s.livro)?.autor || AUTOR_MAP[s.livro] || 'Desconhecido';
       autMap[aut] = (autMap[aut]||0) + s.paginas;
+    });
+  } else if (modo === 'livros') {
+    const livrosFiltrados = ano === 'total' ? livros : livros.filter(l => sessFiltradas.some(s=>s.livro===l.livro));
+    livrosFiltrados.forEach(l => {
+      const aut = l.autor || AUTOR_MAP[l.livro] || 'Desconhecido';
+      autMap[aut] = (autMap[aut]||0) + 1;
     });
   } else {
     livros.forEach(l => {
@@ -1497,7 +1514,7 @@ function buildDonuts() {
     type:'doughnut',
     data:{ labels: COLS.map(c=>c.c), datasets:[{ data:COLS.map(c=>c.p), backgroundColor:DONUT_COLORS, borderColor:'#161b27', borderWidth:3 }] },
     options:{ responsive:true, maintainAspectRatio:false, cutout:'62%',
-      plugins:{ legend:{display:false}, tooltip:{...TT, callbacks:{label:c=>` ${c.parsed.toLocaleString('pt-BR')} págs`}} } }
+      plugins:{ legend:{display:false}, tooltip:{...TT, callbacks:{label:c=>` ${c.parsed.toLocaleString('pt-BR')}${colLabel}`}} } }
   });
   const tot = COLS.reduce((s,c)=>s+c.p, 0);
   const elD = document.getElementById('donutLeg');
