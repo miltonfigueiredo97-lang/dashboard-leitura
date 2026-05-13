@@ -458,6 +458,7 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
         <option value="za">Z → A</option>
         <option value="mais">Mais páginas</option>
         <option value="menos">Menos páginas</option>
+        <option value="colecao">Ordem da Coleção</option>
       </select>
       <select id="ps-colecao" onchange="renderListaStatus()" style="font-size:13px;padding:5px 8px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);">
         <option value="">Todas as coleções</option>
@@ -2523,10 +2524,15 @@ function renderListaStatus() {
 
   // Ordenação
   livros = [...livros].sort((a,b) => {
-    if (ordem === 'az')   return a.livro.localeCompare(b.livro, 'pt-BR');
-    if (ordem === 'za')   return b.livro.localeCompare(a.livro, 'pt-BR');
-    if (ordem === 'mais') return (b.totalPag||0) - (a.totalPag||0);
-    if (ordem === 'menos')return (a.totalPag||0) - (b.totalPag||0);
+    if (ordem === 'az')      return a.livro.localeCompare(b.livro, 'pt-BR');
+    if (ordem === 'za')      return b.livro.localeCompare(a.livro, 'pt-BR');
+    if (ordem === 'mais')    return (b.totalPag||0) - (a.totalPag||0);
+    if (ordem === 'menos')   return (a.totalPag||0) - (b.totalPag||0);
+    if (ordem === 'colecao') {
+      const cmp = (a.colecaoReal||'').localeCompare(b.colecaoReal||'', 'pt-BR');
+      if (cmp !== 0) return cmp;
+      return (a.ordemColecao||0) - (b.ordemColecao||0);
+    }
     return 0;
   });
 
