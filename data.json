@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-13T22:29:19.635Z",
+  "geradoEm": "2026-05-13T22:34:44.814Z",
   "meta": {
     "total": 28,
     "lidos": 7,
@@ -8278,20 +8278,6 @@
     }
   ],
   "livros": [
-    {
-      "livro": "Livro",
-      "autor": "autor",
-      "isbn": "ISBN",
-      "coverUrl": "url",
-      "metaAno": "",
-      "depende": "",
-      "colecao": "COLEÇÃO",
-      "ordem": 0,
-      "status": "STATUS",
-      "totalPag": 0,
-      "pagAtual": 0,
-      "pct": 0
-    },
     {
       "livro": "Quarta Asa",
       "autor": "Rebecca Yarros",
