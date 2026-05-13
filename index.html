@@ -85,7 +85,10 @@ header .badge {
 .card-sub { font-size: 14px; color: var(--muted); margin-bottom: 14px; }
 
 /* ── Controls ── */
-.ctrl { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+.ctrl { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; font-size: 15px; }
+.ctrl select { font-size: 15px; padding: 5px 10px; }
+.ctrl label { font-size: 15px; }
+.btn { font-size: 14px; padding: 5px 12px; }
 .ctrl label { font-size: 11px; color: var(--muted); }
 select {
   background: var(--bg3); border: 1px solid var(--border); color: var(--text);
@@ -638,13 +641,13 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
       </select>
     </div>
     <div id="heatmapGrid" style="overflow-x:auto;"></div>
-    <div style="display:flex;align-items:center;gap:6px;margin-top:8px;font-size:11px;color:var(--muted);">
+    <div style="display:flex;align-items:center;gap:8px;margin-top:10px;font-size:13px;color:var(--muted);">
       <span>Menos</span>
-      <div style="width:12px;height:12px;border-radius:2px;background:#1a2035"></div>
-      <div style="width:12px;height:12px;border-radius:2px;background:#1a3a5c"></div>
-      <div style="width:12px;height:12px;border-radius:2px;background:#1e5f8e"></div>
-      <div style="width:12px;height:12px;border-radius:2px;background:#2980b9"></div>
-      <div style="width:12px;height:12px;border-radius:2px;background:#8b7cf8"></div>
+      <div style="width:18px;height:18px;border-radius:3px;background:#1a2035;border:1px solid rgba(255,255,255,0.1)"></div>
+      <div style="width:18px;height:18px;border-radius:3px;background:#1a3a5c;border:1px solid rgba(255,255,255,0.1)"></div>
+      <div style="width:18px;height:18px;border-radius:3px;background:#1e5f8e;border:1px solid rgba(255,255,255,0.1)"></div>
+      <div style="width:18px;height:18px;border-radius:3px;background:#2980b9;border:1px solid rgba(255,255,255,0.1)"></div>
+      <div style="width:18px;height:18px;border-radius:3px;background:#8b7cf8;border:1px solid rgba(255,255,255,0.1)"></div>
       <span>Mais</span>
     </div>
   </div>
@@ -1829,10 +1832,10 @@ function buildHeatmap() {
   }
 
   const nWeeks = weeks.length;
-  const CELL = 16; // px por célula — maior para melhor visual
-  const GAP  = 3;
-  const LEFT  = 22;
-  const TOP   = 20;
+  const CELL = 22; // células maiores para melhor leitura
+  const GAP  = 4;
+  const LEFT  = 28;
+  const TOP   = 24;
   const W = LEFT + nWeeks * (CELL + GAP);
   const H = TOP  + 7 * (CELL + GAP);
 
@@ -1840,9 +1843,9 @@ function buildHeatmap() {
 
   // Labels dos dias da semana
   ['D','S','T','Q','Q','S','S'].forEach((l, i) => {
-    if (i % 2 === 0) return; // só S,Q,S
+    if (i % 2 === 0) return;
     const y = TOP + i * (CELL + GAP) + CELL * 0.75;
-    svg += `<text x="${LEFT - 3}" y="${y}" font-size="9" fill="var(--muted)" text-anchor="end">${l}</text>`;
+    svg += `<text x="${LEFT - 4}" y="${y}" font-size="12" fill="var(--muted)" text-anchor="end" font-family="system-ui">${l}</text>`;
   });
 
   // Labels dos meses e células
@@ -1855,7 +1858,7 @@ function buildHeatmap() {
       const mo = firstThisYear.getMonth();
       if (mo !== prevMonth) {
         prevMonth = mo;
-        svg += `<text x="${x}" y="${TOP - 4}" font-size="9" fill="var(--muted)">${meses[mo]}</text>`;
+      svg += `<text x="${x}" y="${TOP - 6}" font-size="12" fill="var(--muted)" font-family="system-ui">${meses[mo]}</text>`;
       }
     }
     // Células
@@ -1866,7 +1869,7 @@ function buildHeatmap() {
       const pags = isThisYear ? (dayMap[dateStr] || 0) : 0;
       const color = isThisYear ? getColor(pags) : 'transparent';
       const tip = isThisYear ? (pags ? `${fmtDate(dateStr)}: ${pags} págs` : fmtDate(dateStr)) : '';
-      svg += `<rect x="${x}" y="${y}" width="${CELL}" height="${CELL}" rx="2" fill="${color}">
+      svg += `<rect x="${x}" y="${y}" width="${CELL}" height="${CELL}" rx="3" fill="${color}" stroke="rgba(0,0,0,0.2)" stroke-width="0.5">
         ${tip ? `<title>${tip}</title>` : ''}
       </rect>`;
     });
@@ -1934,8 +1937,8 @@ function buildCalendar() {
     entries.forEach(e => { byBook[e.livro] = (byBook[e.livro]||0) + e.paginas; });
     const livrosHtml = Object.entries(byBook).map(([livro, pags]) =>
       `<div style="font-size:10px;line-height:1.4;margin-top:2px;">
-        <span style="color:var(--teal);font-weight:700">${pags} págs</span><br>
-        <span style="color:var(--text)">${livro}</span>
+        <span style="color:var(--teal);font-weight:700;font-size:13px">${pags} págs</span><br>
+        <span style="color:var(--text);font-size:13px">${livro}</span>
       </div>`
     ).join('');
 
