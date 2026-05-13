@@ -2120,6 +2120,10 @@ carregarDados();
 <!-- Menu do FAB -->
 <div class="fab-menu" id="fabMenu" style="display:none">
   <div class="fab-item">
+    <span>Adicionar Livro</span>
+    <button style="background:#4ecdc4" onclick="abrirModal('novoLivro')">➕</button>
+  </div>
+  <div class="fab-item">
     <span>Registrar Sessão</span>
     <button style="background:var(--purple)" onclick="abrirModal('sessao')">📖</button>
   </div>
@@ -2131,10 +2135,6 @@ carregarDados();
     <span>Atualizar Livro</span>
     <button style="background:var(--orange)" onclick="abrirModal('livro')">✏️</button>
   </div>
-  <div class="fab-item">
-    <span>Adicionar Livro</span>
-    <button style="background:#4ecdc4" onclick="abrirModal('novoLivro')">➕</button>
-  </div>
 </div>
 
 <!-- Modal: Registrar Sessão -->
@@ -2143,8 +2143,14 @@ carregarDados();
     <h2>📖 Registrar Sessão</h2>
     <div class="pwa-field">
       <label>Livro</label>
-      <input id="s-livro-busca" type="text" placeholder="Digite para buscar..." oninput="filtrarLivrosSessao(this.value)" autocomplete="off">
-      <select id="s-livro" size="4" style="margin-top:6px;height:auto;min-height:80px;" onchange="document.getElementById('s-livro-busca').value=this.options[this.selectedIndex]?.text?.replace(/^[📖⏸️📋] /,'')"></select>
+      <input id="s-livro-busca" type="text" placeholder="Digite para buscar..." 
+        oninput="filtrarLivrosSessao(this.value)" 
+        onblur="setTimeout(()=>document.getElementById('s-livro-lista').style.display='none',200)"
+        autocomplete="off">
+      <div id="s-livro-lista" style="display:none;background:var(--bg3);border:1px solid var(--border);border-radius:10px;margin-top:4px;max-height:200px;overflow-y:auto;"></div>
+      <input id="s-livro" type="hidden" value="">
+      <div id="s-livro-selecionado" style="display:none;background:var(--bg4);border-radius:8px;padding:8px 12px;margin-top:6px;font-size:14px;color:var(--teal);cursor:pointer;" onclick="limparLivroSessao()">
+      </div>
     </div>
     <div class="pwa-field">
       <label>Data</label>
@@ -2291,7 +2297,7 @@ carregarDados();
 </div>
 
 <script>
-const API_URL = 'https://script.google.com/macros/s/AKfycbzuNZzuy8fzaql5xpecEG6yG2aXMdkkeDpPbkaTV_ro6f1TkixI37s8aJxO0lPqIYOM/exec';
+const API_URL = 'SUA_URL_DO_APPS_SCRIPT_AQUI';
 let fabOpen = false;
 let livrosCache = [];
 let colecoesCache = [];
@@ -2343,8 +2349,8 @@ async function carregarLivros() {
 }
 
 function popularSelects() {
-  // Sessão — todos exceto Concluídos (via filtro)
-  filtrarLivrosSessao('');
+  // Sessão — inicializa sem mostrar lista (usuário digita para buscar)
+  // lista populada dinamicamente via filtrarLivrosSessao
 
   // Avaliação — apenas Concluídos
   const selNota = document.getElementById('n-livro');
@@ -2376,17 +2382,55 @@ function popularSelects() {
 }
 
 function filtrarLivrosSessao(termo) {
-  const sel = document.getElementById('s-livro');
+  const lista = document.getElementById('s-livro-lista');
   const livrosFiltrados = livrosCache
     .filter(l => l.status !== 'Completo')
     .filter(l => !termo || l.livro.toLowerCase().includes(termo.toLowerCase()));
-  sel.innerHTML = '<option value="">Selecione...</option>';
-  livrosFiltrados.forEach(l => {
+
+  if (!termo || livrosFiltrados.length === 0) {
+    lista.style.display = 'none';
+    return;
+  }
+
+  lista.style.display = 'block';
+  lista.innerHTML = '';
+  livrosFiltrados.slice(0, 10).forEach(l => {
     const icon = l.status==='Lendo'?'📖':l.status==='Pausado'?'⏸️':'📋';
-    sel.innerHTML += `<option value="${l.livro}">${icon} ${l.livro}</option>`;
+    const item = document.createElement('div');
+    item.style.cssText = 'padding:10px 14px;cursor:pointer;font-size:14px;border-bottom:1px solid var(--border);';
+    item.textContent = icon + ' ' + l.livro;
+    item.onmouseenter = () => item.style.background = 'var(--bg4)';
+    item.onmouseleave = () => item.style.background = '';
+    item.addEventListener('mousedown', (e) => { e.preventDefault(); selecionarLivroSessao(l); });
+    item.addEventListener('touchstart', (e) => { e.preventDefault(); selecionarLivroSessao(l); }, {passive:false});
+    lista.appendChild(item);
   });
-  // Auto-seleciona se só tiver um resultado
-  if (livrosFiltrados.length === 1) sel.value = livrosFiltrados[0].livro;
+}
+
+function selecionarLivroSessao(l) {
+  document.getElementById('s-livro').value = l.livro;
+  document.getElementById('s-livro-busca').value = '';
+  document.getElementById('s-livro-busca').placeholder = l.livro;
+  document.getElementById('s-livro-lista').style.display = 'none';
+  const sel = document.getElementById('s-livro-selecionado');
+  const icon = l.status==='Lendo'?'📖':l.status==='Pausado'?'⏸️':'📋';
+  sel.textContent = icon + ' ' + l.livro + ' ✕';
+  sel.style.display = 'block';
+  // Verifica dependência
+  if (l.depende) {
+    const dep = livrosCache.find(x => x.livro === l.depende);
+    if (dep && dep.status !== 'Completo') {
+      mostrarMsg('s-msg', `⚠️ Este livro depende de "${l.depende}" que ainda não foi concluído.`, 'err');
+    }
+  }
+}
+
+function limparLivroSessao() {
+  document.getElementById('s-livro').value = '';
+  document.getElementById('s-livro-busca').placeholder = 'Digite para buscar...';
+  document.getElementById('s-livro-selecionado').style.display = 'none';
+  const msg = document.getElementById('s-msg');
+  if (msg?.textContent.includes('depende')) { msg.className='pwa-msg'; msg.textContent=''; }
 }
 document.addEventListener('change', e => {
   if (e.target.id !== 's-livro') return;
