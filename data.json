@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-13T20:08:50.945Z",
+  "geradoEm": "2026-05-13T21:29:47.497Z",
   "metasPorAno": {
     "2024": {
       "total": 22,
@@ -46,8 +46,8 @@
     "PAUSADO": {
       "total": 2,
       "lidos": 0,
-      "lendo": 0,
-      "pausados": 2,
+      "lendo": 2,
+      "pausados": 0,
       "aguardando": 0,
       "paginasTotal": 1463,
       "paginasLidas": 284,
@@ -8598,7 +8598,7 @@
       "depende": "",
       "colecao": "Trilogia das Bruxas",
       "ordem": 23,
-      "status": "Pausado",
+      "status": "Lendo",
       "totalPag": 861,
       "pagAtual": 254,
       "pct": 0.295
@@ -8766,7 +8766,7 @@
       "depende": "",
       "colecao": "Trilogia dos Espinhos",
       "ordem": 34,
-      "status": "Pausado",
+      "status": "Lendo",
       "totalPag": 602,
       "pagAtual": 30,
       "pct": 0.05
@@ -13280,7 +13280,8 @@
       "pct": 0
     }
   ],
-  "pausados": [
+  "pausados": [],
+  "lendo": [
     {
       "livro": "A Descoberta das Bruxas",
       "autor": "Deborah Harkness",
@@ -13290,7 +13291,7 @@
       "depende": "",
       "colecao": "Trilogia das Bruxas",
       "ordem": 23,
-      "status": "Pausado",
+      "status": "Lendo",
       "totalPag": 861,
       "pagAtual": 254,
       "pct": 0.295
@@ -13304,13 +13305,11 @@
       "depende": "",
       "colecao": "Trilogia dos Espinhos",
       "ordem": 34,
-      "status": "Pausado",
+      "status": "Lendo",
       "totalPag": 602,
       "pagAtual": 30,
       "pct": 0.05
-    }
-  ],
-  "lendo": [
+    },
     {
       "livro": "A Cidade de Bronze",
       "autor": "S. A. Chakraborty",
