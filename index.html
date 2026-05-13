@@ -964,47 +964,32 @@ function inicializar(d) {
 
   // ── KPIs — armazena dados globalmente para atualizarVisaoGeral
   window._dadosD = d;
+
+  // Armazena globalmente ANTES de chamar atualizarVisaoGeral
+  const todosLivros = [
+    ...(d.livros    || []),
+    ...(d.lendo     || []),
+    ...(d.pausados  || []),
+    ...(d.aguardando|| [])
+  ].filter(l => l.livro && l.livro !== 'Livro' && l.livro.length > 1);
+  window._livros  = todosLivros;
+  window._sessoes = sessoes;
+
+  // Popular seletor de ano Visão Geral
+  const selVGAno = document.getElementById('selVGAno');
+  if (selVGAno && selVGAno.options.length <= 1) {
+    const anosVG = [...new Set(sessoes.map(s=>s.ano).filter(a=>a>2000))].sort();
+    anosVG.forEach(a => selVGAno.innerHTML += `<option value="${a}">${a}</option>`);
+  }
+
+  // Agora chama com dados disponíveis
   atualizarVisaoGeral();
 
-  const totalPags = sessoes.reduce((s,r) => s+r.paginas, 0);
-  const livrosCompletos  = (d.livros||[]).filter(l => l.status === 'Completo').length;
-  const livrosLendo      = (d.lendo||[]).length;
-  const livrosPausados   = (d.pausados||[]).length;
-  const livrosAguardando = (d.aguardando||[]).length;
-
-  const dayMap = {};
-  const dayLivro = {};
-  sessoes.forEach(s => {
-    if (s.data) {
-      dayMap[s.data] = (dayMap[s.data]||0) + s.paginas;
-      if (!dayLivro[s.data]) dayLivro[s.data] = s.livro;
-    }
-  });
-  const diasVals = Object.values(dayMap);
-  const mediaParDia = diasVals.length ? Math.round(diasVals.reduce((a,b)=>a+b,0)/diasVals.length*10)/10 : 0;
-  const recorde = diasVals.length ? Math.max(...diasVals) : 0;
-  const recordeData = Object.entries(dayMap).find(([,v]) => v === recorde)?.[0] || '';
-  const recordeLabel = recordeData
-    ? new Date(recordeData + 'T12:00:00').toLocaleDateString('pt-BR', {day:'2-digit', month:'short', year:'numeric'})
-    : 'páginas em um dia';
-  const recordeLivro = dayLivro[recordeData] || '';
-  const recordeLivroData = (window._livros||[]).find(l => l.livro === recordeLivro);
-  const recordeAutor = recordeLivroData?.autor || '';
-  const minutosTotais = sessoes.reduce((s,r) => s+(r.minutos||0), 0);
-  const horasTotais = Math.round(minutosTotais / 60);
-
-  document.getElementById('kpi-paginas').textContent     = totalPags.toLocaleString('pt-BR');
-  document.getElementById('kpi-livros').textContent      = livrosCompletos;
-  document.getElementById('kpi-lendo').textContent       = livrosLendo;
-  document.getElementById('kpi-pausados').textContent    = livrosPausados;
-  document.getElementById('kpi-aguardando').textContent  = livrosAguardando;
-  document.getElementById('kpi-sessoes').textContent     = sessoes.length.toLocaleString('pt-BR');
-  document.getElementById('kpi-pgdia').textContent       = mediaParDia.toFixed(1).replace('.',',');
-  document.getElementById('kpi-horas').textContent       = horasTotais + 'h';
-  document.getElementById('kpi-recorde').textContent     = recorde;
-  document.getElementById('kpi-recorde-data').textContent = recordeLabel;
-  document.getElementById('kpi-recorde-livro').textContent = recordeLivro;
-  document.getElementById('kpi-recorde-autor').textContent = recordeAutor;
+  // mediaParDia para cálculo de dias estimados nos cards de lendo
+  const dayMapTemp = {};
+  sessoes.forEach(s => { if(s.data) dayMapTemp[s.data]=(dayMapTemp[s.data]||0)+s.paginas; });
+  const diasValsTemp = Object.values(dayMapTemp);
+  const mediaParDia = diasValsTemp.length ? Math.round(diasValsTemp.reduce((a,b)=>a+b,0)/diasValsTemp.length*10)/10 : 50;
 
   // Maior e menor livro
   const livrosLidos = (d.livros||[]).filter(l => l.status === 'Completo' && l.totalPag > 0);
@@ -1127,16 +1112,6 @@ function inicializar(d) {
     }
   }
 
-  // Armazena globalmente — combina todos os livros de todos os status
-  const todosLivros = [
-    ...(d.livros    || []),
-    ...(d.lendo     || []),
-    ...(d.pausados  || []),
-    ...(d.aguardando|| [])
-  ].filter(l => l.livro && l.livro !== 'Livro' && l.livro.length > 1);
-  window._livros  = todosLivros;
-  window._sessoes = sessoes;
-
   // Atualiza rodapé com data de geração
   if (d.geradoEm) {
     const dt = new Date(d.geradoEm);
@@ -1174,6 +1149,48 @@ const YC = ['#8b7cf8','#f88c6a','#4ecdc4','#ffd166'];
 const WD_LABELS = ['Seg','Ter','Qua','Qui','Sex','Sáb','Dom'];
 const WD_COLORS = ['#8b7cf8','#8b7cf8','#8b7cf8','#8b7cf8','#8b7cf8','#f88c6a','#ffd166'];
 const DONUT_COLORS = ['#8b7cf8','#f88c6a','#4ecdc4','#ffd166','#e56cff','#56cfff','#ff6b9d','#a8e063','#f9c74f','#90e0ef'];
+
+function atualizarVisaoGeral() {
+  const d = window._dadosD;
+  if (!d) return;
+  const ano = document.getElementById('selVGAno')?.value || 'total';
+  const sessAll = window._sessoes || [];
+  const sessoes = ano === 'total' ? sessAll : sessAll.filter(s => String(s.ano) === String(ano));
+
+  const totalPagsVG = sessoes.reduce((s,r) => s+r.paginas, 0);
+  const dayMapVG = {}, dayLivroVG = {};
+  sessoes.forEach(s => {
+    if (s.data) {
+      dayMapVG[s.data] = (dayMapVG[s.data]||0) + s.paginas;
+      if (!dayLivroVG[s.data]) dayLivroVG[s.data] = s.livro;
+    }
+  });
+  const diasValsVG = Object.values(dayMapVG);
+  const mediaParDiaVG = diasValsVG.length ? Math.round(diasValsVG.reduce((a,b)=>a+b,0)/diasValsVG.length*10)/10 : 0;
+  const recordeVG = diasValsVG.length ? Math.max(...diasValsVG) : 0;
+  const recordeDataVG = Object.entries(dayMapVG).find(([,v])=>v===recordeVG)?.[0] || '';
+  const recordeLabelVG = recordeDataVG
+    ? new Date(recordeDataVG+'T12:00:00').toLocaleDateString('pt-BR',{day:'2-digit',month:'short',year:'numeric'})
+    : 'páginas em um dia';
+  const recordeLivroVG = dayLivroVG[recordeDataVG] || '';
+  const recordeLivroDataVG = (window._livros||[]).find(l=>l.livro===recordeLivroVG);
+  const horasTotaisVG = Math.round(sessoes.reduce((s,r)=>s+(r.minutos||0),0)/60);
+
+  const el = id => document.getElementById(id);
+  el('kpi-paginas').textContent    = totalPagsVG.toLocaleString('pt-BR');
+  el('kpi-livros').textContent     = (d.livros||[]).filter(l=>l.status==='Completo').length;
+  el('kpi-lendo').textContent      = (d.lendo||[]).length;
+  el('kpi-pausados').textContent   = (d.pausados||[]).length;
+  el('kpi-aguardando').textContent = (d.aguardando||[]).length;
+  el('kpi-sessoes').textContent    = sessoes.length.toLocaleString('pt-BR');
+  el('kpi-pgdia').textContent      = mediaParDiaVG.toFixed(1).replace('.',',');
+  el('kpi-horas').textContent      = horasTotaisVG + 'h';
+  el('kpi-recorde').textContent    = recordeVG;
+  el('kpi-recorde-data').textContent = recordeLabelVG;
+  el('kpi-recorde-livro').textContent = recordeLivroVG;
+  el('kpi-recorde-autor').textContent = recordeLivroDataVG?.autor || '';
+}
+window.atualizarVisaoGeral = atualizarVisaoGeral;
 
 function renderizarGraficos(dados) {
   MONTHLY   = dados.MONTHLY;
@@ -1765,13 +1782,6 @@ window.renderListaStatus = renderListaStatus;
 })();
 
 // Popular seletor de anos dos donuts
-// Popular seletor de ano da Visão Geral
-const selVGAno = document.getElementById('selVGAno');
-if (selVGAno) {
-  const anosVG = [...new Set(sessoes.map(s=>s.ano).filter(a=>a>2000))].sort();
-  anosVG.forEach(a => selVGAno.innerHTML += `<option value="${a}">${a}</option>`);
-}
-
 const selDonutAno = document.getElementById('selDonutAno');
 if (selDonutAno) {
   const anosDonut = [...new Set(sessoes.map(s=>s.ano).filter(a=>a>2000))].sort();
