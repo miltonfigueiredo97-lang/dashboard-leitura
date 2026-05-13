@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-13T01:56:46.828Z",
+  "geradoEm": "2026-05-13T02:00:58.331Z",
   "metasPorAno": {
     "2024": {
       "total": 22,
@@ -10067,7 +10067,7 @@
     },
     {
       "livro": "O Caminho dos Reis",
-      "ano": 0,
+      "ano": 2024,
       "media": 9.2,
       "criterios": {
         "Diálogos": 9,
@@ -10101,7 +10101,7 @@
     },
     {
       "livro": "Eu sou o Numero 4",
-      "ano": 0,
+      "ano": 2024,
       "media": 6.7,
       "criterios": {
         "Diálogos": 4,
@@ -10118,7 +10118,7 @@
     },
     {
       "livro": "O Poder dos Seis",
-      "ano": 0,
+      "ano": 2024,
       "media": 6.7,
       "criterios": {
         "Diálogos": 6,
@@ -10168,7 +10168,7 @@
       }
     },
     {
-      "livro": "Edgeshard",
+      "livro": "Edgedancer",
       "ano": 2025,
       "media": 6.1,
       "criterios": {
