@@ -1,5 +1,16 @@
 {
-  "geradoEm": "2026-05-13T21:29:47.497Z",
+  "geradoEm": "2026-05-13T22:29:19.635Z",
+  "meta": {
+    "total": 28,
+    "lidos": 7,
+    "faltando": 21,
+    "paginasTotal": 15855,
+    "paginasLidas": 4653,
+    "paginasFaltando": 11202,
+    "mediaDiaria": 55,
+    "ritmoAtual": 43.5,
+    "dataPrevistoAtual": "26/01/2027"
+  },
   "metasPorAno": {
     "2024": {
       "total": 22,
