@@ -2527,9 +2527,14 @@ function renderListaStatus() {
   document.getElementById('ps-count').textContent = `${livros.length} livro${livros.length!==1?'s':''}`;
 
   const lista = document.getElementById('painelStatusLista');
-  lista.innerHTML = '';
 
-  livros.forEach(l => {
+  if (!livros.length) {
+    lista.innerHTML = '<div style="color:var(--muted);text-align:center;padding:16px;">Nenhum livro</div>';
+    return;
+  }
+
+  // Constrói todo HTML de uma vez para não travar com listas grandes
+  const html = livros.map(l => {
     const capa = coverThumb(l.isbn, l.coverUrl||'') ||
       `<div style="width:36px;height:50px;background:var(--bg3);border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">📖</div>`;
     let extra = '';
@@ -2540,7 +2545,7 @@ function renderListaStatus() {
       extra = `<div style="font-size:11px;color:var(--muted);margin-top:2px;">📅 ${diasLidos} dias · ⚡ ${media} págs/dia</div>`;
     }
     const colTag = l.colecaoReal ? `<span style="font-size:10px;color:var(--purple);background:rgba(139,124,248,0.12);padding:1px 6px;border-radius:4px;">${l.colecaoReal}</span>` : '';
-    lista.innerHTML += `<div style="display:flex;gap:10px;align-items:center;padding:8px;background:var(--bg3);border-radius:10px;">
+    return `<div style="display:flex;gap:10px;align-items:center;padding:8px;background:var(--bg3);border-radius:10px;">
       <div style="flex-shrink:0;">${capa}</div>
       <div style="flex:1;min-width:0;">
         <div style="font-size:13px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${l.livro}</div>
@@ -2552,9 +2557,9 @@ function renderListaStatus() {
         <div style="font-size:10px;color:var(--muted);">págs</div>
       </div>
     </div>`;
-  });
+  }).join('');
 
-  if (!livros.length) lista.innerHTML = '<div style="color:var(--muted);text-align:center;padding:16px;">Nenhum livro</div>';
+  lista.innerHTML = html;
 }
 window.toggleListaStatus = toggleListaStatus;
 window.renderListaStatus = renderListaStatus;
