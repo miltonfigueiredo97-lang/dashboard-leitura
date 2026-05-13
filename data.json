@@ -1,15 +1,71 @@
 {
-  "geradoEm": "2026-05-13T00:48:42.887Z",
-  "meta": {
-    "total": 28,
-    "lidos": 7,
-    "faltando": 21,
-    "paginasTotal": 15855,
-    "paginasLidas": 4653,
-    "paginasFaltando": 11202,
-    "mediaDiaria": 69.3,
-    "dataPrevistoInicial": "27/11/2026",
-    "dataPrevistoAtual": "21/10/2026"
+  "geradoEm": "2026-05-13T01:07:56.273Z",
+  "metasPorAno": {
+    "2024": {
+      "total": 22,
+      "lidos": 22,
+      "lendo": 0,
+      "pausados": 0,
+      "aguardando": 0,
+      "paginasTotal": 11200,
+      "paginasLidas": 11200,
+      "paginasFaltando": 0,
+      "faltando": 0,
+      "mediaDiaria": 58.3,
+      "dataPrevistoAtual": "Concluída!"
+    },
+    "2025": {
+      "total": 29,
+      "lidos": 27,
+      "lendo": 0,
+      "pausados": 1,
+      "aguardando": 1,
+      "paginasTotal": 19422,
+      "paginasLidas": 18632,
+      "paginasFaltando": 790,
+      "faltando": 2,
+      "mediaDiaria": 75.9,
+      "dataPrevistoAtual": "23/05/2026"
+    },
+    "2026": {
+      "total": 28,
+      "lidos": 7,
+      "lendo": 1,
+      "pausados": 0,
+      "aguardando": 20,
+      "paginasTotal": 15855,
+      "paginasLidas": 4653,
+      "paginasFaltando": 11202,
+      "faltando": 21,
+      "mediaDiaria": 55,
+      "dataPrevistoAtual": "02/12/2026"
+    },
+    "META": {
+      "total": 1,
+      "lidos": 0,
+      "lendo": 0,
+      "pausados": 0,
+      "aguardando": 0,
+      "paginasTotal": 0,
+      "paginasLidas": 0,
+      "paginasFaltando": 0,
+      "faltando": 1,
+      "mediaDiaria": 50,
+      "dataPrevistoAtual": "—"
+    },
+    "AINDA NÃO DEFINIDO": {
+      "total": 9,
+      "lidos": 0,
+      "lendo": 0,
+      "pausados": 0,
+      "aguardando": 9,
+      "paginasTotal": 4219,
+      "paginasLidas": 0,
+      "paginasFaltando": 4219,
+      "faltando": 9,
+      "mediaDiaria": 50,
+      "dataPrevistoAtual": "05/08/2026"
+    }
   },
   "sessoes": [
     {
@@ -8211,7 +8267,7 @@
       "autor": "autor",
       "isbn": "ISBN",
       "coverUrl": "url",
-      "metaAno": "FAZ PARTE DA META?",
+      "metaAno": "META",
       "ordem": 0,
       "status": "STATUS",
       "totalPag": 0,
@@ -8616,7 +8672,7 @@
     },
     {
       "livro": "Godsgrave",
-      "autor": "Mark Lawrence",
+      "autor": "Jay Kristoff",
       "isbn": "9788592783709",
       "coverUrl": "https://m.media-amazon.com/images/I/91ejP7MLERL._UF1000,1000_QL80_.jpg",
       "metaAno": "2025",
@@ -8628,7 +8684,7 @@
     },
     {
       "livro": "Rei dos Espinhos",
-      "autor": "Steven Erikson",
+      "autor": "Mark Lawrence",
       "isbn": "9780007423200",
       "coverUrl": "https://m.media-amazon.com/images/I/71MsUTWzVKL._AC_UF1000,1000_QL80_.jpg",
       "metaAno": "2025",
@@ -8640,7 +8696,7 @@
     },
     {
       "livro": "Jardins da Lua - Imperio Malazano",
-      "autor": "Leonel Caldela",
+      "autor": "Steven Erikson",
       "isbn": "9780765348784",
       "coverUrl": "https://m.media-amazon.com/images/I/61jfhKVoKtL._AC_UF1000,1000_QL80_.jpg",
       "metaAno": "2025",
@@ -8652,7 +8708,7 @@
     },
     {
       "livro": "O Inimigo do Mundo",
-      "autor": "Joe Abercrombie",
+      "autor": "Leonel Caldela",
       "isbn": "9780765345554",
       "coverUrl": "https://m.media-amazon.com/images/I/61nEfc+YeyL._AC_UF1000,1000_QL80_.jpg",
       "metaAno": "2025",
@@ -8664,7 +8720,7 @@
     },
     {
       "livro": "Meio Rei",
-      "autor": "Felipe Castilho",
+      "autor": "Joe Abercrombie",
       "isbn": "9788580454741",
       "coverUrl": "https://m.media-amazon.com/images/I/61xhyYPXz-L._AC_UF1000,1000_QL80_.jpg",
       "metaAno": "2025",
@@ -8676,7 +8732,7 @@
     },
     {
       "livro": "Ordem Vermelha - Filhos da Degradação",
-      "autor": "C. S. Lewis",
+      "autor": "Felipe Castilho",
       "isbn": "9780345503800",
       "coverUrl": "https://m.media-amazon.com/images/I/618vHqXZwCL._AC_UF1000,1000_QL80_.jpg",
       "metaAno": "2025",
@@ -8700,7 +8756,7 @@
     },
     {
       "livro": "O Leão a Feiticeira e Guarda-Roupa",
-      "autor": "J. K. Rowling",
+      "autor": "C. S. Lewis",
       "isbn": "9780007115427",
       "coverUrl": "https://m.media-amazon.com/images/I/912ChRKXhVL._AC_UF1000,1000_QL80_.jpg",
       "metaAno": "2025",
@@ -8712,7 +8768,7 @@
     },
     {
       "livro": "Harry Potter - A Pedra Filosofal",
-      "autor": "Brandon Sanderson",
+      "autor": "J. K. Rowling",
       "isbn": "9788532530783",
       "coverUrl": "https://m.media-amazon.com/images/I/81ibfYk4qmL.jpg",
       "metaAno": "2025",
@@ -8748,7 +8804,7 @@
     },
     {
       "livro": "Dawnshard",
-      "autor": "Rick Riordan",
+      "autor": "Brandon Sanderson",
       "isbn": "9780593198957",
       "coverUrl": "https://m.media-amazon.com/images/I/81Ox9WrOojL.jpg",
       "metaAno": "2025",
@@ -8772,7 +8828,7 @@
     },
     {
       "livro": "O Sangue do Olimpo",
-      "autor": "R. F. Kuang",
+      "autor": "Rick Riordan",
       "isbn": "9788580575958",
       "coverUrl": "https://m.media-amazon.com/images/I/81h37421KuL.jpg",
       "metaAno": "2025",
@@ -8784,7 +8840,7 @@
     },
     {
       "livro": "Guerra da Papoula",
-      "autor": "Patrick Rothfuss",
+      "autor": "R. F. Kuang",
       "isbn": "9786555604344",
       "coverUrl": "https://m.media-amazon.com/images/I/613YunBw8yL._AC_UF1000,1000_QL80_.jpg",
       "metaAno": "2025",
@@ -8796,7 +8852,7 @@
     },
     {
       "livro": "O Temor do Sabio",
-      "autor": "Brandon Sanderson",
+      "autor": "Patrick Rothfuss",
       "isbn": "9788580410327",
       "coverUrl": "https://m.media-amazon.com/images/I/91rGGj7JBhL.jpg",
       "metaAno": "2025",
@@ -8832,7 +8888,7 @@
     },
     {
       "livro": "Warbreaker",
-      "autor": "Christopher Paolini",
+      "autor": "Brandon Sanderson",
       "isbn": "9786581339067",
       "coverUrl": "https://m.media-amazon.com/images/I/81F956bHBgL._AC_UF1000,1000_QL80_.jpg",
       "metaAno": "2025",
@@ -8844,7 +8900,7 @@
     },
     {
       "livro": "Murtagh",
-      "autor": "M. L. Wang",
+      "autor": "Christopher Paolini",
       "isbn": "9780593650806",
       "coverUrl": "https://m.media-amazon.com/images/I/911wFNqeeNL._AC_UF1000,1000_QL80_.jpg",
       "metaAno": "2026",
@@ -8856,7 +8912,7 @@
     },
     {
       "livro": "The Sword of Kaigen",
-      "autor": "Brandon Sanderson",
+      "autor": "M. L. Wang",
       "isbn": "9781733681940",
       "coverUrl": "https://m.media-amazon.com/images/I/71CrKDOkS2L._AC_UF1000,1000_QL80_.jpg",
       "metaAno": "2026",
@@ -8868,7 +8924,7 @@
     },
     {
       "livro": "Yumi e o Pintor de Pesadelos",
-      "autor": "Michael R. Miller",
+      "autor": "Brandon Sanderson",
       "isbn": "9781250905765",
       "coverUrl": "https://m.media-amazon.com/images/I/81M4W0-n3RL._AC_UF1000,1000_QL80_.jpg",
       "metaAno": "2026",
@@ -8880,7 +8936,7 @@
     },
     {
       "livro": "Songs of Chaos - Ascendant",
-      "autor": "Matt Dinniman",
+      "autor": "Michael R. Miller",
       "isbn": "9781804362624",
       "coverUrl": "https://m.media-amazon.com/images/I/61cIc7qMAkL._SL1360_.jpg",
       "metaAno": "2026",
@@ -8892,7 +8948,7 @@
     },
     {
       "livro": "Carl O Explorador de Masmorras",
-      "autor": "Philip C. Quaintrell",
+      "autor": "Matt Dinniman",
       "isbn": "9781739418601",
       "coverUrl": "https://m.media-amazon.com/images/I/71i955AHEtL.jpg",
       "metaAno": "2026",
@@ -8904,7 +8960,7 @@
     },
     {
       "livro": "The Echoes Saga - Rise of the Ranger",
-      "autor": "Ursula K. Le Guin",
+      "autor": "Philip C. Quaintrell",
       "isbn": "9781073408702",
       "coverUrl": "https://m.media-amazon.com/images/I/61-AuecLDjL._AC_UF1000,1000_QL80_.jpg",
       "metaAno": "2026",
@@ -8916,7 +8972,7 @@
     },
     {
       "livro": "o Feiticeiro de Terramar",
-      "autor": "S. A. Chakraborty",
+      "autor": "Ursula K. Le Guin",
       "isbn": "9780547773742",
       "coverUrl": "https://m.media-amazon.com/images/I/61Nvp78uhGL._AC_UF1000,1000_QL80_.jpg",
       "metaAno": "2026",
@@ -8928,7 +8984,7 @@
     },
     {
       "livro": "A Cidade de Bronze",
-      "autor": "Brandon Sanderson",
+      "autor": "S. A. Chakraborty",
       "isbn": "9780062678119",
       "coverUrl": "https://m.media-amazon.com/images/I/91JQ7RcYcrL._UF1000,1000_QL80_.jpg",
       "metaAno": "2026",
@@ -8940,7 +8996,7 @@
     },
     {
       "livro": "A Alma do Imperador",
-      "autor": "Ryan Cahill",
+      "autor": "Brandon Sanderson",
       "isbn": "9780765360922",
       "coverUrl": "https://m.media-amazon.com/images/I/81GB-e9IAgL._AC_UF1000,1000_QL80_.jpg",
       "metaAno": "2026",
@@ -9302,7 +9358,7 @@
     },
     {
       "livro": "Rei dos Espinhos",
-      "autor": "Steven Erikson",
+      "autor": "Mark Lawrence",
       "isbn": "9780007423200",
       "coverUrl": "https://m.media-amazon.com/images/I/71MsUTWzVKL._AC_UF1000,1000_QL80_.jpg",
       "metaAno": "2025",
@@ -9316,7 +9372,7 @@
   "lendo": [
     {
       "livro": "A Cidade de Bronze",
-      "autor": "Brandon Sanderson",
+      "autor": "S. A. Chakraborty",
       "isbn": "9780062678119",
       "coverUrl": "https://m.media-amazon.com/images/I/91JQ7RcYcrL._UF1000,1000_QL80_.jpg",
       "metaAno": "2026",
@@ -9342,7 +9398,7 @@
     },
     {
       "livro": "A Alma do Imperador",
-      "autor": "Ryan Cahill",
+      "autor": "Brandon Sanderson",
       "isbn": "9780765360922",
       "coverUrl": "https://m.media-amazon.com/images/I/81GB-e9IAgL._AC_UF1000,1000_QL80_.jpg",
       "metaAno": "2026",
@@ -9689,43 +9745,6 @@
       "pct": 0
     }
   ],
-  "metasPorAno": {
-    "2024": {
-      "lidos": 22,
-      "lendo": 0,
-      "pausados": 0,
-      "aguardando": 0,
-      "paginas": 11200
-    },
-    "2025": {
-      "lidos": 27,
-      "lendo": 0,
-      "pausados": 1,
-      "aguardando": 1,
-      "paginas": 18602
-    },
-    "2026": {
-      "lidos": 7,
-      "lendo": 1,
-      "pausados": 0,
-      "aguardando": 20,
-      "paginas": 4375
-    },
-    "FAZ PARTE DA META?": {
-      "lidos": 0,
-      "lendo": 0,
-      "pausados": 0,
-      "aguardando": 0,
-      "paginas": 0
-    },
-    "AINDA NÃO DEFINIDO": {
-      "lidos": 0,
-      "lendo": 0,
-      "pausados": 0,
-      "aguardando": 9,
-      "paginas": 0
-    }
-  },
   "notas": [
     {
       "livro": "O nome do Vento",
