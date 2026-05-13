@@ -1199,7 +1199,8 @@ function renderizarGraficos(dados) {
   NOTES     = dados.NOTES;
   COLECOES  = dados.COLECOES;
   BOOK_DAILY = dados.BOOK_DAILY;
-  ['cLine','cWdAvg','cWdSum','cDonut','cAutores','cBookChart'].forEach(id => {
+  // Destroi todos os charts existentes antes de recriar
+  ['cMonthly','cDonut','cAutores','cBook'].forEach(id => {
     const el = document.getElementById(id);
     if (el) { const ch = Chart.getChart(el); if (ch) ch.destroy(); }
   });
@@ -1367,6 +1368,9 @@ function baseScales(xRot) {
 
   let chart = null;
   const ctx = document.getElementById('cMonthly').getContext('2d');
+  // Destroi chart existente se houver
+  const existingChart = Chart.getChart('cMonthly');
+  if (existingChart) existingChart.destroy();
 
   // Plugin para linhas verticais nos meses de dezembro
   const dezPlugin = {
@@ -1552,6 +1556,8 @@ window.buildCalendar = buildCalendar;
 
   let chart = null;
   const ctx = document.getElementById('cBook').getContext('2d');
+  const existingBookChart = Chart.getChart('cBook');
+  if (existingBookChart) existingBookChart.destroy();
 
   window.buildBookChart = function() {
     const book = sel.value;
