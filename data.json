@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-13T14:09:59.784Z",
+  "geradoEm": "2026-05-13T15:52:06.279Z",
   "metasPorAno": {
     "2024": {
       "total": 22,
@@ -39,9 +39,9 @@
       "paginasLidas": 4653,
       "paginasFaltando": 11202,
       "faltando": 21,
-      "mediaDiaria": 55.6,
-      "ritmoAtual": 45.3,
-      "dataPrevistoAtual": "16/01/2027"
+      "mediaDiaria": 55,
+      "ritmoAtual": 43.5,
+      "dataPrevistoAtual": "26/01/2027"
     },
     "PAUSADO": {
       "total": 2,
@@ -8264,14 +8264,6 @@
       "paginas": 34,
       "minutos": 30,
       "ano": 2026
-    },
-    {
-      "livro": "A Cidade de Bronze",
-      "colecao": "Daevabad Trilogy",
-      "data": "2026-05-12",
-      "paginas": 100,
-      "minutos": 60,
-      "ano": 2026
     }
   ],
   "livros": [
@@ -9444,19 +9436,6 @@
       "totalPag": 896,
       "pagAtual": 0,
       "pct": 0
-    },
-    {
-      "livro": "xxx",
-      "autor": "",
-      "isbn": "",
-      "coverUrl": "",
-      "metaAno": "",
-      "depende": "",
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 0,
-      "pagAtual": 0,
-      "pct": 0
     }
   ],
   "pausados": [
@@ -9877,19 +9856,6 @@
       "ordem": 0,
       "status": "Aguardando",
       "totalPag": 896,
-      "pagAtual": 0,
-      "pct": 0
-    },
-    {
-      "livro": "xxx",
-      "autor": "",
-      "isbn": "",
-      "coverUrl": "",
-      "metaAno": "",
-      "depende": "",
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 0,
       "pagAtual": 0,
       "pct": 0
     }
