@@ -2131,6 +2131,10 @@ carregarDados();
     <span>Atualizar Livro</span>
     <button style="background:var(--orange)" onclick="abrirModal('livro')">✏️</button>
   </div>
+  <div class="fab-item">
+    <span>Adicionar Livro</span>
+    <button style="background:#4ecdc4" onclick="abrirModal('novoLivro')">➕</button>
+  </div>
 </div>
 
 <!-- Modal: Registrar Sessão -->
@@ -2207,7 +2211,58 @@ carregarDados();
   </div>
 </div>
 
-<!-- Modal: Atualizar Livro -->
+<!-- Modal: Novo Livro -->
+<div class="pwa-overlay" id="modalNovoLivro">
+  <div class="pwa-modal">
+    <h2>➕ Adicionar Livro</h2>
+    <div class="pwa-field">
+      <label>Nome do Livro *</label>
+      <input id="nl-nome" type="text" placeholder="Ex: O Caminho dos Reis">
+    </div>
+    <div class="pwa-field">
+      <label>Autor</label>
+      <input id="nl-autor" type="text" placeholder="Ex: Brandon Sanderson">
+    </div>
+    <div class="pwa-row">
+      <div class="pwa-field">
+        <label>Total de Páginas</label>
+        <input id="nl-paginas" type="number" min="1" placeholder="0">
+      </div>
+      <div class="pwa-field">
+        <label>Ano da Meta</label>
+        <input id="nl-metaano" type="number" min="2023" max="2030" placeholder="2026">
+      </div>
+      <div class="pwa-field">
+        <label>Ordem de Leitura</label>
+        <input id="nl-ordem" type="number" min="1" placeholder="1">
+      </div>
+    </div>
+    <div class="pwa-field">
+      <label>Status inicial</label>
+      <select id="nl-status">
+        <option value="Aguardando">📋 Aguardando</option>
+        <option value="Lendo">📖 Lendo</option>
+        <option value="Pausado">⏸️ Pausado</option>
+        <option value="Completo">✅ Completo</option>
+      </select>
+    </div>
+    <div class="pwa-field">
+      <label>Livro anterior (dependência)</label>
+      <input id="nl-depende" type="text" placeholder="Nome do livro que precisa ler antes">
+    </div>
+    <div class="pwa-field">
+      <label>URL da Capa</label>
+      <input id="nl-capa" type="url" placeholder="https://...">
+    </div>
+    <div class="pwa-field">
+      <label>ISBN</label>
+      <input id="nl-isbn" type="text" placeholder="978...">
+    </div>
+    <div class="pwa-msg" id="nl-msg"></div>
+    <button class="pwa-btn" id="nl-btn" onclick="enviarNovoLivro()">✅ Adicionar Livro</button>
+    <button class="pwa-btn-cancel" onclick="fecharModal('novoLivro')">Cancelar</button>
+  </div>
+</div>
 <div class="pwa-overlay" id="modalLivro">
   <div class="pwa-modal">
     <h2>✏️ Atualizar Livro</h2>
@@ -2236,7 +2291,7 @@ carregarDados();
 </div>
 
 <script>
-const API_URL = 'https://script.google.com/macros/s/AKfycbzuNZzuy8fzaql5xpecEG6yG2aXMdkkeDpPbkaTV_ro6f1TkixI37s8aJxO0lPqIYOM/exec';
+const API_URL = 'SUA_URL_DO_APPS_SCRIPT_AQUI';
 let fabOpen = false;
 let livrosCache = [];
 let colecoesCache = [];
@@ -2249,9 +2304,9 @@ function toggleFabMenu() {
 
 function abrirModal(tipo) {
   toggleFabMenu();
-  document.getElementById('modal' + tipo.charAt(0).toUpperCase() + tipo.slice(1)).classList.add('open');
+  const id = 'modal' + tipo.charAt(0).toUpperCase() + tipo.slice(1);
+  document.getElementById(id).classList.add('open');
   if (tipo === 'sessao') {
-    // Data de hoje por padrão
     document.getElementById('s-data').value = new Date().toISOString().slice(0,10);
     carregarLivros();
   }
@@ -2259,8 +2314,9 @@ function abrirModal(tipo) {
 }
 
 function fecharModal(tipo) {
-  document.getElementById('modal' + tipo.charAt(0).toUpperCase() + tipo.slice(1)).classList.remove('open');
-  ['s-msg','n-msg','l-msg'].forEach(id => {
+  const id = 'modal' + tipo.charAt(0).toUpperCase() + tipo.slice(1);
+  document.getElementById(id).classList.remove('open');
+  ['s-msg','n-msg','l-msg','nl-msg'].forEach(id => {
     const el = document.getElementById(id);
     if (el) { el.className = 'pwa-msg'; el.textContent = ''; }
   });
@@ -2274,10 +2330,13 @@ document.querySelectorAll('.pwa-overlay').forEach(el => {
 async function carregarLivros() {
   if (livrosCache.length > 0) { popularSelects(); return; }
   try {
-    const r = await fetch(API_URL + '?acao=listarLivros');
+    // Usa o data.json já disponível — sem problema de CORS
+    const r = await fetch('/data.json');
     const d = await r.json();
-    livrosCache = d.livros || [];
-    colecoesCache = d.colecoes || [];
+    livrosCache = (d.livros || []).filter(l => l.livro && l.status !== 'STATUS');
+    // Coleta coleções únicas das sessões
+    const cols = new Set((d.sessoes||[]).map(s=>s.colecao).filter(Boolean));
+    colecoesCache = [...cols].sort();
     popularSelects();
   } catch(e) {
     console.error('Erro ao carregar livros:', e);
@@ -2420,6 +2479,44 @@ function mostrarMsg(id, texto, tipo) {
   const el = document.getElementById(id);
   el.textContent = texto;
   el.className = 'pwa-msg ' + tipo;
+}
+
+async function enviarNovoLivro() {
+  const btn = document.getElementById('nl-btn');
+  const nome = document.getElementById('nl-nome').value.trim();
+  if (!nome) { mostrarMsg('nl-msg', 'O nome do livro é obrigatório!', 'err'); return; }
+
+  btn.disabled = true;
+  btn.textContent = 'Adicionando...';
+  try {
+    const r = await fetch(API_URL, {
+      method: 'POST',
+      body: JSON.stringify({
+        acao:    'adicionarLivro',
+        nome,
+        autor:   document.getElementById('nl-autor').value.trim(),
+        paginas: Number(document.getElementById('nl-paginas').value) || 0,
+        metaAno: document.getElementById('nl-metaano').value || '',
+        ordem:   Number(document.getElementById('nl-ordem').value) || 0,
+        status:  document.getElementById('nl-status').value || 'Aguardando',
+        depende: document.getElementById('nl-depende').value.trim(),
+        capa:    document.getElementById('nl-capa').value.trim(),
+        isbn:    document.getElementById('nl-isbn').value.trim(),
+      })
+    });
+    const d = await r.json();
+    if (d.ok) {
+      mostrarMsg('nl-msg', '✅ ' + d.msg, 'ok');
+      livrosCache = []; // força reload
+      setTimeout(() => fecharModal('novoLivro'), 2000);
+    } else {
+      mostrarMsg('nl-msg', '❌ ' + d.erro, 'err');
+    }
+  } catch(e) {
+    mostrarMsg('nl-msg', '❌ Erro de conexão', 'err');
+  }
+  btn.disabled = false;
+  btn.textContent = '✅ Adicionar Livro';
 }
 
 // Service Worker para PWA
