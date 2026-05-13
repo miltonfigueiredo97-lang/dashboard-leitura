@@ -60,8 +60,20 @@ header .badge {
 
 /* book KPI */
 .kpi-book { display: flex; gap: 10px; align-items: flex-start; }
-.kpi-book img { width: 44px; height: 62px; object-fit: cover; border-radius: 4px; box-shadow: 2px 2px 8px rgba(0,0,0,.5); flex-shrink: 0; }
+.kpi-book img { width: 60px; height: 84px; object-fit: cover; border-radius: 4px; box-shadow: 2px 2px 8px rgba(0,0,0,.5); flex-shrink: 0; }
 .kpi-book .fallback { width: 44px; height: 62px; background: var(--bg4); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+.cover-img { transition: transform 0.2s ease, box-shadow 0.2s ease; transform-origin: left center; image-rendering: high-quality; }
+.cover-img:hover { transform: scale(2); box-shadow: 0 8px 32px rgba(0,0,0,0.7); z-index: 100; position: relative; }
+.cal-day { border-radius:6px;padding:4px;min-height:64px;cursor:pointer;transition:background 0.15s;position:relative;background:var(--bg3); }
+.cal-day:hover { background:var(--bg4); }
+.cal-day.active { background:rgba(139,124,248,0.15);border:1px solid rgba(139,124,248,0.4); }
+.cal-day.selected { background:rgba(139,124,248,0.3);border:1px solid var(--purple); }
+.cal-day-num { font-size:11px;color:var(--muted);font-weight:600; }
+.cal-day-pag { font-size:10px;color:var(--teal);font-weight:700;margin-top:2px; }
+.cal-day-bar { height:3px;border-radius:2px;margin-top:3px;background:var(--purple); }
+.cal-empty { min-height:52px; }
+.heat-cell { width:16px;height:16px;border-radius:3px;display:inline-block;cursor:pointer;transition:transform 0.1s;flex-shrink:0; }
+.heat-cell:hover { transform:scale(1.3); }
 
 /* ── Cards ── */
 .card {
@@ -143,9 +155,38 @@ select:focus { border-color: var(--purple); }
 footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px; border-top: 1px solid var(--border); margin-top: 20px; }
 
 @media(max-width:900px) {
-  .page { padding: 14px; }
-  header { padding: 16px; }
+  .page { padding: 12px; }
+  header { padding: 12px 16px; }
+  header h1 { font-size: 18px; }
+  header p  { font-size: 11px; }
   .grid2,.grid3,.grid4,.grid6 { grid-template-columns: 1fr 1fr; }
+  .kpi-val { font-size: 28px !important; }
+  .card { padding: 12px; }
+  .sec  { font-size: 9px; margin: 16px 0 8px; }
+}
+@media(max-width:600px) {
+  .page { padding: 8px; }
+  .grid2,.grid3,.grid4,.grid6 { grid-template-columns: 1fr; }
+  .kpi-grid-5 { grid-template-columns: 1fr 1fr !important; }
+  .grid6 { grid-template-columns: 1fr 1fr !important; }
+  .grid4 { grid-template-columns: 1fr 1fr !important; }
+  /* Calendário — dias menores */
+  .cal-day { min-height: 48px; padding: 3px; }
+  .cal-day-num { font-size: 10px; }
+  /* Heatmap scroll */
+  #heatmapGrid { overflow-x: auto; }
+  /* Ranking full width */
+  .rank-item { gap: 4px; }
+  .rank-name { font-size: 11px; }
+  /* Book info */
+  #bookInfoNome { font-size: 15px !important; }
+  /* Lendo cards */
+  .lendo-inner { flex-direction: column; }
+  .lendo-card  { min-width: unset; }
+  /* KPI book cards em coluna */
+  .kpi-book { flex-direction: column; align-items: flex-start; gap: 8px; }
+  /* Streak list */
+  #streakList > div { flex-direction: column; gap: 4px; }
 }
 
 /* ── Lendo Atualmente ── */
@@ -235,177 +276,6 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
 <div id="app" style="display:none">
 <div class="page">
 
-  <!-- ── KPIs ── -->
-  <div class="sec">📊 Visão Geral</div>
-  <div class="grid6" style="margin-bottom:16px;">
-    <div class="kpi" style="--accent:#8b7cf8">
-      <span class="kpi-icon">📄</span>
-      <div class="kpi-val" id="kpi-paginas">—</div>
-      <div class="kpi-lbl">Páginas Lidas</div>
-      <div class="kpi-sub">total acumulado</div>
-    </div>
-    <div class="kpi" style="--accent:#f88c6a">
-      <span class="kpi-icon">📚</span>
-      <div class="kpi-val" id="kpi-livros">—</div>
-      <div class="kpi-lbl">Livros Concluídos</div>
-      <div class="kpi-sub">+ pausados</div>
-    </div>
-    <div class="kpi" style="--accent:#4ecdc4">
-      <span class="kpi-icon">🎯</span>
-      <div class="kpi-val" id="kpi-sessoes">—</div>
-      <div class="kpi-lbl">Sessões</div>
-      <div class="kpi-sub">registros individuais</div>
-    </div>
-    <div class="kpi" style="--accent:#ffd166">
-      <span class="kpi-icon">⚡</span>
-      <div class="kpi-val" id="kpi-pgdia">—</div>
-      <div class="kpi-lbl">Págs/Dia média</div>
-      <div class="kpi-sub">dias com leitura</div>
-    </div>
-    <div class="kpi" style="--accent:#e56cff">
-      <span class="kpi-icon">⏱️</span>
-      <div class="kpi-val" id="kpi-horas">—</div>
-      <div class="kpi-lbl">Horas Lidas</div>
-      <div class="kpi-sub">tempo total</div>
-    </div>
-    <div class="kpi" style="--accent:#56cfff">
-      <span class="kpi-icon">🏆</span>
-      <div class="kpi-val" id="kpi-recorde">—</div>
-      <div class="kpi-lbl">Recorde Diário</div>
-      <div class="kpi-sub">páginas em um dia</div>
-    </div>
-  </div>
-
-  <div class="grid2" style="margin-bottom:16px;">
-    <div class="kpi" style="--accent:#ffd166">
-      <div class="kpi-book">
-        <img id="imgBig" src="https://covers.openlibrary.org/b/title/Palavras+de+Radiancia-M.jpg" alt="capa"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="fallback" style="display:none">📖</div>
-        <div>
-          <div class="kpi-icon" style="font-size:14px;margin-bottom:3px;">📖 MAIOR LIVRO</div>
-          <div class="kpi-val" style="font-size:24px;" id="kpi-maior-val">—</div>
-          <div class="kpi-lbl">páginas</div>
-          <div class="kpi-sub" id="kpi-maior-nome">—</div>
-        </div>
-      </div>
-    </div>
-    <div class="kpi" style="--accent:#f88c6a">
-      <div class="kpi-book">
-        <img id="imgSmall" src="https://covers.openlibrary.org/b/title/A+Esperanca+de+Elantris-M.jpg" alt="capa"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="fallback" style="display:none">📕</div>
-        <div>
-          <div class="kpi-icon" style="font-size:14px;margin-bottom:3px;">📕 MENOR LIVRO</div>
-          <div class="kpi-val" style="font-size:24px;" id="kpi-menor-val">—</div>
-          <div class="kpi-lbl">páginas</div>
-          <div class="kpi-sub" id="kpi-menor-nome">—</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── 1. Comparativo Anual ── -->
-  <div class="sec">📅 Comparativo por Ano</div>
-  <div class="card" style="margin-bottom:16px;">
-    <div class="card-title">📅 Resumo por Ano</div>
-    <div class="card-sub">Páginas totais, média diária, sessões e velocidade de leitura</div>
-    <div id="yearBars" class="yr-list"></div>
-  </div>
-
-  <!-- ── 2. Páginas por Mês ── -->
-  <div class="sec">📈 Tendência Mensal</div>
-  <div class="card" style="margin-bottom:16px;">
-    <div class="card-title">📈 Páginas por Mês</div>
-    <div class="ctrl">
-      <label>De:</label>
-      <select id="selFrom"></select>
-      <label>Até:</label>
-      <select id="selTo"></select>
-    </div>
-    <div style="height:240px;position:relative;"><canvas id="cMonthly"></canvas></div>
-  </div>
-
-  <!-- ── 3. Rankings e Distribuição ── -->
-  <div class="sec">🏅 Rankings &amp; Distribuição</div>
-  <div class="grid4" style="margin-bottom:16px;">
-
-    <!-- Ranking notas -->
-    <div class="card">
-      <div class="card-title">🏅 Ranking por Notas</div>
-      <div class="ctrl">
-        <select id="selNotasAno" onchange="buildRanking()">
-          <option value="all">Todos os anos</option>
-          <option value="2024">2024</option>
-          <option value="2025">2025</option>
-          <option value="2026">2026</option>
-        </select>
-        <button class="btn on" id="btnBest" onclick="rankMode='best';updateBtns();buildRanking()">🥇 Melhores</button>
-        <button class="btn" id="btnWorst" onclick="rankMode='worst';updateBtns();buildRanking()">💀 Piores</button>
-      </div>
-      <div id="rankList" class="rank-list"></div>
-    </div>
-
-    <!-- Dia da semana -->
-    <div class="card" style="display:flex;flex-direction:column;gap:0;">
-      <div class="card-title">📆 Páginas por Dia da Semana</div>
-
-      <div style="margin-bottom:10px;">
-        <div class="ctrl">
-          <label>Média — Ano:</label>
-          <select id="selWdAvg" onchange="buildWd('avg')">
-            <option value="total">Total</option>
-            <option value="2024">2024</option>
-            <option value="2025">2025</option>
-            <option value="2026">2026</option>
-          </select>
-        </div>
-        <div id="wdAvg" class="wd-bars"></div>
-      </div>
-
-      <div style="border-top:1px solid var(--border);padding-top:12px;">
-        <div class="ctrl">
-          <label>Total — Ano:</label>
-          <select id="selWdSum" onchange="buildWd('sum')">
-            <option value="total">Total</option>
-            <option value="2024">2024</option>
-            <option value="2025">2025</option>
-            <option value="2026">2026</option>
-          </select>
-        </div>
-        <div id="wdSum" class="wd-bars"></div>
-      </div>
-    </div>
-
-    <!-- Coleções -->
-    <div class="card">
-      <div class="card-title">📦 Coleções Favoritas</div>
-      <div class="card-sub">por páginas lidas</div>
-      <div style="height:190px;position:relative;"><canvas id="cDonut"></canvas></div>
-      <div id="donutLeg" class="donut-leg"></div>
-    </div>
-
-    <!-- Autores -->
-    <div class="card">
-      <div class="card-title">✍️ Autores Favoritos</div>
-      <div class="card-sub">por páginas lidas · top 10</div>
-      <div style="height:190px;position:relative;"><canvas id="cAutores"></canvas></div>
-      <div id="autoresLeg" class="donut-leg"></div>
-    </div>
-
-  </div>
-
-  <!-- ── 4. Leitura por Livro ── -->
-  <div class="sec">📖 Progresso por Livro</div>
-  <div class="card" style="margin-bottom:16px;">
-    <div class="card-title">📖 Páginas Lidas por Dia</div>
-    <div class="ctrl">
-      <label>Livro:</label>
-      <select id="selBook" onchange="buildBookChart()"></select>
-    </div>
-    <div style="height:240px;position:relative;"><canvas id="cBook"></canvas></div>
-  </div>
-
   <!-- ── 5. Meta 2026 + Heatmap ── -->
   <div class="sec">🎯 Meta 2026 &amp; Heatmap</div>
   <div class="grid2" style="margin-bottom:16px;">
@@ -446,8 +316,8 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
       <div class="meta-date">
         <div class="meta-date-icon">📅</div>
         <div>
-          <div class="meta-date-txt">Data prevista inicial: <b style="color:var(--teal)" id="meta-data-ini">—</b></div>
-          <div class="meta-date-sub">Previsão atual: <b style="color:var(--yellow)" id="meta-data-atual">—</b> · Meta final: 31/12/2026</div>
+          <div class="meta-date-txt">Previsão atual: <b style="color:var(--yellow);font-size:15px;" id="meta-data-atual">—</b></div>
+          <div class="meta-date-sub">Previsão inicial: <b style="color:var(--teal)" id="meta-data-ini">—</b> · Meta final: 31/12/2026</div>
         </div>
       </div>
     </div>
@@ -456,6 +326,313 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
       <div class="card-title">🗓️ Páginas por Mês — Comparativo</div>
       <div class="card-sub">2024 vs 2025 vs 2026</div>
       <div style="height:270px;position:relative;"><canvas id="cHeat"></canvas></div>
+    </div>
+  </div>
+
+  <!-- ── KPIs ── -->
+  <div class="sec">📊 Visão Geral</div>
+  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-bottom:8px;" class="kpi-grid-5">
+    <div class="kpi" style="--accent:#8b7cf8">
+      <span class="kpi-icon">📄</span>
+      <div class="kpi-val" id="kpi-paginas">—</div>
+      <div class="kpi-lbl">Páginas Lidas</div>
+      <div class="kpi-sub">total acumulado</div>
+    </div>
+    <div class="kpi" style="--accent:#4ecdc4">
+      <span class="kpi-icon">🎯</span>
+      <div class="kpi-val" id="kpi-sessoes">—</div>
+      <div class="kpi-lbl">Sessões</div>
+      <div class="kpi-sub">registros individuais</div>
+    </div>
+    <div class="kpi" style="--accent:#ffd166">
+      <span class="kpi-icon">⚡</span>
+      <div class="kpi-val" id="kpi-pgdia">—</div>
+      <div class="kpi-lbl">Págs/Dia média</div>
+      <div class="kpi-sub">dias com leitura</div>
+    </div>
+    <div class="kpi" style="--accent:#e56cff">
+      <span class="kpi-icon">⏱️</span>
+      <div class="kpi-val" id="kpi-horas">—</div>
+      <div class="kpi-lbl">Horas Lidas</div>
+      <div class="kpi-sub">tempo total</div>
+    </div>
+    <div class="kpi" style="--accent:#56cfff">
+      <span class="kpi-icon">🏆</span>
+      <div class="kpi-val" id="kpi-recorde">—</div>
+      <div class="kpi-lbl">Recorde Diário</div>
+      <div class="kpi-sub" id="kpi-recorde-data">páginas em um dia</div>
+      <div id="kpi-recorde-livro" style="font-size:10px;color:var(--text);font-weight:600;margin-top:3px;line-height:1.3"></div>
+      <div id="kpi-recorde-autor" style="font-size:9px;color:var(--muted)"></div>
+    </div>
+    <div style="display:none" id="kpi-recorde-livro-wrap"></div>
+  </div>
+  <!-- Livros por status -->
+  <div class="grid4" style="margin-bottom:16px;">
+    <div class="kpi" style="--accent:#4ecdc4">
+      <span class="kpi-icon">✅</span>
+      <div class="kpi-val" id="kpi-livros">—</div>
+      <div class="kpi-lbl">Concluídos</div>
+      <div class="kpi-sub">livros lidos</div>
+    </div>
+    <div class="kpi" style="--accent:#8b7cf8">
+      <span class="kpi-icon">📖</span>
+      <div class="kpi-val" id="kpi-lendo">—</div>
+      <div class="kpi-lbl">Lendo</div>
+      <div class="kpi-sub">em andamento</div>
+    </div>
+    <div class="kpi" style="--accent:#f88c6a">
+      <span class="kpi-icon">⏸️</span>
+      <div class="kpi-val" id="kpi-pausados">—</div>
+      <div class="kpi-lbl">Pausados</div>
+      <div class="kpi-sub">interrompidos</div>
+    </div>
+    <div class="kpi" style="--accent:#ffd166">
+      <span class="kpi-icon">📋</span>
+      <div class="kpi-val" id="kpi-aguardando">—</div>
+      <div class="kpi-lbl">Aguardando</div>
+      <div class="kpi-sub">na fila</div>
+    </div>
+  </div>
+
+  <div class="grid4" style="margin-bottom:16px;">
+    <div class="kpi" style="--accent:#ffd166">
+      <div style="font-size:11px;font-weight:700;letter-spacing:1px;color:var(--muted);margin-bottom:8px;">📖 MAIOR LIVRO</div>
+      <div class="kpi-book">
+        <div id="capa-maior" style="flex-shrink:0">📖</div>
+        <div style="min-width:0">
+          <div class="kpi-val" style="font-size:28px;line-height:1;" id="kpi-maior-val">—</div>
+          <div class="kpi-lbl" style="margin-bottom:6px;">páginas</div>
+          <div id="kpi-maior-nome" style="font-size:16px;font-weight:700;color:var(--text);line-height:1.3;word-break:break-word">—</div>
+          <div id="kpi-maior-autor" style="font-size:12px;color:var(--muted);margin-top:3px">—</div>
+        </div>
+      </div>
+    </div>
+    <div class="kpi" style="--accent:#f88c6a">
+      <div style="font-size:11px;font-weight:700;letter-spacing:1px;color:var(--muted);margin-bottom:8px;">📕 MENOR LIVRO</div>
+      <div class="kpi-book">
+        <div id="capa-menor" style="flex-shrink:0">📕</div>
+        <div style="min-width:0">
+          <div class="kpi-val" style="font-size:28px;line-height:1;" id="kpi-menor-val">—</div>
+          <div class="kpi-lbl" style="margin-bottom:6px;">páginas</div>
+          <div id="kpi-menor-nome" style="font-size:16px;font-weight:700;color:var(--text);line-height:1.3;word-break:break-word">—</div>
+          <div id="kpi-menor-autor" style="font-size:12px;color:var(--muted);margin-top:3px">—</div>
+        </div>
+      </div>
+    </div>
+    <div class="kpi" style="--accent:#4ecdc4">
+      <div style="font-size:11px;font-weight:700;letter-spacing:1px;color:var(--muted);margin-bottom:8px;">⭐ MELHOR AVALIADO</div>
+      <div class="kpi-book">
+        <div id="capa-melhor" style="flex-shrink:0">⭐</div>
+        <div style="min-width:0">
+          <div class="kpi-val" style="font-size:28px;line-height:1;" id="kpi-melhor-val">—</div>
+          <div class="kpi-lbl" style="margin-bottom:6px;">nota geral</div>
+          <div id="kpi-melhor-nome" style="font-size:16px;font-weight:700;color:var(--text);line-height:1.3;word-break:break-word">—</div>
+          <div id="kpi-melhor-autor" style="font-size:12px;color:var(--muted);margin-top:3px">—</div>
+        </div>
+      </div>
+    </div>
+    <div class="kpi" style="--accent:#e56cff">
+      <div style="font-size:11px;font-weight:700;letter-spacing:1px;color:var(--muted);margin-bottom:8px;">💀 PIOR AVALIADO</div>
+      <div class="kpi-book">
+        <div id="capa-pior" style="flex-shrink:0">💀</div>
+        <div style="min-width:0">
+          <div class="kpi-val" style="font-size:28px;line-height:1;" id="kpi-pior-val">—</div>
+          <div class="kpi-lbl" style="margin-bottom:6px;">nota geral</div>
+          <div id="kpi-pior-nome" style="font-size:16px;font-weight:700;color:var(--text);line-height:1.3;word-break:break-word">—</div>
+          <div id="kpi-pior-autor" style="font-size:12px;color:var(--muted);margin-top:3px">—</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 1. Comparativo Anual ── -->
+  <div class="sec">📅 Comparativo por Ano</div>
+  <div class="card" style="margin-bottom:16px;">
+    <div class="card-title">📅 Resumo por Ano</div>
+    <div class="card-sub">Páginas totais, média diária, sessões e velocidade de leitura</div>
+    <div id="yearBars" class="yr-list"></div>
+  </div>
+
+  <!-- ── 2. Páginas por Mês ── -->
+  <div class="sec">📈 Tendência Mensal</div>
+  <div class="card" style="margin-bottom:16px;">
+    <div class="card-title">📈 Páginas por Mês</div>
+    <div class="ctrl">
+      <label>De:</label>
+      <select id="selFrom"></select>
+      <label>Até:</label>
+      <select id="selTo"></select>
+    </div>
+    <div style="height:240px;position:relative;"><canvas id="cMonthly"></canvas></div>
+  </div>
+
+  <!-- ── 3. Rankings e Distribuição ── -->
+  <div class="sec">🏅 Rankings &amp; Distribuição</div>
+  <!-- Linha 1: Ranking + Dia da Semana -->
+  <div class="grid2" style="margin-bottom:16px;">
+
+    <!-- Ranking notas -->
+    <div class="card">
+      <div class="card-title">🏅 Ranking por Notas</div>
+      <div class="ctrl">
+        <select id="selNotasAno" onchange="buildRanking()">
+          <option value="all">Todos os anos</option>
+        </select>
+        <select id="selNotasTema" onchange="buildRanking()">
+          <option value="all">Todos os critérios</option>
+          <option value="Diálogos">Diálogos</option>
+          <option value="Enredo">Enredo</option>
+          <option value="Estilo Visual">Estilo Visual</option>
+          <option value="Finalização">Finalização</option>
+          <option value="Imersão">Imersão</option>
+          <option value="Impacto Emocional">Impacto Emocional</option>
+          <option value="Originalidade">Originalidade</option>
+          <option value="Personagens">Personagens</option>
+          <option value="Ritmo">Ritmo</option>
+          <option value="Temas">Temas</option>
+        </select>
+        <button class="btn on" id="btnBest" onclick="rankMode='best';updateBtns();buildRanking()">🥇 Melhores</button>
+        <button class="btn" id="btnWorst" onclick="rankMode='worst';updateBtns();buildRanking()">💀 Piores</button>
+      </div>
+      <div id="rankList" class="rank-list"></div>
+    </div>
+
+    <!-- Dia da semana -->
+    <div class="card" style="display:flex;flex-direction:column;gap:0;">
+      <div class="card-title">📆 Dia da Semana & Livros por Mês</div>
+      <div class="ctrl" style="margin-bottom:10px;">
+        <label>Ano:</label>
+        <select id="selWd" onchange="buildWd();buildLivrosMes()">
+          <option value="total">Total</option>
+        </select>
+      </div>
+      <div style="margin-bottom:8px;">
+        <div style="font-size:10px;color:var(--muted);margin-bottom:4px;">Média págs/dia</div>
+        <div id="wdAvg" class="wd-bars"></div>
+      </div>
+      <div style="border-top:1px solid var(--border);padding-top:8px;margin-bottom:8px;">
+        <div style="font-size:10px;color:var(--muted);margin-bottom:4px;">Total de páginas</div>
+        <div id="wdSum" class="wd-bars"></div>
+      </div>
+      <div style="border-top:1px solid var(--border);padding-top:8px;">
+        <div style="font-size:10px;color:var(--muted);margin-bottom:4px;">Livros concluídos por mês</div>
+        <div id="livrosMes" class="wd-bars"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Linha 2: Coleções + Autores -->
+  <div class="grid2" style="margin-bottom:16px;">
+
+    <!-- Coleções -->
+    <div class="card">
+      <div class="card-title">📦 Coleções Favoritas</div>
+      <div class="card-sub">por páginas lidas</div>
+      <div style="height:190px;position:relative;"><canvas id="cDonut"></canvas></div>
+      <div id="donutLeg" class="donut-leg"></div>
+    </div>
+
+    <!-- Autores -->
+    <div class="card">
+      <div class="card-title">✍️ Autores Favoritos</div>
+      <div class="card-sub">por páginas lidas · top 10</div>
+      <div style="height:190px;position:relative;"><canvas id="cAutores"></canvas></div>
+      <div id="autoresLeg" class="donut-leg"></div>
+    </div>
+
+  </div>
+
+  <!-- ── 4. Leitura por Livro ── -->
+  <div class="sec">📖 Progresso por Livro</div>
+  <div class="grid2" style="margin-bottom:16px;">
+
+    <!-- Seletor de livro com detalhes -->
+    <div class="card">
+      <div class="card-title">📚 Detalhes do Livro</div>
+      <div class="ctrl" style="margin-bottom:14px;">
+        <label>Livro:</label>
+        <select id="selBook" onchange="buildBookChart();buildBookInfo()" style="flex:1;max-width:100%;"></select>
+      </div>
+      <div id="bookInfo" style="display:none;">
+        <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:12px;">
+          <div id="bookInfoCapa" style="flex-shrink:0;font-size:32px;">📖</div>
+          <div>
+            <div id="bookInfoNome" style="font-size:18px;font-weight:700;color:var(--text);margin-bottom:2px;"></div>
+            <div id="bookInfoAutor" style="font-size:12px;color:var(--muted);"></div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;" id="bookInfoStats"></div>
+      </div>
+    </div>
+
+    <!-- Gráfico diário -->
+    <div class="card">
+      <div class="card-title">📖 Páginas Lidas por Dia</div>
+      <div style="height:200px;position:relative;"><canvas id="cBook"></canvas></div>
+    </div>
+
+  </div>
+
+  <!-- ── Heatmap Anual + Streak ── -->
+  <div class="sec">🔥 Atividade & Sequências</div>
+  <div class="grid2" style="margin-bottom:16px;">
+
+    <div class="card">
+      <div class="card-title">📅 Mapa de Calor Anual</div>
+      <div class="ctrl" style="margin-bottom:10px;">
+        <label>Ano:</label>
+        <select id="selHeatYear" onchange="buildHeatmap()">
+          <option value="2025">2025</option>
+        </select>
+      </div>
+      <div id="heatmapGrid" style="overflow-x:auto;"></div>
+      <div style="display:flex;align-items:center;gap:6px;margin-top:8px;font-size:10px;color:var(--muted);">
+        <span>Menos</span>
+        <div style="width:12px;height:12px;border-radius:2px;background:#1a2035"></div>
+        <div style="width:12px;height:12px;border-radius:2px;background:#1a3a5c"></div>
+        <div style="width:12px;height:12px;border-radius:2px;background:#1e5f8e"></div>
+        <div style="width:12px;height:12px;border-radius:2px;background:#2980b9"></div>
+        <div style="width:12px;height:12px;border-radius:2px;background:#8b7cf8"></div>
+        <span>Mais</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚡ Sequências de Leitura</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+        <div style="background:var(--bg3);border-radius:10px;padding:14px;text-align:center;">
+          <div style="font-size:36px;font-weight:700;color:var(--orange)" id="streakAtual">—</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:4px;">🔥 Streak Atual</div>
+          <div style="font-size:10px;color:var(--muted);">dias consecutivos</div>
+        </div>
+        <div style="background:var(--bg3);border-radius:10px;padding:14px;text-align:center;">
+          <div style="font-size:36px;font-weight:700;color:var(--purple)" id="streakRecorde">—</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:4px;">🏆 Recorde de Streak</div>
+          <div style="font-size:10px;color:var(--muted);" id="streakRecordeData">dias seguidos</div>
+        </div>
+      </div>
+      <div style="border-top:1px solid var(--border);padding-top:12px;">
+        <div style="font-size:11px;color:var(--muted);margin-bottom:8px;">Últimas sequências</div>
+        <div id="streakList" style="display:flex;flex-direction:column;gap:4px;"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── Calendário Mensal ── -->
+  <div class="sec">📆 Calendário de Leitura</div>
+  <div class="card" style="margin-bottom:16px;">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+      <button onclick="calNav(-1)" style="background:var(--bg3);border:none;color:var(--text);width:32px;height:32px;border-radius:8px;cursor:pointer;font-size:16px;">‹</button>
+      <div id="calTitle" style="font-size:16px;font-weight:700;color:var(--text);flex:1;text-align:center;"></div>
+      <button onclick="calNav(1)" style="background:var(--bg3);border:none;color:var(--text);width:32px;height:32px;border-radius:8px;cursor:pointer;font-size:16px;">›</button>
+    </div>
+    <div id="calGrid" style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;"></div>
+    <!-- Tooltip/popup para detalhes do dia -->
+    <div id="calDetail" style="display:none;margin-top:14px;background:var(--bg3);border-radius:10px;padding:14px;">
+      <div id="calDetailTitle" style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:10px;"></div>
+      <div id="calDetailList"></div>
     </div>
   </div>
 
@@ -469,6 +646,122 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
 // CARREGA DADOS DO GITHUB E INICIALIZA O DASHBOARD
 // ════════════════════════════════════════════════
 const DATA_URL = '/data.json';
+
+
+function coverUrl(isbn, size='M') {
+  if (!isbn) return '';
+  return `https://covers.openlibrary.org/b/isbn/${isbn}-${size}.jpg`;
+}
+
+// Verifica se imagem é válida (OL retorna 1x1 para ISBNs sem capa)
+function isValidCover(img) {
+  return img.naturalWidth > 10 && img.naturalHeight > 10;
+}
+
+// Cria imagem com fallback: OL(L) → OL(M) → emoji
+function coverImg(isbn, fallback='📖', cls='') {
+  if (!isbn) return `<span style="font-size:32px">${fallback}</span>`;
+
+  const uid = 'cv_' + Math.random().toString(36).slice(2,8);
+  const olL = `https://covers.openlibrary.org/b/isbn/${isbn}-L.jpg`;
+  const olM = `https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg`;
+
+  const html = `<img id="${uid}" src="${olL}" class="cover-img ${cls}"
+    style="width:60px;height:84px;object-fit:cover;border-radius:4px;flex-shrink:0"
+    alt="capa">
+  <span id="${uid}_fb" style="font-size:32px;display:none">${fallback}</span>`;
+
+  setTimeout(() => {
+    const el = document.getElementById(uid);
+    const fb = document.getElementById(uid+'_fb');
+    if (!el) return;
+    el.onload = () => {
+      if (!isValidCover(el)) {
+        if (el.src.includes('-L.')) {
+          el.src = olM;
+        } else {
+          el.style.display = 'none';
+          if (fb) fb.style.display = 'block';
+        }
+      }
+    };
+    el.onerror = () => {
+      if (el.src.includes('-L.')) {
+        el.src = olM;
+      } else {
+        el.style.display = 'none';
+        if (fb) fb.style.display = 'block';
+      }
+    };
+  }, 10);
+
+  return html;
+}
+
+// Miniatura para ranking
+function coverThumb(isbn) {
+  if (!isbn) return '';
+  const uid = 'th_' + Math.random().toString(36).slice(2,8);
+  const olM = `https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg`;
+  const olS = `https://covers.openlibrary.org/b/isbn/${isbn}-S.jpg`;
+
+  const html = `<img id="${uid}" src="${olM}" class="cover-img"
+    style="width:28px;height:40px;object-fit:cover;border-radius:3px;flex-shrink:0"
+    alt="">`;
+
+  setTimeout(() => {
+    const el = document.getElementById(uid);
+    if (!el) return;
+    el.onload = () => { if (!isValidCover(el)) el.style.display = 'none'; };
+    el.onerror = () => {
+      if (el.src.includes('-M.')) {
+        el.src = olS;
+        el.onerror = () => el.style.display = 'none';
+      } else { el.style.display = 'none'; }
+    };
+  }, 10);
+
+  return html;
+}
+
+const AUTOR_MAP = {
+  'Palavras de Radiancia':'Brandon Sanderson','Ritmo de Guerra':'Brandon Sanderson',
+  'Ventos e Verdade':'Brandon Sanderson','O Caminho dos reis':'Brandon Sanderson',
+  'O Caminho dos Reis':'Brandon Sanderson','Sacramentadora':'Brandon Sanderson',
+  'Warbreaker':'Brandon Sanderson','Elantris':'Brandon Sanderson',
+  'A Esperança de Elantris':'Brandon Sanderson','Chama de Ferro':'Brandon Sanderson',
+  'Mistborn 1º Era Livro 2':'Brandon Sanderson','Mistborn 1º Era Livro 3':'Brandon Sanderson',
+  'Mistborn 2º Era Livro 1':'Brandon Sanderson','Mistborn - Historia Screta':'Brandon Sanderson',
+  'Yumi e o Pintor de Pesadelos':'Brandon Sanderson','Dawnshard':'Brandon Sanderson',
+  'Tress A Garota do mar Esmeralda':'Brandon Sanderson',
+  'O Temor do Sabio':'Patrick Rothfuss','O nome do Vento':'Patrick Rothfuss',
+  'Nevernight':'Jay Kristoff','Godsgrave':'Jay Kristoff',
+  'Six of Crows':'Leigh Bardugo','Sombra e Ossos':'Leigh Bardugo',
+  'Sol e Tormenta':'Leigh Bardugo','Ruina e Ascensão':'Leigh Bardugo',
+  'O Aprendiz de Assassino':'Robin Hobb','A flecha de Fogo':'Robin Hobb',
+  'Meio Rei':'Joe Abercrombie','A Descoberta das Bruxas':'Deborah Harkness',
+  'O Principe Cruel':'Holly Black','Eu sou o numero 4':'Pittacus Lore',
+  'Eu sou o Numero 4':'Pittacus Lore','O poder dos seis':'Pittacus Lore',
+  'O Poder dos Seis':'Pittacus Lore','Ascenção dos Nove':'Pittacus Lore',
+  'Quarta Asa':'Rebecca Yarros','Guerra da Papoula':'R.F. Kuang',
+  'A Casa de Hades':'Rick Riordan','O Sangue do Olimpo':'Rick Riordan',
+  'Jardins da Lua - Imperio Malazano':'Steven Erikson',
+  'Carl O Explorador de Masmorras':'Adrian Collins',
+  'Of Blood and Fire':'Ryan Cahill',
+  'The Echoes Saga - Rise of the Ranger':'Phil Tucker',
+  'Songs of Chaos - Ascendant':'Michael R. Miller',
+  'The Sword of Kaigen':'M.L. Wang','Murtagh':'Christopher Paolini',
+  'Harry Potter - A Pedra Filosofal':'J.K. Rowling',
+  'o Feiticeiro de Terramar':'Ursula K. Le Guin',
+  'O Sobrinho do Mago':'C.S. Lewis','O Leão a Feiticeira e Guarda-Roupa':'C.S. Lewis',
+  'O Inimigo do Mundo':'Robert Jordan','Leruth':'Autor Independente',
+  'Edgeshard':'David Estes','Cinco Laminas Partidas':'Mai Corland',
+  'Rei dos Espinhos':'Mark Lawrence','Herdeiros do Tempo':'Adrian Tchaikovsky',
+  'Eragon':'Christopher Paolini',
+  'A Cidade de Bronze':'Deborah Harkness',
+  'Daevabad Trilogy':'S.A. Chakraborty',
+};
+
 
 async function carregarDados() {
   try {
@@ -539,11 +832,19 @@ function inicializar(d) {
   const WD_2024 = calcWd(2024);
   const WD_2025 = calcWd(2025);
   const WD_2026 = calcWd(2026);
-  const WD_AVG = { total: WD_ALL.avg,  2024: WD_2024.avg, 2025: WD_2025.avg, 2026: WD_2026.avg };
-  const WD_SUM = { total: WD_ALL.sum,  2024: WD_2024.sum, 2025: WD_2025.sum, 2026: WD_2026.sum };
+  const WD_AVG = { 'total': WD_ALL.avg, '2024': WD_2024.avg, '2025': WD_2025.avg, '2026': WD_2026.avg };
+  const WD_SUM = { 'total': WD_ALL.sum, '2024': WD_2024.sum, '2025': WD_2025.sum, '2026': WD_2026.sum };
 
   // ── NOTES ────────────────────────────────────────────
-  const NOTES = (d.notas || []).sort((a,b) => b.media - a.media);
+  // Enrich notas with real year from sessoes (ano field in NOTAS sheet is nota geral, not year)
+  const bookFinishYear = {};
+  sessoes.forEach(s => {
+    if (s.ano > 2000) bookFinishYear[s.livro] = Math.max(bookFinishYear[s.livro]||0, s.ano);
+  });
+  const NOTES = (d.notas || []).map(n => ({
+    ...n,
+    ano: bookFinishYear[n.livro] || n.ano || 0
+  })).sort((a,b) => b.media - a.media);
 
   // ── COLECOES ─────────────────────────────────────────
   const byCol = {};
@@ -569,31 +870,79 @@ function inicializar(d) {
 
   // ── KPIs ─────────────────────────────────────────────
   const totalPags = sessoes.reduce((s,r) => s+r.paginas, 0);
-  const livrosCompletos = (d.livros||[]).filter(l => l.status === 'Completo').length;
+  const livrosCompletos  = (d.livros||[]).filter(l => l.status === 'Completo').length;
+  const livrosLendo      = (d.lendo||[]).length;
+  const livrosPausados   = (d.pausados||[]).length;
+  const livrosAguardando = (d.aguardando||[]).length;
+
   const dayMap = {};
-  sessoes.forEach(s => { if (s.data) dayMap[s.data] = (dayMap[s.data]||0)+s.paginas; });
+  const dayLivro = {}; // para descobrir qual livro foi lido no dia do recorde
+  sessoes.forEach(s => {
+    if (s.data) {
+      dayMap[s.data] = (dayMap[s.data]||0) + s.paginas;
+      if (!dayLivro[s.data]) dayLivro[s.data] = s.livro;
+    }
+  });
   const diasVals = Object.values(dayMap);
   const mediaParDia = diasVals.length ? Math.round(diasVals.reduce((a,b)=>a+b,0)/diasVals.length*10)/10 : 0;
   const recorde = diasVals.length ? Math.max(...diasVals) : 0;
-  const horasTotais = Math.round(sessoes.reduce((s,r)=>s+(r.minutos||0),0)/60);
+  const recordeData = Object.entries(dayMap).find(([,v]) => v === recorde)?.[0] || '';
+  const recordeLabel = recordeData
+    ? new Date(recordeData + 'T12:00:00').toLocaleDateString('pt-BR', {day:'2-digit', month:'short', year:'numeric'})
+    : 'páginas em um dia';
+  const recordeLivro = dayLivro[recordeData] || '';
+  const recordeLivroData = (d.livros||[]).find(l => l.livro === recordeLivro);
+  const recordeAutor = recordeLivroData?.autor || AUTOR_MAP[recordeLivro] || '';
+
+  // Horas: soma dos minutos / 60
+  const minutosTotais = sessoes.reduce((s,r) => s+(r.minutos||0), 0);
+  const horasTotais = Math.round(minutosTotais / 60);
 
   // Atualiza KPIs no HTML
-  document.getElementById('kpi-paginas').textContent   = totalPags.toLocaleString('pt-BR');
-  document.getElementById('kpi-livros').textContent    = livrosCompletos;
-  document.getElementById('kpi-sessoes').textContent   = sessoes.length.toLocaleString('pt-BR');
-  document.getElementById('kpi-pgdia').textContent     = mediaParDia.toFixed(1).replace('.',',');
-  document.getElementById('kpi-horas').textContent     = horasTotais + 'h';
-  document.getElementById('kpi-recorde').textContent   = recorde;
+  document.getElementById('kpi-paginas').textContent    = totalPags.toLocaleString('pt-BR');
+  document.getElementById('kpi-livros').textContent     = livrosCompletos;
+  document.getElementById('kpi-lendo').textContent      = livrosLendo;
+  document.getElementById('kpi-pausados').textContent   = livrosPausados;
+  document.getElementById('kpi-aguardando').textContent = livrosAguardando;
+  document.getElementById('kpi-sessoes').textContent    = sessoes.length.toLocaleString('pt-BR');
+  document.getElementById('kpi-pgdia').textContent      = mediaParDia.toFixed(1).replace('.',',');
+  document.getElementById('kpi-horas').textContent      = horasTotais + 'h';
+  document.getElementById('kpi-recorde').textContent      = recorde;
+  document.getElementById('kpi-recorde-data').textContent = recordeLabel;
+  document.getElementById('kpi-recorde-livro').textContent = recordeLivro;
+  document.getElementById('kpi-recorde-autor').textContent = recordeAutor;
 
-  // Maior e menor livro
-  const byBook = {};
-  sessoes.forEach(s => { byBook[s.livro] = (byBook[s.livro]||0) + s.paginas; });
-  const bookEntries = Object.entries(byBook).filter(([,v])=>v>0).sort((a,b)=>b[1]-a[1]);
-  if (bookEntries.length) {
-    document.getElementById('kpi-maior-val').textContent  = bookEntries[0][1].toLocaleString('pt-BR');
-    document.getElementById('kpi-maior-nome').textContent = bookEntries[0][0];
-    document.getElementById('kpi-menor-val').textContent  = bookEntries[bookEntries.length-1][1].toLocaleString('pt-BR');
-    document.getElementById('kpi-menor-nome').textContent = bookEntries[bookEntries.length-1][0];
+  // Maior e menor livro — usa totalPag dos livros lidos (Completo)
+  const livrosLidos = (d.livros||[]).filter(l => l.status === 'Completo' && l.totalPag > 0);
+  if (livrosLidos.length) {
+    const sorted = [...livrosLidos].sort((a,b) => b.totalPag - a.totalPag);
+    const maior = sorted[0];
+    const menor = sorted[sorted.length-1];
+    document.getElementById('kpi-maior-val').textContent   = maior.totalPag.toLocaleString('pt-BR');
+    document.getElementById('kpi-maior-nome').textContent  = maior.livro;
+    document.getElementById('kpi-maior-autor').textContent = maior.autor || AUTOR_MAP[maior.livro] || '';
+    document.getElementById('capa-maior').innerHTML        = coverImg(maior.isbn, '📖');
+    document.getElementById('kpi-menor-val').textContent   = menor.totalPag.toLocaleString('pt-BR');
+    document.getElementById('kpi-menor-nome').textContent  = menor.livro;
+    document.getElementById('kpi-menor-autor').textContent = menor.autor || AUTOR_MAP[menor.livro] || '';
+    document.getElementById('capa-menor').innerHTML        = coverImg(menor.isbn, '📕');
+  }
+
+  // Melhor e pior avaliado
+  if (NOTES && NOTES.length) {
+    const notasSorted = [...NOTES].sort((a,b) => b.media - a.media);
+    const melhor = notasSorted[0];
+    const pior   = notasSorted[notasSorted.length-1];
+    const melhorLivro = (d.livros||[]).find(l => l.livro === melhor.livro);
+    const piorLivro   = (d.livros||[]).find(l => l.livro === pior.livro);
+    document.getElementById('kpi-melhor-val').textContent   = melhor.media.toFixed(1);
+    document.getElementById('kpi-melhor-nome').textContent  = melhor.livro;
+    document.getElementById('kpi-melhor-autor').textContent = melhorLivro?.autor || AUTOR_MAP[melhor.livro] || '';
+    document.getElementById('capa-melhor').innerHTML        = coverImg(melhorLivro?.isbn, '⭐');
+    document.getElementById('kpi-pior-val').textContent     = pior.media.toFixed(1);
+    document.getElementById('kpi-pior-nome').textContent    = pior.livro;
+    document.getElementById('kpi-pior-autor').textContent   = piorLivro?.autor || AUTOR_MAP[pior.livro] || '';
+    document.getElementById('capa-pior').innerHTML          = coverImg(piorLivro?.isbn, '💀');
   }
 
   // Meta
@@ -661,6 +1010,10 @@ function inicializar(d) {
     }
   }
 
+  // Armazena globalmente para buildBookInfo (filtra só linha de cabeçalho)
+  window._livros  = (d.livros || []).filter(l => l.status !== 'STATUS' && l.livro !== 'Livro' && l.livro.length > 1);
+  window._sessoes = sessoes;
+
   // Atualiza rodapé com data de geração
   if (d.geradoEm) {
     const dt = new Date(d.geradoEm);
@@ -673,6 +1026,9 @@ function inicializar(d) {
 
 // Variáveis globais dos gráficos
 let MONTHLY, YEARS, WD_AVG, WD_SUM, NOTES, COLECOES, BOOK_DAILY;
+let calYear  = new Date().getFullYear();
+let calMonth = new Date().getMonth();
+let calSelected = null;
 
 const TT = {
   backgroundColor:'#1e2535',
@@ -720,20 +1076,40 @@ function updateBtns() {
 }
 
 function buildRanking() {
-  const yr = document.getElementById('selNotasAno').value;
-  // NOTES from JSON has fields: livro, media, ano
-  let pool = yr==='all' ? NOTES : NOTES.filter(b => String(b.ano)===yr);
-  const sorted = [...pool].sort((a,b) => rankMode==='best' ? b.media-a.media : a.media-b.media);
-  const top = sorted.slice(0,15);
-  const maxA = top[0]?.media || 10;
+  const yr   = document.getElementById('selNotasAno').value;
+  const tema = document.getElementById('selNotasTema')?.value || 'all';
+
+  let pool = yr === 'all' ? NOTES : NOTES.filter(b => String(b.ano) === yr);
+
+  // Calcula score pelo tema selecionado
+  const scored = pool.map(b => {
+    let score;
+    if (tema === 'all') {
+      score = b.media;
+    } else {
+      // criterios é objeto {Diálogos: 8, Enredo: 9, ...}
+      const val = b.criterios?.[tema];
+      score = val != null ? val : b.media;
+    }
+    return { ...b, score };
+  }).filter(b => b.score != null);
+
+  const sorted = [...scored].sort((a,b) => rankMode==='best' ? b.score-a.score : a.score-b.score);
+  const top    = sorted.slice(0, 15);
+  const maxA   = top[0]?.score || 10;
   const medals = ['🥇','🥈','🥉'];
-  const el = document.getElementById('rankList');
+  const el     = document.getElementById('rankList');
   el.innerHTML = '';
-  top.forEach((b,i) => {
-    const pct = Math.round(b.media/maxA*100);
+  top.forEach((b, i) => {
+    const pct = Math.round(b.score/maxA*100);
     const col = rankMode==='best' ? (i<3?['#ffd166','#c0c0c0','#cd7f32'][i]:'#8b7cf8') : '#f88c6a';
+    const scoreLabel = tema === 'all' ? b.score.toFixed(1) : `${b.score.toFixed(1)} <span style="font-size:9px;opacity:0.7">(${b.media.toFixed(1)} geral)</span>`;
+    const rankLivro = (window._livros||[]).find(l => l.livro === b.livro);
+    const rankIsbn  = rankLivro?.isbn || '';
+    const capaHtml  = rankIsbn ? coverThumb(rankIsbn) : '';
     el.innerHTML += `
       <div class="rank-item">
+        ${capaHtml}
         <span class="rank-num">${i<3?'':('#'+(i+1))}</span>
         <span class="rank-medal">${medals[i]||''}</span>
         <div style="flex:1;min-width:0">
@@ -741,36 +1117,57 @@ function buildRanking() {
           <span class="rank-year">${b.ano}</span>
         </div>
         <div class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar-fill" style="width:${pct}%;background:${col}"></div></div></div>
-        <span class="rank-score" style="color:${col}">${b.media.toFixed(1)}</span>
+        <span class="rank-score" style="color:${col}">${scoreLabel}</span>
       </div>`;
   });
 }
 // ════════════════════════════════════════════════
-// 4. WEEKDAY BARS (HTML)
+// 4. WEEKDAY BARS (HTML) — seletor único
 // ════════════════════════════════════════════════
-function buildWd(type) {
-  const selId = type==='avg' ? 'selWdAvg' : 'selWdSum';
-  const elId  = type==='avg' ? 'wdAvg' : 'wdSum';
-  const src   = type==='avg' ? WD_AVG : WD_SUM;
-  const yr    = document.getElementById(selId).value;
-  const vals  = src[yr] || src.total;
-  const maxV  = Math.max(...vals);
-  const el    = document.getElementById(elId);
-  el.innerHTML = '';
-  vals.forEach((v, i) => {
-    const h = maxV > 0 ? Math.max(6, Math.round(v/maxV * 90)) : 6;
-    const disp = type==='avg' ? v.toFixed(0) : v.toLocaleString('pt-BR');
-    el.innerHTML += `
-      <div class="wd-col">
-        <span class="wd-val">${disp}</span>
-        <div class="wd-bar" style="height:${h}px;background:${WD_COLORS[i]}"></div>
-        <span class="wd-lbl">${WD_LABELS[i]}</span>
-      </div>`;
+function buildWd() {
+  const yr = document.getElementById('selWd')?.value || 'total';
+
+  ['avg','sum'].forEach(type => {
+    const src  = type==='avg' ? WD_AVG : WD_SUM;
+    const vals = src[yr] || src['total'] || [0,0,0,0,0,0,0];
+    const maxV = Math.max(...vals, 1);
+    const el   = document.getElementById(type==='avg' ? 'wdAvg' : 'wdSum');
+    if (!el) return;
+    el.innerHTML = '';
+    vals.forEach((v, i) => {
+      const h    = Math.max(6, Math.round(v/maxV * 90));
+      const disp = type==='avg' ? v.toFixed(0) : v.toLocaleString('pt-BR');
+      el.innerHTML += `
+        <div class="wd-col">
+          <span class="wd-val">${disp}</span>
+          <div class="wd-bar" style="height:${h}px;background:${WD_COLORS[i]}"></div>
+          <span class="wd-lbl">${WD_LABELS[i]}</span>
+        </div>`;
+    });
   });
 }
 
 
 function inicializarGraficos() {
+
+// Popular seletores imediatamente com os dados disponíveis
+(function() {
+  // Seletor anos ranking
+  const selNotasAno = document.getElementById('selNotasAno');
+  const anosNotas = [...new Set(YEARS.map(y => y.ano))].sort();
+  selNotasAno.innerHTML = '<option value="all">Todos os anos</option>';
+  anosNotas.forEach(a => {
+    selNotasAno.innerHTML += `<option value="${a}">${a}</option>`;
+  });
+
+  // Seletor anos dia da semana
+  const selWd = document.getElementById('selWd');
+  const anosWd = Object.keys(WD_AVG).filter(k => k !== 'total').sort();
+  selWd.innerHTML = '<option value="total">Total</option>';
+  anosWd.forEach(a => {
+    selWd.innerHTML += `<option value="${a}">${a}</option>`;
+  });
+})();
 
 // ════════════════════════════════════════════════
 // CHART DEFAULTS
@@ -822,6 +1219,27 @@ function baseScales(xRot) {
   let chart = null;
   const ctx = document.getElementById('cMonthly').getContext('2d');
 
+  // Plugin para linhas verticais nos meses de dezembro
+  const dezPlugin = {
+    id: 'dezLines',
+    afterDraw(chart) {
+      const { ctx: c, chartArea: { top, bottom }, scales: { x } } = chart;
+      chart.data.labels.forEach((label, i) => {
+        if (!label.startsWith('Dez')) return;
+        const xPos = x.getPixelForValue(i);
+        c.save();
+        c.beginPath();
+        c.strokeStyle = 'rgba(255,255,255,0.25)';
+        c.lineWidth = 1;
+        c.setLineDash([4, 3]);
+        c.moveTo(xPos, top);
+        c.lineTo(xPos, bottom);
+        c.stroke();
+        c.restore();
+      });
+    }
+  };
+
   function render() {
     const s = parseInt(selFrom.value), e = parseInt(selTo.value);
     if (s >= e) return;
@@ -845,7 +1263,8 @@ function baseScales(xRot) {
         responsive:true, maintainAspectRatio:false,
         plugins:{ legend:{display:false}, tooltip:{...TT, callbacks:{label:c=>` ${c.parsed.y.toLocaleString('pt-BR')} páginas`}} },
         scales: baseScales(45)
-      }
+      },
+      plugins: [dezPlugin]
     });
   }
 
@@ -926,12 +1345,22 @@ function baseScales(xRot) {
 })();
 
 // ════════════════════════════════════════════════
-// 6. BOOK CHART
+// 6. BOOK CHART + BOOK INFO
 // ════════════════════════════════════════════════
 (function() {
   const sel = document.getElementById('selBook');
-  const books = Object.keys(BOOK_DAILY).sort();
-  books.forEach(b => sel.innerHTML += `<option value="${b}">${b}</option>`);
+  // Inclui todos os livros (com ou sem sessões), ordenados por status e nome
+  const statusOrder = {'Lendo':0,'Pausado':1,'Completo':2,'Aguardando':3};
+  const allBooks = [...(window._livros||[])].sort((a,b) => {
+    const sa = statusOrder[a.status] ?? 9;
+    const sb = statusOrder[b.status] ?? 9;
+    if (sa !== sb) return sa - sb;
+    return a.livro.localeCompare(b.livro);
+  });
+  allBooks.forEach(b => {
+    const icon = b.status==='Lendo'?'📖':b.status==='Pausado'?'⏸️':b.status==='Completo'?'✅':'📋';
+    sel.innerHTML += `<option value="${b.livro}">${icon} ${b.livro}</option>`;
+  });
 
   let chart = null;
   const ctx = document.getElementById('cBook').getContext('2d');
@@ -939,46 +1368,190 @@ function baseScales(xRot) {
   window.buildBookChart = function() {
     const book = sel.value;
     const rows = BOOK_DAILY[book] || [];
+    const livroData = (window._livros||[]).find(l => l.livro === book);
+    const status = livroData?.status || '';
     if (chart) chart.destroy();
-    const maxP = Math.max(...rows.map(r=>r.p), 1);
-    chart = new Chart(ctx, {
-      type:'bar',
-      data:{
-        labels: rows.map(r => {
-          const d = new Date(r.d + 'T12:00:00');
-          return d.toLocaleDateString('pt-BR',{day:'2-digit',month:'short'});
-        }),
-        datasets:[{
-          label:'Páginas',
-          data: rows.map(r=>r.p),
-          backgroundColor: rows.map(r => {
-            const alpha = 0.35 + 0.65*(r.p/maxP);
-            return `rgba(139,124,248,${alpha.toFixed(2)})`;
-          }),
-          borderColor:'rgba(139,124,248,0.8)',
-          borderWidth:1,
-          borderRadius:5
-        }]
-      },
-      options:{
-        responsive:true, maintainAspectRatio:false,
-        plugins:{
-          legend:{display:false},
-          tooltip:{...TT, callbacks:{
-            title: t => {
-              const row = rows[t[0].dataIndex];
-              const d = new Date(row.d + 'T12:00:00');
-              return d.toLocaleDateString('pt-BR',{weekday:'long',day:'2-digit',month:'long',year:'numeric'});
-            },
-            label: c => ` ${c.parsed.y} páginas`
-          }}
-        },
-        scales: baseScales(45)
+
+    const isPrevisao = (status === 'Aguardando') || (rows.length === 0);
+    const isEmAndamento = (status === 'Lendo' || status === 'Pausado') && rows.length > 0;
+
+    if (isPrevisao || isEmAndamento) {
+      // Gera previsão baseada na média diária por dia da semana
+      const pagLidas = rows.reduce((s,r)=>s+r.p, 0);
+      const totalPag = livroData?.totalPag || 300;
+      const pagFaltam = totalPag - pagLidas;
+
+      // Média por dia da semana (0=Dom...6=Sab) das sessões globais
+      const wdTotals = [0,0,0,0,0,0,0], wdCounts = [0,0,0,0,0,0,0];
+      (window._sessoes||[]).forEach(s => {
+        if (!s.data) return;
+        const wd = new Date(s.data + 'T12:00:00').getDay();
+        wdTotals[wd] += s.paginas;
+        wdCounts[wd]++;
+      });
+      const wdAvg = wdTotals.map((t,i) => wdCounts[i] > 0 ? Math.round(t/wdCounts[i]) : 30);
+
+      // Projeta a partir de hoje até acabar o livro
+      const today = new Date();
+      const forecastLabels = [], forecastData = [], forecastDates = [];
+      let pagesLeft = pagFaltam;
+      let day = new Date(today);
+      while (pagesLeft > 0 && forecastLabels.length < 120) {
+        const wd = day.getDay();
+        const pags = Math.min(wdAvg[wd], pagesLeft);
+        if (pags > 0) {
+          forecastLabels.push(day.toLocaleDateString('pt-BR',{day:'2-digit',month:'short'}));
+          forecastData.push(pags);
+          forecastDates.push(new Date(day));
+          pagesLeft -= pags;
+        }
+        day.setDate(day.getDate() + 1);
       }
-    });
+
+      // Combina lidas (real) + previsão
+      const realLabels = rows.map(r => new Date(r.d+'T12:00:00').toLocaleDateString('pt-BR',{day:'2-digit',month:'short'}));
+      const realData   = rows.map(r => r.p);
+      const allLabels  = [...realLabels, ...forecastLabels];
+      const allReal    = [...realData,   ...new Array(forecastLabels.length).fill(null)];
+      const allPrev    = [...new Array(realLabels.length).fill(null), ...forecastData];
+
+      const maxP = Math.max(...realData, ...forecastData, 1);
+
+      chart = new Chart(ctx, {
+        type:'bar',
+        data:{
+          labels: allLabels,
+          datasets:[
+            {
+              label:'Lido',
+              data: allReal,
+              backgroundColor: realData.map(v => {
+                const a = 0.35 + 0.65*(v/maxP);
+                return `rgba(139,124,248,${a.toFixed(2)})`;
+              }),
+              borderColor:'rgba(139,124,248,0.8)',
+              borderWidth:1, borderRadius:4
+            },
+            {
+              label:'Previsão',
+              data: allPrev,
+              backgroundColor: 'rgba(78,205,196,0.35)',
+              borderColor:'rgba(78,205,196,0.7)',
+              borderWidth:1, borderRadius:4,
+              borderDash:[4,3]
+            }
+          ]
+        },
+        options:{
+          responsive:true, maintainAspectRatio:false,
+          plugins:{
+            legend:{ labels:{color:TICK_COLOR, font:{size:10}} },
+            tooltip:{...TT, callbacks:{
+              label: c => c.dataset.label === 'Previsão'
+                ? ` ~${c.parsed.y} págs (previsão)`
+                : ` ${c.parsed.y} páginas lidas`
+            }}
+          },
+          scales: baseScales(45)
+        }
+      });
+
+    } else {
+      // Livro concluído — mostra histórico real
+      const maxP = Math.max(...rows.map(r=>r.p), 1);
+      chart = new Chart(ctx, {
+        type:'bar',
+        data:{
+          labels: rows.map(r => new Date(r.d+'T12:00:00').toLocaleDateString('pt-BR',{day:'2-digit',month:'short'})),
+          datasets:[{
+            label:'Páginas',
+            data: rows.map(r=>r.p),
+            backgroundColor: rows.map(r => {
+              const alpha = 0.35 + 0.65*(r.p/maxP);
+              return `rgba(139,124,248,${alpha.toFixed(2)})`;
+            }),
+            borderColor:'rgba(139,124,248,0.8)',
+            borderWidth:1, borderRadius:5
+          }]
+        },
+        options:{
+          responsive:true, maintainAspectRatio:false,
+          plugins:{
+            legend:{display:false},
+            tooltip:{...TT, callbacks:{
+              title: t => {
+                const row = rows[t[0].dataIndex];
+                const d = new Date(row.d + 'T12:00:00');
+                return d.toLocaleDateString('pt-BR',{weekday:'long',day:'2-digit',month:'long',year:'numeric'});
+              },
+              label: c => ` ${c.parsed.y} páginas`
+            }}
+          },
+          scales: baseScales(45)
+        }
+      });
+    }
+  };
+
+  window.buildBookInfo = function() {
+    const book = sel.value;
+    if (!book) return;
+
+    // Get book data from livros array
+    const livroData = (window._livros||[]).find(l => l.livro === book);
+    const autorNome = livroData?.autor || AUTOR_MAP[book] || '—';
+    const rows = BOOK_DAILY[book] || [];
+    const pagLidas = rows.reduce((s,r)=>s+r.p, 0);
+    const totalPag = livroData?.totalPag || 0;
+    const status = livroData?.status || '—';
+    const minutos = (window._sessoes||[]).filter(s=>s.livro===book).reduce((s,r)=>s+(r.minutos||0),0);
+    const horas = Math.round(minutos/60*10)/10;
+    const diasLidos = [...new Set(rows.map(r=>r.d))].length;
+    const mediaDia = diasLidos > 0 ? Math.round(pagLidas/diasLidos) : 0;
+    const lendo = status === 'Lendo' || status === 'Pausado';
+    const concluido = status === 'Completo';
+
+    const info = document.getElementById('bookInfo');
+    info.style.display = 'block';
+    document.getElementById('bookInfoCapa').innerHTML    = coverImg(livroData?.isbn, '📖');
+    document.getElementById('bookInfoNome').textContent  = book;
+    document.getElementById('bookInfoAutor').textContent = autorNome;
+    // Ano de leitura
+    const anosLidos = [...new Set(rows.map(r => r.d?.slice(0,4)).filter(Boolean))].sort();
+    const anoLabel = anosLidos.length === 1 ? anosLidos[0] : anosLidos.length > 1 ? `${anosLidos[0]} – ${anosLidos[anosLidos.length-1]}` : '—';
+    document.getElementById('bookInfoAutor').textContent = `${autorNome} · ${anoLabel}`;
+
+    const stats = document.getElementById('bookInfoStats');
+    stats.innerHTML = `
+      <div style="background:var(--bg3);border-radius:8px;padding:8px;text-align:center;">
+        <div style="font-size:18px;font-weight:700;color:var(--purple)">${totalPag.toLocaleString('pt-BR')}</div>
+        <div style="font-size:10px;color:var(--muted)">Páginas totais</div>
+      </div>
+      <div style="background:var(--bg3);border-radius:8px;padding:8px;text-align:center;">
+        <div style="font-size:18px;font-weight:700;color:var(--teal)">${pagLidas.toLocaleString('pt-BR')}</div>
+        <div style="font-size:10px;color:var(--muted)">${lendo ? 'Páginas lidas' : concluido ? 'Páginas lidas' : 'Páginas lidas'}</div>
+      </div>
+      <div style="background:var(--bg3);border-radius:8px;padding:8px;text-align:center;">
+        <div style="font-size:18px;font-weight:700;color:var(--yellow)">${horas}h</div>
+        <div style="font-size:10px;color:var(--muted)">${concluido ? 'Tempo lido' : 'Tempo estimado gasto'}</div>
+      </div>
+      <div style="background:var(--bg3);border-radius:8px;padding:8px;text-align:center;">
+        <div style="font-size:18px;font-weight:700;color:var(--orange)">${diasLidos}</div>
+        <div style="font-size:10px;color:var(--muted)">${concluido ? 'Dias lidos' : 'Dias lidos até agora'}</div>
+      </div>
+      ${lendo ? `
+      <div style="background:var(--bg3);border-radius:8px;padding:8px;text-align:center;grid-column:1/-1;">
+        <div style="font-size:18px;font-weight:700;color:var(--coral)">~${Math.ceil((totalPag-pagLidas)/Math.max(mediaDia,1))} dias</div>
+        <div style="font-size:10px;color:var(--muted)">Estimativa para terminar (${mediaDia} págs/dia)</div>
+      </div>` : ''}
+      <div style="background:var(--bg3);border-radius:8px;padding:8px;text-align:center;grid-column:1/-1;">
+        <div style="font-size:13px;font-weight:600;color:${status==='Completo'?'var(--teal)':status==='Lendo'?'var(--purple)':status==='Pausado'?'var(--orange)':'var(--muted)'}">${status}</div>
+        <div style="font-size:10px;color:var(--muted)">Status</div>
+      </div>`;
   };
 
   buildBookChart();
+  buildBookInfo();
 })();
 
 // ════════════════════════════════════════════════
@@ -986,20 +1559,32 @@ function baseScales(xRot) {
 // ════════════════════════════════════════════════
 (function() {
   const months = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
-  const data2024 = [2203,913,484,234,810,619,939,1687,1388,1830,280,210];
-  const data2025 = [2154,1105,2444,1790,872,884,1850,2983,1283,1136,1547,935];
-  const data2026 = [949,1299,744,744,0,0,0,0,0,0,0,0];
+  const byYearMonth = {};
+  MONTHLY.forEach(d => {
+    const parts = d.m.split('/');
+    const mon = parts[0];
+    const yr  = '20' + parts[1];
+    if (!byYearMonth[yr]) byYearMonth[yr] = new Array(12).fill(0);
+    const mIdx = months.indexOf(mon);
+    if (mIdx >= 0) byYearMonth[yr][mIdx] = d.v;
+  });
 
-  new Chart(document.getElementById('cHeat').getContext('2d'), {
+  const years = Object.keys(byYearMonth).sort();
+  const yColors = ['#8b7cf8','#f88c6a','#4ecdc4','#ffd166'];
+  const datasets = years.map((yr, i) => ({
+    label: yr,
+    data: byYearMonth[yr],
+    backgroundColor: yColors[i % yColors.length],
+    borderRadius: 4
+  }));
+
+  const canv = document.getElementById('cHeat');
+  const existing = Chart.getChart(canv);
+  if (existing) existing.destroy();
+
+  new Chart(canv.getContext('2d'), {
     type:'bar',
-    data:{
-      labels: months,
-      datasets:[
-        {label:'2024', data:data2024, backgroundColor:'#8b7cf8', borderRadius:4},
-        {label:'2025', data:data2025, backgroundColor:'#f88c6a', borderRadius:4},
-        {label:'2026', data:data2026, backgroundColor:'#4ecdc4', borderRadius:4}
-      ]
-    },
+    data:{ labels: months, datasets },
     options:{
       responsive:true, maintainAspectRatio:false,
       plugins:{
@@ -1012,19 +1597,383 @@ function baseScales(xRot) {
 })();
 
 buildRanking();
-buildWd('avg');
-buildWd('sum');
-
-// Popular seletor de anos do ranking com anos reais das notas
-const selNotasAno = document.getElementById('selNotasAno');
-const anosNotas = [...new Set(NOTES.map(n => n.ano).filter(a => a > 2000))].sort();
-selNotasAno.innerHTML = '<option value="all">Todos os anos</option>';
-anosNotas.forEach(a => {
-  selNotasAno.innerHTML += `<option value="${a}">${a}</option>`;
-});
-buildRanking();
+buildWd();
+buildLivrosMes();
+buildStreaks();
+buildHeatmap();
+buildCalendar();
 
 } // fim inicializarGraficos
+
+function buildLivrosMes() {
+  const meses = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+  const yr = document.getElementById('selWd')?.value || 'total';
+
+  // Pega último dia de sessão por livro
+  const ultimaSessao = {};
+  (window._sessoes || []).forEach(s => {
+    if (!s.data) return;
+    if (!ultimaSessao[s.livro] || s.data > ultimaSessao[s.livro])
+      ultimaSessao[s.livro] = s.data;
+  });
+
+  // Filtra livros concluídos e conta por mês
+  const byMesAno = {};
+  (window._livros || []).filter(l => l.status === 'Completo').forEach(l => {
+    const data = ultimaSessao[l.livro];
+    if (!data) return;
+    const livroAno = data.slice(0,4);
+    if (yr !== 'total' && livroAno !== yr) return;
+    const mon = parseInt(data.slice(5,7)) - 1;
+    const key = `${livroAno}-${String(mon+1).padStart(2,'0')}`;
+    byMesAno[key] = (byMesAno[key] || 0) + 1;
+  });
+
+  const sorted = Object.keys(byMesAno).sort().slice(-18);
+  const el = document.getElementById('livrosMes');
+  if (!el || sorted.length === 0) { if(el) el.innerHTML = '<div style="color:var(--muted);font-size:11px;padding:8px">Nenhum livro concluído</div>'; return; }
+  const maxV = Math.max(...sorted.map(k => byMesAno[k]), 1);
+  el.innerHTML = '';
+  sorted.forEach(k => {
+    const [y, mo] = k.split('-');
+    const label = meses[parseInt(mo)-1] + '/' + y.slice(2);
+    const v = byMesAno[k];
+    const h = Math.max(6, Math.round(v/maxV * 70));
+    el.innerHTML += `
+      <div class="wd-col">
+        <span class="wd-val">${v}</span>
+        <div class="wd-bar" style="height:${h}px;background:#4ecdc4"></div>
+        <span class="wd-lbl" style="font-size:8px;">${label}</span>
+      </div>`;
+  });
+}
+
+// ════════════════════════════════════════════════
+// STREAK — dias consecutivos de leitura
+// ════════════════════════════════════════════════
+function buildStreaks() {
+  const sess = window._sessoes || [];
+  const diasSet = [...new Set(sess.map(s => s.data).filter(Boolean))].sort();
+  if (!diasSet.length) return;
+
+  // Calcula todas as sequências
+  const streaks = [];
+  let cur = [diasSet[0]];
+  for (let i = 1; i < diasSet.length; i++) {
+    const prev = new Date(diasSet[i-1] + 'T12:00:00');
+    const curr = new Date(diasSet[i]   + 'T12:00:00');
+    const diff = (curr - prev) / 86400000;
+    if (diff === 1) {
+      cur.push(diasSet[i]);
+    } else {
+      streaks.push([...cur]);
+      cur = [diasSet[i]];
+    }
+  }
+  streaks.push(cur);
+
+  // Streak atual
+  const hoje = new Date();
+  const ontem = new Date(hoje.getTime() - 86400000);
+  const hojeStr  = hoje.toISOString().slice(0,10);
+  const ontemStr = ontem.toISOString().slice(0,10);
+  const ultimoStr = diasSet[diasSet.length-1];
+  let streakAtual = 0;
+  if (ultimoStr === hojeStr || ultimoStr === ontemStr) {
+    const last = streaks[streaks.length-1];
+    streakAtual = last.length;
+  }
+
+  // Recorde
+  const recorde = streaks.reduce((m, s) => s.length > m.length ? s : m, []);
+
+  document.getElementById('streakAtual').textContent    = streakAtual;
+  document.getElementById('streakRecorde').textContent  = recorde.length;
+  document.getElementById('streakRecordeData').textContent =
+    recorde.length ? `${fmtDate(recorde[0])} → ${fmtDate(recorde[recorde.length-1])}` : '';
+
+  // Últimas 5 sequências
+  const list = document.getElementById('streakList');
+  list.innerHTML = '';
+  [...streaks].reverse().filter(s => s.length > 1).slice(0,5).forEach(s => {
+    const sessDia = sess.filter(r => s.includes(r.data));
+    const totalPags = sessDia.reduce((a,r)=>a+r.paginas,0);
+    const totalMin  = Math.round(sessDia.reduce((a,r)=>a+r.minutos,0));
+    // Livros únicos nessa sequência
+    const livrosSeq = {};
+    sessDia.forEach(r => {
+      if (!livrosSeq[r.livro]) livrosSeq[r.livro] = {pags:0, min:0};
+      livrosSeq[r.livro].pags += r.paginas;
+      livrosSeq[r.livro].min  += r.minutos;
+    });
+
+    let livrosHtml = Object.entries(livrosSeq).map(([livro, v]) => {
+      const ld = (window._livros||[]).find(l=>l.livro===livro);
+      const isbn = ld?.isbn || '';
+      const capa = isbn ? `<img src="https://covers.openlibrary.org/b/isbn/${isbn}-S.jpg"
+        style="width:24px;height:34px;object-fit:cover;border-radius:3px;flex-shrink:0"
+        onerror="this.style.display='none'" alt="">` : '';
+      return `<div style="display:flex;align-items:center;gap:6px;padding:4px 0;border-top:1px solid var(--border)">
+        ${capa}
+        <div style="flex:1;min-width:0">
+          <div style="font-size:11px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${livro}</div>
+          <div style="font-size:10px;color:var(--muted)">${ld?.autor||''}</div>
+        </div>
+        <div style="text-align:right;flex-shrink:0">
+          <div style="font-size:12px;font-weight:700;color:var(--teal)">${v.pags} páginas</div>
+          <div style="font-size:10px;color:var(--muted)">${Math.round(v.min)}min</div>
+        </div>
+      </div>`;
+    }).join('');
+
+    list.innerHTML += `<div style="background:var(--bg3);border-radius:8px;padding:10px;margin-bottom:8px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+        <span style="font-size:12px;font-weight:700;color:var(--text)">${fmtDate(s[0])} → ${fmtDate(s[s.length-1])}</span>
+        <div style="display:flex;gap:8px;">
+          <span style="font-size:11px;color:var(--purple);font-weight:700">📅 ${s.length} dias</span>
+          <span style="font-size:11px;color:var(--teal);font-weight:700">📄 ${totalPags.toLocaleString('pt-BR')} págs</span>
+          <span style="font-size:11px;color:var(--yellow);font-weight:700">⏱ ${totalMin}min</span>
+        </div>
+      </div>
+      ${livrosHtml}
+    </div>`;
+  });
+}
+
+function fmtDate(d) {
+  return new Date(d+'T12:00:00').toLocaleDateString('pt-BR',{day:'2-digit',month:'short'});
+}
+
+// ════════════════════════════════════════════════
+// HEATMAP — mapa de calor anual tipo GitHub
+// ════════════════════════════════════════════════
+function buildHeatmap() {
+  const yr = parseInt(document.getElementById('selHeatYear')?.value || new Date().getFullYear());
+  const sess = window._sessoes || [];
+
+  // Agrupa páginas por dia
+  const dayMap = {};
+  sess.filter(s => s.data && s.data.startsWith(yr)).forEach(s => {
+    dayMap[s.data] = (dayMap[s.data]||0) + s.paginas;
+  });
+
+  const vals = Object.values(dayMap);
+  const maxVal = vals.length ? Math.max(...vals) : 1;
+
+  function getColor(v) {
+    if (!v) return '#1a2035';
+    const pct = v / maxVal;
+    if (pct < 0.2) return '#1a3a5c';
+    if (pct < 0.4) return '#1e5f8e';
+    if (pct < 0.7) return '#2980b9';
+    return '#8b7cf8';
+  }
+
+  // Gera semanas do ano — layout em grid preenchendo a largura
+  const start = new Date(yr, 0, 1);
+  const meses = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+
+  // Coleta todos os dias do ano organizados por semana
+  let d = new Date(yr, 0, 1);
+  d.setDate(d.getDate() - d.getDay()); // começa no domingo anterior
+
+  const weeks = [];
+  while (true) {
+    const week = [];
+    for (let wd = 0; wd < 7; wd++) {
+      week.push(new Date(d));
+      d.setDate(d.getDate() + 1);
+    }
+    weeks.push(week);
+    if (d.getFullYear() > yr) break;
+  }
+
+  // Labels dos meses (coluna da semana onde cada mês começa)
+  let monthLabels = new Array(weeks.length).fill('');
+  weeks.forEach((week, wi) => {
+    week.forEach(day => {
+      if (day.getFullYear() === yr && day.getDate() <= 7 && day.getDay() === 0) {
+        monthLabels[wi] = meses[day.getMonth()];
+      }
+    });
+  });
+
+  // HTML: linha de labels dos meses + grid de células
+  let html = `<div style="display:flex;gap:3px;width:100%;box-sizing:border-box;">`;
+
+  // Labels dos dias da semana
+  html += `<div style="display:flex;flex-direction:column;gap:3px;margin-right:2px;padding-top:18px;">`;
+  ['D','S','T','Q','Q','S','S'].forEach((l,i) => {
+    html += `<div style="width:14px;height:16px;font-size:9px;color:var(--muted);line-height:16px;text-align:center;flex-shrink:0">${i%2===1?l:''}</div>`;
+  });
+  html += `</div>`;
+
+  // Semanas
+  weeks.forEach((week, wi) => {
+    html += `<div style="display:flex;flex-direction:column;gap:3px;flex:1;">`;
+    // Label do mês
+    html += `<div style="height:14px;font-size:9px;color:var(--muted);line-height:14px;white-space:nowrap;overflow:hidden">${monthLabels[wi]}</div>`;
+    // Células
+    week.forEach(day => {
+      const dateStr = day.toISOString().slice(0,10);
+      const isThisYear = day.getFullYear() === yr;
+      const pags = dayMap[dateStr] || 0;
+      const color = isThisYear ? getColor(pags) : 'transparent';
+      const title = isThisYear && pags ? `${fmtDate(dateStr)}: ${pags} págs` : isThisYear ? fmtDate(dateStr) : '';
+      html += `<div class="heat-cell" style="background:${color};width:100%;height:16px;" title="${title}"></div>`;
+    });
+    html += `</div>`;
+  });
+
+  html += `</div>`;
+  document.getElementById('heatmapGrid').innerHTML = html;
+
+  // Popular seletor de anos
+  const sel = document.getElementById('selHeatYear');
+  const anos = [...new Set((window._sessoes||[]).map(s=>s.data?.slice(0,4)).filter(Boolean))].sort();
+  sel.innerHTML = '';
+  anos.forEach(a => sel.innerHTML += `<option value="${a}" ${a==yr?'selected':''}>${a}</option>`);
+}
+
+// ════════════════════════════════════════════════
+// CALENDÁRIO MENSAL
+// ════════════════════════════════════════════════
+function calNav(dir) {
+  calMonth += dir;
+  if (calMonth > 11) { calMonth = 0; calYear++; }
+  if (calMonth < 0)  { calMonth = 11; calYear--; }
+  buildCalendar();
+}
+window.calNav = calNav;
+
+function buildCalendar() {
+  const sess = window._sessoes || [];
+  const meses = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+  const dias  = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+
+  document.getElementById('calTitle').textContent = `${meses[calMonth]} ${calYear}`;
+
+  // Agrupa sessões por dia nesse mês
+  const prefix = `${calYear}-${String(calMonth+1).padStart(2,'0')}`;
+  const dayData = {};
+  sess.filter(s => s.data?.startsWith(prefix)).forEach(s => {
+    if (!dayData[s.data]) dayData[s.data] = [];
+    dayData[s.data].push(s);
+  });
+
+  const maxPag = Math.max(...Object.values(dayData).map(v=>v.reduce((a,r)=>a+r.paginas,0)), 1);
+
+  const firstDay = new Date(calYear, calMonth, 1).getDay();
+  const daysInMonth = new Date(calYear, calMonth+1, 0).getDate();
+
+  let html = '';
+  // Cabeçalho
+  dias.forEach(d => {
+    html += `<div style="text-align:center;font-size:10px;font-weight:700;color:var(--muted);padding:4px 0;">${d}</div>`;
+  });
+  // Células vazias antes do dia 1
+  for (let i = 0; i < firstDay; i++) html += '<div class="cal-empty"></div>';
+
+  // Dias
+  for (let day = 1; day <= daysInMonth; day++) {
+    const dateStr = `${calYear}-${String(calMonth+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+    const entries = dayData[dateStr] || [];
+    const totalPag = entries.reduce((a,r)=>a+r.paginas,0);
+    const barW = totalPag ? Math.round(totalPag/maxPag*100) : 0;
+    const isSelected = calSelected === dateStr;
+
+    // Agrupa por livro
+    const byBook = {};
+    entries.forEach(e => { byBook[e.livro] = (byBook[e.livro]||0) + e.paginas; });
+    const livrosHtml = Object.entries(byBook).map(([livro, pags]) =>
+      `<div style="font-size:9px;line-height:1.4;margin-top:2px;">
+        <span style="color:var(--teal);font-weight:700">${pags} págs</span><br>
+        <span style="color:var(--text)">${livro}</span>
+      </div>`
+    ).join('');
+
+    html += `<div class="cal-day${totalPag?' active':''}${isSelected?' selected':''}" onclick="calSelect('${dateStr}')">
+      <div class="cal-day-num">${day}</div>
+      ${totalPag ? `${livrosHtml}<div class="cal-day-bar" style="width:${barW}%"></div>` : ''}
+    </div>`;
+  }
+
+  document.getElementById('calGrid').innerHTML = html;
+
+  // Reopen detail if selected day is in this month
+  if (calSelected?.startsWith(prefix)) {
+    calShowDetail(calSelected);
+  } else {
+    document.getElementById('calDetail').style.display = 'none';
+    calSelected = null;
+  }
+}
+
+function calSelect(dateStr) {
+  if (calSelected === dateStr) {
+    calSelected = null;
+    document.getElementById('calDetail').style.display = 'none';
+    buildCalendar();
+    return;
+  }
+  calSelected = dateStr;
+  buildCalendar();
+}
+
+function calShowDetail(dateStr) {
+
+  const sess = window._sessoes || [];
+  const entries = sess.filter(s => s.data === dateStr);
+  const d = new Date(dateStr + 'T12:00:00');
+  const label = d.toLocaleDateString('pt-BR', {weekday:'long', day:'2-digit', month:'long', year:'numeric'});
+
+  const detail = document.getElementById('calDetail');
+  const totalPag = entries.reduce((a,r)=>a+r.paginas,0);
+  const totalMin = entries.reduce((a,r)=>a+r.minutos,0);
+
+  document.getElementById('calDetailTitle').innerHTML =
+    `📅 ${label} — <span style="color:var(--teal)">${totalPag} páginas</span> · <span style="color:var(--yellow)">${Math.round(totalMin)}min</span>`;
+
+  let listHtml = '';
+  // Agrupa por livro
+  const byBook = {};
+  entries.forEach(e => {
+    if (!byBook[e.livro]) byBook[e.livro] = {pags:0, min:0};
+    byBook[e.livro].pags += e.paginas;
+    byBook[e.livro].min  += e.minutos;
+  });
+
+  Object.entries(byBook).forEach(([livro, v]) => {
+    const livroData = (window._livros||[]).find(l=>l.livro===livro);
+    const isbn = livroData?.isbn || '';
+    const capa = isbn ? `<img src="https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg"
+      style="width:48px;height:68px;object-fit:cover;border-radius:6px;flex-shrink:0;box-shadow:2px 2px 8px rgba(0,0,0,0.4)"
+      onerror="this.style.display='none'" alt="">` : '<div style="width:48px;height:68px;background:var(--bg3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">📖</div>';
+    const horas = v.min >= 60 ? `${Math.floor(v.min/60)}h ${Math.round(v.min%60)}min` : `${Math.round(v.min)}min`;
+    listHtml += `<div style="display:flex;align-items:center;gap:14px;padding:12px;background:var(--bg2);border-radius:10px;margin-bottom:8px;">
+      ${capa}
+      <div style="flex:1;min-width:0">
+        <div style="font-size:15px;font-weight:700;color:var(--text);line-height:1.3;margin-bottom:3px;">${livro}</div>
+        <div style="font-size:12px;color:var(--muted);margin-bottom:10px;">${livroData?.autor||''}</div>
+        <div style="display:flex;gap:16px;">
+          <div>
+            <div style="font-size:20px;font-weight:700;color:var(--teal)">${v.pags}</div>
+            <div style="font-size:10px;color:var(--muted)">páginas</div>
+          </div>
+          <div>
+            <div style="font-size:20px;font-weight:700;color:var(--yellow)">${horas}</div>
+            <div style="font-size:10px;color:var(--muted)">tempo lido</div>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  });
+
+  document.getElementById('calDetailList').innerHTML = listHtml || '<div style="color:var(--muted);font-size:12px">Nenhuma sessão registrada</div>';
+  detail.style.display = 'block';
+}
+window.calSelect = calSelect;
+window.calShowDetail = calShowDetail;
 
 carregarDados();
 </script>
