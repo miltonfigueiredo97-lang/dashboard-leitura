@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-13T02:11:32.954Z",
+  "geradoEm": "2026-05-13T02:14:19.973Z",
   "metasPorAno": {
     "2024": {
       "total": 22,
@@ -17,17 +17,17 @@
     },
     "2025": {
       "total": 28,
-      "lidos": 27,
+      "lidos": 28,
       "lendo": 0,
       "pausados": 0,
-      "aguardando": 1,
+      "aguardando": 0,
       "paginasTotal": 18820,
-      "paginasLidas": 18602,
-      "paginasFaltando": 218,
-      "faltando": 1,
+      "paginasLidas": 18820,
+      "paginasFaltando": 0,
+      "faltando": 0,
       "mediaDiaria": 75.9,
       "ritmoAtual": 0,
-      "dataPrevistoAtual": "—"
+      "dataPrevistoAtual": "Concluída!"
     },
     "2026": {
       "total": 28,
@@ -4058,7 +4058,7 @@
       "ano": 2025
     },
     {
-      "livro": "Edgeshard",
+      "livro": "Edgedancer",
       "colecao": "Relato da Guerra das Tempestades",
       "data": "2025-01-17",
       "paginas": 48,
@@ -4066,7 +4066,7 @@
       "ano": 2025
     },
     {
-      "livro": "Edgeshard",
+      "livro": "Edgedancer",
       "colecao": "Relato da Guerra das Tempestades",
       "data": "2025-01-18",
       "paginas": 7,
@@ -4074,7 +4074,7 @@
       "ano": 2025
     },
     {
-      "livro": "Edgeshard",
+      "livro": "Edgedancer",
       "colecao": "Relato da Guerra das Tempestades",
       "data": "2025-01-18",
       "paginas": 6,
@@ -4082,7 +4082,7 @@
       "ano": 2025
     },
     {
-      "livro": "Edgeshard",
+      "livro": "Edgedancer",
       "colecao": "Relato da Guerra das Tempestades",
       "data": "2025-01-18",
       "paginas": 18,
@@ -4090,7 +4090,7 @@
       "ano": 2025
     },
     {
-      "livro": "Edgeshard",
+      "livro": "Edgedancer",
       "colecao": "Relato da Guerra das Tempestades",
       "data": "2025-01-20",
       "paginas": 13,
@@ -4098,7 +4098,7 @@
       "ano": 2025
     },
     {
-      "livro": "Edgeshard",
+      "livro": "Edgedancer",
       "colecao": "Relato da Guerra das Tempestades",
       "data": "2025-01-20",
       "paginas": 9,
@@ -4106,7 +4106,7 @@
       "ano": 2025
     },
     {
-      "livro": "Edgeshard",
+      "livro": "Edgedancer",
       "colecao": "Relato da Guerra das Tempestades",
       "data": "2025-01-21",
       "paginas": 14,
@@ -4114,7 +4114,7 @@
       "ano": 2025
     },
     {
-      "livro": "Edgeshard",
+      "livro": "Edgedancer",
       "colecao": "Relato da Guerra das Tempestades",
       "data": "2025-01-21",
       "paginas": 7,
@@ -4122,7 +4122,7 @@
       "ano": 2025
     },
     {
-      "livro": "Edgeshard",
+      "livro": "Edgedancer",
       "colecao": "Relato da Guerra das Tempestades",
       "data": "2025-01-21",
       "paginas": 2,
@@ -4130,7 +4130,7 @@
       "ano": 2025
     },
     {
-      "livro": "Edgeshard",
+      "livro": "Edgedancer",
       "colecao": "Relato da Guerra das Tempestades",
       "data": "2025-01-22",
       "paginas": 16,
@@ -4138,7 +4138,7 @@
       "ano": 2025
     },
     {
-      "livro": "Edgeshard",
+      "livro": "Edgedancer",
       "colecao": "Relato da Guerra das Tempestades",
       "data": "2025-01-22",
       "paginas": 18,
@@ -4146,7 +4146,7 @@
       "ano": 2025
     },
     {
-      "livro": "Edgeshard",
+      "livro": "Edgedancer",
       "colecao": "Relato da Guerra das Tempestades",
       "data": "2025-01-23",
       "paginas": 8,
@@ -4466,7 +4466,7 @@
       "ano": 2025
     },
     {
-      "livro": "Edgeshard",
+      "livro": "Edgedancer",
       "colecao": "Relato da Guerra das Tempestades",
       "data": "2025-01-23",
       "paginas": 11,
@@ -4474,7 +4474,7 @@
       "ano": 2025
     },
     {
-      "livro": "Edgeshard",
+      "livro": "Edgedancer",
       "colecao": "Relato da Guerra das Tempestades",
       "data": "2025-01-27",
       "paginas": 11,
@@ -4482,7 +4482,7 @@
       "ano": 2025
     },
     {
-      "livro": "Edgeshard",
+      "livro": "Edgedancer",
       "colecao": "Relato da Guerra das Tempestades",
       "data": "2025-01-27",
       "paginas": 7,
@@ -4490,7 +4490,7 @@
       "ano": 2025
     },
     {
-      "livro": "Edgeshard",
+      "livro": "Edgedancer",
       "colecao": "Relato da Guerra das Tempestades",
       "data": "2025-01-27",
       "paginas": 23,
@@ -8613,10 +8613,10 @@
       "metaAno": "2025",
       "depende": "",
       "ordem": 26,
-      "status": "Aguardando",
+      "status": "Completo",
       "totalPag": 218,
-      "pagAtual": 0,
-      "pct": 0
+      "pagAtual": 218,
+      "pct": 1
     },
     {
       "livro": "Elantris",
@@ -9482,19 +9482,6 @@
     }
   ],
   "aguardando": [
-    {
-      "livro": "Edgedancer",
-      "autor": "Brandon Sanderson",
-      "isbn": "9780765387011",
-      "coverUrl": "https://m.media-amazon.com/images/I/81SuJQI8uNL.jpg",
-      "metaAno": "2025",
-      "depende": "",
-      "ordem": 26,
-      "status": "Aguardando",
-      "totalPag": 218,
-      "pagAtual": 0,
-      "pct": 0
-    },
     {
       "livro": "A Alma do Imperador",
       "autor": "Brandon Sanderson",
