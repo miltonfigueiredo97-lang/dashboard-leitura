@@ -2382,6 +2382,7 @@ carregarDados();
 <style>
 @keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
 </style>
+<script>
 // ── Lista de livros por status ──────────────────
 let statusAtual = null;
 function toggleListaStatus(status) {
@@ -2490,8 +2491,7 @@ async function confirmarExcluir() {
   btn.disabled = false; btn.textContent = '🗑️ Confirmar Exclusão';
 }
 
-const API_URL = '
-https://script.google.com/macros/s/AKfycbzuNZzuy8fzaql5xpecEG6yG2aXMdkkeDpPbkaTV_ro6f1TkixI37s8aJxO0lPqIYOM/exec';
+const API_URL = 'https://script.google.com/macros/s/AKfycbzuNZzuy8fzaql5xpecEG6yG2aXMdkkeDpPbkaTV_ro6f1TkixI37s8aJxO0lPqIYOM/exec';
 let fabOpen = false;
 let livrosCache = [];
 let colecoesCache = [];
