@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-13T02:00:58.331Z",
+  "geradoEm": "2026-05-13T02:03:52.523Z",
   "metasPorAno": {
     "2024": {
       "total": 22,
@@ -16,13 +16,13 @@
       "dataPrevistoAtual": "Concluída!"
     },
     "2025": {
-      "total": 27,
-      "lidos": 26,
+      "total": 28,
+      "lidos": 27,
       "lendo": 0,
       "pausados": 0,
       "aguardando": 1,
-      "paginasTotal": 17896,
-      "paginasLidas": 17678,
+      "paginasTotal": 18820,
+      "paginasLidas": 18602,
       "paginasFaltando": 218,
       "faltando": 1,
       "mediaDiaria": 75.9,
@@ -8629,6 +8629,19 @@
       "status": "Completo",
       "totalPag": 802,
       "pagAtual": 802,
+      "pct": 1
+    },
+    {
+      "livro": "Chama de Ferro",
+      "autor": "Rebecca Yarros",
+      "isbn": "9788542227802",
+      "coverUrl": "https://m.media-amazon.com/images/I/91i+8KU2U5L.jpg",
+      "metaAno": "2025",
+      "depende": "",
+      "ordem": 28,
+      "status": "Completo",
+      "totalPag": 924,
+      "pagAtual": 924,
       "pct": 1
     },
     {
