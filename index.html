@@ -72,8 +72,13 @@ header .badge {
 .cal-day-pag { font-size:10px;color:var(--teal);font-weight:700;margin-top:2px; }
 .cal-day-bar { height:3px;border-radius:2px;margin-top:3px;background:var(--purple); }
 .cal-empty { min-height:52px; }
+<<<<<<< HEAD
 .heat-cell { width:16px;height:16px;border-radius:3px;display:inline-block;cursor:pointer;transition:transform 0.1s;flex-shrink:0; }
 .heat-cell:hover { transform:scale(1.3); }
+=======
+.heat-cell { width:13px;height:13px;border-radius:2px;display:inline-block;cursor:pointer;transition:transform 0.1s; }
+.heat-cell:hover { transform:scale(1.4); }
+>>>>>>> a20f7d27c02248cbea521e6eaf069807b6d6c50d
 
 /* ── Cards ── */
 .card {
@@ -1720,7 +1725,11 @@ function buildStreaks() {
           <div style="font-size:10px;color:var(--muted)">${ld?.autor||''}</div>
         </div>
         <div style="text-align:right;flex-shrink:0">
+<<<<<<< HEAD
           <div style="font-size:12px;font-weight:700;color:var(--teal)">${v.pags} páginas</div>
+=======
+          <div style="font-size:12px;font-weight:700;color:var(--teal)">${v.pags}p</div>
+>>>>>>> a20f7d27c02248cbea521e6eaf069807b6d6c50d
           <div style="font-size:10px;color:var(--muted)">${Math.round(v.min)}min</div>
         </div>
       </div>`;
@@ -1731,7 +1740,11 @@ function buildStreaks() {
         <span style="font-size:12px;font-weight:700;color:var(--text)">${fmtDate(s[0])} → ${fmtDate(s[s.length-1])}</span>
         <div style="display:flex;gap:8px;">
           <span style="font-size:11px;color:var(--purple);font-weight:700">📅 ${s.length} dias</span>
+<<<<<<< HEAD
           <span style="font-size:11px;color:var(--teal);font-weight:700">📄 ${totalPags.toLocaleString('pt-BR')} págs</span>
+=======
+          <span style="font-size:11px;color:var(--teal);font-weight:700">📄 ${totalPags.toLocaleString('pt-BR')}p</span>
+>>>>>>> a20f7d27c02248cbea521e6eaf069807b6d6c50d
           <span style="font-size:11px;color:var(--yellow);font-weight:700">⏱ ${totalMin}min</span>
         </div>
       </div>
@@ -1769,6 +1782,7 @@ function buildHeatmap() {
     return '#8b7cf8';
   }
 
+<<<<<<< HEAD
   // Gera semanas do ano — layout em grid preenchendo a largura
   const start = new Date(yr, 0, 1);
   const meses = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
@@ -1826,6 +1840,46 @@ function buildHeatmap() {
   });
 
   html += `</div>`;
+=======
+  // Gera semanas do ano
+  const start = new Date(yr, 0, 1);
+  const startDay = start.getDay(); // 0=dom
+  const meses = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+
+  let html = '<div style="display:flex;gap:3px;align-items:flex-start">';
+  // Labels dos meses
+  html += '<div style="display:flex;flex-direction:column;gap:0;margin-right:4px;">';
+  ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'].forEach(d => {
+    html += `<div style="height:16px;font-size:9px;color:var(--muted);line-height:16px;">${d}</div>`;
+  });
+  html += '</div>';
+
+  // Semanas
+  let d = new Date(yr, 0, 1);
+  d.setDate(d.getDate() - d.getDay()); // começa no domingo anterior
+
+  let prevMonth = -1;
+  while (d.getFullYear() <= yr) {
+    const month = d.getMonth();
+    html += '<div>';
+    // Label do mês no topo da coluna
+    html += `<div style="height:14px;font-size:9px;color:var(--muted);margin-bottom:2px;">${d.getDate()<=7 && d.getFullYear()===yr ? meses[month] : ''}</div>`;
+    // 7 dias da semana
+    for (let wd = 0; wd < 7; wd++) {
+      const dateStr = d.toISOString().slice(0,10);
+      const isThisYear = d.getFullYear() === yr;
+      const pags = dayMap[dateStr] || 0;
+      const color = isThisYear ? getColor(pags) : 'transparent';
+      const title = isThisYear && pags ? `${fmtDate(dateStr)}: ${pags} págs` : fmtDate(dateStr);
+      html += `<div class="heat-cell" style="background:${color};margin-bottom:3px;" title="${title}"></div>`;
+      d.setDate(d.getDate() + 1);
+    }
+    html += '</div>';
+    if (d.getFullYear() > yr) break;
+  }
+  html += '</div>';
+
+>>>>>>> a20f7d27c02248cbea521e6eaf069807b6d6c50d
   document.getElementById('heatmapGrid').innerHTML = html;
 
   // Popular seletor de anos
