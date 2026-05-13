@@ -1526,8 +1526,6 @@ window.buildLivrosMes = buildLivrosMes;
 window.buildStreaks = buildStreaks;
 window.buildHeatmap = buildHeatmap;
 window.buildCalendar = buildCalendar;
-window.toggleListaStatus = toggleListaStatus;
-window.renderListaStatus = renderListaStatus;
 
 // ════════════════════════════════════════════════
 // 6. BOOK CHART + BOOK INFO
@@ -2485,7 +2483,6 @@ function toggleListaStatus(status) {
     painel.style.display = 'none'; statusAtual = null; return;
   }
   statusAtual = status;
-  const titulos = { Completo:'✅ Concluídos', Lendo:'📖 Lendo', Pausado:'⏸️ Pausados', Aguardando:'📋 Aguardando' };
   document.getElementById('painelStatusTitulo').textContent = titulos[status];
 
   livrosStatusAtual = (window._livros||[]).filter(l => l.status === status);
@@ -2561,7 +2558,8 @@ function renderListaStatus() {
 
   if (!livros.length) lista.innerHTML = '<div style="color:var(--muted);text-align:center;padding:16px;">Nenhum livro</div>';
 }
-// renderListaStatus já exposta acima
+window.toggleListaStatus = toggleListaStatus;
+window.renderListaStatus = renderListaStatus;
 
 // ── Roleta de Leitura ───────────────────────────
 let modoRoleta = 'meta';
