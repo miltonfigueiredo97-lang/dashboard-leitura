@@ -1200,22 +1200,13 @@ function renderizarGraficos(dados) {
   NOTES     = dados.NOTES;
   COLECOES  = dados.COLECOES;
   BOOK_DAILY = dados.BOOK_DAILY;
-  // Destroi charts existentes
   ['cLine','cWdAvg','cWdSum','cDonut','cAutores','cBookChart'].forEach(id => {
     const el = document.getElementById(id);
     if (el) { const ch = Chart.getChart(el); if (ch) ch.destroy(); }
   });
   inicializarGraficos();
-  // Chama funções do script 2 após ambos os scripts terem carregado
-  setTimeout(() => {
-    try { buildDonuts(); } catch(e) { console.warn('buildDonuts:', e); }
-    try { buildRanking(); } catch(e) { console.warn('buildRanking:', e); }
-    try { buildWd(); } catch(e) { console.warn('buildWd:', e); }
-    try { buildLivrosMes(); } catch(e) { console.warn('buildLivrosMes:', e); }
-    try { buildStreaks(); } catch(e) { console.warn('buildStreaks:', e); }
-    try { buildHeatmap(); } catch(e) { console.warn('buildHeatmap:', e); }
-    try { buildCalendar(); } catch(e) { console.warn('buildCalendar:', e); }
-  }, 100);
+  // Dispara evento para script 2 renderizar seus componentes
+  window.dispatchEvent(new CustomEvent('dadosCarregados'));
 }
 
 // ════════════════════════════════════════════════
@@ -2632,6 +2623,17 @@ async function confirmarExcluir() {
 
 const API_URL = 'https://script.google.com/macros/s/AKfycbzuNZzuy8fzaql5xpecEG6yG2aXMdkkeDpPbkaTV_ro6f1TkixI37s8aJxO0lPqIYOM/exec';
 let fabOpen = false;
+
+// Escuta evento de dados carregados do script 1
+window.addEventListener('dadosCarregados', () => {
+  try { buildRanking(); } catch(e){}
+  try { buildDonuts(); } catch(e){}
+  try { buildWd(); } catch(e){}
+  try { buildLivrosMes(); } catch(e){}
+  try { buildStreaks(); } catch(e){}
+  try { buildHeatmap(); } catch(e){}
+  try { buildCalendar(); } catch(e){}
+});
 let livrosCache = [];
 let colecoesCache = [];
 
