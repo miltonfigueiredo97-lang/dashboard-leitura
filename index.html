@@ -446,7 +446,20 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
       <div id="painelStatusTitulo" style="font-size:16px;font-weight:700;color:var(--text)"></div>
       <button onclick="toggleListaStatus(null)" style="background:var(--bg3);border:none;color:var(--muted);width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:16px;">✕</button>
     </div>
-    <div id="painelStatusLista" style="display:flex;flex-direction:column;gap:8px;max-height:400px;overflow-y:auto;"></div>
+    <!-- Filtros -->
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;align-items:center;">
+      <select id="ps-ordem" onchange="renderListaStatus()" style="font-size:13px;padding:5px 8px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);">
+        <option value="az">A → Z</option>
+        <option value="za">Z → A</option>
+        <option value="mais">Mais páginas</option>
+        <option value="menos">Menos páginas</option>
+      </select>
+      <select id="ps-colecao" onchange="renderListaStatus()" style="font-size:13px;padding:5px 8px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);">
+        <option value="">Todas as coleções</option>
+      </select>
+      <span id="ps-count" style="font-size:12px;color:var(--muted);margin-left:auto;"></span>
+    </div>
+    <div id="painelStatusLista" style="display:flex;flex-direction:column;gap:8px;max-height:450px;overflow-y:auto;"></div>
   </div>
 
   <div class="grid4" style="margin-bottom:16px;">
@@ -583,7 +596,15 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
     <!-- Coleções -->
     <div class="card">
       <div class="card-title">📦 Coleções Favoritas</div>
-      <div class="card-sub">por páginas lidas</div>
+      <div class="ctrl" style="margin-bottom:6px;">
+        <select id="selDonutAno" onchange="buildDonuts()" style="font-size:12px;padding:4px 8px;background:var(--bg3);border:1px solid var(--border);border-radius:6px;color:var(--text);">
+          <option value="total">Todos os anos</option>
+        </select>
+        <select id="selDonutModo" onchange="buildDonuts()" style="font-size:12px;padding:4px 8px;background:var(--bg3);border:1px solid var(--border);border-radius:6px;color:var(--text);">
+          <option value="lido">Só lidos</option>
+          <option value="tudo">Todos os livros</option>
+        </select>
+      </div>
       <div style="height:190px;position:relative;"><canvas id="cDonut"></canvas></div>
       <div id="donutLeg" class="donut-leg"></div>
     </div>
@@ -591,7 +612,7 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
     <!-- Autores -->
     <div class="card">
       <div class="card-title">✍️ Autores Favoritos</div>
-      <div class="card-sub">por páginas lidas · top 10</div>
+      <div class="card-sub" style="font-size:11px;color:var(--muted);margin-bottom:6px;">top 10 · filtra com seletor das Coleções</div>
       <div style="height:190px;position:relative;"><canvas id="cAutores"></canvas></div>
       <div id="autoresLeg" class="donut-leg"></div>
     </div>
@@ -1367,74 +1388,107 @@ function baseScales(xRot) {
 
 
 // ════════════════════════════════════════════════
-// 5. DONUT
+// 5. DONUT — Coleções e Autores (dinâmico)
 // ════════════════════════════════════════════════
-(function() {
-  new Chart(document.getElementById('cDonut').getContext('2d'), {
-    type:'doughnut',
-    data:{
-      labels: COLECOES.map(c=>c.c),
-      datasets:[{ data:COLECOES.map(c=>c.p), backgroundColor:DONUT_COLORS, borderColor:'#161b27', borderWidth:3 }]
-    },
-    options:{
-      responsive:true, maintainAspectRatio:false, cutout:'62%',
-      plugins:{ legend:{display:false}, tooltip:{...TT, callbacks:{label:c=>` ${c.parsed.toLocaleString('pt-BR')} págs`}} }
+let _chartDonut = null, _chartAutores = null;
+
+function buildDonuts() {
+  const ano  = document.getElementById('selDonutAno')?.value || 'total';
+  const modo = document.getElementById('selDonutModo')?.value || 'lido';
+  const sess = window._sessoes || [];
+  const livros = window._livros || [];
+
+  // Filtra sessões por ano
+  const sessFiltradas = ano === 'total' ? sess : sess.filter(s => s.ano === Number(ano) || String(s.ano) === ano);
+
+  // Função para calcular páginas por livro considerando modo
+  function paginasPorLivro(nomeLivro) {
+    if (modo === 'lido') {
+      return sessFiltradas.filter(s => s.livro === nomeLivro).reduce((a, s) => a + s.paginas, 0);
+    } else {
+      // totalPag do livro
+      const l = livros.find(x => x.livro === nomeLivro);
+      return l?.totalPag || 0;
     }
+  }
+
+  // Agrupa por coleção
+  const colMap = {};
+  if (modo === 'lido') {
+    sessFiltradas.forEach(s => {
+      const col = s.colecao || 'Sem coleção';
+      colMap[col] = (colMap[col]||0) + s.paginas;
+    });
+  } else {
+    livros.forEach(l => {
+      const col = l.colecao || sess.find(s=>s.livro===l.livro)?.colecao || 'Sem coleção';
+      colMap[col] = (colMap[col]||0) + (l.totalPag||0);
+    });
+  }
+
+  const colSorted = Object.entries(colMap).sort((a,b)=>b[1]-a[1]);
+  const top9col = colSorted.slice(0,9);
+  const outrosCol = colSorted.slice(9).reduce((s,[,p])=>s+p, 0);
+  const COLS = [...top9col.map(([c,p])=>({c,p})), ...(outrosCol>0?[{c:'Outros',p:outrosCol}]:[])];
+
+  // Agrupa por autor
+  const autMap = {};
+  if (modo === 'lido') {
+    sessFiltradas.forEach(s => {
+      const aut = livros.find(x=>x.livro===s.livro)?.autor || AUTOR_MAP[s.livro] || 'Desconhecido';
+      autMap[aut] = (autMap[aut]||0) + s.paginas;
+    });
+  } else {
+    livros.forEach(l => {
+      const aut = l.autor || AUTOR_MAP[l.livro] || 'Desconhecido';
+      autMap[aut] = (autMap[aut]||0) + (l.totalPag||0);
+    });
+  }
+
+  const autSorted = Object.entries(autMap).sort((a,b)=>b[1]-a[1]);
+  const top9aut = autSorted.slice(0,9);
+  const outrosAut = autSorted.slice(9).reduce((s,[,p])=>s+p, 0);
+  const AUTS = [...top9aut.map(([a,p])=>({a,p})), ...(outrosAut>0?[{a:`Outros (${autSorted.length-9})`,p:outrosAut}]:[])];
+
+  // Donut Coleções
+  if (_chartDonut) _chartDonut.destroy();
+  _chartDonut = new Chart(document.getElementById('cDonut').getContext('2d'), {
+    type:'doughnut',
+    data:{ labels: COLS.map(c=>c.c), datasets:[{ data:COLS.map(c=>c.p), backgroundColor:DONUT_COLORS, borderColor:'#161b27', borderWidth:3 }] },
+    options:{ responsive:true, maintainAspectRatio:false, cutout:'62%',
+      plugins:{ legend:{display:false}, tooltip:{...TT, callbacks:{label:c=>` ${c.parsed.toLocaleString('pt-BR')} págs`}} } }
   });
-  const tot = COLECOES.reduce((s,c)=>s+c.p,0);
-  const el = document.getElementById('donutLeg');
-  COLECOES.forEach((c,i) => {
-    el.innerHTML += `<div class="donut-leg-item">
+  const tot = COLS.reduce((s,c)=>s+c.p, 0);
+  const elD = document.getElementById('donutLeg');
+  elD.innerHTML = '';
+  COLS.forEach((c,i) => {
+    elD.innerHTML += `<div class="donut-leg-item">
       <div class="dot" style="background:${DONUT_COLORS[i]}"></div>
       <span class="donut-leg-name">${c.c}</span>
       <span class="donut-leg-pct">${Math.round(c.p/tot*100)}%</span>
     </div>`;
   });
-})();
 
-// ════════════════════════════════════════════════
-// 5b. AUTORES DONUT
-// ════════════════════════════════════════════════
-(function() {
-  // Pages per author — mapped from all 59 books read
-  // NOTE: when you add an AUTOR column to the spreadsheet, update this list
-  const AUTORES = [
-    {a:"Brandon Sanderson", p:13296},
-    {a:"Patrick Rothfuss",  p:1966},
-    {a:"Robin Hobb",        p:1820},
-    {a:"Leigh Bardugo",     p:1660},
-    {a:"Rifujin na Magonote", p:1620},
-    {a:"Jay Kristoff",      p:1344},
-    {a:"Rick Riordan",      p:1128},
-    {a:"Pittacus Lore",     p:1009},
-    {a:"Phil Tucker",       p:888},
-    {a:"Outros (20)",       p: 5208} // remaining 20 authors
-  ];
-
-  const AUTHOR_COLORS = ['#8b7cf8','#f88c6a','#4ecdc4','#ffd166','#e56cff','#56cfff','#ff6b9d','#a8e063','#f9c74f','#6b9df9'];
-
-  new Chart(document.getElementById('cAutores').getContext('2d'), {
+  // Donut Autores
+  if (_chartAutores) _chartAutores.destroy();
+  _chartAutores = new Chart(document.getElementById('cAutores').getContext('2d'), {
     type:'doughnut',
-    data:{
-      labels: AUTORES.map(a=>a.a),
-      datasets:[{ data:AUTORES.map(a=>a.p), backgroundColor:AUTHOR_COLORS, borderColor:'#161b27', borderWidth:3 }]
-    },
-    options:{
-      responsive:true, maintainAspectRatio:false, cutout:'62%',
-      plugins:{ legend:{display:false}, tooltip:{...TT, callbacks:{label:c=>` ${c.parsed.toLocaleString('pt-BR')} págs`}} }
-    }
+    data:{ labels: AUTS.map(a=>a.a), datasets:[{ data:AUTS.map(a=>a.p), backgroundColor:DONUT_COLORS, borderColor:'#161b27', borderWidth:3 }] },
+    options:{ responsive:true, maintainAspectRatio:false, cutout:'62%',
+      plugins:{ legend:{display:false}, tooltip:{...TT, callbacks:{label:c=>` ${c.parsed.toLocaleString('pt-BR')} págs`}} } }
   });
-
-  const totA = AUTORES.reduce((s,a)=>s+a.p, 0);
-  const legA = document.getElementById('autoresLeg');
-  AUTORES.forEach((a,i) => {
-    legA.innerHTML += `<div class="donut-leg-item">
-      <div class="dot" style="background:${AUTHOR_COLORS[i]}"></div>
+  const totA = AUTS.reduce((s,a)=>s+a.p, 0);
+  const elA = document.getElementById('autoresLeg');
+  elA.innerHTML = '';
+  AUTS.forEach((a,i) => {
+    elA.innerHTML += `<div class="donut-leg-item">
+      <div class="dot" style="background:${DONUT_COLORS[i]}"></div>
       <span class="donut-leg-name">${a.a}</span>
       <span class="donut-leg-pct">${Math.round(a.p/totA*100)}%</span>
     </div>`;
   });
-})();
+}
+window.buildDonuts = buildDonuts;
 
 // ════════════════════════════════════════════════
 // 6. BOOK CHART + BOOK INFO
@@ -1688,6 +1742,14 @@ function baseScales(xRot) {
   });
 })();
 
+// Popular seletor de anos dos donuts
+const selDonutAno = document.getElementById('selDonutAno');
+if (selDonutAno) {
+  const anosDonut = [...new Set(sessoes.map(s=>s.ano).filter(a=>a>2000))].sort();
+  anosDonut.forEach(a => selDonutAno.innerHTML += `<option value="${a}">${a}</option>`);
+}
+
+buildDonuts();
 buildRanking();
 buildWd();
 buildLivrosMes();
@@ -2376,6 +2438,8 @@ carregarDados();
 <script>
 // ── Lista de livros por status ──────────────────
 let statusAtual = null;
+let livrosStatusAtual = [];
+
 function toggleListaStatus(status) {
   const painel = document.getElementById('painelStatus');
   if (statusAtual === status || !status) {
@@ -2384,25 +2448,65 @@ function toggleListaStatus(status) {
   statusAtual = status;
   const titulos = { Completo:'✅ Concluídos', Lendo:'📖 Lendo', Pausado:'⏸️ Pausados', Aguardando:'📋 Aguardando' };
   document.getElementById('painelStatusTitulo').textContent = titulos[status];
-  const livros = (window._livros||[]).filter(l => l.status === status);
+
+  livrosStatusAtual = (window._livros||[]).filter(l => l.status === status);
+
+  // Popular seletor de coleções
+  const colecoes = [...new Set(livrosStatusAtual.map(l => l.colecao || (window._sessoes||[]).find(s=>s.livro===l.livro)?.colecao || '').filter(Boolean))].sort();
+  const selCol = document.getElementById('ps-colecao');
+  selCol.innerHTML = '<option value="">Todas as coleções</option>';
+  colecoes.forEach(c => selCol.innerHTML += `<option value="${c}">${c}</option>`);
+
+  painel.style.display = 'block';
+  renderListaStatus();
+  painel.scrollIntoView({ behavior:'smooth', block:'nearest' });
+}
+
+function renderListaStatus() {
+  const ordem  = document.getElementById('ps-ordem').value;
+  const colFil = document.getElementById('ps-colecao').value;
   const sess   = window._sessoes || [];
-  const lista  = document.getElementById('painelStatusLista');
+
+  // Enriquece com coleção das sessões se não tiver
+  let livros = livrosStatusAtual.map(l => ({
+    ...l,
+    colecaoReal: l.colecao || sess.find(s=>s.livro===l.livro)?.colecao || ''
+  }));
+
+  // Filtro coleção
+  if (colFil) livros = livros.filter(l => l.colecaoReal === colFil);
+
+  // Ordenação
+  livros = [...livros].sort((a,b) => {
+    if (ordem === 'az')   return a.livro.localeCompare(b.livro, 'pt-BR');
+    if (ordem === 'za')   return b.livro.localeCompare(a.livro, 'pt-BR');
+    if (ordem === 'mais') return (b.totalPag||0) - (a.totalPag||0);
+    if (ordem === 'menos')return (a.totalPag||0) - (b.totalPag||0);
+    return 0;
+  });
+
+  document.getElementById('ps-count').textContent = `${livros.length} livro${livros.length!==1?'s':''}`;
+
+  const lista = document.getElementById('painelStatusLista');
   lista.innerHTML = '';
+
   livros.forEach(l => {
     const capa = coverThumb(l.isbn, l.coverUrl||'') ||
       `<div style="width:36px;height:50px;background:var(--bg3);border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">📖</div>`;
     let extra = '';
-    if (status === 'Completo') {
+    if (statusAtual === 'Completo') {
       const diasLidos = new Set(sess.filter(s=>s.livro===l.livro).map(s=>s.data)).size;
       const pagTot = sess.filter(s=>s.livro===l.livro).reduce((a,s)=>a+s.paginas,0);
       const media = diasLidos > 0 ? Math.round(pagTot/diasLidos) : 0;
       extra = `<div style="font-size:11px;color:var(--muted);margin-top:2px;">📅 ${diasLidos} dias · ⚡ ${media} págs/dia</div>`;
     }
+    const colTag = l.colecaoReal ? `<span style="font-size:10px;color:var(--purple);background:rgba(139,124,248,0.12);padding:1px 6px;border-radius:4px;">${l.colecaoReal}</span>` : '';
     lista.innerHTML += `<div style="display:flex;gap:10px;align-items:center;padding:8px;background:var(--bg3);border-radius:10px;">
       <div style="flex-shrink:0;">${capa}</div>
       <div style="flex:1;min-width:0;">
         <div style="font-size:13px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${l.livro}</div>
-        <div style="font-size:11px;color:var(--muted);">${l.autor||''}</div>${extra}
+        <div style="font-size:11px;color:var(--muted);margin-bottom:2px;">${l.autor||''} ${colTag}</div>
+        ${extra}
       </div>
       <div style="text-align:right;flex-shrink:0;">
         <div style="font-size:14px;font-weight:700;color:var(--teal);">${(l.totalPag||0).toLocaleString('pt-BR')}</div>
@@ -2410,10 +2514,10 @@ function toggleListaStatus(status) {
       </div>
     </div>`;
   });
+
   if (!livros.length) lista.innerHTML = '<div style="color:var(--muted);text-align:center;padding:16px;">Nenhum livro</div>';
-  painel.style.display = 'block';
-  painel.scrollIntoView({ behavior:'smooth', block:'nearest' });
 }
+window.renderListaStatus = renderListaStatus;
 
 // ── Roleta de Leitura ───────────────────────────
 let modoRoleta = 'meta';
