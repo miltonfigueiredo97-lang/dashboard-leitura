@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-13T13:16:36.640Z",
+  "geradoEm": "2026-05-13T14:09:59.784Z",
   "metasPorAno": {
     "2024": {
       "total": 22,
@@ -36,12 +36,12 @@
       "pausados": 0,
       "aguardando": 20,
       "paginasTotal": 15855,
-      "paginasLidas": 4753,
-      "paginasFaltando": 11102,
+      "paginasLidas": 4653,
+      "paginasFaltando": 11202,
       "faltando": 21,
       "mediaDiaria": 55.6,
       "ritmoAtual": 45.3,
-      "dataPrevistoAtual": "14/01/2027"
+      "dataPrevistoAtual": "16/01/2027"
     },
     "PAUSADO": {
       "total": 2,
@@ -9065,8 +9065,8 @@
       "ordem": 59,
       "status": "Lendo",
       "totalPag": 641,
-      "pagAtual": 378,
-      "pct": 0.59
+      "pagAtual": 278,
+      "pct": 0.434
     },
     {
       "livro": "A Alma do Imperador",
@@ -9498,8 +9498,8 @@
       "ordem": 59,
       "status": "Lendo",
       "totalPag": 641,
-      "pagAtual": 378,
-      "pct": 0.59
+      "pagAtual": 278,
+      "pct": 0.434
     }
   ],
   "aguardando": [
