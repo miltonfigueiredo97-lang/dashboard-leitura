@@ -2476,6 +2476,7 @@ function toggleListaStatus(status) {
     painel.style.display = 'none'; statusAtual = null; return;
   }
   statusAtual = status;
+  const titulos = { Completo:'✅ Concluídos', Lendo:'📖 Lendo', Pausado:'⏸️ Pausados', Aguardando:'📋 Aguardando' };
   document.getElementById('painelStatusTitulo').textContent = titulos[status];
 
   livrosStatusAtual = (window._livros||[]).filter(l => l.status === status);
