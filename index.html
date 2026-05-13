@@ -641,14 +641,13 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
       </select>
     </div>
     <div id="heatmapGrid" style="overflow-x:auto;"></div>
-    <div style="display:flex;align-items:center;gap:8px;margin-top:10px;font-size:13px;color:var(--muted);">
-      <span>Menos</span>
-      <div style="width:18px;height:18px;border-radius:3px;background:#1a2035;border:1px solid rgba(255,255,255,0.1)"></div>
-      <div style="width:18px;height:18px;border-radius:3px;background:#1a3a5c;border:1px solid rgba(255,255,255,0.1)"></div>
-      <div style="width:18px;height:18px;border-radius:3px;background:#1e5f8e;border:1px solid rgba(255,255,255,0.1)"></div>
-      <div style="width:18px;height:18px;border-radius:3px;background:#2980b9;border:1px solid rgba(255,255,255,0.1)"></div>
-      <div style="width:18px;height:18px;border-radius:3px;background:#8b7cf8;border:1px solid rgba(255,255,255,0.1)"></div>
-      <span>Mais</span>
+    <div style="display:flex;align-items:center;gap:8px;margin-top:14px;font-size:13px;color:var(--muted);">
+      <span>Sem leitura</span>
+      <div style="width:20px;height:20px;border-radius:4px;background:#1a3a5c;border:1px solid rgba(255,255,255,0.1)"></div>
+      <div style="width:20px;height:20px;border-radius:4px;background:#1e5f8e;border:1px solid rgba(255,255,255,0.1)"></div>
+      <div style="width:20px;height:20px;border-radius:4px;background:#2980b9;border:1px solid rgba(255,255,255,0.1)"></div>
+      <div style="width:20px;height:20px;border-radius:4px;background:#8b7cf8;border:1px solid rgba(255,255,255,0.1)"></div>
+      <span>Muito lido</span>
     </div>
   </div>
 
@@ -1795,7 +1794,6 @@ function buildHeatmap() {
   const yr = parseInt(document.getElementById('selHeatYear')?.value || new Date().getFullYear());
   const sess = window._sessoes || [];
 
-  // Agrupa páginas por dia
   const dayMap = {};
   sess.filter(s => s.data && s.data.startsWith(yr)).forEach(s => {
     dayMap[s.data] = (dayMap[s.data]||0) + s.paginas;
@@ -1805,7 +1803,7 @@ function buildHeatmap() {
   const maxVal = vals.length ? Math.max(...vals) : 1;
 
   function getColor(v) {
-    if (!v) return '#1a2035';
+    if (!v) return 'var(--bg3)';
     const pct = v / maxVal;
     if (pct < 0.2) return '#1a3a5c';
     if (pct < 0.4) return '#1e5f8e';
@@ -1813,70 +1811,57 @@ function buildHeatmap() {
     return '#8b7cf8';
   }
 
-  // Heatmap — grade fixa 7 linhas (dias da semana) × N colunas (semanas)
-  const meses = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+  const meses = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho',
+                  'Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+  const diasSem = ['D','S','T','Q','Q','S','S'];
 
-  let d = new Date(yr, 0, 1);
-  d.setDate(d.getDate() - d.getDay()); // começa no domingo
+  let html = `<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">`;
 
-  // Coleta semanas
-  const weeks = [];
-  while (true) {
-    const week = [];
-    for (let wd = 0; wd < 7; wd++) {
-      week.push(new Date(d));
-      d.setDate(d.getDate() + 1);
+  for (let mo = 0; mo < 12; mo++) {
+    const daysInMonth = new Date(yr, mo+1, 0).getDate();
+    const firstDay = new Date(yr, mo, 1).getDay(); // 0=Dom
+
+    html += `<div>
+      <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:6px;">${meses[mo]}</div>
+      <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:4px;">`;
+
+    // Cabeçalho dias da semana
+    diasSem.forEach(d => {
+      html += `<div style="font-size:10px;color:var(--muted);text-align:center;font-weight:600;">${d}</div>`;
+    });
+
+    // Células vazias antes do dia 1
+    for (let i = 0; i < firstDay; i++) {
+      html += `<div></div>`;
     }
-    weeks.push(week);
-    if (d.getFullYear() > yr) break;
+
+    // Dias do mês
+    for (let day = 1; day <= daysInMonth; day++) {
+      const dateStr = `${yr}-${String(mo+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+      const pags = dayMap[dateStr] || 0;
+      const color = getColor(pags);
+      const textColor = pags ? 'white' : 'var(--muted)';
+      const title = pags ? `${day} — ${pags} págs` : String(day);
+      html += `<div title="${title}" style="
+        aspect-ratio:1;
+        background:${color};
+        border-radius:4px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-size:10px;
+        font-weight:${pags?'700':'400'};
+        color:${textColor};
+        cursor:${pags?'pointer':'default'};
+        border: 1px solid rgba(255,255,255,0.06);
+      ">${day}</div>`;
+    }
+
+    html += `</div></div>`;
   }
 
-  const nWeeks = weeks.length;
-  const CELL = 22; // células maiores para melhor leitura
-  const GAP  = 4;
-  const LEFT  = 28;
-  const TOP   = 24;
-  const W = LEFT + nWeeks * (CELL + GAP);
-  const H = TOP  + 7 * (CELL + GAP);
-
-  let svg = `<svg width="100%" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" style="display:block;height:${H}px">`;
-
-  // Labels dos dias da semana
-  ['D','S','T','Q','Q','S','S'].forEach((l, i) => {
-    if (i % 2 === 0) return;
-    const y = TOP + i * (CELL + GAP) + CELL * 0.75;
-    svg += `<text x="${LEFT - 4}" y="${y}" font-size="12" fill="var(--muted)" text-anchor="end" font-family="system-ui">${l}</text>`;
-  });
-
-  // Labels dos meses e células
-  let prevMonth = -1;
-  weeks.forEach((week, wi) => {
-    const x = LEFT + wi * (CELL + GAP);
-    // Label do mês quando muda
-    const firstThisYear = week.find(day => day.getFullYear() === yr);
-    if (firstThisYear) {
-      const mo = firstThisYear.getMonth();
-      if (mo !== prevMonth) {
-        prevMonth = mo;
-      svg += `<text x="${x}" y="${TOP - 6}" font-size="12" fill="var(--muted)" font-family="system-ui">${meses[mo]}</text>`;
-      }
-    }
-    // Células
-    week.forEach((day, di) => {
-      const y = TOP + di * (CELL + GAP);
-      const isThisYear = day.getFullYear() === yr;
-      const dateStr = day.toISOString().slice(0,10);
-      const pags = isThisYear ? (dayMap[dateStr] || 0) : 0;
-      const color = isThisYear ? getColor(pags) : 'transparent';
-      const tip = isThisYear ? (pags ? `${fmtDate(dateStr)}: ${pags} págs` : fmtDate(dateStr)) : '';
-      svg += `<rect x="${x}" y="${y}" width="${CELL}" height="${CELL}" rx="3" fill="${color}" stroke="rgba(0,0,0,0.2)" stroke-width="0.5">
-        ${tip ? `<title>${tip}</title>` : ''}
-      </rect>`;
-    });
-  });
-
-  svg += `</svg>`;
-  document.getElementById('heatmapGrid').innerHTML = svg;
+  html += `</div>`;
+  document.getElementById('heatmapGrid').innerHTML = html;
 
   // Popular seletor de anos
   const sel = document.getElementById('selHeatYear');
