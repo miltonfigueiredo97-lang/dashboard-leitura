@@ -1019,13 +1019,14 @@ function inicializar(d) {
   window._dadosD = d;
 
   // Armazena globalmente ANTES de chamar atualizarVisaoGeral
-  // Combina todos os livros sem duplicatas (usa Map por nome)
+  // Carga inicial = Milton (sem usuario = legado = Milton)
   const livroMap = new Map();
   [...(d.livros||[]), ...(d.lendo||[]), ...(d.pausados||[]), ...(d.aguardando||[])]
     .filter(l => l.livro && l.livro !== 'Livro' && l.livro.length > 1)
+    .filter(l => !l.usuario || l.usuario === '' || l.usuario === 'Milton')
     .forEach(l => { if (!livroMap.has(l.livro)) livroMap.set(l.livro, l); });
   window._livros  = [...livroMap.values()];
-  window._sessoes = sessoes;
+  window._sessoes = (sessoes || []).filter(s => !s.usuario || s.usuario === '' || s.usuario === 'Milton');
 
   // Popular seletor de ano Visão Geral
   const selVGAno = document.getElementById('selVGAno');
@@ -2605,17 +2606,24 @@ function setUsuario(usuario) {
   const d = window._dadosD;
   if (!d) return;
 
-  // Milton = dados sem usuário (antigos) + dados marcados como Milton
-  // Daniel = APENAS dados explicitamente marcados como Daniel
+  // Filtro estrito por usuário:
+  // - Registros sem usuario (vazios) = dados legados = vão para Milton
+  // - Registros com usuario preenchido = pertencem a esse usuário
   const todasSessoes = d.sessoes || [];
   const sessoesFiltradas = todasSessoes.filter(s =>
-    usuario === 'Milton' ? (!s.usuario || s.usuario === 'Milton') : s.usuario === usuario
+    usuario === 'Milton'
+      ? (!s.usuario || s.usuario === '' || s.usuario === 'Milton')
+      : s.usuario === usuario
   );
 
   const todoLivros = [...(d.livros||[]), ...(d.lendo||[]), ...(d.pausados||[]), ...(d.aguardando||[])];
   const livroMap = new Map();
   todoLivros
-    .filter(l => usuario === 'Milton' ? (!l.usuario || l.usuario === 'Milton') : l.usuario === usuario)
+    .filter(l =>
+      usuario === 'Milton'
+        ? (!l.usuario || l.usuario === '' || l.usuario === 'Milton')
+        : l.usuario === usuario
+    )
     .forEach(l => { if (!livroMap.has(l.livro)) livroMap.set(l.livro, l); });
 
   window._sessoes = sessoesFiltradas;
