@@ -674,7 +674,15 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
       <div class="card-title">📚 Detalhes do Livro</div>
       <div class="ctrl" style="margin-bottom:14px;">
         <label>Livro:</label>
-        <select id="selBook" onchange="buildBookChart();buildBookInfo()" style="flex:1;max-width:100%;"></select>
+        <div style="flex:1;position:relative;">
+          <input id="selBookBusca" type="text" placeholder="Digite para buscar..."
+            oninput="filtrarSelBook(this.value)"
+            onblur="setTimeout(()=>{const l=document.getElementById('selBookLista');if(l)l.style.display='none'},200)"
+            autocomplete="off"
+            style="width:100%;padding:6px 12px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:14px;box-sizing:border-box;">
+          <div id="selBookLista" style="display:none;position:absolute;top:100%;left:0;right:0;background:var(--bg3);border:1px solid var(--border);border-radius:8px;max-height:200px;overflow-y:auto;z-index:100;"></div>
+          <input id="selBook" type="hidden" value="">
+        </div>
       </div>
       <div id="bookInfo" style="display:none;">
         <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:12px;">
@@ -1045,8 +1053,8 @@ function recalcularDados(d, sessoes) {
   const diasValsTemp = Object.values(dayMapTemp);
   const mediaParDia = diasValsTemp.length ? Math.round(diasValsTemp.reduce((a,b)=>a+b,0)/diasValsTemp.length*10)/10 : 50;
 
-  // Maior e menor livro
-  const livrosLidos = (d.livros||[]).filter(l => l.status === 'Completo' && l.totalPag > 0);
+  // Maior e menor livro — usa window._livros (já filtrado por usuário)
+  const livrosLidos = (window._livros||[]).filter(l => l.status === 'Completo' && l.totalPag > 0);
   if (livrosLidos.length) {
     const sorted = [...livrosLidos].sort((a,b) => b.totalPag - a.totalPag);
     const maior = sorted[0];
@@ -1059,6 +1067,9 @@ function recalcularDados(d, sessoes) {
     document.getElementById('kpi-menor-nome').textContent  = menor.livro;
     document.getElementById('kpi-menor-autor').textContent = menor.autor || AUTOR_MAP[menor.livro] || '';
     document.getElementById('capa-menor').innerHTML        = coverImg(menor.isbn, '📕', '', menor.coverUrl||'');
+  } else {
+    ['kpi-maior-val','kpi-maior-nome','kpi-maior-autor','kpi-menor-val','kpi-menor-nome','kpi-menor-autor']
+      .forEach(id => { const el = document.getElementById(id); if(el) el.textContent = '—'; });
   }
 
   // Melhor e pior avaliado
@@ -1066,8 +1077,8 @@ function recalcularDados(d, sessoes) {
     const notasSorted = [...NOTES].sort((a,b) => b.media - a.media);
     const melhor = notasSorted[0];
     const pior   = notasSorted[notasSorted.length-1];
-    const melhorLivro = (d.livros||[]).find(l => l.livro === melhor.livro);
-    const piorLivro   = (d.livros||[]).find(l => l.livro === pior.livro);
+    const melhorLivro = (window._livros||[]).find(l => l.livro === melhor.livro);
+    const piorLivro   = (window._livros||[]).find(l => l.livro === pior.livro);
     document.getElementById('kpi-melhor-val').textContent   = melhor.media.toFixed(1);
     document.getElementById('kpi-melhor-nome').textContent  = melhor.livro;
     document.getElementById('kpi-melhor-autor').textContent = melhorLivro?.autor || AUTOR_MAP[melhor.livro] || '';
@@ -1078,7 +1089,47 @@ function recalcularDados(d, sessoes) {
     document.getElementById('capa-pior').innerHTML          = coverImg(piorLivro?.isbn, '💀', '', piorLivro?.coverUrl||'');
   }
 
-  const metasPorAno = d.metasPorAno || {};
+  // Recalcula metasPorAno a partir dos livros e sessões já filtrados por usuário
+  const metasPorAno = {};
+  (window._livros||[]).forEach(l => {
+    if (!l.metaAno || l.metaAno === 'AINDA NÃO DEFINIDO') return;
+    const ano = String(l.metaAno);
+    if (!metasPorAno[ano]) metasPorAno[ano] = {
+      total:0, lidos:0, lendo:0, pausados:0, aguardando:0,
+      paginasTotal:0, paginasLidas:0, paginasFaltando:0,
+      mediaDiaria:0, ritmoAtual:0, dataPrevistoAtual:'—'
+    };
+    const m = metasPorAno[ano];
+    m.total++;
+    m.paginasTotal += l.totalPag || 0;
+    if (l.status === 'Completo')   { m.lidos++;    m.paginasLidas += l.totalPag || 0; }
+    if (l.status === 'Lendo')      { m.lendo++;    m.paginasLidas += l.pagAtual || 0; }
+    if (l.status === 'Pausado')    { m.pausados++; m.paginasLidas += l.pagAtual || 0; }
+    if (l.status === 'Aguardando')   m.aguardando++;
+  });
+  // Calcula métricas de ritmo por ano
+  Object.keys(metasPorAno).forEach(ano => {
+    const m = metasPorAno[ano];
+    m.paginasFaltando = Math.max(0, m.paginasTotal - m.paginasLidas);
+    const sessAno = sessoes.filter(s => String(s.ano) === ano || s.data?.startsWith(ano));
+    const diasAnos = new Set(sessAno.map(s=>s.data)).size;
+    const pagAnos  = sessAno.reduce((a,s)=>a+s.paginas,0);
+    m.mediaDiaria = diasAnos > 0 ? Math.round(pagAnos/diasAnos*10)/10 : 0;
+    const hoje = new Date();
+    const trintaDias = new Date(hoje.getTime()-30*86400000);
+    const recentes = sessAno.filter(s => new Date(s.data+'T12:00:00') >= trintaDias);
+    const diasRec = new Set(recentes.map(s=>s.data)).size;
+    const pagRec  = recentes.reduce((a,s)=>a+s.paginas,0);
+    m.ritmoAtual = diasRec > 0 ? Math.round(pagRec/diasRec*10)/10 : 0;
+    if (m.paginasFaltando > 0 && m.ritmoAtual > 0) {
+      const dias = Math.ceil(m.paginasFaltando / m.ritmoAtual);
+      const prev = new Date(hoje.getTime() + dias*86400000);
+      m.dataPrevistoAtual = prev.toLocaleDateString('pt-BR');
+    } else {
+      m.dataPrevistoAtual = m.lidos >= m.total ? 'Concluída!' : '—';
+    }
+  });
+
   const anosMetaDisp = Object.keys(metasPorAno).sort();
   const selMetaAno = document.getElementById('selMetaAno');
   selMetaAno.innerHTML = '';
@@ -1159,13 +1210,13 @@ function atualizarVisaoGeral() {
   const recordeLivroDataVG = (window._livros||[]).find(l=>l.livro===recordeLivroVG);
   const horasTotaisVG = Math.round(sessoes.reduce((s,r)=>s+(r.minutos||0),0)/60);
 
-  const el = id => document.getElementById(id);
+  const livrosU    = (window._livros||[]);
   el('kpi-paginas').textContent    = totalPagsVG.toLocaleString('pt-BR');
-  el('kpi-livros').textContent     = (d.livros||[]).filter(l=>l.status==='Completo').length;
-  el('kpi-lendo').textContent      = (d.lendo||[]).length;
-  el('kpi-pausados').textContent   = (d.pausados||[]).length;
-  el('kpi-aguardando').textContent = (d.aguardando||[]).length;
-  el('kpi-todos').textContent      = (window._livros||[]).length;
+  el('kpi-livros').textContent     = livrosU.filter(l=>l.status==='Completo').length;
+  el('kpi-lendo').textContent      = livrosU.filter(l=>l.status==='Lendo').length;
+  el('kpi-pausados').textContent   = livrosU.filter(l=>l.status==='Pausado').length;
+  el('kpi-aguardando').textContent = livrosU.filter(l=>l.status==='Aguardando').length;
+  el('kpi-todos').textContent      = livrosU.length;
   el('kpi-sessoes').textContent    = sessoes.length.toLocaleString('pt-BR');
   el('kpi-pgdia').textContent      = mediaParDiaVG.toFixed(1).replace('.',',');
   el('kpi-horas').textContent      = horasTotaisVG + 'h';
@@ -1650,28 +1701,55 @@ window.buildCalendar = buildCalendar;
 // ════════════════════════════════════════════════
 // 6. BOOK CHART + BOOK INFO
 // ════════════════════════════════════════════════
-(function() {
-  const sel = document.getElementById('selBook');
-  // Inclui todos os livros (com ou sem sessões), ordenados por status e nome
-  const statusOrder = {'Lendo':0,'Pausado':1,'Completo':2,'Aguardando':3};
-  const allBooks = [...(window._livros||[])].sort((a,b) => {
-    const sa = statusOrder[a.status] ?? 9;
-    const sb = statusOrder[b.status] ?? 9;
-    if (sa !== sb) return sa - sb;
-    return a.livro.localeCompare(b.livro);
-  });
-  allBooks.forEach(b => {
-    const icon = b.status==='Lendo'?'📖':b.status==='Pausado'?'⏸️':b.status==='Completo'?'✅':'📋';
-    sel.innerHTML += `<option value="${b.livro}">${icon} ${b.livro}</option>`;
-  });
+let _bookChart = null;
 
+function filtrarSelBook(termo) {
+  const lista = document.getElementById('selBookLista');
+  const statusOrder = {'Lendo':0,'Pausado':1,'Completo':2,'Aguardando':3};
+  const livrosFiltrados = [...(window._livros||[])]
+    .filter(l => !termo || l.livro.toLowerCase().includes(termo.toLowerCase()))
+    .sort((a,b) => {
+      const sa = statusOrder[a.status]??9, sb = statusOrder[b.status]??9;
+      return sa !== sb ? sa-sb : a.livro.localeCompare(b.livro);
+    }).slice(0,20);
+
+  if (!termo || !livrosFiltrados.length) { lista.style.display='none'; return; }
+  lista.innerHTML = '';
+  livrosFiltrados.forEach(b => {
+    const icon = b.status==='Lendo'?'📖':b.status==='Pausado'?'⏸️':b.status==='Completo'?'✅':'📋';
+    const item = document.createElement('div');
+    item.style.cssText = 'padding:8px 12px;cursor:pointer;font-size:13px;border-bottom:1px solid var(--border);';
+    item.textContent = `${icon} ${b.livro}`;
+    item.onmouseenter = () => item.style.background = 'var(--bg4)';
+    item.onmouseleave = () => item.style.background = '';
+    item.addEventListener('mousedown', e => {
+      e.preventDefault();
+      document.getElementById('selBook').value = b.livro;
+      document.getElementById('selBookBusca').value = b.livro;
+      lista.style.display = 'none';
+      buildBookChart(); buildBookInfo();
+    });
+    item.addEventListener('touchstart', e => {
+      e.preventDefault();
+      document.getElementById('selBook').value = b.livro;
+      document.getElementById('selBookBusca').value = b.livro;
+      lista.style.display = 'none';
+      buildBookChart(); buildBookInfo();
+    }, {passive:false});
+    lista.appendChild(item);
+  });
+  lista.style.display = 'block';
+}
+window.filtrarSelBook = filtrarSelBook;
+
+(function() {
   let chart = null;
   const ctx = document.getElementById('cBook').getContext('2d');
   const existingBookChart = Chart.getChart('cBook');
   if (existingBookChart) existingBookChart.destroy();
 
   window.buildBookChart = function() {
-    const book = sel.value;
+    const book = document.getElementById('selBook').value;
     const rows = BOOK_DAILY[book] || [];
     const livroData = (window._livros||[]).find(l => l.livro === book);
     const status = livroData?.status || '';
@@ -1799,7 +1877,7 @@ window.buildCalendar = buildCalendar;
   };
 
   window.buildBookInfo = function() {
-    const book = sel.value;
+    const book = document.getElementById('selBook').value;
     if (!book) return;
 
     // Get book data from livros array
