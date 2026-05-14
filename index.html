@@ -1039,9 +1039,12 @@ function recalcularDados(d, sessoes) {
 
   // Popular seletor de ano Visão Geral
   const selVGAno = document.getElementById('selVGAno');
-  if (selVGAno && selVGAno.options.length <= 1) {
+  if (selVGAno) {
+    const anoAtualSel = selVGAno.value;
+    selVGAno.innerHTML = '<option value="total">Todos os anos</option>';
     const anosVG = [...new Set(sessoes.map(s=>s.ano).filter(a=>a>2000))].sort();
     anosVG.forEach(a => selVGAno.innerHTML += `<option value="${a}">${a}</option>`);
+    if (anoAtualSel) selVGAno.value = anoAtualSel;
   }
 
   // Agora chama com dados disponíveis
@@ -1210,6 +1213,7 @@ function atualizarVisaoGeral() {
   const recordeLivroDataVG = (window._livros||[]).find(l=>l.livro===recordeLivroVG);
   const horasTotaisVG = Math.round(sessoes.reduce((s,r)=>s+(r.minutos||0),0)/60);
 
+  const el = id => document.getElementById(id);
   const livrosU    = (window._livros||[]);
   el('kpi-paginas').textContent    = totalPagsVG.toLocaleString('pt-BR');
   el('kpi-livros').textContent     = livrosU.filter(l=>l.status==='Completo').length;
@@ -1982,6 +1986,7 @@ window.filtrarSelBook = filtrarSelBook;
 // Popular seletor de anos dos donuts
 const selDonutAno = document.getElementById('selDonutAno');
 if (selDonutAno) {
+  selDonutAno.innerHTML = '<option value="total">Todos os anos</option>';
   const anosDonut = [...new Set((window._sessoes||[]).map(s=>s.ano).filter(a=>a>2000))].sort();
   anosDonut.forEach(a => selDonutAno.innerHTML += `<option value="${a}">${a}</option>`);
 }
