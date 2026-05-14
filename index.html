@@ -1145,12 +1145,20 @@ function recalcularDados(d, sessoes) {
     const m = metasPorAno[ano];
     m.total++;
     m.paginasTotal += l.totalPag || 0;
-    if (l.status === 'Completo')   { m.lidos++;    m.paginasLidas += l.totalPag || 0; }
-    if (l.status === 'Lendo')      { m.lendo++;    m.paginasLidas += l.pagAtual || 0; }
-    if (l.status === 'Pausado')    { m.pausados++; m.paginasLidas += l.pagAtual || 0; }
+    if (l.status === 'Completo')   { m.lidos++; m.paginasLidas += l.totalPag || 0; }
+    if (l.status === 'Lendo')        m.lendo++;
+    if (l.status === 'Pausado')      m.pausados++;
     if (l.status === 'Aguardando')   m.aguardando++;
   });
-  // Calcula métricas de ritmo por ano
+  // Adiciona páginas lidas via sessões para livros em andamento
+  sessoes.forEach(s => {
+    if (!s.data) return;
+    const ano = String(s.ano || s.data.slice(0,4));
+    if (!metasPorAno[ano]) return;
+    // Livro da sessão está na meta do ano?
+    const livroMeta = (window._livros||[]).find(l => l.livro === s.livro && l.metaAno === ano && l.status !== 'Completo');
+    if (livroMeta) metasPorAno[ano].paginasLidas += s.paginas;
+  });
   Object.keys(metasPorAno).forEach(ano => {
     const m = metasPorAno[ano];
     m.paginasFaltando = Math.max(0, m.paginasTotal - m.paginasLidas);
@@ -3175,7 +3183,7 @@ async function confirmarExcluir() {
       mostrarMsg('ex-msg','✅ '+d.msg,'ok');
       livrosCache = [];
       setTimeout(() => fecharModal('excluir'), 2000);
-      recarregarDados(5000);
+      recarregarDados(3000);
     } else { mostrarMsg('ex-msg','❌ '+(d.erro||'Erro'),'err'); }
   } catch(e) { mostrarMsg('ex-msg','❌ Erro de conexão','err'); }
   btn.disabled = false; btn.textContent = '🗑️ Confirmar Exclusão';
@@ -3261,8 +3269,10 @@ async function excluirSessao(livro, data, paginas) {
     const d = await r.json();
     if (d.ok) {
       mostrarMsg('es-msg', '✅ Sessão excluída!', 'ok');
-      recarregarDados(5000);
+      // Remove da lista local imediatamente
+      window._sessoes = (window._sessoes||[]).filter(s => !(s.livro === livro && s.data === data && s.paginas === paginas));
       renderSessoesExcluir();
+      recarregarDados(3000);
     } else { mostrarMsg('es-msg', '❌ ' + (d.erro||'Erro'), 'err'); }
   } catch(e) { mostrarMsg('es-msg', '❌ Erro de conexão', 'err'); }
 }
@@ -3465,7 +3475,7 @@ async function enviarSessao() {
     if (d.ok) {
       mostrarMsg('s-msg', '✅ ' + d.msg, 'ok');
       setTimeout(() => fecharModal('sessao'), 2000);
-      recarregarDados(5000);
+      recarregarDados(3000);
     } else {
       mostrarMsg('s-msg', '❌ ' + d.erro, 'err');
     }
@@ -3505,7 +3515,7 @@ async function enviarNota() {
     const d = await r.json();
     if (d.ok) {
       mostrarMsg('n-msg', '✅ ' + d.msg, 'ok');
-      recarregarDados(5000);
+      recarregarDados(3000);
       setTimeout(() => fecharModal('nota'), 2000);
     } else {
       mostrarMsg('n-msg', '❌ ' + d.erro, 'err');
@@ -3574,7 +3584,7 @@ async function enviarLivro() {
       mostrarMsg('l-msg', '✅ ' + d.msg, 'ok');
       livrosCache = [];
       setTimeout(() => fecharModal('livro'), 2000);
-      recarregarDados(5000);
+      recarregarDados(3000);
     } else {
       mostrarMsg('l-msg', '❌ ' + (d.erro || 'Erro desconhecido'), 'err');
     }
@@ -3615,7 +3625,7 @@ async function enviarNovoLivro() {
     const d = await r.json();
     if (d.ok) {
       mostrarMsg('nl-msg', '✅ ' + d.msg, 'ok');
-      recarregarDados(5000);
+      recarregarDados(3000);
       livrosCache = []; // força reload na próxima abertura
       setTimeout(() => {
         fecharModal('novoLivro');
