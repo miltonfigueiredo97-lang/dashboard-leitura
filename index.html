@@ -419,7 +419,7 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
     <div style="display:none" id="kpi-recorde-livro-wrap"></div>
   </div>
   <!-- Livros por status -->
-  <div class="grid4" style="margin-bottom:8px;">
+  <div class="grid4" style="margin-bottom:8px;grid-template-columns:repeat(5,1fr);">
     <div class="kpi" style="--accent:#4ecdc4;cursor:pointer;" onclick="toggleListaStatus('Completo')">
       <span class="kpi-icon">✅</span>
       <div class="kpi-val" id="kpi-livros">—</div>
@@ -442,6 +442,12 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
       <span class="kpi-icon">📋</span>
       <div class="kpi-val" id="kpi-aguardando">—</div>
       <div class="kpi-lbl">Aguardando</div>
+      <div class="kpi-sub">clique para ver</div>
+    </div>
+    <div class="kpi" style="--accent:#e56cff;cursor:pointer;" onclick="toggleListaStatus('Todos')">
+      <span class="kpi-icon">📚</span>
+      <div class="kpi-val" id="kpi-todos">—</div>
+      <div class="kpi-lbl">Todos</div>
       <div class="kpi-sub">clique para ver</div>
     </div>
   </div>
@@ -1184,6 +1190,7 @@ function atualizarVisaoGeral() {
   el('kpi-lendo').textContent      = (d.lendo||[]).length;
   el('kpi-pausados').textContent   = (d.pausados||[]).length;
   el('kpi-aguardando').textContent = (d.aguardando||[]).length;
+  el('kpi-todos').textContent      = (window._livros||[]).length;
   el('kpi-sessoes').textContent    = sessoes.length.toLocaleString('pt-BR');
   el('kpi-pgdia').textContent      = mediaParDiaVG.toFixed(1).replace('.',',');
   el('kpi-horas').textContent      = horasTotaisVG + 'h';
@@ -2537,10 +2544,12 @@ function toggleListaStatus(status) {
     painel.style.display = 'none'; statusAtual = null; return;
   }
   statusAtual = status;
-  const titulos = { Completo:'✅ Concluídos', Lendo:'📖 Lendo', Pausado:'⏸️ Pausados', Aguardando:'📋 Aguardando' };
+  const titulos = { Completo:'✅ Concluídos', Lendo:'📖 Lendo', Pausado:'⏸️ Pausados', Aguardando:'📋 Aguardando', Todos:'📚 Todos os Livros' };
   document.getElementById('painelStatusTitulo').textContent = titulos[status];
 
-  livrosStatusAtual = (window._livros||[]).filter(l => l.status === status);
+  livrosStatusAtual = status === 'Todos'
+    ? (window._livros||[])
+    : (window._livros||[]).filter(l => l.status === status);
 
   // Coleção: usa campo do livro, ou busca nas sessões, ou usa colecao do livro do JSON global
   const getColecao = (l) => {
@@ -2616,12 +2625,15 @@ function renderListaStatus() {
       const media = diasLidos > 0 ? Math.round(pagTot/diasLidos) : 0;
       extra = `<div style="font-size:11px;color:var(--muted);margin-top:2px;">📅 ${diasLidos} dias · ⚡ ${media} págs/dia</div>`;
     }
+    const statusIcon = statusAtual === 'Todos'
+      ? `<span style="font-size:10px;color:var(--muted);">${l.status==='Completo'?'✅':l.status==='Lendo'?'📖':l.status==='Pausado'?'⏸️':'📋'} ${l.status}</span>`
+      : '';
     const colTag = l.colecaoReal ? `<span style="font-size:10px;color:var(--purple);background:rgba(139,124,248,0.12);padding:1px 6px;border-radius:4px;">${l.colecaoReal}</span>` : '';
     return `<div style="display:flex;gap:10px;align-items:center;padding:8px;background:var(--bg3);border-radius:10px;">
       <div style="flex-shrink:0;">${capa}</div>
       <div style="flex:1;min-width:0;">
         <div style="font-size:13px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${l.livro}</div>
-        <div style="font-size:11px;color:var(--muted);margin-bottom:2px;">${l.autor||''} ${colTag}</div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:2px;">${l.autor||''} ${colTag} ${statusIcon}</div>
         ${extra}
       </div>
       <div style="text-align:right;flex-shrink:0;">
