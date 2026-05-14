@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-14T19:02:45.954Z",
+  "geradoEm": "2026-05-14T19:03:20.284Z",
   "meta": {
     "total": 26,
     "lidos": 6,
@@ -55,13 +55,13 @@
       "dataPrevistoAtual": "—"
     },
     "AINDA NÃO DEFINIDO": {
-      "total": 279,
-      "lidos": 68,
+      "total": 278,
+      "lidos": 67,
       "lendo": 0,
       "pausados": 0,
       "aguardando": 211,
-      "paginasTotal": 131130,
-      "paginasLidas": 26609,
+      "paginasTotal": 130830,
+      "paginasLidas": 26309,
       "paginasFaltando": 104521,
       "faltando": 211,
       "mediaDiaria": 50,
@@ -14457,22 +14457,6 @@
       "pagAtual": 0,
       "pct": 0,
       "usuario": "MILTON"
-    },
-    {
-      "livro": "abcde",
-      "autor": "a",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/61-AuecLDjL._AC_UF1000,1000_QL80_.jpg",
-      "metaAno": "AINDA NÃO DEFINIDO",
-      "depende": "",
-      "colecao": "a",
-      "ordemColecao": 0,
-      "ordem": 0,
-      "status": "Completo",
-      "totalPag": 300,
-      "pagAtual": 300,
-      "pct": 1,
-      "usuario": "Daniel"
     }
   ],
   "pausados": [
