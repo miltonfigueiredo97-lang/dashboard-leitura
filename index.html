@@ -2568,7 +2568,10 @@ function renderListaStatus() {
   // Enriquece com coleção e ordemColecao — vem do JSON via window._livros
   const livrosMap = new Map((window._livros||[]).map(l => [l.livro, l]));
   const getCol = (l) => l.colecao || livrosMap.get(l.livro)?.colecao || (window._sessoes||[]).find(s=>s.livro===l.livro)?.colecao || '';
-  const getOrdem = (l) => l.ordemColecao > 0 ? l.ordemColecao : (livrosMap.get(l.livro)?.ordemColecao || 0);
+  const getOrdem = (l) => {
+    const o = l.ordemColecao || livrosMap.get(l.livro)?.ordemColecao || 0;
+    return o > 0 ? o : 9999;
+  };
   let livros = livrosStatusAtual.map(l => ({ ...l, colecaoReal: getCol(l), ordemReal: getOrdem(l) }));
 
   // Filtro coleção
