@@ -3132,6 +3132,7 @@ async function enviarSessao() {
         horas:    Number(document.getElementById('s-horas').value) || 0,
         minutos:  Number(document.getElementById('s-minutos').value) || 0,
         segundos: Number(document.getElementById('s-segundos').value) || 0,
+        usuario:  usuarioAtual === 'Batalha' ? 'Milton' : usuarioAtual,
       })
     });
     const d = await r.json();
@@ -3170,7 +3171,8 @@ async function enviarNota() {
         acao: 'registrarNota',
         livro,
         ano: Number(document.getElementById('n-ano').value) || new Date().getFullYear(),
-        criterios
+        criterios,
+        usuario: usuarioAtual === 'Batalha' ? 'Milton' : usuarioAtual,
       })
     });
     const d = await r.json();
@@ -3274,6 +3276,7 @@ async function enviarNovoLivro() {
         depende: document.getElementById('nl-depende').value.trim(),
         capa:    document.getElementById('nl-capa').value.trim(),
         isbn:    document.getElementById('nl-isbn').value.trim(),
+        usuario: usuarioAtual === 'Batalha' ? 'Milton' : usuarioAtual,
       })
     });
     const d = await r.json();
