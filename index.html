@@ -1353,6 +1353,7 @@ function renderizarGraficos(dados) {
     if (el) { const ch = Chart.getChart(el); if (ch) ch.destroy(); }
   });
   inicializarGraficos();
+  buildYearBars();
   buildRanking();
   buildDonuts();
   buildWd();
@@ -1481,9 +1482,12 @@ function baseScales(xRot) {
 // ════════════════════════════════════════════════
 // 1. YEAR BARS (HTML, no chart)
 // ════════════════════════════════════════════════
-(function() {
-  const maxP = Math.max(...YEARS.map(y => y.pag));
+function buildYearBars() {
   const el = document.getElementById('yearBars');
+  if (!el) return;
+  el.innerHTML = '';
+  if (!YEARS || !YEARS.length) return;
+  const maxP = Math.max(...YEARS.map(y => y.pag));
   YEARS.forEach((y, i) => {
     const pct = Math.round(y.pag / maxP * 100);
     el.innerHTML += `
@@ -1501,7 +1505,9 @@ function baseScales(xRot) {
         </div>
       </div>`;
   });
-})();
+}
+window.buildYearBars = buildYearBars;
+buildYearBars();
 
 // ════════════════════════════════════════════════
 // 2. MONTHLY CHART
@@ -2054,7 +2060,13 @@ function buildLivrosMes() {
 function buildStreaks() {
   const sess = window._sessoes || [];
   const diasSet = [...new Set(sess.map(s => s.data).filter(Boolean))].sort();
-  if (!diasSet.length) return;
+  if (!diasSet.length) {
+    document.getElementById('streakAtual')?.textContent && (document.getElementById('streakAtual').textContent = '0');
+    document.getElementById('streakRecorde')?.textContent && (document.getElementById('streakRecorde').textContent = '0');
+    const rd = document.getElementById('streakRecordeData'); if(rd) rd.textContent = 'dias seguidos';
+    const sl = document.getElementById('streakList'); if(sl) sl.innerHTML = '';
+    return;
+  }
 
   // Calcula todas as sequências
   const streaks = [];
@@ -3133,18 +3145,29 @@ document.querySelectorAll('.pwa-overlay').forEach(el => {
 });
 
 async function carregarLivros() {
+  // Se livrosCache já foi populado pelo setUsuario, usa direto
   if (livrosCache.length > 0) { popularSelects(); return; }
+  // Caso contrário, usa window._livros que já está filtrado
+  if (window._livros && window._livros.length > 0) {
+    livrosCache = window._livros;
+    popularSelects();
+    return;
+  }
   try {
     const r = await fetch('/data.json');
     const d = await r.json();
-    livrosCache = (d.livros || []).filter(l => l.livro && l.status !== 'STATUS');
-    // Inclui campo depende de cada livro
-    const cols = new Set((d.sessoes||[]).map(s=>s.colecao).filter(Boolean));
+    const u = (typeof usuarioAtual !== 'undefined' ? usuarioAtual : 'Milton');
+    const todos = [...(d.livros||[]), ...(d.lendo||[]), ...(d.pausados||[]), ...(d.aguardando||[])];
+    livrosCache = todos
+      .filter(l => l.livro && l.livro.length > 1)
+      .filter(l => u === 'Milton'
+        ? (!l.usuario || l.usuario === '' || l.usuario.toUpperCase() === 'MILTON')
+        : l.usuario?.toUpperCase() === u.toUpperCase())
+      .filter((l,i,arr) => arr.findIndex(x=>x.livro===l.livro)===i);
+    const cols = new Set(livrosCache.map(l=>l.colecao).filter(Boolean));
     colecoesCache = [...cols].sort();
     popularSelects();
-  } catch(e) {
-    console.error('Erro ao carregar livros:', e);
-  }
+  } catch(e) { console.error('Erro ao carregar livros:', e); }
 }
 
 function popularSelects() {
