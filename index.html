@@ -2500,6 +2500,26 @@ carregarDados();
     <span>Excluir Livro</span>
     <button style="background:#e53935" onclick="abrirModal('excluir')">🗑️</button>
   </div>
+  <div class="fab-item">
+    <span>Excluir Sessão</span>
+    <button style="background:#b71c1c" onclick="abrirModal('excluirSessao')">📅</button>
+  </div>
+</div>
+
+<!-- Modal: Excluir Sessão -->
+<div class="pwa-overlay" id="modalExcluirSessao">
+  <div class="pwa-modal">
+    <h2>📅 Excluir Sessão</h2>
+    <div class="pwa-field">
+      <label>Filtrar por livro (opcional)</label>
+      <input id="es-filtro" type="text" placeholder="Digite para filtrar..."
+        oninput="renderSessoesExcluir()"
+        style="margin-bottom:8px;">
+    </div>
+    <div id="es-lista" style="max-height:380px;overflow-y:auto;display:flex;flex-direction:column;gap:6px;"></div>
+    <div id="es-msg" class="pwa-msg"></div>
+    <button class="pwa-btn-cancel" onclick="fecharModal('excluirSessao')">Fechar</button>
+  </div>
 </div>
 
 <!-- Modal: Registrar Sessão -->
@@ -3172,16 +3192,67 @@ function abrirModal(tipo) {
   }
   if (tipo === 'nota' || tipo === 'livro' || tipo === 'excluir') carregarLivros();
   if (tipo === 'roleta') setModoRoleta('meta');
+  if (tipo === 'excluirSessao') {
+    document.getElementById('es-filtro').value = '';
+    renderSessoesExcluir();
+  }
 }
 
 function fecharModal(tipo) {
   const id = 'modal' + tipo.charAt(0).toUpperCase() + tipo.slice(1);
   document.getElementById(id).classList.remove('open');
-  ['s-msg','n-msg','l-msg','nl-msg'].forEach(id => {
+  ['s-msg','n-msg','l-msg','nl-msg','ex-msg','es-msg'].forEach(id => {
     const el = document.getElementById(id);
     if (el) { el.className = 'pwa-msg'; el.textContent = ''; }
   });
 }
+
+function renderSessoesExcluir() {
+  const filtro = (document.getElementById('es-filtro')?.value || '').toLowerCase();
+  const u = usuarioAtual === 'Batalha' ? 'Milton' : usuarioAtual;
+  const sessoes = [...(window._sessoes || [])]
+    .filter(s => !filtro || s.livro.toLowerCase().includes(filtro))
+    .sort((a,b) => b.data.localeCompare(a.data))
+    .slice(0, 50); // máx 50
+
+  const lista = document.getElementById('es-lista');
+  lista.innerHTML = '';
+  if (!sessoes.length) {
+    lista.innerHTML = '<div style="color:var(--muted);text-align:center;padding:16px;">Nenhuma sessão encontrada</div>';
+    return;
+  }
+  sessoes.forEach(s => {
+    const div = document.createElement('div');
+    div.style.cssText = 'display:flex;align-items:center;gap:10px;padding:10px;background:var(--bg3);border-radius:10px;';
+    div.innerHTML = `
+      <div style="flex:1;min-width:0;">
+        <div style="font-size:13px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${s.livro}</div>
+        <div style="font-size:12px;color:var(--muted);">${s.data} · ${s.paginas} págs · ${s.minutos ? Math.round(s.minutos)+'min' : ''}</div>
+      </div>
+      <button onclick="excluirSessao('${s.livro.replace(/'/g,"\\'")}','${s.data}','${s.paginas}')"
+        style="background:#e53935;border:none;color:white;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:16px;flex-shrink:0;">🗑️</button>`;
+    lista.appendChild(div);
+  });
+}
+window.renderSessoesExcluir = renderSessoesExcluir;
+
+async function excluirSessao(livro, data, paginas) {
+  if (!confirm(`Excluir sessão de "${livro}" em ${data}?`)) return;
+  const msg = document.getElementById('es-msg');
+  try {
+    const r = await fetch(API_URL, {
+      method: 'POST',
+      body: JSON.stringify({ acao: 'excluirSessao', livro, data, paginas: Number(paginas), usuario: usuarioAtual === 'Batalha' ? 'Milton' : usuarioAtual })
+    });
+    const d = await r.json();
+    if (d.ok) {
+      mostrarMsg('es-msg', '✅ Sessão excluída!', 'ok');
+      recarregarDados(5000);
+      renderSessoesExcluir();
+    } else { mostrarMsg('es-msg', '❌ ' + (d.erro||'Erro'), 'err'); }
+  } catch(e) { mostrarMsg('es-msg', '❌ Erro de conexão', 'err'); }
+}
+window.excluirSessao = excluirSessao;
 
 // Fecha modal ao clicar no overlay
 document.querySelectorAll('.pwa-overlay').forEach(el => {
@@ -3354,18 +3425,21 @@ async function enviarSessao() {
   const btn = document.getElementById('s-btn');
   const msg = document.getElementById('s-msg');
   const livro = document.getElementById('s-livro').value;
-  const paginas = document.getElementById('s-paginas').value;
+  const dataRaw = document.getElementById('s-data').value; // yyyy-MM-dd
+  const [dAno, dMes, dDia] = dataRaw.split('-');
+  const dataFormatada = dDia + '/' + dMes + '/' + dAno; // dd/MM/yyyy
   if (!livro || !paginas) { mostrarMsg('s-msg', 'Preencha o livro e as páginas!', 'err'); return; }
 
   btn.disabled = true;
   btn.textContent = 'Salvando...';
+  const paginas = document.getElementById('s-paginas').value;
   try {
     const r = await fetch(API_URL, {
       method: 'POST',
       body: JSON.stringify({
         acao: 'registrarSessao',
         livro,
-        data:     document.getElementById('s-data').value,
+        data:     dataFormatada,
         paginas:  Number(paginas),
         horas:    Number(document.getElementById('s-horas').value) || 0,
         minutos:  Number(document.getElementById('s-minutos').value) || 0,
