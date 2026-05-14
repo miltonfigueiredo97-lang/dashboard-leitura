@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-14T00:50:18.395Z",
+  "geradoEm": "2026-05-14T00:51:02.444Z",
   "metasPorAno": {
     "2024": {
       "total": 21,
@@ -58,15 +58,15 @@
       "dataPrevistoAtual": "—"
     },
     "AINDA NÃO DEFINIDO": {
-      "total": 281,
+      "total": 282,
       "lidos": 67,
       "lendo": 0,
       "pausados": 0,
-      "aguardando": 214,
+      "aguardando": 215,
       "paginasTotal": 131585,
       "paginasLidas": 26309,
       "paginasFaltando": 105276,
-      "faltando": 214,
+      "faltando": 215,
       "mediaDiaria": 50,
       "ritmoAtual": 0,
       "dataPrevistoAtual": "—"
@@ -13292,6 +13292,20 @@
       "totalPag": 100,
       "pagAtual": 0,
       "pct": 0
+    },
+    {
+      "livro": "xxxx",
+      "autor": "",
+      "isbn": "",
+      "coverUrl": "",
+      "metaAno": "AINDA NÃO DEFINIDO",
+      "depende": "",
+      "colecao": "",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 0,
+      "pagAtual": 0,
+      "pct": 0
     }
   ],
   "pausados": [
@@ -16656,6 +16670,20 @@
       "ordem": 0,
       "status": "Aguardando",
       "totalPag": 100,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "xxxx",
+      "autor": "",
+      "isbn": "",
+      "coverUrl": "",
+      "metaAno": "AINDA NÃO DEFINIDO",
+      "depende": "",
+      "colecao": "",
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 0,
       "pagAtual": 0,
       "pct": 0
     }
