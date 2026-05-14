@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-14T16:19:48.355Z",
+  "geradoEm": "2026-05-14T16:25:47.793Z",
   "meta": {
-    "total": 26,
+    "total": 27,
     "lidos": 6,
-    "faltando": 20,
-    "paginasTotal": 14793,
-    "paginasLidas": 3765,
-    "paginasFaltando": 11028,
-    "mediaDiaria": 55,
-    "ritmoAtual": 43.5,
-    "dataPrevistoAtual": "23/01/2027"
+    "faltando": 21,
+    "paginasTotal": 17793,
+    "paginasLidas": 6265,
+    "paginasFaltando": 11528,
+    "mediaDiaria": 88,
+    "ritmoAtual": 248.2,
+    "dataPrevistoAtual": "30/06/2026"
   },
   "metasPorAno": {
     "2025": {
@@ -27,18 +27,18 @@
       "dataPrevistoAtual": "—"
     },
     "2026": {
-      "total": 26,
+      "total": 27,
       "lidos": 6,
-      "lendo": 1,
+      "lendo": 2,
       "pausados": 0,
       "aguardando": 19,
-      "paginasTotal": 14793,
-      "paginasLidas": 3765,
-      "paginasFaltando": 11028,
-      "faltando": 20,
-      "mediaDiaria": 55,
-      "ritmoAtual": 43.5,
-      "dataPrevistoAtual": "23/01/2027"
+      "paginasTotal": 17793,
+      "paginasLidas": 6265,
+      "paginasFaltando": 11528,
+      "faltando": 21,
+      "mediaDiaria": 88,
+      "ritmoAtual": 248.2,
+      "dataPrevistoAtual": "30/06/2026"
     },
     "PAUSADO": {
       "total": 1,
@@ -55,15 +55,15 @@
       "dataPrevistoAtual": "—"
     },
     "AINDA NÃO DEFINIDO": {
-      "total": 280,
+      "total": 279,
       "lidos": 67,
       "lendo": 0,
       "pausados": 0,
-      "aguardando": 213,
-      "paginasTotal": 133930,
+      "aguardando": 212,
+      "paginasTotal": 130930,
       "paginasLidas": 26309,
-      "paginasFaltando": 107621,
-      "faltando": 213,
+      "paginasFaltando": 104621,
+      "faltando": 212,
       "mediaDiaria": 50,
       "ritmoAtual": 0,
       "dataPrevistoAtual": "—"
@@ -9285,6 +9285,15 @@
       "minutos": 30,
       "ano": 2026,
       "usuario": "MILTON"
+    },
+    {
+      "livro": "adbcde",
+      "colecao": "a",
+      "data": "2026-05-13",
+      "paginas": 2500,
+      "minutos": 120,
+      "ano": 2026,
+      "usuario": "Daniel"
     }
   ],
   "livros": [
@@ -14461,15 +14470,15 @@
       "autor": "a",
       "isbn": "",
       "coverUrl": "https://m.media-amazon.com/images/I/61-AuecLDjL._AC_UF1000,1000_QL80_.jpg",
-      "metaAno": "AINDA NÃO DEFINIDO",
+      "metaAno": "2026",
       "depende": "",
       "colecao": "a",
       "ordemColecao": 0,
       "ordem": 0,
-      "status": "Aguardando",
+      "status": "Lendo",
       "totalPag": 3000,
-      "pagAtual": 0,
-      "pct": 0,
+      "pagAtual": 2500,
+      "pct": 0.833,
       "usuario": "Daniel"
     }
   ],
@@ -14507,6 +14516,22 @@
       "pagAtual": 278,
       "pct": 0.434,
       "usuario": "MILTON"
+    },
+    {
+      "livro": "adbcde",
+      "autor": "a",
+      "isbn": "",
+      "coverUrl": "https://m.media-amazon.com/images/I/61-AuecLDjL._AC_UF1000,1000_QL80_.jpg",
+      "metaAno": "2026",
+      "depende": "",
+      "colecao": "a",
+      "ordemColecao": 0,
+      "ordem": 0,
+      "status": "Lendo",
+      "totalPag": 3000,
+      "pagAtual": 2500,
+      "pct": 0.833,
+      "usuario": "Daniel"
     }
   ],
   "aguardando": [
@@ -18237,22 +18262,6 @@
       "pagAtual": 0,
       "pct": 0,
       "usuario": "Milton"
-    },
-    {
-      "livro": "adbcde",
-      "autor": "a",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/61-AuecLDjL._AC_UF1000,1000_QL80_.jpg",
-      "metaAno": "AINDA NÃO DEFINIDO",
-      "depende": "",
-      "colecao": "a",
-      "ordemColecao": 0,
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 3000,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "Daniel"
     }
   ],
   "notas": [
