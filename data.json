@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-14T14:50:20.056Z",
+  "geradoEm": "2026-05-14T14:51:42.080Z",
   "meta": {
     "total": 27,
     "lidos": 6,
@@ -55,15 +55,15 @@
       "dataPrevistoAtual": "—"
     },
     "AINDA NÃO DEFINIDO": {
-      "total": 279,
+      "total": 278,
       "lidos": 67,
       "lendo": 0,
       "pausados": 0,
-      "aguardando": 212,
+      "aguardando": 211,
       "paginasTotal": 130830,
       "paginasLidas": 26309,
       "paginasFaltando": 104521,
-      "faltando": 212,
+      "faltando": 211,
       "mediaDiaria": 50,
       "ritmoAtual": 0,
       "dataPrevistoAtual": "—"
@@ -14441,22 +14441,6 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "xxx",
-      "autor": "xxx",
-      "isbn": "",
-      "coverUrl": "",
-      "metaAno": "AINDA NÃO DEFINIDO",
-      "depende": "",
-      "colecao": "xxx",
-      "ordemColecao": 0,
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 0,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "Milton"
-    },
-    {
       "livro": "xx",
       "autor": "xx",
       "isbn": "",
@@ -18221,22 +18205,6 @@
       "pagAtual": 0,
       "pct": 0,
       "usuario": "MILTON"
-    },
-    {
-      "livro": "xxx",
-      "autor": "xxx",
-      "isbn": "",
-      "coverUrl": "",
-      "metaAno": "AINDA NÃO DEFINIDO",
-      "depende": "",
-      "colecao": "xxx",
-      "ordemColecao": 0,
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 0,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "Milton"
     },
     {
       "livro": "xx",
