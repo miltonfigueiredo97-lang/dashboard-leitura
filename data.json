@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-14T18:35:21.034Z",
+  "geradoEm": "2026-05-14T18:36:58.814Z",
   "meta": {
     "total": 26,
     "lidos": 6,
@@ -7,9 +7,9 @@
     "paginasTotal": 14793,
     "paginasLidas": 3765,
     "paginasFaltando": 11028,
-    "mediaDiaria": 55.6,
-    "ritmoAtual": 48.2,
-    "dataPrevistoAtual": "29/12/2026"
+    "mediaDiaria": 56.2,
+    "ritmoAtual": 52.2,
+    "dataPrevistoAtual": "12/12/2026"
   },
   "metasPorAno": {
     "2025": {
@@ -36,9 +36,9 @@
       "paginasLidas": 3765,
       "paginasFaltando": 11028,
       "faltando": 20,
-      "mediaDiaria": 55.6,
-      "ritmoAtual": 48.2,
-      "dataPrevistoAtual": "29/12/2026"
+      "mediaDiaria": 56.2,
+      "ritmoAtual": 52.2,
+      "dataPrevistoAtual": "12/12/2026"
     },
     "PAUSADO": {
       "total": 1,
@@ -61,8 +61,8 @@
       "pausados": 0,
       "aguardando": 211,
       "paginasTotal": 131130,
-      "paginasLidas": 26409,
-      "paginasFaltando": 104721,
+      "paginasLidas": 26509,
+      "paginasFaltando": 104621,
       "faltando": 212,
       "mediaDiaria": 50,
       "ritmoAtual": 0,
@@ -9294,6 +9294,15 @@
       "minutos": 0,
       "ano": 2026,
       "usuario": "Daniel"
+    },
+    {
+      "livro": "abcde",
+      "colecao": "a",
+      "data": "2026-05-04",
+      "paginas": 100,
+      "minutos": 0,
+      "ano": 2026,
+      "usuario": "Daniel"
     }
   ],
   "livros": [
@@ -14461,8 +14470,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 300,
-      "pagAtual": 100,
-      "pct": 0.333,
+      "pagAtual": 200,
+      "pct": 0.667,
       "usuario": "Daniel"
     }
   ],
@@ -14513,8 +14522,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 300,
-      "pagAtual": 100,
-      "pct": 0.333,
+      "pagAtual": 200,
+      "pct": 0.667,
       "usuario": "Daniel"
     }
   ],
