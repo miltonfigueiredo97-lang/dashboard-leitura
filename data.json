@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-14T22:38:44.820Z",
+  "geradoEm": "2026-05-14T22:38:47.124Z",
   "meta": {
     "total": 27,
     "lidos": 6,
@@ -7,9 +7,9 @@
     "paginasTotal": 15343,
     "paginasLidas": 4145,
     "paginasFaltando": 11198,
-    "mediaDiaria": 54.5,
-    "ritmoAtual": 42.3,
-    "dataPrevistoAtual": "03/02/2027"
+    "mediaDiaria": 55.1,
+    "ritmoAtual": 44.8,
+    "dataPrevistoAtual": "19/01/2027"
   },
   "metasPorAno": {
     "2024": {
@@ -50,9 +50,9 @@
       "paginasLidas": 4145,
       "paginasFaltando": 11198,
       "faltando": 21,
-      "mediaDiaria": 54.5,
-      "ritmoAtual": 42.3,
-      "dataPrevistoAtual": "03/02/2027"
+      "mediaDiaria": 55.1,
+      "ritmoAtual": 44.8,
+      "dataPrevistoAtual": "19/01/2027"
     },
     "PAUSADO": {
       "total": 2,
@@ -9299,15 +9299,6 @@
       "minutos": 30,
       "ano": 2026,
       "usuario": "MILTON"
-    },
-    {
-      "livro": "abcde",
-      "colecao": "a",
-      "data": "2026-04-27",
-      "paginas": 12,
-      "minutos": 12,
-      "ano": 2026,
-      "usuario": "Daniel"
     },
     {
       "livro": "A Cidade de Bronze",
