@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-14T16:27:49.652Z",
+  "geradoEm": "2026-05-14T16:32:29.716Z",
   "meta": {
     "total": 27,
     "lidos": 7,
@@ -9300,7 +9300,7 @@
       "colecao": "a",
       "data": "2026-05-13",
       "paginas": 500,
-      "minutos": 0,
+      "minutos": 20,
       "ano": 2026,
       "usuario": "Daniel"
     }
@@ -19193,6 +19193,17 @@
         "Temas": 9
       },
       "usuario": "MILTON"
+    },
+    {
+      "livro": "adbcde",
+      "ano": 2026,
+      "media": 6.67,
+      "criterios": {
+        "Diálogos": 5,
+        "Estilo Visual": 7,
+        "Personagens": 8
+      },
+      "usuario": "Daniel"
     }
   ]
 }
