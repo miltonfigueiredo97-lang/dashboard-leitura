@@ -933,6 +933,34 @@ async function carregarDados() {
   }
 }
 
+async function recarregarDados(delay = 4000) {
+  // Aguarda o Apps Script terminar de exportar e o GitHub/Vercel atualizar
+  const u = typeof usuarioAtual !== 'undefined' ? usuarioAtual : 'Milton';
+  await new Promise(r => setTimeout(r, delay));
+  try {
+    const resp = await fetch(DATA_URL + '?t=' + Date.now());
+    if (!resp.ok) return;
+    const d = await resp.json();
+    window._dadosD = d;
+    setUsuario(u); // re-renderiza mantendo o usuário atual
+  } catch(e) { console.warn('Erro ao recarregar:', e); }
+}
+window.recarregarDados = recarregarDados;
+
+async function carregarDados() {
+  try {
+    const resp = await fetch(DATA_URL + '?t=' + Date.now());
+    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+    const d = await resp.json();
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    inicializar(d);
+  } catch(e) {
+    document.getElementById('loading').innerHTML =
+      '<p style="color:#f88c6a;padding:40px;text-align:center">⚠️ Erro ao carregar dados: ' + e.message + '<br><small>Verifique se o data.json está no repositório.</small></p>';
+  }
+}
+
 function inicializar(d) {
   window._dadosD = d;
   // Carga inicial = Milton
@@ -3117,6 +3145,7 @@ async function confirmarExcluir() {
       mostrarMsg('ex-msg','✅ '+d.msg,'ok');
       livrosCache = [];
       setTimeout(() => fecharModal('excluir'), 2000);
+      recarregarDados(5000);
     } else { mostrarMsg('ex-msg','❌ '+(d.erro||'Erro'),'err'); }
   } catch(e) { mostrarMsg('ex-msg','❌ Erro de conexão','err'); }
   btn.disabled = false; btn.textContent = '🗑️ Confirmar Exclusão';
@@ -3348,6 +3377,7 @@ async function enviarSessao() {
     if (d.ok) {
       mostrarMsg('s-msg', '✅ ' + d.msg, 'ok');
       setTimeout(() => fecharModal('sessao'), 2000);
+      recarregarDados(5000);
     } else {
       mostrarMsg('s-msg', '❌ ' + d.erro, 'err');
     }
@@ -3387,6 +3417,7 @@ async function enviarNota() {
     const d = await r.json();
     if (d.ok) {
       mostrarMsg('n-msg', '✅ ' + d.msg, 'ok');
+      recarregarDados(5000);
       setTimeout(() => fecharModal('nota'), 2000);
     } else {
       mostrarMsg('n-msg', '❌ ' + d.erro, 'err');
@@ -3451,6 +3482,7 @@ async function enviarLivro() {
       mostrarMsg('l-msg', '✅ ' + d.msg, 'ok');
       livrosCache = [];
       setTimeout(() => fecharModal('livro'), 2000);
+      recarregarDados(5000);
     } else {
       mostrarMsg('l-msg', '❌ ' + (d.erro || 'Erro desconhecido'), 'err');
     }
@@ -3491,6 +3523,7 @@ async function enviarNovoLivro() {
     const d = await r.json();
     if (d.ok) {
       mostrarMsg('nl-msg', '✅ ' + d.msg, 'ok');
+      recarregarDados(5000);
       livrosCache = []; // força reload na próxima abertura
       setTimeout(() => {
         fecharModal('novoLivro');
