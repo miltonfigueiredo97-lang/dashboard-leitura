@@ -3227,9 +3227,9 @@ function renderSessoesExcluir() {
     div.innerHTML = `
       <div style="flex:1;min-width:0;">
         <div style="font-size:13px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${s.livro}</div>
-        <div style="font-size:12px;color:var(--muted);">${s.data} · ${s.paginas} págs · ${s.minutos ? Math.round(s.minutos)+'min' : ''}</div>
+        <div style="font-size:12px;color:var(--muted);">${s.data} · ${s.paginas} págs${s.minutos ? ' · '+Math.round(s.minutos)+'min' : ''}</div>
       </div>
-      <button onclick="excluirSessao('${s.livro.replace(/'/g,"\\'")}','${s.data}','${s.paginas}')"
+      <button onclick="excluirSessao(${JSON.stringify(s.livro)},${JSON.stringify(s.data)},${s.paginas})"
         style="background:#e53935;border:none;color:white;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:16px;flex-shrink:0;">🗑️</button>`;
     lista.appendChild(div);
   });
@@ -3425,6 +3425,7 @@ async function enviarSessao() {
   const btn = document.getElementById('s-btn');
   const msg = document.getElementById('s-msg');
   const livro = document.getElementById('s-livro').value;
+  const paginas = document.getElementById('s-paginas').value;
   const dataRaw = document.getElementById('s-data').value; // yyyy-MM-dd
   const [dAno, dMes, dDia] = dataRaw.split('-');
   const dataFormatada = dDia + '/' + dMes + '/' + dAno; // dd/MM/yyyy
@@ -3432,7 +3433,6 @@ async function enviarSessao() {
 
   btn.disabled = true;
   btn.textContent = 'Salvando...';
-  const paginas = document.getElementById('s-paginas').value;
   try {
     const r = await fetch(API_URL, {
       method: 'POST',
@@ -3505,7 +3505,8 @@ async function enviarNota() {
 
 function preencherDadosLivro(nome) {
   if (!nome) return;
-  const l = livrosCache.find(x => x.livro === nome);
+  const pool = (livrosCache.length > 0 ? livrosCache : window._livros) || [];
+  const l = pool.find(x => x.livro === nome);
   if (!l) return;
   // Preenche campos com dados atuais
   const statusEl = document.getElementById('l-status');
