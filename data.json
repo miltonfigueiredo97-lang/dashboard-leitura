@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-14T22:24:25.715Z",
+  "geradoEm": "2026-05-14T22:28:50.684Z",
   "meta": {
     "total": 27,
     "lidos": 6,
@@ -7,9 +7,9 @@
     "paginasTotal": 14893,
     "paginasLidas": 4085,
     "paginasFaltando": 10808,
-    "mediaDiaria": 54.9,
-    "ritmoAtual": 44,
-    "dataPrevistoAtual": "15/01/2027"
+    "mediaDiaria": 55,
+    "ritmoAtual": 45.4,
+    "dataPrevistoAtual": "08/01/2027"
   },
   "metasPorAno": {
     "2024": {
@@ -50,9 +50,9 @@
       "paginasLidas": 4085,
       "paginasFaltando": 10808,
       "faltando": 21,
-      "mediaDiaria": 54.9,
-      "ritmoAtual": 44,
-      "dataPrevistoAtual": "15/01/2027"
+      "mediaDiaria": 55,
+      "ritmoAtual": 45.4,
+      "dataPrevistoAtual": "08/01/2027"
     },
     "PAUSADO": {
       "total": 2,
@@ -9303,37 +9303,19 @@
     {
       "livro": "abcde",
       "colecao": "a",
-      "data": "2026-05-13",
-      "paginas": 50,
-      "minutos": 0,
+      "data": "2026-05-14",
+      "paginas": 100,
+      "minutos": 70,
       "ano": 2026,
       "usuario": "Daniel"
     },
     {
       "livro": "abcde",
       "colecao": "a",
-      "data": "1969-12-31",
-      "paginas": 250,
-      "minutos": 60,
-      "ano": 1969,
-      "usuario": "Daniel"
-    },
-    {
-      "livro": "abcde",
-      "colecao": "a",
-      "data": "1969-12-31",
-      "paginas": 10,
-      "minutos": 0,
-      "ano": 1969,
-      "usuario": "Daniel"
-    },
-    {
-      "livro": "abcde",
-      "colecao": "a",
-      "data": "1969-12-31",
-      "paginas": 10,
-      "minutos": 0,
-      "ano": 1969,
+      "data": "2026-04-27",
+      "paginas": 12,
+      "minutos": 12,
+      "ano": 2026,
       "usuario": "Daniel"
     }
   ],
