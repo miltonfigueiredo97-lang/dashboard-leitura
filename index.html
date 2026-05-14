@@ -607,9 +607,10 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
           <option value="total">Todos os anos</option>
         </select>
         <select id="selDonutModo" onchange="buildDonuts()" style="font-size:12px;padding:4px 8px;background:var(--bg3);border:1px solid var(--border);border-radius:6px;color:var(--text);">
-          <option value="lido">Págs lidas</option>
-          <option value="tudo">Págs totais</option>
-          <option value="livros">Nº de livros</option>
+          <option value="lido">Só lidos (págs)</option>
+          <option value="tudo">Todos os livros (págs)</option>
+          <option value="livros_lidos">Só lidos (nº livros)</option>
+          <option value="livros">Todos (nº livros)</option>
         </select>
       </div>
       <div style="height:190px;position:relative;"><canvas id="cDonut"></canvas></div>
@@ -1461,41 +1462,53 @@ function buildDonuts() {
       const col = s.colecao || 'Sem coleção';
       colMap[col] = (colMap[col]||0) + s.paginas;
     });
-  } else if (modo === 'livros') {
-    // Conta livros únicos por coleção (só lidos se ano filtrado)
-    const livrosFiltrados = ano === 'total' ? livros : livros.filter(l => {
-      return sessFiltradas.some(s => s.livro === l.livro);
+  } else if (modo === 'livros_lidos') {
+    // Conta livros lidos (completos) por coleção
+    const lidos = (window._livros||[]).filter(l => l.status === 'Completo');
+    const filtrados = ano === 'total' ? lidos : lidos.filter(l => sessFiltradas.some(s=>s.livro===l.livro));
+    filtrados.forEach(l => {
+      const col = l.colecao || 'Sem coleção';
+      colMap[col] = (colMap[col]||0) + 1;
     });
-    livrosFiltrados.forEach(l => {
-      const col = l.colecao || sess.find(s=>s.livro===l.livro)?.colecao || 'Sem coleção';
+  } else if (modo === 'livros') {
+    (window._livros||[]).forEach(l => {
+      const col = l.colecao || 'Sem coleção';
       colMap[col] = (colMap[col]||0) + 1;
     });
   } else {
-    livros.forEach(l => {
-      const col = l.colecao || sess.find(s=>s.livro===l.livro)?.colecao || 'Sem coleção';
+    // tudo — págs totais de todos os livros
+    (window._livros||[]).forEach(l => {
+      const col = l.colecao || 'Sem coleção';
       colMap[col] = (colMap[col]||0) + (l.totalPag||0);
     });
   }
 
+  const colLabel = (modo === 'livros' || modo === 'livros_lidos') ? ' livros' : ' págs';
+
   const colSorted = Object.entries(colMap).sort((a,b)=>b[1]-a[1]);
   const COLS = colSorted.slice(0,15).map(([c,p])=>({c,p}));
-  const colLabel = modo === 'livros' ? ' livros' : ' págs';
 
   // Agrupa por autor
   const autMap = {};
   if (modo === 'lido') {
     sessFiltradas.forEach(s => {
-      const aut = livros.find(x=>x.livro===s.livro)?.autor || AUTOR_MAP[s.livro] || 'Desconhecido';
+      const aut = (window._livros||[]).find(x=>x.livro===s.livro)?.autor || AUTOR_MAP[s.livro] || 'Desconhecido';
       autMap[aut] = (autMap[aut]||0) + s.paginas;
     });
+  } else if (modo === 'livros_lidos') {
+    const lidos = (window._livros||[]).filter(l => l.status === 'Completo');
+    const filtrados = ano === 'total' ? lidos : lidos.filter(l => sessFiltradas.some(s=>s.livro===l.livro));
+    filtrados.forEach(l => {
+      const aut = l.autor || AUTOR_MAP[l.livro] || 'Desconhecido';
+      autMap[aut] = (autMap[aut]||0) + 1;
+    });
   } else if (modo === 'livros') {
-    const livrosFiltrados = ano === 'total' ? livros : livros.filter(l => sessFiltradas.some(s=>s.livro===l.livro));
-    livrosFiltrados.forEach(l => {
+    (window._livros||[]).forEach(l => {
       const aut = l.autor || AUTOR_MAP[l.livro] || 'Desconhecido';
       autMap[aut] = (autMap[aut]||0) + 1;
     });
   } else {
-    livros.forEach(l => {
+    (window._livros||[]).forEach(l => {
       const aut = l.autor || AUTOR_MAP[l.livro] || 'Desconhecido';
       autMap[aut] = (autMap[aut]||0) + (l.totalPag||0);
     });
@@ -2493,7 +2506,13 @@ carregarDados();
     <h2>🗑️ Excluir Livro</h2>
     <div class="pwa-field">
       <label>Livro</label>
-      <select id="ex-livro"><option value="">Selecione...</option></select>
+      <input id="ex-livro-busca" type="text" placeholder="Digite para buscar..."
+        oninput="filtrarSelect('ex-livro-busca','ex-livro','todos')"
+        onblur="setTimeout(()=>document.getElementById('ex-livro-lista').style.display='none',200)"
+        autocomplete="off">
+      <div id="ex-livro-lista" style="display:none;background:var(--bg3);border:1px solid var(--border);border-radius:8px;margin-top:4px;max-height:180px;overflow-y:auto;"></div>
+      <input id="ex-livro" type="hidden" value="">
+      <div id="ex-livro-sel" style="display:none;margin-top:6px;padding:6px 12px;background:rgba(229,57,53,0.15);border-radius:8px;font-size:13px;color:#ef9a9a;cursor:pointer;" onclick="limparBuscaSelect('ex')"></div>
     </div>
     <div style="background:rgba(229,57,53,0.1);border:1px solid rgba(229,57,53,0.3);border-radius:10px;padding:12px;margin-bottom:14px;font-size:13px;color:#ef9a9a;">
       ⚠️ O livro será removido permanentemente da aba Geral. As sessões de leitura serão mantidas.
@@ -2562,13 +2581,12 @@ function renderListaStatus() {
     if (ordem === 'colecao') {
       const cA = a.colecaoReal || '';
       const cB = b.colecaoReal || '';
-      // Sem coleção vai para o final
       if (!cA && cB) return 1;
       if (cA && !cB) return -1;
       if (cA !== cB) return cA.localeCompare(cB, 'pt-BR');
-      // Dentro da coleção ordena por ordemColecao (coluna AA)
-      const oA = a.ordemColecao || 999;
-      const oB = b.ordemColecao || 999;
+      // ordemColecao: 0 ou undefined = sem ordem definida, vai para o final
+      const oA = a.ordemColecao > 0 ? a.ordemColecao : 9999;
+      const oB = b.ordemColecao > 0 ? b.ordemColecao : 9999;
       return oA - oB;
     }
     return 0;
@@ -2737,16 +2755,7 @@ function popularSelects() {
   // Sessão — inicializa sem mostrar lista (usuário digita para buscar)
   // lista populada dinamicamente via filtrarLivrosSessao
 
-  // n-livro e l-livro agora são hidden inputs — não popular como select
-  // Excluir — todos os livros
-  const selExcluir = document.getElementById('ex-livro');
-  if (selExcluir && selExcluir.tagName === 'SELECT') {
-    selExcluir.innerHTML = '<option value="">Selecione o livro...</option>';
-    livrosCache.forEach(l => {
-      const icon = l.status==='Completo'?'✅':l.status==='Lendo'?'📖':l.status==='Pausado'?'⏸️':'📋';
-      selExcluir.innerHTML += `<option value="${l.livro}">${icon} ${l.livro}</option>`;
-    });
-  }
+  // n-livro, l-livro e ex-livro agora são hidden inputs com busca por texto
 
   if (dl) {
     dl.innerHTML = '';
@@ -2761,6 +2770,7 @@ function filtrarSelect(buscaId, hiddenId, filtro) {
 
   let pool = livrosCache;
   if (filtro === 'completo') pool = livrosCache.filter(l => l.status === 'Completo');
+  // 'todos' = todos os livros sem filtro
 
   const filtrados = pool.filter(l => !termo || l.livro.toLowerCase().includes(termo)).slice(0, 15);
 
