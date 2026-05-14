@@ -925,8 +925,20 @@ async function carregarDados() {
 }
 
 function inicializar(d) {
-  // Reconstrói as estruturas que os gráficos precisam a partir do JSON
-  const sessoes = d.sessoes || [];
+  window._dadosD = d;
+  // Carga inicial = Milton
+  const sessoesF = (d.sessoes||[]).filter(s => !s.usuario || s.usuario === '' || s.usuario.toUpperCase() === 'MILTON');
+  const livroMap = new Map();
+  [...(d.livros||[]), ...(d.lendo||[]), ...(d.pausados||[]), ...(d.aguardando||[])]
+    .filter(l => l.livro && l.livro.length > 1)
+    .filter(l => !l.usuario || l.usuario === '' || l.usuario.toUpperCase() === 'MILTON')
+    .forEach(l => { if (!livroMap.has(l.livro)) livroMap.set(l.livro, l); });
+  window._livros  = [...livroMap.values()];
+  window._sessoes = sessoesF;
+  recalcularDados(d, sessoesF);
+}
+
+function recalcularDados(d, sessoes) {
 
   // ── MONTHLY ─────────────────────────────────────────
   const byMonth = {};
@@ -1015,18 +1027,7 @@ function inicializar(d) {
   });
   Object.keys(BOOK_DAILY).forEach(k => BOOK_DAILY[k].sort((a,b) => a.d.localeCompare(b.d)));
 
-  // ── KPIs — armazena dados globalmente para atualizarVisaoGeral
-  window._dadosD = d;
-
-  // Armazena globalmente ANTES de chamar atualizarVisaoGeral
-  // Carga inicial = Milton (sem usuario = legado = Milton)
-  const livroMap = new Map();
-  [...(d.livros||[]), ...(d.lendo||[]), ...(d.pausados||[]), ...(d.aguardando||[])]
-    .filter(l => l.livro && l.livro !== 'Livro' && l.livro.length > 1)
-    .filter(l => !l.usuario || l.usuario === '' || l.usuario.toUpperCase() === 'MILTON')
-    .forEach(l => { if (!livroMap.has(l.livro)) livroMap.set(l.livro, l); });
-  window._livros  = [...livroMap.values()];
-  window._sessoes = (sessoes || []).filter(s => !s.usuario || s.usuario === '' || s.usuario.toUpperCase() === 'MILTON');
+  // Reconstrói as estruturas que os gráficos precisam a partir dos dados filtrados
 
   // Popular seletor de ano Visão Geral
   const selVGAno = document.getElementById('selVGAno');
@@ -1095,8 +1096,13 @@ function inicializar(d) {
     document.getElementById('footer-data').textContent = dt.toLocaleString('pt-BR');
   }
 
-  // Passa os dados calculados para os gráficos
+  // Passa os dados calculados para os gráficos e re-renderiza tudo
   renderizarGraficos({ MONTHLY, YEARS, WD_AVG, WD_SUM, NOTES, COLECOES, BOOK_DAILY });
+  atualizarVisaoGeral();
+  renderLendoCards();
+  buildMeta();
+  document.getElementById('header-badge').textContent =
+    `${(window._livros||[]).length} livros · ${(window._sessoes||[]).length} sessões`;
 }
 // Variáveis globais dos gráficos
 let MONTHLY, YEARS, WD_AVG, WD_SUM, NOTES, COLECOES, BOOK_DAILY;
@@ -2650,7 +2656,6 @@ function setUsuario(usuario) {
   window._livros  = [...livroMap.values()];
 
   // Atualiza livrosCache do PWA com livros do usuário atual
-  // (para que os modais de adicionar/avaliar/atualizar mostrem livros corretos)
   livrosCache = [...livroMap.values()].map(l => ({
     livro: l.livro, autor: l.autor || '', status: l.status,
     isbn: l.isbn || '', coverUrl: l.coverUrl || '',
@@ -2661,12 +2666,8 @@ function setUsuario(usuario) {
 
   document.getElementById('header-badge').textContent = `${livroMap.size} livros · ${sessoesFiltradas.length} sessões`;
 
-  atualizarVisaoGeral();
-  renderLendoCards();
-  if (typeof buildRanking === 'function') {
-    buildRanking(); buildDonuts(); buildWd();
-    buildLivrosMes(); buildStreaks(); buildHeatmap(); buildCalendar();
-  }
+  // Recalcula TUDO com os dados filtrados do usuário
+  recalcularDados(d, sessoesFiltradas);
 }
 
 function renderBatalha() {
