@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-14T18:56:13.270Z",
+  "geradoEm": "2026-05-14T18:57:36.795Z",
   "meta": {
-    "total": 27,
+    "total": 26,
     "lidos": 6,
-    "faltando": 21,
-    "paginasTotal": 14993,
+    "faltando": 20,
+    "paginasTotal": 14793,
     "paginasLidas": 3765,
-    "paginasFaltando": 11228,
+    "paginasFaltando": 11028,
     "mediaDiaria": 54.9,
     "ritmoAtual": 44,
-    "dataPrevistoAtual": "25/01/2027"
+    "dataPrevistoAtual": "20/01/2027"
   },
   "metasPorAno": {
     "2025": {
@@ -27,18 +27,18 @@
       "dataPrevistoAtual": "—"
     },
     "2026": {
-      "total": 27,
+      "total": 26,
       "lidos": 6,
       "lendo": 1,
       "pausados": 0,
-      "aguardando": 20,
-      "paginasTotal": 14993,
+      "aguardando": 19,
+      "paginasTotal": 14793,
       "paginasLidas": 3765,
-      "paginasFaltando": 11228,
-      "faltando": 21,
+      "paginasFaltando": 11028,
+      "faltando": 20,
       "mediaDiaria": 54.9,
       "ritmoAtual": 44,
-      "dataPrevistoAtual": "25/01/2027"
+      "dataPrevistoAtual": "20/01/2027"
     },
     "PAUSADO": {
       "total": 1,
@@ -14473,22 +14473,6 @@
       "pagAtual": 75,
       "pct": 0.25,
       "usuario": "Daniel"
-    },
-    {
-      "livro": "xx",
-      "autor": "",
-      "isbn": "",
-      "coverUrl": "",
-      "metaAno": "2026",
-      "depende": "",
-      "colecao": "",
-      "ordemColecao": 0,
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 200,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "Daniel"
     }
   ],
   "pausados": [
@@ -18255,22 +18239,6 @@
       "pagAtual": 0,
       "pct": 0,
       "usuario": "MILTON"
-    },
-    {
-      "livro": "xx",
-      "autor": "",
-      "isbn": "",
-      "coverUrl": "",
-      "metaAno": "2026",
-      "depende": "",
-      "colecao": "",
-      "ordemColecao": 0,
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 200,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "Daniel"
     }
   ],
   "notas": [
