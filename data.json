@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-14T14:51:42.080Z",
+  "geradoEm": "2026-05-14T14:56:38.209Z",
   "meta": {
-    "total": 27,
+    "total": 26,
     "lidos": 6,
-    "faltando": 21,
-    "paginasTotal": 15093,
+    "faltando": 20,
+    "paginasTotal": 14793,
     "paginasLidas": 3765,
-    "paginasFaltando": 11328,
+    "paginasFaltando": 11028,
     "mediaDiaria": 55,
     "ritmoAtual": 43.5,
-    "dataPrevistoAtual": "30/01/2027"
+    "dataPrevistoAtual": "23/01/2027"
   },
   "metasPorAno": {
     "2025": {
@@ -27,18 +27,18 @@
       "dataPrevistoAtual": "—"
     },
     "2026": {
-      "total": 27,
+      "total": 26,
       "lidos": 6,
       "lendo": 1,
       "pausados": 0,
-      "aguardando": 20,
-      "paginasTotal": 15093,
+      "aguardando": 19,
+      "paginasTotal": 14793,
       "paginasLidas": 3765,
-      "paginasFaltando": 11328,
-      "faltando": 21,
+      "paginasFaltando": 11028,
+      "faltando": 20,
       "mediaDiaria": 55,
       "ritmoAtual": 43.5,
-      "dataPrevistoAtual": "30/01/2027"
+      "dataPrevistoAtual": "23/01/2027"
     },
     "PAUSADO": {
       "total": 1,
@@ -14439,22 +14439,6 @@
       "pagAtual": 0,
       "pct": 0,
       "usuario": "MILTON"
-    },
-    {
-      "livro": "xx",
-      "autor": "xx",
-      "isbn": "",
-      "coverUrl": "",
-      "metaAno": "2026",
-      "depende": "",
-      "colecao": "xxx",
-      "ordemColecao": 0,
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 300,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "Daniel"
     }
   ],
   "pausados": [
@@ -18205,22 +18189,6 @@
       "pagAtual": 0,
       "pct": 0,
       "usuario": "MILTON"
-    },
-    {
-      "livro": "xx",
-      "autor": "xx",
-      "isbn": "",
-      "coverUrl": "",
-      "metaAno": "2026",
-      "depende": "",
-      "colecao": "xxx",
-      "ordemColecao": 0,
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 300,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "Daniel"
     }
   ],
   "notas": [
