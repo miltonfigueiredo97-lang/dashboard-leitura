@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-14T22:27:15.901Z",
+  "geradoEm": "2026-05-14T22:27:52.725Z",
   "meta": {
     "total": 27,
     "lidos": 6,
@@ -9299,15 +9299,6 @@
       "minutos": 30,
       "ano": 2026,
       "usuario": "MILTON"
-    },
-    {
-      "livro": "abcde",
-      "colecao": "a",
-      "data": "1969-12-31",
-      "paginas": 10,
-      "minutos": 0,
-      "ano": 1969,
-      "usuario": "Daniel"
     },
     {
       "livro": "abcde",
