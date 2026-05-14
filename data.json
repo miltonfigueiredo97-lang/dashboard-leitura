@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-14T22:28:50.684Z",
+  "geradoEm": "2026-05-14T22:34:43.129Z",
   "meta": {
     "total": 27,
     "lidos": 6,
     "faltando": 21,
-    "paginasTotal": 14893,
+    "paginasTotal": 15343,
     "paginasLidas": 4085,
-    "paginasFaltando": 10808,
+    "paginasFaltando": 11258,
     "mediaDiaria": 55,
     "ritmoAtual": 45.4,
-    "dataPrevistoAtual": "08/01/2027"
+    "dataPrevistoAtual": "17/01/2027"
   },
   "metasPorAno": {
     "2024": {
@@ -46,13 +46,13 @@
       "lendo": 2,
       "pausados": 0,
       "aguardando": 19,
-      "paginasTotal": 14893,
+      "paginasTotal": 15343,
       "paginasLidas": 4085,
-      "paginasFaltando": 10808,
+      "paginasFaltando": 11258,
       "faltando": 21,
       "mediaDiaria": 55,
       "ritmoAtual": 45.4,
-      "dataPrevistoAtual": "08/01/2027"
+      "dataPrevistoAtual": "17/01/2027"
     },
     "PAUSADO": {
       "total": 2,
@@ -15011,9 +15011,9 @@
       "ordemColecao": 0,
       "ordem": 0,
       "status": "Lendo",
-      "totalPag": 100,
+      "totalPag": 550,
       "pagAtual": 320,
-      "pct": 3.2,
+      "pct": 0.582,
       "usuario": "Daniel"
     }
   ],
@@ -15079,9 +15079,9 @@
       "ordemColecao": 0,
       "ordem": 0,
       "status": "Lendo",
-      "totalPag": 100,
+      "totalPag": 550,
       "pagAtual": 320,
-      "pct": 3.2,
+      "pct": 0.582,
       "usuario": "Daniel"
     }
   ],
