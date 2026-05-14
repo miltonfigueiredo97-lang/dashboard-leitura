@@ -1313,8 +1313,8 @@ function renderLendoCards() {
     ? (!l.usuario || l.usuario === '' || l.usuario.toUpperCase() === 'MILTON')
     : l.usuario?.toUpperCase() === u.toUpperCase();
 
-  const lendoU   = (d.lendo   ||[]).filter(filterU);
-  const pausadosU = (d.pausados||[]).filter(filterU);
+  const lendoU   = (d.lendo   ||[]).filter(filterU).filter(l => l.livro && l.livro.length > 2);
+  const pausadosU = (d.pausados||[]).filter(filterU).filter(l => l.livro && l.livro.length > 2);
   const aguardandoU = (d.aguardando||[]).filter(filterU);
   const lendoAtual = [...lendoU, ...pausadosU];
 
@@ -2707,10 +2707,6 @@ carregarDados();
       </select>
     </div>
     <div class="pwa-field">
-      <label>Página atual</label>
-      <input id="l-pagina" type="number" min="0" placeholder="Deixe vazio para não alterar">
-    </div>
-    <div class="pwa-field">
       <label>Autor</label>
       <input id="l-autor" type="text" placeholder="Deixe vazio para não alterar">
     </div>
@@ -2820,6 +2816,7 @@ function setUsuario(usuario) {
   // Alterna páginas
   document.getElementById('pageDashboard').style.display = usuario === 'Batalha' ? 'none' : 'block';
   document.getElementById('pageBatalha').style.display   = usuario === 'Batalha' ? 'block' : 'none';
+  document.querySelector('.lendo-wrap').style.display    = usuario === 'Batalha' ? 'none' : 'block';
   document.querySelector('.fab').style.display           = usuario === 'Batalha' ? 'none' : 'flex';
 
   if (usuario === 'Batalha') {
