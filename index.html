@@ -68,8 +68,8 @@ header .badge {
 .kpi-book { display: flex; gap: 10px; align-items: flex-start; }
 .kpi-book img { width: 60px; height: 84px; object-fit: cover; border-radius: 4px; box-shadow: 2px 2px 8px rgba(0,0,0,.5); flex-shrink: 0; }
 .kpi-book .fallback { width: 44px; height: 62px; background: var(--bg4); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
-.cover-img { transition: transform 0.2s ease, box-shadow 0.2s ease; transform-origin: left center; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; }
-.cover-img:hover { transform: scale(5); box-shadow: 0 8px 32px rgba(0,0,0,0.7); z-index: 999; position: relative; }
+.cover-img { transition: transform 0.2s ease, box-shadow 0.2s ease; transform-origin: left center; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; cursor: zoom-in; }
+.cover-img:hover { transform: scale(5); box-shadow: 0 8px 32px rgba(0,0,0,0.7); z-index: 9999; position: relative; }
 .cal-day { border-radius:6px;padding:4px;min-height:64px;cursor:pointer;transition:background 0.15s;position:relative;background:var(--bg3); }
 .cal-day:hover { background:var(--bg4); }
 .cal-day.active { background:rgba(139,124,248,0.15);border:1px solid rgba(139,124,248,0.4); }
@@ -503,8 +503,8 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
       </select>
       <span id="ps-count" style="font-size:12px;color:var(--muted);margin-left:auto;"></span>
     </div>
-    <div style="max-height:450px;overflow-y:auto;overflow-x:visible;margin:0 -4px;padding:0 4px;">
-      <div id="painelStatusLista" style="display:flex;flex-direction:column;gap:8px;overflow:visible;padding:4px 0;"></div>
+    <div style="max-height:450px;overflow-y:auto;padding:4px 0;">
+      <div id="painelStatusLista" style="display:flex;flex-direction:column;gap:8px;padding:0 4px;"></div>
     </div>
   </div>
 
@@ -1009,7 +1009,13 @@ function recalcularDados(d, sessoes) {
   sessoes.forEach(s => {
     if (s.ano > 2000) bookFinishYear[s.livro] = Math.max(bookFinishYear[s.livro]||0, s.ano);
   });
-  const NOTES = (d.notas || []).map(n => ({
+  const u = (typeof usuarioAtual !== 'undefined' ? usuarioAtual : 'Milton');
+  const notasFiltradas = (d.notas || []).filter(n =>
+    u === 'Milton'
+      ? (!n.usuario || n.usuario === '' || n.usuario.toUpperCase() === 'MILTON')
+      : n.usuario?.toUpperCase() === u.toUpperCase()
+  );
+  const NOTES = notasFiltradas.map(n => ({
     ...n,
     ano: bookFinishYear[n.livro] || n.ano || 0
   })).sort((a,b) => b.media - a.media);
@@ -1074,9 +1080,10 @@ function recalcularDados(d, sessoes) {
   } else {
     ['kpi-maior-val','kpi-maior-nome','kpi-maior-autor','kpi-menor-val','kpi-menor-nome','kpi-menor-autor']
       .forEach(id => { const el = document.getElementById(id); if(el) el.textContent = '—'; });
+    ['capa-maior','capa-menor'].forEach(id => { const el = document.getElementById(id); if(el) el.innerHTML = ''; });
   }
 
-  // Melhor e pior avaliado
+  // Melhor e pior avaliado — NOTES já filtrado por usuário via recalcularDados
   if (NOTES && NOTES.length) {
     const notasSorted = [...NOTES].sort((a,b) => b.media - a.media);
     const melhor = notasSorted[0];
@@ -1091,6 +1098,10 @@ function recalcularDados(d, sessoes) {
     document.getElementById('kpi-pior-nome').textContent    = pior.livro;
     document.getElementById('kpi-pior-autor').textContent   = piorLivro?.autor || AUTOR_MAP[pior.livro] || '';
     document.getElementById('capa-pior').innerHTML          = coverImg(piorLivro?.isbn, '💀', '', piorLivro?.coverUrl||'');
+  } else {
+    ['kpi-melhor-val','kpi-melhor-nome','kpi-melhor-autor','kpi-pior-val','kpi-pior-nome','kpi-pior-autor']
+      .forEach(id => { const el = document.getElementById(id); if(el) el.textContent = '—'; });
+    ['capa-melhor','capa-pior'].forEach(id => { const el = document.getElementById(id); if(el) el.innerHTML = ''; });
   }
 
   // Recalcula metasPorAno a partir dos livros e sessões já filtrados por usuário
