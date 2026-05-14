@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-14T22:38:23.839Z",
+  "geradoEm": "2026-05-14T22:38:42.370Z",
   "meta": {
     "total": 27,
     "lidos": 6,
@@ -7,9 +7,9 @@
     "paginasTotal": 15343,
     "paginasLidas": 4145,
     "paginasFaltando": 11198,
-    "mediaDiaria": 56.1,
-    "ritmoAtual": 51.5,
-    "dataPrevistoAtual": "18/12/2026"
+    "mediaDiaria": 54.7,
+    "ritmoAtual": 43.8,
+    "dataPrevistoAtual": "25/01/2027"
   },
   "metasPorAno": {
     "2024": {
@@ -50,9 +50,9 @@
       "paginasLidas": 4145,
       "paginasFaltando": 11198,
       "faltando": 21,
-      "mediaDiaria": 56.1,
-      "ritmoAtual": 51.5,
-      "dataPrevistoAtual": "18/12/2026"
+      "mediaDiaria": 54.7,
+      "ritmoAtual": 43.8,
+      "dataPrevistoAtual": "25/01/2027"
     },
     "PAUSADO": {
       "total": 2,
@@ -9299,15 +9299,6 @@
       "minutos": 30,
       "ano": 2026,
       "usuario": "MILTON"
-    },
-    {
-      "livro": "abcde",
-      "colecao": "a",
-      "data": "2026-05-14",
-      "paginas": 100,
-      "minutos": 70,
-      "ano": 2026,
-      "usuario": "Daniel"
     },
     {
       "livro": "abcde",
