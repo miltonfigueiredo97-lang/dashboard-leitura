@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-14T22:28:50.684Z",
+  "geradoEm": "2026-05-14T22:38:47.124Z",
   "meta": {
     "total": 27,
     "lidos": 6,
     "faltando": 21,
-    "paginasTotal": 14893,
-    "paginasLidas": 4085,
-    "paginasFaltando": 10808,
-    "mediaDiaria": 55,
-    "ritmoAtual": 45.4,
-    "dataPrevistoAtual": "08/01/2027"
+    "paginasTotal": 15343,
+    "paginasLidas": 4145,
+    "paginasFaltando": 11198,
+    "mediaDiaria": 55.1,
+    "ritmoAtual": 44.8,
+    "dataPrevistoAtual": "19/01/2027"
   },
   "metasPorAno": {
     "2024": {
@@ -46,13 +46,13 @@
       "lendo": 2,
       "pausados": 0,
       "aguardando": 19,
-      "paginasTotal": 14893,
-      "paginasLidas": 4085,
-      "paginasFaltando": 10808,
+      "paginasTotal": 15343,
+      "paginasLidas": 4145,
+      "paginasFaltando": 11198,
       "faltando": 21,
-      "mediaDiaria": 55,
-      "ritmoAtual": 45.4,
-      "dataPrevistoAtual": "08/01/2027"
+      "mediaDiaria": 55.1,
+      "ritmoAtual": 44.8,
+      "dataPrevistoAtual": "19/01/2027"
     },
     "PAUSADO": {
       "total": 2,
@@ -9301,22 +9301,13 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "abcde",
-      "colecao": "a",
+      "livro": "A Cidade de Bronze",
+      "colecao": "Trilogia de Daevabad",
       "data": "2026-05-14",
-      "paginas": 100,
-      "minutos": 70,
+      "paginas": 60,
+      "minutos": 50,
       "ano": 2026,
-      "usuario": "Daniel"
-    },
-    {
-      "livro": "abcde",
-      "colecao": "a",
-      "data": "2026-04-27",
-      "paginas": 12,
-      "minutos": 12,
-      "ano": 2026,
-      "usuario": "Daniel"
+      "usuario": "Milton"
     }
   ],
   "livros": [
@@ -10260,8 +10251,8 @@
       "ordem": 59,
       "status": "Lendo",
       "totalPag": 641,
-      "pagAtual": 278,
-      "pct": 0.434,
+      "pagAtual": 338,
+      "pct": 0.527,
       "usuario": "MILTON"
     },
     {
@@ -15011,9 +15002,9 @@
       "ordemColecao": 0,
       "ordem": 0,
       "status": "Lendo",
-      "totalPag": 100,
+      "totalPag": 550,
       "pagAtual": 320,
-      "pct": 3.2,
+      "pct": 0.582,
       "usuario": "Daniel"
     }
   ],
@@ -15064,8 +15055,8 @@
       "ordem": 59,
       "status": "Lendo",
       "totalPag": 641,
-      "pagAtual": 278,
-      "pct": 0.434,
+      "pagAtual": 338,
+      "pct": 0.527,
       "usuario": "MILTON"
     },
     {
@@ -15079,9 +15070,9 @@
       "ordemColecao": 0,
       "ordem": 0,
       "status": "Lendo",
-      "totalPag": 100,
+      "totalPag": 550,
       "pagAtual": 320,
-      "pct": 3.2,
+      "pct": 0.582,
       "usuario": "Daniel"
     }
   ],
