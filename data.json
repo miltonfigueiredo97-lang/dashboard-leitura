@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-14T22:15:21.788Z",
+  "geradoEm": "2026-05-14T22:24:25.715Z",
   "meta": {
-    "total": 26,
+    "total": 27,
     "lidos": 6,
-    "faltando": 20,
-    "paginasTotal": 14793,
-    "paginasLidas": 3765,
-    "paginasFaltando": 11028,
+    "faltando": 21,
+    "paginasTotal": 14893,
+    "paginasLidas": 4085,
+    "paginasFaltando": 10808,
     "mediaDiaria": 54.9,
     "ritmoAtual": 44,
-    "dataPrevistoAtual": "20/01/2027"
+    "dataPrevistoAtual": "15/01/2027"
   },
   "metasPorAno": {
     "2024": {
@@ -41,18 +41,18 @@
       "dataPrevistoAtual": "—"
     },
     "2026": {
-      "total": 26,
+      "total": 27,
       "lidos": 6,
-      "lendo": 1,
+      "lendo": 2,
       "pausados": 0,
       "aguardando": 19,
-      "paginasTotal": 14793,
-      "paginasLidas": 3765,
-      "paginasFaltando": 11028,
-      "faltando": 20,
+      "paginasTotal": 14893,
+      "paginasLidas": 4085,
+      "paginasFaltando": 10808,
+      "faltando": 21,
       "mediaDiaria": 54.9,
       "ritmoAtual": 44,
-      "dataPrevistoAtual": "20/01/2027"
+      "dataPrevistoAtual": "15/01/2027"
     },
     "PAUSADO": {
       "total": 2,
@@ -69,15 +69,15 @@
       "dataPrevistoAtual": "—"
     },
     "AINDA NÃO DEFINIDO": {
-      "total": 279,
+      "total": 278,
       "lidos": 67,
-      "lendo": 1,
+      "lendo": 0,
       "pausados": 0,
       "aguardando": 211,
-      "paginasTotal": 130930,
-      "paginasLidas": 26619,
-      "paginasFaltando": 104311,
-      "faltando": 212,
+      "paginasTotal": 130830,
+      "paginasLidas": 26309,
+      "paginasFaltando": 104521,
+      "faltando": 211,
       "mediaDiaria": 50,
       "ritmoAtual": 0,
       "dataPrevistoAtual": "—"
@@ -9326,6 +9326,15 @@
       "minutos": 0,
       "ano": 1969,
       "usuario": "Daniel"
+    },
+    {
+      "livro": "abcde",
+      "colecao": "a",
+      "data": "1969-12-31",
+      "paginas": 10,
+      "minutos": 0,
+      "ano": 1969,
+      "usuario": "Daniel"
     }
   ],
   "livros": [
@@ -15014,15 +15023,15 @@
       "autor": "sa",
       "isbn": "",
       "coverUrl": "",
-      "metaAno": "AINDA NÃO DEFINIDO",
+      "metaAno": "2026",
       "depende": "",
       "colecao": "a",
       "ordemColecao": 0,
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 100,
-      "pagAtual": 310,
-      "pct": 3.1,
+      "pagAtual": 320,
+      "pct": 3.2,
       "usuario": "Daniel"
     }
   ],
@@ -15082,15 +15091,15 @@
       "autor": "sa",
       "isbn": "",
       "coverUrl": "",
-      "metaAno": "AINDA NÃO DEFINIDO",
+      "metaAno": "2026",
       "depende": "",
       "colecao": "a",
       "ordemColecao": 0,
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 100,
-      "pagAtual": 310,
-      "pct": 3.1,
+      "pagAtual": 320,
+      "pct": 3.2,
       "usuario": "Daniel"
     }
   ],
