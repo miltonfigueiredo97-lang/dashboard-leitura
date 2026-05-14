@@ -1023,10 +1023,10 @@ function inicializar(d) {
   const livroMap = new Map();
   [...(d.livros||[]), ...(d.lendo||[]), ...(d.pausados||[]), ...(d.aguardando||[])]
     .filter(l => l.livro && l.livro !== 'Livro' && l.livro.length > 1)
-    .filter(l => !l.usuario || l.usuario === '' || l.usuario === 'Milton')
+    .filter(l => !l.usuario || l.usuario === '' || l.usuario.toUpperCase() === 'MILTON')
     .forEach(l => { if (!livroMap.has(l.livro)) livroMap.set(l.livro, l); });
   window._livros  = [...livroMap.values()];
-  window._sessoes = (sessoes || []).filter(s => !s.usuario || s.usuario === '' || s.usuario === 'Milton');
+  window._sessoes = (sessoes || []).filter(s => !s.usuario || s.usuario === '' || s.usuario.toUpperCase() === 'MILTON');
 
   // Popular seletor de ano Visão Geral
   const selVGAno = document.getElementById('selVGAno');
@@ -2612,8 +2612,8 @@ function setUsuario(usuario) {
   const todasSessoes = d.sessoes || [];
   const sessoesFiltradas = todasSessoes.filter(s =>
     usuario === 'Milton'
-      ? (!s.usuario || s.usuario === '' || s.usuario === 'Milton')
-      : s.usuario === usuario
+      ? (!s.usuario || s.usuario === '' || s.usuario.toUpperCase() === 'MILTON')
+      : s.usuario?.toUpperCase() === usuario.toUpperCase()
   );
 
   const todoLivros = [...(d.livros||[]), ...(d.lendo||[]), ...(d.pausados||[]), ...(d.aguardando||[])];
@@ -2621,8 +2621,8 @@ function setUsuario(usuario) {
   todoLivros
     .filter(l =>
       usuario === 'Milton'
-        ? (!l.usuario || l.usuario === '' || l.usuario === 'Milton')
-        : l.usuario === usuario
+        ? (!l.usuario || l.usuario === '' || l.usuario.toUpperCase() === 'MILTON')
+        : l.usuario?.toUpperCase() === usuario.toUpperCase()
     )
     .forEach(l => { if (!livroMap.has(l.livro)) livroMap.set(l.livro, l); });
 
@@ -2656,9 +2656,9 @@ function renderBatalha() {
   const dados = {};
 
   usuarios.forEach(u => {
-    const sess = (d.sessoes||[]).filter(s => !s.usuario || s.usuario === u);
+    const sess = (d.sessoes||[]).filter(s => !s.usuario || s.usuario.toUpperCase() === u.toUpperCase());
     const livros = [...(d.livros||[]), ...(d.lendo||[]), ...(d.pausados||[]), ...(d.aguardando||[])]
-      .filter(l => !l.usuario || l.usuario === u);
+      .filter(l => !l.usuario || l.usuario.toUpperCase() === u.toUpperCase());
     const lidos = livros.filter(l => l.status === 'Completo');
 
     const diasSet = new Set(sess.map(s=>s.data).filter(Boolean));
