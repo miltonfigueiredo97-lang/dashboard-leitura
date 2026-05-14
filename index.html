@@ -303,7 +303,7 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
       </button>
     </div>
     <div class="badge" id="header-badge">— livros · — sessões</div>
-    <button onclick="toggleChangelog()" style="background:rgba(139,124,248,0.2);border:1px solid var(--purple);color:var(--purple);padding:6px 12px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;white-space:nowrap;">📋 v1.0</button>
+    <button onclick="toggleChangelog()" style="background:rgba(139,124,248,0.2);border:1px solid var(--purple);color:var(--purple);padding:6px 12px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;white-space:nowrap;">📋 v2.0</button>
   </div>
 </header>
 
@@ -2882,6 +2882,22 @@ window.setUsuario = setUsuario;
 // ── Changelog ────────────────────────────────────
 const CHANGELOG = [
   {
+    versao: '2.0', data: '15/05/2026', titulo: 'Multi-usuário & Batalha',
+    itens: [
+      'Sistema de múltiplos usuários — Milton e Daniel com dados 100% separados',
+      'Seletor de usuário no header — troca filtra todos os dados em tempo real',
+      'Página ⚔️ Batalha com 8 duelos: páginas, livros, dias, média, horas, streak, nota, sessões',
+      'Colunas de usuário adicionadas: Alimentação Q, Geral AB, Notas P',
+      'Todos os botões PWA (adicionar, registrar, avaliar, excluir) cientes do usuário ativo',
+      'Botão 📚 Todos na Visão Geral — mostra todos os livros do usuário',
+      'Filtros da lista de livros: Ordem da Coleção agora usa coluna AA corretamente',
+      'Donuts com 4 modos: Págs lidas, Págs totais, Nº lidos, Nº todos',
+      'Detalhes do Livro com busca por texto em vez de lista grande',
+      'Calendário mostra "7 páginas" em vez de "7p"',
+      'Planilha Geral expandida para 1000 linhas, iniciando na linha 5',
+    ]
+  },
+  {
     versao: '1.0', data: '14/05/2026', titulo: 'Lançamento — Projeto Final V1',
     itens: [
       'Dashboard completo com Meta de Leitura, Visão Geral, Rankings e Gráficos',
@@ -2889,11 +2905,9 @@ const CHANGELOG = [
       'Sequências de Leitura com streak atual e recorde',
       'Coleções Favoritas e Autores Favoritos com 4 modos de visualização',
       'Ranking por Notas com 10 critérios de avaliação',
-      'Lista de livros por status (Concluídos, Lendo, Pausados, Aguardando, Todos)',
-      'Filtros por ordem da coleção, A-Z, páginas e coleção específica',
+      'Lista de livros por status com filtros e ordem da coleção',
       'Botões PWA: Adicionar, Registrar Sessão, Avaliar, Atualizar, Roleta, Excluir',
       'Roleta de Leitura com filtro de dependências e meta do ano',
-      'Busca por texto em todos os modais de seleção de livro',
       'Capas com zoom via hover e cascata Amazon → Open Library',
       'Suporte mobile com layout responsivo',
     ]
