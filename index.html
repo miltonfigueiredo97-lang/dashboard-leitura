@@ -1087,83 +1087,7 @@ function inicializar(d) {
   });
   window._metasPorAno = metasPorAno;
   buildMeta();
-
-  // Lendo atualmente — mostra Lendo + Pausados + dica
-  const lendoAtual = [...(d.lendo || []), ...(d.pausados || [])];
-  const agContainer = document.getElementById('lendo-cards');
-  agContainer.innerHTML = '';
-  if (lendoAtual.length === 0) {
-    agContainer.innerHTML = '<div class="lendo-card dica"><div class="lendo-tag">📖 Nenhum livro em andamento</div></div>';
-  } else {
-    lendoAtual.forEach(p => {
-      const isLendo = (d.lendo||[]).includes(p);
-      const tag = isLendo ? '📖 Lendo' : '⏸️ Pausado';
-      const cor = isLendo ? 'var(--teal)' : 'var(--orange)';
-      const classe = isLendo ? 'lendo' : 'pausado';
-      const faltam = p.totalPag - p.pagAtual;
-      const diasRest = Math.ceil(faltam / (mediaParDia||66.8));
-      const pctVal = Math.round((p.pct||0)*100*10)/10;
-      const capLendo = coverImg(p.isbn, isLendo ? '📖' : '⏸️', '', p.coverUrl||'');
-      agContainer.innerHTML += `
-        <div class="lendo-card ${classe}">
-          <div class="lendo-tag">${tag}</div>
-          <div style="display:flex;gap:14px;align-items:flex-start;margin-bottom:10px;">
-            <div style="flex-shrink:0">${capLendo}</div>
-            <div style="flex:1;min-width:0">
-              <div class="lendo-book-title" style="margin-bottom:0">${p.livro}</div>
-              <div style="font-size:13px;color:var(--muted);margin-bottom:8px;">${p.autor||''}</div>
-              <div class="lendo-stats">
-                <div class="lendo-stat"><span class="lendo-stat-val" style="color:${cor}">${p.pagAtual}</span><span class="lendo-stat-lbl">Página atual</span></div>
-                <div class="lendo-stat"><span class="lendo-stat-val">${p.totalPag}</span><span class="lendo-stat-lbl">Total de páginas</span></div>
-                <div class="lendo-stat"><span class="lendo-stat-val" style="color:var(--yellow)">~${diasRest}</span><span class="lendo-stat-lbl">Dias para acabar</span></div>
-              </div>
-            </div>
-          </div>
-          <div class="lendo-progress-wrap">
-            <div class="lendo-bar-bg"><div class="lendo-bar-fg" style="width:${Math.min(pctVal,100)}%;background:${cor}"></div></div>
-            <span class="lendo-pct-label" style="color:${cor}">${pctVal}%</span>
-          </div>
-          <div class="lendo-meta"><span>Faltam: <b>${faltam.toLocaleString('pt-BR')} páginas</b></span></div>
-        </div>`;
-    });
-    // Dica aleatória
-    // Dica de leitura — filtra aguardando com regras
-    const anoAtual = new Date().getFullYear().toString();
-    const livrosLidos = new Set((d.livros||[]).filter(l => l.status === 'Completo').map(l => l.livro));
-    
-    const ag = (d.aguardando || []).filter(l => {
-      // Exclui metas de anos futuros
-      if (l.metaAno && parseInt(l.metaAno) > parseInt(anoAtual)) return false;
-      // Exclui se tem dependência e ela ainda não foi lida
-      if (l.depende && !livrosLidos.has(l.depende.trim())) return false;
-      return true;
-    });
-
-    if (ag.length > 0) {
-      const dica = ag[Math.floor(Math.random()*ag.length)];
-      const diasDica = Math.ceil((dica.totalPag||200)/(mediaParDia||66.8));
-      const capDica = coverImg(dica.isbn, '💡', '', dica.coverUrl||'');
-      agContainer.innerHTML += `
-        <div class="lendo-card dica">
-          <div class="lendo-tag">💡 Dica de Leitura</div>
-          <div style="display:flex;gap:14px;align-items:flex-start;margin-bottom:10px;">
-            <div style="flex-shrink:0">${capDica}</div>
-            <div style="flex:1;min-width:0">
-              <div class="lendo-book-title" style="margin-bottom:0">${dica.livro}</div>
-              <div style="font-size:13px;color:var(--muted);margin-bottom:8px;">${dica.autor||''}</div>
-              <div class="lendo-stats">
-                <div class="lendo-stat"><span class="lendo-stat-val" style="color:var(--teal)">${dica.totalPag}</span><span class="lendo-stat-lbl">Total de páginas</span></div>
-                <div class="lendo-stat"><span class="lendo-stat-val" style="color:var(--yellow)">~${diasDica}</span><span class="lendo-stat-lbl">Dias para ler</span></div>
-              </div>
-            </div>
-          </div>
-          <div class="lendo-progress-wrap">
-            <div class="lendo-bar-bg"><div class="lendo-bar-fg" style="width:0%;background:var(--teal)"></div></div>
-            <span class="lendo-pct-label teal">Não iniciado</span>
-          </div>
-        </div>`;
-    }
-  }
+  renderLendoCards();
 
   // Atualiza rodapé com data de geração
   if (d.geradoEm) {
@@ -1245,6 +1169,102 @@ function atualizarVisaoGeral() {
   el('kpi-recorde-autor').textContent = recordeLivroDataVG?.autor || '';
 }
 window.atualizarVisaoGeral = atualizarVisaoGeral;
+
+function renderLendoCards() {
+  const d = window._dadosD;
+  if (!d) return;
+  const u = usuarioAtual === 'Batalha' ? 'Milton' : usuarioAtual;
+
+  // Filtra lendo/pausados/aguardando pelo usuário atual
+  const filterU = l => u === 'Milton'
+    ? (!l.usuario || l.usuario === '' || l.usuario.toUpperCase() === 'MILTON')
+    : l.usuario?.toUpperCase() === u.toUpperCase();
+
+  const lendoU   = (d.lendo   ||[]).filter(filterU);
+  const pausadosU = (d.pausados||[]).filter(filterU);
+  const aguardandoU = (d.aguardando||[]).filter(filterU);
+  const lendoAtual = [...lendoU, ...pausadosU];
+
+  // Calcula mediaParDia do usuário atual
+  const sessU = (window._sessoes||[]);
+  const diasMap = {};
+  sessU.forEach(s => { if(s.data) diasMap[s.data]=(diasMap[s.data]||0)+s.paginas; });
+  const diasVals = Object.values(diasMap);
+  const mediaParDia = diasVals.length ? diasVals.reduce((a,b)=>a+b,0)/diasVals.length : 50;
+
+  const agContainer = document.getElementById('lendo-cards');
+  agContainer.innerHTML = '';
+
+  if (lendoAtual.length === 0) {
+    agContainer.innerHTML = '<div class="lendo-card dica"><div class="lendo-tag">📖 Nenhum livro em andamento</div></div>';
+  } else {
+    lendoAtual.forEach(p => {
+      const isLendo = lendoU.includes(p);
+      const tag = isLendo ? '📖 Lendo' : '⏸️ Pausado';
+      const cor = isLendo ? 'var(--teal)' : 'var(--orange)';
+      const classe = isLendo ? 'lendo' : 'pausado';
+      const faltam = p.totalPag - p.pagAtual;
+      const diasRest = Math.ceil(faltam / (mediaParDia||66.8));
+      const pctVal = Math.round((p.pct||0)*100*10)/10;
+      const capLendo = coverImg(p.isbn, isLendo ? '📖' : '⏸️', '', p.coverUrl||'');
+      agContainer.innerHTML += `
+        <div class="lendo-card ${classe}">
+          <div class="lendo-tag">${tag}</div>
+          <div style="display:flex;gap:14px;align-items:flex-start;margin-bottom:10px;">
+            <div style="flex-shrink:0">${capLendo}</div>
+            <div style="flex:1;min-width:0">
+              <div class="lendo-book-title" style="margin-bottom:0">${p.livro}</div>
+              <div style="font-size:13px;color:var(--muted);margin-bottom:8px;">${p.autor||''}</div>
+              <div class="lendo-stats">
+                <div class="lendo-stat"><span class="lendo-stat-val" style="color:${cor}">${p.pagAtual}</span><span class="lendo-stat-lbl">Página atual</span></div>
+                <div class="lendo-stat"><span class="lendo-stat-val">${p.totalPag}</span><span class="lendo-stat-lbl">Total de páginas</span></div>
+                <div class="lendo-stat"><span class="lendo-stat-val" style="color:var(--yellow)">~${diasRest}</span><span class="lendo-stat-lbl">Dias para acabar</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="lendo-progress-wrap">
+            <div class="lendo-bar-bg"><div class="lendo-bar-fg" style="width:${Math.min(pctVal,100)}%;background:${cor}"></div></div>
+            <span class="lendo-pct-label" style="color:${cor}">${pctVal}%</span>
+          </div>
+          <div class="lendo-meta"><span>Faltam: <b>${faltam.toLocaleString('pt-BR')} páginas</b></span></div>
+        </div>`;
+    });
+  }
+
+  // Dica de leitura
+  const anoAtual = new Date().getFullYear().toString();
+  const livrosLidos = new Set((d.livros||[]).filter(filterU).map(l=>l.livro));
+  const ag = aguardandoU.filter(l => {
+    if (l.metaAno && parseInt(l.metaAno) > parseInt(anoAtual)) return false;
+    if (l.depende && !livrosLidos.has(l.depende.trim())) return false;
+    return true;
+  });
+  if (ag.length > 0) {
+    const dica = ag[Math.floor(Math.random()*ag.length)];
+    const diasDica = Math.ceil((dica.totalPag||200)/(mediaParDia||66.8));
+    const capDica = coverImg(dica.isbn, '💡', '', dica.coverUrl||'');
+    agContainer.innerHTML += `
+      <div class="lendo-card dica">
+        <div class="lendo-tag">💡 Dica de Leitura</div>
+        <div style="display:flex;gap:14px;align-items:flex-start;margin-bottom:10px;">
+          <div style="flex-shrink:0">${capDica}</div>
+          <div style="flex:1;min-width:0">
+            <div class="lendo-book-title" style="margin-bottom:0">${dica.livro}</div>
+            <div style="font-size:13px;color:var(--muted);margin-bottom:8px;">${dica.autor||''}</div>
+            <div class="lendo-stats">
+              <div class="lendo-stat"><span class="lendo-stat-val" style="color:var(--teal)">${dica.totalPag}</span><span class="lendo-stat-lbl">Total de páginas</span></div>
+              <div class="lendo-stat"><span class="lendo-stat-val" style="color:var(--yellow)">~${diasDica}</span><span class="lendo-stat-lbl">Dias para ler</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="lendo-progress-wrap">
+          <div class="lendo-bar-bg"><div class="lendo-bar-fg" style="width:0%;background:var(--teal)"></div></div>
+          <span class="lendo-pct-label teal">Não iniciado</span>
+        </div>
+      </div>`;
+  }
+}
+window.renderLendoCards = renderLendoCards;
 
 function renderizarGraficos(dados) {
   MONTHLY   = dados.MONTHLY;
@@ -2642,6 +2662,7 @@ function setUsuario(usuario) {
   document.getElementById('header-badge').textContent = `${livroMap.size} livros · ${sessoesFiltradas.length} sessões`;
 
   atualizarVisaoGeral();
+  renderLendoCards();
   if (typeof buildRanking === 'function') {
     buildRanking(); buildDonuts(); buildWd();
     buildLivrosMes(); buildStreaks(); buildHeatmap(); buildCalendar();
