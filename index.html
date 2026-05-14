@@ -2602,26 +2602,37 @@ function setUsuario(usuario) {
     return;
   }
 
-  // Filtra dados pelo usuário e re-renderiza
   const d = window._dadosD;
   if (!d) return;
 
+  // Milton = dados sem usuário (antigos) + dados marcados como Milton
+  // Daniel = APENAS dados explicitamente marcados como Daniel
   const todasSessoes = d.sessoes || [];
-  const sessoesFiltradas = todasSessoes.filter(s => !s.usuario || s.usuario === usuario);
+  const sessoesFiltradas = todasSessoes.filter(s =>
+    usuario === 'Milton' ? (!s.usuario || s.usuario === 'Milton') : s.usuario === usuario
+  );
 
   const todoLivros = [...(d.livros||[]), ...(d.lendo||[]), ...(d.pausados||[]), ...(d.aguardando||[])];
   const livroMap = new Map();
-  todoLivros.filter(l => !l.usuario || l.usuario === usuario)
+  todoLivros
+    .filter(l => usuario === 'Milton' ? (!l.usuario || l.usuario === 'Milton') : l.usuario === usuario)
     .forEach(l => { if (!livroMap.has(l.livro)) livroMap.set(l.livro, l); });
 
   window._sessoes = sessoesFiltradas;
   window._livros  = [...livroMap.values()];
 
-  // Atualiza header
-  const totalPags = sessoesFiltradas.reduce((s,r)=>s+r.paginas,0).toLocaleString('pt-BR');
+  // Atualiza livrosCache do PWA com livros do usuário atual
+  // (para que os modais de adicionar/avaliar/atualizar mostrem livros corretos)
+  livrosCache = [...livroMap.values()].map(l => ({
+    livro: l.livro, autor: l.autor || '', status: l.status,
+    isbn: l.isbn || '', coverUrl: l.coverUrl || '',
+    colecao: l.colecao || '', depende: l.depende || '',
+    ordemColecao: l.ordemColecao || 0, totalPag: l.totalPag || 0,
+    pagAtual: l.pagAtual || 0, metaAno: l.metaAno || '', usuario: l.usuario || usuario
+  }));
+
   document.getElementById('header-badge').textContent = `${livroMap.size} livros · ${sessoesFiltradas.length} sessões`;
 
-  // Re-renderiza tudo
   atualizarVisaoGeral();
   if (typeof buildRanking === 'function') {
     buildRanking(); buildDonuts(); buildWd();
