@@ -284,10 +284,25 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
   <div class="icon">📚</div>
   <div>
     <h1>Dashboard de Leitura</h1>
-    <p>Estatísticas completas · 2023–2026 · mai/2026</p>
+    <p id="header-sub">Estatísticas completas · 2023–2026 · mai/2026</p>
   </div>
-  <div style="display:flex;align-items:center;gap:10px;">
-    <div class="badge">59 livros · 1.017 sessões</div>
+  <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+    <!-- Seletor de usuário -->
+    <div style="display:flex;gap:4px;background:var(--bg3);border-radius:10px;padding:4px;">
+      <button id="btn-user-milton" onclick="setUsuario('Milton')"
+        style="padding:6px 14px;border-radius:7px;border:none;cursor:pointer;font-size:13px;font-weight:700;background:var(--purple);color:white;transition:all .2s;">
+        📖 Milton
+      </button>
+      <button id="btn-user-daniel" onclick="setUsuario('Daniel')"
+        style="padding:6px 14px;border-radius:7px;border:none;cursor:pointer;font-size:13px;font-weight:700;background:transparent;color:var(--muted);transition:all .2s;">
+        📖 Daniel
+      </button>
+      <button id="btn-user-batalha" onclick="setUsuario('Batalha')"
+        style="padding:6px 14px;border-radius:7px;border:none;cursor:pointer;font-size:13px;font-weight:700;background:transparent;color:var(--muted);transition:all .2s;">
+        ⚔️ Batalha
+      </button>
+    </div>
+    <div class="badge" id="header-badge">— livros · — sessões</div>
     <button onclick="toggleChangelog()" style="background:rgba(139,124,248,0.2);border:1px solid var(--purple);color:var(--purple);padding:6px 12px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;white-space:nowrap;">📋 v1.0</button>
   </div>
 </header>
@@ -317,7 +332,7 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
   ⏳ Carregando dados da planilha...
 </div>
 <div id="app" style="display:none">
-<div class="page">
+<div class="page" id="pageDashboard">
 
   <!-- ── 5. Meta + Heatmap ── -->
   <div class="sec">🎯 Meta de Leitura &amp; Heatmap</div>
@@ -738,6 +753,18 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
   </div>
 
 </div><!-- /page -->
+
+<!-- ── PÁGINA DE BATALHA ── -->
+<div class="page" id="pageBatalha" style="display:none;">
+  <div style="text-align:center;padding:40px 20px 20px;">
+    <div style="font-size:48px;margin-bottom:8px;">⚔️</div>
+    <h2 style="font-size:28px;font-weight:800;color:var(--text);margin-bottom:4px;">Batalha de Leitura</h2>
+    <p style="color:var(--muted);font-size:15px;">Milton vs Daniel</p>
+  </div>
+
+  <!-- Cards de duelo -->
+  <div id="batalhaContainer" style="display:flex;flex-direction:column;gap:16px;"></div>
+</div>
 </div><!-- /app -->
 
 <footer>Dados carregados do Google Sheets · Atualizado em: <span id="footer-data">—</span></footer>
@@ -2551,6 +2578,149 @@ carregarDados();
 @keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
 </style>
 <script>
+// ── Usuário ───────────────────────────────────────
+let usuarioAtual = 'Milton';
+
+function setUsuario(usuario) {
+  usuarioAtual = usuario;
+
+  // Atualiza botões
+  ['Milton','Daniel','Batalha'].forEach(u => {
+    const btn = document.getElementById('btn-user-' + u.toLowerCase());
+    const ativo = u === usuario;
+    btn.style.background = ativo ? (u === 'Batalha' ? '#e56cff' : 'var(--purple)') : 'transparent';
+    btn.style.color = ativo ? 'white' : 'var(--muted)';
+  });
+
+  // Alterna páginas
+  document.getElementById('pageDashboard').style.display = usuario === 'Batalha' ? 'none' : 'block';
+  document.getElementById('pageBatalha').style.display   = usuario === 'Batalha' ? 'block' : 'none';
+  document.querySelector('.fab').style.display           = usuario === 'Batalha' ? 'none' : 'flex';
+
+  if (usuario === 'Batalha') {
+    renderBatalha();
+    return;
+  }
+
+  // Filtra dados pelo usuário e re-renderiza
+  const d = window._dadosD;
+  if (!d) return;
+
+  const todasSessoes = d.sessoes || [];
+  const sessoesFiltradas = todasSessoes.filter(s => !s.usuario || s.usuario === usuario);
+
+  const todoLivros = [...(d.livros||[]), ...(d.lendo||[]), ...(d.pausados||[]), ...(d.aguardando||[])];
+  const livroMap = new Map();
+  todoLivros.filter(l => !l.usuario || l.usuario === usuario)
+    .forEach(l => { if (!livroMap.has(l.livro)) livroMap.set(l.livro, l); });
+
+  window._sessoes = sessoesFiltradas;
+  window._livros  = [...livroMap.values()];
+
+  // Atualiza header
+  const totalPags = sessoesFiltradas.reduce((s,r)=>s+r.paginas,0).toLocaleString('pt-BR');
+  document.getElementById('header-badge').textContent = `${livroMap.size} livros · ${sessoesFiltradas.length} sessões`;
+
+  // Re-renderiza tudo
+  atualizarVisaoGeral();
+  if (typeof buildRanking === 'function') {
+    buildRanking(); buildDonuts(); buildWd();
+    buildLivrosMes(); buildStreaks(); buildHeatmap(); buildCalendar();
+  }
+}
+
+function renderBatalha() {
+  const d = window._dadosD;
+  if (!d) return;
+
+  const usuarios = ['Milton', 'Daniel'];
+  const dados = {};
+
+  usuarios.forEach(u => {
+    const sess = (d.sessoes||[]).filter(s => !s.usuario || s.usuario === u);
+    const livros = [...(d.livros||[]), ...(d.lendo||[]), ...(d.pausados||[]), ...(d.aguardando||[])]
+      .filter(l => !l.usuario || l.usuario === u);
+    const lidos = livros.filter(l => l.status === 'Completo');
+
+    const diasSet = new Set(sess.map(s=>s.data).filter(Boolean));
+    const pagTotal = sess.reduce((a,s)=>a+s.paginas,0);
+    const media = diasSet.size > 0 ? Math.round(pagTotal/diasSet.size*10)/10 : 0;
+    const horas = Math.round(sess.reduce((a,s)=>a+(s.minutos||0),0)/60);
+
+    // Streak atual
+    const diasOrdem = [...diasSet].sort();
+    let streakAtual = 0;
+    if (diasOrdem.length) {
+      let d2 = new Date(); d2.setHours(12,0,0,0);
+      const hoje = d2.toISOString().slice(0,10);
+      const ontem = new Date(d2.getTime()-86400000).toISOString().slice(0,10);
+      if (diasSet.has(hoje) || diasSet.has(ontem)) {
+        let cur = diasSet.has(hoje) ? new Date(hoje+'T12:00:00') : new Date(ontem+'T12:00:00');
+        while (diasSet.has(cur.toISOString().slice(0,10))) {
+          streakAtual++;
+          cur = new Date(cur.getTime()-86400000);
+        }
+      }
+    }
+
+    // Nota média
+    const notas = (d.notas||[]).filter(n => !n.usuario || n.usuario === u);
+    const notaMedia = notas.length ? (notas.reduce((a,n)=>a+n.media,0)/notas.length).toFixed(1) : '—';
+
+    // Maior livro lido
+    const maiorLivro = lidos.sort((a,b)=>(b.totalPag||0)-(a.totalPag||0))[0];
+
+    dados[u] = { pagTotal, lidos: lidos.length, diasLidos: diasSet.size, media, horas, streakAtual, notaMedia, maiorLivro, sessoes: sess.length };
+  });
+
+  const duelos = [
+    { icon:'📄', label:'Páginas lidas', key:'pagTotal', fmt: v=>v.toLocaleString('pt-BR'), maior:true },
+    { icon:'✅', label:'Livros concluídos', key:'lidos', fmt: v=>v, maior:true },
+    { icon:'📅', label:'Dias de leitura', key:'diasLidos', fmt: v=>v, maior:true },
+    { icon:'⚡', label:'Média págs/dia', key:'media', fmt: v=>v, maior:true },
+    { icon:'🕐', label:'Horas lidas', key:'horas', fmt: v=>v+'h', maior:true },
+    { icon:'🔥', label:'Streak atual', key:'streakAtual', fmt: v=>v+' dias', maior:true },
+    { icon:'⭐', label:'Nota média', key:'notaMedia', fmt: v=>v, maior:true },
+    { icon:'📖', label:'Sessões registradas', key:'sessoes', fmt: v=>v, maior:true },
+  ];
+
+  const container = document.getElementById('batalhaContainer');
+  container.innerHTML = duelos.map(d => {
+    const vM = dados.Milton[d.key];
+    const vD = dados.Daniel[d.key];
+    const numM = parseFloat(vM) || 0;
+    const numD = parseFloat(vD) || 0;
+    const vencedor = numM > numD ? 'Milton' : numD > numM ? 'Daniel' : null;
+    const pctM = (numM + numD) > 0 ? Math.round(numM/(numM+numD)*100) : 50;
+    const pctD = 100 - pctM;
+
+    return `<div style="background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:20px;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+        <span style="font-size:22px;">${d.icon}</span>
+        <span style="font-size:16px;font-weight:700;color:var(--text);">${d.label}</span>
+        ${vencedor ? `<span style="margin-left:auto;font-size:12px;background:rgba(139,124,248,0.2);color:var(--purple);padding:2px 10px;border-radius:6px;font-weight:700;">🏆 ${vencedor}</span>` : '<span style="margin-left:auto;font-size:12px;color:var(--muted);">Empate</span>'}
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+        <span style="font-size:13px;font-weight:700;color:var(--purple);min-width:60px;">Milton</span>
+        <div style="flex:1;height:28px;background:var(--bg3);border-radius:8px;overflow:hidden;display:flex;">
+          <div style="width:${pctM}%;background:${vencedor==='Milton'?'var(--purple)':'var(--bg4)'};border-radius:8px;transition:width .5s;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;">
+            <span style="font-size:12px;font-weight:700;color:white;">${d.fmt(vM)}</span>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <span style="font-size:13px;font-weight:700;color:#f88c6a;min-width:60px;">Daniel</span>
+        <div style="flex:1;height:28px;background:var(--bg3);border-radius:8px;overflow:hidden;display:flex;">
+          <div style="width:${pctD}%;background:${vencedor==='Daniel'?'#f88c6a':'var(--bg4)'};border-radius:8px;transition:width .5s;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;">
+            <span style="font-size:12px;font-weight:700;color:white;">${d.fmt(vD)}</span>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+window.setUsuario = setUsuario;
+
 // ── Changelog ────────────────────────────────────
 const CHANGELOG = [
   {
