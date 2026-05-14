@@ -286,8 +286,25 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
     <h1>Dashboard de Leitura</h1>
     <p>Estatísticas completas · 2023–2026 · mai/2026</p>
   </div>
-  <div class="badge">59 livros · 1.017 sessões</div>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <div class="badge">59 livros · 1.017 sessões</div>
+    <button onclick="toggleChangelog()" style="background:rgba(139,124,248,0.2);border:1px solid var(--purple);color:var(--purple);padding:6px 12px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;white-space:nowrap;">📋 v1.0</button>
+  </div>
 </header>
+
+<!-- Modal Changelog -->
+<div id="changelogOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:3000;align-items:center;justify-content:center;">
+  <div style="background:var(--bg2);border-radius:16px;padding:24px;width:90%;max-width:600px;max-height:80vh;overflow-y:auto;position:relative;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+      <div>
+        <h2 style="font-size:20px;font-weight:700;color:var(--text);margin:0;">📋 Notas de Atualização</h2>
+        <p style="font-size:13px;color:var(--muted);margin:4px 0 0;">Dashboard de Leitura</p>
+      </div>
+      <button onclick="toggleChangelog()" style="background:var(--bg3);border:none;color:var(--muted);width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:18px;">✕</button>
+    </div>
+    <div id="changelogList"></div>
+  </div>
+</div>
 
 <div class="lendo-wrap">
   <div class="lendo-inner" id="lendo-cards">
@@ -2534,7 +2551,54 @@ carregarDados();
 @keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
 </style>
 <script>
-// ── Lista de livros por status ──────────────────
+// ── Changelog ────────────────────────────────────
+const CHANGELOG = [
+  {
+    versao: '1.0', data: '14/05/2026', titulo: 'Lançamento — Projeto Final V1',
+    itens: [
+      'Dashboard completo com Meta de Leitura, Visão Geral, Rankings e Gráficos',
+      'Calendário de Leitura e Mapa de Calor Anual',
+      'Sequências de Leitura com streak atual e recorde',
+      'Coleções Favoritas e Autores Favoritos com 4 modos de visualização',
+      'Ranking por Notas com 10 critérios de avaliação',
+      'Lista de livros por status (Concluídos, Lendo, Pausados, Aguardando, Todos)',
+      'Filtros por ordem da coleção, A-Z, páginas e coleção específica',
+      'Botões PWA: Adicionar, Registrar Sessão, Avaliar, Atualizar, Roleta, Excluir',
+      'Roleta de Leitura com filtro de dependências e meta do ano',
+      'Busca por texto em todos os modais de seleção de livro',
+      'Capas com zoom via hover e cascata Amazon → Open Library',
+      'Suporte mobile com layout responsivo',
+    ]
+  }
+];
+
+function toggleChangelog() {
+  const overlay = document.getElementById('changelogOverlay');
+  const isOpen = overlay.style.display === 'flex';
+  if (isOpen) { overlay.style.display = 'none'; return; }
+
+  // Renderiza changelog
+  const lista = document.getElementById('changelogList');
+  lista.innerHTML = CHANGELOG.map(c => `
+    <div style="margin-bottom:24px;border-left:3px solid var(--purple);padding-left:16px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+        <span style="background:var(--purple);color:white;padding:3px 10px;border-radius:6px;font-size:13px;font-weight:700;">v${c.versao}</span>
+        <span style="font-size:13px;color:var(--muted);">${c.data}</span>
+        <span style="font-size:15px;font-weight:700;color:var(--text);">${c.titulo}</span>
+      </div>
+      <ul style="margin:0;padding-left:18px;display:flex;flex-direction:column;gap:5px;">
+        ${c.itens.map(i => `<li style="font-size:14px;color:var(--muted);">${i}</li>`).join('')}
+      </ul>
+    </div>
+  `).join('');
+
+  overlay.style.display = 'flex';
+}
+
+// Fecha ao clicar no overlay
+document.getElementById('changelogOverlay').addEventListener('click', e => {
+  if (e.target.id === 'changelogOverlay') toggleChangelog();
+});
 let statusAtual = null;
 let livrosStatusAtual = [];
 
