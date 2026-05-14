@@ -3441,8 +3441,8 @@ async function enviarSessao() {
   const livro = document.getElementById('s-livro').value;
   const paginas = document.getElementById('s-paginas').value;
   const dataRaw = document.getElementById('s-data').value; // yyyy-MM-dd
-  const partes = dataRaw.split('-'); // ['2026','05','14']
-  const dataFormatada = partes[2] + '/' + partes[1] + '/' + partes[0]; // 14/05/2026
+  const partes = dataRaw.split('-');
+  const dataTexto = partes[2] + '/' + partes[1] + '/' + partes[0]; // 14/05/2026
   if (!livro || !paginas) { mostrarMsg('s-msg', 'Preencha o livro e as páginas!', 'err'); return; }
 
   btn.disabled = true;
@@ -3453,7 +3453,7 @@ async function enviarSessao() {
       body: JSON.stringify({
         acao: 'registrarSessao',
         livro,
-        data:     dataFormatada,
+        data:     dataTexto,
         paginas:  Number(paginas),
         horas:    Number(document.getElementById('s-horas').value) || 0,
         minutos:  Number(document.getElementById('s-minutos').value) || 0,
