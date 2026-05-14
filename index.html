@@ -1728,7 +1728,8 @@ let _bookChart = null;
 function filtrarSelBook(termo) {
   const lista = document.getElementById('selBookLista');
   const statusOrder = {'Lendo':0,'Pausado':1,'Completo':2,'Aguardando':3};
-  const livrosFiltrados = [...(window._livros||[])]
+  const base = (window._livros && window._livros.length > 0 ? window._livros : livrosCache);
+  const livrosFiltrados = [...base]
     .filter(l => !termo || l.livro.toLowerCase().includes(termo.toLowerCase()))
     .sort((a,b) => {
       const sa = statusOrder[a.status]??9, sb = statusOrder[b.status]??9;
@@ -3196,14 +3197,39 @@ function popularSelects() {
   }
 }
 
+function filtrarLivrosSessao(termo) {
+  const lista = document.getElementById('s-livro-lista');
+  // Usa window._livros (já filtrado por usuário) como fonte principal
+  const pool = (window._livros && window._livros.length > 0 ? window._livros : livrosCache)
+    .filter(l => l.status !== 'Completo'); // sessão só para livros não concluídos
+  const filtrados = pool.filter(l => !termo || l.livro.toLowerCase().includes(termo.toLowerCase())).slice(0, 15);
+
+  if (!termo || !filtrados.length) { lista.style.display = 'none'; return; }
+  lista.style.display = 'block';
+  lista.innerHTML = '';
+  filtrados.forEach(l => {
+    const icon = l.status==='Lendo'?'📖':l.status==='Pausado'?'⏸️':'📋';
+    const item = document.createElement('div');
+    item.style.cssText = 'padding:10px 14px;cursor:pointer;font-size:14px;border-bottom:1px solid var(--border);';
+    item.textContent = icon + ' ' + l.livro;
+    item.onmouseenter = () => item.style.background = 'var(--bg4)';
+    item.onmouseleave = () => item.style.background = '';
+    item.addEventListener('mousedown', e => { e.preventDefault(); selecionarLivroSessao(l); });
+    item.addEventListener('touchstart', e => { e.preventDefault(); selecionarLivroSessao(l); }, {passive:false});
+    lista.appendChild(item);
+  });
+}
+window.filtrarLivrosSessao = filtrarLivrosSessao;
+
 function filtrarSelect(buscaId, hiddenId, filtro) {
   const termo = document.getElementById(buscaId).value.toLowerCase();
   const listaId = buscaId.replace('-busca', '-lista');
   const lista = document.getElementById(listaId);
 
-  let pool = livrosCache;
-  if (filtro === 'completo') pool = livrosCache.filter(l => l.status === 'Completo');
-  // 'todos' = todos os livros sem filtro
+  // Usa window._livros como fonte principal (já filtrado por usuário)
+  const base = (window._livros && window._livros.length > 0 ? window._livros : livrosCache);
+  let pool = base;
+  if (filtro === 'completo') pool = base.filter(l => l.status === 'Completo');
 
   const filtrados = pool.filter(l => !termo || l.livro.toLowerCase().includes(termo)).slice(0, 15);
 
