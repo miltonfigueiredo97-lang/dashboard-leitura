@@ -3564,7 +3564,6 @@ function preencherDadosLivro(nome) {
     }
   }
   const set = (id, val) => { const el = document.getElementById(id); if(el) el.value = val || ''; };
-  set('l-pagina',  l.pagAtual);
   set('l-autor',   l.autor);
   set('l-paginas', l.totalPag);
   set('l-metaano', l.metaAno);
@@ -3581,7 +3580,6 @@ async function enviarLivro() {
 
   const body = { acao: 'atualizarLivro', livro };
   const status  = document.getElementById('l-status').value;
-  const pagina  = document.getElementById('l-pagina').value;
   const autor   = document.getElementById('l-autor').value.trim();
   const paginas = document.getElementById('l-paginas').value;
   const metaAno = document.getElementById('l-metaano').value;
@@ -3591,7 +3589,6 @@ async function enviarLivro() {
   const isbn    = document.getElementById('l-isbn').value.trim();
 
   if (status)  body.status  = status;
-  if (pagina)  body.pagAtual = Number(pagina);
   if (autor)   body.autor   = autor;
   if (paginas) body.paginas = Number(paginas);
   if (metaAno) body.metaAno = metaAno;
