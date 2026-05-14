@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-14T18:05:59.083Z",
+  "geradoEm": "2026-05-14T18:06:50.808Z",
   "meta": {
     "total": 26,
     "lidos": 6,
@@ -55,15 +55,15 @@
       "dataPrevistoAtual": "—"
     },
     "AINDA NÃO DEFINIDO": {
-      "total": 278,
+      "total": 279,
       "lidos": 67,
       "lendo": 0,
       "pausados": 0,
-      "aguardando": 211,
-      "paginasTotal": 130830,
+      "aguardando": 212,
+      "paginasTotal": 131130,
       "paginasLidas": 26309,
-      "paginasFaltando": 104521,
-      "faltando": 211,
+      "paginasFaltando": 104821,
+      "faltando": 212,
       "mediaDiaria": 50,
       "ritmoAtual": 0,
       "dataPrevistoAtual": "—"
@@ -14439,6 +14439,22 @@
       "pagAtual": 0,
       "pct": 0,
       "usuario": "MILTON"
+    },
+    {
+      "livro": "abcde",
+      "autor": "a",
+      "isbn": "",
+      "coverUrl": "https://m.media-amazon.com/images/I/61-AuecLDjL._AC_UF1000,1000_QL80_.jpg",
+      "metaAno": "AINDA NÃO DEFINIDO",
+      "depende": "",
+      "colecao": "a",
+      "ordemColecao": 0,
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 300,
+      "pagAtual": 0,
+      "pct": 0,
+      "usuario": "Daniel"
     }
   ],
   "pausados": [
@@ -18189,6 +18205,22 @@
       "pagAtual": 0,
       "pct": 0,
       "usuario": "MILTON"
+    },
+    {
+      "livro": "abcde",
+      "autor": "a",
+      "isbn": "",
+      "coverUrl": "https://m.media-amazon.com/images/I/61-AuecLDjL._AC_UF1000,1000_QL80_.jpg",
+      "metaAno": "AINDA NÃO DEFINIDO",
+      "depende": "",
+      "colecao": "a",
+      "ordemColecao": 0,
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 300,
+      "pagAtual": 0,
+      "pct": 0,
+      "usuario": "Daniel"
     }
   ],
   "notas": [
