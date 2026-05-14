@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-14T12:20:06.256Z",
+  "geradoEm": "2026-05-14T12:20:23.053Z",
   "meta": {
     "total": 26,
     "lidos": 6,
@@ -69,15 +69,15 @@
       "dataPrevistoAtual": "—"
     },
     "AINDA NÃO DEFINIDO": {
-      "total": 280,
+      "total": 281,
       "lidos": 67,
       "lendo": 0,
       "pausados": 0,
-      "aguardando": 213,
+      "aguardando": 214,
       "paginasTotal": 130830,
       "paginasLidas": 26309,
       "paginasFaltando": 104521,
-      "faltando": 213,
+      "faltando": 214,
       "mediaDiaria": 50,
       "ritmoAtual": 0,
       "dataPrevistoAtual": "—"
@@ -13632,6 +13632,21 @@
       "totalPag": 0,
       "pagAtual": 0,
       "pct": 0
+    },
+    {
+      "livro": "XXX",
+      "autor": "AAA",
+      "isbn": "",
+      "coverUrl": "",
+      "metaAno": "AINDA NÃO DEFINIDO",
+      "depende": "",
+      "colecao": "YYY",
+      "ordemColecao": 0,
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 0,
+      "pagAtual": 0,
+      "pct": 0
     }
   ],
   "pausados": [
@@ -17202,6 +17217,21 @@
       "metaAno": "AINDA NÃO DEFINIDO",
       "depende": "",
       "colecao": "xxx",
+      "ordemColecao": 0,
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 0,
+      "pagAtual": 0,
+      "pct": 0
+    },
+    {
+      "livro": "XXX",
+      "autor": "AAA",
+      "isbn": "",
+      "coverUrl": "",
+      "metaAno": "AINDA NÃO DEFINIDO",
+      "depende": "",
+      "colecao": "YYY",
       "ordemColecao": 0,
       "ordem": 0,
       "status": "Aguardando",
