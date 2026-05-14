@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-14T21:13:41.230Z",
+  "geradoEm": "2026-05-14T21:15:49.916Z",
   "meta": {
     "total": 26,
     "lidos": 6,
@@ -61,8 +61,8 @@
       "pausados": 0,
       "aguardando": 211,
       "paginasTotal": 130930,
-      "paginasLidas": 26609,
-      "paginasFaltando": 104321,
+      "paginasLidas": 26619,
+      "paginasFaltando": 104311,
       "faltando": 212,
       "mediaDiaria": 50,
       "ritmoAtual": 0,
@@ -9303,6 +9303,15 @@
       "minutos": 60,
       "ano": 1969,
       "usuario": "Daniel"
+    },
+    {
+      "livro": "abcde",
+      "colecao": "a",
+      "data": "1969-12-31",
+      "paginas": 10,
+      "minutos": 0,
+      "ano": 1969,
+      "usuario": "Daniel"
     }
   ],
   "livros": [
@@ -14470,8 +14479,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 100,
-      "pagAtual": 300,
-      "pct": 3,
+      "pagAtual": 310,
+      "pct": 3.1,
       "usuario": "Daniel"
     }
   ],
@@ -14522,8 +14531,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 100,
-      "pagAtual": 300,
-      "pct": 3,
+      "pagAtual": 310,
+      "pct": 3.1,
       "usuario": "Daniel"
     }
   ],
