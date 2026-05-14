@@ -2665,6 +2665,16 @@ carregarDados();
       <div id="l-livro-sel" style="display:none;margin-top:6px;padding:6px 12px;background:rgba(139,124,248,0.15);border-radius:8px;font-size:13px;color:var(--teal);cursor:pointer;" onclick="limparBuscaSelect('l'); document.getElementById('l-livro').value='';"></div>
     </div>
     <div class="pwa-field">
+      <label>Status</label>
+      <select id="l-status" style="width:100%;padding:10px;background:var(--bg3);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:14px;">
+        <option value="">Não alterar</option>
+        <option value="Completo">✅ Completo</option>
+        <option value="Lendo">📖 Lendo</option>
+        <option value="Pausado">⏸️ Pausado</option>
+        <option value="Aguardando">📋 Aguardando</option>
+      </select>
+    </div>
+    <div class="pwa-field">
       <label>Página atual</label>
       <input id="l-pagina" type="number" min="0" placeholder="Deixe vazio para não alterar">
     </div>
@@ -3512,19 +3522,22 @@ function preencherDadosLivro(nome) {
   const pool = (livrosCache.length > 0 ? livrosCache : window._livros) || [];
   const l = pool.find(x => x.livro === nome);
   if (!l) return;
-  // Preenche campos com dados atuais
   const statusEl = document.getElementById('l-status');
-  for (let i = 0; i < statusEl.options.length; i++) {
-    if (statusEl.options[i].value === l.status) { statusEl.selectedIndex = i; break; }
+  if (statusEl) {
+    statusEl.value = '';
+    for (let i = 0; i < statusEl.options.length; i++) {
+      if (statusEl.options[i].value === l.status) { statusEl.selectedIndex = i; break; }
+    }
   }
-  document.getElementById('l-pagina').value  = l.pagAtual || '';
-  document.getElementById('l-autor').value   = l.autor    || '';
-  document.getElementById('l-paginas').value = l.totalPag || '';
-  document.getElementById('l-metaano').value = l.metaAno  || '';
-  document.getElementById('l-ordem').value   = l.ordem    || '';
-  document.getElementById('l-depende').value = l.depende  || '';
-  document.getElementById('l-capa').value    = l.coverUrl || '';
-  document.getElementById('l-isbn').value    = l.isbn     || '';
+  const set = (id, val) => { const el = document.getElementById(id); if(el) el.value = val || ''; };
+  set('l-pagina',  l.pagAtual);
+  set('l-autor',   l.autor);
+  set('l-paginas', l.totalPag);
+  set('l-metaano', l.metaAno);
+  set('l-ordem',   l.ordemColecao || l.ordem);
+  set('l-depende', l.depende);
+  set('l-capa',    l.coverUrl);
+  set('l-isbn',    l.isbn);
 }
 
 async function enviarLivro() {
