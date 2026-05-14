@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-14T22:16:28.640Z",
+  "geradoEm": "2026-05-14T22:18:10.061Z",
   "meta": {
-    "total": 26,
+    "total": 27,
     "lidos": 6,
-    "faltando": 20,
-    "paginasTotal": 14793,
-    "paginasLidas": 3765,
-    "paginasFaltando": 11028,
+    "faltando": 21,
+    "paginasTotal": 14893,
+    "paginasLidas": 4085,
+    "paginasFaltando": 10808,
     "mediaDiaria": 54.9,
     "ritmoAtual": 44,
-    "dataPrevistoAtual": "20/01/2027"
+    "dataPrevistoAtual": "15/01/2027"
   },
   "metasPorAno": {
     "2025": {
@@ -27,18 +27,18 @@
       "dataPrevistoAtual": "—"
     },
     "2026": {
-      "total": 26,
+      "total": 27,
       "lidos": 6,
-      "lendo": 1,
+      "lendo": 2,
       "pausados": 0,
       "aguardando": 19,
-      "paginasTotal": 14793,
-      "paginasLidas": 3765,
-      "paginasFaltando": 11028,
-      "faltando": 20,
+      "paginasTotal": 14893,
+      "paginasLidas": 4085,
+      "paginasFaltando": 10808,
+      "faltando": 21,
       "mediaDiaria": 54.9,
       "ritmoAtual": 44,
-      "dataPrevistoAtual": "20/01/2027"
+      "dataPrevistoAtual": "15/01/2027"
     },
     "PAUSADO": {
       "total": 1,
@@ -55,15 +55,15 @@
       "dataPrevistoAtual": "—"
     },
     "AINDA NÃO DEFINIDO": {
-      "total": 279,
+      "total": 278,
       "lidos": 67,
-      "lendo": 1,
+      "lendo": 0,
       "pausados": 0,
       "aguardando": 211,
-      "paginasTotal": 130930,
-      "paginasLidas": 26629,
-      "paginasFaltando": 104301,
-      "faltando": 212,
+      "paginasTotal": 130830,
+      "paginasLidas": 26309,
+      "paginasFaltando": 104521,
+      "faltando": 211,
       "mediaDiaria": 50,
       "ritmoAtual": 0,
       "dataPrevistoAtual": "—"
@@ -14481,7 +14481,7 @@
       "autor": "sa",
       "isbn": "",
       "coverUrl": "",
-      "metaAno": "AINDA NÃO DEFINIDO",
+      "metaAno": "2026",
       "depende": "",
       "colecao": "a",
       "ordemColecao": 0,
@@ -14533,7 +14533,7 @@
       "autor": "sa",
       "isbn": "",
       "coverUrl": "",
-      "metaAno": "AINDA NÃO DEFINIDO",
+      "metaAno": "2026",
       "depende": "",
       "colecao": "a",
       "ordemColecao": 0,
