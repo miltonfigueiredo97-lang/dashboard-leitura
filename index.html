@@ -446,7 +446,7 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
     </div>
   </div>
   <!-- Painel lista de livros por status -->
-  <div id="painelStatus" style="display:none;background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:16px;">
+  <div id="painelStatus" style="display:none;background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:16px;overflow:visible;">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
       <div id="painelStatusTitulo" style="font-size:16px;font-weight:700;color:var(--text)"></div>
       <button onclick="toggleListaStatus(null)" style="background:var(--bg3);border:none;color:var(--muted);width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:16px;">✕</button>
@@ -465,7 +465,7 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
       </select>
       <span id="ps-count" style="font-size:12px;color:var(--muted);margin-left:auto;"></span>
     </div>
-    <div id="painelStatusLista" style="display:flex;flex-direction:column;gap:8px;max-height:450px;overflow-y:auto;"></div>
+    <div id="painelStatusLista" style="display:flex;flex-direction:column;gap:8px;max-height:450px;overflow-y:auto;overflow-x:visible;"></div>
   </div>
 
   <div class="grid4" style="margin-bottom:16px;">
@@ -2565,9 +2565,11 @@ function renderListaStatus() {
   const colFil = document.getElementById('ps-colecao').value;
   const sess   = window._sessoes || [];
 
-  // Enriquece com coleção — busca em múltiplas fontes
-  const getCol = (l) => l.colecao || (window._sessoes||[]).find(s=>s.livro===l.livro)?.colecao || '';
-  let livros = livrosStatusAtual.map(l => ({ ...l, colecaoReal: getCol(l) }));
+  // Enriquece com coleção e ordemColecao — vem do JSON via window._livros
+  const livrosMap = new Map((window._livros||[]).map(l => [l.livro, l]));
+  const getCol = (l) => l.colecao || livrosMap.get(l.livro)?.colecao || (window._sessoes||[]).find(s=>s.livro===l.livro)?.colecao || '';
+  const getOrdem = (l) => l.ordemColecao > 0 ? l.ordemColecao : (livrosMap.get(l.livro)?.ordemColecao || 0);
+  let livros = livrosStatusAtual.map(l => ({ ...l, colecaoReal: getCol(l), ordemReal: getOrdem(l) }));
 
   // Filtro coleção
   if (colFil) livros = livros.filter(l => l.colecaoReal === colFil);
@@ -2584,9 +2586,8 @@ function renderListaStatus() {
       if (!cA && cB) return 1;
       if (cA && !cB) return -1;
       if (cA !== cB) return cA.localeCompare(cB, 'pt-BR');
-      // ordemColecao: 0 ou undefined = sem ordem definida, vai para o final
-      const oA = a.ordemColecao > 0 ? a.ordemColecao : 9999;
-      const oB = b.ordemColecao > 0 ? b.ordemColecao : 9999;
+      const oA = a.ordemReal > 0 ? a.ordemReal : 9999;
+      const oB = b.ordemReal > 0 ? b.ordemReal : 9999;
       return oA - oB;
     }
     return 0;
