@@ -819,6 +819,12 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
         <option value="Milton">Milton</option>
       </select>
     </div>
+    <div style="display:flex;align-items:center;gap:8px;background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:8px 14px;">
+      <span style="font-size:12px;color:var(--muted);">⚔️ Season</span>
+      <select id="bat-ano" onchange="renderBatalha()" style="background:transparent;border:none;color:var(--text);font-weight:700;font-size:14px;cursor:pointer;outline:none;">
+        <option value="total">Todos os anos</option>
+      </select>
+    </div>
   </div>
 
   <div id="batalhaContainer"></div>
@@ -2935,16 +2941,33 @@ function renderBatalha() {
 
   const pA = document.getElementById('bat-playerA')?.value || 'Milton';
   const pB = document.getElementById('bat-playerB')?.value || 'Daniel';
+  const anoFiltro = document.getElementById('bat-ano')?.value || 'total';
   const CA = '#8b7cf8', CB = '#f88c6a';
+
+  // Popula seletor de anos com os anos disponíveis
+  const selAno = document.getElementById('bat-ano');
+  if (selAno && selAno.options.length <= 1) {
+    const anosDisp = [...new Set((d.sessoes||[]).map(s=>s.ano).filter(a=>a>2000))].sort();
+    anosDisp.forEach(a => {
+      const opt = document.createElement('option');
+      opt.value = a; opt.textContent = '⚔️ Season ' + a;
+      selAno.appendChild(opt);
+    });
+    if (anoFiltro !== 'total') selAno.value = anoFiltro;
+  }
 
   function calcDados(u) {
     const filterU = l => u === 'Milton'
       ? (!l.usuario || l.usuario === '' || l.usuario.toUpperCase() === 'MILTON')
       : l.usuario?.toUpperCase() === u.toUpperCase();
-    const sess  = (d.sessoes||[]).filter(filterU);
+    const sess  = (d.sessoes||[]).filter(filterU).filter(s => anoFiltro === 'total' || String(s.ano) === String(anoFiltro));
     const todos = [...(d.livros||[]),...(d.lendo||[]),...(d.pausados||[]),...(d.aguardando||[])].filter(filterU);
-    const lidos = todos.filter(l=>l.status==='Completo');
-    const notas = (d.notas||[]).filter(filterU);
+    const lidos = todos.filter(l=>l.status==='Completo').filter(l => {
+      if (anoFiltro === 'total') return true;
+      // filtra livros concluídos no ano selecionado (verificando sessões)
+      return sess.some(s => s.livro === l.livro);
+    });
+    const notas = (d.notas||[]).filter(filterU).filter(n => anoFiltro === 'total' || String(n.ano) === String(anoFiltro));
     const diasSet = new Set(sess.map(s=>s.data).filter(Boolean));
     const pagTotal = sess.reduce((a,s)=>a+s.paginas,0);
     const horas = Math.round(sess.reduce((a,s)=>a+(s.minutos||0),0)/60);
@@ -3072,7 +3095,7 @@ function renderBatalha() {
 <div style="text-align:center;padding:8px 0 20px;">
   <div style="font-size:10px;letter-spacing:4px;color:var(--muted);text-transform:uppercase;margin-bottom:4px;">Battle of Readers</div>
   <div style="font-family:'Orbitron',sans-serif;font-size:clamp(22px,5vw,36px);font-weight:900;background:linear-gradient(135deg,${CA},#fff,${CB});-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1;">BATALHA DE LEITORES</div>
-  <div style="display:inline-block;background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:4px 16px;font-size:11px;color:var(--muted);letter-spacing:2px;margin-top:6px;">⚔️ SEASON ${new Date().getFullYear()}</div>
+  <div style="display:inline-block;background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:4px 16px;font-size:11px;color:var(--muted);letter-spacing:2px;margin-top:6px;">⚔️ ${anoFiltro === 'total' ? 'TODOS OS ANOS' : 'SEASON ' + anoFiltro}</div>
 </div>
 
 <!-- HERO VS -->
