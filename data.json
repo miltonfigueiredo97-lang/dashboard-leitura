@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-14T22:48:46.602Z",
+  "geradoEm": "2026-05-15T01:16:46.417Z",
   "meta": {
-    "total": 27,
+    "total": 26,
     "lidos": 6,
-    "faltando": 21,
-    "paginasTotal": 15343,
-    "paginasLidas": 4145,
-    "paginasFaltando": 11198,
+    "faltando": 20,
+    "paginasTotal": 14793,
+    "paginasLidas": 3825,
+    "paginasFaltando": 10968,
     "mediaDiaria": 55.1,
     "ritmoAtual": 44.8,
-    "dataPrevistoAtual": "19/01/2027"
+    "dataPrevistoAtual": "14/01/2027"
   },
   "metasPorAno": {
     "2024": {
@@ -41,18 +41,18 @@
       "dataPrevistoAtual": "—"
     },
     "2026": {
-      "total": 27,
+      "total": 26,
       "lidos": 6,
-      "lendo": 2,
+      "lendo": 1,
       "pausados": 0,
       "aguardando": 19,
-      "paginasTotal": 15343,
-      "paginasLidas": 4145,
-      "paginasFaltando": 11198,
-      "faltando": 21,
+      "paginasTotal": 14793,
+      "paginasLidas": 3825,
+      "paginasFaltando": 10968,
+      "faltando": 20,
       "mediaDiaria": 55.1,
       "ritmoAtual": 44.8,
-      "dataPrevistoAtual": "19/01/2027"
+      "dataPrevistoAtual": "14/01/2027"
     },
     "PAUSADO": {
       "total": 2,
@@ -14990,22 +14990,6 @@
       "pagAtual": 0,
       "pct": 0,
       "usuario": "MILTON"
-    },
-    {
-      "livro": "abcde",
-      "autor": "sa",
-      "isbn": "",
-      "coverUrl": "",
-      "metaAno": "2026",
-      "depende": "",
-      "colecao": "a",
-      "ordemColecao": 0,
-      "ordem": 0,
-      "status": "Lendo",
-      "totalPag": 550,
-      "pagAtual": 320,
-      "pct": 0.582,
-      "usuario": "Daniel"
     }
   ],
   "pausados": [
@@ -15058,22 +15042,6 @@
       "pagAtual": 338,
       "pct": 0.527,
       "usuario": "MILTON"
-    },
-    {
-      "livro": "abcde",
-      "autor": "sa",
-      "isbn": "",
-      "coverUrl": "",
-      "metaAno": "2026",
-      "depende": "",
-      "colecao": "a",
-      "ordemColecao": 0,
-      "ordem": 0,
-      "status": "Lendo",
-      "totalPag": 550,
-      "pagAtual": 320,
-      "pct": 0.582,
-      "usuario": "Daniel"
     }
   ],
   "aguardando": [
