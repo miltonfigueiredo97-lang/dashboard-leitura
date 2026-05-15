@@ -7,7 +7,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Leitura">
-<link rel="manifest" href="/manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
 <title>📚 Dashboard de Leitura</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
@@ -281,6 +282,34 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
 .bat-medal::after { content:attr(data-tip);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:#1e2535;color:#e2e8f0;padding:7px 12px;border-radius:8px;font-size:11px;font-weight:400;white-space:nowrap;border:1px solid #2a3248;z-index:9999;pointer-events:none;box-shadow:0 4px 16px rgba(0,0,0,0.5);opacity:0;transition:opacity .15s; }
 .bat-medal::before { content:"";position:absolute;bottom:calc(100% + 3px);left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:#2a3248;z-index:9999;opacity:0;transition:opacity .15s; }
 .bat-medal:hover::after, .bat-medal:hover::before { opacity:1; }
+/* ═══ BATALHA V3 EPIC ═══ */
+.bat-section-hdr { font-family:'Orbitron',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;color:var(--muted);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);text-transform:uppercase; }
+.bat-conquista { display:flex;flex-direction:column;align-items:center;gap:5px;cursor:default;position:relative;flex:1;min-width:70px; }
+.bat-conquista-icon { width:68px;height:68px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;position:relative;transition:transform .2s,box-shadow .2s; }
+.bat-conquista-icon:hover { transform:scale(1.12); }
+.bat-conquista-icon::after { content:'';position:absolute;top:5px;left:13px;width:14px;height:7px;background:rgba(255,255,255,0.18);border-radius:50%;transform:rotate(-30deg);pointer-events:none; }
+.bat-cq-gold   { background:radial-gradient(circle at 35% 35%,#2a2010,#0d0d0a);border:2px solid #b8960c;box-shadow:0 0 20px rgba(184,150,12,0.5),inset 0 1px 0 rgba(255,215,0,0.2); }
+.bat-cq-purple { background:radial-gradient(circle at 35% 35%,#1a1530,#0d0d1a);border:2px solid #8b7cf8;box-shadow:0 0 20px rgba(139,124,248,0.5),inset 0 1px 0 rgba(139,124,248,0.2); }
+.bat-cq-teal   { background:radial-gradient(circle at 35% 35%,#0a2020,#0d0d1a);border:2px solid #4ecdc4;box-shadow:0 0 18px rgba(78,205,196,0.4),inset 0 1px 0 rgba(78,205,196,0.2); }
+.bat-cq-orange { background:radial-gradient(circle at 35% 35%,#2a1810,#0d0d1a);border:2px solid #f88c6a;box-shadow:0 0 18px rgba(248,140,106,0.4); }
+.bat-cq-blue   { background:radial-gradient(circle at 35% 35%,#102030,#0d0d1a);border:2px solid #6eb5ff;box-shadow:0 0 18px rgba(110,181,255,0.4); }
+.bat-cq-red    { background:radial-gradient(circle at 35% 35%,#2a0d0d,#0d0d1a);border:2px solid #ff6384;box-shadow:0 0 18px rgba(255,99,132,0.4); }
+.bat-cq-grey   { background:radial-gradient(circle at 35% 35%,#1a1a1a,#0d0d0d);border:2px solid #555;box-shadow:none; }
+.bat-conquista-name { font-size:9px;font-weight:700;color:var(--text);letter-spacing:1px;text-align:center;text-transform:uppercase; }
+.bat-conquista-sub  { font-size:9px;color:var(--muted);text-align:center; }
+.bat-conquista::after { content:attr(data-tip);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:#1e2535;color:#e2e8f0;padding:7px 12px;border-radius:8px;font-size:11px;font-weight:400;white-space:nowrap;border:1px solid #2a3248;z-index:9999;pointer-events:none;box-shadow:0 4px 16px rgba(0,0,0,0.5);opacity:0;transition:opacity .15s; }
+.bat-conquista:hover::after { opacity:1; }
+/* Artefato card vertical */
+.bat-art-card { border-radius:12px;overflow:hidden;position:relative;cursor:pointer;transition:transform .2s,box-shadow .2s;background:var(--bg2); }
+.bat-art-card:hover { transform:translateY(-4px); }
+.bat-art-capa { position:relative;width:100%;padding-top:145%;overflow:hidden;background:var(--bg3); }
+.bat-art-capa img { position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .3s; }
+.bat-art-card:hover .bat-art-capa img { transform:scale(1.05); }
+.bat-art-rank { position:absolute;top:8px;left:8px;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;font-family:'Orbitron',sans-serif;z-index:2; }
+.bat-art-overlay { position:absolute;bottom:0;left:0;right:0;padding:24px 8px 8px;background:linear-gradient(transparent,rgba(0,0,0,0.92)); }
+/* Boss card cover zoom */
+.bat-boss-cover { width:36px;height:50px;border-radius:4px;object-fit:cover;cursor:zoom-in;transition:transform .25s;transform-origin:left center;flex-shrink:0; }
+.bat-boss-cover:hover { transform:scale(5);z-index:9999;box-shadow:0 8px 32px rgba(0,0,0,0.8); }
 
 </style>
 </head>
@@ -3017,16 +3046,22 @@ function renderBatalha() {
   // Medalhas
   function medalhas(dd){
     const m=[];
-    if(dd.streakRecord>=30)m.push({icon:'🔥',nome:'Maratonista',tip:'Streak de '+dd.streakRecord+' dias consecutivos'});
-    if(dd.bosses.length>=5)m.push({icon:'💀',nome:'Boss Hunter',tip:dd.bosses.length+' livros com 500+ páginas concluídos'});
-    if(dd.lidos.length>=50)m.push({icon:'👑',nome:'Lendário',tip:dd.lidos.length+' livros concluídos'});
-    if(dd.eficiencia>=50)m.push({icon:'⚡',nome:'Devorador',tip:dd.eficiencia+' págs/hora de eficiência'});
-    if(dd.maiorSessao>=100)m.push({icon:'🦁',nome:'Modo Insano',tip:'Sessão de '+dd.maiorSessao+' páginas de uma vez'});
-    if(dd.notaMedia!==null&&dd.notaMedia>=8)m.push({icon:'⭐',nome:'Crítico',tip:'Nota média '+dd.notaMedia.toFixed(1)+' nas avaliações'});
-    if(dd.colSet.size>=5)m.push({icon:'🗺️',nome:'Explorador',tip:dd.colSet.size+' coleções diferentes exploradas'});
-    if(dd.streakAtual>=7)m.push({icon:'🔥',nome:'Em Chamas',tip:'Streak atual de '+dd.streakAtual+' dias'});
-    if(!m.length)m.push({icon:'🌱',nome:'Iniciando',tip:'Ainda no início da jornada'});
-    return m.map(x=>`<span class="bat-medal" data-tip="${x.tip}" style="background:rgba(255,255,255,0.06);color:var(--text);">${x.icon} ${x.nome}</span>`).join('');
+    if(dd.streakRecord>=30)  m.push({icon:'🔥',cls:'bat-cq-orange',nome:'Maratonista',sub:dd.streakRecord+'d streak',tip:'Streak de '+dd.streakRecord+' dias consecutivos'});
+    if(dd.bosses.length>=5)  m.push({icon:'💀',cls:'bat-cq-purple',nome:'Boss Hunter', sub:dd.bosses.length+' bosses',tip:dd.bosses.length+' livros com 500+ páginas'});
+    if(dd.lidos.length>=50)  m.push({icon:'👑',cls:'bat-cq-gold',  nome:'Lendário',   sub:dd.lidos.length+' livros', tip:dd.lidos.length+' livros concluídos'});
+    if(dd.eficiencia>=50)    m.push({icon:'⚡',cls:'bat-cq-gold',  nome:'Devorador',  sub:dd.eficiencia+' págs/h',   tip:dd.eficiencia+' páginas por hora'});
+    if(dd.maiorSessao>=100)  m.push({icon:'🦁',cls:'bat-cq-red',   nome:'Insano',     sub:dd.maiorSessao+'p sessão', tip:'Sessão de '+dd.maiorSessao+' páginas'});
+    if(dd.notaMedia>=8)      m.push({icon:'⭐',cls:'bat-cq-gold',  nome:'Crítico',    sub:dd.notaMedia.toFixed(1)+' média',tip:'Nota média '+dd.notaMedia.toFixed(1)});
+    if(dd.colSet.size>=5)    m.push({icon:'🗺️',cls:'bat-cq-teal',  nome:'Explorador', sub:dd.colSet.size+' coleções',tip:dd.colSet.size+' coleções diferentes'});
+    if(dd.streakAtual>=7)    m.push({icon:'🔥',cls:'bat-cq-orange',nome:'Em Chamas',  sub:dd.streakAtual+'d atual',  tip:'Streak atual de '+dd.streakAtual+' dias'});
+    if(!m.length)            m.push({icon:'🌱',cls:'bat-cq-grey',  nome:'Iniciando',  sub:'jornada',                 tip:'Ainda no início da jornada'});
+    return `<div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
+      ${m.map(x=>`<div class="bat-conquista" data-tip="${x.tip}">
+        <div class="bat-conquista-icon ${x.cls}">${x.icon}</div>
+        <div class="bat-conquista-name">${x.nome}</div>
+        <div class="bat-conquista-sub">${x.sub}</div>
+      </div>`).join('')}
+    </div>`;
   }
 
   const container=document.getElementById('batalhaContainer');
@@ -3123,18 +3158,12 @@ function renderBatalha() {
     </div>
   </div>
   <div>
-    <div style="font-family:'Orbitron',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;color:var(--muted);margin-bottom:12px;">💀 BOSSES DERROTADOS (500+ págs)</div>
+    <div class="bat-section-hdr">💀 BOSSES DERROTADOS (500+ págs)</div>
     <div style="background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:16px;height:220px;overflow-y:auto;">
-      ${[{p:pA,dd:dA,cor:CA},{p:pB,dd:dB,cor:CB}].map(({p,dd,cor})=>`
-        <div style="margin-bottom:12px;">
-          <div style="font-size:11px;font-weight:700;color:${cor};font-family:'Orbitron',sans-serif;margin-bottom:6px;">${p.toUpperCase()} — ${dd.bosses.length} bosses</div>
-          ${dd.bosses.slice(0,3).map(b=>`
-            <div style="display:flex;justify-content:space-between;font-size:12px;padding:4px 0;border-bottom:1px solid var(--border);">
-              <span style="color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:160px;">💀 ${b.livro}</span>
-              <span style="color:var(--muted);flex-shrink:0;">${b.totalPag} págs</span>
-            </div>`).join('')}
-          ${!dd.bosses.length?`<div style="color:var(--muted);font-size:12px;">Nenhum boss ainda</div>`:''}
-        </div>`).join('')}
+      <div style="font-size:11px;font-weight:700;color:${CA};font-family:'Orbitron',sans-serif;margin-bottom:8px;">${pA.toUpperCase()} — ${dA.bosses.length} bosses</div>
+      <div id="bat-boss-a" style="margin-bottom:14px;"></div>
+      <div style="font-size:11px;font-weight:700;color:${CB};font-family:'Orbitron',sans-serif;margin-bottom:8px;">${pB.toUpperCase()} — ${dB.bosses.length} bosses</div>
+      <div id="bat-boss-b"></div>
     </div>
   </div>
 </div>
@@ -3180,23 +3209,38 @@ function renderBatalha() {
 </div>
 
 <!-- CRÔNICAS DA GUERRA -->
-<div style="font-family:'Orbitron',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;color:var(--muted);margin-bottom:12px;">📜 CRÔNICAS DA GUERRA</div>
-<div style="background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:20px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;text-align:center;">
+<div class="bat-section-hdr">📜 CRÔNICAS DA GUERRA — HISTÓRICO DA RIVALIDADE</div>
+<div style="background:linear-gradient(160deg,var(--bg2),#0d1020);border:1px solid var(--border);border-radius:14px;padding:20px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;text-align:center;margin-bottom:24px;">
   <div>
-    <div style="font-size:10px;color:var(--muted);letter-spacing:2px;margin-bottom:8px;">VITÓRIAS TOTAIS</div>
-    <div style="display:flex;justify-content:center;gap:20px;">
-      <div><div style="font-family:'Orbitron',sans-serif;font-size:28px;font-weight:900;color:${CA};">${vitA}</div><div style="font-size:10px;color:${CA};">${pA}</div></div>
-      <div><div style="font-family:'Orbitron',sans-serif;font-size:28px;font-weight:900;color:${CB};">${vitB}</div><div style="font-size:10px;color:${CB};">${pB}</div></div>
+    <div style="font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;">VITÓRIAS TOTAIS</div>
+    <div style="display:flex;justify-content:center;align-items:center;gap:16px;">
+      <div>
+        <div style="font-family:'Orbitron',sans-serif;font-size:36px;font-weight:900;color:${CA};">${vitA}</div>
+        <div style="font-size:10px;color:${CA};letter-spacing:1px;">${pA.toUpperCase()}</div>
+      </div>
+      <div style="font-size:20px;color:var(--border);">⚔️</div>
+      <div>
+        <div style="font-family:'Orbitron',sans-serif;font-size:36px;font-weight:900;color:${CB};">${vitB}</div>
+        <div style="font-size:10px;color:${CB};letter-spacing:1px;">${pB.toUpperCase()}</div>
+      </div>
     </div>
   </div>
   <div>
-    <div style="font-size:10px;color:var(--muted);letter-spacing:2px;margin-bottom:8px;">EMPATES</div>
-    <div style="font-family:'Orbitron',sans-serif;font-size:28px;font-weight:900;color:var(--muted);">${emp}</div>
+    <div style="font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;">EMPATES</div>
+    <div style="font-family:'Orbitron',sans-serif;font-size:36px;font-weight:900;color:var(--muted);">${emp}</div>
+    <div style="margin-top:12px;font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;">LIDERANÇA</div>
+    <div style="font-family:'Orbitron',sans-serif;font-size:14px;font-weight:900;color:${vitA>vitB?CA:vitB>vitA?CB:'var(--muted)'};margin-top:4px;">
+      ${vitA>vitB?'🏆 '+pA.toUpperCase():vitB>vitA?'🏆 '+pB.toUpperCase():'🤝 EMPATE'}
+    </div>
   </div>
   <div>
-    <div style="font-size:10px;color:var(--muted);letter-spacing:2px;margin-bottom:8px;">LIDERANÇA GERAL</div>
-    <div style="font-family:'Orbitron',sans-serif;font-size:18px;font-weight:900;color:${vitA>vitB?CA:vitB>vitA?CB:'var(--muted)'};">
-      ${vitA>vitB?'🏆 '+pA.toUpperCase():vitB>vitA?'🏆 '+pB.toUpperCase():'🤝 EMPATE'}
+    <div style="font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;">MESES DISPUTADOS</div>
+    <div style="font-family:'Orbitron',sans-serif;font-size:36px;font-weight:900;color:var(--text);">${vitA+vitB+emp}</div>
+    <div style="margin-top:12px;padding:8px 12px;background:var(--bg3);border-radius:8px;display:inline-block;">
+      <div style="font-size:9px;color:var(--muted);">⚔️ rivalidade ativa desde</div>
+      <div style="font-size:12px;font-weight:700;color:var(--text);font-family:'Orbitron',sans-serif;letter-spacing:1px;">
+        ${(()=>{const allM=[...Object.keys(dA.mesPags),...Object.keys(dB.mesPags)].sort();if(!allM.length)return'—';const[y,m]=allM[0].split('-');return ['JAN','FEV','MAR','ABR','MAI','JUN','JUL','AGO','SET','OUT','NOV','DEZ'][parseInt(m)-1]+' DE '+y;})()}
+      </div>
     </div>
   </div>
 </div>
@@ -3244,33 +3288,66 @@ function renderBatalha() {
   // Artefatos com capa
   function artefatoCard(dd,cor,tipo){
     const nota=tipo==='melhor'?[...dd.notas].sort((a,b)=>b.media-a.media)[0]:[...dd.notas].sort((a,b)=>a.media-b.media)[0];
-    if(!nota)return`<div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:14px;color:var(--muted);font-size:12px;">Sem avaliações</div>`;
-    const livro=(window._livros||[]).find(l=>l.livro===nota.livro)||(window._dadosD?.livros||[]).find(l=>l.livro===nota.livro);
+    if(!nota)return`<div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:14px;color:var(--muted);font-size:12px;text-align:center;">Sem avaliações</div>`;
+    const allLivros=[...(window._dadosD?.livros||[]),...(window._dadosD?.lendo||[]),...(window._dadosD?.pausados||[]),...(window._dadosD?.aguardando||[])];
+    const livro=allLivros.find(l=>l.livro===nota.livro);
     const uid='art-'+Math.random().toString(36).slice(2,8);
-    const html=`<div style="display:flex;gap:12px;align-items:center;background:var(--bg2);border:1px solid ${cor}33;border-radius:12px;padding:12px;">
-      <div id="${uid}" style="width:44px;height:60px;flex-shrink:0;border-radius:6px;background:var(--bg3);overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:20px;">${tipo==='melhor'?'⭐':'💀'}</div>
-      <div style="flex:1;min-width:0;">
-        <div style="font-size:10px;color:${cor};font-weight:700;letter-spacing:1px;margin-bottom:2px;">${dd.u.toUpperCase()}</div>
-        <div style="font-size:13px;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${nota.livro}</div>
-        <div style="font-size:12px;color:var(--muted);">${tipo==='melhor'?'⭐':'💀'} ${nota.media.toFixed(1)} · ${nota.ano||'—'}</div>
+    const rankNum=[...dd.notas].sort((a,b)=>tipo==='melhor'?b.media-a.media:a.media-b.media).findIndex(n=>n.livro===nota.livro)+1;
+    const rankCol=rankNum===1?'#ffd700':rankNum===2?'#c0c0c0':'#cd7f32';
+    const estrela=tipo==='melhor'?'⭐':'💀';
+    const html=`<div class="bat-art-card" style="border:1px solid ${cor}44;">
+      <div class="bat-art-capa" id="${uid}-wrap">
+        <div class="bat-art-rank" style="background:${rankCol};color:#000;">${rankNum}</div>
+        <div id="${uid}" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:48px;background:linear-gradient(160deg,var(--bg3),#0d1020);">${estrela}</div>
+      </div>
+      <div class="bat-art-overlay">
+        <div style="font-size:10px;color:${cor};font-weight:700;letter-spacing:1px;">${dd.u.toUpperCase()}</div>
+        <div style="font-size:12px;font-weight:700;color:white;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${nota.livro}</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.6);">${estrela} ${nota.media.toFixed(1)} · ${nota.ano||'—'}</div>
       </div>
     </div>`;
-    // Load cover async
     if(livro?.coverUrl||livro?.isbn){
       setTimeout(()=>{
         const el=document.getElementById(uid);
         if(!el)return;
         const img=document.createElement('img');
-        img.style.cssText='width:100%;height:100%;object-fit:cover;border-radius:6px;';
+        img.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;';
         img.onerror=()=>{};
         img.src=livro.coverUrl||(livro.isbn?`https://covers.openlibrary.org/b/isbn/${livro.isbn}-M.jpg`:'');
-        if(img.src)el.innerHTML='',el.appendChild(img);
-      },100);
+        if(img.src){el.innerHTML='';el.appendChild(img);}
+      },150);
     }
     return html;
   }
-  document.getElementById('bat-artefatos').innerHTML=[dA,dB].map((dd,i)=>artefatoCard(dd,i===0?CA:CB,'melhor')).join('');
-  document.getElementById('bat-maldicoes').innerHTML=[dA,dB].map((dd,i)=>artefatoCard(dd,i===0?CA:CB,'pior')).join('');
+
+  // Render artefatos em grid horizontal
+  document.getElementById('bat-artefatos').innerHTML=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">${[dA,dB].map((dd,i)=>artefatoCard(dd,i===0?CA:CB,'melhor')).join('')}</div>`;
+  document.getElementById('bat-maldicoes').innerHTML=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">${[dA,dB].map((dd,i)=>artefatoCard(dd,i===0?CA:CB,'pior')).join('')}</div>`;
+
+  // Render bosses com capa e zoom
+  function bossCard(dd,cor){
+    if(!dd.bosses.length)return`<div style="color:var(--muted);font-size:12px;">Nenhum boss ainda</div>`;
+    const allLivros=[...(window._dadosD?.livros||[]),...(window._dadosD?.lendo||[]),...(window._dadosD?.pausados||[]),...(window._dadosD?.aguardando||[])];
+    return dd.bosses.slice(0,4).map(b=>{
+      const l=allLivros.find(x=>x.livro===b.livro);
+      const uid='bs-'+Math.random().toString(36).slice(2,8);
+      setTimeout(()=>{
+        const el=document.getElementById(uid);
+        if(!el||(l?.coverUrl||l?.isbn)===undefined)return;
+        const src=l?.coverUrl||(l?.isbn?`https://covers.openlibrary.org/b/isbn/${l.isbn}-M.jpg`:'');
+        if(src){el.src=src;el.onerror=()=>{el.style.display='none';};}
+      },200);
+      return `<div style="display:flex;gap:10px;align-items:center;padding:6px 0;border-bottom:1px solid var(--border);">
+        <img id="${uid}" src="" class="bat-boss-cover" style="display:${l?.coverUrl||l?.isbn?'block':'none'};" alt="">
+        <div style="flex:1;min-width:0;">
+          <div style="font-size:12px;font-weight:700;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">💀 ${b.livro}</div>
+          <div style="font-size:11px;color:var(--muted);">${b.totalPag} págs</div>
+        </div>
+      </div>`;
+    }).join('');
+  }
+  document.getElementById('bat-boss-a').innerHTML=bossCard(dA,CA);
+  document.getElementById('bat-boss-b').innerHTML=bossCard(dB,CB);
 
   // Charts
   requestAnimationFrame(()=>{
