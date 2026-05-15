@@ -300,8 +300,8 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
 .bat-conquista::after { content:attr(data-tip);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:#1e2535;color:#e2e8f0;padding:7px 12px;border-radius:8px;font-size:11px;font-weight:400;white-space:nowrap;border:1px solid #2a3248;z-index:9999;pointer-events:none;box-shadow:0 4px 16px rgba(0,0,0,0.5);opacity:0;transition:opacity .15s; }
 .bat-conquista:hover::after { opacity:1; }
 /* Artefato card vertical */
-.bat-art-card { border-radius:12px;overflow:hidden;position:relative;cursor:pointer;transition:transform .2s,box-shadow .2s;background:var(--bg2); }
-.bat-art-card:hover { transform:translateY(-4px); }
+.bat-art-card { border-radius:12px;overflow:hidden;position:relative;cursor:pointer;transition:transform .2s,box-shadow .2s,z-index .2s;background:var(--bg2); }
+.bat-art-card:hover { transform:scale(1.06);z-index:10;box-shadow:0 12px 40px rgba(0,0,0,0.6); }
 .bat-art-capa { position:relative;width:100%;padding-top:145%;overflow:hidden;background:var(--bg3); }
 .bat-art-capa img { position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .3s; }
 .bat-art-card:hover .bat-art-capa img { transform:scale(1.05); }
@@ -3143,27 +3143,57 @@ function renderBatalha() {
   </div>
   <div>
     <div style="font-family:'Orbitron',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;color:var(--muted);margin-bottom:12px;">📈 GUERRA DAS TEMPORADAS</div>
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:16px;height:272px;">
-      <canvas id="bat-linha"></canvas>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:16px;">
+      <div style="height:200px;"><canvas id="bat-linha"></canvas></div>
+      <div style="display:flex;justify-content:space-around;margin-top:12px;padding-top:12px;border-top:1px solid var(--border);">
+        <div style="text-align:center;">
+          <div style="font-family:'Orbitron',sans-serif;font-size:20px;font-weight:900;color:${CA};">${vitA}</div>
+          <div style="font-size:10px;color:var(--muted);">${pA} venceu</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-family:'Orbitron',sans-serif;font-size:20px;font-weight:900;color:var(--muted);">${emp}</div>
+          <div style="font-size:10px;color:var(--muted);">empates</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-family:'Orbitron',sans-serif;font-size:20px;font-weight:900;color:${CB};">${vitB}</div>
+          <div style="font-size:10px;color:var(--muted);">${pB} venceu</div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- DIA DA SEMANA + BOSSES -->
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px;">
+<!-- DIA DA SEMANA + BOSSES + SLIMES -->
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:28px;">
   <div>
-    <div style="font-family:'Orbitron',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;color:var(--muted);margin-bottom:12px;">📅 DIA SAGRADO</div>
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:16px;height:220px;">
-      <canvas id="bat-wd"></canvas>
+    <div class="bat-section-hdr">📅 DIA SAGRADO</div>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:16px;">
+      <div style="height:160px;"><canvas id="bat-wd"></canvas></div>
+      <div style="display:flex;justify-content:space-between;margin-top:12px;padding-top:10px;border-top:1px solid var(--border);">
+        <div style="text-align:center;">
+          <div style="font-size:10px;color:${CA};font-weight:700;">${pA.toUpperCase()}</div>
+          <div id="bat-wd-dia-a" style="font-family:'Orbitron',sans-serif;font-size:14px;font-weight:700;color:var(--text);"></div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:10px;color:${CB};font-weight:700;">${pB.toUpperCase()}</div>
+          <div id="bat-wd-dia-b" style="font-family:'Orbitron',sans-serif;font-size:14px;font-weight:700;color:var(--text);"></div>
+        </div>
+      </div>
     </div>
   </div>
   <div>
-    <div class="bat-section-hdr">💀 BOSSES DERROTADOS (500+ págs)</div>
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:16px;height:220px;overflow-y:auto;">
-      <div style="font-size:11px;font-weight:700;color:${CA};font-family:'Orbitron',sans-serif;margin-bottom:8px;">${pA.toUpperCase()} — ${dA.bosses.length} bosses</div>
-      <div id="bat-boss-a" style="margin-bottom:14px;"></div>
-      <div style="font-size:11px;font-weight:700;color:${CB};font-family:'Orbitron',sans-serif;margin-bottom:8px;">${pB.toUpperCase()} — ${dB.bosses.length} bosses</div>
+    <div class="bat-section-hdr">💀 BOSSES (500+ págs)</div>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:14px;max-height:280px;overflow-y:auto;">
+      <div style="font-size:10px;font-weight:700;color:${CA};font-family:'Orbitron',sans-serif;margin-bottom:6px;">${pA.toUpperCase()} · ${dA.bosses.length}</div>
+      <div id="bat-boss-a" style="margin-bottom:12px;"></div>
+      <div style="font-size:10px;font-weight:700;color:${CB};font-family:'Orbitron',sans-serif;margin-bottom:6px;">${pB.toUpperCase()} · ${dB.bosses.length}</div>
       <div id="bat-boss-b"></div>
+    </div>
+  </div>
+  <div>
+    <div class="bat-section-hdr">🐛 VENCENDO SLIMES (até 200 págs)</div>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:14px;max-height:280px;overflow-y:auto;">
+      <div id="bat-slimes"></div>
     </div>
   </div>
 </div>
@@ -3171,12 +3201,12 @@ function renderBatalha() {
 <!-- ARTEFATOS LENDÁRIOS com capas -->
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px;">
   <div>
-    <div style="font-family:'Orbitron',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;color:var(--muted);margin-bottom:12px;">⭐ ARTEFATOS LENDÁRIOS — MELHORES AVALIADOS</div>
-    <div style="display:flex;flex-direction:column;gap:8px;" id="bat-artefatos"></div>
+    <div class="bat-section-hdr">⭐ ARTEFATOS LENDÁRIOS — MELHORES AVALIADOS</div>
+    <div id="bat-artefatos" style="overflow:visible;"></div>
   </div>
   <div>
-    <div style="font-family:'Orbitron',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;color:var(--muted);margin-bottom:12px;">💀 MALDIÇÕES — PIORES AVALIADOS</div>
-    <div style="display:flex;flex-direction:column;gap:8px;" id="bat-maldicoes"></div>
+    <div class="bat-section-hdr">💀 MALDIÇÕES — PIORES AVALIADOS</div>
+    <div id="bat-maldicoes" style="overflow:visible;"></div>
   </div>
 </div>
 
@@ -3210,36 +3240,42 @@ function renderBatalha() {
 
 <!-- CRÔNICAS DA GUERRA -->
 <div class="bat-section-hdr">📜 CRÔNICAS DA GUERRA — HISTÓRICO DA RIVALIDADE</div>
-<div style="background:linear-gradient(160deg,var(--bg2),#0d1020);border:1px solid var(--border);border-radius:14px;padding:20px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;text-align:center;margin-bottom:24px;">
-  <div>
-    <div style="font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;">VITÓRIAS TOTAIS</div>
-    <div style="display:flex;justify-content:center;align-items:center;gap:16px;">
-      <div>
-        <div style="font-family:'Orbitron',sans-serif;font-size:36px;font-weight:900;color:${CA};">${vitA}</div>
-        <div style="font-size:10px;color:${CA};letter-spacing:1px;">${pA.toUpperCase()}</div>
-      </div>
-      <div style="font-size:20px;color:var(--border);">⚔️</div>
-      <div>
-        <div style="font-family:'Orbitron',sans-serif;font-size:36px;font-weight:900;color:${CB};">${vitB}</div>
-        <div style="font-size:10px;color:${CB};letter-spacing:1px;">${pB.toUpperCase()}</div>
+<div style="background:linear-gradient(160deg,var(--bg2),#0d1020);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:24px;">
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:20px;align-items:center;">
+    <!-- Vitórias -->
+    <div style="text-align:center;">
+      <div style="font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">MESES VENCIDOS</div>
+      <div style="display:flex;justify-content:center;align-items:center;gap:16px;">
+        <div>
+          <div style="font-family:'Orbitron',sans-serif;font-size:36px;font-weight:900;color:${CA};">${vitA}</div>
+          <div style="font-size:10px;color:${CA};letter-spacing:1px;">${pA.toUpperCase()}</div>
+        </div>
+        <div style="font-size:16px;color:var(--border);">⚔️</div>
+        <div>
+          <div style="font-family:'Orbitron',sans-serif;font-size:36px;font-weight:900;color:${CB};">${vitB}</div>
+          <div style="font-size:10px;color:${CB};letter-spacing:1px;">${pB.toUpperCase()}</div>
+        </div>
       </div>
     </div>
-  </div>
-  <div>
-    <div style="font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;">EMPATES</div>
-    <div style="font-family:'Orbitron',sans-serif;font-size:36px;font-weight:900;color:var(--muted);">${emp}</div>
-    <div style="margin-top:12px;font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;">LIDERANÇA</div>
-    <div style="font-family:'Orbitron',sans-serif;font-size:14px;font-weight:900;color:${vitA>vitB?CA:vitB>vitA?CB:'var(--muted)'};margin-top:4px;">
-      ${vitA>vitB?'🏆 '+pA.toUpperCase():vitB>vitA?'🏆 '+pB.toUpperCase():'🤝 EMPATE'}
+    <!-- Empates + Meses -->
+    <div style="text-align:center;">
+      <div style="font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">EMPATES</div>
+      <div style="font-family:'Orbitron',sans-serif;font-size:36px;font-weight:900;color:var(--muted);">${emp}</div>
+      <div style="margin-top:8px;font-size:9px;color:var(--muted);">de ${vitA+vitB+emp} meses disputados</div>
     </div>
-  </div>
-  <div>
-    <div style="font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;">MESES DISPUTADOS</div>
-    <div style="font-family:'Orbitron',sans-serif;font-size:36px;font-weight:900;color:var(--text);">${vitA+vitB+emp}</div>
-    <div style="margin-top:12px;padding:8px 12px;background:var(--bg3);border-radius:8px;display:inline-block;">
-      <div style="font-size:9px;color:var(--muted);">⚔️ rivalidade ativa desde</div>
-      <div style="font-size:12px;font-weight:700;color:var(--text);font-family:'Orbitron',sans-serif;letter-spacing:1px;">
-        ${(()=>{const allM=[...Object.keys(dA.mesPags),...Object.keys(dB.mesPags)].sort();if(!allM.length)return'—';const[y,m]=allM[0].split('-');return ['JAN','FEV','MAR','ABR','MAI','JUN','JUL','AGO','SET','OUT','NOV','DEZ'][parseInt(m)-1]+' DE '+y;})()}
+    <!-- Líder -->
+    <div style="text-align:center;">
+      <div style="font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">LIDERANÇA</div>
+      <div style="font-family:'Orbitron',sans-serif;font-size:18px;font-weight:900;color:${vitA>vitB?CA:vitB>vitA?CB:'var(--muted)'};">
+        ${vitA>vitB?'🏆 '+pA.toUpperCase():vitB>vitA?'🏆 '+pB.toUpperCase():'🤝 EMPATE'}
+      </div>
+      <div style="margin-top:8px;font-size:10px;color:var(--muted);">diferença: ${Math.abs(vitA-vitB)} meses</div>
+    </div>
+    <!-- Rivalidade desde -->
+    <div style="border-left:1px solid var(--border);padding-left:20px;">
+      <div style="font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">⚔️ RIVALIDADE ATIVA DESDE</div>
+      <div style="font-family:'Orbitron',sans-serif;font-size:22px;font-weight:900;color:var(--text);line-height:1.2;">
+        ${(()=>{const allM=[...Object.keys(dA.mesPags),...Object.keys(dB.mesPags)].sort();if(!allM.length)return'—';const[y,m]=allM[0].split('-');return ['JAN','FEV','MAR','ABR','MAI','JUN','JUL','AGO','SET','OUT','NOV','DEZ'][parseInt(m)-1]+'<br>DE '+y;})()}
       </div>
     </div>
   </div>
@@ -3301,9 +3337,9 @@ function renderBatalha() {
         <div id="${uid}" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:48px;background:linear-gradient(160deg,var(--bg3),#0d1020);">${estrela}</div>
       </div>
       <div class="bat-art-overlay">
-        <div style="font-size:10px;color:${cor};font-weight:700;letter-spacing:1px;">${dd.u.toUpperCase()}</div>
-        <div style="font-size:12px;font-weight:700;color:white;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${nota.livro}</div>
-        <div style="font-size:11px;color:rgba(255,255,255,0.6);">${estrela} ${nota.media.toFixed(1)} · ${nota.ano||'—'}</div>
+        <div style="font-size:11px;color:${cor};font-weight:700;letter-spacing:1px;">${dd.u.toUpperCase()}</div>
+        <div style="font-size:15px;font-weight:700;color:white;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:2px 0;">${nota.livro}</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.75);">${estrela} ${nota.media.toFixed(1)} · ${nota.ano||'—'}</div>
       </div>
     </div>`;
     if(livro?.coverUrl||livro?.isbn){
@@ -3328,26 +3364,46 @@ function renderBatalha() {
   function bossCard(dd,cor){
     if(!dd.bosses.length)return`<div style="color:var(--muted);font-size:12px;">Nenhum boss ainda</div>`;
     const allLivros=[...(window._dadosD?.livros||[]),...(window._dadosD?.lendo||[]),...(window._dadosD?.pausados||[]),...(window._dadosD?.aguardando||[])];
-    return dd.bosses.slice(0,4).map(b=>{
+    return dd.bosses.sort((a,b)=>b.totalPag-a.totalPag).slice(0,5).map(b=>{
       const l=allLivros.find(x=>x.livro===b.livro);
       const uid='bs-'+Math.random().toString(36).slice(2,8);
       setTimeout(()=>{
         const el=document.getElementById(uid);
-        if(!el||(l?.coverUrl||l?.isbn)===undefined)return;
+        if(!el)return;
         const src=l?.coverUrl||(l?.isbn?`https://covers.openlibrary.org/b/isbn/${l.isbn}-M.jpg`:'');
         if(src){el.src=src;el.onerror=()=>{el.style.display='none';};}
       },200);
-      return `<div style="display:flex;gap:10px;align-items:center;padding:6px 0;border-bottom:1px solid var(--border);">
-        <img id="${uid}" src="" class="bat-boss-cover" style="display:${l?.coverUrl||l?.isbn?'block':'none'};" alt="">
+      return `<div style="display:flex;gap:10px;align-items:center;padding:5px 0;border-bottom:1px solid var(--border);">
+        <img id="${uid}" src="" class="bat-boss-cover" style="display:block;" alt="">
         <div style="flex:1;min-width:0;">
           <div style="font-size:12px;font-weight:700;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">💀 ${b.livro}</div>
-          <div style="font-size:11px;color:var(--muted);">${b.totalPag} págs</div>
+          <div style="font-size:11px;color:var(--muted);">${b.totalPag.toLocaleString('pt-BR')} págs</div>
         </div>
       </div>`;
     }).join('');
   }
   document.getElementById('bat-boss-a').innerHTML=bossCard(dA,CA);
   document.getElementById('bat-boss-b').innerHTML=bossCard(dB,CB);
+
+  // Slimes (até 200 páginas)
+  function slimeCard(dd,cor){
+    const allLivros=[...(window._dadosD?.livros||[]),...(window._dadosD?.lendo||[]),...(window._dadosD?.pausados||[]),...(window._dadosD?.aguardando||[])];
+    const slimes=dd.lidos.filter(l=>l.totalPag>0&&l.totalPag<=200).sort((a,b)=>a.totalPag-b.totalPag);
+    const total=slimes.length;
+    const sumPags=slimes.reduce((a,l)=>a+l.totalPag,0);
+    if(!slimes.length)return`<div style="color:var(--muted);font-size:12px;text-align:center;padding:8px;">Nenhum slime vencido</div>`;
+    return `<div style="font-size:10px;color:${cor};font-weight:700;font-family:'Orbitron',sans-serif;margin-bottom:6px;">${dd.u.toUpperCase()} · ${total} slimes · ${sumPags} págs</div>`+
+      slimes.slice(0,5).map(b=>`<div style="display:flex;justify-content:space-between;font-size:12px;padding:4px 0;border-bottom:1px solid var(--border);">
+        <span style="color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:160px;">🐛 ${b.livro}</span>
+        <span style="color:var(--muted);flex-shrink:0;">${b.totalPag} págs</span>
+      </div>`).join('');
+  }
+  document.getElementById('bat-slimes').innerHTML=slimeCard(dA,CA)+'<div style="margin:10px 0;border-top:1px solid var(--border);"></div>'+slimeCard(dB,CB);
+
+  // Dia favorito
+  const wdNomes2=['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+  document.getElementById('bat-wd-dia-a').textContent=wdNomes2[dA.wdMap.indexOf(Math.max(...dA.wdMap))];
+  document.getElementById('bat-wd-dia-b').textContent=wdNomes2[dB.wdMap.indexOf(Math.max(...dB.wdMap))];
 
   // Charts
   requestAnimationFrame(()=>{
