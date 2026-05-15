@@ -1366,10 +1366,16 @@ function renderLendoCards() {
 
   // Dica de leitura
   const anoAtual = new Date().getFullYear().toString();
-  const livrosLidos = new Set((d.livros||[]).filter(filterU).map(l=>l.livro));
+  // Livros completos DO usuário atual
+  const livrosLidos = new Set(
+    (window._livros||[]).filter(l => l.status === 'Completo').map(l => l.livro.trim().toLowerCase())
+  );
   const ag = aguardandoU.filter(l => {
     if (l.metaAno && parseInt(l.metaAno) > parseInt(anoAtual)) return false;
-    if (l.depende && !livrosLidos.has(l.depende.trim())) return false;
+    if (l.depende && l.depende.trim()) {
+      // Dependência deve estar concluída pelo usuário atual
+      if (!livrosLidos.has(l.depende.trim().toLowerCase())) return false;
+    }
     return true;
   });
   if (ag.length > 0) {
