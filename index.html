@@ -2941,20 +2941,23 @@ function renderBatalha() {
 
   const pA = document.getElementById('bat-playerA')?.value || 'Milton';
   const pB = document.getElementById('bat-playerB')?.value || 'Daniel';
-  const anoFiltro = document.getElementById('bat-ano')?.value || 'total';
   const CA = '#8b7cf8', CB = '#f88c6a';
 
-  // Popula seletor de anos com os anos disponíveis
+  // Popula seletor de anos — guarda valor ANTES de limpar
   const selAno = document.getElementById('bat-ano');
-  if (selAno && selAno.options.length <= 1) {
+  const anoGuardado = selAno?.value || 'total';
+  if (selAno) {
     const anosDisp = [...new Set((d.sessoes||[]).map(s=>s.ano).filter(a=>a>2000))].sort();
+    selAno.innerHTML = '<option value="total">Todos os anos</option>';
     anosDisp.forEach(a => {
       const opt = document.createElement('option');
-      opt.value = a; opt.textContent = '⚔️ Season ' + a;
+      opt.value = String(a); opt.textContent = '⚔️ Season ' + a;
       selAno.appendChild(opt);
     });
-    if (anoFiltro !== 'total') selAno.value = anoFiltro;
+    // Restaura seleção anterior
+    if (selAno.querySelector(`option[value="${anoGuardado}"]`)) selAno.value = anoGuardado;
   }
+  const anoFiltro = selAno?.value || 'total';
 
   function calcDados(u) {
     const filterU = l => u === 'Milton'
