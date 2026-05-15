@@ -308,7 +308,7 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
 .bat-art-rank { position:absolute;top:8px;left:8px;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;font-family:'Orbitron',sans-serif;z-index:2; }
 .bat-art-overlay { position:absolute;bottom:0;left:0;right:0;padding:24px 8px 8px;background:linear-gradient(transparent,rgba(0,0,0,0.92)); }
 /* Boss card cover zoom */
-.bat-boss-cover { width:36px;height:50px;border-radius:4px;object-fit:cover;cursor:zoom-in;transition:transform .25s;transform-origin:left center;flex-shrink:0; }
+.bat-boss-cover { width:44px;height:60px;border-radius:4px;object-fit:cover;cursor:zoom-in;transition:transform .25s;transform-origin:left center;flex-shrink:0; }
 .bat-boss-cover:hover { transform:scale(5);z-index:9999;box-shadow:0 8px 32px rgba(0,0,0,0.8); }
 
 </style>
@@ -3183,16 +3183,16 @@ function renderBatalha() {
   </div>
   <div>
     <div class="bat-section-hdr">💀 BOSSES (500+ págs)</div>
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:14px;max-height:280px;overflow-y:auto;">
-      <div style="font-size:10px;font-weight:700;color:${CA};font-family:'Orbitron',sans-serif;margin-bottom:6px;">${pA.toUpperCase()} · ${dA.bosses.length}</div>
-      <div id="bat-boss-a" style="margin-bottom:12px;"></div>
-      <div style="font-size:10px;font-weight:700;color:${CB};font-family:'Orbitron',sans-serif;margin-bottom:6px;">${pB.toUpperCase()} · ${dB.bosses.length}</div>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:14px;max-height:340px;overflow-y:auto;">
+      <div style="font-size:11px;font-weight:700;color:${CA};font-family:'Orbitron',sans-serif;margin-bottom:8px;">${pA.toUpperCase()} · ${dA.bosses.length} bosses</div>
+      <div id="bat-boss-a" style="margin-bottom:14px;"></div>
+      <div style="font-size:11px;font-weight:700;color:${CB};font-family:'Orbitron',sans-serif;margin-bottom:8px;">${pB.toUpperCase()} · ${dB.bosses.length} bosses</div>
       <div id="bat-boss-b"></div>
     </div>
   </div>
   <div>
     <div class="bat-section-hdr">🐛 VENCENDO SLIMES (até 200 págs)</div>
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:14px;max-height:280px;overflow-y:auto;">
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:14px;max-height:340px;overflow-y:auto;">
       <div id="bat-slimes"></div>
     </div>
   </div>
@@ -3362,7 +3362,7 @@ function renderBatalha() {
 
   // Render bosses com capa e zoom
   function bossCard(dd,cor){
-    if(!dd.bosses.length)return`<div style="color:var(--muted);font-size:12px;">Nenhum boss ainda</div>`;
+    if(!dd.bosses.length)return`<div style="color:var(--muted);font-size:12px;padding:8px 0;">Nenhum boss ainda</div>`;
     const allLivros=[...(window._dadosD?.livros||[]),...(window._dadosD?.lendo||[]),...(window._dadosD?.pausados||[]),...(window._dadosD?.aguardando||[])];
     return dd.bosses.sort((a,b)=>b.totalPag-a.totalPag).slice(0,5).map(b=>{
       const l=allLivros.find(x=>x.livro===b.livro);
@@ -3373,14 +3373,41 @@ function renderBatalha() {
         const src=l?.coverUrl||(l?.isbn?`https://covers.openlibrary.org/b/isbn/${l.isbn}-M.jpg`:'');
         if(src){el.src=src;el.onerror=()=>{el.style.display='none';};}
       },200);
-      return `<div style="display:flex;gap:10px;align-items:center;padding:5px 0;border-bottom:1px solid var(--border);">
-        <img id="${uid}" src="" class="bat-boss-cover" style="display:block;" alt="">
+      return `<div style="display:flex;gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid var(--border);">
+        <img id="${uid}" src="" class="bat-boss-cover" alt="">
         <div style="flex:1;min-width:0;">
-          <div style="font-size:12px;font-weight:700;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">💀 ${b.livro}</div>
-          <div style="font-size:11px;color:var(--muted);">${b.totalPag.toLocaleString('pt-BR')} págs</div>
+          <div style="font-size:13px;font-weight:700;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">💀 ${b.livro}</div>
+          <div style="font-size:12px;color:var(--muted);">${b.totalPag.toLocaleString('pt-BR')} págs</div>
         </div>
       </div>`;
     }).join('');
+  }
+
+  function slimeCard(dd,cor){
+    const allLivros=[...(window._dadosD?.livros||[]),...(window._dadosD?.lendo||[]),...(window._dadosD?.pausados||[]),...(window._dadosD?.aguardando||[])];
+    const slimes=dd.lidos.filter(l=>l.totalPag>0&&l.totalPag<=200).sort((a,b)=>a.totalPag-b.totalPag);
+    const total=slimes.length;
+    const sumPags=slimes.reduce((a,l)=>a+l.totalPag,0);
+    if(!slimes.length)return`<div style="color:var(--muted);font-size:12px;padding:8px 0;">Nenhum slime vencido</div>`;
+    const header=`<div style="font-size:11px;font-weight:700;color:${cor};font-family:'Orbitron',sans-serif;margin-bottom:8px;">${dd.u.toUpperCase()} · ${total} slimes · ${sumPags.toLocaleString('pt-BR')} págs</div>`;
+    const cards=slimes.slice(0,5).map(b=>{
+      const l=allLivros.find(x=>x.livro===b.livro);
+      const uid='sl-'+Math.random().toString(36).slice(2,8);
+      setTimeout(()=>{
+        const el=document.getElementById(uid);
+        if(!el)return;
+        const src=l?.coverUrl||(l?.isbn?`https://covers.openlibrary.org/b/isbn/${l.isbn}-M.jpg`:'');
+        if(src){el.src=src;el.onerror=()=>{el.style.display='none';};}
+      },250);
+      return `<div style="display:flex;gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid var(--border);">
+        <img id="${uid}" src="" class="bat-boss-cover" alt="">
+        <div style="flex:1;min-width:0;">
+          <div style="font-size:13px;font-weight:700;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">🐛 ${b.livro}</div>
+          <div style="font-size:12px;color:var(--muted);">${b.totalPag} págs</div>
+        </div>
+      </div>`;
+    }).join('');
+    return header+cards;
   }
   document.getElementById('bat-boss-a').innerHTML=bossCard(dA,CA);
   document.getElementById('bat-boss-b').innerHTML=bossCard(dB,CB);
@@ -3398,7 +3425,10 @@ function renderBatalha() {
         <span style="color:var(--muted);flex-shrink:0;">${b.totalPag} págs</span>
       </div>`).join('');
   }
-  document.getElementById('bat-slimes').innerHTML=slimeCard(dA,CA)+'<div style="margin:10px 0;border-top:1px solid var(--border);"></div>'+slimeCard(dB,CB);
+  document.getElementById('bat-slimes').innerHTML=
+    slimeCard(dA,CA)+
+    '<div style="margin:10px 0;border-top:1px solid var(--border);"></div>'+
+    slimeCard(dB,CB);
 
   // Dia favorito
   const wdNomes2=['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
