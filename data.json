@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-15T01:16:46.417Z",
+  "geradoEm": "2026-05-15T01:54:36.564Z",
   "meta": {
     "total": 26,
     "lidos": 6,
@@ -19726,15 +19726,6 @@
         "Temas": 9
       },
       "usuario": "MILTON"
-    },
-    {
-      "livro": "abcde",
-      "ano": 2026,
-      "media": 7,
-      "criterios": {
-        "Diálogos": 7
-      },
-      "usuario": "Daniel"
     }
   ]
 }
