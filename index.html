@@ -2918,7 +2918,7 @@ function renderBatalha() {
     const minTotal = sess.reduce((a,s)=>a+(s.minutos||0),0);
     const horas    = Math.round(minTotal/60);
     const media    = diasSet.size > 0 ? Math.round(pagTotal/diasSet.size*10)/10 : 0;
-    const notaMedia= notas.length ? notas.reduce((a,n)=>a+n.media,0)/notas.length : 0;
+    const notaMedia= notas.length ? notas.reduce((a,n)=>a+n.media,0)/notas.length : null;
 
     // Streak atual
     const diasOrdem = [...diasSet].sort();
@@ -2994,7 +2994,7 @@ function renderBatalha() {
       pagTotal, horas, media, notaMedia, streakAtual, streakRecord,
       melhor, pior, bosses, autorTop, mesPags, wdMap, wdTop, wdNomes,
       mesesPags, colSet, eficiencia, maiorSessao,
-      sessoes: sess.length, notaMediaFmt: notaMedia.toFixed(1)
+      sessoes: sess.length, notaMediaFmt: notaMedia !== null ? notaMedia.toFixed(1) : '—'
     };
   }
 
@@ -3019,7 +3019,11 @@ function renderBatalha() {
   });
 
   // Radar data (0-100 normalizado)
-  function norm(a, b) { const mx = Math.max(a,b,1); return [Math.round(a/mx*100), Math.round(b/mx*100)]; }
+  function norm(a, b) {
+    if (a === 0 && b === 0) return [0, 0];
+    const mx = Math.max(a, b, 1);
+    return [Math.round(a/mx*100), Math.round(b/mx*100)];
+  }
   const radarLabels = ['Volume', 'Consistência', 'Velocidade', 'Qualidade', 'Resistência', 'Variedade'];
   const [rVolA,rVolB]   = norm(dA.pagTotal, dB.pagTotal);
   const [rConA,rConB]   = norm(dA.diasSet.size, dB.diasSet.size);
@@ -3129,6 +3133,7 @@ function renderBatalha() {
   <div class="bat-section bat-2col">
     <div>
       <div class="bat-section-title">🕸️ PERFIL DE COMBATE</div>
+      <div style="font-size:11px;color:var(--muted);margin-bottom:8px;">Relativo ao maior valor entre os dois jogadores = 100%</div>
       <div class="bat-chart-wrap" style="display:flex;align-items:center;justify-content:center;">
         <canvas id="bat-radar" width="280" height="280"></canvas>
       </div>
@@ -3172,7 +3177,7 @@ function renderBatalha() {
   <!-- ARTEFATOS E MALDIÇÕES -->
   <div class="bat-section bat-2col">
     <div>
-      <div class="bat-section-title">⭐ ARTEFATOS LENDÁRIOS — MELHOR AVALIADO</div>
+      <div class="bat-section-title">⭐ ARTEFATOS LENDÁRIOS — MELHORES AVALIADOS</div>
       <div style="display:flex;flex-direction:column;gap:10px;">
         ${[{p:pA,dd:dA,cor:CORES.A},{p:pB,dd:dB,cor:CORES.B}].map(({p,dd,cor})=>`
         <div class="bat-artefato" style="border:1px solid ${cor}22;">
@@ -3186,7 +3191,7 @@ function renderBatalha() {
       </div>
     </div>
     <div>
-      <div class="bat-section-title">💀 MALDIÇÕES — PIOR AVALIADO</div>
+      <div class="bat-section-title">💀 MALDIÇÕES — PIORES AVALIADOS</div>
       <div style="display:flex;flex-direction:column;gap:10px;">
         ${[{p:pA,dd:dA,cor:'#e53935'},{p:pB,dd:dB,cor:'#b71c1c'}].map(({p,dd,cor})=>`
         <div class="bat-artefato" style="border:1px solid ${cor}22;">
@@ -3224,14 +3229,14 @@ function renderBatalha() {
         <div style="margin-bottom:12px;">
           <div style="font-size:11px;color:${cor};font-weight:700;margin-bottom:6px;">${p.toUpperCase()}</div>
           <div>
-            ${dd.streakRecord>=30?`<span class="bat-medal" style="background:rgba(255,215,0,0.15);color:#ffd700;">🔥 Maratonista</span>`:''}
-            ${dd.bosses>=5?`<span class="bat-medal" style="background:rgba(139,124,248,0.15);color:#8b7cf8;">💀 Caçador de Bosses</span>`:''}
-            ${dd.lidos.length>=50?`<span class="bat-medal" style="background:rgba(78,205,196,0.15);color:#4ecdc4;">👑 Lendário</span>`:''}
-            ${dd.eficiencia>=50?`<span class="bat-medal" style="background:rgba(248,140,106,0.15);color:#f88c6a;">⚡ Devorador</span>`:''}
-            ${dd.maiorSessao>=100?`<span class="bat-medal" style="background:rgba(255,99,132,0.15);color:#ff6384;">🦁 Modo Insano</span>`:''}
-            ${dd.notaMedia>=8?`<span class="bat-medal" style="background:rgba(255,215,0,0.15);color:#ffd700;">⭐ Crítico Literário</span>`:''}
-            ${dd.colSet.size>=5?`<span class="bat-medal" style="background:rgba(153,102,255,0.15);color:#9966ff;">🗺️ Explorador</span>`:''}
-            ${(!dd.lidos.length&&!dd.bosses)?`<span class="bat-medal" style="background:var(--bg3);color:var(--muted);">🌱 Iniciando Jornada</span>`:''}
+            ${dd.streakRecord>=30?`<span class="bat-medal" style="background:rgba(255,215,0,0.15);color:#ffd700;" title="Streak de 30+ dias consecutivos">🔥 Maratonista</span>`:''}
+            ${dd.bosses>=5?`<span class="bat-medal" style="background:rgba(139,124,248,0.15);color:#8b7cf8;" title="5 ou mais livros com 500+ páginas concluídos">💀 Caçador de Bosses</span>`:''}
+            ${dd.lidos.length>=50?`<span class="bat-medal" style="background:rgba(78,205,196,0.15);color:#4ecdc4;" title="50 ou mais livros concluídos">👑 Lendário</span>`:''}
+            ${dd.eficiencia>=50?`<span class="bat-medal" style="background:rgba(248,140,106,0.15);color:#f88c6a;" title="Lê 50 ou mais páginas por hora">⚡ Devorador</span>`:''}
+            ${dd.maiorSessao>=100?`<span class="bat-medal" style="background:rgba(255,99,132,0.15);color:#ff6384;" title="Registrou uma sessão de 100+ páginas de uma vez">🦁 Modo Insano</span>`:''}
+            ${dd.notaMedia!==null&&dd.notaMedia>=8?`<span class="bat-medal" style="background:rgba(255,215,0,0.15);color:#ffd700;" title="Nota média de avaliações acima de 8.0">⭐ Crítico Literário</span>`:''}
+            ${dd.colSet.size>=5?`<span class="bat-medal" style="background:rgba(153,102,255,0.15);color:#9966ff;" title="Leu livros de 5 ou mais coleções diferentes">🗺️ Explorador</span>`:''}
+            ${(!dd.lidos.length&&!dd.bosses)?`<span class="bat-medal" style="background:var(--bg3);color:var(--muted);" title="Ainda no início da jornada">🌱 Iniciando Jornada</span>`:''}
           </div>
         </div>`).join('')}
       </div>
@@ -3247,32 +3252,39 @@ function renderBatalha() {
     { title:'STAMINA TOTAL', icon:'🕐', keyA: dA.horas, keyB: dB.horas, fmt: v=>v+'h', sub:'horas lidas' },
     { title:'COMBO DE LEITURA', icon:'🔥', keyA: dA.streakAtual, keyB: dB.streakAtual, fmt: v=>v+' dias', sub:'streak atual' },
     { title:'VELOCIDADE', icon:'⚡', keyA: dA.media, keyB: dB.media, fmt: v=>v, sub:'págs/dia média' },
-    { title:'CRÍTICO LITERÁRIO', icon:'⭐', keyA: parseFloat(dA.notaMediaFmt)||0, keyB: parseFloat(dB.notaMediaFmt)||0, fmt: v=>v.toFixed?v.toFixed(1):v, sub:'nota média' },
+    { title:'CRÍTICO LITERÁRIO', icon:'⭐', keyA: dA.notaMedia??-1, keyB: dB.notaMedia??-1, fmt: (v,dd)=>dd?.notaMediaFmt||'—', sub:'nota média' },
     { title:'SESSÕES DE TREINO', icon:'📖', keyA: dA.sessoes, keyB: dB.sessoes, fmt: v=>v, sub:'sessões registradas' },
     { title:'EFICIÊNCIA', icon:'💨', keyA: dA.eficiencia, keyB: dB.eficiencia, fmt: v=>v, sub:'págs/hora' },
   ];
 
   const attrsEl = document.getElementById('bat-attrs');
-  attrsEl.innerHTML = attrs.map(a => {
+  attrsEl.innerHTML = attrs.map((a,idx) => {
     const vA = a.keyA, vB = a.keyB;
-    const max = Math.max(vA, vB, 1);
-    const pA2 = Math.round(vA/max*100), pB2 = Math.round(vB/max*100);
-    const winA = vA > vB, winB = vB > vA;
+    const ddA = dA, ddB = dB;
+    const max = Math.max(Math.abs(vA), Math.abs(vB), 1);
+    const pA2 = vA >= 0 ? Math.round(Math.abs(vA)/max*100) : 0;
+    const pB2 = vB >= 0 ? Math.round(Math.abs(vB)/max*100) : 0;
+    // Empate com tolerância de 0.05
+    const winA = vA >= 0 && vB >= 0 && vA - vB > 0.05;
+    const winB = vA >= 0 && vB >= 0 && vB - vA > 0.05;
+    const empate = vA >= 0 && vB >= 0 && !winA && !winB;
+    const fmtA = typeof a.fmt === 'function' ? (a.fmt.length > 1 ? a.fmt(vA, ddA) : a.fmt(vA)) : vA;
+    const fmtB = typeof a.fmt === 'function' ? (a.fmt.length > 1 ? a.fmt(vB, ddB) : a.fmt(vB)) : vB;
     return `<div class="bat-card">
-      ${winA ? `<div class="bat-winner-badge">🏆</div>` : winB ? `<div class="bat-winner-badge" style="color:#f88c6a;">🏆</div>` : ''}
+      ${winA ? `<div class="bat-winner-badge">🏆</div>` : winB ? `<div class="bat-winner-badge" style="color:#f88c6a;">🏆</div>` : empate ? `<div class="bat-winner-badge">🤝</div>` : ''}
       <div class="bat-card-title">${a.icon} ${a.title}</div>
       <div class="bat-card-row">
         <span class="bat-card-name" style="color:#8b7cf8;">${pA}</span>
-        <span class="bat-card-val" style="color:${winA?'#8b7cf8':'var(--muted)'};">${a.fmt(vA)}</span>
+        <span class="bat-card-val" style="color:${winA?'#8b7cf8':'var(--muted)'};">${fmtA}</span>
       </div>
       <div class="bat-card-bar-wrap"><div class="bat-card-bar" style="width:${pA2}%;background:#8b7cf8;"></div></div>
       <div style="height:8px;"></div>
       <div class="bat-card-row">
         <span class="bat-card-name" style="color:#f88c6a;">${pB}</span>
-        <span class="bat-card-val" style="color:${winB?'#f88c6a':'var(--muted)'};">${a.fmt(vB)}</span>
+        <span class="bat-card-val" style="color:${winB?'#f88c6a':'var(--muted)'};">${fmtB}</span>
       </div>
       <div class="bat-card-bar-wrap"><div class="bat-card-bar" style="width:${pB2}%;background:#f88c6a;"></div></div>
-      <div style="font-size:10px;color:var(--muted);margin-top:6px;">${a.sub}</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:8px;font-weight:500;">${a.sub}</div>
     </div>`;
   }).join('');
 
@@ -3298,26 +3310,46 @@ function renderBatalha() {
       }
     });
 
-    // Linha temporal
+    // Linha temporal — com marcadores de vitória por mês
     const linhaEl = document.getElementById('bat-linha');
     if (!linhaEl) return;
     const existingL = Chart.getChart(linhaEl);
     if (existingL) existingL.destroy();
+    const dadosMesA = meses12.map(m=>dA.mesesPags[m]||0);
+    const dadosMesB = meses12.map(m=>dB.mesesPags[m]||0);
+    // Cores dos pontos: dourado para vencedor de cada mês
+    const ptColorA = dadosMesA.map((v,i)=>v>0&&v>dadosMesB[i]?'#ffd700':'#8b7cf8');
+    const ptColorB = dadosMesB.map((v,i)=>v>0&&v>dadosMesA[i]?'#ffd700':'#f88c6a');
     new Chart(linhaEl, {
       type: 'line',
       data: {
         labels: mesesLabels,
         datasets: [
-          { label: pA, data: meses12.map(m=>dA.mesesPags[m]||0), borderColor:'#8b7cf8', backgroundColor:'rgba(139,124,248,0.1)', tension:0.4, fill:true, pointRadius:3 },
-          { label: pB, data: meses12.map(m=>dB.mesesPags[m]||0), borderColor:'#f88c6a', backgroundColor:'rgba(248,140,106,0.1)', tension:0.4, fill:true, pointRadius:3 },
+          { label: pA, data: dadosMesA, borderColor:'#8b7cf8', backgroundColor:'rgba(139,124,248,0.08)', tension:0.4, fill:true, pointRadius:5, pointBackgroundColor: ptColorA, pointBorderColor: ptColorA },
+          { label: pB, data: dadosMesB, borderColor:'#f88c6a', backgroundColor:'rgba(248,140,106,0.08)', tension:0.4, fill:true, pointRadius:5, pointBackgroundColor: ptColorB, pointBorderColor: ptColorB },
         ]
       },
       options: {
         responsive:true, maintainAspectRatio:false,
-        plugins:{ legend:{labels:{color:'#8892a8'}}, tooltip:{...(window.TT||{})} },
+        plugins:{
+          legend:{labels:{color:'#8892a8',font:{size:12}}},
+          tooltip:{
+            ...(window.TT||{}),
+            callbacks:{
+              afterBody: (items) => {
+                const i = items[0].dataIndex;
+                const a = dadosMesA[i], b = dadosMesB[i];
+                if (a === 0 && b === 0) return '';
+                if (a > b) return `🏆 ${pA} venceu este mês`;
+                if (b > a) return `🏆 ${pB} venceu este mês`;
+                return '🤝 Empate neste mês';
+              }
+            }
+          }
+        },
         scales:{
-          x:{ticks:{color:'#8892a8',font:{size:10}},grid:{color:'rgba(42,50,72,0.4)'}},
-          y:{ticks:{color:'#8892a8',font:{size:10}},grid:{color:'rgba(42,50,72,0.4)'},beginAtZero:true}
+          x:{ticks:{color:'#8892a8',font:{size:11}},grid:{color:'rgba(42,50,72,0.4)'}},
+          y:{ticks:{color:'#8892a8',font:{size:11},callback:v=>v.toLocaleString('pt-BR')},grid:{color:'rgba(42,50,72,0.4)'},beginAtZero:true,title:{display:true,text:'páginas lidas',color:'#8892a8',font:{size:11}}}
         }
       }
     });
