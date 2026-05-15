@@ -3388,17 +3388,13 @@ function renderBatalha() {
 
   // Render bosses com capa e zoom
   function bossCard(dd,cor){
-    if(!dd.bosses.length)return`<div style="color:var(--muted);font-size:12px;padding:8px 0;">Nenhum boss ainda</div>`;
     const allLivros=[...(window._dadosD?.livros||[]),...(window._dadosD?.lendo||[]),...(window._dadosD?.pausados||[]),...(window._dadosD?.aguardando||[])];
-    return dd.bosses.sort((a,b)=>b.totalPag-a.totalPag).slice(0,5).map(b=>{
+    const lista=dd.bosses.sort((a,b)=>b.totalPag-a.totalPag).slice(0,3);
+    if(!lista.length)return`<div style="color:var(--muted);font-size:12px;padding:8px 0;">Nenhum boss ainda</div>`;
+    return lista.map(b=>{
       const l=allLivros.find(x=>x.livro===b.livro);
       const uid='bs-'+Math.random().toString(36).slice(2,8);
-      setTimeout(()=>{
-        const el=document.getElementById(uid);
-        if(!el)return;
-        const src=l?.coverUrl||(l?.isbn?`https://covers.openlibrary.org/b/isbn/${l.isbn}-M.jpg`:'');
-        if(src){el.src=src;el.onerror=()=>{el.style.display='none';};}
-      },200);
+      setTimeout(()=>{const el=document.getElementById(uid);if(!el)return;const src=l?.coverUrl||(l?.isbn?`https://covers.openlibrary.org/b/isbn/${l.isbn}-M.jpg`:'');if(src){el.src=src;el.onerror=()=>{el.style.display='none';};};},200);
       return `<div style="display:flex;gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid var(--border);">
         <img id="${uid}" src="" class="bat-boss-cover" alt="">
         <div style="flex:1;min-width:0;">
@@ -3412,19 +3408,12 @@ function renderBatalha() {
   function slimeCard(dd,cor){
     const allLivros=[...(window._dadosD?.livros||[]),...(window._dadosD?.lendo||[]),...(window._dadosD?.pausados||[]),...(window._dadosD?.aguardando||[])];
     const slimes=dd.lidos.filter(l=>l.totalPag>0&&l.totalPag<=200).sort((a,b)=>a.totalPag-b.totalPag);
-    const total=slimes.length;
-    const sumPags=slimes.reduce((a,l)=>a+l.totalPag,0);
-    if(!slimes.length)return`<div style="color:var(--muted);font-size:12px;padding:8px 0;">Nenhum slime vencido</div>`;
-    const header=`<div style="font-size:11px;font-weight:700;color:${cor};font-family:'Orbitron',sans-serif;margin-bottom:8px;">${dd.u.toUpperCase()} · ${total} slimes · ${sumPags.toLocaleString('pt-BR')} págs</div>`;
-    const cards=slimes.slice(0,5).map(b=>{
+    const header=`<div style="font-size:11px;font-weight:700;color:${cor};font-family:'Orbitron',sans-serif;margin-bottom:8px;">${dd.u.toUpperCase()} · ${slimes.length} slimes · ${slimes.reduce((a,l)=>a+l.totalPag,0).toLocaleString('pt-BR')} págs</div>`;
+    if(!slimes.length)return header+`<div style="color:var(--muted);font-size:12px;padding:8px 0;">Nenhum slime vencido</div>`;
+    return header+slimes.slice(0,3).map(b=>{
       const l=allLivros.find(x=>x.livro===b.livro);
       const uid='sl-'+Math.random().toString(36).slice(2,8);
-      setTimeout(()=>{
-        const el=document.getElementById(uid);
-        if(!el)return;
-        const src=l?.coverUrl||(l?.isbn?`https://covers.openlibrary.org/b/isbn/${l.isbn}-M.jpg`:'');
-        if(src){el.src=src;el.onerror=()=>{el.style.display='none';};}
-      },250);
+      setTimeout(()=>{const el=document.getElementById(uid);if(!el)return;const src=l?.coverUrl||(l?.isbn?`https://covers.openlibrary.org/b/isbn/${l.isbn}-M.jpg`:'');if(src){el.src=src;el.onerror=()=>{el.style.display='none';};};},250);
       return `<div style="display:flex;gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid var(--border);">
         <img id="${uid}" src="" class="bat-boss-cover" alt="">
         <div style="flex:1;min-width:0;">
@@ -3433,30 +3422,16 @@ function renderBatalha() {
         </div>
       </div>`;
     }).join('');
-    return header+cards;
   }
+
   document.getElementById('bat-boss-a').innerHTML=bossCard(dA,CA);
   document.getElementById('bat-boss-b').innerHTML=bossCard(dB,CB);
-
-  // Slimes (até 200 páginas)
-  function slimeCard(dd,cor){
-    const allLivros=[...(window._dadosD?.livros||[]),...(window._dadosD?.lendo||[]),...(window._dadosD?.pausados||[]),...(window._dadosD?.aguardando||[])];
-    const slimes=dd.lidos.filter(l=>l.totalPag>0&&l.totalPag<=200).sort((a,b)=>a.totalPag-b.totalPag);
-    const total=slimes.length;
-    const sumPags=slimes.reduce((a,l)=>a+l.totalPag,0);
-    if(!slimes.length)return`<div style="color:var(--muted);font-size:12px;text-align:center;padding:8px;">Nenhum slime vencido</div>`;
-    return `<div style="font-size:10px;color:${cor};font-weight:700;font-family:'Orbitron',sans-serif;margin-bottom:6px;">${dd.u.toUpperCase()} · ${total} slimes · ${sumPags} págs</div>`+
-      slimes.slice(0,5).map(b=>`<div style="display:flex;justify-content:space-between;font-size:12px;padding:4px 0;border-bottom:1px solid var(--border);">
-        <span style="color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:160px;">🐛 ${b.livro}</span>
-        <span style="color:var(--muted);flex-shrink:0;">${b.totalPag} págs</span>
-      </div>`).join('');
-  }
   document.getElementById('bat-slimes').innerHTML=
     slimeCard(dA,CA)+
     '<div style="margin:10px 0;border-top:1px solid var(--border);"></div>'+
     slimeCard(dB,CB);
 
-  // Dia favorito
+    // Dia favorito
   const wdNomes2=['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
   document.getElementById('bat-wd-dia-a').textContent=wdNomes2[dA.wdMap.indexOf(Math.max(...dA.wdMap))];
   document.getElementById('bat-wd-dia-b').textContent=wdNomes2[dB.wdMap.indexOf(Math.max(...dB.wdMap))];
