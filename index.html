@@ -766,14 +766,27 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
 
 <!-- ── PÁGINA DE BATALHA ── -->
 <div class="page" id="pageBatalha" style="display:none;">
-  <div style="text-align:center;padding:40px 20px 20px;">
-    <div style="font-size:48px;margin-bottom:8px;">⚔️</div>
-    <h2 style="font-size:28px;font-weight:800;color:var(--text);margin-bottom:4px;">Batalha de Leitura</h2>
-    <p style="color:var(--muted);font-size:15px;">Milton vs Daniel</p>
+
+  <!-- Seletor de jogadores -->
+  <div id="batalha-seletor" style="display:flex;gap:12px;align-items:center;justify-content:center;padding:20px 16px 0;flex-wrap:wrap;">
+    <div style="display:flex;align-items:center;gap:8px;background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:8px 14px;">
+      <span style="font-size:12px;color:var(--muted);">Jogador A</span>
+      <select id="bat-playerA" onchange="renderBatalha()" style="background:transparent;border:none;color:#8b7cf8;font-weight:700;font-size:14px;cursor:pointer;outline:none;">
+        <option value="Milton">Milton</option>
+        <option value="Daniel">Daniel</option>
+      </select>
+    </div>
+    <div style="font-size:24px;font-weight:900;color:var(--muted);">VS</div>
+    <div style="display:flex;align-items:center;gap:8px;background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:8px 14px;">
+      <span style="font-size:12px;color:var(--muted);">Jogador B</span>
+      <select id="bat-playerB" onchange="renderBatalha()" style="background:transparent;border:none;color:#f88c6a;font-weight:700;font-size:14px;cursor:pointer;outline:none;">
+        <option value="Daniel">Daniel</option>
+        <option value="Milton">Milton</option>
+      </select>
+    </div>
   </div>
 
-  <!-- Cards de duelo -->
-  <div id="batalhaContainer" style="display:flex;flex-direction:column;gap:16px;"></div>
+  <div id="batalhaContainer"></div>
 </div>
 </div><!-- /app -->
 
@@ -2885,91 +2898,455 @@ function renderBatalha() {
   const d = window._dadosD;
   if (!d) return;
 
-  const usuarios = ['Milton', 'Daniel'];
-  const dados = {};
+  const pA = document.getElementById('bat-playerA')?.value || 'Milton';
+  const pB = document.getElementById('bat-playerB')?.value || 'Daniel';
+  const CORES = { A: '#8b7cf8', B: '#f88c6a' };
 
-  usuarios.forEach(u => {
-    const sess = (d.sessoes||[]).filter(s => !s.usuario || s.usuario.toUpperCase() === u.toUpperCase());
-    const livros = [...(d.livros||[]), ...(d.lendo||[]), ...(d.pausados||[]), ...(d.aguardando||[])]
-      .filter(l => !l.usuario || l.usuario.toUpperCase() === u.toUpperCase());
-    const lidos = livros.filter(l => l.status === 'Completo');
+  // Calcula dados de um usuário
+  function calcDados(u) {
+    const filterU = l => u === 'Milton'
+      ? (!l.usuario || l.usuario === '' || l.usuario.toUpperCase() === 'MILTON')
+      : l.usuario?.toUpperCase() === u.toUpperCase();
 
-    const diasSet = new Set(sess.map(s=>s.data).filter(Boolean));
+    const sess   = (d.sessoes||[]).filter(filterU);
+    const todos  = [...(d.livros||[]), ...(d.lendo||[]), ...(d.pausados||[]), ...(d.aguardando||[])].filter(filterU);
+    const lidos  = todos.filter(l => l.status === 'Completo');
+    const notas  = (d.notas||[]).filter(filterU);
+
+    const diasSet  = new Set(sess.map(s=>s.data).filter(Boolean));
     const pagTotal = sess.reduce((a,s)=>a+s.paginas,0);
-    const media = diasSet.size > 0 ? Math.round(pagTotal/diasSet.size*10)/10 : 0;
-    const horas = Math.round(sess.reduce((a,s)=>a+(s.minutos||0),0)/60);
+    const minTotal = sess.reduce((a,s)=>a+(s.minutos||0),0);
+    const horas    = Math.round(minTotal/60);
+    const media    = diasSet.size > 0 ? Math.round(pagTotal/diasSet.size*10)/10 : 0;
+    const notaMedia= notas.length ? notas.reduce((a,n)=>a+n.media,0)/notas.length : 0;
 
     // Streak atual
     const diasOrdem = [...diasSet].sort();
-    let streakAtual = 0;
-    if (diasOrdem.length) {
-      let d2 = new Date(); d2.setHours(12,0,0,0);
-      const hoje = d2.toISOString().slice(0,10);
-      const ontem = new Date(d2.getTime()-86400000).toISOString().slice(0,10);
-      if (diasSet.has(hoje) || diasSet.has(ontem)) {
-        let cur = diasSet.has(hoje) ? new Date(hoje+'T12:00:00') : new Date(ontem+'T12:00:00');
-        while (diasSet.has(cur.toISOString().slice(0,10))) {
-          streakAtual++;
-          cur = new Date(cur.getTime()-86400000);
-        }
+    let streakAtual = 0, streakRecord = 0, cur = 0;
+    for (let i = 0; i < diasOrdem.length; i++) {
+      if (i === 0) { cur = 1; }
+      else {
+        const prev = new Date(diasOrdem[i-1]+'T12:00:00');
+        const curr = new Date(diasOrdem[i]+'T12:00:00');
+        const diff = Math.round((curr-prev)/86400000);
+        cur = diff === 1 ? cur+1 : 1;
       }
+      streakRecord = Math.max(streakRecord, cur);
+    }
+    const hoje = new Date(); hoje.setHours(12,0,0,0);
+    const hojeStr  = hoje.toISOString().slice(0,10);
+    const ontemStr = new Date(hoje.getTime()-86400000).toISOString().slice(0,10);
+    if (diasSet.has(hojeStr) || diasSet.has(ontemStr)) {
+      let c = diasSet.has(hojeStr) ? new Date(hojeStr+'T12:00:00') : new Date(ontemStr+'T12:00:00');
+      while (diasSet.has(c.toISOString().slice(0,10))) { streakAtual++; c = new Date(c.getTime()-86400000); }
     }
 
-    // Nota média
-    const notas = (d.notas||[]).filter(n => !n.usuario || n.usuario === u);
-    const notaMedia = notas.length ? (notas.reduce((a,n)=>a+n.media,0)/notas.length).toFixed(1) : '—';
+    // Melhor/pior livro
+    const notasSort = [...notas].sort((a,b)=>b.media-a.media);
+    const melhor = notasSort[0];
+    const pior   = notasSort[notasSort.length-1];
 
-    // Maior livro lido
-    const maiorLivro = lidos.sort((a,b)=>(b.totalPag||0)-(a.totalPag||0))[0];
+    // Bosses (livros > 500 págs concluídos)
+    const bosses = lidos.filter(l=>l.totalPag>=500).length;
 
-    dados[u] = { pagTotal, lidos: lidos.length, diasLidos: diasSet.size, media, horas, streakAtual, notaMedia, maiorLivro, sessoes: sess.length };
+    // Autor mais lido
+    const autorMap = {};
+    sess.forEach(s => {
+      const l = todos.find(x=>x.livro===s.livro);
+      const a = l?.autor || 'Desconhecido';
+      autorMap[a] = (autorMap[a]||0) + s.paginas;
+    });
+    const autorTop = Object.entries(autorMap).sort((a,b)=>b[1]-a[1])[0];
+
+    // Vitórias mensais
+    const mesPags = {};
+    sess.forEach(s => {
+      if (!s.data) return;
+      const ym = s.data.slice(0,7);
+      mesPags[ym] = (mesPags[ym]||0) + s.paginas;
+    });
+
+    // Dia da semana favorito
+    const wdMap = [0,0,0,0,0,0,0];
+    sess.forEach(s => { if(s.data) { const wd = new Date(s.data+'T12:00:00').getDay(); wdMap[wd]+=s.paginas; } });
+    const wdNomes = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+    const wdTop = wdMap.indexOf(Math.max(...wdMap));
+
+    // Heatmap — últimos 12 meses por mês
+    const mesesPags = {};
+    sess.forEach(s => {
+      if (!s.data) return;
+      const ym = s.data.slice(0,7);
+      mesesPags[ym] = (mesesPags[ym]||0) + s.paginas;
+    });
+
+    // Coleções lidas
+    const colSet = new Set(lidos.map(l=>l.colecao).filter(Boolean));
+
+    // Eficiência (págs/hora)
+    const eficiencia = horas > 0 ? Math.round(pagTotal/horas) : 0;
+
+    // Maior sessão
+    const maiorSessao = sess.reduce((max,s)=>s.paginas>max?s.paginas:max, 0);
+
+    return {
+      u, sess, todos, lidos, notas, diasSet,
+      pagTotal, horas, media, notaMedia, streakAtual, streakRecord,
+      melhor, pior, bosses, autorTop, mesPags, wdMap, wdTop, wdNomes,
+      mesesPags, colSet, eficiencia, maiorSessao,
+      sessoes: sess.length, notaMediaFmt: notaMedia.toFixed(1)
+    };
+  }
+
+  const dA = calcDados(pA);
+  const dB = calcDados(pB);
+
+  // Poder geral (ponderado)
+  const poderA = dA.pagTotal*0.4 + dA.lidos.length*200 + dA.horas*10 + dA.streakAtual*50 + dA.notaMedia*100;
+  const poderB = dB.pagTotal*0.4 + dB.lidos.length*200 + dB.horas*10 + dB.streakAtual*50 + dB.notaMedia*100;
+  const totalPoder = poderA + poderB || 1;
+  const pctA = Math.round(poderA/totalPoder*100);
+  const pctB = 100 - pctA;
+
+  // Vitórias mensais
+  const allMeses = new Set([...Object.keys(dA.mesPags), ...Object.keys(dB.mesPags)]);
+  let vitA = 0, vitB = 0, empates = 0;
+  allMeses.forEach(m => {
+    const a = dA.mesPags[m]||0, b = dB.mesPags[m]||0;
+    if (a > b) vitA++;
+    else if (b > a) vitB++;
+    else empates++;
   });
 
-  const duelos = [
-    { icon:'📄', label:'Páginas lidas', key:'pagTotal', fmt: v=>v.toLocaleString('pt-BR'), maior:true },
-    { icon:'✅', label:'Livros concluídos', key:'lidos', fmt: v=>v, maior:true },
-    { icon:'📅', label:'Dias de leitura', key:'diasLidos', fmt: v=>v, maior:true },
-    { icon:'⚡', label:'Média págs/dia', key:'media', fmt: v=>v, maior:true },
-    { icon:'🕐', label:'Horas lidas', key:'horas', fmt: v=>v+'h', maior:true },
-    { icon:'🔥', label:'Streak atual', key:'streakAtual', fmt: v=>v+' dias', maior:true },
-    { icon:'⭐', label:'Nota média', key:'notaMedia', fmt: v=>v, maior:true },
-    { icon:'📖', label:'Sessões registradas', key:'sessoes', fmt: v=>v, maior:true },
-  ];
+  // Radar data (0-100 normalizado)
+  function norm(a, b) { const mx = Math.max(a,b,1); return [Math.round(a/mx*100), Math.round(b/mx*100)]; }
+  const radarLabels = ['Volume', 'Consistência', 'Velocidade', 'Qualidade', 'Resistência', 'Variedade'];
+  const [rVolA,rVolB]   = norm(dA.pagTotal, dB.pagTotal);
+  const [rConA,rConB]   = norm(dA.diasSet.size, dB.diasSet.size);
+  const [rVelA,rVelB]   = norm(dA.media, dB.media);
+  const [rQalA,rQalB]   = norm(dA.notaMedia, dB.notaMedia);
+  const [rResA,rResB]   = norm(dA.bosses, dB.bosses);
+  const [rVarA,rVarB]   = norm(dA.colSet.size, dB.colSet.size);
+  const radarA = [rVolA,rConA,rVelA,rQalA,rResA,rVarA];
+  const radarB = [rVolB,rConB,rVelB,rQalB,rResB,rVarB];
+
+  // Últimos 12 meses para linha temporal
+  const meses12 = [];
+  for (let i = 11; i >= 0; i--) {
+    const d2 = new Date(); d2.setDate(1); d2.setMonth(d2.getMonth()-i);
+    meses12.push(d2.toISOString().slice(0,7));
+  }
+  const mesesLabels = meses12.map(m => {
+    const [y,mo] = m.split('-');
+    return ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'][parseInt(mo)-1];
+  });
 
   const container = document.getElementById('batalhaContainer');
-  container.innerHTML = duelos.map(d => {
-    const vM = dados.Milton[d.key];
-    const vD = dados.Daniel[d.key];
-    const numM = parseFloat(vM) || 0;
-    const numD = parseFloat(vD) || 0;
-    const vencedor = numM > numD ? 'Milton' : numD > numM ? 'Daniel' : null;
-    const pctM = (numM + numD) > 0 ? Math.round(numM/(numM+numD)*100) : 50;
-    const pctD = 100 - pctM;
+  container.innerHTML = `
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap');
+.bat-page { padding:0 16px 40px;max-width:1200px;margin:0 auto; }
+.bat-hero { position:relative;padding:32px 16px 24px;text-align:center; }
+.bat-vs-wrap { display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:24px; }
+.bat-player { display:flex;flex-direction:column;align-items:center;gap:8px;flex:1;min-width:120px; }
+.bat-avatar { width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:36px;position:relative; }
+.bat-avatar-a { background:radial-gradient(circle,rgba(139,124,248,0.3),rgba(139,124,248,0.05));border:2px solid #8b7cf8;box-shadow:0 0 24px rgba(139,124,248,0.5); }
+.bat-avatar-b { background:radial-gradient(circle,rgba(248,140,106,0.3),rgba(248,140,106,0.05));border:2px solid #f88c6a;box-shadow:0 0 24px rgba(248,140,106,0.5); }
+.bat-pname { font-family:'Orbitron',sans-serif;font-size:18px;font-weight:900;letter-spacing:2px; }
+.bat-rank { font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase; }
+.bat-vs-mid { display:flex;flex-direction:column;align-items:center;gap:4px; }
+.bat-vs-txt { font-family:'Orbitron',sans-serif;font-size:32px;font-weight:900;color:var(--muted); }
+.bat-poder-bar { width:100%;max-width:600px;margin:0 auto 8px;height:28px;background:var(--bg3);border-radius:14px;overflow:hidden;display:flex;border:1px solid var(--border); }
+.bat-poder-a { background:linear-gradient(90deg,#8b7cf8,#6c5ce7);display:flex;align-items:center;padding-left:10px;font-size:12px;font-weight:700;color:white;font-family:'Orbitron',sans-serif;transition:width 1s; }
+.bat-poder-b { background:linear-gradient(90deg,#f88c6a,#e17055);display:flex;align-items:center;justify-content:flex-end;padding-right:10px;font-size:12px;font-weight:700;color:white;font-family:'Orbitron',sans-serif;transition:width 1s; }
+.bat-poder-label { text-align:center;font-size:11px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:24px; }
+.bat-section { margin-bottom:32px; }
+.bat-section-title { font-family:'Orbitron',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border); }
+.bat-grid { display:grid;grid-template-columns:repeat(4,1fr);gap:12px; }
+@media(max-width:700px) { .bat-grid { grid-template-columns:repeat(2,1fr); } }
+.bat-card { background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:14px;position:relative;overflow:hidden; }
+.bat-card-title { font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:10px; }
+.bat-card-row { display:flex;align-items:center;justify-content:space-between;margin-bottom:6px; }
+.bat-card-name { font-size:12px;font-weight:600; }
+.bat-card-val { font-family:'Orbitron',sans-serif;font-size:16px;font-weight:700; }
+.bat-card-bar-wrap { height:6px;background:var(--bg3);border-radius:3px;overflow:hidden;margin-top:2px; }
+.bat-card-bar { height:100%;border-radius:3px;transition:width 1s; }
+.bat-winner-badge { position:absolute;top:10px;right:10px;font-size:14px; }
+.bat-vitA { color:#8b7cf8; }
+.bat-vitB { color:#f88c6a; }
+.bat-chart-wrap { background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:20px; }
+.bat-2col { display:grid;grid-template-columns:1fr 1fr;gap:16px; }
+@media(max-width:600px) { .bat-2col { grid-template-columns:1fr; } }
+.bat-mensais { display:flex;gap:8px;justify-content:center;margin-bottom:20px;flex-wrap:wrap; }
+.bat-mes-badge { padding:6px 16px;border-radius:20px;font-family:'Orbitron',sans-serif;font-size:14px;font-weight:700; }
+.bat-artefato { background:var(--bg2);border-radius:12px;padding:14px;display:flex;gap:12px;align-items:center; }
+.bat-artefato-title { font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px; }
+.bat-medal { display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;margin:3px; }
+</style>
 
-    return `<div style="background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:20px;">
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
-        <span style="font-size:22px;">${d.icon}</span>
-        <span style="font-size:16px;font-weight:700;color:var(--text);">${d.label}</span>
-        ${vencedor ? `<span style="margin-left:auto;font-size:12px;background:rgba(139,124,248,0.2);color:var(--purple);padding:2px 10px;border-radius:6px;font-weight:700;">🏆 ${vencedor}</span>` : '<span style="margin-left:auto;font-size:12px;color:var(--muted);">Empate</span>'}
+<div class="bat-page">
+
+  <!-- HERO SECTION -->
+  <div class="bat-hero">
+    <div class="bat-vs-wrap">
+      <div class="bat-player">
+        <div class="bat-avatar bat-avatar-a">⚔️</div>
+        <div class="bat-pname" style="color:#8b7cf8;">${pA.toUpperCase()}</div>
+        <div class="bat-rank">${dA.lidos.length >= 50 ? '👑 Lendário' : dA.lidos.length >= 20 ? '💎 Épico' : dA.lidos.length >= 10 ? '🥇 Raro' : '🥈 Iniciante'}</div>
       </div>
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
-        <span style="font-size:13px;font-weight:700;color:var(--purple);min-width:60px;">Milton</span>
-        <div style="flex:1;height:28px;background:var(--bg3);border-radius:8px;overflow:hidden;display:flex;">
-          <div style="width:${pctM}%;background:${vencedor==='Milton'?'var(--purple)':'var(--bg4)'};border-radius:8px;transition:width .5s;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;">
-            <span style="font-size:12px;font-weight:700;color:white;">${d.fmt(vM)}</span>
+      <div class="bat-vs-mid">
+        <div class="bat-vs-txt">⚔️</div>
+      </div>
+      <div class="bat-player">
+        <div class="bat-avatar bat-avatar-b">🛡️</div>
+        <div class="bat-pname" style="color:#f88c6a;">${pB.toUpperCase()}</div>
+        <div class="bat-rank">${dB.lidos.length >= 50 ? '👑 Lendário' : dB.lidos.length >= 20 ? '💎 Épico' : dB.lidos.length >= 10 ? '🥇 Raro' : '🥈 Iniciante'}</div>
+      </div>
+    </div>
+
+    <div class="bat-poder-label">⚡ PODER DE LEITURA TOTAL</div>
+    <div class="bat-poder-bar">
+      <div class="bat-poder-a" style="width:${pctA}%">${pctA}%</div>
+      <div class="bat-poder-b" style="width:${pctB}%">${pctB}%</div>
+    </div>
+
+    <!-- Vitórias mensais -->
+    <div class="bat-mensais" style="margin-top:16px;">
+      <div class="bat-mes-badge" style="background:rgba(139,124,248,0.15);color:#8b7cf8;">🏆 ${vitA} vitórias</div>
+      <div class="bat-mes-badge" style="background:var(--bg3);color:var(--muted);">🤝 ${empates} empates</div>
+      <div class="bat-mes-badge" style="background:rgba(248,140,106,0.15);color:#f88c6a;">🏆 ${vitB} vitórias</div>
+    </div>
+    <div style="font-size:11px;color:var(--muted);letter-spacing:1px;">vitórias por mês de leitura</div>
+  </div>
+
+  <!-- ATRIBUTOS PRINCIPAIS -->
+  <div class="bat-section">
+    <div class="bat-section-title">⚡ ATRIBUTOS DE COMBATE</div>
+    <div class="bat-grid" id="bat-attrs"></div>
+  </div>
+
+  <!-- RADAR + TEMPORAL -->
+  <div class="bat-section bat-2col">
+    <div>
+      <div class="bat-section-title">🕸️ PERFIL DE COMBATE</div>
+      <div class="bat-chart-wrap" style="display:flex;align-items:center;justify-content:center;">
+        <canvas id="bat-radar" width="280" height="280"></canvas>
+      </div>
+    </div>
+    <div>
+      <div class="bat-section-title">📈 GUERRA DAS TEMPORADAS</div>
+      <div class="bat-chart-wrap">
+        <canvas id="bat-linha" height="220"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIA DA SEMANA + BOSSES -->
+  <div class="bat-section bat-2col">
+    <div>
+      <div class="bat-section-title">📅 DIA SAGRADO DE LEITURA</div>
+      <div class="bat-chart-wrap">
+        <canvas id="bat-wd" height="200"></canvas>
+      </div>
+    </div>
+    <div>
+      <div class="bat-section-title">💀 BOSSES DERROTADOS (500+ págs)</div>
+      <div class="bat-chart-wrap" style="display:flex;flex-direction:column;gap:16px;">
+        ${[pA,pB].map((p,i)=>{
+          const dd = i===0?dA:dB;
+          const cor = i===0?CORES.A:CORES.B;
+          const bossesList = (i===0?dA:dB).lidos.filter(l=>l.totalPag>=500).sort((a,b)=>b.totalPag-a.totalPag).slice(0,3);
+          return `<div>
+            <div style="font-size:12px;font-weight:700;color:${cor};margin-bottom:8px;font-family:'Orbitron',sans-serif;">${p.toUpperCase()} — ${dd.bosses} bosses</div>
+            ${bossesList.map(b=>`<div style="display:flex;justify-content:space-between;font-size:12px;padding:4px 0;border-bottom:1px solid var(--border);color:var(--muted);">
+              <span style="color:var(--text);">💀 ${b.livro.slice(0,30)}</span>
+              <span>${b.totalPag} págs</span>
+            </div>`).join('')}
+            ${bossesList.length===0?`<div style="color:var(--muted);font-size:12px;">Nenhum boss derrotado ainda</div>`:''}
+          </div>`;
+        }).join('')}
+      </div>
+    </div>
+  </div>
+
+  <!-- ARTEFATOS E MALDIÇÕES -->
+  <div class="bat-section bat-2col">
+    <div>
+      <div class="bat-section-title">⭐ ARTEFATOS LENDÁRIOS — MELHOR AVALIADO</div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        ${[{p:pA,dd:dA,cor:CORES.A},{p:pB,dd:dB,cor:CORES.B}].map(({p,dd,cor})=>`
+        <div class="bat-artefato" style="border:1px solid ${cor}22;">
+          <div style="width:4px;height:60px;background:${cor};border-radius:2px;flex-shrink:0;"></div>
+          <div style="flex:1;">
+            <div style="font-size:11px;color:${cor};font-weight:700;letter-spacing:1px;">${p.toUpperCase()}</div>
+            <div style="font-size:14px;font-weight:700;color:var(--text);">${dd.melhor?.livro || '—'}</div>
+            <div style="font-size:12px;color:var(--muted);">⭐ ${dd.melhor?.media?.toFixed(1) || '—'} · ${dd.melhor?.ano||''}</div>
           </div>
-        </div>
+        </div>`).join('')}
       </div>
-      <div style="display:flex;align-items:center;gap:12px;">
-        <span style="font-size:13px;font-weight:700;color:#f88c6a;min-width:60px;">Daniel</span>
-        <div style="flex:1;height:28px;background:var(--bg3);border-radius:8px;overflow:hidden;display:flex;">
-          <div style="width:${pctD}%;background:${vencedor==='Daniel'?'#f88c6a':'var(--bg4)'};border-radius:8px;transition:width .5s;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;">
-            <span style="font-size:12px;font-weight:700;color:white;">${d.fmt(vD)}</span>
+    </div>
+    <div>
+      <div class="bat-section-title">💀 MALDIÇÕES — PIOR AVALIADO</div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        ${[{p:pA,dd:dA,cor:'#e53935'},{p:pB,dd:dB,cor:'#b71c1c'}].map(({p,dd,cor})=>`
+        <div class="bat-artefato" style="border:1px solid ${cor}22;">
+          <div style="width:4px;height:60px;background:${cor};border-radius:2px;flex-shrink:0;"></div>
+          <div style="flex:1;">
+            <div style="font-size:11px;color:${cor};font-weight:700;letter-spacing:1px;">${p.toUpperCase()}</div>
+            <div style="font-size:14px;font-weight:700;color:var(--text);">${dd.pior?.livro || '—'}</div>
+            <div style="font-size:12px;color:var(--muted);">💀 ${dd.pior?.media?.toFixed(1) || '—'} · ${dd.pior?.ano||''}</div>
           </div>
-        </div>
+        </div>`).join('')}
       </div>
+    </div>
+  </div>
+
+  <!-- AUTOR DOMINADO + MEDALHAS -->
+  <div class="bat-section bat-2col">
+    <div>
+      <div class="bat-section-title">📚 AUTOR DOMINADO</div>
+      <div class="bat-chart-wrap" style="display:flex;flex-direction:column;gap:14px;">
+        ${[{p:pA,dd:dA,cor:CORES.A},{p:pB,dd:dB,cor:CORES.B}].map(({p,dd,cor})=>`
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:40px;height:40px;border-radius:50%;background:${cor}22;border:2px solid ${cor};display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">📖</div>
+          <div>
+            <div style="font-size:11px;color:${cor};font-weight:700;">${p.toUpperCase()}</div>
+            <div style="font-size:15px;font-weight:700;color:var(--text);">${dd.autorTop?.[0] || '—'}</div>
+            <div style="font-size:12px;color:var(--muted);">${dd.autorTop?.[1]?.toLocaleString('pt-BR')||0} páginas lidas</div>
+          </div>
+        </div>`).join('')}
+      </div>
+    </div>
+    <div>
+      <div class="bat-section-title">🏅 CONQUISTAS</div>
+      <div class="bat-chart-wrap">
+        ${[{p:pA,dd:dA,cor:CORES.A},{p:pB,dd:dB,cor:CORES.B}].map(({p,dd,cor})=>`
+        <div style="margin-bottom:12px;">
+          <div style="font-size:11px;color:${cor};font-weight:700;margin-bottom:6px;">${p.toUpperCase()}</div>
+          <div>
+            ${dd.streakRecord>=30?`<span class="bat-medal" style="background:rgba(255,215,0,0.15);color:#ffd700;">🔥 Maratonista</span>`:''}
+            ${dd.bosses>=5?`<span class="bat-medal" style="background:rgba(139,124,248,0.15);color:#8b7cf8;">💀 Caçador de Bosses</span>`:''}
+            ${dd.lidos.length>=50?`<span class="bat-medal" style="background:rgba(78,205,196,0.15);color:#4ecdc4;">👑 Lendário</span>`:''}
+            ${dd.eficiencia>=50?`<span class="bat-medal" style="background:rgba(248,140,106,0.15);color:#f88c6a;">⚡ Devorador</span>`:''}
+            ${dd.maiorSessao>=100?`<span class="bat-medal" style="background:rgba(255,99,132,0.15);color:#ff6384;">🦁 Modo Insano</span>`:''}
+            ${dd.notaMedia>=8?`<span class="bat-medal" style="background:rgba(255,215,0,0.15);color:#ffd700;">⭐ Crítico Literário</span>`:''}
+            ${dd.colSet.size>=5?`<span class="bat-medal" style="background:rgba(153,102,255,0.15);color:#9966ff;">🗺️ Explorador</span>`:''}
+            ${(!dd.lidos.length&&!dd.bosses)?`<span class="bat-medal" style="background:var(--bg3);color:var(--muted);">🌱 Iniciando Jornada</span>`:''}
+          </div>
+        </div>`).join('')}
+      </div>
+    </div>
+  </div>
+
+</div>`;
+
+  // Atributos cards
+  const attrs = [
+    { title:'DOMÍNIO DE PÁGINAS', icon:'📄', keyA: dA.pagTotal, keyB: dB.pagTotal, fmt: v=>v.toLocaleString('pt-BR'), sub:'páginas lidas' },
+    { title:'GRIMÓRIO COMPLETO', icon:'✅', keyA: dA.lidos.length, keyB: dB.lidos.length, fmt: v=>v, sub:'livros concluídos' },
+    { title:'STAMINA TOTAL', icon:'🕐', keyA: dA.horas, keyB: dB.horas, fmt: v=>v+'h', sub:'horas lidas' },
+    { title:'COMBO DE LEITURA', icon:'🔥', keyA: dA.streakAtual, keyB: dB.streakAtual, fmt: v=>v+' dias', sub:'streak atual' },
+    { title:'VELOCIDADE', icon:'⚡', keyA: dA.media, keyB: dB.media, fmt: v=>v, sub:'págs/dia média' },
+    { title:'CRÍTICO LITERÁRIO', icon:'⭐', keyA: parseFloat(dA.notaMediaFmt)||0, keyB: parseFloat(dB.notaMediaFmt)||0, fmt: v=>v.toFixed?v.toFixed(1):v, sub:'nota média' },
+    { title:'SESSÕES DE TREINO', icon:'📖', keyA: dA.sessoes, keyB: dB.sessoes, fmt: v=>v, sub:'sessões registradas' },
+    { title:'EFICIÊNCIA', icon:'💨', keyA: dA.eficiencia, keyB: dB.eficiencia, fmt: v=>v, sub:'págs/hora' },
+  ];
+
+  const attrsEl = document.getElementById('bat-attrs');
+  attrsEl.innerHTML = attrs.map(a => {
+    const vA = a.keyA, vB = a.keyB;
+    const max = Math.max(vA, vB, 1);
+    const pA2 = Math.round(vA/max*100), pB2 = Math.round(vB/max*100);
+    const winA = vA > vB, winB = vB > vA;
+    return `<div class="bat-card">
+      ${winA ? `<div class="bat-winner-badge">🏆</div>` : winB ? `<div class="bat-winner-badge" style="color:#f88c6a;">🏆</div>` : ''}
+      <div class="bat-card-title">${a.icon} ${a.title}</div>
+      <div class="bat-card-row">
+        <span class="bat-card-name" style="color:#8b7cf8;">${pA}</span>
+        <span class="bat-card-val" style="color:${winA?'#8b7cf8':'var(--muted)'};">${a.fmt(vA)}</span>
+      </div>
+      <div class="bat-card-bar-wrap"><div class="bat-card-bar" style="width:${pA2}%;background:#8b7cf8;"></div></div>
+      <div style="height:8px;"></div>
+      <div class="bat-card-row">
+        <span class="bat-card-name" style="color:#f88c6a;">${pB}</span>
+        <span class="bat-card-val" style="color:${winB?'#f88c6a':'var(--muted)'};">${a.fmt(vB)}</span>
+      </div>
+      <div class="bat-card-bar-wrap"><div class="bat-card-bar" style="width:${pB2}%;background:#f88c6a;"></div></div>
+      <div style="font-size:10px;color:var(--muted);margin-top:6px;">${a.sub}</div>
     </div>`;
   }).join('');
+
+  // Radar Chart
+  requestAnimationFrame(() => {
+    const radarEl = document.getElementById('bat-radar');
+    if (!radarEl) return;
+    const existingR = Chart.getChart(radarEl);
+    if (existingR) existingR.destroy();
+    new Chart(radarEl, {
+      type: 'radar',
+      data: {
+        labels: radarLabels,
+        datasets: [
+          { label: pA, data: radarA, borderColor: '#8b7cf8', backgroundColor: 'rgba(139,124,248,0.15)', pointBackgroundColor: '#8b7cf8', borderWidth: 2 },
+          { label: pB, data: radarB, borderColor: '#f88c6a', backgroundColor: 'rgba(248,140,106,0.15)', pointBackgroundColor: '#f88c6a', borderWidth: 2 },
+        ]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: true,
+        scales: { r: { min:0, max:100, ticks:{display:false}, grid:{color:'rgba(255,255,255,0.08)'}, pointLabels:{color:'#8892a8',font:{size:11}} } },
+        plugins: { legend:{ labels:{color:'#8892a8',font:{size:12}} }, tooltip:{...window.TT||{}} }
+      }
+    });
+
+    // Linha temporal
+    const linhaEl = document.getElementById('bat-linha');
+    if (!linhaEl) return;
+    const existingL = Chart.getChart(linhaEl);
+    if (existingL) existingL.destroy();
+    new Chart(linhaEl, {
+      type: 'line',
+      data: {
+        labels: mesesLabels,
+        datasets: [
+          { label: pA, data: meses12.map(m=>dA.mesesPags[m]||0), borderColor:'#8b7cf8', backgroundColor:'rgba(139,124,248,0.1)', tension:0.4, fill:true, pointRadius:3 },
+          { label: pB, data: meses12.map(m=>dB.mesesPags[m]||0), borderColor:'#f88c6a', backgroundColor:'rgba(248,140,106,0.1)', tension:0.4, fill:true, pointRadius:3 },
+        ]
+      },
+      options: {
+        responsive:true, maintainAspectRatio:false,
+        plugins:{ legend:{labels:{color:'#8892a8'}}, tooltip:{...(window.TT||{})} },
+        scales:{
+          x:{ticks:{color:'#8892a8',font:{size:10}},grid:{color:'rgba(42,50,72,0.4)'}},
+          y:{ticks:{color:'#8892a8',font:{size:10}},grid:{color:'rgba(42,50,72,0.4)'},beginAtZero:true}
+        }
+      }
+    });
+
+    // Dia da semana
+    const wdEl = document.getElementById('bat-wd');
+    if (!wdEl) return;
+    const existingW = Chart.getChart(wdEl);
+    if (existingW) existingW.destroy();
+    const wdNomes2 = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+    new Chart(wdEl, {
+      type: 'bar',
+      data: {
+        labels: wdNomes2,
+        datasets: [
+          { label: pA, data: dA.wdMap, backgroundColor: '#8b7cf8aa', borderColor:'#8b7cf8', borderWidth:1, borderRadius:6 },
+          { label: pB, data: dB.wdMap, backgroundColor: '#f88c6aaa', borderColor:'#f88c6a', borderWidth:1, borderRadius:6 },
+        ]
+      },
+      options: {
+        responsive:true, maintainAspectRatio:false,
+        plugins:{ legend:{labels:{color:'#8892a8'}}, tooltip:{...(window.TT||{})} },
+        scales:{
+          x:{ticks:{color:'#8892a8'},grid:{color:'rgba(42,50,72,0.4)'}},
+          y:{ticks:{color:'#8892a8'},grid:{color:'rgba(42,50,72,0.4)'},beginAtZero:true}
+        }
+      }
+    });
+  });
 }
 window.setUsuario = setUsuario;
 
