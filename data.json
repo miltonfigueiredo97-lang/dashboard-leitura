@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-16T03:06:21.670Z",
+  "geradoEm": "2026-05-16T03:24:21.661Z",
   "meta": {
     "total": 26,
     "lidos": 6,
@@ -18,8 +18,8 @@
       "lendo": 0,
       "pausados": 0,
       "aguardando": 0,
-      "paginasTotal": 10939,
-      "paginasLidas": 10939,
+      "paginasTotal": 11048,
+      "paginasLidas": 11048,
       "paginasFaltando": 0,
       "faltando": 0,
       "mediaDiaria": 58.3,
@@ -27,15 +27,15 @@
       "dataPrevistoAtual": "Concluída!"
     },
     "2025": {
-      "total": 27,
-      "lidos": 24,
+      "total": 28,
+      "lidos": 26,
       "lendo": 0,
       "pausados": 0,
-      "aguardando": 3,
-      "paginasTotal": 17836,
-      "paginasLidas": 15587,
-      "paginasFaltando": 2249,
-      "faltando": 3,
+      "aguardando": 2,
+      "paginasTotal": 18820,
+      "paginasLidas": 17534,
+      "paginasFaltando": 1286,
+      "faltando": 2,
       "mediaDiaria": 75.9,
       "ritmoAtual": 0,
       "dataPrevistoAtual": "—"
@@ -70,14 +70,14 @@
     },
     "AINDA NÃO DEFINIDO": {
       "total": 223,
-      "lidos": 12,
+      "lidos": 13,
       "lendo": 0,
       "pausados": 0,
-      "aguardando": 211,
-      "paginasTotal": 108940,
-      "paginasLidas": 4419,
-      "paginasFaltando": 104521,
-      "faltando": 211,
+      "aguardando": 210,
+      "paginasTotal": 108831,
+      "paginasLidas": 4571,
+      "paginasFaltando": 104260,
+      "faltando": 210,
       "mediaDiaria": 50,
       "ritmoAtual": 0,
       "dataPrevistoAtual": "—"
@@ -5530,8 +5530,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 2",
-      "colecao": "",
+      "livro": "O poço da Ascensão",
+      "colecao": "Cosmere",
       "data": "2025-03-10",
       "paginas": 31,
       "minutos": 35,
@@ -5539,8 +5539,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 2",
-      "colecao": "",
+      "livro": "O poço da Ascensão",
+      "colecao": "Cosmere",
       "data": "2025-03-10",
       "paginas": 8,
       "minutos": 11.9,
@@ -5548,8 +5548,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 2",
-      "colecao": "",
+      "livro": "O poço da Ascensão",
+      "colecao": "Cosmere",
       "data": "2025-03-10",
       "paginas": 11,
       "minutos": 8.7,
@@ -5557,8 +5557,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 2",
-      "colecao": "",
+      "livro": "O poço da Ascensão",
+      "colecao": "Cosmere",
       "data": "2025-03-11",
       "paginas": 9,
       "minutos": 9.1,
@@ -5566,8 +5566,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 2",
-      "colecao": "",
+      "livro": "O poço da Ascensão",
+      "colecao": "Cosmere",
       "data": "2025-03-12",
       "paginas": 24,
       "minutos": 25,
@@ -5575,8 +5575,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 2",
-      "colecao": "",
+      "livro": "O poço da Ascensão",
+      "colecao": "Cosmere",
       "data": "2025-03-12",
       "paginas": 12,
       "minutos": 12,
@@ -5584,8 +5584,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 2",
-      "colecao": "",
+      "livro": "O poço da Ascensão",
+      "colecao": "Cosmere",
       "data": "2025-03-12",
       "paginas": 26,
       "minutos": 28.1,
@@ -5593,8 +5593,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 2",
-      "colecao": "",
+      "livro": "O poço da Ascensão",
+      "colecao": "Cosmere",
       "data": "2025-03-12",
       "paginas": 37,
       "minutos": 32.9,
@@ -5602,8 +5602,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 2",
-      "colecao": "",
+      "livro": "O poço da Ascensão",
+      "colecao": "Cosmere",
       "data": "2025-03-13",
       "paginas": 4,
       "minutos": 9.3,
@@ -5611,8 +5611,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 2",
-      "colecao": "",
+      "livro": "O poço da Ascensão",
+      "colecao": "Cosmere",
       "data": "2025-03-13",
       "paginas": 51,
       "minutos": 33.8,
@@ -5620,8 +5620,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 2",
-      "colecao": "",
+      "livro": "O poço da Ascensão",
+      "colecao": "Cosmere",
       "data": "2025-03-13",
       "paginas": 28,
       "minutos": 26.7,
@@ -5629,8 +5629,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 2",
-      "colecao": "",
+      "livro": "O poço da Ascensão",
+      "colecao": "Cosmere",
       "data": "2025-03-14",
       "paginas": 47,
       "minutos": 60,
@@ -5638,8 +5638,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 2",
-      "colecao": "",
+      "livro": "O poço da Ascensão",
+      "colecao": "Cosmere",
       "data": "2025-03-14",
       "paginas": 44,
       "minutos": 42.7,
@@ -5647,8 +5647,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 2",
-      "colecao": "",
+      "livro": "O poço da Ascensão",
+      "colecao": "Cosmere",
       "data": "2025-03-17",
       "paginas": 15,
       "minutos": 14.5,
@@ -5656,8 +5656,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 2",
-      "colecao": "",
+      "livro": "O poço da Ascensão",
+      "colecao": "Cosmere",
       "data": "2025-03-18",
       "paginas": 7,
       "minutos": 7.2,
@@ -5665,8 +5665,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 2",
-      "colecao": "",
+      "livro": "O poço da Ascensão",
+      "colecao": "Cosmere",
       "data": "2025-03-18",
       "paginas": 23,
       "minutos": 18,
@@ -5674,8 +5674,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 2",
-      "colecao": "",
+      "livro": "O poço da Ascensão",
+      "colecao": "Cosmere",
       "data": "2025-03-19",
       "paginas": 21,
       "minutos": 18.3,
@@ -5683,8 +5683,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 2",
-      "colecao": "",
+      "livro": "O poço da Ascensão",
+      "colecao": "Cosmere",
       "data": "2025-03-19",
       "paginas": 41,
       "minutos": 37.5,
@@ -5692,8 +5692,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 2",
-      "colecao": "",
+      "livro": "O poço da Ascensão",
+      "colecao": "Cosmere",
       "data": "2025-03-20",
       "paginas": 16,
       "minutos": 16.3,
@@ -5701,8 +5701,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 2",
-      "colecao": "",
+      "livro": "O poço da Ascensão",
+      "colecao": "Cosmere",
       "data": "2025-03-20",
       "paginas": 33,
       "minutos": 34.1,
@@ -5710,8 +5710,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 2",
-      "colecao": "",
+      "livro": "O poço da Ascensão",
+      "colecao": "Cosmere",
       "data": "2025-03-20",
       "paginas": 30,
       "minutos": 26.6,
@@ -5719,8 +5719,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 2",
-      "colecao": "",
+      "livro": "O poço da Ascensão",
+      "colecao": "Cosmere",
       "data": "2025-03-21",
       "paginas": 16,
       "minutos": 18.8,
@@ -5728,8 +5728,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 2",
-      "colecao": "",
+      "livro": "O poço da Ascensão",
+      "colecao": "Cosmere",
       "data": "2025-03-21",
       "paginas": 25,
       "minutos": 26,
@@ -5737,8 +5737,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 2",
-      "colecao": "",
+      "livro": "O poço da Ascensão",
+      "colecao": "Cosmere",
       "data": "2025-03-21",
       "paginas": 12,
       "minutos": 10,
@@ -5746,8 +5746,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 2",
-      "colecao": "",
+      "livro": "O poço da Ascensão",
+      "colecao": "Cosmere",
       "data": "2025-03-24",
       "paginas": 52,
       "minutos": 48.5,
@@ -5755,8 +5755,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 2",
-      "colecao": "",
+      "livro": "O poço da Ascensão",
+      "colecao": "Cosmere",
       "data": "2025-03-24",
       "paginas": 56,
       "minutos": 44.6,
@@ -5764,8 +5764,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 2",
-      "colecao": "",
+      "livro": "O poço da Ascensão",
+      "colecao": "Cosmere",
       "data": "2025-03-25",
       "paginas": 86,
       "minutos": 115.1,
@@ -5773,8 +5773,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 2",
-      "colecao": "",
+      "livro": "O poço da Ascensão",
+      "colecao": "Cosmere",
       "data": "2025-03-25",
       "paginas": 20,
       "minutos": 13.4,
@@ -5782,8 +5782,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 2",
-      "colecao": "",
+      "livro": "O poço da Ascensão",
+      "colecao": "Cosmere",
       "data": "2025-03-26",
       "paginas": 18,
       "minutos": 18,
@@ -5791,8 +5791,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 2",
-      "colecao": "",
+      "livro": "O poço da Ascensão",
+      "colecao": "Cosmere",
       "data": "2025-03-26",
       "paginas": 28,
       "minutos": 22.9,
@@ -5800,8 +5800,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 2",
-      "colecao": "",
+      "livro": "O poço da Ascensão",
+      "colecao": "Cosmere",
       "data": "2025-03-26",
       "paginas": 70,
       "minutos": 80,
@@ -5809,8 +5809,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 2",
-      "colecao": "",
+      "livro": "O poço da Ascensão",
+      "colecao": "Cosmere",
       "data": "2025-03-25",
       "paginas": 62,
       "minutos": 66.1,
@@ -5818,8 +5818,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 3",
-      "colecao": "",
+      "livro": "O poço da Ascensão",
+      "colecao": "Cosmere",
       "data": "2025-03-26",
       "paginas": 17,
       "minutos": 3.3,
@@ -5827,8 +5827,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 3",
-      "colecao": "",
+      "livro": "O poço da Ascensão",
+      "colecao": "Cosmere",
       "data": "2025-03-27",
       "paginas": 22,
       "minutos": 22.5,
@@ -5836,8 +5836,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 3",
-      "colecao": "",
+      "livro": "O poço da Ascensão",
+      "colecao": "Cosmere",
       "data": "2025-03-27",
       "paginas": 18,
       "minutos": 13.5,
@@ -5845,8 +5845,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 3",
-      "colecao": "",
+      "livro": "O poço da Ascensão",
+      "colecao": "Cosmere",
       "data": "2025-03-27",
       "paginas": 12,
       "minutos": 12.7,
@@ -5854,8 +5854,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 3",
-      "colecao": "",
+      "livro": "O poço da Ascensão",
+      "colecao": "Cosmere",
       "data": "2025-03-28",
       "paginas": 27,
       "minutos": 13.3,
@@ -5863,8 +5863,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mushoku Tensei 12",
-      "colecao": "",
+      "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 12",
+      "colecao": "Mushoku Tensei",
       "data": "2024-06-17",
       "paginas": 152,
       "minutos": 120,
@@ -5872,8 +5872,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mushoku Tensei 12",
-      "colecao": "",
+      "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 13",
+      "colecao": "Mushoku Tensei",
       "data": "2024-06-17",
       "paginas": 11,
       "minutos": 11.1,
@@ -5881,8 +5881,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mushoku Tensei 12",
-      "colecao": "",
+      "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 14",
+      "colecao": "Mushoku Tensei",
       "data": "2024-06-17",
       "paginas": 19,
       "minutos": 18.4,
@@ -5890,8 +5890,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mushoku Tensei 12",
-      "colecao": "",
+      "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 15",
+      "colecao": "Mushoku Tensei",
       "data": "2024-06-17",
       "paginas": 79,
       "minutos": 59.7,
@@ -5899,8 +5899,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 3",
-      "colecao": "",
+      "livro": "O Herói das Eras",
+      "colecao": "Cosmere",
       "data": "2025-03-28",
       "paginas": 6,
       "minutos": 6.6,
@@ -5908,8 +5908,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 3",
-      "colecao": "",
+      "livro": "O Herói das Eras",
+      "colecao": "Cosmere",
       "data": "2025-03-29",
       "paginas": 21,
       "minutos": 19,
@@ -5917,8 +5917,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 3",
-      "colecao": "",
+      "livro": "O Herói das Eras",
+      "colecao": "Cosmere",
       "data": "2025-03-30",
       "paginas": 75,
       "minutos": 68.5,
@@ -5926,8 +5926,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 3",
-      "colecao": "",
+      "livro": "O Herói das Eras",
+      "colecao": "Cosmere",
       "data": "2025-03-31",
       "paginas": 5,
       "minutos": 6.8,
@@ -5935,8 +5935,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 3",
-      "colecao": "",
+      "livro": "O Herói das Eras",
+      "colecao": "Cosmere",
       "data": "2025-03-31",
       "paginas": 16,
       "minutos": 20,
@@ -5944,8 +5944,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 3",
-      "colecao": "",
+      "livro": "O Herói das Eras",
+      "colecao": "Cosmere",
       "data": "2025-04-01",
       "paginas": 47,
       "minutos": 50,
@@ -5953,8 +5953,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 3",
-      "colecao": "",
+      "livro": "O Herói das Eras",
+      "colecao": "Cosmere",
       "data": "2025-04-01",
       "paginas": 17,
       "minutos": 12.9,
@@ -5962,8 +5962,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 3",
-      "colecao": "",
+      "livro": "O Herói das Eras",
+      "colecao": "Cosmere",
       "data": "2025-04-01",
       "paginas": 22,
       "minutos": 18.4,
@@ -5971,8 +5971,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 3",
-      "colecao": "",
+      "livro": "O Herói das Eras",
+      "colecao": "Cosmere",
       "data": "2025-04-01",
       "paginas": 18,
       "minutos": 15.6,
@@ -5980,8 +5980,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 3",
-      "colecao": "",
+      "livro": "O Herói das Eras",
+      "colecao": "Cosmere",
       "data": "2025-04-02",
       "paginas": 26,
       "minutos": 20,
@@ -5989,8 +5989,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 3",
-      "colecao": "",
+      "livro": "O Herói das Eras",
+      "colecao": "Cosmere",
       "data": "2025-04-02",
       "paginas": 61,
       "minutos": 60,
@@ -5998,8 +5998,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 3",
-      "colecao": "",
+      "livro": "O Herói das Eras",
+      "colecao": "Cosmere",
       "data": "2025-04-02",
       "paginas": 28,
       "minutos": 24,
@@ -6007,8 +6007,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 3",
-      "colecao": "",
+      "livro": "O Herói das Eras",
+      "colecao": "Cosmere",
       "data": "2025-04-02",
       "paginas": 68,
       "minutos": 50.9,
@@ -6016,8 +6016,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 3",
-      "colecao": "",
+      "livro": "O Herói das Eras",
+      "colecao": "Cosmere",
       "data": "2025-04-03",
       "paginas": 36,
       "minutos": 23.3,
@@ -6025,8 +6025,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 3",
-      "colecao": "",
+      "livro": "O Herói das Eras",
+      "colecao": "Cosmere",
       "data": "2025-04-03",
       "paginas": 56,
       "minutos": 57.3,
@@ -6034,8 +6034,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 3",
-      "colecao": "",
+      "livro": "O Herói das Eras",
+      "colecao": "Cosmere",
       "data": "2025-04-03",
       "paginas": 43,
       "minutos": 32.2,
@@ -6043,8 +6043,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 3",
-      "colecao": "",
+      "livro": "O Herói das Eras",
+      "colecao": "Cosmere",
       "data": "2025-04-04",
       "paginas": 20,
       "minutos": 20,
@@ -6052,8 +6052,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 3",
-      "colecao": "",
+      "livro": "O Herói das Eras",
+      "colecao": "Cosmere",
       "data": "2025-04-04",
       "paginas": 67,
       "minutos": 61.3,
@@ -6061,8 +6061,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 3",
-      "colecao": "",
+      "livro": "O Herói das Eras",
+      "colecao": "Cosmere",
       "data": "2025-04-04",
       "paginas": 56,
       "minutos": 60,
@@ -6070,8 +6070,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 3",
-      "colecao": "",
+      "livro": "O Herói das Eras",
+      "colecao": "Cosmere",
       "data": "2025-04-04",
       "paginas": 30,
       "minutos": 19.7,
@@ -6079,8 +6079,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 1º Era Livro 3",
-      "colecao": "",
+      "livro": "O Herói das Eras",
+      "colecao": "Cosmere",
       "data": "2025-04-04",
       "paginas": 170,
       "minutos": 92.8,
@@ -9466,8 +9466,8 @@
       "ordemColecao": 13,
       "ordem": 11,
       "status": "Completo",
-      "totalPag": 297,
-      "pagAtual": 297,
+      "totalPag": 308,
+      "pagAtual": 308,
       "pct": 1,
       "usuario": "MILTON"
     },
@@ -9482,8 +9482,8 @@
       "ordemColecao": 14,
       "ordem": 12,
       "status": "Completo",
-      "totalPag": 253,
-      "pagAtual": 253,
+      "totalPag": 272,
+      "pagAtual": 272,
       "pct": 1,
       "usuario": "MILTON"
     },
@@ -9498,8 +9498,8 @@
       "ordemColecao": 15,
       "ordem": 13,
       "status": "Completo",
-      "totalPag": 421,
-      "pagAtual": 421,
+      "totalPag": 500,
+      "pagAtual": 500,
       "pct": 1,
       "usuario": "MILTON"
     },
@@ -9785,10 +9785,26 @@
       "colecao": "Cosmere",
       "ordemColecao": 2,
       "ordem": 31,
-      "status": "Aguardando",
-      "totalPag": 963,
-      "pagAtual": 0,
-      "pct": 0,
+      "status": "Completo",
+      "totalPag": 1059,
+      "pagAtual": 1059,
+      "pct": 1,
+      "usuario": "MILTON"
+    },
+    {
+      "livro": "O Herói das Eras",
+      "autor": "Brandon Sanderson",
+      "isbn": "9786581339203",
+      "coverUrl": "https://m.media-amazon.com/images/I/61pTigfMMaL._AC_UF1000,1000_QL80_.jpg",
+      "metaAno": "2025",
+      "depende": "O poço da Ascensão",
+      "colecao": "Cosmere",
+      "ordemColecao": 3,
+      "ordem": 32,
+      "status": "Completo",
+      "totalPag": 888,
+      "pagAtual": 888,
+      "pct": 1,
       "usuario": "MILTON"
     },
     {
@@ -14969,10 +14985,10 @@
       "colecao": "Mushoku Tensei",
       "ordemColecao": 12,
       "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 261,
-      "pagAtual": 0,
-      "pct": 0,
+      "status": "Completo",
+      "totalPag": 152,
+      "pagAtual": 152,
+      "pct": 1,
       "usuario": "MILTON"
     }
   ],
@@ -15029,22 +15045,6 @@
     }
   ],
   "aguardando": [
-    {
-      "livro": "O poço da Ascensão",
-      "autor": "Brandon Sanderson",
-      "isbn": "9786581339197",
-      "coverUrl": "https://m.media-amazon.com/images/I/91ncrOvnjnL._AC_UF1000,1000_QL80_.jpg",
-      "metaAno": "2025",
-      "depende": "O Império Final",
-      "colecao": "Cosmere",
-      "ordemColecao": 2,
-      "ordem": 31,
-      "status": "Aguardando",
-      "totalPag": 963,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "MILTON"
-    },
     {
       "livro": "Jardins da Lua",
       "autor": "Steven Erikson",
@@ -18740,22 +18740,6 @@
       "pagAtual": 0,
       "pct": 0,
       "usuario": "MILTON"
-    },
-    {
-      "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 12",
-      "autor": "Rifujin na Magonote",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/91nFGQKBGnL.jpg",
-      "metaAno": "AINDA NÃO DEFINIDO",
-      "depende": "Mushoku Tensei: Jobless Reincarnation - Vol. 11",
-      "colecao": "Mushoku Tensei",
-      "ordemColecao": 12,
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 261,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "MILTON"
     }
   ],
   "notas": [
@@ -19170,6 +19154,24 @@
         "Personagens": 8.5,
         "Ritmo": 8,
         "Temas": 7
+      },
+      "usuario": "MILTON"
+    },
+    {
+      "livro": "O Herói das Eras",
+      "ano": 2025,
+      "media": 7.95,
+      "criterios": {
+        "Diálogos": 8,
+        "Enredo": 7,
+        "Estilo Visual": 9,
+        "Finalização": 10,
+        "Imersão": 7,
+        "Impacto Emocional": 8.5,
+        "Originalidade": 9,
+        "Personagens": 8,
+        "Ritmo": 7,
+        "Temas": 6
       },
       "usuario": "MILTON"
     },
