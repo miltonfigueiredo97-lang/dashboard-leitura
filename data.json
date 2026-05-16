@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-16T02:22:01.223Z",
+  "geradoEm": "2026-05-16T03:06:21.670Z",
   "meta": {
     "total": 26,
     "lidos": 6,
@@ -9,7 +9,7 @@
     "paginasFaltando": 10968,
     "mediaDiaria": 55.1,
     "ritmoAtual": 44.5,
-    "dataPrevistoAtual": "17/01/2027"
+    "dataPrevistoAtual": "18/01/2027"
   },
   "metasPorAno": {
     "2024": {
@@ -27,15 +27,15 @@
       "dataPrevistoAtual": "Concluída!"
     },
     "2025": {
-      "total": 28,
+      "total": 27,
       "lidos": 24,
       "lendo": 0,
       "pausados": 0,
-      "aguardando": 4,
-      "paginasTotal": 18820,
+      "aguardando": 3,
+      "paginasTotal": 17836,
       "paginasLidas": 15587,
-      "paginasFaltando": 3233,
-      "faltando": 4,
+      "paginasFaltando": 2249,
+      "faltando": 3,
       "mediaDiaria": 75.9,
       "ritmoAtual": 0,
       "dataPrevistoAtual": "—"
@@ -52,7 +52,7 @@
       "faltando": 20,
       "mediaDiaria": 55.1,
       "ritmoAtual": 44.5,
-      "dataPrevistoAtual": "17/01/2027"
+      "dataPrevistoAtual": "18/01/2027"
     },
     "PAUSADO": {
       "total": 2,
@@ -9792,22 +9792,6 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "O herói das Eras",
-      "autor": "Brandon Sanderson",
-      "isbn": "9786581339203",
-      "coverUrl": "https://m.media-amazon.com/images/I/61pTigfMMaL._AC_UF1000,1000_QL80_.jpg",
-      "metaAno": "2025",
-      "depende": "O poço da Ascensão",
-      "colecao": "Cosmere",
-      "ordemColecao": 3,
-      "ordem": 32,
-      "status": "Aguardando",
-      "totalPag": 984,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "MILTON"
-    },
-    {
       "livro": "Mistborn - Historia Screta",
       "autor": "Brandon Sanderson",
       "isbn": "9786581339091",
@@ -15062,22 +15046,6 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "O herói das Eras",
-      "autor": "Brandon Sanderson",
-      "isbn": "9786581339203",
-      "coverUrl": "https://m.media-amazon.com/images/I/61pTigfMMaL._AC_UF1000,1000_QL80_.jpg",
-      "metaAno": "2025",
-      "depende": "O poço da Ascensão",
-      "colecao": "Cosmere",
-      "ordemColecao": 3,
-      "ordem": 32,
-      "status": "Aguardando",
-      "totalPag": 984,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "MILTON"
-    },
-    {
       "livro": "Jardins da Lua",
       "autor": "Steven Erikson",
       "isbn": "9780765348784",
@@ -19202,24 +19170,6 @@
         "Personagens": 8.5,
         "Ritmo": 8,
         "Temas": 7
-      },
-      "usuario": "MILTON"
-    },
-    {
-      "livro": "O Herói das Eras",
-      "ano": 2025,
-      "media": 7.95,
-      "criterios": {
-        "Diálogos": 8,
-        "Enredo": 7,
-        "Estilo Visual": 9,
-        "Finalização": 10,
-        "Imersão": 7,
-        "Impacto Emocional": 8.5,
-        "Originalidade": 9,
-        "Personagens": 8,
-        "Ritmo": 7,
-        "Temas": 6
       },
       "usuario": "MILTON"
     },
