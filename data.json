@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-16T21:03:49.526Z",
+  "geradoEm": "2026-05-16T21:03:54.651Z",
   "meta": {
     "total": 54,
     "lidos": 21,
     "faltando": 33,
     "paginasTotal": 26504,
-    "paginasLidas": 11141,
-    "paginasFaltando": 15363,
-    "mediaDiaria": 78.9,
-    "ritmoAtual": 57.9,
-    "dataPrevistoAtual": "06/02/2027"
+    "paginasLidas": 11131,
+    "paginasFaltando": 15373,
+    "mediaDiaria": 79.4,
+    "ritmoAtual": 59.6,
+    "dataPrevistoAtual": "29/01/2027"
   },
   "metasPorAno": {
     "2022": {
@@ -75,12 +75,12 @@
       "pausados": 0,
       "aguardando": 31,
       "paginasTotal": 26504,
-      "paginasLidas": 11141,
-      "paginasFaltando": 15363,
+      "paginasLidas": 11131,
+      "paginasFaltando": 15373,
       "faltando": 33,
-      "mediaDiaria": 78.9,
-      "ritmoAtual": 57.9,
-      "dataPrevistoAtual": "06/02/2027"
+      "mediaDiaria": 79.4,
+      "ritmoAtual": 59.6,
+      "dataPrevistoAtual": "29/01/2027"
     },
     "PAUSADO": {
       "total": 2,
@@ -22627,15 +22627,6 @@
       "usuario": "Daniel"
     },
     {
-      "livro": "A Cidade de Bronze",
-      "colecao": "Trilogia de Daevabad",
-      "data": "2026-05-16",
-      "paginas": 10,
-      "minutos": 10,
-      "ano": 2026,
-      "usuario": "Milton"
-    },
-    {
       "livro": "Palavras de Radiância",
       "colecao": "Os Relatos da Guerra das Tempestades",
       "data": "2024-11-03",
@@ -26268,8 +26259,8 @@
       "ordem": 59,
       "status": "Lendo",
       "totalPag": 641,
-      "pagAtual": 348,
-      "pct": 0.543,
+      "pagAtual": 338,
+      "pct": 0.527,
       "usuario": "MILTON"
     },
     {
@@ -33344,8 +33335,8 @@
       "ordem": 59,
       "status": "Lendo",
       "totalPag": 641,
-      "pagAtual": 348,
-      "pct": 0.543,
+      "pagAtual": 338,
+      "pct": 0.527,
       "usuario": "MILTON"
     },
     {
