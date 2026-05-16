@@ -764,7 +764,10 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
 
     <!-- Gráfico diário -->
     <div class="card">
-      <div class="card-title">📖 Páginas Lidas por Dia</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+        <div class="card-title" style="margin:0;">📖 Páginas Lidas por Dia</div>
+        <button id="btn-zeros" onclick="toggleZeros()" style="background:var(--bg3);border:1px solid var(--border);color:var(--muted);padding:4px 10px;border-radius:6px;cursor:pointer;font-size:11px;">📅 Incluir dias sem leitura</button>
+      </div>
       <div style="height:200px;position:relative;"><canvas id="cBook"></canvas></div>
     </div>
 
@@ -1964,15 +1967,41 @@ window.filtrarSelBook = filtrarSelBook;
   const existingBookChart = Chart.getChart('cBook');
   if (existingBookChart) existingBookChart.destroy();
 
+  window._mostrarZeros = false;
+  window.toggleZeros = function() {
+    window._mostrarZeros = !window._mostrarZeros;
+    const btn = document.getElementById('btn-zeros');
+    if (btn) {
+      btn.style.background = window._mostrarZeros ? 'rgba(139,124,248,0.2)' : 'var(--bg3)';
+      btn.style.color = window._mostrarZeros ? 'var(--purple)' : 'var(--muted)';
+      btn.style.borderColor = window._mostrarZeros ? 'var(--purple)' : 'var(--border)';
+      btn.textContent = window._mostrarZeros ? '📅 Incluindo dias sem leitura' : '📅 Incluir dias sem leitura';
+    }
+    if (window.buildBookChart) window.buildBookChart();
+  };
+
   window.buildBookChart = function() {
     const book = document.getElementById('selBook').value;
-    const rows = BOOK_DAILY[book] || [];
+    let rows = BOOK_DAILY[book] || [];
     const livroData = (window._livros||[]).find(l => l.livro === book);
     const status = livroData?.status || '';
     if (chart) chart.destroy();
 
     const isPrevisao = (status === 'Aguardando') || (rows.length === 0);
     const isEmAndamento = (status === 'Lendo' || status === 'Pausado') && rows.length > 0;
+
+    // Expande com dias zero se ativado e livro tem histórico real
+    if (window._mostrarZeros && rows.length > 1 && !isPrevisao) {
+      const expanded = [];
+      const start = new Date(rows[0].d + 'T12:00:00');
+      const end   = new Date(rows[rows.length-1].d + 'T12:00:00');
+      const map   = Object.fromEntries(rows.map(r => [r.d, r.p]));
+      for (let d = new Date(start); d <= end; d.setDate(d.getDate()+1)) {
+        const key = d.toISOString().slice(0,10);
+        expanded.push({ d: key, p: map[key] || 0 });
+      }
+      rows = expanded;
+    }
 
     if (isPrevisao || isEmAndamento) {
       // Gera previsão baseada na média diária por dia da semana
