@@ -3931,11 +3931,9 @@ async function carregarLivros() {
 }
 
 function popularSelects() {
-  // Sessão — inicializa sem mostrar lista (usuário digita para buscar)
-  // lista populada dinamicamente via filtrarLivrosSessao
-
-  // n-livro, l-livro e ex-livro agora são hidden inputs com busca por texto
-
+  // Sessão — lista populada dinamicamente via filtrarLivrosSessao quando usuário digita
+  // n-livro, l-livro e ex-livro são hidden inputs com busca por texto
+  const dl = document.getElementById('colecoes-datalist');
   if (dl) {
     dl.innerHTML = '';
     colecoesCache.forEach(c => { dl.innerHTML += `<option value="${c}">`; });
