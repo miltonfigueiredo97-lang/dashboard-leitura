@@ -318,6 +318,12 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
 .bat-conquista-name { font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;color:#F8FAFC;letter-spacing:1px;text-align:center;text-transform:uppercase; }
 .bat-conquista-sub  { font-family:'Exo 2',sans-serif;font-size:9px;color:rgba(248,250,252,0.55);text-align:center; }
 @keyframes bat-pulse { 0%,100%{box-shadow:0 0 24px rgba(147,51,234,0.7),0 0 8px rgba(250,204,21,0.5);}50%{box-shadow:0 0 36px rgba(147,51,234,0.9),0 0 16px rgba(250,204,21,0.8);} }
+@keyframes bat-mestre {
+  0%   { box-shadow:0 0 0 2px #9333EA, 0 0 0 3px #FACC15, 0 0 28px rgba(147,51,234,0.9), 0 0 12px rgba(250,204,21,0.6); }
+  33%  { box-shadow:0 0 0 2px #FACC15, 0 0 0 3px #38BDF8, 0 0 28px rgba(250,204,21,0.9), 0 0 12px rgba(56,189,248,0.6); }
+  66%  { box-shadow:0 0 0 2px #38BDF8, 0 0 0 3px #9333EA, 0 0 28px rgba(56,189,248,0.9), 0 0 12px rgba(147,51,234,0.6); }
+  100% { box-shadow:0 0 0 2px #9333EA, 0 0 0 3px #FACC15, 0 0 28px rgba(147,51,234,0.9), 0 0 12px rgba(250,204,21,0.6); }
+}
 .bat-conquista::after { content:attr(data-tip);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:#0B1020;color:#F8FAFC;padding:7px 12px;border-radius:8px;font-family:'Exo 2',sans-serif;font-size:11px;white-space:nowrap;border:1px solid rgba(168,85,247,0.3);z-index:9999;pointer-events:none;box-shadow:0 4px 16px rgba(0,0,0,0.8);opacity:0;transition:opacity .15s; }
 .bat-conquista:hover::after { opacity:1; }
 .bat-medal { display:inline-block;padding:4px 12px;border-radius:20px;font-family:'Rajdhani',sans-serif;font-size:11px;font-weight:700;margin:3px;cursor:default;position:relative; }
@@ -3250,12 +3256,12 @@ function renderBatalha() {
   // Medalhas
   // ── Sistema de Conquistas por Tier ──────────────────────────────
   const TIERS = [
-    { nome:'Bronze',  min:0,   cor:'#B87333', glow:'rgba(184,115,51,0.5)',  borda:'#A16207', anim:false },
-    { nome:'Prata',   min:1,   cor:'#C0C0C0', glow:'rgba(192,192,192,0.5)', borda:'#CBD5E1', anim:false },
-    { nome:'Ouro',    min:2,   cor:'#FACC15', glow:'rgba(250,204,21,0.6)',  borda:'#EAB308', anim:false },
-    { nome:'Platina', min:3,   cor:'#E5E7EB', glow:'rgba(229,231,235,0.7)', borda:'#F8FAFC', anim:false },
-    { nome:'Diamante',min:4,   cor:'#38BDF8', glow:'rgba(56,189,248,0.7)',  borda:'#2563EB', anim:false },
-    { nome:'Mestre',  min:5,   cor:'#9333EA', glow:'rgba(147,51,234,0.8)',  borda:'#FACC15', anim:true  },
+    { nome:'Bronze',  min:0, cor:'#B87333', glow:'rgba(184,115,51,0.5)',  borda:'#A16207', anim:false },
+    { nome:'Prata',   min:1, cor:'#C0C0C0', glow:'rgba(192,192,192,0.5)', borda:'#CBD5E1', anim:false },
+    { nome:'Ouro',    min:2, cor:'#FACC15', glow:'rgba(250,204,21,0.6)',  borda:'#EAB308', anim:false },
+    { nome:'Platina', min:3, cor:'#22C55E', glow:'rgba(34,197,94,0.65)',  borda:'#16A34A', anim:false },
+    { nome:'Diamante',min:4, cor:'#38BDF8', glow:'rgba(56,189,248,0.7)',  borda:'#2563EB', anim:false },
+    { nome:'Mestre',  min:5, cor:'#FACC15', glow:'rgba(147,51,234,0.9)',  borda:'#9333EA', anim:true  },
   ];
 
   function getTier(val, thresholds) {
@@ -3275,7 +3281,7 @@ function renderBatalha() {
     const pct = next ? Math.round((val - thresholds[tierIdx]) / (next - thresholds[tierIdx]) * 100) : 100;
     const progLabel = next ? `${val.toLocaleString('pt-BR')} / ${next.toLocaleString('pt-BR')}` : `${val.toLocaleString('pt-BR')} ✓`;
     const borderStyle = t.anim
-      ? `border:2px solid #FACC15; box-shadow:0 0 24px rgba(147,51,234,0.7),0 0 8px rgba(250,204,21,0.5); animation:bat-pulse 2s infinite;`
+      ? `border:2px solid transparent; background-clip:padding-box; box-shadow:0 0 0 2px #9333EA, 0 0 0 3px #FACC15, 0 0 28px rgba(147,51,234,0.8), 0 0 12px rgba(250,204,21,0.5); animation:bat-mestre 3s linear infinite;`
       : `border:2px solid ${t.borda}; box-shadow:0 0 18px ${t.glow};`;
     return { icon, nome, tierNome: t.nome, tierCor: t.cor, borderStyle, pct, progLabel, tip: descFn(val) };
   }
@@ -3472,31 +3478,31 @@ function renderBatalha() {
   </div>
 </div>
 
-<!-- AUTOR + CONQUISTAS -->
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
-  <div>
-    <div class="bat-section-hdr">📚 AUTOR DOMINADO</div>
-    <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:14px;">
-      ${[{p:pA,dd:dA,cor:'#A855F7'},{p:pB,dd:dB,cor:'#FB923C'}].map(({p,dd,cor})=>`
-      <div style="display:flex;align-items:center;gap:12px;">
-        <div style="width:44px;height:44px;border-radius:50%;background:${cor}22;border:2px solid ${cor};display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;box-shadow:0 0 12px ${cor}44;">📖</div>
-        <div>
-          <div style="font-family:'Orbitron',sans-serif;font-size:9px;color:${cor};font-weight:700;letter-spacing:2px;">${p.toUpperCase()}</div>
-          <div style="font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:700;color:#F8FAFC;">${dd.autorTop?.[0]||'—'}</div>
-          <div style="font-family:'Exo 2',sans-serif;font-size:11px;color:rgba(248,250,252,0.4);">${(dd.autorTop?.[1]||0).toLocaleString('pt-BR')} págs lidas</div>
-        </div>
-      </div>`).join('')}
-    </div>
+<!-- AUTOR DOMINADO -->
+<div style="margin-bottom:20px;">
+  <div class="bat-section-hdr">📚 AUTOR DOMINADO</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+    ${[{p:pA,dd:dA,cor:'#A855F7'},{p:pB,dd:dB,cor:'#FB923C'}].map(({p,dd,cor})=>`
+    <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:16px;display:flex;align-items:center;gap:12px;">
+      <div style="width:44px;height:44px;border-radius:50%;background:${cor}22;border:2px solid ${cor};display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;box-shadow:0 0 12px ${cor}44;">📖</div>
+      <div>
+        <div style="font-family:'Orbitron',sans-serif;font-size:9px;color:${cor};font-weight:700;letter-spacing:2px;">${p.toUpperCase()}</div>
+        <div style="font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:700;color:#F8FAFC;">${dd.autorTop?.[0]||'—'}</div>
+        <div style="font-family:'Exo 2',sans-serif;font-size:11px;color:rgba(248,250,252,0.4);">${(dd.autorTop?.[1]||0).toLocaleString('pt-BR')} págs lidas</div>
+      </div>
+    </div>`).join('')}
   </div>
-  <div>
-    <div class="bat-section-hdr">🏅 CONQUISTAS</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-      ${[{p:pA,dd:dA,cor:'#A855F7'},{p:pB,dd:dB,cor:'#FB923C'}].map(({p,dd,cor})=>`
-      <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid ${cor}44;border-top:3px solid ${cor};border-radius:14px;padding:14px;box-shadow:0 0 20px ${cor}11;">
-        <div style="font-family:'Orbitron',sans-serif;font-size:10px;color:${cor};font-weight:900;margin-bottom:14px;letter-spacing:2px;text-shadow:0 0 10px ${cor}66;">⚔️ ${p.toUpperCase()}</div>
-        ${medalhas(dd)}
-      </div>`).join('')}
-    </div>
+</div>
+
+<!-- CONQUISTAS — separadas por player, cada um full-width -->
+<div style="margin-bottom:20px;">
+  <div class="bat-section-hdr">🏅 CONQUISTAS & FEITOS</div>
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    ${[{p:pA,dd:dA,cor:'#A855F7'},{p:pB,dd:dB,cor:'#FB923C'}].map(({p,dd,cor})=>`
+    <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid ${cor}44;border-left:4px solid ${cor};border-radius:14px;padding:16px;box-shadow:0 0 24px ${cor}11;">
+      <div style="font-family:'Orbitron',sans-serif;font-size:10px;color:${cor};font-weight:900;margin-bottom:16px;letter-spacing:3px;text-shadow:0 0 10px ${cor}66;">⚔️ ${p.toUpperCase()}</div>
+      ${medalhas(dd)}
+    </div>`).join('')}
   </div>
 </div>
 
