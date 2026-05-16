@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-16T21:06:47.835Z",
+  "geradoEm": "2026-05-16T22:02:05.284Z",
   "meta": {
     "total": 54,
     "lidos": 21,
     "faltando": 33,
     "paginasTotal": 26504,
-    "paginasLidas": 11141,
-    "paginasFaltando": 15363,
+    "paginasLidas": 11151,
+    "paginasFaltando": 15353,
     "mediaDiaria": 78.9,
-    "ritmoAtual": 57.9,
-    "dataPrevistoAtual": "06/02/2027"
+    "ritmoAtual": 58.3,
+    "dataPrevistoAtual": "04/02/2027"
   },
   "metasPorAno": {
     "2022": {
@@ -75,12 +75,12 @@
       "pausados": 0,
       "aguardando": 31,
       "paginasTotal": 26504,
-      "paginasLidas": 11141,
-      "paginasFaltando": 15363,
+      "paginasLidas": 11151,
+      "paginasFaltando": 15353,
       "faltando": 33,
       "mediaDiaria": 78.9,
-      "ritmoAtual": 57.9,
-      "dataPrevistoAtual": "06/02/2027"
+      "ritmoAtual": 58.3,
+      "dataPrevistoAtual": "04/02/2027"
     },
     "PAUSADO": {
       "total": 2,
@@ -25325,6 +25325,15 @@
       "minutos": 10,
       "ano": 2026,
       "usuario": "Milton"
+    },
+    {
+      "livro": "Sixth of the Dusk",
+      "colecao": "Cosmere",
+      "data": "2026-05-16",
+      "paginas": 10,
+      "minutos": 12,
+      "ano": 2026,
+      "usuario": "Daniel"
     }
   ],
   "livros": [
@@ -33004,8 +33013,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 66,
-      "pagAtual": 15,
-      "pct": 0.227,
+      "pagAtual": 25,
+      "pct": 0.379,
       "usuario": "Daniel"
     },
     {
@@ -33360,8 +33369,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 66,
-      "pagAtual": 15,
-      "pct": 0.227,
+      "pagAtual": 25,
+      "pct": 0.379,
       "usuario": "Daniel"
     }
   ],
