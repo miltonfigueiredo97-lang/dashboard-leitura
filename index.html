@@ -3303,24 +3303,56 @@ function renderBatalha() {
       conquista('🌎', 'Mestre dos Gêneros',    dd.generosSet?.size||0,   [2,4,6,8,10,12],                     [], v=>`${v} gêneros explorados`),
     ].filter(Boolean);
 
-    if (!conquistas.length) {
-      return `<div style="font-family:'Exo 2',sans-serif;color:rgba(248,250,252,0.3);font-size:12px;padding:8px;">🌱 Iniciando jornada</div>`;
-    }
+    // Títulos Exclusivos — desbloqueados por feitos específicos
+    const titulos = [];
+    const addTitulo = (icon, nome, condicao, tip) => { if (condicao) titulos.push({icon, nome, tip}); };
 
-    return `<div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-start;">
-      ${conquistas.map(c => `
-      <div class="bat-conquista" data-tip="${c.tip}" style="min-width:80px;max-width:90px;">
-        <div class="bat-conquista-icon" style="background:radial-gradient(circle at 35% 35%,rgba(15,23,42,0.9),#070B14);${c.borderStyle}">
-          <span style="font-size:22px;">${c.icon}</span>
-        </div>
-        <div class="bat-conquista-name" style="font-size:9px;color:#F8FAFC;">${c.nome}</div>
-        <div style="font-family:'Orbitron',sans-serif;font-size:8px;font-weight:700;color:${c.tierCor};letter-spacing:1px;">${c.tierNome}</div>
-        <div style="width:100%;height:3px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;margin-top:2px;">
-          <div style="width:${c.pct}%;height:100%;background:${c.tierCor};border-radius:2px;box-shadow:0 0 6px ${c.tierCor};"></div>
-        </div>
-        <div style="font-family:'Exo 2',sans-serif;font-size:8px;color:rgba(248,250,252,0.4);margin-top:1px;">${c.progLabel}</div>
-      </div>`).join('')}
-    </div>`;
+    addTitulo('👑', 'Rei das Páginas',          dd.pagTotal >= 100000,                        'Leu mais de 100.000 páginas no total');
+    addTitulo('🏛️', 'Imperador da Biblioteca',  dd.lidos.length >= 120,                       'Concluiu 120 ou mais livros');
+    addTitulo('⏳', 'Senhor do Tempo',           dd.horas >= 1200,                             'Acumulou 1.200+ horas de leitura');
+    addTitulo('🔥', 'Combo Supremo',             dd.streakRecord >= 180,                       'Manteve streak de 180 dias consecutivos');
+    addTitulo('🧠', 'Crítico Supremo',           (dd.notaMedia||0) >= 9,                       'Nota média de avaliações acima de 9.0');
+    addTitulo('⚡', 'Leitor Relâmpago',          Math.round(dd.media) >= 200,                  'Média de 200+ páginas por dia');
+    addTitulo('💀', 'Boss Slayer Supremo',       dd.bosses.length >= 50,                       'Derrotou 50 ou mais bosses (500+ págs)');
+    addTitulo('📅', 'Dominador das Temporadas',  dd.sessoes >= 1000,                           '1.000 ou mais sessões registradas');
+    addTitulo('🏆', 'Senhor das Séries',         dd.seriesConcluidas >= 20,                    'Completou 20 ou mais séries inteiras');
+    addTitulo('🌎', 'Explorador Supremo',        autoresCount >= 120,                          'Leu obras de 120+ autores diferentes');
+    addTitulo('🛡️', 'Monarca da Consistência',   dd.diasSet?.size >= 500,                     'Registrou leitura em 500+ dias distintos');
+    addTitulo('📚', 'Senhor das Séries Lendário',dd.seriesConcluidas >= 12 && dd.colSet.size >= 40, 'Completou 12+ séries e explorou 40+ coleções');
+
+    const htmlConquistas = conquistas.length
+      ? `<div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-start;">
+          ${conquistas.map(c => `
+          <div class="bat-conquista" data-tip="${c.tip}" style="min-width:80px;max-width:90px;">
+            <div class="bat-conquista-icon" style="background:radial-gradient(circle at 35% 35%,rgba(15,23,42,0.9),#070B14);${c.borderStyle}">
+              <span style="font-size:22px;">${c.icon}</span>
+            </div>
+            <div class="bat-conquista-name" style="font-size:9px;color:#F8FAFC;">${c.nome}</div>
+            <div style="font-family:'Orbitron',sans-serif;font-size:8px;font-weight:700;color:${c.tierCor};letter-spacing:1px;">${c.tierNome}</div>
+            <div style="width:100%;height:3px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;margin-top:2px;">
+              <div style="width:${c.pct}%;height:100%;background:${c.tierCor};border-radius:2px;box-shadow:0 0 6px ${c.tierCor};"></div>
+            </div>
+            <div style="font-family:'Exo 2',sans-serif;font-size:8px;color:rgba(248,250,252,0.4);margin-top:1px;">${c.progLabel}</div>
+          </div>`).join('')}
+        </div>`
+      : `<div style="font-family:'Exo 2',sans-serif;color:rgba(248,250,252,0.3);font-size:12px;padding:8px;">🌱 Iniciando jornada</div>`;
+
+    const htmlTitulos = titulos.length
+      ? `<div style="margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.06);">
+          <div style="font-family:'Orbitron',sans-serif;font-size:8px;letter-spacing:3px;color:rgba(250,204,21,0.7);margin-bottom:10px;text-transform:uppercase;">✨ Títulos Exclusivos</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            ${titulos.map(t=>`
+            <div class="bat-conquista" data-tip="${t.tip}" style="min-width:70px;max-width:80px;">
+              <div class="bat-conquista-icon" style="background:radial-gradient(circle at 35% 35%,#1a1020,#070B14);border:2px solid transparent;box-shadow:0 0 0 2px #9333EA,0 0 0 3px #FACC15,0 0 20px rgba(147,51,234,0.7),0 0 8px rgba(250,204,21,0.4);animation:bat-mestre 3s linear infinite;">
+                <span style="font-size:20px;">${t.icon}</span>
+              </div>
+              <div style="font-family:'Orbitron',sans-serif;font-size:8px;font-weight:700;color:#FACC15;text-align:center;letter-spacing:0.5px;margin-top:4px;text-shadow:0 0 8px rgba(250,204,21,0.5);">${t.nome}</div>
+            </div>`).join('')}
+          </div>
+        </div>`
+      : '';
+
+    return htmlConquistas + htmlTitulos;
   }
 
   const container=document.getElementById('batalhaContainer');
