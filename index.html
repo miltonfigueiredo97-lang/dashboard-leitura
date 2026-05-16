@@ -1124,7 +1124,7 @@ function recalcularDados(d, sessoes) {
   );
   const NOTES = notasFiltradas.map(n => ({
     ...n,
-    ano: bookFinishYear[n.livro] || n.ano || 0
+    ano: bookFinishYear[n.livro] || (n.ano > 2000 ? n.ano : 0)
   })).sort((a,b) => b.media - a.media);
 
   // ── COLECOES ─────────────────────────────────────────
