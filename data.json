@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-16T20:57:03.746Z",
+  "geradoEm": "2026-05-16T20:57:53.354Z",
   "meta": {
     "total": 54,
     "lidos": 21,
     "faltando": 33,
     "paginasTotal": 26504,
-    "paginasLidas": 11131,
-    "paginasFaltando": 15373,
-    "mediaDiaria": 79.4,
-    "ritmoAtual": 59.6,
-    "dataPrevistoAtual": "29/01/2027"
+    "paginasLidas": 11141,
+    "paginasFaltando": 15363,
+    "mediaDiaria": 78.9,
+    "ritmoAtual": 57.9,
+    "dataPrevistoAtual": "06/02/2027"
   },
   "metasPorAno": {
     "2022": {
@@ -50,7 +50,7 @@
       "paginasLidas": 29826,
       "paginasFaltando": 0,
       "faltando": 0,
-      "mediaDiaria": 85,
+      "mediaDiaria": 84.9,
       "ritmoAtual": 0,
       "dataPrevistoAtual": "Concluída!"
     },
@@ -75,12 +75,12 @@
       "pausados": 0,
       "aguardando": 31,
       "paginasTotal": 26504,
-      "paginasLidas": 11131,
-      "paginasFaltando": 15373,
+      "paginasLidas": 11141,
+      "paginasFaltando": 15363,
       "faltando": 33,
-      "mediaDiaria": 79.4,
-      "ritmoAtual": 59.6,
-      "dataPrevistoAtual": "29/01/2027"
+      "mediaDiaria": 78.9,
+      "ritmoAtual": 57.9,
+      "dataPrevistoAtual": "06/02/2027"
     },
     "PAUSADO": {
       "total": 2,
@@ -22627,13 +22627,13 @@
       "usuario": "Daniel"
     },
     {
-      "livro": "Palavras de Radiância",
-      "colecao": "Os Relatos da Guerra das Tempestades",
-      "data": "2024-11-02",
-      "paginas": 54,
-      "minutos": 54.1,
-      "ano": 2024,
-      "usuario": "Daniel"
+      "livro": "A Cidade de Bronze",
+      "colecao": "Trilogia de Daevabad",
+      "data": "2026-05-16",
+      "paginas": 10,
+      "minutos": 10,
+      "ano": 2026,
+      "usuario": "Milton"
     },
     {
       "livro": "Palavras de Radiância",
@@ -26268,8 +26268,8 @@
       "ordem": 59,
       "status": "Lendo",
       "totalPag": 641,
-      "pagAtual": 338,
-      "pct": 0.527,
+      "pagAtual": 348,
+      "pct": 0.543,
       "usuario": "MILTON"
     },
     {
@@ -32140,8 +32140,8 @@
       "ordem": 0,
       "status": "Completo",
       "totalPag": 1404,
-      "pagAtual": 1350,
-      "pct": 0.962,
+      "pagAtual": 1296,
+      "pct": 0.923,
       "usuario": "Daniel"
     },
     {
@@ -33344,8 +33344,8 @@
       "ordem": 59,
       "status": "Lendo",
       "totalPag": 641,
-      "pagAtual": 338,
-      "pct": 0.527,
+      "pagAtual": 348,
+      "pct": 0.543,
       "usuario": "MILTON"
     },
     {
