@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-16T21:02:29.908Z",
+  "geradoEm": "2026-05-16T21:03:49.526Z",
   "meta": {
     "total": 54,
     "lidos": 21,
@@ -8,8 +8,8 @@
     "paginasLidas": 11141,
     "paginasFaltando": 15363,
     "mediaDiaria": 78.9,
-    "ritmoAtual": 58,
-    "dataPrevistoAtual": "05/02/2027"
+    "ritmoAtual": 57.9,
+    "dataPrevistoAtual": "06/02/2027"
   },
   "metasPorAno": {
     "2022": {
@@ -79,8 +79,8 @@
       "paginasFaltando": 15363,
       "faltando": 33,
       "mediaDiaria": 78.9,
-      "ritmoAtual": 58,
-      "dataPrevistoAtual": "05/02/2027"
+      "ritmoAtual": 57.9,
+      "dataPrevistoAtual": "06/02/2027"
     },
     "PAUSADO": {
       "total": 2,
@@ -22625,15 +22625,6 @@
       "minutos": 54.1,
       "ano": 2024,
       "usuario": "Daniel"
-    },
-    {
-      "livro": "TESTE_LINHA",
-      "colecao": "",
-      "data": "2026-05-16",
-      "paginas": 1,
-      "minutos": 0,
-      "ano": 2026,
-      "usuario": "Milton"
     },
     {
       "livro": "A Cidade de Bronze",
