@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-16T04:30:34.202Z",
+  "geradoEm": "2026-05-16T14:46:28.780Z",
   "meta": {
     "total": 54,
     "lidos": 21,
     "faltando": 33,
     "paginasTotal": 26468,
-    "paginasLidas": 11131,
-    "paginasFaltando": 15337,
-    "mediaDiaria": 79.4,
-    "ritmoAtual": 59,
-    "dataPrevistoAtual": "31/01/2027"
+    "paginasLidas": 11139,
+    "paginasFaltando": 15329,
+    "mediaDiaria": 78.8,
+    "ritmoAtual": 57.3,
+    "dataPrevistoAtual": "08/02/2027"
   },
   "metasPorAno": {
     "2022": {
@@ -42,17 +42,17 @@
     },
     "2024": {
       "total": 53,
-      "lidos": 53,
-      "lendo": 0,
+      "lidos": 52,
+      "lendo": 1,
       "pausados": 0,
       "aguardando": 0,
       "paginasTotal": 29826,
-      "paginasLidas": 29826,
-      "paginasFaltando": 0,
-      "faltando": 0,
-      "mediaDiaria": 85.2,
+      "paginasLidas": 29772,
+      "paginasFaltando": 54,
+      "faltando": 1,
+      "mediaDiaria": 85,
       "ritmoAtual": 0,
-      "dataPrevistoAtual": "Concluída!"
+      "dataPrevistoAtual": "—"
     },
     "2025": {
       "total": 78,
@@ -75,12 +75,12 @@
       "pausados": 0,
       "aguardando": 31,
       "paginasTotal": 26468,
-      "paginasLidas": 11131,
-      "paginasFaltando": 15337,
+      "paginasLidas": 11139,
+      "paginasFaltando": 15329,
       "faltando": 33,
-      "mediaDiaria": 79.4,
-      "ritmoAtual": 59,
-      "dataPrevistoAtual": "31/01/2027"
+      "mediaDiaria": 78.8,
+      "ritmoAtual": 57.3,
+      "dataPrevistoAtual": "08/02/2027"
     },
     "PAUSADO": {
       "total": 2,
@@ -22627,12 +22627,12 @@
       "usuario": "Daniel"
     },
     {
-      "livro": "Palavras de Radiância",
-      "colecao": "Os Relatos da Guerra das Tempestades",
-      "data": "2024-11-01",
-      "paginas": 54,
-      "minutos": 54.1,
-      "ano": 2024,
+      "livro": "Sixth of the Dusk",
+      "colecao": "Cosmere",
+      "data": "2026-05-16",
+      "paginas": 8,
+      "minutos": 21,
+      "ano": 2026,
       "usuario": "Daniel"
     },
     {
@@ -32147,10 +32147,10 @@
       "colecao": "Os Relatos da Guerra das Tempestades",
       "ordemColecao": 0,
       "ordem": 0,
-      "status": "Completo",
+      "status": "Lendo",
       "totalPag": 1404,
-      "pagAtual": 1404,
-      "pct": 1,
+      "pagAtual": 1350,
+      "pct": 0.962,
       "usuario": "Daniel"
     },
     {
@@ -33013,8 +33013,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 30,
-      "pagAtual": 15,
-      "pct": 0.5,
+      "pagAtual": 23,
+      "pct": 0.767,
       "usuario": "Daniel"
     },
     {
@@ -33358,6 +33358,22 @@
       "usuario": "MILTON"
     },
     {
+      "livro": "Palavras de Radiância",
+      "autor": "Brandon Sanderson",
+      "isbn": "",
+      "coverUrl": "https://m.media-amazon.com/images/I/91yCf2XXZjL._AC_UY218_.jpg",
+      "metaAno": "2024",
+      "depende": "",
+      "colecao": "Os Relatos da Guerra das Tempestades",
+      "ordemColecao": 0,
+      "ordem": 0,
+      "status": "Lendo",
+      "totalPag": 1404,
+      "pagAtual": 1350,
+      "pct": 0.962,
+      "usuario": "Daniel"
+    },
+    {
       "livro": "Sixth of the Dusk",
       "autor": "Brandon Sanderson",
       "isbn": "",
@@ -33369,8 +33385,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 30,
-      "pagAtual": 15,
-      "pct": 0.5,
+      "pagAtual": 23,
+      "pct": 0.767,
       "usuario": "Daniel"
     }
   ],
