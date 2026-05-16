@@ -1117,16 +1117,11 @@ function recalcularDados(d, sessoes) {
     if (s.ano > 2000) bookFinishYear[s.livro] = Math.max(bookFinishYear[s.livro]||0, s.ano);
   });
   const u = (typeof usuarioAtual !== 'undefined' ? usuarioAtual : 'Milton');
-  const notasFiltradas = (d.notas || []).filter(n => {
-    // Filtro de usuário
-    const userOk = u === 'Milton'
+  const notasFiltradas = (d.notas || []).filter(n =>
+    u === 'Milton'
       ? (!n.usuario || n.usuario === '' || n.usuario.toUpperCase() === 'MILTON')
-      : n.usuario?.toUpperCase() === u.toUpperCase();
-    if (!userOk) return false;
-    // Só inclui se o livro ainda existe na aba Geral
-    const todosLivros = [...(d.livros||[]),...(d.lendo||[]),...(d.pausados||[]),...(d.aguardando||[])];
-    return todosLivros.some(l => l.livro === n.livro);
-  });
+      : n.usuario?.toUpperCase() === u.toUpperCase()
+  );
   const NOTES = notasFiltradas.map(n => ({
     ...n,
     ano: bookFinishYear[n.livro] || n.ano || 0
