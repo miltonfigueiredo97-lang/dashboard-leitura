@@ -699,6 +699,12 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
       </div>
     </div>
 
+    <!-- Gêneros lidos -->
+    <div class="card">
+      <div class="card-title">🌎 Gêneros Lidos</div>
+      <div style="height:240px;position:relative;"><canvas id="cGeneros"></canvas></div>
+    </div>
+
   </div>
 
   <!-- Linha 2: Coleções + Autores -->
@@ -1530,6 +1536,7 @@ function renderizarGraficos(dados) {
   buildDonuts();
   buildWd();
   buildLivrosMes();
+  buildGeneros();
   buildStreaks();
   buildHeatmap();
   buildCalendar();
@@ -2278,9 +2285,49 @@ function buildLivrosMes() {
   });
 }
 
-// ════════════════════════════════════════════════
-// STREAK — dias consecutivos de leitura
-// ════════════════════════════════════════════════
+function buildGeneros() {
+  const el = document.getElementById('cGeneros');
+  if (!el) return;
+  const existing = Chart.getChart(el);
+  if (existing) existing.destroy();
+
+  // Conta livros concluídos por gênero
+  const allLivros = [...(window._livros||[]), ...(window._dadosD?.lendo||[]), ...(window._dadosD?.pausados||[])];
+  const genMap = {};
+  allLivros.filter(l => l.status === 'Completo' && l.genero).forEach(l => {
+    genMap[l.genero] = (genMap[l.genero] || 0) + 1;
+  });
+
+  const sorted = Object.entries(genMap).sort((a,b) => b[1]-a[1]);
+  if (!sorted.length) {
+    el.parentElement.innerHTML = '<div style="color:var(--muted);font-size:12px;text-align:center;padding:24px;">Nenhum gênero cadastrado ainda.<br>Adicione gêneros via ✏️ Atualizar Livro.</div>';
+    return;
+  }
+
+  const CORES_GENERO = ['#8b7cf8','#4ecdc4','#f88c6a','#ffd700','#ff6384','#36a2eb','#9966ff','#ff9f40','#4bc0c0','#c9cbcf','#7bc8a4','#e8a838'];
+  new Chart(el, {
+    type: 'doughnut',
+    data: {
+      labels: sorted.map(([g]) => g),
+      datasets: [{
+        data: sorted.map(([,n]) => n),
+        backgroundColor: sorted.map((_,i) => CORES_GENERO[i % CORES_GENERO.length]),
+        borderColor: 'rgba(15,23,42,0.5)',
+        borderWidth: 2,
+        hoverOffset: 8
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position:'right', labels:{ color: '#8892a8', font:{size:11}, padding:8, boxWidth:12 } },
+        tooltip: { ...window.TT, callbacks: { label: c => ` ${c.label}: ${c.parsed} livro${c.parsed>1?'s':''}` } }
+      }
+    }
+  });
+}
+window.buildGeneros = buildGeneros;
 function buildStreaks() {
   const sess = window._sessoes || [];
   const diasSet = [...new Set(sess.map(s => s.data).filter(Boolean))].sort();
@@ -2908,6 +2955,10 @@ carregarDados();
     <div class="pwa-field">
       <label>ISBN</label>
       <input id="l-isbn" type="text" placeholder="Deixe vazio para não alterar">
+    </div>
+    <div class="pwa-field">
+      <label>Gênero</label>
+      <input id="l-genero" type="text" placeholder="Deixe vazio para não alterar" list="generos-list">
     </div>
     <div class="pwa-msg" id="l-msg"></div>
     <button class="pwa-btn" id="l-btn" onclick="enviarLivro()">✅ Atualizar</button>
@@ -4269,6 +4320,7 @@ function preencherDadosLivro(nome) {
   set('l-depende', l.depende);
   set('l-capa',    l.coverUrl);
   set('l-isbn',    l.isbn);
+  set('l-genero',  l.genero);
 }
 
 async function enviarLivro() {
@@ -4285,6 +4337,7 @@ async function enviarLivro() {
   const depende = document.getElementById('l-depende').value.trim();
   const capa    = document.getElementById('l-capa').value.trim();
   const isbn    = document.getElementById('l-isbn').value.trim();
+  const genero  = document.getElementById('l-genero').value.trim();
 
   if (status)  body.status  = status;
   if (autor)   body.autor   = autor;
@@ -4294,6 +4347,7 @@ async function enviarLivro() {
   if (depende) body.depende = depende;
   if (capa)    body.capa    = capa;
   if (isbn)    body.isbn    = isbn;
+  if (genero)  body.genero  = genero;
 
   btn.disabled = true; btn.textContent = 'Atualizando...';
   try {
@@ -4338,6 +4392,7 @@ async function enviarNovoLivro() {
         depende: document.getElementById('nl-depende').value.trim(),
         capa:    document.getElementById('nl-capa').value.trim(),
         isbn:    document.getElementById('nl-isbn').value.trim(),
+        genero:  document.getElementById('nl-genero').value.trim(),
         usuario: usuarioAtual === 'Batalha' ? 'Milton' : usuarioAtual,
       })
     });
@@ -4349,7 +4404,7 @@ async function enviarNovoLivro() {
       setTimeout(() => {
         fecharModal('novoLivro');
         // Limpa campos
-        ['nl-nome','nl-colecao','nl-autor','nl-paginas','nl-metaano','nl-ordem','nl-depende','nl-capa','nl-isbn'].forEach(id => {
+        ['nl-nome','nl-colecao','nl-autor','nl-paginas','nl-metaano','nl-ordem','nl-depende','nl-capa','nl-isbn','nl-genero'].forEach(id => {
           const el = document.getElementById(id);
           if (el) el.value = '';
         });
