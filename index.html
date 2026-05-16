@@ -300,15 +300,16 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
 .bat-conquista::after { content:attr(data-tip);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:#1e2535;color:#e2e8f0;padding:7px 12px;border-radius:8px;font-size:11px;font-weight:400;white-space:nowrap;border:1px solid #2a3248;z-index:9999;pointer-events:none;box-shadow:0 4px 16px rgba(0,0,0,0.5);opacity:0;transition:opacity .15s; }
 .bat-conquista:hover::after { opacity:1; }
 /* Artefato card vertical */
-.bat-art-card { border-radius:12px;overflow:hidden;position:relative;cursor:pointer;transition:transform .2s,box-shadow .2s,z-index .2s;background:var(--bg2); }
-.bat-art-card:hover { transform:scale(1.06);z-index:10;box-shadow:0 12px 40px rgba(0,0,0,0.6); }
+.bat-art-card { border-radius:12px;overflow:visible;position:relative;cursor:pointer;transition:transform .25s,box-shadow .25s,z-index .25s;background:var(--bg2); }
+.bat-art-card .bat-art-capa { border-radius:12px;overflow:hidden; }
+.bat-art-card:hover { transform:scale(1.08);z-index:100;box-shadow:0 16px 48px rgba(0,0,0,0.7); }
 .bat-art-capa { position:relative;width:100%;padding-top:145%;overflow:hidden;background:var(--bg3); }
 .bat-art-capa img { position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .3s; }
 .bat-art-card:hover .bat-art-capa img { transform:scale(1.05); }
 .bat-art-rank { position:absolute;top:8px;left:8px;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;font-family:'Orbitron',sans-serif;z-index:2; }
 .bat-art-overlay { position:absolute;bottom:0;left:0;right:0;padding:24px 8px 8px;background:linear-gradient(transparent,rgba(0,0,0,0.92)); }
 /* Boss card cover zoom */
-.bat-boss-cover { width:44px;height:60px;border-radius:4px;object-fit:cover;cursor:zoom-in;transition:transform .25s;transform-origin:left center;flex-shrink:0; }
+.bat-boss-cover { width:44px;height:60px;border-radius:4px;object-fit:cover;cursor:zoom-in;transition:transform .25s;transform-origin:center center;flex-shrink:0;position:relative;z-index:1; }
 .bat-boss-cover:hover { transform:scale(5);z-index:9999;box-shadow:0 8px 32px rgba(0,0,0,0.8); }
 
 </style>
@@ -821,8 +822,8 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
     </div>
     <div style="display:flex;align-items:center;gap:8px;background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:8px 14px;">
       <span style="font-size:12px;color:var(--muted);">⚔️ Season</span>
-      <select id="bat-ano" onchange="renderBatalha()" style="background:transparent;border:none;color:var(--text);font-weight:700;font-size:14px;cursor:pointer;outline:none;">
-        <option value="total">Todos os anos</option>
+      <select id="bat-ano" onchange="renderBatalha()" style="background:#1a1f35;border:none;color:#e2e8f0;font-weight:700;font-size:14px;cursor:pointer;outline:none;border-radius:4px;">
+        <option value="total" style="color:var(--text);background:#1a1f35;">Todos os anos</option>
       </select>
     </div>
   </div>
@@ -1116,11 +1117,16 @@ function recalcularDados(d, sessoes) {
     if (s.ano > 2000) bookFinishYear[s.livro] = Math.max(bookFinishYear[s.livro]||0, s.ano);
   });
   const u = (typeof usuarioAtual !== 'undefined' ? usuarioAtual : 'Milton');
-  const notasFiltradas = (d.notas || []).filter(n =>
-    u === 'Milton'
+  const notasFiltradas = (d.notas || []).filter(n => {
+    // Filtro de usuário
+    const userOk = u === 'Milton'
       ? (!n.usuario || n.usuario === '' || n.usuario.toUpperCase() === 'MILTON')
-      : n.usuario?.toUpperCase() === u.toUpperCase()
-  );
+      : n.usuario?.toUpperCase() === u.toUpperCase();
+    if (!userOk) return false;
+    // Só inclui se o livro ainda existe na aba Geral
+    const todosLivros = [...(d.livros||[]),...(d.lendo||[]),...(d.pausados||[]),...(d.aguardando||[])];
+    return todosLivros.some(l => l.livro === n.livro);
+  });
   const NOTES = notasFiltradas.map(n => ({
     ...n,
     ano: bookFinishYear[n.livro] || n.ano || 0
@@ -3139,7 +3145,7 @@ function renderBatalha() {
 </div>
 
 <!-- VITÓRIAS MENSAIS -->
-<div style="display:flex;gap:10px;justify-content:center;margin-bottom:28px;flex-wrap:wrap;">
+<div style="display:flex;gap:10px;justify-content:center;margin-bottom:14px;flex-wrap:wrap;">
   <div style="padding:10px 20px;border-radius:12px;background:rgba(139,124,248,0.1);border:1px solid rgba(139,124,248,0.3);text-align:center;">
     <div style="font-family:'Orbitron',sans-serif;font-size:24px;font-weight:900;color:${CA};">${vitA}</div>
     <div style="font-size:10px;color:var(--muted);letter-spacing:1px;">VITÓRIAS ${pA.toUpperCase()}</div>
@@ -3156,10 +3162,10 @@ function renderBatalha() {
 
 <!-- ATRIBUTOS -->
 <div style="font-family:'Orbitron',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;color:var(--muted);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);">⚡ ATRIBUTOS DE COMBATE</div>
-<div id="bat-attrs" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:28px;"></div>
+<div id="bat-attrs" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px;"></div>
 
 <!-- PERFIL + GUERRA -->
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px;">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:14px;">
   <div>
     <div style="font-family:'Orbitron',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;color:var(--muted);margin-bottom:4px;">🕸️ PERFIL DE COMBATE</div>
     <div style="font-size:10px;color:var(--muted);margin-bottom:10px;">Relativo ao maior valor entre os dois</div>
@@ -3190,7 +3196,7 @@ function renderBatalha() {
 </div>
 
 <!-- DIA DA SEMANA + BOSSES + SLIMES -->
-<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:28px;">
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:14px;">
   <div>
     <div class="bat-section-hdr">📅 DIA SAGRADO</div>
     <div style="background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:16px;">
@@ -3208,24 +3214,30 @@ function renderBatalha() {
     </div>
   </div>
   <div>
-    <div class="bat-section-hdr">💀 BOSSES (500+ págs)</div>
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:14px;max-height:340px;overflow-y:auto;">
-      <div style="font-size:11px;font-weight:700;color:${CA};font-family:'Orbitron',sans-serif;margin-bottom:8px;">${pA.toUpperCase()} · ${dA.bosses.length} bosses</div>
-      <div id="bat-boss-a" style="margin-bottom:14px;"></div>
-      <div style="font-size:11px;font-weight:700;color:${CB};font-family:'Orbitron',sans-serif;margin-bottom:8px;">${pB.toUpperCase()} · ${dB.bosses.length} bosses</div>
-      <div id="bat-boss-b"></div>
+    <div class="bat-section-hdr">💀 BOSSES DERROTADOS (500+ págs)</div>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:14px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div>
+          <div style="font-size:11px;font-weight:700;color:${CA};font-family:'Orbitron',sans-serif;margin-bottom:8px;">${pA.toUpperCase()} · ${dA.bosses.length}</div>
+          <div id="bat-boss-a"></div>
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:700;color:${CB};font-family:'Orbitron',sans-serif;margin-bottom:8px;">${pB.toUpperCase()} · ${dB.bosses.length}</div>
+          <div id="bat-boss-b"></div>
+        </div>
+      </div>
     </div>
   </div>
   <div>
     <div class="bat-section-hdr">🐛 VENCENDO SLIMES (até 200 págs)</div>
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:14px;max-height:340px;overflow-y:auto;">
-      <div id="bat-slimes"></div>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:14px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;" id="bat-slimes"></div>
     </div>
   </div>
 </div>
 
 <!-- ARTEFATOS LENDÁRIOS com capas -->
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px;">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:14px;">
   <div>
     <div class="bat-section-hdr">⭐ ARTEFATOS LENDÁRIOS — MELHORES AVALIADOS</div>
     <div id="bat-artefatos" style="overflow:visible;"></div>
@@ -3237,7 +3249,7 @@ function renderBatalha() {
 </div>
 
 <!-- AUTOR + CONQUISTAS -->
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px;">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:14px;">
   <div>
     <div style="font-family:'Orbitron',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;color:var(--muted);margin-bottom:12px;">📚 AUTOR DOMINADO</div>
     <div style="background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:14px;">
@@ -3408,17 +3420,17 @@ function renderBatalha() {
   function slimeCard(dd,cor){
     const allLivros=[...(window._dadosD?.livros||[]),...(window._dadosD?.lendo||[]),...(window._dadosD?.pausados||[]),...(window._dadosD?.aguardando||[])];
     const slimes=dd.lidos.filter(l=>l.totalPag>0&&l.totalPag<=200).sort((a,b)=>a.totalPag-b.totalPag);
-    const header=`<div style="font-size:11px;font-weight:700;color:${cor};font-family:'Orbitron',sans-serif;margin-bottom:8px;">${dd.u.toUpperCase()} · ${slimes.length} slimes · ${slimes.reduce((a,l)=>a+l.totalPag,0).toLocaleString('pt-BR')} págs</div>`;
+    const header=`<div style="font-size:11px;font-weight:700;color:${cor};font-family:'Orbitron',sans-serif;margin-bottom:8px;">${dd.u.toUpperCase()} · ${slimes.length} slimes</div>`;
     if(!slimes.length)return header+`<div style="color:var(--muted);font-size:12px;padding:8px 0;">Nenhum slime vencido</div>`;
     return header+slimes.slice(0,3).map(b=>{
       const l=allLivros.find(x=>x.livro===b.livro);
       const uid='sl-'+Math.random().toString(36).slice(2,8);
       setTimeout(()=>{const el=document.getElementById(uid);if(!el)return;const src=l?.coverUrl||(l?.isbn?`https://covers.openlibrary.org/b/isbn/${l.isbn}-M.jpg`:'');if(src){el.src=src;el.onerror=()=>{el.style.display='none';};};},250);
-      return `<div style="display:flex;gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid var(--border);">
+      return `<div style="display:flex;gap:10px;align-items:center;padding:6px 0;border-bottom:1px solid var(--border);">
         <img id="${uid}" src="" class="bat-boss-cover" alt="">
         <div style="flex:1;min-width:0;">
-          <div style="font-size:13px;font-weight:700;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">🐛 ${b.livro}</div>
-          <div style="font-size:12px;color:var(--muted);">${b.totalPag} págs</div>
+          <div style="font-size:12px;font-weight:700;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">🐛 ${b.livro}</div>
+          <div style="font-size:11px;color:var(--muted);">${b.totalPag} págs</div>
         </div>
       </div>`;
     }).join('');
@@ -3427,12 +3439,10 @@ function renderBatalha() {
   document.getElementById('bat-boss-a').innerHTML=bossCard(dA,CA);
   document.getElementById('bat-boss-b').innerHTML=bossCard(dB,CB);
   document.getElementById('bat-slimes').innerHTML=
-    slimeCard(dA,CA)+
-    '<div style="margin:10px 0;border-top:1px solid var(--border);"></div>'+
-    slimeCard(dB,CB);
+    `<div>${slimeCard(dA,CA)}</div><div>${slimeCard(dB,CB)}</div>`;
 
     // Dia favorito
-  const wdNomes2=['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+  const wdNomes2=['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'];
   document.getElementById('bat-wd-dia-a').textContent=wdNomes2[dA.wdMap.indexOf(Math.max(...dA.wdMap))];
   document.getElementById('bat-wd-dia-b').textContent=wdNomes2[dB.wdMap.indexOf(Math.max(...dB.wdMap))];
 
