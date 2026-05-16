@@ -340,6 +340,7 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
     </div>
     <div class="badge" id="header-badge">— livros · — sessões</div>
     <button onclick="toggleChangelog()" style="background:rgba(139,124,248,0.2);border:1px solid var(--purple);color:var(--purple);padding:6px 12px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;white-space:nowrap;">📋 v2.1</button>
+    <button id="btn-refresh" onclick="manualRefresh()" style="background:rgba(78,205,196,0.15);border:1px solid var(--teal);color:var(--teal);padding:6px 12px;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;white-space:nowrap;" title="Atualizar dados">🔄</button>
   </div>
 </header>
 
@@ -1011,23 +1012,42 @@ async function recarregarDados(delay = 3000) {
 }
 
 async function recarregarAteAtualizar(referencia) {
-  // Tenta até 8x com 2s de intervalo até o JSON mudar em relação à referência
-  for (let i = 0; i < 8; i++) {
-    await new Promise(r => setTimeout(r, 2000));
+  // Tenta até 10x com 1s de intervalo até o JSON mudar
+  for (let i = 0; i < 10; i++) {
+    await new Promise(r => setTimeout(r, 1000));
     const u = typeof usuarioAtual !== 'undefined' ? usuarioAtual : 'Milton';
     try {
       const resp = await fetch(DATA_URL + '?t=' + Date.now());
       if (!resp.ok) continue;
       const d = await resp.json();
       const sessoesNow = (d.sessoes||[]).length;
-      if (sessoesNow !== referencia || i === 7) {
+      if (sessoesNow !== referencia || i === 9) {
         window._dadosD = d;
         setUsuario(u);
+        const btn = document.getElementById('btn-refresh');
+        if (btn) { btn.textContent = '✅'; setTimeout(() => btn.textContent = '🔄', 1500); }
         break;
       }
     } catch(e) {}
   }
 }
+async function manualRefresh() {
+  const btn = document.getElementById('btn-refresh');
+  if (btn) btn.textContent = '⏳';
+  const u = typeof usuarioAtual !== 'undefined' ? usuarioAtual : 'Milton';
+  try {
+    const resp = await fetch(DATA_URL + '?t=' + Date.now());
+    if (resp.ok) {
+      const d = await resp.json();
+      window._dadosD = d;
+      setUsuario(u);
+      if (btn) { btn.textContent = '✅'; setTimeout(() => btn.textContent = '🔄', 1500); }
+    }
+  } catch(e) {
+    if (btn) { btn.textContent = '❌'; setTimeout(() => btn.textContent = '🔄', 1500); }
+  }
+}
+window.manualRefresh = manualRefresh;
 window.recarregarDados = recarregarDados;
 window.recarregarAteAtualizar = recarregarAteAtualizar;
 
