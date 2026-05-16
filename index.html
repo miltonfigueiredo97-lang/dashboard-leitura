@@ -3285,11 +3285,25 @@ function renderBatalha() {
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:14px;">
   <div>
     <div class="bat-section-hdr">⭐ ARTEFATOS LENDÁRIOS — MELHORES AVALIADOS</div>
-    <div id="bat-artefatos" style="overflow:visible;"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;overflow:visible;" id="bat-artefatos">
+      <div>
+        <div style="font-family:'Orbitron',sans-serif;font-size:10px;font-weight:700;color:${CA};margin-bottom:8px;letter-spacing:1px;">${pA.toUpperCase()}</div>
+      </div>
+      <div>
+        <div style="font-family:'Orbitron',sans-serif;font-size:10px;font-weight:700;color:${CB};margin-bottom:8px;letter-spacing:1px;">${pB.toUpperCase()}</div>
+      </div>
+    </div>
   </div>
   <div>
     <div class="bat-section-hdr">💀 MALDIÇÕES — PIORES AVALIADOS</div>
-    <div id="bat-maldicoes" style="overflow:visible;"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;overflow:visible;" id="bat-maldicoes">
+      <div>
+        <div style="font-family:'Orbitron',sans-serif;font-size:10px;font-weight:700;color:${CA};margin-bottom:8px;letter-spacing:1px;">${pA.toUpperCase()}</div>
+      </div>
+      <div>
+        <div style="font-family:'Orbitron',sans-serif;font-size:10px;font-weight:700;color:${CB};margin-bottom:8px;letter-spacing:1px;">${pB.toUpperCase()}</div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -3310,12 +3324,12 @@ function renderBatalha() {
     </div>
   </div>
   <div>
-    <div style="font-family:'Orbitron',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;color:var(--muted);margin-bottom:12px;">🏅 CONQUISTAS</div>
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:16px;">
+    <div class="bat-section-hdr">🏅 CONQUISTAS</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
       ${[{p:pA,dd:dA,cor:CA},{p:pB,dd:dB,cor:CB}].map(({p,dd,cor})=>`
-      <div style="margin-bottom:10px;">
-        <div style="font-size:10px;color:${cor};font-weight:700;margin-bottom:6px;letter-spacing:1px;">${p.toUpperCase()}</div>
-        <div>${medalhas(dd)}</div>
+      <div style="background:var(--bg2);border:1px solid ${cor}44;border-top:3px solid ${cor};border-radius:14px;padding:16px;">
+        <div style="font-family:'Orbitron',sans-serif;font-size:12px;color:${cor};font-weight:900;margin-bottom:14px;letter-spacing:2px;">⚔️ ${p.toUpperCase()}</div>
+        ${medalhas(dd)}
       </div>`).join('')}
     </div>
   </div>
@@ -3439,9 +3453,22 @@ function renderBatalha() {
     return html;
   }
 
-  // Render artefatos em grid horizontal
-  document.getElementById('bat-artefatos').innerHTML=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">${[dA,dB].map((dd,i)=>artefatoCard(dd,i===0?CA:CB,'melhor')).join('')}</div>`;
-  document.getElementById('bat-maldicoes').innerHTML=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">${[dA,dB].map((dd,i)=>artefatoCard(dd,i===0?CA:CB,'pior')).join('')}</div>`;
+  // Render artefatos — injeta dentro do segundo filho de cada coluna
+  function renderArtefatos(containerId, tipo) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    const cols = container.querySelectorAll(':scope > div');
+    [dA, dB].forEach((dd, i) => {
+      const col = cols[i];
+      if (!col) return;
+      // mantém o header, adiciona o card abaixo
+      const card = document.createElement('div');
+      card.innerHTML = artefatoCard(dd, i===0?CA:CB, tipo);
+      col.appendChild(card.firstChild || card);
+    });
+  }
+  renderArtefatos('bat-artefatos', 'melhor');
+  renderArtefatos('bat-maldicoes', 'pior');
 
   // Render bosses com capa e zoom
   function bossCard(dd,cor){
