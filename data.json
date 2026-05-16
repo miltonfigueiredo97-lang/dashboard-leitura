@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-16T04:26:21.801Z",
+  "geradoEm": "2026-05-16T04:28:08.776Z",
   "meta": {
     "total": 54,
     "lidos": 21,
@@ -97,15 +97,15 @@
       "dataPrevistoAtual": "—"
     },
     "AINDA NÃO DEFINIDO": {
-      "total": 222,
+      "total": 223,
       "lidos": 0,
       "lendo": 0,
       "pausados": 0,
-      "aguardando": 222,
-      "paginasTotal": 108696,
+      "aguardando": 223,
+      "paginasTotal": 108746,
       "paginasLidas": 0,
-      "paginasFaltando": 108696,
-      "faltando": 222,
+      "paginasFaltando": 108746,
+      "faltando": 223,
       "mediaDiaria": 50,
       "ritmoAtual": 0,
       "dataPrevistoAtual": "—"
@@ -33288,6 +33288,22 @@
       "pagAtual": 0,
       "pct": 0,
       "usuario": "Daniel"
+    },
+    {
+      "livro": "Six of The Dust",
+      "autor": "Brando Sanderson",
+      "isbn": "",
+      "coverUrl": "https://m.media-amazon.com/images/I/81saovWy0JL._UF1000,1000_QL80_.jpg",
+      "metaAno": "AINDA NÃO DEFINIDO",
+      "depende": "",
+      "colecao": "Cosmere",
+      "ordemColecao": 0,
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 50,
+      "pagAtual": 0,
+      "pct": 0,
+      "usuario": "Milton"
     }
   ],
   "pausados": [
@@ -37726,6 +37742,22 @@
       "pagAtual": 0,
       "pct": 0,
       "usuario": "Daniel"
+    },
+    {
+      "livro": "Six of The Dust",
+      "autor": "Brando Sanderson",
+      "isbn": "",
+      "coverUrl": "https://m.media-amazon.com/images/I/81saovWy0JL._UF1000,1000_QL80_.jpg",
+      "metaAno": "AINDA NÃO DEFINIDO",
+      "depende": "",
+      "colecao": "Cosmere",
+      "ordemColecao": 0,
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 50,
+      "pagAtual": 0,
+      "pct": 0,
+      "usuario": "Milton"
     }
   ],
   "notas": [
