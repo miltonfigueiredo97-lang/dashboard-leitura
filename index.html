@@ -1529,7 +1529,8 @@ function buildRanking() {
     const pct = Math.round(b.score/maxA*100);
     const col = rankMode==='best' ? (i<3?['#ffd166','#c0c0c0','#cd7f32'][i]:'#8b7cf8') : '#f88c6a';
     const scoreLabel = tema === 'all' ? b.score.toFixed(1) : `${b.score.toFixed(1)} <span style="font-size:10px;opacity:0.7">(${b.media.toFixed(1)} geral)</span>`;
-    const rankLivro = (window._livros||[]).find(l => l.livro === b.livro);
+    const allLivros = [...(window._livros||[]), ...(window._dadosD?.lendo||[]), ...(window._dadosD?.pausados||[]), ...(window._dadosD?.aguardando||[])];
+    const rankLivro = allLivros.find(l => l.livro === b.livro);
     const rankIsbn  = rankLivro?.isbn || '';
     const capaHtml  = coverThumb(rankIsbn, rankLivro?.coverUrl||'');
     el.innerHTML += `
