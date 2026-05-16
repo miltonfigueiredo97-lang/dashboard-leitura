@@ -699,16 +699,14 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
         <div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Total de páginas</div>
         <div id="wdSum" class="wd-bars"></div>
       </div>
-      <div style="border-top:1px solid var(--border);padding-top:8px;">
+      <div style="border-top:1px solid var(--border);padding-top:8px;margin-bottom:8px;">
         <div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Livros concluídos por mês</div>
         <div id="livrosMes" class="wd-bars"></div>
       </div>
-    </div>
-
-    <!-- Gêneros lidos -->
-    <div class="card">
-      <div class="card-title">🌎 Gêneros Lidos</div>
-      <div style="height:240px;position:relative;"><canvas id="cGeneros"></canvas></div>
+      <div style="border-top:1px solid var(--border);padding-top:8px;">
+        <div style="font-size:11px;color:var(--muted);margin-bottom:6px;">🌎 Gêneros lidos</div>
+        <div style="height:160px;position:relative;"><canvas id="cGeneros"></canvas></div>
+      </div>
     </div>
 
   </div>
@@ -2297,38 +2295,35 @@ function buildGeneros() {
   const existing = Chart.getChart(el);
   if (existing) existing.destroy();
 
-  // Conta livros concluídos por gênero
   const allLivros = [...(window._livros||[]), ...(window._dadosD?.lendo||[]), ...(window._dadosD?.pausados||[])];
   const genMap = {};
   allLivros.filter(l => l.status === 'Completo' && l.genero).forEach(l => {
     genMap[l.genero] = (genMap[l.genero] || 0) + 1;
   });
 
-  const sorted = Object.entries(genMap).sort((a,b) => b[1]-a[1]);
+  const sorted = Object.entries(genMap).sort((a,b) => b[1]-a[1]).slice(0, 8);
   if (!sorted.length) {
-    el.parentElement.innerHTML = '<div style="color:var(--muted);font-size:12px;text-align:center;padding:24px;">Nenhum gênero cadastrado ainda.<br>Adicione gêneros via ✏️ Atualizar Livro.</div>';
+    el.parentElement.innerHTML = '<div style="color:var(--muted);font-size:11px;padding:8px 0;">Nenhum gênero cadastrado ainda.</div>';
     return;
   }
 
-  const CORES_GENERO = ['#8b7cf8','#4ecdc4','#f88c6a','#ffd700','#ff6384','#36a2eb','#9966ff','#ff9f40','#4bc0c0','#c9cbcf','#7bc8a4','#e8a838'];
+  const CORES = ['#8b7cf8','#4ecdc4','#f88c6a','#ffd700','#ff6384','#36a2eb','#9966ff','#ff9f40'];
   new Chart(el, {
-    type: 'doughnut',
+    type: 'bar',
     data: {
       labels: sorted.map(([g]) => g),
-      datasets: [{
-        data: sorted.map(([,n]) => n),
-        backgroundColor: sorted.map((_,i) => CORES_GENERO[i % CORES_GENERO.length]),
-        borderColor: 'rgba(15,23,42,0.5)',
-        borderWidth: 2,
-        hoverOffset: 8
-      }]
+      datasets: [{ data: sorted.map(([,n]) => n), backgroundColor: sorted.map((_,i) => CORES[i%CORES.length]), borderRadius: 4, borderWidth: 0 }]
     },
     options: {
-      responsive: true,
-      maintainAspectRatio: false,
+      indexAxis: 'y',
+      responsive: true, maintainAspectRatio: false,
       plugins: {
-        legend: { position:'right', labels:{ color: '#8892a8', font:{size:11}, padding:8, boxWidth:12 } },
-        tooltip: { ...window.TT, callbacks: { label: c => ` ${c.label}: ${c.parsed} livro${c.parsed>1?'s':''}` } }
+        legend: { display: false },
+        tooltip: { ...window.TT, callbacks: { label: c => ` ${c.parsed.x} livro${c.parsed.x>1?'s':''}` } }
+      },
+      scales: {
+        x: { ticks:{ color:'#8892a8', font:{size:10} }, grid:{ color:'rgba(42,50,72,0.3)' }, beginAtZero:true },
+        y: { ticks:{ color:'#8892a8', font:{size:10} }, grid:{ display:false } }
       }
     }
   });
@@ -3286,7 +3281,54 @@ function renderBatalha() {
     return { icon, nome, tierNome: t.nome, tierCor: t.cor, borderStyle, pct, progLabel, tip: descFn(val) };
   }
 
-  function medalhas(dd) {
+  // Títulos Exclusivos — calculados FORA de medalhas, apenas o melhor de cada categoria recebe
+  function calcTitulos(ddA, ddB) {
+    const autA = Object.keys(ddA.autMap||{}).length;
+    const autB = Object.keys(ddB.autMap||{}).length;
+    const titulosA = [], titulosB = [];
+
+    const disputa = (icon, nome, valA, valB, tipFn) => {
+      if (valA === 0 && valB === 0) return;
+      if (valA > valB) titulosA.push({icon, nome, tip: tipFn(valA)});
+      else if (valB > valA) titulosB.push({icon, nome, tip: tipFn(valB)});
+      // empate = ninguém recebe
+    };
+
+    disputa('👑','Rei das Páginas',      ddA.pagTotal,           ddB.pagTotal,           v=>`${v.toLocaleString('pt-BR')} páginas — maior total`);
+    disputa('🏛️','Imperador da Biblioteca',ddA.lidos.length,     ddB.lidos.length,       v=>`${v} livros concluídos — maior biblioteca`);
+    disputa('⏳','Senhor do Tempo',       ddA.horas,              ddB.horas,              v=>`${v}h de leitura — maior stamina`);
+    disputa('🔥','Combo Supremo',         ddA.streakRecord,       ddB.streakRecord,       v=>`Streak recorde: ${v} dias`);
+    disputa('🧠','Crítico Supremo',       ddA.notaMedia||0,       ddB.notaMedia||0,       v=>`Nota média ${v.toFixed(1)} — avaliações mais refinadas`);
+    disputa('⚡','Leitor Relâmpago',      Math.round(ddA.media),  Math.round(ddB.media),  v=>`Média de ${v} págs/dia — mais veloz`);
+    disputa('💀','Boss Slayer',           ddA.bosses.length,      ddB.bosses.length,      v=>`${v} bosses derrotados — mais poderoso`);
+    disputa('📅','Dominador das Sessões', ddA.sessoes,            ddB.sessoes,            v=>`${v} sessões registradas — mais disciplinado`);
+    disputa('🏆','Senhor das Séries',     ddA.seriesConcluidas||0,ddB.seriesConcluidas||0,v=>`${v} séries completas`);
+    disputa('🌎','Explorador Supremo',    autA,                   autB,                   v=>`${v} autores diferentes`);
+    disputa('🛡️','Monarca da Consistência',ddA.diasSet?.size||0, ddB.diasSet?.size||0,   v=>`${v} dias de leitura registrados`);
+    disputa('🐛','Mestre dos Slimes',     ddA.lidos.filter(l=>l.totalPag>0&&l.totalPag<=200).length, ddB.lidos.filter(l=>l.totalPag>0&&l.totalPag<=200).length, v=>`${v} livros até 200 págs`);
+
+    return { titulosA, titulosB };
+  }
+
+  const { titulosA, titulosB } = calcTitulos(dA, dB);
+
+  function renderTitulos(titulos) {
+    if (!titulos.length) return '';
+    return `<div style="margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.06);">
+      <div style="font-family:'Orbitron',sans-serif;font-size:8px;letter-spacing:3px;color:rgba(250,204,21,0.8);margin-bottom:10px;text-shadow:0 0 8px rgba(250,204,21,0.4);">✨ TÍTULOS EXCLUSIVOS</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;">
+        ${titulos.map(t=>`
+        <div class="bat-conquista" data-tip="${t.tip}" style="min-width:70px;max-width:82px;">
+          <div class="bat-conquista-icon" style="background:radial-gradient(circle at 35% 35%,#1a1020,#070B14);border:2px solid transparent;box-shadow:0 0 0 2px #9333EA,0 0 0 3px #FACC15,0 0 20px rgba(147,51,234,0.7),0 0 8px rgba(250,204,21,0.4);animation:bat-mestre 3s linear infinite;">
+            <span style="font-size:20px;">${t.icon}</span>
+          </div>
+          <div style="font-family:'Orbitron',sans-serif;font-size:8px;font-weight:700;color:#FACC15;text-align:center;letter-spacing:0.5px;margin-top:4px;text-shadow:0 0 8px rgba(250,204,21,0.5);">${t.nome}</div>
+        </div>`).join('')}
+      </div>
+    </div>`;
+  }
+
+  function medalhas(dd, titulos) {
     const autoresCount = Object.keys(dd.autMap || {}).length;
     const conquistas = [
       conquista('📖', 'Domínio de Páginas',   dd.pagTotal,              [1000,5000,15000,30000,60000,100000], [], v=>`${v.toLocaleString('pt-BR')} páginas lidas`),
@@ -3302,23 +3344,6 @@ function renderBatalha() {
       conquista('🏆', 'Senhor das Séries',     dd.seriesConcluidas||0,   [1,3,5,8,12,20],                     [], v=>`${v} séries concluídas`),
       conquista('🌎', 'Mestre dos Gêneros',    dd.generosSet?.size||0,   [2,4,6,8,10,12],                     [], v=>`${v} gêneros explorados`),
     ].filter(Boolean);
-
-    // Títulos Exclusivos — desbloqueados por feitos específicos
-    const titulos = [];
-    const addTitulo = (icon, nome, condicao, tip) => { if (condicao) titulos.push({icon, nome, tip}); };
-
-    addTitulo('👑', 'Rei das Páginas',          dd.pagTotal >= 100000,                        'Leu mais de 100.000 páginas no total');
-    addTitulo('🏛️', 'Imperador da Biblioteca',  dd.lidos.length >= 120,                       'Concluiu 120 ou mais livros');
-    addTitulo('⏳', 'Senhor do Tempo',           dd.horas >= 1200,                             'Acumulou 1.200+ horas de leitura');
-    addTitulo('🔥', 'Combo Supremo',             dd.streakRecord >= 180,                       'Manteve streak de 180 dias consecutivos');
-    addTitulo('🧠', 'Crítico Supremo',           (dd.notaMedia||0) >= 9,                       'Nota média de avaliações acima de 9.0');
-    addTitulo('⚡', 'Leitor Relâmpago',          Math.round(dd.media) >= 200,                  'Média de 200+ páginas por dia');
-    addTitulo('💀', 'Boss Slayer Supremo',       dd.bosses.length >= 50,                       'Derrotou 50 ou mais bosses (500+ págs)');
-    addTitulo('📅', 'Dominador das Temporadas',  dd.sessoes >= 1000,                           '1.000 ou mais sessões registradas');
-    addTitulo('🏆', 'Senhor das Séries',         dd.seriesConcluidas >= 20,                    'Completou 20 ou mais séries inteiras');
-    addTitulo('🌎', 'Explorador Supremo',        autoresCount >= 120,                          'Leu obras de 120+ autores diferentes');
-    addTitulo('🛡️', 'Monarca da Consistência',   dd.diasSet?.size >= 500,                     'Registrou leitura em 500+ dias distintos');
-    addTitulo('📚', 'Senhor das Séries Lendário',dd.seriesConcluidas >= 12 && dd.colSet.size >= 40, 'Completou 12+ séries e explorou 40+ coleções');
 
     const htmlConquistas = conquistas.length
       ? `<div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-start;">
@@ -3337,22 +3362,7 @@ function renderBatalha() {
         </div>`
       : `<div style="font-family:'Exo 2',sans-serif;color:rgba(248,250,252,0.3);font-size:12px;padding:8px;">🌱 Iniciando jornada</div>`;
 
-    const htmlTitulos = titulos.length
-      ? `<div style="margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.06);">
-          <div style="font-family:'Orbitron',sans-serif;font-size:8px;letter-spacing:3px;color:rgba(250,204,21,0.7);margin-bottom:10px;text-transform:uppercase;">✨ Títulos Exclusivos</div>
-          <div style="display:flex;flex-wrap:wrap;gap:8px;">
-            ${titulos.map(t=>`
-            <div class="bat-conquista" data-tip="${t.tip}" style="min-width:70px;max-width:80px;">
-              <div class="bat-conquista-icon" style="background:radial-gradient(circle at 35% 35%,#1a1020,#070B14);border:2px solid transparent;box-shadow:0 0 0 2px #9333EA,0 0 0 3px #FACC15,0 0 20px rgba(147,51,234,0.7),0 0 8px rgba(250,204,21,0.4);animation:bat-mestre 3s linear infinite;">
-                <span style="font-size:20px;">${t.icon}</span>
-              </div>
-              <div style="font-family:'Orbitron',sans-serif;font-size:8px;font-weight:700;color:#FACC15;text-align:center;letter-spacing:0.5px;margin-top:4px;text-shadow:0 0 8px rgba(250,204,21,0.5);">${t.nome}</div>
-            </div>`).join('')}
-          </div>
-        </div>`
-      : '';
-
-    return htmlConquistas + htmlTitulos;
+    return htmlConquistas + renderTitulos(titulos);
   }
 
   const container=document.getElementById('batalhaContainer');
@@ -3530,10 +3540,10 @@ function renderBatalha() {
 <div style="margin-bottom:20px;">
   <div class="bat-section-hdr">🏅 CONQUISTAS & FEITOS</div>
   <div style="display:flex;flex-direction:column;gap:12px;">
-    ${[{p:pA,dd:dA,cor:'#A855F7'},{p:pB,dd:dB,cor:'#FB923C'}].map(({p,dd,cor})=>`
+    ${[{p:pA,dd:dA,cor:'#A855F7',ts:titulosA},{p:pB,dd:dB,cor:'#FB923C',ts:titulosB}].map(({p,dd,cor,ts})=>`
     <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid ${cor}44;border-left:4px solid ${cor};border-radius:14px;padding:16px;box-shadow:0 0 24px ${cor}11;">
       <div style="font-family:'Orbitron',sans-serif;font-size:10px;color:${cor};font-weight:900;margin-bottom:16px;letter-spacing:3px;text-shadow:0 0 10px ${cor}66;">⚔️ ${p.toUpperCase()}</div>
-      ${medalhas(dd)}
+      ${medalhas(dd, ts)}
     </div>`).join('')}
   </div>
 </div>
