@@ -1,12 +1,12 @@
 {
-  "geradoEm": "2026-05-16T20:49:46.347Z",
+  "geradoEm": "2026-05-16T20:53:13.631Z",
   "meta": {
     "total": 54,
     "lidos": 21,
     "faltando": 33,
     "paginasTotal": 26504,
-    "paginasLidas": 11141,
-    "paginasFaltando": 15363,
+    "paginasLidas": 11131,
+    "paginasFaltando": 15373,
     "mediaDiaria": 78.9,
     "ritmoAtual": 57.9,
     "dataPrevistoAtual": "06/02/2027"
@@ -75,8 +75,8 @@
       "pausados": 0,
       "aguardando": 31,
       "paginasTotal": 26504,
-      "paginasLidas": 11141,
-      "paginasFaltando": 15363,
+      "paginasLidas": 11131,
+      "paginasFaltando": 15373,
       "faltando": 33,
       "mediaDiaria": 78.9,
       "ritmoAtual": 57.9,
@@ -22627,11 +22627,11 @@
       "usuario": "Daniel"
     },
     {
-      "livro": "A Cidade de Bronze",
-      "colecao": "Trilogia de Daevabad",
+      "livro": "Teste",
+      "colecao": "",
       "data": "2026-05-16",
       "paginas": 10,
-      "minutos": 10,
+      "minutos": 30,
       "ano": 2026,
       "usuario": "Milton"
     },
@@ -26277,8 +26277,8 @@
       "ordem": 59,
       "status": "Lendo",
       "totalPag": 641,
-      "pagAtual": 348,
-      "pct": 0.543,
+      "pagAtual": 338,
+      "pct": 0.527,
       "usuario": "MILTON"
     },
     {
@@ -33353,8 +33353,8 @@
       "ordem": 59,
       "status": "Lendo",
       "totalPag": 641,
-      "pagAtual": 348,
-      "pct": 0.543,
+      "pagAtual": 338,
+      "pct": 0.527,
       "usuario": "MILTON"
     },
     {
