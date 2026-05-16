@@ -628,6 +628,9 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
         <select id="selNotasAno" onchange="buildRanking()">
           <option value="all">Todos os anos</option>
         </select>
+        <select id="selNotasColecao" onchange="buildRanking()">
+          <option value="all">Todas as coleções</option>
+        </select>
         <select id="selNotasTema" onchange="buildRanking()">
           <option value="all">Todos os critérios</option>
           <option value="Diálogos">Diálogos</option>
@@ -1496,10 +1499,21 @@ function updateBtns() {
 }
 
 function buildRanking() {
-  const yr   = document.getElementById('selNotasAno').value;
+  const yr  = document.getElementById('selNotasAno').value;
   const tema = document.getElementById('selNotasTema')?.value || 'all';
+  const col  = document.getElementById('selNotasColecao')?.value || 'all';
+
+  const allLivros = [...(window._livros||[]),...(window._dadosD?.lendo||[]),...(window._dadosD?.pausados||[]),...(window._dadosD?.aguardando||[])];
 
   let pool = yr === 'all' ? NOTES : NOTES.filter(b => String(b.ano) === yr);
+
+  // Filtro por coleção
+  if (col !== 'all') {
+    pool = pool.filter(b => {
+      const l = allLivros.find(x => x.livro === b.livro);
+      return l?.colecao === col;
+    });
+  }
 
   // Calcula score pelo tema selecionado
   const scored = pool.map(b => {
@@ -1524,7 +1538,6 @@ function buildRanking() {
     const pct = Math.round(b.score/maxA*100);
     const col = rankMode==='best' ? (i<3?['#ffd166','#c0c0c0','#cd7f32'][i]:'#8b7cf8') : '#f88c6a';
     const scoreLabel = tema === 'all' ? b.score.toFixed(1) : `${b.score.toFixed(1)} <span style="font-size:10px;opacity:0.7">(${b.media.toFixed(1)} geral)</span>`;
-    const allLivros = [...(window._livros||[]), ...(window._dadosD?.lendo||[]), ...(window._dadosD?.pausados||[]), ...(window._dadosD?.aguardando||[])];
     const rankLivro = allLivros.find(l => l.livro === b.livro);
     const rankIsbn  = rankLivro?.isbn || '';
     const capaHtml  = coverThumb(rankIsbn, rankLivro?.coverUrl||'');
@@ -1573,13 +1586,27 @@ function inicializarGraficos() {
 
 // Popular seletores imediatamente com os dados disponíveis
 (function() {
-  // Seletor anos ranking
+  // Seletor anos ranking — usa anos das NOTAS, não das sessões
   const selNotasAno = document.getElementById('selNotasAno');
-  const anosNotas = [...new Set(YEARS.map(y => y.ano))].sort();
+  const anosNotas = [...new Set(NOTES.map(n => n.ano).filter(a => a > 2000))].sort();
   selNotasAno.innerHTML = '<option value="all">Todos os anos</option>';
   anosNotas.forEach(a => {
     selNotasAno.innerHTML += `<option value="${a}">${a}</option>`;
   });
+
+  // Seletor coleções ranking
+  const selNotasColecao = document.getElementById('selNotasColecao');
+  if (selNotasColecao) {
+    const allLivrosCol = [...(window._livros||[]),...(window._dadosD?.lendo||[]),...(window._dadosD?.pausados||[]),...(window._dadosD?.aguardando||[])];
+    const colecoesNotas = [...new Set(NOTES.map(n => {
+      const l = allLivrosCol.find(x => x.livro === n.livro);
+      return l?.colecao || '';
+    }).filter(Boolean))].sort();
+    selNotasColecao.innerHTML = '<option value="all">Todas as coleções</option>';
+    colecoesNotas.forEach(c => {
+      selNotasColecao.innerHTML += `<option value="${c}">${c}</option>`;
+    });
+  }
 
   // Seletor anos dia da semana
   const selWd = document.getElementById('selWd');
