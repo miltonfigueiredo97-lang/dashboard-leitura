@@ -317,6 +317,7 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
 .bat-cq-grey   { background:radial-gradient(circle at 35% 35%,#1a1a1a,#0d0d0d);border:2px solid #444;box-shadow:none; }
 .bat-conquista-name { font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;color:#F8FAFC;letter-spacing:1px;text-align:center;text-transform:uppercase; }
 .bat-conquista-sub  { font-family:'Exo 2',sans-serif;font-size:9px;color:rgba(248,250,252,0.55);text-align:center; }
+@keyframes bat-pulse { 0%,100%{box-shadow:0 0 24px rgba(147,51,234,0.7),0 0 8px rgba(250,204,21,0.5);}50%{box-shadow:0 0 36px rgba(147,51,234,0.9),0 0 16px rgba(250,204,21,0.8);} }
 .bat-conquista::after { content:attr(data-tip);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:#0B1020;color:#F8FAFC;padding:7px 12px;border-radius:8px;font-family:'Exo 2',sans-serif;font-size:11px;white-space:nowrap;border:1px solid rgba(168,85,247,0.3);z-index:9999;pointer-events:none;box-shadow:0 4px 16px rgba(0,0,0,0.8);opacity:0;transition:opacity .15s; }
 .bat-conquista:hover::after { opacity:1; }
 .bat-medal { display:inline-block;padding:4px 12px;border-radius:20px;font-family:'Rajdhani',sans-serif;font-size:11px;font-weight:700;margin:3px;cursor:default;position:relative; }
@@ -2840,6 +2841,16 @@ carregarDados();
       <label>ISBN</label>
       <input id="nl-isbn" type="text" placeholder="978...">
     </div>
+    <div class="pwa-field">
+      <label>Gênero</label>
+      <input id="nl-genero" type="text" placeholder="Ex: Fantasia, Sci-Fi, Terror..." list="generos-list">
+      <datalist id="generos-list">
+        <option value="Fantasia"><option value="Sci-Fi"><option value="Terror">
+        <option value="Romance"><option value="Mistério"><option value="Thriller">
+        <option value="Histórico"><option value="Não-Ficção"><option value="Clássico">
+        <option value="Aventura"><option value="Distopia"><option value="Mangá">
+      </datalist>
+    </div>
     <div class="pwa-msg" id="nl-msg"></div>
     <button class="pwa-btn" id="nl-btn" onclick="enviarNovoLivro()">✅ Adicionar Livro</button>
     <button class="pwa-btn-cancel" onclick="fecharModal('novoLivro')">Cancelar</button>
@@ -3116,9 +3127,23 @@ function renderBatalha() {
     const metaLidos=lidos.filter(l=>l.metaAno===anoAtual).length;
     const metaTotal=metaAno?(metasPorAno[metaAno]?.total||0):0;
     const metaPct=metaTotal>0?Math.round(metaLidos/metaTotal*100):0;
+    // Séries concluídas — coleções onde todos os livros estão completos
+    const colMap = {};
+    todos.forEach(l => {
+      if (!l.colecao) return;
+      if (!colMap[l.colecao]) colMap[l.colecao] = { total:0, lidos:0 };
+      colMap[l.colecao].total++;
+      if (l.status === 'Completo') colMap[l.colecao].lidos++;
+    });
+    const seriesConcluidas = Object.values(colMap).filter(c => c.total > 1 && c.lidos === c.total).length;
+
+    // Gêneros diferentes
+    const generosSet = new Set(todos.filter(l => l.genero && l.status === 'Completo').map(l => l.genero));
+
     return {u,sess,todos,lidos,notas,diasSet,pagTotal,horas,media,notaMedia,
       streakAtual,streakRecord,bosses,autorTop,mesPags,wdMap,eficiencia,
-      maiorSessao,colSet,sessoes:sess.length,metaPct,metaLidos,metaTotal};
+      maiorSessao,colSet,sessoes:sess.length,metaPct,metaLidos,metaTotal,
+      autMap,seriesConcluidas,generosSet};
   }
 
   const dA=calcDados(pA), dB=calcDados(pB);
@@ -3172,22 +3197,71 @@ function renderBatalha() {
   }
 
   // Medalhas
-  function medalhas(dd){
-    const m=[];
-    if(dd.streakRecord>=30)  m.push({icon:'🔥',cls:'bat-cq-orange',nome:'Maratonista',sub:dd.streakRecord+'d streak',tip:'Streak de '+dd.streakRecord+' dias consecutivos'});
-    if(dd.bosses.length>=5)  m.push({icon:'💀',cls:'bat-cq-purple',nome:'Boss Hunter', sub:dd.bosses.length+' bosses',tip:dd.bosses.length+' livros com 500+ páginas'});
-    if(dd.lidos.length>=50)  m.push({icon:'👑',cls:'bat-cq-gold',  nome:'Lendário',   sub:dd.lidos.length+' livros', tip:dd.lidos.length+' livros concluídos'});
-    if(dd.eficiencia>=50)    m.push({icon:'⚡',cls:'bat-cq-gold',  nome:'Devorador',  sub:dd.eficiencia+' págs/h',   tip:dd.eficiencia+' páginas por hora'});
-    if(dd.maiorSessao>=100)  m.push({icon:'🦁',cls:'bat-cq-red',   nome:'Insano',     sub:dd.maiorSessao+'p sessão', tip:'Sessão de '+dd.maiorSessao+' páginas'});
-    if(dd.notaMedia>=8)      m.push({icon:'⭐',cls:'bat-cq-gold',  nome:'Crítico',    sub:dd.notaMedia.toFixed(1)+' média',tip:'Nota média '+dd.notaMedia.toFixed(1)});
-    if(dd.colSet.size>=5)    m.push({icon:'🗺️',cls:'bat-cq-teal',  nome:'Explorador', sub:dd.colSet.size+' coleções',tip:dd.colSet.size+' coleções diferentes'});
-    if(dd.streakAtual>=7)    m.push({icon:'🔥',cls:'bat-cq-orange',nome:'Em Chamas',  sub:dd.streakAtual+'d atual',  tip:'Streak atual de '+dd.streakAtual+' dias'});
-    if(!m.length)            m.push({icon:'🌱',cls:'bat-cq-grey',  nome:'Iniciando',  sub:'jornada',                 tip:'Ainda no início da jornada'});
-    return `<div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
-      ${m.map(x=>`<div class="bat-conquista" data-tip="${x.tip}">
-        <div class="bat-conquista-icon ${x.cls}">${x.icon}</div>
-        <div class="bat-conquista-name">${x.nome}</div>
-        <div class="bat-conquista-sub">${x.sub}</div>
+  // ── Sistema de Conquistas por Tier ──────────────────────────────
+  const TIERS = [
+    { nome:'Bronze',  min:0,   cor:'#B87333', glow:'rgba(184,115,51,0.5)',  borda:'#A16207', anim:false },
+    { nome:'Prata',   min:1,   cor:'#C0C0C0', glow:'rgba(192,192,192,0.5)', borda:'#CBD5E1', anim:false },
+    { nome:'Ouro',    min:2,   cor:'#FACC15', glow:'rgba(250,204,21,0.6)',  borda:'#EAB308', anim:false },
+    { nome:'Platina', min:3,   cor:'#E5E7EB', glow:'rgba(229,231,235,0.7)', borda:'#F8FAFC', anim:false },
+    { nome:'Diamante',min:4,   cor:'#38BDF8', glow:'rgba(56,189,248,0.7)',  borda:'#2563EB', anim:false },
+    { nome:'Mestre',  min:5,   cor:'#9333EA', glow:'rgba(147,51,234,0.8)',  borda:'#FACC15', anim:true  },
+  ];
+
+  function getTier(val, thresholds) {
+    // thresholds: [bronze, prata, ouro, platina, diamante, mestre]
+    let tier = -1;
+    for (let i = 0; i < thresholds.length; i++) {
+      if (val >= thresholds[i]) tier = i; else break;
+    }
+    return tier;
+  }
+
+  function conquista(icon, nome, val, thresholds, labels, descFn) {
+    const tierIdx = getTier(val, thresholds);
+    if (tierIdx < 0) return null;
+    const t = TIERS[tierIdx];
+    const next = thresholds[tierIdx + 1];
+    const pct = next ? Math.round((val - thresholds[tierIdx]) / (next - thresholds[tierIdx]) * 100) : 100;
+    const progLabel = next ? `${val.toLocaleString('pt-BR')} / ${next.toLocaleString('pt-BR')}` : `${val.toLocaleString('pt-BR')} ✓`;
+    const borderStyle = t.anim
+      ? `border:2px solid #FACC15; box-shadow:0 0 24px rgba(147,51,234,0.7),0 0 8px rgba(250,204,21,0.5); animation:bat-pulse 2s infinite;`
+      : `border:2px solid ${t.borda}; box-shadow:0 0 18px ${t.glow};`;
+    return { icon, nome, tierNome: t.nome, tierCor: t.cor, borderStyle, pct, progLabel, tip: descFn(val) };
+  }
+
+  function medalhas(dd) {
+    const autoresCount = Object.keys(dd.autMap || {}).length;
+    const conquistas = [
+      conquista('📖', 'Domínio de Páginas',   dd.pagTotal,              [1000,5000,15000,30000,60000,100000], [], v=>`${v.toLocaleString('pt-BR')} páginas lidas`),
+      conquista('📚', 'Grimório Completo',     dd.lidos.length,          [5,15,30,50,80,120],                  [], v=>`${v} livros concluídos`),
+      conquista('⏳', 'Stamina Total',         dd.horas,                 [50,150,300,500,800,1200],             [], v=>`${v}h de leitura`),
+      conquista('🔥', 'Combo de Leitura',      dd.streakRecord,          [7,14,30,60,100,180],                 [], v=>`Streak recorde: ${v} dias`),
+      conquista('⚡', 'Velocidade',            Math.round(dd.media),     [10,30,50,80,120,200],                [], v=>`Média de ${v} págs/dia`),
+      conquista('📅', 'Sessões de Treino',     dd.sessoes,               [20,80,200,400,700,1000],             [], v=>`${v} sessões registradas`),
+      conquista('🧠', 'Crítico Literário',     dd.notaMedia||0,          [5,6,7,7.5,8,9],                     [], v=>`Nota média: ${v.toFixed(1)}`),
+      conquista('💀', 'Boss Slayer',           dd.bosses.length,         [1,5,10,20,35,50],                   [], v=>`${v} livros 500+ págs`),
+      conquista('🏛️', 'Explorador de Reinos',  dd.colSet.size,           [3,8,15,25,40,60],                   [], v=>`${v} coleções exploradas`),
+      conquista('✍️', 'Colecionador',          autoresCount,             [5,15,30,50,80,120],                  [], v=>`${v} autores diferentes`),
+      conquista('🏆', 'Senhor das Séries',     dd.seriesConcluidas||0,   [1,3,5,8,12,20],                     [], v=>`${v} séries concluídas`),
+      conquista('🌎', 'Mestre dos Gêneros',    dd.generosSet?.size||0,   [2,4,6,8,10,12],                     [], v=>`${v} gêneros explorados`),
+    ].filter(Boolean);
+
+    if (!conquistas.length) {
+      return `<div style="font-family:'Exo 2',sans-serif;color:rgba(248,250,252,0.3);font-size:12px;padding:8px;">🌱 Iniciando jornada</div>`;
+    }
+
+    return `<div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-start;">
+      ${conquistas.map(c => `
+      <div class="bat-conquista" data-tip="${c.tip}" style="min-width:80px;max-width:90px;">
+        <div class="bat-conquista-icon" style="background:radial-gradient(circle at 35% 35%,rgba(15,23,42,0.9),#070B14);${c.borderStyle}">
+          <span style="font-size:22px;">${c.icon}</span>
+        </div>
+        <div class="bat-conquista-name" style="font-size:9px;color:#F8FAFC;">${c.nome}</div>
+        <div style="font-family:'Orbitron',sans-serif;font-size:8px;font-weight:700;color:${c.tierCor};letter-spacing:1px;">${c.tierNome}</div>
+        <div style="width:100%;height:3px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;margin-top:2px;">
+          <div style="width:${c.pct}%;height:100%;background:${c.tierCor};border-radius:2px;box-shadow:0 0 6px ${c.tierCor};"></div>
+        </div>
+        <div style="font-family:'Exo 2',sans-serif;font-size:8px;color:rgba(248,250,252,0.4);margin-top:1px;">${c.progLabel}</div>
       </div>`).join('')}
     </div>`;
   }
