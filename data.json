@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-17T23:36:53.485Z",
+  "geradoEm": "2026-05-17T23:37:45.565Z",
   "meta": {
     "total": 54,
     "lidos": 21,
@@ -97,15 +97,15 @@
       "dataPrevistoAtual": "—"
     },
     "AINDA NÃO DEFINIDO": {
-      "total": 223,
+      "total": 224,
       "lidos": 0,
       "lendo": 0,
       "pausados": 0,
-      "aguardando": 223,
+      "aguardando": 224,
       "paginasTotal": 108746,
       "paginasLidas": 0,
       "paginasFaltando": 108746,
-      "faltando": 223,
+      "faltando": 224,
       "mediaDiaria": 50,
       "ritmoAtual": 0,
       "dataPrevistoAtual": "—"
@@ -25378,7 +25378,8 @@
       "totalPag": 713,
       "pagAtual": 713,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O nome do Vento",
@@ -25394,7 +25395,8 @@
       "totalPag": 1006,
       "pagAtual": 1006,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Nevernight",
@@ -25410,7 +25412,8 @@
       "totalPag": 676,
       "pagAtual": 676,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Herdeiros do Tempo",
@@ -25426,7 +25429,8 @@
       "totalPag": 299,
       "pagAtual": 299,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Sombra e Ossos",
@@ -25442,7 +25446,8 @@
       "totalPag": 327,
       "pagAtual": 327,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Sol e Tormenta",
@@ -25458,7 +25463,8 @@
       "totalPag": 404,
       "pagAtual": 404,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Ruina e Ascensão",
@@ -25474,7 +25480,8 @@
       "totalPag": 366,
       "pagAtual": 366,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Six of Crows",
@@ -25490,7 +25497,8 @@
       "totalPag": 563,
       "pagAtual": 563,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Principe Cruel",
@@ -25506,7 +25514,8 @@
       "totalPag": 434,
       "pagAtual": 434,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 13",
@@ -25522,7 +25531,8 @@
       "totalPag": 308,
       "pagAtual": 308,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 14",
@@ -25538,7 +25548,8 @@
       "totalPag": 272,
       "pagAtual": 272,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 15",
@@ -25554,7 +25565,8 @@
       "totalPag": 500,
       "pagAtual": 500,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 16",
@@ -25570,7 +25582,8 @@
       "totalPag": 388,
       "pagAtual": 388,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Aprendiz de Assassino",
@@ -25586,7 +25599,8 @@
       "totalPag": 551,
       "pagAtual": 551,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A flecha de Fogo",
@@ -25602,7 +25616,8 @@
       "totalPag": 1269,
       "pagAtual": 1269,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Of Blood and Fire",
@@ -25618,7 +25633,8 @@
       "totalPag": 481,
       "pagAtual": 481,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Caminho dos Reis",
@@ -25634,7 +25650,8 @@
       "totalPag": 1240,
       "pagAtual": 1240,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Leruth",
@@ -25650,7 +25667,8 @@
       "totalPag": 242,
       "pagAtual": 242,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Eu sou o Numero 4",
@@ -25666,7 +25684,8 @@
       "totalPag": 362,
       "pagAtual": 362,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Poder dos Seis",
@@ -25682,7 +25701,8 @@
       "totalPag": 336,
       "pagAtual": 336,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Ascenção dos Nove",
@@ -25698,7 +25718,8 @@
       "totalPag": 311,
       "pagAtual": 311,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Descoberta das Bruxas",
@@ -25714,7 +25735,8 @@
       "totalPag": 861,
       "pagAtual": 254,
       "pct": 0.295,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Cinco Laminas Partidas",
@@ -25730,7 +25752,8 @@
       "totalPag": 507,
       "pagAtual": 507,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Palavras de Radiancia",
@@ -25746,7 +25769,8 @@
       "totalPag": 1679,
       "pagAtual": 1679,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Edgedancer",
@@ -25762,7 +25786,8 @@
       "totalPag": 218,
       "pagAtual": 218,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Elantris",
@@ -25778,7 +25803,8 @@
       "totalPag": 802,
       "pagAtual": 802,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Chama de Ferro",
@@ -25794,7 +25820,8 @@
       "totalPag": 924,
       "pagAtual": 924,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Esperança de Elantris",
@@ -25810,7 +25837,8 @@
       "totalPag": 31,
       "pagAtual": 31,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Sacramentadora",
@@ -25826,7 +25854,8 @@
       "totalPag": 1536,
       "pagAtual": 1536,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O poço da Ascensão",
@@ -25842,7 +25871,8 @@
       "totalPag": 1059,
       "pagAtual": 1059,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Herói das Eras",
@@ -25858,7 +25888,8 @@
       "totalPag": 888,
       "pagAtual": 888,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mistborn - Historia Screta",
@@ -25874,7 +25905,8 @@
       "totalPag": 199,
       "pagAtual": 199,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Godsgrave",
@@ -25890,7 +25922,8 @@
       "totalPag": 668,
       "pagAtual": 668,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Rei dos Espinhos",
@@ -25906,7 +25939,8 @@
       "totalPag": 602,
       "pagAtual": 30,
       "pct": 0.05,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Jardins da Lua",
@@ -25922,7 +25956,8 @@
       "totalPag": 863,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Inimigo do Mundo",
@@ -25938,7 +25973,8 @@
       "totalPag": 713,
       "pagAtual": 713,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Meio Rei",
@@ -25954,7 +25990,8 @@
       "totalPag": 352,
       "pagAtual": 352,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Ordem Vermelha - Filhos da Degradação",
@@ -25970,7 +26007,8 @@
       "totalPag": 566,
       "pagAtual": 566,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Sobrinho do Mago",
@@ -25986,7 +26024,8 @@
       "totalPag": 249,
       "pagAtual": 249,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Leão a Feiticeira e Guarda-Roupa",
@@ -26002,7 +26041,8 @@
       "totalPag": 133,
       "pagAtual": 133,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Harry Potter - A Pedra Filosofal",
@@ -26018,7 +26058,8 @@
       "totalPag": 299,
       "pagAtual": 299,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Tress A Garota do mar Esmeralda",
@@ -26034,7 +26075,8 @@
       "totalPag": 440,
       "pagAtual": 440,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Liga da Lei",
@@ -26050,7 +26092,8 @@
       "totalPag": 423,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Dawnshard",
@@ -26066,7 +26109,8 @@
       "totalPag": 232,
       "pagAtual": 232,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Casa de Hades",
@@ -26082,7 +26126,8 @@
       "totalPag": 618,
       "pagAtual": 618,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Sangue do Olimpo",
@@ -26098,7 +26143,8 @@
       "totalPag": 510,
       "pagAtual": 510,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Guerra da Papoula",
@@ -26114,7 +26160,8 @@
       "totalPag": 639,
       "pagAtual": 639,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Temor do Sabio",
@@ -26130,7 +26177,8 @@
       "totalPag": 960,
       "pagAtual": 960,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Ritmo de Guerra",
@@ -26146,7 +26194,8 @@
       "totalPag": 1232,
       "pagAtual": 1232,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Ventos e Verdade",
@@ -26162,7 +26211,8 @@
       "totalPag": 1248,
       "pagAtual": 1248,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Warbreaker",
@@ -26178,7 +26228,8 @@
       "totalPag": 832,
       "pagAtual": 832,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Murtagh",
@@ -26194,7 +26245,8 @@
       "totalPag": 799,
       "pagAtual": 799,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Sword of Kaigen",
@@ -26210,7 +26262,8 @@
       "totalPag": 650,
       "pagAtual": 650,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Yumi e o Pintor de Pesadelos",
@@ -26226,7 +26279,8 @@
       "totalPag": 531,
       "pagAtual": 531,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Songs of Chaos - Ascendant",
@@ -26242,7 +26296,8 @@
       "totalPag": 693,
       "pagAtual": 693,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Carl O Explorador de Masmorras",
@@ -26258,7 +26313,8 @@
       "totalPag": 594,
       "pagAtual": 594,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Rise of the Ranger",
@@ -26274,7 +26330,8 @@
       "totalPag": 888,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "o Feiticeiro de Terramar",
@@ -26290,7 +26347,8 @@
       "totalPag": 176,
       "pagAtual": 176,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Cidade de Bronze",
@@ -26306,7 +26364,8 @@
       "totalPag": 641,
       "pagAtual": 348,
       "pct": 0.543,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Alma do Imperador",
@@ -26322,7 +26381,8 @@
       "totalPag": 142,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Of Darkness and Light",
@@ -26338,7 +26398,8 @@
       "totalPag": 912,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The White Sand",
@@ -26354,7 +26415,8 @@
       "totalPag": 749,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mistborn - The Lost Metal",
@@ -26370,7 +26432,8 @@
       "totalPag": 674,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Sunlit Man",
@@ -26386,7 +26449,8 @@
       "totalPag": 448,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Shadows for Silence in The Forest of Hell",
@@ -26402,7 +26466,8 @@
       "totalPag": 73,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Isles of The Emberdark",
@@ -26418,7 +26483,8 @@
       "totalPag": 533,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Darkdawn",
@@ -26434,7 +26500,8 @@
       "totalPag": 723,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Ordem Vermelha - Crianças do Silencio",
@@ -26450,7 +26517,8 @@
       "totalPag": 643,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Harry Potter - Camara Secreta",
@@ -26466,7 +26534,8 @@
       "totalPag": 252,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Republica do Dragão",
@@ -26482,7 +26551,8 @@
       "totalPag": 788,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Ultimo Desejo",
@@ -26498,7 +26568,8 @@
       "totalPag": 399,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Olho do Mundo",
@@ -26514,7 +26585,8 @@
       "totalPag": 800,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Meio Mundo",
@@ -26530,7 +26602,8 @@
       "totalPag": 442,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Fúria vermelha",
@@ -26546,7 +26619,8 @@
       "totalPag": 515,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Sombra dos Deuses",
@@ -26562,7 +26636,8 @@
       "totalPag": 641,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O limite do céu",
@@ -26578,7 +26653,8 @@
       "totalPag": 478,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Devils",
@@ -26594,7 +26670,8 @@
       "totalPag": 565,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Filha do Sangue",
@@ -26610,7 +26687,8 @@
       "totalPag": 509,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Queda dos Cinco",
@@ -26626,7 +26704,8 @@
       "totalPag": 259,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Vingança dos Sete",
@@ -26642,7 +26721,8 @@
       "totalPag": 307,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Destino da Numero Dez",
@@ -26658,7 +26738,8 @@
       "totalPag": 356,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Unidos somos Um",
@@ -26674,7 +26755,8 @@
       "totalPag": 392,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 17",
@@ -26690,7 +26772,8 @@
       "totalPag": 326,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Cidade dos Ossos",
@@ -26706,7 +26789,8 @@
       "totalPag": 519,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Crooked Kingdom",
@@ -26722,7 +26806,8 @@
       "totalPag": 655,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Cidade da Lua Crescente",
@@ -26738,7 +26823,8 @@
       "totalPag": 896,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Vale dos Perdidos",
@@ -26754,7 +26840,8 @@
       "totalPag": 104,
       "pagAtual": 104,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Labirinto da Besta",
@@ -26770,7 +26857,8 @@
       "totalPag": 104,
       "pagAtual": 104,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "As Florestas do Silêncio",
@@ -26786,7 +26874,8 @@
       "totalPag": 104,
       "pagAtual": 104,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Lago das Lágrimas",
@@ -26802,7 +26891,8 @@
       "totalPag": 104,
       "pagAtual": 104,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Retorno a Del",
@@ -26818,7 +26908,8 @@
       "totalPag": 112,
       "pagAtual": 112,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Montanha do Medo",
@@ -26834,7 +26925,8 @@
       "totalPag": 112,
       "pagAtual": 112,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "As Dunas",
@@ -26850,7 +26942,8 @@
       "totalPag": 112,
       "pagAtual": 112,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Cidade dos Ratos",
@@ -26866,7 +26959,8 @@
       "totalPag": 112,
       "pagAtual": 112,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Ilha da Ilusão",
@@ -26882,7 +26976,8 @@
       "totalPag": 120,
       "pagAtual": 120,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Rowan, o Guardião",
@@ -26898,7 +26993,8 @@
       "totalPag": 120,
       "pagAtual": 120,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Rowan e os Viajantes",
@@ -26914,7 +27010,8 @@
       "totalPag": 126,
       "pagAtual": 126,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Terra das Sombras",
@@ -26930,7 +27027,8 @@
       "totalPag": 128,
       "pagAtual": 128,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Caverna do Medo",
@@ -26946,7 +27044,8 @@
       "totalPag": 128,
       "pagAtual": 128,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Rowan e o Guardião do cristal",
@@ -26962,7 +27061,8 @@
       "totalPag": 143,
       "pagAtual": 143,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Ninho do Dragão",
@@ -26978,7 +27078,8 @@
       "totalPag": 144,
       "pagAtual": 144,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Rowan e os Zebakianos",
@@ -26994,7 +27095,8 @@
       "totalPag": 144,
       "pagAtual": 144,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Ilha dos Mortos",
@@ -27010,7 +27112,8 @@
       "totalPag": 160,
       "pagAtual": 160,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Portal das Sombras",
@@ -27026,7 +27129,8 @@
       "totalPag": 160,
       "pagAtual": 160,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Irmã do Sul",
@@ -27042,7 +27146,8 @@
       "totalPag": 168,
       "pagAtual": 168,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Rowan, o guardião dos bukshas",
@@ -27058,7 +27163,8 @@
       "totalPag": 192,
       "pagAtual": 192,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Ponte em Chamas",
@@ -27074,7 +27180,8 @@
       "totalPag": 224,
       "pagAtual": 224,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Ruínas de Gorlan",
@@ -27090,7 +27197,8 @@
       "totalPag": 239,
       "pagAtual": 239,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Terra do Gelo",
@@ -27106,7 +27214,8 @@
       "totalPag": 256,
       "pagAtual": 256,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Feiticeiro do Norte",
@@ -27122,7 +27231,8 @@
       "totalPag": 288,
       "pagAtual": 288,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Folha de Carvalho",
@@ -27138,7 +27248,8 @@
       "totalPag": 288,
       "pagAtual": 288,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Mar de Monstros",
@@ -27154,7 +27265,8 @@
       "totalPag": 304,
       "pagAtual": 304,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Garota da Terra do Vento",
@@ -27170,7 +27282,8 @@
       "totalPag": 320,
       "pagAtual": 320,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Príncipe dos Espinhos",
@@ -27186,7 +27299,8 @@
       "totalPag": 320,
       "pagAtual": 320,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Missão de Senar",
@@ -27202,7 +27316,8 @@
       "totalPag": 336,
       "pagAtual": 336,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Maldição do Titã",
@@ -27218,7 +27333,8 @@
       "totalPag": 336,
       "pagAtual": 336,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Último Olimpiano",
@@ -27234,7 +27350,8 @@
       "totalPag": 384,
       "pagAtual": 384,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Batalha do Labirinto",
@@ -27250,7 +27367,8 @@
       "totalPag": 392,
       "pagAtual": 392,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "As Duas Guerreiras",
@@ -27266,7 +27384,8 @@
       "totalPag": 400,
       "pagAtual": 400,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Ladrão de Raios",
@@ -27282,7 +27401,8 @@
       "totalPag": 400,
       "pagAtual": 400,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Talismã do Poder",
@@ -27298,7 +27418,8 @@
       "totalPag": 424,
       "pagAtual": 424,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Filho de Netuno",
@@ -27314,7 +27435,8 @@
       "totalPag": 432,
       "pagAtual": 432,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mestre",
@@ -27330,7 +27452,8 @@
       "totalPag": 432,
       "pagAtual": 432,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Aprendiz",
@@ -27346,7 +27469,8 @@
       "totalPag": 432,
       "pagAtual": 432,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Corte de Espinhos e Rosas",
@@ -27362,7 +27486,8 @@
       "totalPag": 434,
       "pagAtual": 434,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Herói Perdido",
@@ -27378,7 +27503,8 @@
       "totalPag": 439,
       "pagAtual": 439,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Seita dos Assassinos",
@@ -27394,7 +27520,8 @@
       "totalPag": 443,
       "pagAtual": 443,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Um Novo Reino",
@@ -27410,7 +27537,8 @@
       "totalPag": 445,
       "pagAtual": 445,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Eragon",
@@ -27426,7 +27554,8 @@
       "totalPag": 468,
       "pagAtual": 468,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Marca de Atena",
@@ -27442,7 +27571,8 @@
       "totalPag": 480,
       "pagAtual": 480,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Império Final",
@@ -27458,7 +27588,8 @@
       "totalPag": 612,
       "pagAtual": 612,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Eldest",
@@ -27474,7 +27605,8 @@
       "totalPag": 644,
       "pagAtual": 644,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Corte de Névoa e Fúria",
@@ -27490,7 +27622,8 @@
       "totalPag": 658,
       "pagAtual": 658,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Corte de Asas e Ruína",
@@ -27506,7 +27639,8 @@
       "totalPag": 686,
       "pagAtual": 686,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Brisingr",
@@ -27522,7 +27656,8 @@
       "totalPag": 708,
       "pagAtual": 708,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Herança",
@@ -27538,7 +27673,8 @@
       "totalPag": 792,
       "pagAtual": 792,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Guerra dos Tronos",
@@ -27554,7 +27690,8 @@
       "totalPag": 1066,
       "pagAtual": 1066,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Festim dos Corvos",
@@ -27570,7 +27707,8 @@
       "totalPag": 1099,
       "pagAtual": 1099,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Fúria dos Reis",
@@ -27586,7 +27724,8 @@
       "totalPag": 1190,
       "pagAtual": 1190,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Dança dos Dragões",
@@ -27602,7 +27741,8 @@
       "totalPag": 1448,
       "pagAtual": 1448,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Tormenta de Espadas",
@@ -27618,7 +27758,8 @@
       "totalPag": 1474,
       "pagAtual": 1474,
       "pct": 1,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O estreito caminho entre desejos",
@@ -27634,7 +27775,8 @@
       "totalPag": 192,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Deusa em Chamas",
@@ -27650,7 +27792,8 @@
       "totalPag": 592,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Asas de Abutre",
@@ -27666,7 +27809,8 @@
       "totalPag": 448,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Garoto-Cabra",
@@ -27682,7 +27826,8 @@
       "totalPag": 320,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Herdeiro do Leão",
@@ -27698,7 +27843,8 @@
       "totalPag": 400,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Melhor Amigo do Homem",
@@ -27714,7 +27860,8 @@
       "totalPag": 640,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Ascensão da Sombra",
@@ -27730,7 +27877,8 @@
       "totalPag": 991,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Grande Caçada",
@@ -27746,7 +27894,8 @@
       "totalPag": 704,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "As Chamas do Paraíso",
@@ -27762,7 +27911,8 @@
       "totalPag": 944,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Caminho das Adagas",
@@ -27778,7 +27928,8 @@
       "totalPag": 592,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Dragão Renascido",
@@ -27794,7 +27945,8 @@
       "totalPag": 656,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Senhor do Caos",
@@ -27810,7 +27962,8 @@
       "totalPag": 1072,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Uma Coroa de Espadas",
@@ -27826,7 +27979,8 @@
       "totalPag": 848,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Senhora do Lago 1",
@@ -27842,7 +27996,8 @@
       "totalPag": 266,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Os Garotos Corvos",
@@ -27858,7 +28013,8 @@
       "totalPag": 378,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Guerra de Jade",
@@ -27874,7 +28030,8 @@
       "totalPag": 544,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "In the Shadow of Kings",
@@ -27890,7 +28047,8 @@
       "totalPag": 882,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Once there were heroes",
@@ -27906,7 +28064,8 @@
       "totalPag": 829,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Last Ballad of Hope",
@@ -27922,7 +28081,8 @@
       "totalPag": 1026,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Despertar do Elemento",
@@ -27938,7 +28098,8 @@
       "totalPag": 278,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Profecia do Herói",
@@ -27954,7 +28115,8 @@
       "totalPag": 240,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Companhia Negra",
@@ -27970,7 +28132,8 @@
       "totalPag": 308,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Rosa Branca",
@@ -27986,7 +28149,8 @@
       "totalPag": 378,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Sombras Eternas",
@@ -28002,7 +28166,8 @@
       "totalPag": 336,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Cadeira de Prata",
@@ -28018,7 +28183,8 @@
       "totalPag": 208,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Última Batalha",
@@ -28034,7 +28200,8 @@
       "totalPag": 213,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Viagem do Peregrino da Alvorada",
@@ -28050,7 +28217,8 @@
       "totalPag": 235,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Cavalo e seu Menino",
@@ -28066,7 +28234,8 @@
       "totalPag": 189,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Príncipe Caspian",
@@ -28082,7 +28251,8 @@
       "totalPag": 216,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Imperador das Lâminas",
@@ -28098,7 +28268,8 @@
       "totalPag": 544,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Pirâmide Vermelha",
@@ -28114,7 +28285,8 @@
       "totalPag": 448,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Sombra da Serpente",
@@ -28130,7 +28302,8 @@
       "totalPag": 352,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Trono de Fogo",
@@ -28146,7 +28319,8 @@
       "totalPag": 398,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Profecia das Sombras",
@@ -28162,7 +28336,8 @@
       "totalPag": 336,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Torre de Nero",
@@ -28178,7 +28353,8 @@
       "totalPag": 336,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Tumba do Tirano",
@@ -28194,7 +28370,8 @@
       "totalPag": 368,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Labirinto de Fogo",
@@ -28210,7 +28387,8 @@
       "totalPag": 368,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Oráculo Oculto",
@@ -28226,7 +28404,8 @@
       "totalPag": 320,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Fury of the Gods",
@@ -28242,7 +28421,8 @@
       "totalPag": 512,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Hunger of the Gods",
@@ -28258,7 +28438,8 @@
       "totalPag": 672,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Última Margem",
@@ -28274,7 +28455,8 @@
       "totalPag": 266,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "As Tumbas de Atuan",
@@ -28290,7 +28472,8 @@
       "totalPag": 160,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Tehanu",
@@ -28306,7 +28489,8 @@
       "totalPag": 240,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Casa de Céu e Sopro",
@@ -28322,7 +28506,8 @@
       "totalPag": 924,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Casa de Chama e Sombra",
@@ -28338,7 +28523,8 @@
       "totalPag": 936,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Casa de Terra e Sangue",
@@ -28354,7 +28540,8 @@
       "totalPag": 896,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Cidade de Jade",
@@ -28370,7 +28557,8 @@
       "totalPag": 480,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Corte de Chamas Prateadas",
@@ -28386,7 +28574,8 @@
       "totalPag": 714,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Corte de Gelo e Estrelas",
@@ -28402,7 +28591,8 @@
       "totalPag": 238,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Crônicas das Guerras de Lodoss #01",
@@ -28418,7 +28608,8 @@
       "totalPag": 304,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Crônicas das Guerras de Lodoss #02",
@@ -28434,7 +28625,8 @@
       "totalPag": 296,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Crônicas das Guerras de Lodoss #03",
@@ -28450,7 +28642,8 @@
       "totalPag": 300,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Crônicas das Guerras de Lodoss #04",
@@ -28466,7 +28659,8 @@
       "totalPag": 303,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Crônicas das Guerras de Lodoss #06",
@@ -28482,7 +28676,8 @@
       "totalPag": 256,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Crônicas das Guerras de Lodoss #07",
@@ -28498,7 +28693,8 @@
       "totalPag": 272,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Crônicas das Guerras de Lodoss #05",
@@ -28514,7 +28710,8 @@
       "totalPag": 312,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Coroa de Ossos Dourados",
@@ -28530,7 +28727,8 @@
       "totalPag": 672,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Guerra das Duas Rainhas",
@@ -28546,7 +28744,8 @@
       "totalPag": 897,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Um Reino de Carne e Fogo",
@@ -28562,7 +28761,8 @@
       "totalPag": 672,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Uma alma de cinzas e sangue",
@@ -28578,7 +28778,8 @@
       "totalPag": 644,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Carl e o cenário apocalíptico: Uma literatura de RPG intergaláctica",
@@ -28594,7 +28795,8 @@
       "totalPag": 495,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Butcher's Masquerade",
@@ -28610,7 +28812,8 @@
       "totalPag": 726,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Dungeon Anarchist's Cookbook",
@@ -28626,7 +28829,8 @@
       "totalPag": 532,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Eye of the Bedlam Bride",
@@ -28642,7 +28846,8 @@
       "totalPag": 692,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Gate of the Feral God",
@@ -28658,7 +28863,8 @@
       "totalPag": 632,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "This Inevitable Ruin",
@@ -28674,7 +28880,8 @@
       "totalPag": 722,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "King of Scars",
@@ -28690,7 +28897,8 @@
       "totalPag": 528,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Rule of Wolves",
@@ -28706,7 +28914,8 @@
       "totalPag": 592,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Harry Potter e a criança amaldiçoada",
@@ -28722,7 +28931,8 @@
       "totalPag": 352,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Harry Potter e a Ordem da Fênix",
@@ -28738,7 +28948,8 @@
       "totalPag": 704,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Harry Potter e as relíquias da morte",
@@ -28754,7 +28965,8 @@
       "totalPag": 592,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Harry Potter e o cálice de fogo",
@@ -28770,7 +28982,8 @@
       "totalPag": 584,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Harry Potter e o enigma do príncipe",
@@ -28786,7 +28999,8 @@
       "totalPag": 472,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Harry Potter e o prisioneiro de Azkaban",
@@ -28802,7 +29016,8 @@
       "totalPag": 394,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Blood and Coin",
@@ -28818,7 +29033,8 @@
       "totalPag": 570,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Herdeiros do Tempo : Livro 2 - Legado",
@@ -28834,7 +29050,8 @@
       "totalPag": 304,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Espada do Verão",
@@ -28850,7 +29067,8 @@
       "totalPag": 448,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Martelo de Thor",
@@ -28866,7 +29084,8 @@
       "totalPag": 400,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Navio dos Mortos",
@@ -28882,7 +29101,8 @@
       "totalPag": 368,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Meia Guerra",
@@ -28898,7 +29118,8 @@
       "totalPag": 368,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "As Sombras de Si Mesmo",
@@ -28914,7 +29135,8 @@
       "totalPag": 558,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Os Braceletes da Perdição",
@@ -28930,7 +29152,8 @@
       "totalPag": 504,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Destino de Adhara",
@@ -28946,7 +29169,8 @@
       "totalPag": 509,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Os Últimos Heróis",
@@ -28962,7 +29186,8 @@
       "totalPag": 342,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 19",
@@ -28978,7 +29203,8 @@
       "totalPag": 323,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 20",
@@ -28994,7 +29220,8 @@
       "totalPag": 364,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 21",
@@ -29010,7 +29237,8 @@
       "totalPag": 256,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 22",
@@ -29026,7 +29254,8 @@
       "totalPag": 260,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 23",
@@ -29042,7 +29271,8 @@
       "totalPag": 285,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 24",
@@ -29058,7 +29288,8 @@
       "totalPag": 308,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 25",
@@ -29074,7 +29305,8 @@
       "totalPag": 380,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 26",
@@ -29090,7 +29322,8 @@
       "totalPag": 254,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 18",
@@ -29106,7 +29339,8 @@
       "totalPag": 380,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Deus máquina",
@@ -29122,7 +29356,8 @@
       "totalPag": 480,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O caçador de apóstolos",
@@ -29138,7 +29373,8 @@
       "totalPag": 416,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Tempestade de Ônix",
@@ -29154,7 +29390,8 @@
       "totalPag": 608,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Rainha do Nada",
@@ -29170,7 +29407,8 @@
       "totalPag": 294,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Como o Rei de Elfhame Aprendeu a Odiar Histórias",
@@ -29186,7 +29424,8 @@
       "totalPag": 192,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Rei Perverso",
@@ -29202,7 +29441,8 @@
       "totalPag": 308,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Lost Sisters",
@@ -29218,7 +29458,8 @@
       "totalPag": 50,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Priorado da Laranjeira",
@@ -29234,7 +29475,8 @@
       "totalPag": 544,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Coroa de Ptolomeu",
@@ -29250,7 +29492,8 @@
       "totalPag": 78,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Cajado de Serápis",
@@ -29266,7 +29509,8 @@
       "totalPag": 73,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Filho de Sobek",
@@ -29282,7 +29526,8 @@
       "totalPag": 46,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Cidade das Almas Perdidas",
@@ -29298,7 +29543,8 @@
       "totalPag": 434,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Cidade das Cinzas",
@@ -29314,7 +29560,8 @@
       "totalPag": 406,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Cidade de Vidro",
@@ -29330,7 +29577,8 @@
       "totalPag": 474,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Cidade do Fogo Celestial",
@@ -29346,7 +29594,8 @@
       "totalPag": 532,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Cidade dos Anjos Caídos",
@@ -29362,7 +29611,8 @@
       "totalPag": 364,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Cidade dos Ossos",
@@ -29378,7 +29628,8 @@
       "totalPag": 476,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Primeiro Filho do Gelo",
@@ -29394,7 +29645,8 @@
       "totalPag": 473,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O cálice dos Deuses",
@@ -29410,7 +29662,8 @@
       "totalPag": 272,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Arqueiro do Rei",
@@ -29426,7 +29679,8 @@
       "totalPag": 408,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Cerco a Macindaw",
@@ -29442,7 +29696,8 @@
       "totalPag": 296,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Halt em Perigo",
@@ -29458,7 +29713,8 @@
       "totalPag": 392,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Histórias Perdidas",
@@ -29474,7 +29730,8 @@
       "totalPag": 432,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Imperador de Nihon-Ja",
@@ -29490,7 +29747,8 @@
       "totalPag": 424,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Reis de Clonmel",
@@ -29506,7 +29764,8 @@
       "totalPag": 360,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Resgate de Erak",
@@ -29522,7 +29781,8 @@
       "totalPag": 392,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Estrela da Manhã",
@@ -29538,7 +29798,8 @@
       "totalPag": 632,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Filho Dourado",
@@ -29554,7 +29815,8 @@
       "totalPag": 549,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Fúria do Assassino",
@@ -29570,7 +29832,8 @@
       "totalPag": 832,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Assassino do Rei",
@@ -29586,7 +29849,8 @@
       "totalPag": 736,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Dust of Dreams",
@@ -29602,7 +29866,8 @@
       "totalPag": 889,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "House of Chains",
@@ -29618,7 +29883,8 @@
       "totalPag": 1021,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Memórias do Gelo",
@@ -29634,7 +29900,8 @@
       "totalPag": 512,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Midnight Tides",
@@ -29650,7 +29917,8 @@
       "totalPag": 940,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Os Portais da Casa dos Mortos",
@@ -29666,7 +29934,8 @@
       "totalPag": 816,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Reaper's Gale",
@@ -29682,7 +29951,8 @@
       "totalPag": 509,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Bonehunters",
@@ -29698,7 +29968,8 @@
       "totalPag": 1229,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Crippled God",
@@ -29714,7 +29985,8 @@
       "totalPag": 848,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Toll the Hounds",
@@ -29730,7 +30002,8 @@
       "totalPag": 896,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "As Trevas de Sethanon",
@@ -29746,7 +30019,8 @@
       "totalPag": 480,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Espinho de Prata",
@@ -29762,7 +30036,8 @@
       "totalPag": 416,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Defiant",
@@ -29778,7 +30053,8 @@
       "totalPag": 897,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Last Stand of the Stone Fist: A Songs of Chaos Novella",
@@ -29794,7 +30070,8 @@
       "totalPag": 260,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Reckoning",
@@ -29810,7 +30087,8 @@
       "totalPag": 866,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Unbound",
@@ -29826,7 +30104,8 @@
       "totalPag": 672,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "As Crônicas de Spiderwick",
@@ -29842,7 +30121,8 @@
       "totalPag": 560,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Of War and Ruin",
@@ -29858,7 +30138,8 @@
       "totalPag": 1477,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Exile",
@@ -29874,7 +30155,8 @@
       "totalPag": 184,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Fall",
@@ -29890,7 +30172,8 @@
       "totalPag": 95,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Devils",
@@ -29906,7 +30189,8 @@
       "totalPag": 565,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Clash of Fates",
@@ -29922,7 +30206,8 @@
       "totalPag": 774,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Age of the King",
@@ -29938,7 +30223,8 @@
       "totalPag": 678,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Empire of Dirt",
@@ -29954,7 +30240,8 @@
       "totalPag": 494,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Kingdom of Bones",
@@ -29970,7 +30257,8 @@
       "totalPag": 594,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Last of the Dragorn",
@@ -29986,7 +30274,8 @@
       "totalPag": 590,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Relic of the Gods",
@@ -30002,7 +30291,8 @@
       "totalPag": 532,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Fall of Neverdark",
@@ -30018,7 +30308,8 @@
       "totalPag": 670,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Knights of Erador",
@@ -30034,7 +30325,8 @@
       "totalPag": 606,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Malice",
@@ -30050,7 +30342,8 @@
       "totalPag": 672,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Ruin",
@@ -30066,7 +30359,8 @@
       "totalPag": 672,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Valour",
@@ -30082,7 +30376,8 @@
       "totalPag": 640,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Wrath",
@@ -30098,7 +30393,8 @@
       "totalPag": 672,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Floating World",
@@ -30114,7 +30410,8 @@
       "totalPag": 368,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Jade Legacy",
@@ -30130,7 +30427,8 @@
       "totalPag": 736,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Dance of Fang and Claw",
@@ -30146,7 +30444,8 @@
       "totalPag": 542,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Court of Assassins",
@@ -30162,7 +30461,8 @@
       "totalPag": 502,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Espada do Destino",
@@ -30178,7 +30478,8 @@
       "totalPag": 380,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Senhora do Lago 2",
@@ -30194,7 +30495,8 @@
       "totalPag": 560,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Batismo de Fogo",
@@ -30210,7 +30512,8 @@
       "totalPag": 356,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Sangue dos Elfos",
@@ -30226,7 +30529,8 @@
       "totalPag": 400,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Tempo de Tempestade",
@@ -30242,7 +30546,8 @@
       "totalPag": 368,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Tempo do Desprezo",
@@ -30258,7 +30563,8 @@
       "totalPag": 357,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Contos Inacabados",
@@ -30274,7 +30580,8 @@
       "totalPag": 585,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Os Filhos de Húrin",
@@ -30290,7 +30597,8 @@
       "totalPag": 288,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Deusa no Labirinto",
@@ -30306,7 +30614,8 @@
       "totalPag": 512,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Joia da Alma",
@@ -30322,7 +30631,8 @@
       "totalPag": 384,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Crânio e o Corvo",
@@ -30338,7 +30648,8 @@
       "totalPag": 512,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Terceiro Deus",
@@ -30354,7 +30665,8 @@
       "totalPag": 664,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Deus da Guerra",
@@ -30370,7 +30682,8 @@
       "totalPag": 579,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Livro da Vida",
@@ -30386,7 +30699,8 @@
       "totalPag": 560,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Sombra da Noite",
@@ -30402,7 +30716,8 @@
       "totalPag": 576,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Império de Ouro",
@@ -30418,7 +30733,8 @@
       "totalPag": 879,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Reino de Cobre",
@@ -30434,7 +30750,8 @@
       "totalPag": 704,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Imperador dos Espinhos",
@@ -30450,7 +30767,8 @@
       "totalPag": 416,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Canção de Shannara",
@@ -30466,7 +30784,8 @@
       "totalPag": 512,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Espada de Shannara",
@@ -30482,7 +30801,8 @@
       "totalPag": 544,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Antrax, a Criatura",
@@ -30498,7 +30818,8 @@
       "totalPag": 350,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "As Pedras Élficas de Shannara",
@@ -30514,7 +30835,8 @@
       "totalPag": 512,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Ilse, a Bruxa",
@@ -30530,7 +30852,8 @@
       "totalPag": 448,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Morgawr, o Bruxo",
@@ -30546,7 +30869,8 @@
       "totalPag": 392,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Druid of Shannara",
@@ -30562,7 +30886,8 @@
       "totalPag": 384,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Elf Queen of Shannara",
@@ -30578,7 +30903,8 @@
       "totalPag": 368,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Scions of Shannara",
@@ -30594,7 +30920,8 @@
       "totalPag": 419,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Talismans of Shannara",
@@ -30610,7 +30937,8 @@
       "totalPag": 464,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Leviathan",
@@ -30626,7 +30954,8 @@
       "totalPag": 185,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Caminho sem Retorno",
@@ -30642,7 +30971,8 @@
       "totalPag": 43,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "TRISTAN AVALLON E O MISTÉRIO DO LABIRINTO",
@@ -30658,7 +30988,8 @@
       "totalPag": 265,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Uma vida pequena",
@@ -30674,7 +31005,8 @@
       "totalPag": 784,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Código Élfico",
@@ -30690,7 +31022,8 @@
       "totalPag": 576,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Arte da Guerra",
@@ -30706,7 +31039,8 @@
       "totalPag": 224,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Herdeiros de Atlântida",
@@ -30722,7 +31056,8 @@
       "totalPag": 471,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Paraiso Perdido",
@@ -30738,7 +31073,8 @@
       "totalPag": 560,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Torre da Andorinha",
@@ -30754,7 +31090,8 @@
       "totalPag": 465,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Batalha do Apocalipse",
@@ -30770,7 +31107,8 @@
       "totalPag": 586,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Anjos da Morte",
@@ -30786,7 +31124,8 @@
       "totalPag": 588,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "De Sangue e Cinzas",
@@ -30802,7 +31141,8 @@
       "totalPag": 672,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 1",
@@ -30818,7 +31158,8 @@
       "totalPag": 314,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 2",
@@ -30834,7 +31175,8 @@
       "totalPag": 299,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 3",
@@ -30850,7 +31192,8 @@
       "totalPag": 401,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 4",
@@ -30866,7 +31209,8 @@
       "totalPag": 317,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 5",
@@ -30882,7 +31226,8 @@
       "totalPag": 338,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 6",
@@ -30898,7 +31243,8 @@
       "totalPag": 310,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 7",
@@ -30914,7 +31260,8 @@
       "totalPag": 308,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 8",
@@ -30930,7 +31277,8 @@
       "totalPag": 408,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 9",
@@ -30946,7 +31294,8 @@
       "totalPag": 365,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 10",
@@ -30962,7 +31311,8 @@
       "totalPag": 264,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 11",
@@ -30978,7 +31328,8 @@
       "totalPag": 311,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Coração do Inverno",
@@ -30994,7 +31345,8 @@
       "totalPag": 784,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Ice",
@@ -31010,7 +31362,8 @@
       "totalPag": 122,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Of Empire and Dust",
@@ -31026,7 +31379,8 @@
       "totalPag": 638,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Grande Rainha",
@@ -31042,7 +31396,8 @@
       "totalPag": 232,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Elric de Melniboné: Livro Dois",
@@ -31058,7 +31413,8 @@
       "totalPag": 335,
       "pagAtual": 335,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Hereges de Duna",
@@ -31074,7 +31430,8 @@
       "totalPag": 570,
       "pagAtual": 570,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "A Grande Caçada",
@@ -31090,7 +31447,8 @@
       "totalPag": 700,
       "pagAtual": 700,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Meio Mundo",
@@ -31106,7 +31464,8 @@
       "totalPag": 370,
       "pagAtual": 370,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "The Sunlit Man",
@@ -31122,7 +31481,8 @@
       "totalPag": 396,
       "pagAtual": 396,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O Andarilho",
@@ -31138,7 +31498,8 @@
       "totalPag": 462,
       "pagAtual": 462,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O Feiticeiro de Terramar",
@@ -31154,7 +31515,8 @@
       "totalPag": 176,
       "pagAtual": 176,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Yumi e o Pintor de Pesadelos",
@@ -31170,7 +31532,8 @@
       "totalPag": 510,
       "pagAtual": 510,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "A Fazenda Blackwood",
@@ -31186,7 +31549,8 @@
       "totalPag": 540,
       "pagAtual": 540,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "A Sombra dos Deuses",
@@ -31202,7 +31566,8 @@
       "totalPag": 574,
       "pagAtual": 574,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O Portão do Obelisco",
@@ -31218,7 +31583,8 @@
       "totalPag": 533,
       "pagAtual": 533,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Darkdawn",
@@ -31234,7 +31600,8 @@
       "totalPag": 693,
       "pagAtual": 693,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "A Deusa em Chamas",
@@ -31250,7 +31617,8 @@
       "totalPag": 599,
       "pagAtual": 599,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Sangue e Ouro",
@@ -31266,7 +31634,8 @@
       "totalPag": 481,
       "pagAtual": 481,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O Olho do Mundo",
@@ -31282,7 +31651,8 @@
       "totalPag": 800,
       "pagAtual": 800,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Hyperion",
@@ -31298,7 +31668,8 @@
       "totalPag": 559,
       "pagAtual": 559,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Ventos e Verdades",
@@ -31314,7 +31685,8 @@
       "totalPag": 1254,
       "pagAtual": 1254,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Skyward: Conquiste as estrelas",
@@ -31330,7 +31702,8 @@
       "totalPag": 396,
       "pagAtual": 396,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "A Senhora da Magia",
@@ -31346,7 +31719,8 @@
       "totalPag": 252,
       "pagAtual": 252,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O Arqueiro",
@@ -31362,7 +31736,8 @@
       "totalPag": 434,
       "pagAtual": 434,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Ritmo de Guerra",
@@ -31378,7 +31753,8 @@
       "totalPag": 1232,
       "pagAtual": 1232,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Imperador Deus de Duna",
@@ -31394,7 +31770,8 @@
       "totalPag": 486,
       "pagAtual": 486,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O Código Élfico",
@@ -31410,7 +31787,8 @@
       "totalPag": 576,
       "pagAtual": 576,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "A Guerra da Rainha Vermelha",
@@ -31426,7 +31804,8 @@
       "totalPag": 420,
       "pagAtual": 420,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O Manual do Mago Frugal",
@@ -31442,7 +31821,8 @@
       "totalPag": 416,
       "pagAtual": 416,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Pandora",
@@ -31458,7 +31838,8 @@
       "totalPag": 210,
       "pagAtual": 210,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Lua de Sangue",
@@ -31474,7 +31855,8 @@
       "totalPag": 371,
       "pagAtual": 371,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Merrick",
@@ -31490,7 +31872,8 @@
       "totalPag": 333,
       "pagAtual": 333,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "A Quinta Estação",
@@ -31506,7 +31889,8 @@
       "totalPag": 560,
       "pagAtual": 560,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "A Morte da Luz",
@@ -31522,7 +31906,8 @@
       "totalPag": 340,
       "pagAtual": 340,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Reino das Bruxas: Irmandade Mística",
@@ -31538,7 +31923,8 @@
       "totalPag": 335,
       "pagAtual": 335,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Imperador dos Espinhos",
@@ -31554,7 +31940,8 @@
       "totalPag": 413,
       "pagAtual": 413,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Meio Rei",
@@ -31570,7 +31957,8 @@
       "totalPag": 290,
       "pagAtual": 290,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "A República do Dragão",
@@ -31586,7 +31974,8 @@
       "totalPag": 640,
       "pagAtual": 640,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "As brasas",
@@ -31602,7 +31991,8 @@
       "totalPag": 174,
       "pagAtual": 174,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Filhos de Duna",
@@ -31618,7 +32008,8 @@
       "totalPag": 528,
       "pagAtual": 528,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Cidade de Jade",
@@ -31634,7 +32025,8 @@
       "totalPag": 476,
       "pagAtual": 476,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Ascensão das Trevas",
@@ -31650,7 +32042,8 @@
       "totalPag": 450,
       "pagAtual": 450,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Casa de Chama e Sombra",
@@ -31666,7 +32059,8 @@
       "totalPag": 935,
       "pagAtual": 935,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Jardins da Lua",
@@ -31682,7 +32076,8 @@
       "totalPag": 598,
       "pagAtual": 598,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Os Irmãos Karamázov",
@@ -31698,7 +32093,8 @@
       "totalPag": 754,
       "pagAtual": 754,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Carmilla - A vampira de Karnstein",
@@ -31714,7 +32110,8 @@
       "totalPag": 177,
       "pagAtual": 177,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Godsgrave: O Espetáculo Sangrento",
@@ -31730,7 +32127,8 @@
       "totalPag": 464,
       "pagAtual": 464,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O Cavaleiro dos Sete Reinos",
@@ -31746,7 +32144,8 @@
       "totalPag": 420,
       "pagAtual": 420,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Rei dos Espinhos",
@@ -31762,7 +32161,8 @@
       "totalPag": 528,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Casa de Céu e Sopro",
@@ -31778,7 +32178,8 @@
       "totalPag": 930,
       "pagAtual": 930,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O Vampiro Armand",
@@ -31794,7 +32195,8 @@
       "totalPag": 377,
       "pagAtual": 377,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Fogo e Sangue",
@@ -31810,7 +32212,8 @@
       "totalPag": 595,
       "pagAtual": 595,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Dawnshard",
@@ -31826,7 +32229,8 @@
       "totalPag": 260,
       "pagAtual": 260,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Historia Secreta",
@@ -31842,7 +32246,8 @@
       "totalPag": 152,
       "pagAtual": 152,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Os Braceletes da Perdição",
@@ -31858,7 +32263,8 @@
       "totalPag": 385,
       "pagAtual": 385,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "As Sombras de Si Mesmo",
@@ -31874,7 +32280,8 @@
       "totalPag": 336,
       "pagAtual": 336,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Messias de Duna",
@@ -31890,7 +32297,8 @@
       "totalPag": 270,
       "pagAtual": 270,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O Retorno do Rei",
@@ -31906,7 +32314,8 @@
       "totalPag": 608,
       "pagAtual": 608,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "A Liga da Lei",
@@ -31922,7 +32331,8 @@
       "totalPag": 288,
       "pagAtual": 288,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "A Alma do Imperador",
@@ -31938,7 +32348,8 @@
       "totalPag": 141,
       "pagAtual": 141,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "As Duas Torres",
@@ -31954,7 +32365,8 @@
       "totalPag": 460,
       "pagAtual": 460,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "A Esperança de Elantris",
@@ -31970,7 +32382,8 @@
       "totalPag": 30,
       "pagAtual": 30,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Warbreaker - O Sopro dos Deuses",
@@ -31986,7 +32399,8 @@
       "totalPag": 696,
       "pagAtual": 696,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "A Sociedade do Anel",
@@ -32002,7 +32416,8 @@
       "totalPag": 606,
       "pagAtual": 606,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Elric De Melniboné - A Traição ao Imperador",
@@ -32018,7 +32433,8 @@
       "totalPag": 185,
       "pagAtual": 185,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Fundação",
@@ -32034,7 +32450,8 @@
       "totalPag": 321,
       "pagAtual": 321,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Sacramentadora",
@@ -32050,7 +32467,8 @@
       "totalPag": 1521,
       "pagAtual": 1521,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Capitães da Areia",
@@ -32066,7 +32484,8 @@
       "totalPag": 280,
       "pagAtual": 280,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Quarta Asa",
@@ -32082,7 +32501,8 @@
       "totalPag": 528,
       "pagAtual": 528,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Memnoch",
@@ -32098,7 +32518,8 @@
       "totalPag": 352,
       "pagAtual": 352,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Duna",
@@ -32114,7 +32535,8 @@
       "totalPag": 666,
       "pagAtual": 666,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Edgedancer",
@@ -32130,7 +32552,8 @@
       "totalPag": 270,
       "pagAtual": 270,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Nevernight: Sombra do Corvo",
@@ -32146,7 +32569,8 @@
       "totalPag": 611,
       "pagAtual": 611,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Sonho Febril",
@@ -32162,7 +32586,8 @@
       "totalPag": 368,
       "pagAtual": 368,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Palavras de Radiância",
@@ -32178,7 +32603,8 @@
       "totalPag": 1404,
       "pagAtual": 1296,
       "pct": 0.923,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Tress, A Garota do Mar Esmeralda",
@@ -32194,7 +32620,8 @@
       "totalPag": 445,
       "pagAtual": 445,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O Feitiço dos Espinhos",
@@ -32210,7 +32637,8 @@
       "totalPag": 528,
       "pagAtual": 528,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "A dança dos dragões",
@@ -32226,7 +32654,8 @@
       "totalPag": 840,
       "pagAtual": 840,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O Homem Duplo",
@@ -32242,7 +32671,8 @@
       "totalPag": 306,
       "pagAtual": 306,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O Caminho dos Reis",
@@ -32258,7 +32688,8 @@
       "totalPag": 1248,
       "pagAtual": 1248,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O Festim dos Corvos",
@@ -32274,7 +32705,8 @@
       "totalPag": 645,
       "pagAtual": 645,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "A Tormenta de Espadas",
@@ -32290,7 +32722,8 @@
       "totalPag": 888,
       "pagAtual": 888,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Santuário dos Ventos",
@@ -32306,7 +32739,8 @@
       "totalPag": 416,
       "pagAtual": 416,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Elantris",
@@ -32322,7 +32756,8 @@
       "totalPag": 580,
       "pagAtual": 580,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "A fúria dos reis",
@@ -32338,7 +32773,8 @@
       "totalPag": 658,
       "pagAtual": 658,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Príncipe dos Espinhos",
@@ -32354,7 +32790,8 @@
       "totalPag": 324,
       "pagAtual": 324,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "A Guerra da Papoula",
@@ -32370,7 +32807,8 @@
       "totalPag": 510,
       "pagAtual": 510,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Casa de Terra e Sangue",
@@ -32386,7 +32824,8 @@
       "totalPag": 900,
       "pagAtual": 900,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "A História do Ladrão de Corpos",
@@ -32402,7 +32841,8 @@
       "totalPag": 468,
       "pagAtual": 468,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "A Deusa no Labirinto",
@@ -32418,7 +32858,8 @@
       "totalPag": 506,
       "pagAtual": 506,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "A Música do Silêncio",
@@ -32434,7 +32875,8 @@
       "totalPag": 164,
       "pagAtual": 164,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "A Joia da Alma",
@@ -32450,7 +32892,8 @@
       "totalPag": 384,
       "pagAtual": 384,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O Herói das Eras",
@@ -32466,7 +32909,8 @@
       "totalPag": 688,
       "pagAtual": 688,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O Terceiro Deus",
@@ -32482,7 +32926,8 @@
       "totalPag": 810,
       "pagAtual": 810,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O Crânio e o Corvo",
@@ -32498,7 +32943,8 @@
       "totalPag": 510,
       "pagAtual": 510,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O Poço da Ascensão",
@@ -32514,7 +32960,8 @@
       "totalPag": 720,
       "pagAtual": 720,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O Inimigo do Mundo",
@@ -32530,7 +32977,8 @@
       "totalPag": 360,
       "pagAtual": 360,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "A Flecha de Fogo",
@@ -32546,7 +32994,8 @@
       "totalPag": 736,
       "pagAtual": 736,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Crime e castigo",
@@ -32562,7 +33011,8 @@
       "totalPag": 550,
       "pagAtual": 550,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O Império Final",
@@ -32578,7 +33028,8 @@
       "totalPag": 608,
       "pagAtual": 608,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Neuromancer",
@@ -32594,7 +33045,8 @@
       "totalPag": 315,
       "pagAtual": 315,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "A Rainha dos Condenados",
@@ -32610,7 +33062,8 @@
       "totalPag": 594,
       "pagAtual": 594,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "A paciente silenciosa",
@@ -32626,7 +33079,8 @@
       "totalPag": 352,
       "pagAtual": 352,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "A Guerra dos Tronos",
@@ -32642,7 +33096,8 @@
       "totalPag": 589,
       "pagAtual": 589,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Verity",
@@ -32658,7 +33113,8 @@
       "totalPag": 318,
       "pagAtual": 318,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O Vampiro Lestat",
@@ -32674,7 +33130,8 @@
       "totalPag": 474,
       "pagAtual": 474,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O Temor do Sábio",
@@ -32690,7 +33147,8 @@
       "totalPag": 957,
       "pagAtual": 957,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O Nome do Vento",
@@ -32706,7 +33164,8 @@
       "totalPag": 765,
       "pagAtual": 765,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Entrevista com o vampiro",
@@ -32722,7 +33181,8 @@
       "totalPag": 315,
       "pagAtual": 315,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Tempo de Tempestade",
@@ -32738,7 +33198,8 @@
       "totalPag": 370,
       "pagAtual": 370,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "A Torre da Andorinha",
@@ -32754,7 +33215,8 @@
       "totalPag": 465,
       "pagAtual": 465,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Batismo de Fogo",
@@ -32770,7 +33232,8 @@
       "totalPag": 345,
       "pagAtual": 345,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O Sangue dos Elfos",
@@ -32786,7 +33249,8 @@
       "totalPag": 320,
       "pagAtual": 320,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O Último Desejo",
@@ -32802,7 +33266,8 @@
       "totalPag": 320,
       "pagAtual": 320,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Tempo do Desprezo",
@@ -32818,7 +33283,8 @@
       "totalPag": 357,
       "pagAtual": 357,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "A Espada do Destino",
@@ -32834,7 +33300,8 @@
       "totalPag": 390,
       "pagAtual": 390,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "A Senhora do Lago",
@@ -32850,7 +33317,8 @@
       "totalPag": 564,
       "pagAtual": 564,
       "pct": 1,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Ascendant",
@@ -32866,7 +33334,8 @@
       "totalPag": 550,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Noites brancas",
@@ -32882,7 +33351,8 @@
       "totalPag": 96,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Drácula",
@@ -32898,7 +33368,8 @@
       "totalPag": 580,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O Idiota",
@@ -32914,7 +33385,8 @@
       "totalPag": 774,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Eragon",
@@ -32930,7 +33402,8 @@
       "totalPag": 468,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "A Cidade da Raposa",
@@ -32946,7 +33419,8 @@
       "totalPag": 360,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "The Devils",
@@ -32962,7 +33436,8 @@
       "totalPag": 560,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Alchemised",
@@ -32978,7 +33453,8 @@
       "totalPag": 900,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Isles of the Emberdark: A Cosmere Novel",
@@ -32994,7 +33470,8 @@
       "totalPag": 384,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "The Eleventh Metal",
@@ -33010,7 +33487,8 @@
       "totalPag": 21,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Shadows for Silence in the Forests of Hell",
@@ -33026,7 +33504,8 @@
       "totalPag": 89,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Sixth of the Dusk",
@@ -33042,7 +33521,8 @@
       "totalPag": 66,
       "pagAtual": 59,
       "pct": 0.894,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Allomancer Jak and the Pits of Eltania",
@@ -33058,7 +33538,8 @@
       "totalPag": 40,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "As Torres de Wynlla",
@@ -33074,7 +33555,8 @@
       "totalPag": 304,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O caçador de apóstolos",
@@ -33090,7 +33572,8 @@
       "totalPag": 416,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Deus máquina",
@@ -33106,7 +33589,8 @@
       "totalPag": 480,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "A Senhora de Avalon",
@@ -33122,7 +33606,8 @@
       "totalPag": 212,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "A Sarcedotisa de Avalon",
@@ -33138,7 +33623,8 @@
       "totalPag": 240,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Starsight",
@@ -33154,7 +33640,8 @@
       "totalPag": 348,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O Último Reino",
@@ -33170,7 +33657,8 @@
       "totalPag": 424,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Snow Crash",
@@ -33186,7 +33674,8 @@
       "totalPag": 552,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O Aprendiz de Assassino",
@@ -33202,7 +33691,8 @@
       "totalPag": 416,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O Herege",
@@ -33218,7 +33708,8 @@
       "totalPag": 396,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O Priorado da Laranjeira",
@@ -33234,7 +33725,8 @@
       "totalPag": 536,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O Priorado da Laranjeira",
@@ -33250,7 +33742,8 @@
       "totalPag": 544,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O Imperador das Lâminas",
@@ -33266,7 +33759,8 @@
       "totalPag": 544,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Abominação",
@@ -33282,7 +33776,8 @@
       "totalPag": 320,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Império do Vampiro",
@@ -33298,7 +33793,8 @@
       "totalPag": 976,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Count Zero",
@@ -33314,7 +33810,8 @@
       "totalPag": 312,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Six of The Dust",
@@ -33330,7 +33827,25 @@
       "totalPag": 50,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Milton"
+      "usuario": "Milton",
+      "genero": ""
+    },
+    {
+      "livro": "xxxxxxxxxxx",
+      "autor": "",
+      "isbn": "",
+      "coverUrl": "",
+      "metaAno": "AINDA NÃO DEFINIDO",
+      "depende": "",
+      "colecao": "",
+      "ordemColecao": 0,
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 0,
+      "pagAtual": 0,
+      "pct": 0,
+      "usuario": "Milton",
+      "genero": ""
     }
   ],
   "pausados": [
@@ -33348,7 +33863,8 @@
       "totalPag": 861,
       "pagAtual": 254,
       "pct": 0.295,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Rei dos Espinhos",
@@ -33364,7 +33880,8 @@
       "totalPag": 602,
       "pagAtual": 30,
       "pct": 0.05,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     }
   ],
   "lendo": [
@@ -33382,7 +33899,8 @@
       "totalPag": 641,
       "pagAtual": 348,
       "pct": 0.543,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Sixth of the Dusk",
@@ -33398,7 +33916,8 @@
       "totalPag": 66,
       "pagAtual": 59,
       "pct": 0.894,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     }
   ],
   "aguardando": [
@@ -33416,7 +33935,8 @@
       "totalPag": 863,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Liga da Lei",
@@ -33432,7 +33952,8 @@
       "totalPag": 423,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Rise of the Ranger",
@@ -33448,7 +33969,8 @@
       "totalPag": 888,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Alma do Imperador",
@@ -33464,7 +33986,8 @@
       "totalPag": 142,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Of Darkness and Light",
@@ -33480,7 +34003,8 @@
       "totalPag": 912,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The White Sand",
@@ -33496,7 +34020,8 @@
       "totalPag": 749,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mistborn - The Lost Metal",
@@ -33512,7 +34037,8 @@
       "totalPag": 674,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Sunlit Man",
@@ -33528,7 +34054,8 @@
       "totalPag": 448,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Shadows for Silence in The Forest of Hell",
@@ -33544,7 +34071,8 @@
       "totalPag": 73,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Isles of The Emberdark",
@@ -33560,7 +34088,8 @@
       "totalPag": 533,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Darkdawn",
@@ -33576,7 +34105,8 @@
       "totalPag": 723,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Ordem Vermelha - Crianças do Silencio",
@@ -33592,7 +34122,8 @@
       "totalPag": 643,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Harry Potter - Camara Secreta",
@@ -33608,7 +34139,8 @@
       "totalPag": 252,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Republica do Dragão",
@@ -33624,7 +34156,8 @@
       "totalPag": 788,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Ultimo Desejo",
@@ -33640,7 +34173,8 @@
       "totalPag": 399,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Olho do Mundo",
@@ -33656,7 +34190,8 @@
       "totalPag": 800,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Meio Mundo",
@@ -33672,7 +34207,8 @@
       "totalPag": 442,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Fúria vermelha",
@@ -33688,7 +34224,8 @@
       "totalPag": 515,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Sombra dos Deuses",
@@ -33704,7 +34241,8 @@
       "totalPag": 641,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O limite do céu",
@@ -33720,7 +34258,8 @@
       "totalPag": 478,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Devils",
@@ -33736,7 +34275,8 @@
       "totalPag": 565,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Filha do Sangue",
@@ -33752,7 +34292,8 @@
       "totalPag": 509,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Queda dos Cinco",
@@ -33768,7 +34309,8 @@
       "totalPag": 259,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Vingança dos Sete",
@@ -33784,7 +34326,8 @@
       "totalPag": 307,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Destino da Numero Dez",
@@ -33800,7 +34343,8 @@
       "totalPag": 356,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Unidos somos Um",
@@ -33816,7 +34360,8 @@
       "totalPag": 392,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 17",
@@ -33832,7 +34377,8 @@
       "totalPag": 326,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Cidade dos Ossos",
@@ -33848,7 +34394,8 @@
       "totalPag": 519,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Crooked Kingdom",
@@ -33864,7 +34411,8 @@
       "totalPag": 655,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Cidade da Lua Crescente",
@@ -33880,7 +34428,8 @@
       "totalPag": 896,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O estreito caminho entre desejos",
@@ -33896,7 +34445,8 @@
       "totalPag": 192,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Deusa em Chamas",
@@ -33912,7 +34462,8 @@
       "totalPag": 592,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Asas de Abutre",
@@ -33928,7 +34479,8 @@
       "totalPag": 448,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Garoto-Cabra",
@@ -33944,7 +34496,8 @@
       "totalPag": 320,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Herdeiro do Leão",
@@ -33960,7 +34513,8 @@
       "totalPag": 400,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Melhor Amigo do Homem",
@@ -33976,7 +34530,8 @@
       "totalPag": 640,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Ascensão da Sombra",
@@ -33992,7 +34547,8 @@
       "totalPag": 991,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Grande Caçada",
@@ -34008,7 +34564,8 @@
       "totalPag": 704,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "As Chamas do Paraíso",
@@ -34024,7 +34581,8 @@
       "totalPag": 944,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Caminho das Adagas",
@@ -34040,7 +34598,8 @@
       "totalPag": 592,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Dragão Renascido",
@@ -34056,7 +34615,8 @@
       "totalPag": 656,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Senhor do Caos",
@@ -34072,7 +34632,8 @@
       "totalPag": 1072,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Uma Coroa de Espadas",
@@ -34088,7 +34649,8 @@
       "totalPag": 848,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Senhora do Lago 1",
@@ -34104,7 +34666,8 @@
       "totalPag": 266,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Os Garotos Corvos",
@@ -34120,7 +34683,8 @@
       "totalPag": 378,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Guerra de Jade",
@@ -34136,7 +34700,8 @@
       "totalPag": 544,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "In the Shadow of Kings",
@@ -34152,7 +34717,8 @@
       "totalPag": 882,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Once there were heroes",
@@ -34168,7 +34734,8 @@
       "totalPag": 829,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Last Ballad of Hope",
@@ -34184,7 +34751,8 @@
       "totalPag": 1026,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Despertar do Elemento",
@@ -34200,7 +34768,8 @@
       "totalPag": 278,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Profecia do Herói",
@@ -34216,7 +34785,8 @@
       "totalPag": 240,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Companhia Negra",
@@ -34232,7 +34802,8 @@
       "totalPag": 308,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Rosa Branca",
@@ -34248,7 +34819,8 @@
       "totalPag": 378,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Sombras Eternas",
@@ -34264,7 +34836,8 @@
       "totalPag": 336,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Cadeira de Prata",
@@ -34280,7 +34853,8 @@
       "totalPag": 208,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Última Batalha",
@@ -34296,7 +34870,8 @@
       "totalPag": 213,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Viagem do Peregrino da Alvorada",
@@ -34312,7 +34887,8 @@
       "totalPag": 235,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Cavalo e seu Menino",
@@ -34328,7 +34904,8 @@
       "totalPag": 189,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Príncipe Caspian",
@@ -34344,7 +34921,8 @@
       "totalPag": 216,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Imperador das Lâminas",
@@ -34360,7 +34938,8 @@
       "totalPag": 544,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Pirâmide Vermelha",
@@ -34376,7 +34955,8 @@
       "totalPag": 448,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Sombra da Serpente",
@@ -34392,7 +34972,8 @@
       "totalPag": 352,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Trono de Fogo",
@@ -34408,7 +34989,8 @@
       "totalPag": 398,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Profecia das Sombras",
@@ -34424,7 +35006,8 @@
       "totalPag": 336,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Torre de Nero",
@@ -34440,7 +35023,8 @@
       "totalPag": 336,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Tumba do Tirano",
@@ -34456,7 +35040,8 @@
       "totalPag": 368,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Labirinto de Fogo",
@@ -34472,7 +35057,8 @@
       "totalPag": 368,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Oráculo Oculto",
@@ -34488,7 +35074,8 @@
       "totalPag": 320,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Fury of the Gods",
@@ -34504,7 +35091,8 @@
       "totalPag": 512,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Hunger of the Gods",
@@ -34520,7 +35108,8 @@
       "totalPag": 672,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Última Margem",
@@ -34536,7 +35125,8 @@
       "totalPag": 266,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "As Tumbas de Atuan",
@@ -34552,7 +35142,8 @@
       "totalPag": 160,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Tehanu",
@@ -34568,7 +35159,8 @@
       "totalPag": 240,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Casa de Céu e Sopro",
@@ -34584,7 +35176,8 @@
       "totalPag": 924,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Casa de Chama e Sombra",
@@ -34600,7 +35193,8 @@
       "totalPag": 936,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Casa de Terra e Sangue",
@@ -34616,7 +35210,8 @@
       "totalPag": 896,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Cidade de Jade",
@@ -34632,7 +35227,8 @@
       "totalPag": 480,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Corte de Chamas Prateadas",
@@ -34648,7 +35244,8 @@
       "totalPag": 714,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Corte de Gelo e Estrelas",
@@ -34664,7 +35261,8 @@
       "totalPag": 238,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Crônicas das Guerras de Lodoss #01",
@@ -34680,7 +35278,8 @@
       "totalPag": 304,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Crônicas das Guerras de Lodoss #02",
@@ -34696,7 +35295,8 @@
       "totalPag": 296,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Crônicas das Guerras de Lodoss #03",
@@ -34712,7 +35312,8 @@
       "totalPag": 300,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Crônicas das Guerras de Lodoss #04",
@@ -34728,7 +35329,8 @@
       "totalPag": 303,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Crônicas das Guerras de Lodoss #06",
@@ -34744,7 +35346,8 @@
       "totalPag": 256,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Crônicas das Guerras de Lodoss #07",
@@ -34760,7 +35363,8 @@
       "totalPag": 272,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Crônicas das Guerras de Lodoss #05",
@@ -34776,7 +35380,8 @@
       "totalPag": 312,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Coroa de Ossos Dourados",
@@ -34792,7 +35397,8 @@
       "totalPag": 672,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Guerra das Duas Rainhas",
@@ -34808,7 +35414,8 @@
       "totalPag": 897,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Um Reino de Carne e Fogo",
@@ -34824,7 +35431,8 @@
       "totalPag": 672,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Uma alma de cinzas e sangue",
@@ -34840,7 +35448,8 @@
       "totalPag": 644,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Carl e o cenário apocalíptico: Uma literatura de RPG intergaláctica",
@@ -34856,7 +35465,8 @@
       "totalPag": 495,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Butcher's Masquerade",
@@ -34872,7 +35482,8 @@
       "totalPag": 726,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Dungeon Anarchist's Cookbook",
@@ -34888,7 +35499,8 @@
       "totalPag": 532,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Eye of the Bedlam Bride",
@@ -34904,7 +35516,8 @@
       "totalPag": 692,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Gate of the Feral God",
@@ -34920,7 +35533,8 @@
       "totalPag": 632,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "This Inevitable Ruin",
@@ -34936,7 +35550,8 @@
       "totalPag": 722,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "King of Scars",
@@ -34952,7 +35567,8 @@
       "totalPag": 528,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Rule of Wolves",
@@ -34968,7 +35584,8 @@
       "totalPag": 592,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Harry Potter e a criança amaldiçoada",
@@ -34984,7 +35601,8 @@
       "totalPag": 352,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Harry Potter e a Ordem da Fênix",
@@ -35000,7 +35618,8 @@
       "totalPag": 704,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Harry Potter e as relíquias da morte",
@@ -35016,7 +35635,8 @@
       "totalPag": 592,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Harry Potter e o cálice de fogo",
@@ -35032,7 +35652,8 @@
       "totalPag": 584,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Harry Potter e o enigma do príncipe",
@@ -35048,7 +35669,8 @@
       "totalPag": 472,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Harry Potter e o prisioneiro de Azkaban",
@@ -35064,7 +35686,8 @@
       "totalPag": 394,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Blood and Coin",
@@ -35080,7 +35703,8 @@
       "totalPag": 570,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Herdeiros do Tempo : Livro 2 - Legado",
@@ -35096,7 +35720,8 @@
       "totalPag": 304,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Espada do Verão",
@@ -35112,7 +35737,8 @@
       "totalPag": 448,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Martelo de Thor",
@@ -35128,7 +35754,8 @@
       "totalPag": 400,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Navio dos Mortos",
@@ -35144,7 +35771,8 @@
       "totalPag": 368,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Meia Guerra",
@@ -35160,7 +35788,8 @@
       "totalPag": 368,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "As Sombras de Si Mesmo",
@@ -35176,7 +35805,8 @@
       "totalPag": 558,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Os Braceletes da Perdição",
@@ -35192,7 +35822,8 @@
       "totalPag": 504,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Destino de Adhara",
@@ -35208,7 +35839,8 @@
       "totalPag": 509,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Os Últimos Heróis",
@@ -35224,7 +35856,8 @@
       "totalPag": 342,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 19",
@@ -35240,7 +35873,8 @@
       "totalPag": 323,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 20",
@@ -35256,7 +35890,8 @@
       "totalPag": 364,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 21",
@@ -35272,7 +35907,8 @@
       "totalPag": 256,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 22",
@@ -35288,7 +35924,8 @@
       "totalPag": 260,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 23",
@@ -35304,7 +35941,8 @@
       "totalPag": 285,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 24",
@@ -35320,7 +35958,8 @@
       "totalPag": 308,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 25",
@@ -35336,7 +35975,8 @@
       "totalPag": 380,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 26",
@@ -35352,7 +35992,8 @@
       "totalPag": 254,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 18",
@@ -35368,7 +36009,8 @@
       "totalPag": 380,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Deus máquina",
@@ -35384,7 +36026,8 @@
       "totalPag": 480,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O caçador de apóstolos",
@@ -35400,7 +36043,8 @@
       "totalPag": 416,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Tempestade de Ônix",
@@ -35416,7 +36060,8 @@
       "totalPag": 608,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Rainha do Nada",
@@ -35432,7 +36077,8 @@
       "totalPag": 294,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Como o Rei de Elfhame Aprendeu a Odiar Histórias",
@@ -35448,7 +36094,8 @@
       "totalPag": 192,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Rei Perverso",
@@ -35464,7 +36111,8 @@
       "totalPag": 308,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Lost Sisters",
@@ -35480,7 +36128,8 @@
       "totalPag": 50,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Priorado da Laranjeira",
@@ -35496,7 +36145,8 @@
       "totalPag": 544,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Coroa de Ptolomeu",
@@ -35512,7 +36162,8 @@
       "totalPag": 78,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Cajado de Serápis",
@@ -35528,7 +36179,8 @@
       "totalPag": 73,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Filho de Sobek",
@@ -35544,7 +36196,8 @@
       "totalPag": 46,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Cidade das Almas Perdidas",
@@ -35560,7 +36213,8 @@
       "totalPag": 434,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Cidade das Cinzas",
@@ -35576,7 +36230,8 @@
       "totalPag": 406,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Cidade de Vidro",
@@ -35592,7 +36247,8 @@
       "totalPag": 474,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Cidade do Fogo Celestial",
@@ -35608,7 +36264,8 @@
       "totalPag": 532,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Cidade dos Anjos Caídos",
@@ -35624,7 +36281,8 @@
       "totalPag": 364,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Cidade dos Ossos",
@@ -35640,7 +36298,8 @@
       "totalPag": 476,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Primeiro Filho do Gelo",
@@ -35656,7 +36315,8 @@
       "totalPag": 473,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O cálice dos Deuses",
@@ -35672,7 +36332,8 @@
       "totalPag": 272,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Arqueiro do Rei",
@@ -35688,7 +36349,8 @@
       "totalPag": 408,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Cerco a Macindaw",
@@ -35704,7 +36366,8 @@
       "totalPag": 296,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Halt em Perigo",
@@ -35720,7 +36383,8 @@
       "totalPag": 392,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Histórias Perdidas",
@@ -35736,7 +36400,8 @@
       "totalPag": 432,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Imperador de Nihon-Ja",
@@ -35752,7 +36417,8 @@
       "totalPag": 424,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Reis de Clonmel",
@@ -35768,7 +36434,8 @@
       "totalPag": 360,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Resgate de Erak",
@@ -35784,7 +36451,8 @@
       "totalPag": 392,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Estrela da Manhã",
@@ -35800,7 +36468,8 @@
       "totalPag": 632,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Filho Dourado",
@@ -35816,7 +36485,8 @@
       "totalPag": 549,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Fúria do Assassino",
@@ -35832,7 +36502,8 @@
       "totalPag": 832,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Assassino do Rei",
@@ -35848,7 +36519,8 @@
       "totalPag": 736,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Dust of Dreams",
@@ -35864,7 +36536,8 @@
       "totalPag": 889,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "House of Chains",
@@ -35880,7 +36553,8 @@
       "totalPag": 1021,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Memórias do Gelo",
@@ -35896,7 +36570,8 @@
       "totalPag": 512,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Midnight Tides",
@@ -35912,7 +36587,8 @@
       "totalPag": 940,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Os Portais da Casa dos Mortos",
@@ -35928,7 +36604,8 @@
       "totalPag": 816,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Reaper's Gale",
@@ -35944,7 +36621,8 @@
       "totalPag": 509,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Bonehunters",
@@ -35960,7 +36638,8 @@
       "totalPag": 1229,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Crippled God",
@@ -35976,7 +36655,8 @@
       "totalPag": 848,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Toll the Hounds",
@@ -35992,7 +36672,8 @@
       "totalPag": 896,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "As Trevas de Sethanon",
@@ -36008,7 +36689,8 @@
       "totalPag": 480,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Espinho de Prata",
@@ -36024,7 +36706,8 @@
       "totalPag": 416,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Defiant",
@@ -36040,7 +36723,8 @@
       "totalPag": 897,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Last Stand of the Stone Fist: A Songs of Chaos Novella",
@@ -36056,7 +36740,8 @@
       "totalPag": 260,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Reckoning",
@@ -36072,7 +36757,8 @@
       "totalPag": 866,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Unbound",
@@ -36088,7 +36774,8 @@
       "totalPag": 672,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "As Crônicas de Spiderwick",
@@ -36104,7 +36791,8 @@
       "totalPag": 560,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Of War and Ruin",
@@ -36120,7 +36808,8 @@
       "totalPag": 1477,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Exile",
@@ -36136,7 +36825,8 @@
       "totalPag": 184,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Fall",
@@ -36152,7 +36842,8 @@
       "totalPag": 95,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Devils",
@@ -36168,7 +36859,8 @@
       "totalPag": 565,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Clash of Fates",
@@ -36184,7 +36876,8 @@
       "totalPag": 774,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Age of the King",
@@ -36200,7 +36893,8 @@
       "totalPag": 678,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Empire of Dirt",
@@ -36216,7 +36910,8 @@
       "totalPag": 494,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Kingdom of Bones",
@@ -36232,7 +36927,8 @@
       "totalPag": 594,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Last of the Dragorn",
@@ -36248,7 +36944,8 @@
       "totalPag": 590,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Relic of the Gods",
@@ -36264,7 +36961,8 @@
       "totalPag": 532,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Fall of Neverdark",
@@ -36280,7 +36978,8 @@
       "totalPag": 670,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Knights of Erador",
@@ -36296,7 +36995,8 @@
       "totalPag": 606,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Malice",
@@ -36312,7 +37012,8 @@
       "totalPag": 672,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Ruin",
@@ -36328,7 +37029,8 @@
       "totalPag": 672,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Valour",
@@ -36344,7 +37046,8 @@
       "totalPag": 640,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Wrath",
@@ -36360,7 +37063,8 @@
       "totalPag": 672,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Floating World",
@@ -36376,7 +37080,8 @@
       "totalPag": 368,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Jade Legacy",
@@ -36392,7 +37097,8 @@
       "totalPag": 736,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Dance of Fang and Claw",
@@ -36408,7 +37114,8 @@
       "totalPag": 542,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Court of Assassins",
@@ -36424,7 +37131,8 @@
       "totalPag": 502,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Espada do Destino",
@@ -36440,7 +37148,8 @@
       "totalPag": 380,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Senhora do Lago 2",
@@ -36456,7 +37165,8 @@
       "totalPag": 560,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Batismo de Fogo",
@@ -36472,7 +37182,8 @@
       "totalPag": 356,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Sangue dos Elfos",
@@ -36488,7 +37199,8 @@
       "totalPag": 400,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Tempo de Tempestade",
@@ -36504,7 +37216,8 @@
       "totalPag": 368,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Tempo do Desprezo",
@@ -36520,7 +37233,8 @@
       "totalPag": 357,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Contos Inacabados",
@@ -36536,7 +37250,8 @@
       "totalPag": 585,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Os Filhos de Húrin",
@@ -36552,7 +37267,8 @@
       "totalPag": 288,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Deusa no Labirinto",
@@ -36568,7 +37284,8 @@
       "totalPag": 512,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Joia da Alma",
@@ -36584,7 +37301,8 @@
       "totalPag": 384,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Crânio e o Corvo",
@@ -36600,7 +37318,8 @@
       "totalPag": 512,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Terceiro Deus",
@@ -36616,7 +37335,8 @@
       "totalPag": 664,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Deus da Guerra",
@@ -36632,7 +37352,8 @@
       "totalPag": 579,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Livro da Vida",
@@ -36648,7 +37369,8 @@
       "totalPag": 560,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Sombra da Noite",
@@ -36664,7 +37386,8 @@
       "totalPag": 576,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Império de Ouro",
@@ -36680,7 +37403,8 @@
       "totalPag": 879,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Reino de Cobre",
@@ -36696,7 +37420,8 @@
       "totalPag": 704,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Imperador dos Espinhos",
@@ -36712,7 +37437,8 @@
       "totalPag": 416,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Canção de Shannara",
@@ -36728,7 +37454,8 @@
       "totalPag": 512,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Espada de Shannara",
@@ -36744,7 +37471,8 @@
       "totalPag": 544,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Antrax, a Criatura",
@@ -36760,7 +37488,8 @@
       "totalPag": 350,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "As Pedras Élficas de Shannara",
@@ -36776,7 +37505,8 @@
       "totalPag": 512,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Ilse, a Bruxa",
@@ -36792,7 +37522,8 @@
       "totalPag": 448,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Morgawr, o Bruxo",
@@ -36808,7 +37539,8 @@
       "totalPag": 392,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Druid of Shannara",
@@ -36824,7 +37556,8 @@
       "totalPag": 384,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Elf Queen of Shannara",
@@ -36840,7 +37573,8 @@
       "totalPag": 368,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Scions of Shannara",
@@ -36856,7 +37590,8 @@
       "totalPag": 419,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Talismans of Shannara",
@@ -36872,7 +37607,8 @@
       "totalPag": 464,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Leviathan",
@@ -36888,7 +37624,8 @@
       "totalPag": 185,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Caminho sem Retorno",
@@ -36904,7 +37641,8 @@
       "totalPag": 43,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "TRISTAN AVALLON E O MISTÉRIO DO LABIRINTO",
@@ -36920,7 +37658,8 @@
       "totalPag": 265,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Uma vida pequena",
@@ -36936,7 +37675,8 @@
       "totalPag": 784,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Código Élfico",
@@ -36952,7 +37692,8 @@
       "totalPag": 576,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Arte da Guerra",
@@ -36968,7 +37709,8 @@
       "totalPag": 224,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Herdeiros de Atlântida",
@@ -36984,7 +37726,8 @@
       "totalPag": 471,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Paraiso Perdido",
@@ -37000,7 +37743,8 @@
       "totalPag": 560,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Torre da Andorinha",
@@ -37016,7 +37760,8 @@
       "totalPag": 465,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Batalha do Apocalipse",
@@ -37032,7 +37777,8 @@
       "totalPag": 586,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Anjos da Morte",
@@ -37048,7 +37794,8 @@
       "totalPag": 588,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "De Sangue e Cinzas",
@@ -37064,7 +37811,8 @@
       "totalPag": 672,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 1",
@@ -37080,7 +37828,8 @@
       "totalPag": 314,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 2",
@@ -37096,7 +37845,8 @@
       "totalPag": 299,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 3",
@@ -37112,7 +37862,8 @@
       "totalPag": 401,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 4",
@@ -37128,7 +37879,8 @@
       "totalPag": 317,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 5",
@@ -37144,7 +37896,8 @@
       "totalPag": 338,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 6",
@@ -37160,7 +37913,8 @@
       "totalPag": 310,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 7",
@@ -37176,7 +37930,8 @@
       "totalPag": 308,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 8",
@@ -37192,7 +37947,8 @@
       "totalPag": 408,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 9",
@@ -37208,7 +37964,8 @@
       "totalPag": 365,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 10",
@@ -37224,7 +37981,8 @@
       "totalPag": 264,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 11",
@@ -37240,7 +37998,8 @@
       "totalPag": 311,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "O Coração do Inverno",
@@ -37256,7 +38015,8 @@
       "totalPag": 784,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "The Ice",
@@ -37272,7 +38032,8 @@
       "totalPag": 122,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Of Empire and Dust",
@@ -37288,7 +38049,8 @@
       "totalPag": 638,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "A Grande Rainha",
@@ -37304,7 +38066,8 @@
       "totalPag": 232,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON"
+      "usuario": "MILTON",
+      "genero": ""
     },
     {
       "livro": "Rei dos Espinhos",
@@ -37320,7 +38083,8 @@
       "totalPag": 528,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Ascendant",
@@ -37336,7 +38100,8 @@
       "totalPag": 550,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Noites brancas",
@@ -37352,7 +38117,8 @@
       "totalPag": 96,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Drácula",
@@ -37368,7 +38134,8 @@
       "totalPag": 580,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O Idiota",
@@ -37384,7 +38151,8 @@
       "totalPag": 774,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Eragon",
@@ -37400,7 +38168,8 @@
       "totalPag": 468,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "A Cidade da Raposa",
@@ -37416,7 +38185,8 @@
       "totalPag": 360,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "The Devils",
@@ -37432,7 +38202,8 @@
       "totalPag": 560,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Alchemised",
@@ -37448,7 +38219,8 @@
       "totalPag": 900,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Isles of the Emberdark: A Cosmere Novel",
@@ -37464,7 +38236,8 @@
       "totalPag": 384,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "The Eleventh Metal",
@@ -37480,7 +38253,8 @@
       "totalPag": 21,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Shadows for Silence in the Forests of Hell",
@@ -37496,7 +38270,8 @@
       "totalPag": 89,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Allomancer Jak and the Pits of Eltania",
@@ -37512,7 +38287,8 @@
       "totalPag": 40,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "As Torres de Wynlla",
@@ -37528,7 +38304,8 @@
       "totalPag": 304,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O caçador de apóstolos",
@@ -37544,7 +38321,8 @@
       "totalPag": 416,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Deus máquina",
@@ -37560,7 +38338,8 @@
       "totalPag": 480,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "A Senhora de Avalon",
@@ -37576,7 +38355,8 @@
       "totalPag": 212,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "A Sarcedotisa de Avalon",
@@ -37592,7 +38372,8 @@
       "totalPag": 240,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Starsight",
@@ -37608,7 +38389,8 @@
       "totalPag": 348,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O Último Reino",
@@ -37624,7 +38406,8 @@
       "totalPag": 424,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Snow Crash",
@@ -37640,7 +38423,8 @@
       "totalPag": 552,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O Aprendiz de Assassino",
@@ -37656,7 +38440,8 @@
       "totalPag": 416,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O Herege",
@@ -37672,7 +38457,8 @@
       "totalPag": 396,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O Priorado da Laranjeira",
@@ -37688,7 +38474,8 @@
       "totalPag": 536,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O Priorado da Laranjeira",
@@ -37704,7 +38491,8 @@
       "totalPag": 544,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "O Imperador das Lâminas",
@@ -37720,7 +38508,8 @@
       "totalPag": 544,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Abominação",
@@ -37736,7 +38525,8 @@
       "totalPag": 320,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Império do Vampiro",
@@ -37752,7 +38542,8 @@
       "totalPag": 976,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Count Zero",
@@ -37768,7 +38559,8 @@
       "totalPag": 312,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Daniel"
+      "usuario": "Daniel",
+      "genero": ""
     },
     {
       "livro": "Six of The Dust",
@@ -37784,7 +38576,25 @@
       "totalPag": 50,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "Milton"
+      "usuario": "Milton",
+      "genero": ""
+    },
+    {
+      "livro": "xxxxxxxxxxx",
+      "autor": "",
+      "isbn": "",
+      "coverUrl": "",
+      "metaAno": "AINDA NÃO DEFINIDO",
+      "depende": "",
+      "colecao": "",
+      "ordemColecao": 0,
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 0,
+      "pagAtual": 0,
+      "pct": 0,
+      "usuario": "Milton",
+      "genero": ""
     }
   ],
   "notas": [
