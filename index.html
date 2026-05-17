@@ -2958,13 +2958,10 @@ carregarDados();
       <input id="l-isbn" type="text" placeholder="Deixe vazio para não alterar">
     </div>
     <div class="pwa-field">
-<<<<<<< HEAD
       <label>Coleção</label>
       <input id="l-colecao" type="text" placeholder="Deixe vazio para não alterar">
     </div>
     <div class="pwa-field">
-=======
->>>>>>> ee7c39452c69d51e561520dbfff36826dac6b81c
       <label>Gênero</label>
       <input id="l-genero" type="text" placeholder="Deixe vazio para não alterar" list="generos-list">
     </div>
@@ -4375,10 +4372,7 @@ function preencherDadosLivro(nome) {
   set('l-depende', l.depende);
   set('l-capa',    l.coverUrl);
   set('l-isbn',    l.isbn);
-<<<<<<< HEAD
   set('l-colecao', l.colecao);
-=======
->>>>>>> ee7c39452c69d51e561520dbfff36826dac6b81c
   set('l-genero',  l.genero);
 }
 
@@ -4396,10 +4390,7 @@ async function enviarLivro() {
   const depende = document.getElementById('l-depende').value.trim();
   const capa    = document.getElementById('l-capa').value.trim();
   const isbn    = document.getElementById('l-isbn').value.trim();
-<<<<<<< HEAD
   const colecao = document.getElementById('l-colecao').value.trim();
-=======
->>>>>>> ee7c39452c69d51e561520dbfff36826dac6b81c
   const genero  = document.getElementById('l-genero').value.trim();
 
   if (status)  body.status  = status;
@@ -4410,10 +4401,7 @@ async function enviarLivro() {
   if (depende) body.depende = depende;
   if (capa)    body.capa    = capa;
   if (isbn)    body.isbn    = isbn;
-<<<<<<< HEAD
   if (colecao) body.colecao = colecao;
-=======
->>>>>>> ee7c39452c69d51e561520dbfff36826dac6b81c
   if (genero)  body.genero  = genero;
 
   btn.disabled = true; btn.textContent = 'Atualizando...';
