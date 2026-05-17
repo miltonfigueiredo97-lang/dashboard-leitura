@@ -1,9 +1,9 @@
 {
-  "geradoEm": "2026-05-17T23:43:14.331Z",
+  "geradoEm": "2026-05-17T23:44:03.251Z",
   "meta": {
     "total": 55,
-    "lidos": 21,
-    "faltando": 34,
+    "lidos": 22,
+    "faltando": 33,
     "paginasTotal": 27233,
     "paginasLidas": 11192,
     "paginasFaltando": 16041,
@@ -70,14 +70,14 @@
     },
     "2026": {
       "total": 55,
-      "lidos": 21,
-      "lendo": 3,
+      "lidos": 22,
+      "lendo": 2,
       "pausados": 0,
       "aguardando": 31,
       "paginasTotal": 27233,
       "paginasLidas": 11192,
       "paginasFaltando": 16041,
-      "faltando": 34,
+      "faltando": 33,
       "mediaDiaria": 78.7,
       "ritmoAtual": 58.5,
       "dataPrevistoAtual": "16/02/2027"
@@ -33535,7 +33535,7 @@
       "colecao": "Cosmere",
       "ordemColecao": 0,
       "ordem": 0,
-      "status": "Lendo",
+      "status": "Completo",
       "totalPag": 66,
       "pagAtual": 66,
       "pct": 1,
@@ -33918,23 +33918,6 @@
       "pagAtual": 348,
       "pct": 0.543,
       "usuario": "MILTON",
-      "genero": ""
-    },
-    {
-      "livro": "Sixth of the Dusk",
-      "autor": "Brandon Sanderson",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/81saovWy0JL._UF1000,1000_QL80_.jpg",
-      "metaAno": "2026",
-      "depende": "",
-      "colecao": "Cosmere",
-      "ordemColecao": 0,
-      "ordem": 0,
-      "status": "Lendo",
-      "totalPag": 66,
-      "pagAtual": 66,
-      "pct": 1,
-      "usuario": "Daniel",
       "genero": ""
     },
     {
