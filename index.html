@@ -317,6 +317,13 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
 .bat-cq-grey   { background:radial-gradient(circle at 35% 35%,#1a1a1a,#0d0d0d);border:2px solid #444;box-shadow:none; }
 .bat-conquista-name { font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;color:#F8FAFC;letter-spacing:1px;text-align:center;text-transform:uppercase; }
 .bat-conquista-sub  { font-family:'Exo 2',sans-serif;font-size:9px;color:rgba(248,250,252,0.55);text-align:center; }
+@keyframes bat-pulse { 0%,100%{box-shadow:0 0 24px rgba(147,51,234,0.7),0 0 8px rgba(250,204,21,0.5);}50%{box-shadow:0 0 36px rgba(147,51,234,0.9),0 0 16px rgba(250,204,21,0.8);} }
+@keyframes bat-mestre {
+  0%   { box-shadow:0 0 0 2px #9333EA, 0 0 0 3px #FACC15, 0 0 28px rgba(147,51,234,0.9), 0 0 12px rgba(250,204,21,0.6); }
+  33%  { box-shadow:0 0 0 2px #FACC15, 0 0 0 3px #38BDF8, 0 0 28px rgba(250,204,21,0.9), 0 0 12px rgba(56,189,248,0.6); }
+  66%  { box-shadow:0 0 0 2px #38BDF8, 0 0 0 3px #9333EA, 0 0 28px rgba(56,189,248,0.9), 0 0 12px rgba(147,51,234,0.6); }
+  100% { box-shadow:0 0 0 2px #9333EA, 0 0 0 3px #FACC15, 0 0 28px rgba(147,51,234,0.9), 0 0 12px rgba(250,204,21,0.6); }
+}
 .bat-conquista::after { content:attr(data-tip);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:#0B1020;color:#F8FAFC;padding:7px 12px;border-radius:8px;font-family:'Exo 2',sans-serif;font-size:11px;white-space:nowrap;border:1px solid rgba(168,85,247,0.3);z-index:9999;pointer-events:none;box-shadow:0 4px 16px rgba(0,0,0,0.8);opacity:0;transition:opacity .15s; }
 .bat-conquista:hover::after { opacity:1; }
 .bat-medal { display:inline-block;padding:4px 12px;border-radius:20px;font-family:'Rajdhani',sans-serif;font-size:11px;font-weight:700;margin:3px;cursor:default;position:relative; }
@@ -692,9 +699,13 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
         <div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Total de páginas</div>
         <div id="wdSum" class="wd-bars"></div>
       </div>
-      <div style="border-top:1px solid var(--border);padding-top:8px;">
+      <div style="border-top:1px solid var(--border);padding-top:8px;margin-bottom:8px;">
         <div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Livros concluídos por mês</div>
         <div id="livrosMes" class="wd-bars"></div>
+      </div>
+      <div style="border-top:1px solid var(--border);padding-top:8px;">
+        <div style="font-size:11px;color:var(--muted);margin-bottom:6px;">🌎 Gêneros lidos</div>
+        <div style="height:160px;position:relative;"><canvas id="cGeneros"></canvas></div>
       </div>
     </div>
 
@@ -764,7 +775,10 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
 
     <!-- Gráfico diário -->
     <div class="card">
-      <div class="card-title">📖 Páginas Lidas por Dia</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+        <div class="card-title" style="margin:0;">📖 Páginas Lidas por Dia</div>
+        <button id="btn-zeros" onclick="toggleZeros()" style="background:var(--bg3);border:1px solid var(--border);color:var(--muted);padding:4px 10px;border-radius:6px;cursor:pointer;font-size:11px;">📅 Incluir dias sem leitura</button>
+      </div>
       <div style="height:200px;position:relative;"><canvas id="cBook"></canvas></div>
     </div>
 
@@ -1526,6 +1540,7 @@ function renderizarGraficos(dados) {
   buildDonuts();
   buildWd();
   buildLivrosMes();
+  buildGeneros();
   buildStreaks();
   buildHeatmap();
   buildCalendar();
@@ -1964,15 +1979,41 @@ window.filtrarSelBook = filtrarSelBook;
   const existingBookChart = Chart.getChart('cBook');
   if (existingBookChart) existingBookChart.destroy();
 
+  window._mostrarZeros = false;
+  window.toggleZeros = function() {
+    window._mostrarZeros = !window._mostrarZeros;
+    const btn = document.getElementById('btn-zeros');
+    if (btn) {
+      btn.style.background = window._mostrarZeros ? 'rgba(139,124,248,0.2)' : 'var(--bg3)';
+      btn.style.color = window._mostrarZeros ? 'var(--purple)' : 'var(--muted)';
+      btn.style.borderColor = window._mostrarZeros ? 'var(--purple)' : 'var(--border)';
+      btn.textContent = window._mostrarZeros ? '📅 Incluindo dias sem leitura' : '📅 Incluir dias sem leitura';
+    }
+    if (window.buildBookChart) window.buildBookChart();
+  };
+
   window.buildBookChart = function() {
     const book = document.getElementById('selBook').value;
-    const rows = BOOK_DAILY[book] || [];
+    let rows = BOOK_DAILY[book] || [];
     const livroData = (window._livros||[]).find(l => l.livro === book);
     const status = livroData?.status || '';
     if (chart) chart.destroy();
 
     const isPrevisao = (status === 'Aguardando') || (rows.length === 0);
     const isEmAndamento = (status === 'Lendo' || status === 'Pausado') && rows.length > 0;
+
+    // Expande com dias zero se ativado e livro tem histórico real
+    if (window._mostrarZeros && rows.length > 1 && !isPrevisao) {
+      const expanded = [];
+      const start = new Date(rows[0].d + 'T12:00:00');
+      const end   = new Date(rows[rows.length-1].d + 'T12:00:00');
+      const map   = Object.fromEntries(rows.map(r => [r.d, r.p]));
+      for (let d = new Date(start); d <= end; d.setDate(d.getDate()+1)) {
+        const key = d.toISOString().slice(0,10);
+        expanded.push({ d: key, p: map[key] || 0 });
+      }
+      rows = expanded;
+    }
 
     if (isPrevisao || isEmAndamento) {
       // Gera previsão baseada na média diária por dia da semana
@@ -2248,9 +2289,46 @@ function buildLivrosMes() {
   });
 }
 
-// ════════════════════════════════════════════════
-// STREAK — dias consecutivos de leitura
-// ════════════════════════════════════════════════
+function buildGeneros() {
+  const el = document.getElementById('cGeneros');
+  if (!el) return;
+  const existing = Chart.getChart(el);
+  if (existing) existing.destroy();
+
+  const allLivros = [...(window._livros||[]), ...(window._dadosD?.lendo||[]), ...(window._dadosD?.pausados||[])];
+  const genMap = {};
+  allLivros.filter(l => l.status === 'Completo' && l.genero).forEach(l => {
+    genMap[l.genero] = (genMap[l.genero] || 0) + 1;
+  });
+
+  const sorted = Object.entries(genMap).sort((a,b) => b[1]-a[1]).slice(0, 8);
+  if (!sorted.length) {
+    el.parentElement.innerHTML = '<div style="color:var(--muted);font-size:11px;padding:8px 0;">Nenhum gênero cadastrado ainda.</div>';
+    return;
+  }
+
+  const CORES = ['#8b7cf8','#4ecdc4','#f88c6a','#ffd700','#ff6384','#36a2eb','#9966ff','#ff9f40'];
+  new Chart(el, {
+    type: 'bar',
+    data: {
+      labels: sorted.map(([g]) => g),
+      datasets: [{ data: sorted.map(([,n]) => n), backgroundColor: sorted.map((_,i) => CORES[i%CORES.length]), borderRadius: 4, borderWidth: 0 }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { ...window.TT, callbacks: { label: c => ` ${c.parsed.x} livro${c.parsed.x>1?'s':''}` } }
+      },
+      scales: {
+        x: { ticks:{ color:'#8892a8', font:{size:10} }, grid:{ color:'rgba(42,50,72,0.3)' }, beginAtZero:true },
+        y: { ticks:{ color:'#8892a8', font:{size:10} }, grid:{ display:false } }
+      }
+    }
+  });
+}
+window.buildGeneros = buildGeneros;
 function buildStreaks() {
   const sess = window._sessoes || [];
   const diasSet = [...new Set(sess.map(s => s.data).filter(Boolean))].sort();
@@ -2811,6 +2889,16 @@ carregarDados();
       <label>ISBN</label>
       <input id="nl-isbn" type="text" placeholder="978...">
     </div>
+    <div class="pwa-field">
+      <label>Gênero</label>
+      <input id="nl-genero" type="text" placeholder="Ex: Fantasia, Sci-Fi, Terror..." list="generos-list">
+      <datalist id="generos-list">
+        <option value="Fantasia"><option value="Sci-Fi"><option value="Terror">
+        <option value="Romance"><option value="Mistério"><option value="Thriller">
+        <option value="Histórico"><option value="Não-Ficção"><option value="Clássico">
+        <option value="Aventura"><option value="Distopia"><option value="Mangá">
+      </datalist>
+    </div>
     <div class="pwa-msg" id="nl-msg"></div>
     <button class="pwa-btn" id="nl-btn" onclick="enviarNovoLivro()">✅ Adicionar Livro</button>
     <button class="pwa-btn-cancel" onclick="fecharModal('novoLivro')">Cancelar</button>
@@ -2868,6 +2956,17 @@ carregarDados();
     <div class="pwa-field">
       <label>ISBN</label>
       <input id="l-isbn" type="text" placeholder="Deixe vazio para não alterar">
+    </div>
+    <div class="pwa-field">
+<<<<<<< HEAD
+      <label>Coleção</label>
+      <input id="l-colecao" type="text" placeholder="Deixe vazio para não alterar">
+    </div>
+    <div class="pwa-field">
+=======
+>>>>>>> ee7c39452c69d51e561520dbfff36826dac6b81c
+      <label>Gênero</label>
+      <input id="l-genero" type="text" placeholder="Deixe vazio para não alterar" list="generos-list">
     </div>
     <div class="pwa-msg" id="l-msg"></div>
     <button class="pwa-btn" id="l-btn" onclick="enviarLivro()">✅ Atualizar</button>
@@ -3087,9 +3186,23 @@ function renderBatalha() {
     const metaLidos=lidos.filter(l=>l.metaAno===anoAtual).length;
     const metaTotal=metaAno?(metasPorAno[metaAno]?.total||0):0;
     const metaPct=metaTotal>0?Math.round(metaLidos/metaTotal*100):0;
+    // Séries concluídas — coleções onde todos os livros estão completos
+    const colMap = {};
+    todos.forEach(l => {
+      if (!l.colecao) return;
+      if (!colMap[l.colecao]) colMap[l.colecao] = { total:0, lidos:0 };
+      colMap[l.colecao].total++;
+      if (l.status === 'Completo') colMap[l.colecao].lidos++;
+    });
+    const seriesConcluidas = Object.values(colMap).filter(c => c.total > 1 && c.lidos === c.total).length;
+
+    // Gêneros diferentes
+    const generosSet = new Set(todos.filter(l => l.genero && l.status === 'Completo').map(l => l.genero));
+
     return {u,sess,todos,lidos,notas,diasSet,pagTotal,horas,media,notaMedia,
       streakAtual,streakRecord,bosses,autorTop,mesPags,wdMap,eficiencia,
-      maiorSessao,colSet,sessoes:sess.length,metaPct,metaLidos,metaTotal};
+      maiorSessao,colSet,sessoes:sess.length,metaPct,metaLidos,metaTotal,
+      autMap,seriesConcluidas,generosSet};
   }
 
   const dA=calcDados(pA), dB=calcDados(pB);
@@ -3143,24 +3256,120 @@ function renderBatalha() {
   }
 
   // Medalhas
-  function medalhas(dd){
-    const m=[];
-    if(dd.streakRecord>=30)  m.push({icon:'🔥',cls:'bat-cq-orange',nome:'Maratonista',sub:dd.streakRecord+'d streak',tip:'Streak de '+dd.streakRecord+' dias consecutivos'});
-    if(dd.bosses.length>=5)  m.push({icon:'💀',cls:'bat-cq-purple',nome:'Boss Hunter', sub:dd.bosses.length+' bosses',tip:dd.bosses.length+' livros com 500+ páginas'});
-    if(dd.lidos.length>=50)  m.push({icon:'👑',cls:'bat-cq-gold',  nome:'Lendário',   sub:dd.lidos.length+' livros', tip:dd.lidos.length+' livros concluídos'});
-    if(dd.eficiencia>=50)    m.push({icon:'⚡',cls:'bat-cq-gold',  nome:'Devorador',  sub:dd.eficiencia+' págs/h',   tip:dd.eficiencia+' páginas por hora'});
-    if(dd.maiorSessao>=100)  m.push({icon:'🦁',cls:'bat-cq-red',   nome:'Insano',     sub:dd.maiorSessao+'p sessão', tip:'Sessão de '+dd.maiorSessao+' páginas'});
-    if(dd.notaMedia>=8)      m.push({icon:'⭐',cls:'bat-cq-gold',  nome:'Crítico',    sub:dd.notaMedia.toFixed(1)+' média',tip:'Nota média '+dd.notaMedia.toFixed(1)});
-    if(dd.colSet.size>=5)    m.push({icon:'🗺️',cls:'bat-cq-teal',  nome:'Explorador', sub:dd.colSet.size+' coleções',tip:dd.colSet.size+' coleções diferentes'});
-    if(dd.streakAtual>=7)    m.push({icon:'🔥',cls:'bat-cq-orange',nome:'Em Chamas',  sub:dd.streakAtual+'d atual',  tip:'Streak atual de '+dd.streakAtual+' dias'});
-    if(!m.length)            m.push({icon:'🌱',cls:'bat-cq-grey',  nome:'Iniciando',  sub:'jornada',                 tip:'Ainda no início da jornada'});
-    return `<div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
-      ${m.map(x=>`<div class="bat-conquista" data-tip="${x.tip}">
-        <div class="bat-conquista-icon ${x.cls}">${x.icon}</div>
-        <div class="bat-conquista-name">${x.nome}</div>
-        <div class="bat-conquista-sub">${x.sub}</div>
-      </div>`).join('')}
+  // ── Sistema de Conquistas por Tier ──────────────────────────────
+  const TIERS = [
+    { nome:'Bronze',  min:0, cor:'#B87333', glow:'rgba(184,115,51,0.5)',  borda:'#A16207', anim:false },
+    { nome:'Prata',   min:1, cor:'#C0C0C0', glow:'rgba(192,192,192,0.5)', borda:'#CBD5E1', anim:false },
+    { nome:'Ouro',    min:2, cor:'#FACC15', glow:'rgba(250,204,21,0.6)',  borda:'#EAB308', anim:false },
+    { nome:'Platina', min:3, cor:'#22C55E', glow:'rgba(34,197,94,0.65)',  borda:'#16A34A', anim:false },
+    { nome:'Diamante',min:4, cor:'#38BDF8', glow:'rgba(56,189,248,0.7)',  borda:'#2563EB', anim:false },
+    { nome:'Mestre',  min:5, cor:'#FACC15', glow:'rgba(147,51,234,0.9)',  borda:'#9333EA', anim:true  },
+  ];
+
+  function getTier(val, thresholds) {
+    // thresholds: [bronze, prata, ouro, platina, diamante, mestre]
+    let tier = -1;
+    for (let i = 0; i < thresholds.length; i++) {
+      if (val >= thresholds[i]) tier = i; else break;
+    }
+    return tier;
+  }
+
+  function conquista(icon, nome, val, thresholds, labels, descFn) {
+    const tierIdx = getTier(val, thresholds);
+    if (tierIdx < 0) return null;
+    const t = TIERS[tierIdx];
+    const next = thresholds[tierIdx + 1];
+    const pct = next ? Math.round((val - thresholds[tierIdx]) / (next - thresholds[tierIdx]) * 100) : 100;
+    const progLabel = next ? `${val.toLocaleString('pt-BR')} / ${next.toLocaleString('pt-BR')}` : `${val.toLocaleString('pt-BR')} ✓`;
+    const borderStyle = t.anim
+      ? `border:2px solid transparent; background-clip:padding-box; box-shadow:0 0 0 2px #9333EA, 0 0 0 3px #FACC15, 0 0 28px rgba(147,51,234,0.8), 0 0 12px rgba(250,204,21,0.5); animation:bat-mestre 3s linear infinite;`
+      : `border:2px solid ${t.borda}; box-shadow:0 0 18px ${t.glow};`;
+    return { icon, nome, tierNome: t.nome, tierCor: t.cor, borderStyle, pct, progLabel, tip: descFn(val) };
+  }
+
+  // Títulos Exclusivos — calculados FORA de medalhas, apenas o melhor de cada categoria recebe
+  function calcTitulos(ddA, ddB) {
+    const autA = Object.keys(ddA.autMap||{}).length;
+    const autB = Object.keys(ddB.autMap||{}).length;
+    const titulosA = [], titulosB = [];
+
+    const disputa = (icon, nome, valA, valB, tipFn) => {
+      if (valA === 0 && valB === 0) return;
+      if (valA > valB) titulosA.push({icon, nome, tip: tipFn(valA)});
+      else if (valB > valA) titulosB.push({icon, nome, tip: tipFn(valB)});
+      // empate = ninguém recebe
+    };
+
+    disputa('👑','Rei das Páginas',      ddA.pagTotal,           ddB.pagTotal,           v=>`${v.toLocaleString('pt-BR')} páginas — maior total`);
+    disputa('🏛️','Imperador da Biblioteca',ddA.lidos.length,     ddB.lidos.length,       v=>`${v} livros concluídos — maior biblioteca`);
+    disputa('⏳','Senhor do Tempo',       ddA.horas,              ddB.horas,              v=>`${v}h de leitura — maior stamina`);
+    disputa('🔥','Combo Supremo',         ddA.streakRecord,       ddB.streakRecord,       v=>`Streak recorde: ${v} dias`);
+    disputa('🧠','Crítico Supremo',       ddA.notaMedia||0,       ddB.notaMedia||0,       v=>`Nota média ${v.toFixed(1)} — avaliações mais refinadas`);
+    disputa('⚡','Leitor Relâmpago',      Math.round(ddA.media),  Math.round(ddB.media),  v=>`Média de ${v} págs/dia — mais veloz`);
+    disputa('💀','Boss Slayer',           ddA.bosses.length,      ddB.bosses.length,      v=>`${v} bosses derrotados — mais poderoso`);
+    disputa('📅','Dominador das Sessões', ddA.sessoes,            ddB.sessoes,            v=>`${v} sessões registradas — mais disciplinado`);
+    disputa('🏆','Senhor das Séries',     ddA.seriesConcluidas||0,ddB.seriesConcluidas||0,v=>`${v} séries completas`);
+    disputa('🌎','Explorador Supremo',    autA,                   autB,                   v=>`${v} autores diferentes`);
+    disputa('🛡️','Monarca da Consistência',ddA.diasSet?.size||0, ddB.diasSet?.size||0,   v=>`${v} dias de leitura registrados`);
+    disputa('🐛','Mestre dos Slimes',     ddA.lidos.filter(l=>l.totalPag>0&&l.totalPag<=200).length, ddB.lidos.filter(l=>l.totalPag>0&&l.totalPag<=200).length, v=>`${v} livros até 200 págs`);
+
+    return { titulosA, titulosB };
+  }
+
+  const { titulosA, titulosB } = calcTitulos(dA, dB);
+
+  function renderTitulos(titulos) {
+    if (!titulos.length) return '';
+    return `<div style="margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.06);">
+      <div style="font-family:'Orbitron',sans-serif;font-size:8px;letter-spacing:3px;color:rgba(250,204,21,0.8);margin-bottom:10px;text-shadow:0 0 8px rgba(250,204,21,0.4);">✨ TÍTULOS EXCLUSIVOS</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;">
+        ${titulos.map(t=>`
+        <div class="bat-conquista" data-tip="${t.tip}" style="min-width:70px;max-width:82px;">
+          <div class="bat-conquista-icon" style="background:radial-gradient(circle at 35% 35%,#1a1020,#070B14);border:2px solid transparent;box-shadow:0 0 0 2px #9333EA,0 0 0 3px #FACC15,0 0 20px rgba(147,51,234,0.7),0 0 8px rgba(250,204,21,0.4);animation:bat-mestre 3s linear infinite;">
+            <span style="font-size:20px;">${t.icon}</span>
+          </div>
+          <div style="font-family:'Orbitron',sans-serif;font-size:8px;font-weight:700;color:#FACC15;text-align:center;letter-spacing:0.5px;margin-top:4px;text-shadow:0 0 8px rgba(250,204,21,0.5);">${t.nome}</div>
+        </div>`).join('')}
+      </div>
     </div>`;
+  }
+
+  function medalhas(dd, titulos) {
+    const autoresCount = Object.keys(dd.autMap || {}).length;
+    const conquistas = [
+      conquista('📖', 'Domínio de Páginas',   dd.pagTotal,              [1000,5000,15000,30000,60000,100000], [], v=>`${v.toLocaleString('pt-BR')} páginas lidas`),
+      conquista('📚', 'Grimório Completo',     dd.lidos.length,          [5,15,30,50,80,120],                  [], v=>`${v} livros concluídos`),
+      conquista('⏳', 'Stamina Total',         dd.horas,                 [50,150,300,500,800,1200],             [], v=>`${v}h de leitura`),
+      conquista('🔥', 'Combo de Leitura',      dd.streakRecord,          [7,14,30,60,100,180],                 [], v=>`Streak recorde: ${v} dias`),
+      conquista('⚡', 'Velocidade',            Math.round(dd.media),     [10,30,50,80,120,200],                [], v=>`Média de ${v} págs/dia`),
+      conquista('📅', 'Sessões de Treino',     dd.sessoes,               [20,80,200,400,700,1000],             [], v=>`${v} sessões registradas`),
+      conquista('🧠', 'Crítico Literário',     dd.notaMedia||0,          [5,6,7,7.5,8,9],                     [], v=>`Nota média: ${v.toFixed(1)}`),
+      conquista('💀', 'Boss Slayer',           dd.bosses.length,         [1,5,10,20,35,50],                   [], v=>`${v} livros 500+ págs`),
+      conquista('🏛️', 'Explorador de Reinos',  dd.colSet.size,           [3,8,15,25,40,60],                   [], v=>`${v} coleções exploradas`),
+      conquista('✍️', 'Colecionador',          autoresCount,             [5,15,30,50,80,120],                  [], v=>`${v} autores diferentes`),
+      conquista('🏆', 'Senhor das Séries',     dd.seriesConcluidas||0,   [1,3,5,8,12,20],                     [], v=>`${v} séries concluídas`),
+      conquista('🌎', 'Mestre dos Gêneros',    dd.generosSet?.size||0,   [2,4,6,8,10,12],                     [], v=>`${v} gêneros explorados`),
+    ].filter(Boolean);
+
+    const htmlConquistas = conquistas.length
+      ? `<div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-start;">
+          ${conquistas.map(c => `
+          <div class="bat-conquista" data-tip="${c.tip}" style="min-width:80px;max-width:90px;">
+            <div class="bat-conquista-icon" style="background:radial-gradient(circle at 35% 35%,rgba(15,23,42,0.9),#070B14);${c.borderStyle}">
+              <span style="font-size:22px;">${c.icon}</span>
+            </div>
+            <div class="bat-conquista-name" style="font-size:9px;color:#F8FAFC;">${c.nome}</div>
+            <div style="font-family:'Orbitron',sans-serif;font-size:8px;font-weight:700;color:${c.tierCor};letter-spacing:1px;">${c.tierNome}</div>
+            <div style="width:100%;height:3px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;margin-top:2px;">
+              <div style="width:${c.pct}%;height:100%;background:${c.tierCor};border-radius:2px;box-shadow:0 0 6px ${c.tierCor};"></div>
+            </div>
+            <div style="font-family:'Exo 2',sans-serif;font-size:8px;color:rgba(248,250,252,0.4);margin-top:1px;">${c.progLabel}</div>
+          </div>`).join('')}
+        </div>`
+      : `<div style="font-family:'Exo 2',sans-serif;color:rgba(248,250,252,0.3);font-size:12px;padding:8px;">🌱 Iniciando jornada</div>`;
+
+    return htmlConquistas + renderTitulos(titulos);
   }
 
   const container=document.getElementById('batalhaContainer');
@@ -3318,31 +3527,31 @@ function renderBatalha() {
   </div>
 </div>
 
-<!-- AUTOR + CONQUISTAS -->
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
-  <div>
-    <div class="bat-section-hdr">📚 AUTOR DOMINADO</div>
-    <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:14px;">
-      ${[{p:pA,dd:dA,cor:'#A855F7'},{p:pB,dd:dB,cor:'#FB923C'}].map(({p,dd,cor})=>`
-      <div style="display:flex;align-items:center;gap:12px;">
-        <div style="width:44px;height:44px;border-radius:50%;background:${cor}22;border:2px solid ${cor};display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;box-shadow:0 0 12px ${cor}44;">📖</div>
-        <div>
-          <div style="font-family:'Orbitron',sans-serif;font-size:9px;color:${cor};font-weight:700;letter-spacing:2px;">${p.toUpperCase()}</div>
-          <div style="font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:700;color:#F8FAFC;">${dd.autorTop?.[0]||'—'}</div>
-          <div style="font-family:'Exo 2',sans-serif;font-size:11px;color:rgba(248,250,252,0.4);">${(dd.autorTop?.[1]||0).toLocaleString('pt-BR')} págs lidas</div>
-        </div>
-      </div>`).join('')}
-    </div>
+<!-- AUTOR DOMINADO -->
+<div style="margin-bottom:20px;">
+  <div class="bat-section-hdr">📚 AUTOR DOMINADO</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+    ${[{p:pA,dd:dA,cor:'#A855F7'},{p:pB,dd:dB,cor:'#FB923C'}].map(({p,dd,cor})=>`
+    <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:16px;display:flex;align-items:center;gap:12px;">
+      <div style="width:44px;height:44px;border-radius:50%;background:${cor}22;border:2px solid ${cor};display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;box-shadow:0 0 12px ${cor}44;">📖</div>
+      <div>
+        <div style="font-family:'Orbitron',sans-serif;font-size:9px;color:${cor};font-weight:700;letter-spacing:2px;">${p.toUpperCase()}</div>
+        <div style="font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:700;color:#F8FAFC;">${dd.autorTop?.[0]||'—'}</div>
+        <div style="font-family:'Exo 2',sans-serif;font-size:11px;color:rgba(248,250,252,0.4);">${(dd.autorTop?.[1]||0).toLocaleString('pt-BR')} págs lidas</div>
+      </div>
+    </div>`).join('')}
   </div>
-  <div>
-    <div class="bat-section-hdr">🏅 CONQUISTAS</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-      ${[{p:pA,dd:dA,cor:'#A855F7'},{p:pB,dd:dB,cor:'#FB923C'}].map(({p,dd,cor})=>`
-      <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid ${cor}44;border-top:3px solid ${cor};border-radius:14px;padding:14px;box-shadow:0 0 20px ${cor}11;">
-        <div style="font-family:'Orbitron',sans-serif;font-size:10px;color:${cor};font-weight:900;margin-bottom:14px;letter-spacing:2px;text-shadow:0 0 10px ${cor}66;">⚔️ ${p.toUpperCase()}</div>
-        ${medalhas(dd)}
-      </div>`).join('')}
-    </div>
+</div>
+
+<!-- CONQUISTAS — separadas por player, cada um full-width -->
+<div style="margin-bottom:20px;">
+  <div class="bat-section-hdr">🏅 CONQUISTAS & FEITOS</div>
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    ${[{p:pA,dd:dA,cor:'#A855F7',ts:titulosA},{p:pB,dd:dB,cor:'#FB923C',ts:titulosB}].map(({p,dd,cor,ts})=>`
+    <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid ${cor}44;border-left:4px solid ${cor};border-radius:14px;padding:16px;box-shadow:0 0 24px ${cor}11;">
+      <div style="font-family:'Orbitron',sans-serif;font-size:10px;color:${cor};font-weight:900;margin-bottom:16px;letter-spacing:3px;text-shadow:0 0 10px ${cor}66;">⚔️ ${p.toUpperCase()}</div>
+      ${medalhas(dd, ts)}
+    </div>`).join('')}
   </div>
 </div>
 
@@ -3931,11 +4140,9 @@ async function carregarLivros() {
 }
 
 function popularSelects() {
-  // Sessão — inicializa sem mostrar lista (usuário digita para buscar)
-  // lista populada dinamicamente via filtrarLivrosSessao
-
-  // n-livro, l-livro e ex-livro agora são hidden inputs com busca por texto
-
+  // Sessão — lista populada dinamicamente via filtrarLivrosSessao quando usuário digita
+  // n-livro, l-livro e ex-livro são hidden inputs com busca por texto
+  const dl = document.getElementById('colecoes-datalist');
   if (dl) {
     dl.innerHTML = '';
     colecoesCache.forEach(c => { dl.innerHTML += `<option value="${c}">`; });
@@ -4168,6 +4375,11 @@ function preencherDadosLivro(nome) {
   set('l-depende', l.depende);
   set('l-capa',    l.coverUrl);
   set('l-isbn',    l.isbn);
+<<<<<<< HEAD
+  set('l-colecao', l.colecao);
+=======
+>>>>>>> ee7c39452c69d51e561520dbfff36826dac6b81c
+  set('l-genero',  l.genero);
 }
 
 async function enviarLivro() {
@@ -4184,6 +4396,11 @@ async function enviarLivro() {
   const depende = document.getElementById('l-depende').value.trim();
   const capa    = document.getElementById('l-capa').value.trim();
   const isbn    = document.getElementById('l-isbn').value.trim();
+<<<<<<< HEAD
+  const colecao = document.getElementById('l-colecao').value.trim();
+=======
+>>>>>>> ee7c39452c69d51e561520dbfff36826dac6b81c
+  const genero  = document.getElementById('l-genero').value.trim();
 
   if (status)  body.status  = status;
   if (autor)   body.autor   = autor;
@@ -4193,6 +4410,11 @@ async function enviarLivro() {
   if (depende) body.depende = depende;
   if (capa)    body.capa    = capa;
   if (isbn)    body.isbn    = isbn;
+<<<<<<< HEAD
+  if (colecao) body.colecao = colecao;
+=======
+>>>>>>> ee7c39452c69d51e561520dbfff36826dac6b81c
+  if (genero)  body.genero  = genero;
 
   btn.disabled = true; btn.textContent = 'Atualizando...';
   try {
@@ -4237,6 +4459,7 @@ async function enviarNovoLivro() {
         depende: document.getElementById('nl-depende').value.trim(),
         capa:    document.getElementById('nl-capa').value.trim(),
         isbn:    document.getElementById('nl-isbn').value.trim(),
+        genero:  document.getElementById('nl-genero').value.trim(),
         usuario: usuarioAtual === 'Batalha' ? 'Milton' : usuarioAtual,
       })
     });
@@ -4248,7 +4471,7 @@ async function enviarNovoLivro() {
       setTimeout(() => {
         fecharModal('novoLivro');
         // Limpa campos
-        ['nl-nome','nl-colecao','nl-autor','nl-paginas','nl-metaano','nl-ordem','nl-depende','nl-capa','nl-isbn'].forEach(id => {
+        ['nl-nome','nl-colecao','nl-autor','nl-paginas','nl-metaano','nl-ordem','nl-depende','nl-capa','nl-isbn','nl-genero'].forEach(id => {
           const el = document.getElementById(id);
           if (el) el.value = '';
         });
