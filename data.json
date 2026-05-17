@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-17T23:42:26.509Z",
+  "geradoEm": "2026-05-17T23:43:14.331Z",
   "meta": {
     "total": 55,
     "lidos": 21,
     "faltando": 34,
     "paginasTotal": 27233,
-    "paginasLidas": 11148,
-    "paginasFaltando": 16085,
-    "mediaDiaria": 78.3,
-    "ritmoAtual": 57,
-    "dataPrevistoAtual": "24/02/2027"
+    "paginasLidas": 11192,
+    "paginasFaltando": 16041,
+    "mediaDiaria": 78.7,
+    "ritmoAtual": 58.5,
+    "dataPrevistoAtual": "16/02/2027"
   },
   "metasPorAno": {
     "2022": {
@@ -71,16 +71,16 @@
     "2026": {
       "total": 55,
       "lidos": 21,
-      "lendo": 2,
+      "lendo": 3,
       "pausados": 0,
-      "aguardando": 32,
+      "aguardando": 31,
       "paginasTotal": 27233,
-      "paginasLidas": 11148,
-      "paginasFaltando": 16085,
+      "paginasLidas": 11192,
+      "paginasFaltando": 16041,
       "faltando": 34,
-      "mediaDiaria": 78.3,
-      "ritmoAtual": 57,
-      "dataPrevistoAtual": "24/02/2027"
+      "mediaDiaria": 78.7,
+      "ritmoAtual": 58.5,
+      "dataPrevistoAtual": "16/02/2027"
     },
     "PAUSADO": {
       "total": 2,
@@ -25370,6 +25370,15 @@
       "minutos": 7,
       "ano": 2026,
       "usuario": "Daniel"
+    },
+    {
+      "livro": "Guerra de Jade",
+      "colecao": "A Saga dos Ossos Verdes",
+      "data": "2026-05-17",
+      "paginas": 44,
+      "minutos": 40,
+      "ano": 2026,
+      "usuario": "Daniel"
     }
   ],
   "livros": [
@@ -33849,10 +33858,10 @@
       "colecao": "A Saga dos Ossos Verdes",
       "ordemColecao": 0,
       "ordem": 0,
-      "status": "Aguardando",
+      "status": "Lendo",
       "totalPag": 773,
-      "pagAtual": 0,
-      "pct": 0,
+      "pagAtual": 44,
+      "pct": 0.057,
       "usuario": "Daniel",
       "genero": "Fantasia"
     }
@@ -33927,6 +33936,23 @@
       "pct": 1,
       "usuario": "Daniel",
       "genero": ""
+    },
+    {
+      "livro": "Guerra de Jade",
+      "autor": "Fonda Lee",
+      "isbn": "978-8550820590",
+      "coverUrl": "https://m.media-amazon.com/images/I/71-bbO2UgwL._AC_UF1000,1000_QL80_.jpg",
+      "metaAno": "2026",
+      "depende": "Cidade de Jade",
+      "colecao": "A Saga dos Ossos Verdes",
+      "ordemColecao": 0,
+      "ordem": 0,
+      "status": "Lendo",
+      "totalPag": 773,
+      "pagAtual": 44,
+      "pct": 0.057,
+      "usuario": "Daniel",
+      "genero": "Fantasia"
     }
   ],
   "aguardando": [
@@ -38587,23 +38613,6 @@
       "pct": 0,
       "usuario": "Milton",
       "genero": ""
-    },
-    {
-      "livro": "Guerra de Jade",
-      "autor": "Fonda Lee",
-      "isbn": "978-8550820590",
-      "coverUrl": "https://m.media-amazon.com/images/I/71-bbO2UgwL._AC_UF1000,1000_QL80_.jpg",
-      "metaAno": "2026",
-      "depende": "Cidade de Jade",
-      "colecao": "A Saga dos Ossos Verdes",
-      "ordemColecao": 0,
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 773,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "Daniel",
-      "genero": "Fantasia"
     }
   ],
   "notas": [
