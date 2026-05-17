@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-17T23:40:04.548Z",
+  "geradoEm": "2026-05-17T23:42:26.509Z",
   "meta": {
-    "total": 54,
+    "total": 55,
     "lidos": 21,
-    "faltando": 33,
-    "paginasTotal": 26460,
+    "faltando": 34,
+    "paginasTotal": 27233,
     "paginasLidas": 11148,
-    "paginasFaltando": 15312,
+    "paginasFaltando": 16085,
     "mediaDiaria": 78.3,
     "ritmoAtual": 57,
-    "dataPrevistoAtual": "10/02/2027"
+    "dataPrevistoAtual": "24/02/2027"
   },
   "metasPorAno": {
     "2022": {
@@ -69,18 +69,18 @@
       "dataPrevistoAtual": "—"
     },
     "2026": {
-      "total": 54,
+      "total": 55,
       "lidos": 21,
       "lendo": 2,
       "pausados": 0,
-      "aguardando": 31,
-      "paginasTotal": 26460,
+      "aguardando": 32,
+      "paginasTotal": 27233,
       "paginasLidas": 11148,
-      "paginasFaltando": 15312,
-      "faltando": 33,
+      "paginasFaltando": 16085,
+      "faltando": 34,
       "mediaDiaria": 78.3,
       "ritmoAtual": 57,
-      "dataPrevistoAtual": "10/02/2027"
+      "dataPrevistoAtual": "24/02/2027"
     },
     "PAUSADO": {
       "total": 2,
@@ -33838,6 +33838,23 @@
       "pct": 0,
       "usuario": "Milton",
       "genero": ""
+    },
+    {
+      "livro": "Guerra de Jade",
+      "autor": "Fonda Lee",
+      "isbn": "978-8550820590",
+      "coverUrl": "https://m.media-amazon.com/images/I/71-bbO2UgwL._AC_UF1000,1000_QL80_.jpg",
+      "metaAno": "2026",
+      "depende": "Cidade de Jade",
+      "colecao": "A Saga dos Ossos Verdes",
+      "ordemColecao": 0,
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 773,
+      "pagAtual": 0,
+      "pct": 0,
+      "usuario": "Daniel",
+      "genero": "Fantasia"
     }
   ],
   "pausados": [
@@ -38570,6 +38587,23 @@
       "pct": 0,
       "usuario": "Milton",
       "genero": ""
+    },
+    {
+      "livro": "Guerra de Jade",
+      "autor": "Fonda Lee",
+      "isbn": "978-8550820590",
+      "coverUrl": "https://m.media-amazon.com/images/I/71-bbO2UgwL._AC_UF1000,1000_QL80_.jpg",
+      "metaAno": "2026",
+      "depende": "Cidade de Jade",
+      "colecao": "A Saga dos Ossos Verdes",
+      "ordemColecao": 0,
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 773,
+      "pagAtual": 0,
+      "pct": 0,
+      "usuario": "Daniel",
+      "genero": "Fantasia"
     }
   ],
   "notas": [
