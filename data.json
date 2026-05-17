@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-17T23:37:45.565Z",
+  "geradoEm": "2026-05-17T23:37:59.321Z",
   "meta": {
     "total": 54,
     "lidos": 21,
@@ -97,15 +97,15 @@
       "dataPrevistoAtual": "—"
     },
     "AINDA NÃO DEFINIDO": {
-      "total": 224,
+      "total": 225,
       "lidos": 0,
       "lendo": 0,
       "pausados": 0,
-      "aguardando": 224,
+      "aguardando": 225,
       "paginasTotal": 108746,
       "paginasLidas": 0,
       "paginasFaltando": 108746,
-      "faltando": 224,
+      "faltando": 225,
       "mediaDiaria": 50,
       "ritmoAtual": 0,
       "dataPrevistoAtual": "—"
@@ -33846,6 +33846,23 @@
       "pct": 0,
       "usuario": "Milton",
       "genero": ""
+    },
+    {
+      "livro": "xxxxxxxxxx",
+      "autor": "",
+      "isbn": "",
+      "coverUrl": "",
+      "metaAno": "AINDA NÃO DEFINIDO",
+      "depende": "",
+      "colecao": "",
+      "ordemColecao": 0,
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 0,
+      "pagAtual": 0,
+      "pct": 0,
+      "usuario": "Daniel",
+      "genero": ""
     }
   ],
   "pausados": [
@@ -38594,6 +38611,23 @@
       "pagAtual": 0,
       "pct": 0,
       "usuario": "Milton",
+      "genero": ""
+    },
+    {
+      "livro": "xxxxxxxxxx",
+      "autor": "",
+      "isbn": "",
+      "coverUrl": "",
+      "metaAno": "AINDA NÃO DEFINIDO",
+      "depende": "",
+      "colecao": "",
+      "ordemColecao": 0,
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 0,
+      "pagAtual": 0,
+      "pct": 0,
+      "usuario": "Daniel",
       "genero": ""
     }
   ],
