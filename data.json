@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-17T23:53:13.504Z",
+  "geradoEm": "2026-05-18T02:09:31.863Z",
   "meta": {
     "total": 55,
     "lidos": 22,
@@ -55,16 +55,16 @@
       "dataPrevistoAtual": "Concluída!"
     },
     "2025": {
-      "total": 79,
-      "lidos": 76,
+      "total": 80,
+      "lidos": 78,
       "lendo": 0,
       "pausados": 0,
-      "aguardando": 3,
-      "paginasTotal": 43734,
-      "paginasLidas": 41920,
-      "paginasFaltando": 1814,
-      "faltando": 3,
-      "mediaDiaria": 120.3,
+      "aguardando": 2,
+      "paginasTotal": 44147,
+      "paginasLidas": 42861,
+      "paginasFaltando": 1286,
+      "faltando": 2,
+      "mediaDiaria": 121.8,
       "ritmoAtual": 0,
       "dataPrevistoAtual": "—"
     },
@@ -97,15 +97,15 @@
       "dataPrevistoAtual": "—"
     },
     "AINDA NÃO DEFINIDO": {
-      "total": 222,
+      "total": 221,
       "lidos": 0,
       "lendo": 0,
       "pausados": 0,
-      "aguardando": 222,
-      "paginasTotal": 108266,
+      "aguardando": 221,
+      "paginasTotal": 107860,
       "paginasLidas": 0,
-      "paginasFaltando": 108266,
-      "faltando": 222,
+      "paginasFaltando": 107860,
+      "faltando": 221,
       "mediaDiaria": 50,
       "ritmoAtual": 0,
       "dataPrevistoAtual": "—"
@@ -25379,6 +25379,132 @@
       "minutos": 40,
       "ano": 2026,
       "usuario": "Daniel"
+    },
+    {
+      "livro": "Rei dos Espinhos",
+      "colecao": "Trilogia dos Espinhos",
+      "data": "2025-04-23",
+      "paginas": 37,
+      "minutos": 40,
+      "ano": 2025,
+      "usuario": "Daniel"
+    },
+    {
+      "livro": "Rei dos Espinhos",
+      "colecao": "Trilogia dos Espinhos",
+      "data": "2025-04-24",
+      "paginas": 37,
+      "minutos": 40,
+      "ano": 2025,
+      "usuario": "Daniel"
+    },
+    {
+      "livro": "Rei dos Espinhos",
+      "colecao": "Trilogia dos Espinhos",
+      "data": "2025-04-25",
+      "paginas": 37,
+      "minutos": 40,
+      "ano": 2025,
+      "usuario": "Daniel"
+    },
+    {
+      "livro": "Rei dos Espinhos",
+      "colecao": "Trilogia dos Espinhos",
+      "data": "2025-04-26",
+      "paginas": 37,
+      "minutos": 40,
+      "ano": 2025,
+      "usuario": "Daniel"
+    },
+    {
+      "livro": "Rei dos Espinhos",
+      "colecao": "Trilogia dos Espinhos",
+      "data": "2025-04-27",
+      "paginas": 40,
+      "minutos": 40,
+      "ano": 2025,
+      "usuario": "Daniel"
+    },
+    {
+      "livro": "Rei dos Espinhos",
+      "colecao": "Trilogia dos Espinhos",
+      "data": "2025-04-28",
+      "paginas": 37,
+      "minutos": 40,
+      "ano": 2025,
+      "usuario": "Daniel"
+    },
+    {
+      "livro": "Rei dos Espinhos",
+      "colecao": "Trilogia dos Espinhos",
+      "data": "2025-04-29",
+      "paginas": 39,
+      "minutos": 40,
+      "ano": 2025,
+      "usuario": "Daniel"
+    },
+    {
+      "livro": "Rei dos Espinhos",
+      "colecao": "Trilogia dos Espinhos",
+      "data": "2025-04-30",
+      "paginas": 37,
+      "minutos": 40,
+      "ano": 2025,
+      "usuario": "Daniel"
+    },
+    {
+      "livro": "Rei dos Espinhos",
+      "colecao": "Trilogia dos Espinhos",
+      "data": "2025-05-01",
+      "paginas": 37,
+      "minutos": 40,
+      "ano": 2025,
+      "usuario": "Daniel"
+    },
+    {
+      "livro": "Rei dos Espinhos",
+      "colecao": "Trilogia dos Espinhos",
+      "data": "2025-05-02",
+      "paginas": 37,
+      "minutos": 40,
+      "ano": 2025,
+      "usuario": "Daniel"
+    },
+    {
+      "livro": "Rei dos Espinhos",
+      "colecao": "Trilogia dos Espinhos",
+      "data": "2025-05-03",
+      "paginas": 38,
+      "minutos": 40,
+      "ano": 2025,
+      "usuario": "Daniel"
+    },
+    {
+      "livro": "Rei dos Espinhos",
+      "colecao": "Trilogia dos Espinhos",
+      "data": "2025-05-04",
+      "paginas": 39,
+      "minutos": 40,
+      "ano": 2025,
+      "usuario": "Daniel"
+    },
+    {
+      "livro": "Rei dos Espinhos",
+      "colecao": "Trilogia dos Espinhos",
+      "data": "2025-05-05",
+      "paginas": 39,
+      "minutos": 40,
+      "ano": 2025,
+      "usuario": "Daniel"
+    },
+    {
+      "livro": "Rei dos Espinhos",
+      "colecao": "Trilogia dos Espinhos",
+      "data": "2025-05-06",
+      "paginas": 37,
+      "minutos": 40,
+      "ano": 2025,
+      "usuario": "Daniel"
     }
   ],
   "livros": [
@@ -30776,13 +30902,13 @@
       "autor": "Mark Lawrence",
       "isbn": "",
       "coverUrl": "https://m.media-amazon.com/images/I/81MWmyuX2sL._AC_UY218_.jpg",
-      "metaAno": "AINDA NÃO DEFINIDO",
+      "metaAno": "2025",
       "depende": "Rei dos Espinhos",
       "colecao": "Trilogia dos Espinhos",
       "ordemColecao": 1,
       "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 416,
+      "status": "Completo",
+      "totalPag": 413,
       "pagAtual": 0,
       "pct": 0,
       "usuario": "MILTON",
@@ -32175,10 +32301,10 @@
       "colecao": "Trilogia dos Espinhos",
       "ordemColecao": 0,
       "ordem": 0,
-      "status": "Aguardando",
+      "status": "Completo",
       "totalPag": 528,
-      "pagAtual": 0,
-      "pct": 0,
+      "pagAtual": 528,
+      "pct": 1,
       "usuario": "Daniel",
       "genero": ""
     },
@@ -33842,7 +33968,7 @@
       "ordemColecao": 0,
       "ordem": 0,
       "status": "Aguardando",
-      "totalPag": 50,
+      "totalPag": 60,
       "pagAtual": 0,
       "pct": 0,
       "usuario": "Milton",
@@ -37425,23 +37551,6 @@
       "genero": ""
     },
     {
-      "livro": "Imperador dos Espinhos",
-      "autor": "Mark Lawrence",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/81MWmyuX2sL._AC_UY218_.jpg",
-      "metaAno": "AINDA NÃO DEFINIDO",
-      "depende": "Rei dos Espinhos",
-      "colecao": "Trilogia dos Espinhos",
-      "ordemColecao": 1,
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 416,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "MILTON",
-      "genero": ""
-    },
-    {
       "livro": "A Canção de Shannara",
       "autor": "Terry Brooks",
       "isbn": "",
@@ -38071,23 +38180,6 @@
       "genero": ""
     },
     {
-      "livro": "Rei dos Espinhos",
-      "autor": "Mark Lawrence",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/61Slcqx2VSL._AC_UY218_.jpg",
-      "metaAno": "2025",
-      "depende": "",
-      "colecao": "Trilogia dos Espinhos",
-      "ordemColecao": 0,
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 528,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "Daniel",
-      "genero": ""
-    },
-    {
       "livro": "Ascendant",
       "autor": "Michael R. Miller",
       "isbn": "",
@@ -38574,7 +38666,7 @@
       "ordemColecao": 0,
       "ordem": 0,
       "status": "Aguardando",
-      "totalPag": 50,
+      "totalPag": 60,
       "pagAtual": 0,
       "pct": 0,
       "usuario": "Milton",
