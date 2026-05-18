@@ -3192,6 +3192,9 @@ function setUsuario(usuario) {
   // Alterna páginas
   document.getElementById('pageDashboard').style.display = usuario === 'Batalha' ? 'none' : 'block';
   document.getElementById('pageBatalha').style.display   = usuario === 'Batalha' ? 'block' : 'none';
+  const lendoWrap = document.querySelector('.lendo-wrap');
+  if (lendoWrap) lendoWrap.style.display = usuario === 'Batalha' ? 'none' : '';
+  if (usuario === 'Batalha') window.scrollTo({top: 0, behavior: 'instant'});
   document.querySelector('.lendo-wrap').style.display    = usuario === 'Batalha' ? 'none' : 'block';
   document.querySelector('.fab').style.display           = usuario === 'Batalha' ? 'none' : 'flex';
 
