@@ -855,8 +855,9 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
     </div>
   </div>
 
-</div><!-- /page -->
 
+
+</div><!-- /page -->
 <!-- ── PÁGINA DE BATALHA ── -->
 <div class="page" id="pageBatalha" style="display:none;">
 
@@ -3189,14 +3190,21 @@ function setUsuario(usuario) {
     btn.style.color = ativo ? 'white' : 'var(--muted)';
   });
 
-  // Alterna páginas
   document.getElementById('pageDashboard').style.display = usuario === 'Batalha' ? 'none' : 'block';
   document.getElementById('pageBatalha').style.display   = usuario === 'Batalha' ? 'block' : 'none';
   const lendoWrap = document.querySelector('.lendo-wrap');
   if (lendoWrap) lendoWrap.style.display = usuario === 'Batalha' ? 'none' : '';
-  if (usuario === 'Batalha') window.scrollTo({top: 0, behavior: 'instant'});
   document.querySelector('.lendo-wrap').style.display    = usuario === 'Batalha' ? 'none' : 'block';
   document.querySelector('.fab').style.display           = usuario === 'Batalha' ? 'none' : 'flex';
+  // Force hide all dashboard sections when in battle mode
+  if (usuario === 'Batalha') {
+    document.querySelectorAll('#app > .sec, #app > .card, #app > .grid2, #app > .grid3, #app > .grid4, #app > div:not(#pageDashboard):not(#pageBatalha)').forEach(el => { el.style.display = 'none'; });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    window.scrollTo(0, 0);
+  } else {
+    document.querySelectorAll('#app > .sec, #app > .card, #app > .grid2, #app > .grid3, #app > .grid4').forEach(el => { el.style.display = ''; });
+  }
 
   if (usuario === 'Batalha') {
     renderBatalha();
