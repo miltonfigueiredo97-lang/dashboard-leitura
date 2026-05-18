@@ -703,10 +703,12 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
         <div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Livros concluídos por mês</div>
         <div id="livrosMes" class="wd-bars"></div>
       </div>
-      <div style="border-top:1px solid var(--border);padding-top:8px;">
-        <div style="font-size:11px;color:var(--muted);margin-bottom:6px;">🌎 Gêneros lidos</div>
-        <div style="height:160px;position:relative;"><canvas id="cGeneros"></canvas></div>
-      </div>
+    </div>
+
+    <!-- Gêneros lidos — card separado -->
+    <div class="card">
+      <div class="card-title">🌎 Gêneros Lidos</div>
+      <div style="height:260px;position:relative;"><canvas id="cGeneros"></canvas></div>
     </div>
 
   </div>
@@ -2373,29 +2375,36 @@ function buildGeneros() {
     genMap[l.genero] = (genMap[l.genero] || 0) + 1;
   });
 
-  const sorted = Object.entries(genMap).sort((a,b) => b[1]-a[1]).slice(0, 8);
+  const total = Object.values(genMap).reduce((a,b)=>a+b,0) || 1;
+  const sorted = Object.entries(genMap).sort((a,b) => b[1]-a[1]).slice(0, 10);
   if (!sorted.length) {
-    el.parentElement.innerHTML = '<div style="color:var(--muted);font-size:11px;padding:8px 0;">Nenhum gênero cadastrado ainda.</div>';
+    el.parentElement.innerHTML = '<div style="color:var(--muted);font-size:11px;padding:16px;text-align:center;">Nenhum gênero cadastrado ainda.<br>Adicione via ✏️ Atualizar Livro.</div>';
     return;
   }
 
-  const CORES = ['#8b7cf8','#4ecdc4','#f88c6a','#ffd700','#ff6384','#36a2eb','#9966ff','#ff9f40'];
+  const CORES = ['#8b7cf8','#4ecdc4','#f88c6a','#ffd700','#ff6384','#36a2eb','#9966ff','#ff9f40','#4bc0c0','#c9cbcf'];
   new Chart(el, {
     type: 'bar',
     data: {
       labels: sorted.map(([g]) => g),
-      datasets: [{ data: sorted.map(([,n]) => n), backgroundColor: sorted.map((_,i) => CORES[i%CORES.length]), borderRadius: 4, borderWidth: 0 }]
+      datasets: [{
+        data: sorted.map(([,n]) => Math.round(n/total*100)),
+        backgroundColor: sorted.map((_,i) => CORES[i%CORES.length]),
+        borderRadius: 4, borderWidth: 0
+      }]
     },
     options: {
       indexAxis: 'y',
       responsive: true, maintainAspectRatio: false,
       plugins: {
         legend: { display: false },
-        tooltip: { ...window.TT, callbacks: { label: c => ` ${c.parsed.x} livro${c.parsed.x>1?'s':''}` } }
+        tooltip: { ...window.TT, callbacks: {
+          label: c => ` ${c.parsed.x}% (${sorted[c.dataIndex][1]} livros)`
+        }}
       },
       scales: {
-        x: { ticks:{ color:'#8892a8', font:{size:10} }, grid:{ color:'rgba(42,50,72,0.3)' }, beginAtZero:true },
-        y: { ticks:{ color:'#8892a8', font:{size:10} }, grid:{ display:false } }
+        x: { ticks:{ color:'#8892a8', font:{size:11}, callback:v=>v+'%' }, grid:{ color:'rgba(42,50,72,0.3)' }, beginAtZero:true, max:100 },
+        y: { ticks:{ color:'#8892a8', font:{size:12} }, grid:{ display:false } }
       }
     }
   });
@@ -3538,7 +3547,7 @@ function renderBatalha() {
     <!-- Competição por gêneros -->
     <div class="bat-section-hdr" style="margin-top:14px;">🌎 COMPETIÇÃO POR GÊNEROS</div>
     <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:16px;">
-      <div style="height:180px;"><canvas id="bat-generos"></canvas></div>
+      <div style="height:320px;"><canvas id="bat-generos"></canvas></div>
       <div id="bat-generos-vazio" style="display:none;font-family:'Exo 2',sans-serif;font-size:11px;color:rgba(248,250,252,0.3);text-align:center;padding:20px;">Adicione gêneros via ✏️ Atualizar Livro</div>
     </div>
   </div>
@@ -3969,12 +3978,20 @@ function toggleListaStatus(status) {
   const _sessBtn = _anoBtn === 'total' ? (window._sessoes||[]) : (window._sessoes||[]).filter(s=>String(s.ano)===String(_anoBtn));
   const _livrosBtn = new Set(_sessBtn.map(s=>s.livro));
 
+  // Para concluídos: usa metaAno OU ano da última sessão como fallback
+  const _sessAll = window._sessoes || [];
+  const _ultimaAnoLivro = {};
+  _sessAll.forEach(s => {
+    if (!_ultimaAnoLivro[s.livro] || s.data > _ultimaAnoLivro[s.livro]) _ultimaAnoLivro[s.livro] = s.data?.slice(0,4);
+  });
+
   livrosStatusAtual = (status === 'Todos' ? (window._livros||[]) : (window._livros||[]).filter(l=>l.status===status))
     .filter(l => {
       if (_anoBtn === 'total') return true;
-      // Concluídos: usar apenas metaAno (ano de conclusão)
-      if (l.status === 'Completo') return String(l.metaAno) === String(_anoBtn);
-      // Outros status: incluir se teve sessão no ano
+      if (l.status === 'Completo') {
+        const anoRef = l.metaAno ? String(l.metaAno) : _ultimaAnoLivro[l.livro] || '';
+        return anoRef === String(_anoBtn);
+      }
       return String(l.metaAno) === String(_anoBtn) || _livrosBtn.has(l.livro);
     });
 
