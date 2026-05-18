@@ -1426,11 +1426,10 @@ function atualizarVisaoGeral() {
   el('kpi-recorde-livro').textContent = recordeLivroVG;
   el('kpi-recorde-autor').textContent = recordeLivroDataVG?.autor || '';
 
-  // Maior e menor livro — filtrado por ano
-  const sessNoAno = new Set(sessoes.map(s => s.livro));
+  // Maior e menor livro — usa metaAno apenas (ano de conclusão)
   const livrosLidosVG = (window._livros||[]).filter(l =>
     l.status === 'Completo' && l.totalPag > 0 &&
-    (ano === 'total' || String(l.metaAno) === String(ano) || sessNoAno.has(l.livro))
+    (ano === 'total' || String(l.metaAno) === String(ano))
   );
   if (livrosLidosVG.length) {
     const sorted = [...livrosLidosVG].sort((a,b) => b.totalPag - a.totalPag);
@@ -1447,7 +1446,7 @@ function atualizarVisaoGeral() {
 
   // Melhor e pior avaliado — filtrado por ano
   const notasVG = (window.NOTES||[]).filter(n =>
-    ano === 'total' || String(n.ano) === String(ano) || sessNoAno.has(n.livro)
+    ano === 'total' || String(n.ano) === String(ano)
   );
   if (notasVG.length) {
     const ns = [...notasVG].sort((a,b) => b.media - a.media);
