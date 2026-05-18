@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-17T23:34:16.771Z",
+  "geradoEm": "2026-05-17T23:44:59.639Z",
   "meta": {
-    "total": 54,
-    "lidos": 21,
+    "total": 55,
+    "lidos": 22,
     "faltando": 33,
-    "paginasTotal": 26460,
-    "paginasLidas": 11141,
-    "paginasFaltando": 15319,
-    "mediaDiaria": 78.3,
-    "ritmoAtual": 56.7,
-    "dataPrevistoAtual": "12/02/2027"
+    "paginasTotal": 27233,
+    "paginasLidas": 11192,
+    "paginasFaltando": 16041,
+    "mediaDiaria": 78.7,
+    "ritmoAtual": 58.5,
+    "dataPrevistoAtual": "16/02/2027"
   },
   "metasPorAno": {
     "2022": {
@@ -69,18 +69,18 @@
       "dataPrevistoAtual": "—"
     },
     "2026": {
-      "total": 54,
-      "lidos": 21,
+      "total": 55,
+      "lidos": 22,
       "lendo": 2,
       "pausados": 0,
       "aguardando": 31,
-      "paginasTotal": 26460,
-      "paginasLidas": 11141,
-      "paginasFaltando": 15319,
+      "paginasTotal": 27233,
+      "paginasLidas": 11192,
+      "paginasFaltando": 16041,
       "faltando": 33,
-      "mediaDiaria": 78.3,
-      "ritmoAtual": 56.7,
-      "dataPrevistoAtual": "12/02/2027"
+      "mediaDiaria": 78.7,
+      "ritmoAtual": 58.5,
+      "dataPrevistoAtual": "16/02/2027"
     },
     "PAUSADO": {
       "total": 2,
@@ -25361,6 +25361,24 @@
       "minutos": 16,
       "ano": 2026,
       "usuario": "Daniel"
+    },
+    {
+      "livro": "Sixth of the Dusk",
+      "colecao": "Cosmere",
+      "data": "2026-05-17",
+      "paginas": 7,
+      "minutos": 7,
+      "ano": 2026,
+      "usuario": "Daniel"
+    },
+    {
+      "livro": "Guerra de Jade",
+      "colecao": "A Saga dos Ossos Verdes",
+      "data": "2026-05-17",
+      "paginas": 44,
+      "minutos": 40,
+      "ano": 2026,
+      "usuario": "Daniel"
     }
   ],
   "livros": [
@@ -33517,10 +33535,10 @@
       "colecao": "Cosmere",
       "ordemColecao": 0,
       "ordem": 0,
-      "status": "Lendo",
+      "status": "Completo",
       "totalPag": 66,
-      "pagAtual": 59,
-      "pct": 0.894,
+      "pagAtual": 66,
+      "pct": 1,
       "usuario": "Daniel",
       "genero": ""
     },
@@ -33829,6 +33847,23 @@
       "pct": 0,
       "usuario": "Milton",
       "genero": ""
+    },
+    {
+      "livro": "Guerra de Jade",
+      "autor": "Fonda Lee",
+      "isbn": "978-8550820590",
+      "coverUrl": "https://m.media-amazon.com/images/I/71-bbO2UgwL._AC_UF1000,1000_QL80_.jpg",
+      "metaAno": "2026",
+      "depende": "Cidade de Jade",
+      "colecao": "A Saga dos Ossos Verdes",
+      "ordemColecao": 0,
+      "ordem": 0,
+      "status": "Lendo",
+      "totalPag": 773,
+      "pagAtual": 44,
+      "pct": 0.057,
+      "usuario": "Daniel",
+      "genero": "Fantasia"
     }
   ],
   "pausados": [
@@ -33886,21 +33921,21 @@
       "genero": ""
     },
     {
-      "livro": "Sixth of the Dusk",
-      "autor": "Brandon Sanderson",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/81saovWy0JL._UF1000,1000_QL80_.jpg",
+      "livro": "Guerra de Jade",
+      "autor": "Fonda Lee",
+      "isbn": "978-8550820590",
+      "coverUrl": "https://m.media-amazon.com/images/I/71-bbO2UgwL._AC_UF1000,1000_QL80_.jpg",
       "metaAno": "2026",
-      "depende": "",
-      "colecao": "Cosmere",
+      "depende": "Cidade de Jade",
+      "colecao": "A Saga dos Ossos Verdes",
       "ordemColecao": 0,
       "ordem": 0,
       "status": "Lendo",
-      "totalPag": 66,
-      "pagAtual": 59,
-      "pct": 0.894,
+      "totalPag": 773,
+      "pagAtual": 44,
+      "pct": 0.057,
       "usuario": "Daniel",
-      "genero": ""
+      "genero": "Fantasia"
     }
   ],
   "aguardando": [
@@ -41547,6 +41582,24 @@
         "Personagens": 2,
         "Ritmo": 1,
         "Temas": 2
+      },
+      "usuario": "Daniel"
+    },
+    {
+      "livro": "Sixth of the Dusk",
+      "ano": 2026,
+      "media": 7.7,
+      "criterios": {
+        "Diálogos": 7,
+        "Enredo": 7,
+        "Estilo Visual": 7.5,
+        "Finalização": 6.5,
+        "Imersão": 8.5,
+        "Impacto Emocional": 7.5,
+        "Originalidade": 8,
+        "Personagens": 8.5,
+        "Ritmo": 9,
+        "Temas": 7.5
       },
       "usuario": "Daniel"
     }
