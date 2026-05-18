@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-18T02:25:08.067Z",
+  "geradoEm": "2026-05-18T02:25:51.045Z",
   "meta": {
     "total": 54,
     "lidos": 21,
     "faltando": 33,
     "paginasTotal": 26813,
-    "paginasLidas": 10858,
-    "paginasFaltando": 15955,
-    "mediaDiaria": 79.3,
-    "ritmoAtual": 61.4,
-    "dataPrevistoAtual": "01/02/2027"
+    "paginasLidas": 10951,
+    "paginasFaltando": 15862,
+    "mediaDiaria": 80,
+    "ritmoAtual": 64.7,
+    "dataPrevistoAtual": "18/01/2027"
   },
   "metasPorAno": {
     "2022": {
@@ -75,12 +75,12 @@
       "pausados": 0,
       "aguardando": 30,
       "paginasTotal": 26813,
-      "paginasLidas": 10858,
-      "paginasFaltando": 15955,
+      "paginasLidas": 10951,
+      "paginasFaltando": 15862,
       "faltando": 33,
-      "mediaDiaria": 79.3,
-      "ritmoAtual": 61.4,
-      "dataPrevistoAtual": "01/02/2027"
+      "mediaDiaria": 80,
+      "ritmoAtual": 64.7,
+      "dataPrevistoAtual": "18/01/2027"
     },
     "PAUSADO": {
       "total": 2,
@@ -25523,6 +25523,15 @@
       "minutos": 42,
       "ano": 2026,
       "usuario": "Milton"
+    },
+    {
+      "livro": "A Grande Rainha",
+      "colecao": "As Brumas de Avalon",
+      "data": "2026-05-11",
+      "paginas": 93,
+      "minutos": 98,
+      "ano": 2026,
+      "usuario": "Milton"
     }
   ],
   "livros": [
@@ -31556,8 +31565,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 232,
-      "pagAtual": 86,
-      "pct": 0.371,
+      "pagAtual": 179,
+      "pct": 0.772,
       "usuario": "MILTON",
       "genero": ""
     },
@@ -34076,8 +34085,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 232,
-      "pagAtual": 86,
-      "pct": 0.371,
+      "pagAtual": 179,
+      "pct": 0.772,
       "usuario": "MILTON",
       "genero": ""
     },
