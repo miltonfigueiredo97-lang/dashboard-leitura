@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-18T03:12:20.812Z",
+  "geradoEm": "2026-05-18T03:13:47.987Z",
   "meta": {
     "total": 54,
     "lidos": 22,
@@ -42,17 +42,17 @@
     },
     "2024": {
       "total": 53,
-      "lidos": 52,
-      "lendo": 1,
+      "lidos": 53,
+      "lendo": 0,
       "pausados": 0,
       "aguardando": 0,
       "paginasTotal": 29826,
-      "paginasLidas": 29718,
-      "paginasFaltando": 108,
-      "faltando": 1,
-      "mediaDiaria": 84.9,
+      "paginasLidas": 29826,
+      "paginasFaltando": 0,
+      "faltando": 0,
+      "mediaDiaria": 85.2,
       "ritmoAtual": 0,
-      "dataPrevistoAtual": "—"
+      "dataPrevistoAtual": "Concluída!"
     },
     "2025": {
       "total": 79,
@@ -22567,7 +22567,7 @@
       "livro": "Palavras de Radiância",
       "colecao": "Os Relatos da Guerra das Tempestades",
       "data": "2024-10-26",
-      "paginas": 54,
+      "paginas": 162,
       "minutos": 54.1,
       "ano": 2024,
       "usuario": "Daniel"
@@ -34219,10 +34219,10 @@
       "colecao": "Os Relatos da Guerra das Tempestades",
       "ordemColecao": 0,
       "ordem": 0,
-      "status": "Lendo",
+      "status": "Completo",
       "totalPag": 1404,
-      "pagAtual": 1296,
-      "pct": 0.923,
+      "pagAtual": 1404,
+      "pct": 1,
       "usuario": "Daniel",
       "genero": "Fantasia épica"
     },
@@ -35521,23 +35521,6 @@
       "pct": 0.543,
       "usuario": "MILTON",
       "genero": "Fantasia histórica"
-    },
-    {
-      "livro": "Palavras de Radiância",
-      "autor": "Brandon Sanderson",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/91yCf2XXZjL._AC_UY218_.jpg",
-      "metaAno": "2024",
-      "depende": "",
-      "colecao": "Os Relatos da Guerra das Tempestades",
-      "ordemColecao": 0,
-      "ordem": 0,
-      "status": "Lendo",
-      "totalPag": 1404,
-      "pagAtual": 1296,
-      "pct": 0.923,
-      "usuario": "Daniel",
-      "genero": "Fantasia épica"
     },
     {
       "livro": "Guerra de Jade",
