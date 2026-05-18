@@ -1231,12 +1231,15 @@ function recalcularDados(d, sessoes) {
   const diasValsTemp = Object.values(dayMapTemp);
   const mediaParDia = diasValsTemp.length ? Math.round(diasValsTemp.reduce((a,b)=>a+b,0)/diasValsTemp.length*10)/10 : 50;
 
-  // Maior e menor livro — usa window._livros (já filtrado por usuário)
-  const livrosLidos = (window._livros||[]).filter(l => l.status === 'Completo' && l.totalPag > 0);
-  if (livrosLidos.length) {
-    const sorted = [...livrosLidos].sort((a,b) => b.totalPag - a.totalPag);
-    const maior = sorted[0];
-    const menor = sorted[sorted.length-1];
+  // Maior e menor livro — filtra por ano usando sessões já computadas
+  const livrosLidosVG = (window._livros||[]).filter(l => {
+    if (l.status !== 'Completo' || l.totalPag <= 0) return false;
+    if (ano === 'total') return true;
+    return String(l.metaAno) === String(ano) || sessoes.some(s => s.livro === l.livro);
+  });
+  if (livrosLidosVG.length) {
+    const sorted = [...livrosLidosVG].sort((a,b) => b.totalPag - a.totalPag);
+    const maior = sorted[0], menor = sorted[sorted.length-1];
     document.getElementById('kpi-maior-val').textContent   = maior.totalPag.toLocaleString('pt-BR');
     document.getElementById('kpi-maior-nome').textContent  = maior.livro;
     document.getElementById('kpi-maior-autor').textContent = maior.autor || AUTOR_MAP[maior.livro] || '';
@@ -1247,29 +1250,33 @@ function recalcularDados(d, sessoes) {
     document.getElementById('capa-menor').innerHTML        = coverImg(menor.isbn, '📕', '', menor.coverUrl||'');
   } else {
     ['kpi-maior-val','kpi-maior-nome','kpi-maior-autor','kpi-menor-val','kpi-menor-nome','kpi-menor-autor']
-      .forEach(id => { const el = document.getElementById(id); if(el) el.textContent = '—'; });
-    ['capa-maior','capa-menor'].forEach(id => { const el = document.getElementById(id); if(el) el.innerHTML = ''; });
+      .forEach(id => { const e2 = document.getElementById(id); if(e2) e2.textContent = '—'; });
+    ['capa-maior','capa-menor'].forEach(id => { const e2 = document.getElementById(id); if(e2) e2.innerHTML = ''; });
   }
 
-  // Melhor e pior avaliado — NOTES já filtrado por usuário via recalcularDados
-  if (NOTES && NOTES.length) {
-    const notasSorted = [...NOTES].sort((a,b) => b.media - a.media);
-    const melhor = notasSorted[0];
-    const pior   = notasSorted[notasSorted.length-1];
-    const melhorLivro = (window._livros||[]).find(l => l.livro === melhor.livro);
-    const piorLivro   = (window._livros||[]).find(l => l.livro === pior.livro);
+  // Melhor e pior avaliado — filtra notas pelo ano das sessões
+  const livrosNoAnoSet = new Set(sessoes.map(s => s.livro));
+  const notasVG = (NOTES||[]).filter(n =>
+    ano === 'total' || String(n.ano) === String(ano) || livrosNoAnoSet.has(n.livro)
+  );
+  const allLivrosVG = [...(window._livros||[]),...(window._dadosD?.lendo||[]),...(window._dadosD?.pausados||[]),...(window._dadosD?.aguardando||[])];
+  if (notasVG.length) {
+    const ns = [...notasVG].sort((a,b) => b.media - a.media);
+    const melhor = ns[0], pior = ns[ns.length-1];
+    const melhorL = allLivrosVG.find(l => l.livro === melhor.livro);
+    const piorL   = allLivrosVG.find(l => l.livro === pior.livro);
     document.getElementById('kpi-melhor-val').textContent   = melhor.media.toFixed(1);
     document.getElementById('kpi-melhor-nome').textContent  = melhor.livro;
-    document.getElementById('kpi-melhor-autor').textContent = melhorLivro?.autor || AUTOR_MAP[melhor.livro] || '';
-    document.getElementById('capa-melhor').innerHTML        = coverImg(melhorLivro?.isbn, '⭐', '', melhorLivro?.coverUrl||'');
+    document.getElementById('kpi-melhor-autor').textContent = melhorL?.autor || AUTOR_MAP[melhor.livro] || '';
+    document.getElementById('capa-melhor').innerHTML        = coverImg(melhorL?.isbn, '⭐', '', melhorL?.coverUrl||'');
     document.getElementById('kpi-pior-val').textContent     = pior.media.toFixed(1);
     document.getElementById('kpi-pior-nome').textContent    = pior.livro;
-    document.getElementById('kpi-pior-autor').textContent   = piorLivro?.autor || AUTOR_MAP[pior.livro] || '';
-    document.getElementById('capa-pior').innerHTML          = coverImg(piorLivro?.isbn, '💀', '', piorLivro?.coverUrl||'');
+    document.getElementById('kpi-pior-autor').textContent   = piorL?.autor || AUTOR_MAP[pior.livro] || '';
+    document.getElementById('capa-pior').innerHTML          = coverImg(piorL?.isbn, '💀', '', piorL?.coverUrl||'');
   } else {
     ['kpi-melhor-val','kpi-melhor-nome','kpi-melhor-autor','kpi-pior-val','kpi-pior-nome','kpi-pior-autor']
-      .forEach(id => { const el = document.getElementById(id); if(el) el.textContent = '—'; });
-    ['capa-melhor','capa-pior'].forEach(id => { const el = document.getElementById(id); if(el) el.innerHTML = ''; });
+      .forEach(id => { const e2 = document.getElementById(id); if(e2) e2.textContent = '—'; });
+    ['capa-melhor','capa-pior'].forEach(id => { const e2 = document.getElementById(id); if(e2) e2.innerHTML = ''; });
   }
 
   // Recalcula metasPorAno a partir dos livros e sessões já filtrados por usuário
@@ -1379,6 +1386,7 @@ function atualizarVisaoGeral() {
   const d = window._dadosD;
   if (!d) return;
   const ano = document.getElementById('selVGAno')?.value || 'total';
+  window._anoVG = ano;
   const sessAll = window._sessoes || [];
   const sessoes = ano === 'total' ? sessAll : sessAll.filter(s => String(s.ano) === String(ano));
 
@@ -3884,6 +3892,7 @@ document.getElementById('changelogOverlay').addEventListener('click', e => {
 });
 let statusAtual = null;
 let livrosStatusAtual = [];
+window._anoVG = 'total'; // ano selecionado na Visão Geral
 
 function toggleListaStatus(status) {
   const painel = document.getElementById('painelStatus');
@@ -3894,9 +3903,18 @@ function toggleListaStatus(status) {
   const titulos = { Completo:'✅ Concluídos', Lendo:'📖 Lendo', Pausado:'⏸️ Pausados', Aguardando:'📋 Aguardando', Todos:'📚 Todos os Livros' };
   document.getElementById('painelStatusTitulo').textContent = titulos[status];
 
+  const anoVG = window._anoVG || 'total';
+  const sessAnoVG = anoVG === 'total' ? (window._sessoes||[]) : (window._sessoes||[]).filter(s => String(s.ano) === String(anoVG));
+  const livrosComSessaoVG = new Set(sessAnoVG.map(s => s.livro));
+
+  const todosFiltrados = (window._livros||[]).filter(l => {
+    if (anoVG === 'total') return true;
+    return String(l.metaAno) === String(anoVG) || livrosComSessaoVG.has(l.livro);
+  });
+
   livrosStatusAtual = status === 'Todos'
-    ? (window._livros||[])
-    : (window._livros||[]).filter(l => l.status === status);
+    ? todosFiltrados
+    : todosFiltrados.filter(l => l.status === status);
 
   // Coleção: usa campo do livro, ou busca nas sessões, ou usa colecao do livro do JSON global
   const getColecao = (l) => {
