@@ -1413,10 +1413,20 @@ function atualizarVisaoGeral() {
   const el = id => document.getElementById(id);
   const livrosU = (window._livros||[]);
 
-  // Filtra livros por ano via metaAno (concluídos) ou sessões (em andamento)
+  // Mapa livro -> ano última sessão
+  const ultimaAnoMap = {};
+  sessAll.forEach(s => {
+    const a = s.data?.slice(0,4)||'';
+    if (a && (!ultimaAnoMap[s.livro] || a > ultimaAnoMap[s.livro])) ultimaAnoMap[s.livro] = a;
+  });
+
   const livrosNoAno = ano === 'total' ? livrosU : livrosU.filter(l => {
-    if (String(l.metaAno) === String(ano)) return true;
-    return sessoes.some(s => s.livro === l.livro);
+    const anoRef = (l.anoConclusao && l.anoConclusao.length === 4)
+      ? l.anoConclusao
+      : (l.metaAno && String(l.metaAno).length === 4)
+        ? String(l.metaAno)
+        : (ultimaAnoMap[l.livro] || '');
+    return anoRef === String(ano);
   });
 
   el('kpi-paginas').textContent    = totalPagsVG.toLocaleString('pt-BR');
@@ -3982,7 +3992,7 @@ function toggleListaStatus(status) {
   const _anoBtn = document.getElementById('selVGAno')?.value || 'total';
   const _sessAll = window._sessoes || [];
 
-  // Mapa: livro -> ano da última sessão (extrai do campo data)
+  // Mapa: livro -> ano da última sessão (ano de conclusão real)
   const _ultimaAnoLivro = {};
   _sessAll.forEach(s => {
     const a = s.data?.slice(0,4) || '';
@@ -3990,15 +4000,16 @@ function toggleListaStatus(status) {
       _ultimaAnoLivro[s.livro] = a;
   });
 
-  // Livros com sessão no ano selecionado
-  const _livrosBtn = new Set(_sessAll.filter(s => (s.data?.slice(0,4)||'') === _anoBtn).map(s=>s.livro));
-
   livrosStatusAtual = (status === 'Todos' ? (window._livros||[]) : (window._livros||[]).filter(l=>l.status===status))
     .filter(l => {
       if (_anoBtn === 'total') return true;
-      const anoRef = l.metaAno ? String(l.metaAno) : (_ultimaAnoLivro[l.livro] || '');
-      if (l.status === 'Completo') return anoRef === _anoBtn || _livrosBtn.has(l.livro);
-      return anoRef === _anoBtn || _livrosBtn.has(l.livro);
+      // Prioridade: data de conclusão (col Q) > metaAno (col P) > última sessão
+      const anoRef = (l.anoConclusao && l.anoConclusao.length === 4)
+        ? l.anoConclusao
+        : (l.metaAno && String(l.metaAno).length === 4)
+          ? String(l.metaAno)
+          : (_ultimaAnoLivro[l.livro] || '');
+      return anoRef === _anoBtn;
     });
 
   // Coleção: usa campo do livro, ou busca nas sessões, ou usa colecao do livro do JSON global
