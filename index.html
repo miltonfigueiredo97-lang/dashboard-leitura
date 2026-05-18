@@ -2234,7 +2234,32 @@ window.filtrarSelBook = filtrarSelBook;
       <div style="background:var(--bg3);border-radius:8px;padding:8px;text-align:center;grid-column:1/-1;">
         <div style="font-size:13px;font-weight:600;color:${status==='Completo'?'var(--teal)':status==='Lendo'?'var(--purple)':status==='Pausado'?'var(--orange)':'var(--muted)'}">${status}</div>
         <div style="font-size:11px;color:var(--muted)">Status</div>
-      </div>`;
+      </div>
+      ${(()=>{
+        const notaLivro = (window.NOTES||[]).find(n=>n.livro===book);
+        if(!notaLivro) return '';
+        const criterios = notaLivro.criterios||{};
+        const criteriosHtml = Object.entries(criterios).map(([k,v])=>`
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:4px 0;border-bottom:1px solid var(--border);">
+            <span style="font-size:12px;color:var(--muted);">${k}</span>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div style="width:80px;height:4px;background:var(--bg2);border-radius:2px;overflow:hidden;">
+                <div style="width:${v*10}%;height:100%;background:var(--purple);border-radius:2px;"></div>
+              </div>
+              <span style="font-size:12px;font-weight:700;color:var(--text);min-width:24px;text-align:right;">${v}</span>
+            </div>
+          </div>`).join('');
+        return `<div style="background:var(--bg3);border-radius:8px;padding:8px;grid-column:1/-1;">
+          <div style="display:flex;justify-content:space-between;align-items:center;cursor:pointer;" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+            <div style="font-size:11px;color:var(--muted);">Nota Média</div>
+            <div style="display:flex;align-items:center;gap:6px;">
+              <span style="font-size:18px;font-weight:700;color:var(--yellow)">⭐ ${notaLivro.media.toFixed(1)}</span>
+              <span style="font-size:10px;color:var(--muted);">▼ ver detalhes</span>
+            </div>
+          </div>
+          <div style="display:none;margin-top:10px;">${criteriosHtml}</div>
+        </div>`;
+      })()}`;
   };
 
   buildBookChart();
@@ -3804,39 +3829,44 @@ function renderBatalha() {
     ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#8892a8',font:{size:11}}},tooltip:{...(window.TT||{}),callbacks:{afterBody:items=>{const i=items[0].dataIndex;const a=mA[i],b=mB[i];if(!a&&!b)return'';return a>b?'🏆 '+pA+' venceu':b>a?'🏆 '+pB+' venceu':'🤝 Empate';}}}},
     scales:{x:{ticks:{color:'#8892a8',font:{size:10}},grid:{color:'rgba(42,50,72,0.4)'}},y:{ticks:{color:'#8892a8',font:{size:10},callback:v=>v>=1000?(v/1000).toFixed(1)+'k':v},grid:{color:'rgba(42,50,72,0.4)'},beginAtZero:true}}}});}
 
-    // Gêneros comparativo
+    // Gêneros comparativo — estilo barras horizontais com %
     const genEl = document.getElementById('bat-generos');
     if (genEl) {
       const ex = Chart.getChart(genEl); if(ex) ex.destroy();
-      // Conta gêneros por player
       const genA = {}, genB = {};
       dA.todos.filter(l=>l.status==='Completo'&&l.genero).forEach(l=>{ genA[l.genero]=(genA[l.genero]||0)+1; });
       dB.todos.filter(l=>l.status==='Completo'&&l.genero).forEach(l=>{ genB[l.genero]=(genB[l.genero]||0)+1; });
-      const allGen = [...new Set([...Object.keys(genA),...Object.keys(genB)])].sort();
+      const allGen = [...new Set([...Object.keys(genA),...Object.keys(genB)])].sort((a,b)=>{
+        return ((genA[b]||0)+(genB[b]||0)) - ((genA[a]||0)+(genB[a]||0));
+      });
       const vaziEl = document.getElementById('bat-generos-vazio');
       if (!allGen.length) {
         genEl.style.display='none';
         if(vaziEl) vaziEl.style.display='block';
       } else {
         if(vaziEl) vaziEl.style.display='none';
+        genEl.style.display='block';
+        const totA = dA.todos.filter(l=>l.status==='Completo'&&l.genero).length||1;
+        const totB = dB.todos.filter(l=>l.status==='Completo'&&l.genero).length||1;
         new Chart(genEl, {
           type:'bar',
           data:{
             labels: allGen,
             datasets:[
-              {label:pA, data:allGen.map(g=>genA[g]||0), backgroundColor:'rgba(168,85,247,0.7)', borderColor:'#A855F7', borderWidth:1, borderRadius:4},
-              {label:pB, data:allGen.map(g=>genB[g]||0), backgroundColor:'rgba(249,115,22,0.7)',  borderColor:'#FB923C', borderWidth:1, borderRadius:4},
+              {label:pA, data:allGen.map(g=>Math.round((genA[g]||0)/totA*100)), backgroundColor:'rgba(168,85,247,0.75)', borderColor:'#A855F7', borderWidth:1, borderRadius:4},
+              {label:pB, data:allGen.map(g=>Math.round((genB[g]||0)/totB*100)), backgroundColor:'rgba(249,115,22,0.75)', borderColor:'#FB923C', borderWidth:1, borderRadius:4},
             ]
           },
           options:{
+            indexAxis:'y',
             responsive:true, maintainAspectRatio:false,
             plugins:{
               legend:{labels:{color:'#8892a8',font:{size:11}}},
-              tooltip:{...(window.TT||{}), callbacks:{label:c=>` ${c.dataset.label}: ${c.parsed.y} livro${c.parsed.y!==1?'s':''}`}}
+              tooltip:{...(window.TT||{}), callbacks:{label:c=>` ${c.dataset.label}: ${c.parsed.x}%`}}
             },
             scales:{
-              x:{ticks:{color:'#8892a8',font:{size:10}},grid:{color:'rgba(42,50,72,0.3)'}},
-              y:{ticks:{color:'#8892a8',font:{size:10},stepSize:1},grid:{color:'rgba(42,50,72,0.3)'},beginAtZero:true}
+              x:{ticks:{color:'#8892a8',font:{size:10},callback:v=>v+'%'},grid:{color:'rgba(42,50,72,0.3)'},beginAtZero:true,max:100},
+              y:{ticks:{color:'#8892a8',font:{size:10}},grid:{display:false}}
             }
           }
         });
@@ -3938,8 +3968,15 @@ function toggleListaStatus(status) {
   const _anoBtn = document.getElementById('selVGAno')?.value || 'total';
   const _sessBtn = _anoBtn === 'total' ? (window._sessoes||[]) : (window._sessoes||[]).filter(s=>String(s.ano)===String(_anoBtn));
   const _livrosBtn = new Set(_sessBtn.map(s=>s.livro));
+
   livrosStatusAtual = (status === 'Todos' ? (window._livros||[]) : (window._livros||[]).filter(l=>l.status===status))
-    .filter(l => _anoBtn==='total' || String(l.metaAno)===String(_anoBtn) || _livrosBtn.has(l.livro));
+    .filter(l => {
+      if (_anoBtn === 'total') return true;
+      // Concluídos: usar apenas metaAno (ano de conclusão)
+      if (l.status === 'Completo') return String(l.metaAno) === String(_anoBtn);
+      // Outros status: incluir se teve sessão no ano
+      return String(l.metaAno) === String(_anoBtn) || _livrosBtn.has(l.livro);
+    });
 
   // Coleção: usa campo do livro, ou busca nas sessões, ou usa colecao do livro do JSON global
   const getColecao = (l) => {
