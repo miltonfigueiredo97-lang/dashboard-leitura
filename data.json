@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-18T02:26:39.245Z",
+  "geradoEm": "2026-05-18T02:27:22.168Z",
   "meta": {
     "total": 54,
     "lidos": 21,
     "faltando": 33,
     "paginasTotal": 26813,
-    "paginasLidas": 10818,
-    "paginasFaltando": 15995,
-    "mediaDiaria": 79.3,
-    "ritmoAtual": 61.4,
-    "dataPrevistoAtual": "02/02/2027"
+    "paginasLidas": 10772,
+    "paginasFaltando": 16041,
+    "mediaDiaria": 78.3,
+    "ritmoAtual": 56.9,
+    "dataPrevistoAtual": "23/02/2027"
   },
   "metasPorAno": {
     "2022": {
@@ -71,16 +71,16 @@
     "2026": {
       "total": 54,
       "lidos": 21,
-      "lendo": 3,
+      "lendo": 2,
       "pausados": 0,
-      "aguardando": 30,
+      "aguardando": 31,
       "paginasTotal": 26813,
-      "paginasLidas": 10818,
-      "paginasFaltando": 15995,
+      "paginasLidas": 10772,
+      "paginasFaltando": 16041,
       "faltando": 33,
-      "mediaDiaria": 79.3,
-      "ritmoAtual": 61.4,
-      "dataPrevistoAtual": "02/02/2027"
+      "mediaDiaria": 78.3,
+      "ritmoAtual": 56.9,
+      "dataPrevistoAtual": "23/02/2027"
     },
     "PAUSADO": {
       "total": 2,
@@ -10761,15 +10761,6 @@
       "data": "2026-04-17",
       "paginas": 35,
       "minutos": 37,
-      "ano": 2026,
-      "usuario": "Daniel"
-    },
-    {
-      "livro": "A Grande Rainha",
-      "colecao": "As Brumas de Avalon",
-      "data": "2026-05-09",
-      "paginas": 46,
-      "minutos": 48.7,
       "ano": 2026,
       "usuario": "Daniel"
     },
@@ -25505,24 +25496,6 @@
       "minutos": 40,
       "ano": 2025,
       "usuario": "Daniel"
-    },
-    {
-      "livro": "A Grande Rainha",
-      "colecao": "As Brumas de Avalon",
-      "data": "2026-05-09",
-      "paginas": 46,
-      "minutos": 48,
-      "ano": 2026,
-      "usuario": "Milton"
-    },
-    {
-      "livro": "A Grande Rainha",
-      "colecao": "As Brumas de Avalon",
-      "data": "2026-05-10",
-      "paginas": 40,
-      "minutos": 42,
-      "ano": 2026,
-      "usuario": "Milton"
     }
   ],
   "livros": [
@@ -31554,10 +31527,10 @@
       "colecao": "As Brumas de Avalon",
       "ordemColecao": 12,
       "ordem": 0,
-      "status": "Lendo",
+      "status": "Aguardando",
       "totalPag": 232,
-      "pagAtual": 46,
-      "pct": 0.198,
+      "pagAtual": 0,
+      "pct": 0,
       "usuario": "MILTON",
       "genero": ""
     },
@@ -34061,23 +34034,6 @@
       "totalPag": 641,
       "pagAtual": 348,
       "pct": 0.543,
-      "usuario": "MILTON",
-      "genero": ""
-    },
-    {
-      "livro": "A Grande Rainha",
-      "autor": "Marion Zimmer Bradley",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/91lureOWbaL._AC_UY218_.jpg",
-      "metaAno": "2026",
-      "depende": "",
-      "colecao": "As Brumas de Avalon",
-      "ordemColecao": 12,
-      "ordem": 0,
-      "status": "Lendo",
-      "totalPag": 232,
-      "pagAtual": 46,
-      "pct": 0.198,
       "usuario": "MILTON",
       "genero": ""
     },
@@ -38243,6 +38199,23 @@
       "ordem": 0,
       "status": "Aguardando",
       "totalPag": 638,
+      "pagAtual": 0,
+      "pct": 0,
+      "usuario": "MILTON",
+      "genero": ""
+    },
+    {
+      "livro": "A Grande Rainha",
+      "autor": "Marion Zimmer Bradley",
+      "isbn": "",
+      "coverUrl": "https://m.media-amazon.com/images/I/91lureOWbaL._AC_UY218_.jpg",
+      "metaAno": "2026",
+      "depende": "",
+      "colecao": "As Brumas de Avalon",
+      "ordemColecao": 12,
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 232,
       "pagAtual": 0,
       "pct": 0,
       "usuario": "MILTON",
