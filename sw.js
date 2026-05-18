@@ -1,4 +1,4 @@
-const CACHE = 'leitura-v1';
+const CACHE = 'leitura-v3';
 const URLS  = ['/', '/index.html'];
 
 self.addEventListener('install', e => {
