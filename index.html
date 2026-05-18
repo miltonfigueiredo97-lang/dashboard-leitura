@@ -574,16 +574,15 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
     </div>
   </div>
 
-  <!-- Painel de gênero -->
-  <div id="painelGenero" style="display:none;background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:16px;overflow:visible;">
+  <!-- Painel de gênero — overlay flutuante -->
+  <div id="painelGenero" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:9000;background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:16px;width:min(500px,90vw);max-height:70vh;overflow-y:auto;box-shadow:0 8px 40px rgba(0,0,0,0.6);">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
       <div id="painelGeneroTitulo" style="font-size:16px;font-weight:700;color:var(--text)"></div>
       <button onclick="fecharPainelGenero()" style="background:var(--bg3);border:none;color:var(--muted);width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:16px;">✕</button>
     </div>
-    <div style="max-height:450px;overflow-y:auto;padding:4px 0;">
-      <div id="painelGeneroLista" style="display:flex;flex-direction:column;gap:8px;padding:0 4px;"></div>
-    </div>
+    <div id="painelGeneroLista" style="display:flex;flex-direction:column;gap:8px;"></div>
   </div>
+  <div id="painelGeneroOverlay" style="display:none;position:fixed;inset:0;z-index:8999;background:rgba(0,0,0,0.5);" onclick="fecharPainelGenero()"></div>
     <div class="kpi" style="--accent:#ffd166">
       <div style="font-size:11px;font-weight:700;letter-spacing:1px;color:var(--muted);margin-bottom:8px;">📖 MAIOR LIVRO</div>
       <div class="kpi-book">
@@ -2443,6 +2442,7 @@ window.buildGeneros = buildGeneros;
 
 function abrirPainelGenero(genero) {
   const painel = document.getElementById('painelGenero');
+  const overlay = document.getElementById('painelGeneroOverlay');
   const titulo = document.getElementById('painelGeneroTitulo');
   const lista  = document.getElementById('painelGeneroLista');
   if (!painel || !titulo || !lista) return;
@@ -2464,18 +2464,16 @@ function abrirPainelGenero(genero) {
       </div>
     </div>`).join('');
 
-  // Fecha painelStatus se estiver aberto
-  const ps = document.getElementById('painelStatus');
-  if (ps) ps.style.display = 'none';
-
   painel.style.display = 'block';
-  painel.scrollIntoView({ behavior:'smooth', block:'nearest' });
+  if (overlay) overlay.style.display = 'block';
 }
 window.abrirPainelGenero = abrirPainelGenero;
 
 function fecharPainelGenero() {
   const painel = document.getElementById('painelGenero');
+  const overlay = document.getElementById('painelGeneroOverlay');
   if (painel) painel.style.display = 'none';
+  if (overlay) overlay.style.display = 'none';
 }
 window.fecharPainelGenero = fecharPainelGenero;
 function buildStreaks() {
@@ -3367,7 +3365,7 @@ function renderBatalha() {
   // Radar
   // ── Perfil de Combate — tetos fixos por temporada (0-10) ─────────
   const TETOS = { paginas:15000, velocidade:80, notaMax:10, bosses:10, variedade:40 };
-  const allDatas = [...new Set([...dA.sess,...dB.sess].map(s=>s.data).filter(Boolean))].sort();
+  const allDatas = [...new Set([...(dA.sess||[]),...(dB.sess||[])].map(s=>s.data).filter(Boolean))].sort();
   const diasPeriodo = allDatas.length > 1
     ? Math.round((new Date(allDatas[allDatas.length-1]+'T12:00:00')-new Date(allDatas[0]+'T12:00:00'))/86400000)+1
     : Math.max(dA.diasSet.size,dB.diasSet.size,1);
