@@ -1187,6 +1187,7 @@ function recalcularDados(d, sessoes) {
     ...n,
     ano: bookFinishYear[n.livro] || (n.ano > 2000 ? n.ano : 0)
   })).sort((a,b) => b.media - a.media);
+  window.NOTES = NOTES;
 
   // ── COLECOES ─────────────────────────────────────────
   const byCol = {};
