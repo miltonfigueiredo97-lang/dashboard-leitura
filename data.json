@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-18T08:43:25.149Z",
+  "geradoEm": "2026-05-18T10:41:44.740Z",
   "meta": {
     "total": 54,
     "lidos": 22,
     "faltando": 32,
     "paginasTotal": 26813,
-    "paginasLidas": 11026,
-    "paginasFaltando": 15787,
-    "mediaDiaria": 75.4,
-    "ritmoAtual": 51,
-    "dataPrevistoAtual": "24/03/2027"
+    "paginasLidas": 11046,
+    "paginasFaltando": 15767,
+    "mediaDiaria": 75,
+    "ritmoAtual": 50.2,
+    "dataPrevistoAtual": "29/03/2027"
   },
   "metasPorAno": {
     "2022": {
@@ -75,12 +75,12 @@
       "pausados": 0,
       "aguardando": 29,
       "paginasTotal": 26813,
-      "paginasLidas": 11026,
-      "paginasFaltando": 15787,
+      "paginasLidas": 11046,
+      "paginasFaltando": 15767,
       "faltando": 32,
-      "mediaDiaria": 75.4,
-      "ritmoAtual": 51,
-      "dataPrevistoAtual": "24/03/2027"
+      "mediaDiaria": 75,
+      "ritmoAtual": 50.2,
+      "dataPrevistoAtual": "29/03/2027"
     },
     "PAUSADO": {
       "total": 2,
@@ -26999,6 +26999,15 @@
       "minutos": 18,
       "ano": 2026,
       "usuario": "Daniel"
+    },
+    {
+      "livro": "Shadows for Silence in the Forests of Hell",
+      "colecao": "Cosmere",
+      "data": "2026-05-18",
+      "paginas": 20,
+      "minutos": 16,
+      "ano": 2026,
+      "usuario": "Daniel"
     }
   ],
   "livros": [
@@ -35140,8 +35149,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 89,
-      "pagAtual": 20,
-      "pct": 0.225,
+      "pagAtual": 40,
+      "pct": 0.449,
       "usuario": "Daniel",
       "genero": "Fantasia épica"
     },
@@ -35552,8 +35561,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 89,
-      "pagAtual": 20,
-      "pct": 0.225,
+      "pagAtual": 40,
+      "pct": 0.449,
       "usuario": "Daniel",
       "genero": "Fantasia épica"
     },
