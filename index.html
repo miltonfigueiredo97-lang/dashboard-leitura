@@ -1401,14 +1401,21 @@ function atualizarVisaoGeral() {
   const recordeLivroDataVG = (window._livros||[]).find(l=>l.livro===recordeLivroVG);
   const horasTotaisVG = Math.round(sessoes.reduce((s,r)=>s+(r.minutos||0),0)/60);
 
-  const el = id => document.getElementById(id);
-  const livrosU    = (window._livros||[]);
+  const livrosU = (window._livros||[]);
+  // Filtra livros por ano — usa metaAno quando selecionado, ou sessões do ano para status
+  const livrosAno = ano === 'total' ? livrosU : livrosU.filter(l => String(l.metaAno) === String(ano));
+  // Livros em andamento sem metaAno: inclui se tiveram sessões no ano
+  const livrosComSessaoNoAno = ano === 'total' ? livrosU : (() => {
+    const livrosComSessao = new Set(sessoes.map(s => s.livro));
+    return livrosU.filter(l => livrosComSessao.has(l.livro));
+  })();
+
   el('kpi-paginas').textContent    = totalPagsVG.toLocaleString('pt-BR');
-  el('kpi-livros').textContent     = livrosU.filter(l=>l.status==='Completo').length;
-  el('kpi-lendo').textContent      = livrosU.filter(l=>l.status==='Lendo').length;
-  el('kpi-pausados').textContent   = livrosU.filter(l=>l.status==='Pausado').length;
-  el('kpi-aguardando').textContent = livrosU.filter(l=>l.status==='Aguardando').length;
-  el('kpi-todos').textContent      = livrosU.length;
+  el('kpi-livros').textContent     = livrosAno.filter(l=>l.status==='Completo').length;
+  el('kpi-lendo').textContent      = livrosComSessaoNoAno.filter(l=>l.status==='Lendo').length;
+  el('kpi-pausados').textContent   = livrosComSessaoNoAno.filter(l=>l.status==='Pausado').length;
+  el('kpi-aguardando').textContent = (ano === 'total' ? livrosU : livrosAno).filter(l=>l.status==='Aguardando').length;
+  el('kpi-todos').textContent      = ano === 'total' ? livrosU.length : new Set([...livrosAno, ...livrosComSessaoNoAno]).size;
   el('kpi-sessoes').textContent    = sessoes.length.toLocaleString('pt-BR');
   el('kpi-pgdia').textContent      = mediaParDiaVG.toFixed(1).replace('.',',');
   el('kpi-horas').textContent      = horasTotaisVG + 'h';
