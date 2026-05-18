@@ -1255,7 +1255,7 @@ function recalcularDados(d, sessoes) {
   }
 
   // Melhor e pior avaliado — filtra por ano
-  const notasDoAno = (NOTES||[]).filter(n =>
+  const notasDoAno = (window.NOTES||[]).filter(n =>
     ano === 'total' || String(n.ano) === String(ano) || livrosNoAnoSet.has(n.livro)
   );
   if (notasDoAno.length) {
@@ -1541,6 +1541,7 @@ function renderizarGraficos(dados) {
   WD_AVG    = dados.WD_AVG;
   WD_SUM    = dados.WD_SUM;
   NOTES     = dados.NOTES;
+  window.NOTES = NOTES;
   COLECOES  = dados.COLECOES;
   BOOK_DAILY = dados.BOOK_DAILY;
   // Destroi todos os charts existentes antes de recriar
