@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-18T03:05:12.114Z",
+  "geradoEm": "2026-05-18T03:12:20.812Z",
   "meta": {
     "total": 54,
     "lidos": 22,
@@ -55,18 +55,18 @@
       "dataPrevistoAtual": "—"
     },
     "2025": {
-      "total": 81,
-      "lidos": 77,
+      "total": 79,
+      "lidos": 79,
       "lendo": 0,
       "pausados": 0,
-      "aguardando": 4,
-      "paginasTotal": 44567,
-      "paginasLidas": 42392,
-      "paginasFaltando": 2175,
-      "faltando": 4,
+      "aguardando": 0,
+      "paginasTotal": 43678,
+      "paginasLidas": 43678,
+      "paginasFaltando": 0,
+      "faltando": 0,
       "mediaDiaria": 121.8,
       "ritmoAtual": 0,
-      "dataPrevistoAtual": "—"
+      "dataPrevistoAtual": "Concluída!"
     },
     "2026": {
       "total": 54,
@@ -97,15 +97,15 @@
       "dataPrevistoAtual": "—"
     },
     "AINDA NÃO DEFINIDO": {
-      "total": 221,
+      "total": 223,
       "lidos": 0,
       "lendo": 0,
       "pausados": 0,
-      "aguardando": 221,
-      "paginasTotal": 107860,
+      "aguardando": 223,
+      "paginasTotal": 108749,
       "paginasLidas": 0,
-      "paginasFaltando": 107860,
-      "faltando": 221,
+      "paginasFaltando": 108749,
+      "faltando": 223,
       "mediaDiaria": 50,
       "ritmoAtual": 0,
       "dataPrevistoAtual": "—"
@@ -6607,8 +6607,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Jardins da Lua - Imperio Malazano",
-      "colecao": "",
+      "livro": "Jardins da Lua",
+      "colecao": "Saga do Império Malazano",
       "data": "2025-05-19",
       "paginas": 48,
       "minutos": 20.9,
@@ -6616,8 +6616,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Jardins da Lua - Imperio Malazano",
-      "colecao": "",
+      "livro": "Jardins da Lua",
+      "colecao": "Saga do Império Malazano",
       "data": "2025-05-20",
       "paginas": 13,
       "minutos": 16,
@@ -6625,8 +6625,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Jardins da Lua - Imperio Malazano",
-      "colecao": "",
+      "livro": "Jardins da Lua",
+      "colecao": "Saga do Império Malazano",
       "data": "2025-05-21",
       "paginas": 36,
       "minutos": 60,
@@ -6634,8 +6634,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Jardins da Lua - Imperio Malazano",
-      "colecao": "",
+      "livro": "Jardins da Lua",
+      "colecao": "Saga do Império Malazano",
       "data": "2025-05-21",
       "paginas": 17,
       "minutos": 22.8,
@@ -6643,8 +6643,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Jardins da Lua - Imperio Malazano",
-      "colecao": "",
+      "livro": "Jardins da Lua",
+      "colecao": "Saga do Império Malazano",
       "data": "2025-05-22",
       "paginas": 32,
       "minutos": 44.7,
@@ -6652,8 +6652,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Jardins da Lua - Imperio Malazano",
-      "colecao": "",
+      "livro": "Jardins da Lua",
+      "colecao": "Saga do Império Malazano",
       "data": "2025-05-24",
       "paginas": 11,
       "minutos": 17.9,
@@ -6661,8 +6661,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Jardins da Lua - Imperio Malazano",
-      "colecao": "",
+      "livro": "Jardins da Lua",
+      "colecao": "Saga do Império Malazano",
       "data": "2025-05-24",
       "paginas": 11,
       "minutos": 22.8,
@@ -6670,8 +6670,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Jardins da Lua - Imperio Malazano",
-      "colecao": "",
+      "livro": "Jardins da Lua",
+      "colecao": "Saga do Império Malazano",
       "data": "2025-05-24",
       "paginas": 26,
       "minutos": 35.1,
@@ -6679,8 +6679,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Jardins da Lua - Imperio Malazano",
-      "colecao": "",
+      "livro": "Jardins da Lua",
+      "colecao": "Saga do Império Malazano",
       "data": "2025-05-26",
       "paginas": 40,
       "minutos": 56.1,
@@ -6688,8 +6688,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Jardins da Lua - Imperio Malazano",
-      "colecao": "",
+      "livro": "Jardins da Lua",
+      "colecao": "Saga do Império Malazano",
       "data": "2025-05-27",
       "paginas": 19,
       "minutos": 24.7,
@@ -6697,8 +6697,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Jardins da Lua - Imperio Malazano",
-      "colecao": "",
+      "livro": "Jardins da Lua",
+      "colecao": "Saga do Império Malazano",
       "data": "2025-05-27",
       "paginas": 5,
       "minutos": 15.7,
@@ -6706,8 +6706,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Jardins da Lua - Imperio Malazano",
-      "colecao": "",
+      "livro": "Jardins da Lua",
+      "colecao": "Saga do Império Malazano",
       "data": "2025-05-28",
       "paginas": 25,
       "minutos": 40.8,
@@ -6715,8 +6715,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Jardins da Lua - Imperio Malazano",
-      "colecao": "",
+      "livro": "Jardins da Lua",
+      "colecao": "Saga do Império Malazano",
       "data": "2025-05-30",
       "paginas": 10,
       "minutos": 16.1,
@@ -6724,8 +6724,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Jardins da Lua - Imperio Malazano",
-      "colecao": "",
+      "livro": "Jardins da Lua",
+      "colecao": "Saga do Império Malazano",
       "data": "2025-05-31",
       "paginas": 37,
       "minutos": 51.5,
@@ -6733,8 +6733,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Jardins da Lua - Imperio Malazano",
-      "colecao": "",
+      "livro": "Jardins da Lua",
+      "colecao": "Saga do Império Malazano",
       "data": "2025-06-02",
       "paginas": 16,
       "minutos": 19.3,
@@ -6742,8 +6742,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Jardins da Lua - Imperio Malazano",
-      "colecao": "",
+      "livro": "Jardins da Lua",
+      "colecao": "Saga do Império Malazano",
       "data": "2025-06-02",
       "paginas": 13,
       "minutos": 11,
@@ -6751,8 +6751,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Jardins da Lua - Imperio Malazano",
-      "colecao": "",
+      "livro": "Jardins da Lua",
+      "colecao": "Saga do Império Malazano",
       "data": "2025-06-03",
       "paginas": 47,
       "minutos": 59.3,
@@ -6760,8 +6760,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Jardins da Lua - Imperio Malazano",
-      "colecao": "",
+      "livro": "Jardins da Lua",
+      "colecao": "Saga do Império Malazano",
       "data": "2025-06-04",
       "paginas": 11,
       "minutos": 14.2,
@@ -6769,8 +6769,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Jardins da Lua - Imperio Malazano",
-      "colecao": "",
+      "livro": "Jardins da Lua",
+      "colecao": "Saga do Império Malazano",
       "data": "2025-06-04",
       "paginas": 20,
       "minutos": 22.2,
@@ -6778,8 +6778,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Jardins da Lua - Imperio Malazano",
-      "colecao": "",
+      "livro": "Jardins da Lua",
+      "colecao": "Saga do Império Malazano",
       "data": "2025-06-05",
       "paginas": 14,
       "minutos": 21.8,
@@ -6787,8 +6787,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Jardins da Lua - Imperio Malazano",
-      "colecao": "",
+      "livro": "Jardins da Lua",
+      "colecao": "Saga do Império Malazano",
       "data": "2025-06-07",
       "paginas": 12,
       "minutos": 21.7,
@@ -6796,8 +6796,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Jardins da Lua - Imperio Malazano",
-      "colecao": "",
+      "livro": "Jardins da Lua",
+      "colecao": "Saga do Império Malazano",
       "data": "2025-06-07",
       "paginas": 14,
       "minutos": 12.8,
@@ -6805,8 +6805,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Jardins da Lua - Imperio Malazano",
-      "colecao": "",
+      "livro": "Jardins da Lua",
+      "colecao": "Saga do Império Malazano",
       "data": "2025-06-10",
       "paginas": 7,
       "minutos": 14.5,
@@ -6814,8 +6814,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Jardins da Lua - Imperio Malazano",
-      "colecao": "",
+      "livro": "Jardins da Lua",
+      "colecao": "Saga do Império Malazano",
       "data": "2025-06-10",
       "paginas": 18,
       "minutos": 19.1,
@@ -6823,8 +6823,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Jardins da Lua - Imperio Malazano",
-      "colecao": "",
+      "livro": "Jardins da Lua",
+      "colecao": "Saga do Império Malazano",
       "data": "2025-06-11",
       "paginas": 11,
       "minutos": 27.5,
@@ -6832,8 +6832,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Jardins da Lua - Imperio Malazano",
-      "colecao": "",
+      "livro": "Jardins da Lua",
+      "colecao": "Saga do Império Malazano",
       "data": "2025-06-11",
       "paginas": 30,
       "minutos": 36.1,
@@ -6841,8 +6841,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Jardins da Lua - Imperio Malazano",
-      "colecao": "",
+      "livro": "Jardins da Lua",
+      "colecao": "Saga do Império Malazano",
       "data": "2025-06-12",
       "paginas": 48,
       "minutos": 52.2,
@@ -6850,8 +6850,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Jardins da Lua - Imperio Malazano",
-      "colecao": "",
+      "livro": "Jardins da Lua",
+      "colecao": "Saga do Império Malazano",
       "data": "2025-06-13",
       "paginas": 4,
       "minutos": 6.9,
@@ -6859,8 +6859,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Jardins da Lua - Imperio Malazano",
-      "colecao": "",
+      "livro": "Jardins da Lua",
+      "colecao": "Saga do Império Malazano",
       "data": "2025-06-13",
       "paginas": 10,
       "minutos": 10.4,
@@ -6868,8 +6868,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Jardins da Lua - Imperio Malazano",
-      "colecao": "",
+      "livro": "Jardins da Lua",
+      "colecao": "Saga do Império Malazano",
       "data": "2025-06-14",
       "paginas": 3,
       "minutos": 7.3,
@@ -6877,8 +6877,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Jardins da Lua - Imperio Malazano",
-      "colecao": "",
+      "livro": "Jardins da Lua",
+      "colecao": "Saga do Império Malazano",
       "data": "2025-06-17",
       "paginas": 13,
       "minutos": 11.7,
@@ -6886,8 +6886,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Jardins da Lua - Imperio Malazano",
-      "colecao": "",
+      "livro": "Jardins da Lua",
+      "colecao": "Saga do Império Malazano",
       "data": "2025-06-20",
       "paginas": 20,
       "minutos": 18.1,
@@ -6895,8 +6895,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Jardins da Lua - Imperio Malazano",
-      "colecao": "",
+      "livro": "Jardins da Lua",
+      "colecao": "Saga do Império Malazano",
       "data": "2025-06-20",
       "paginas": 75,
       "minutos": 63.2,
@@ -6904,8 +6904,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Jardins da Lua - Imperio Malazano",
-      "colecao": "",
+      "livro": "Jardins da Lua",
+      "colecao": "Saga do Império Malazano",
       "data": "2025-06-22",
       "paginas": 36,
       "minutos": 30.9,
@@ -6913,8 +6913,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Jardins da Lua - Imperio Malazano",
-      "colecao": "",
+      "livro": "Jardins da Lua",
+      "colecao": "Saga do Império Malazano",
       "data": "2025-06-23",
       "paginas": 35,
       "minutos": 59.3,
@@ -6922,8 +6922,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Jardins da Lua - Imperio Malazano",
-      "colecao": "",
+      "livro": "Jardins da Lua",
+      "colecao": "Saga do Império Malazano",
       "data": "2025-06-24",
       "paginas": 76,
       "minutos": 32.8,
@@ -7390,8 +7390,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 2º Era Livro 1",
-      "colecao": "",
+      "livro": "A Liga da Lei",
+      "colecao": "Cosmere",
       "data": "2025-08-12",
       "paginas": 117,
       "minutos": 129,
@@ -7399,8 +7399,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 2º Era Livro 1",
-      "colecao": "",
+      "livro": "A Liga da Lei",
+      "colecao": "Cosmere",
       "data": "2025-08-13",
       "paginas": 59,
       "minutos": 63,
@@ -7408,8 +7408,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 2º Era Livro 1",
-      "colecao": "",
+      "livro": "A Liga da Lei",
+      "colecao": "Cosmere",
       "data": "2025-08-15",
       "paginas": 52,
       "minutos": 35,
@@ -7417,8 +7417,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 2º Era Livro 1",
-      "colecao": "",
+      "livro": "A Liga da Lei",
+      "colecao": "Cosmere",
       "data": "2025-08-16",
       "paginas": 70,
       "minutos": 55,
@@ -7426,8 +7426,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 2º Era Livro 1",
-      "colecao": "",
+      "livro": "A Liga da Lei",
+      "colecao": "Cosmere",
       "data": "2025-08-18",
       "paginas": 41,
       "minutos": 40,
@@ -7435,8 +7435,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "Mistborn 2º Era Livro 1",
-      "colecao": "",
+      "livro": "A Liga da Lei",
+      "colecao": "Cosmere",
       "data": "2025-08-18",
       "paginas": 84,
       "minutos": 80,
@@ -27572,10 +27572,10 @@
       "colecao": "Saga do Império Malazano",
       "ordemColecao": 1,
       "ordem": 35,
-      "status": "Aguardando",
+      "status": "Completo",
       "totalPag": 863,
-      "pagAtual": 0,
-      "pct": 0,
+      "pagAtual": 863,
+      "pct": 1,
       "usuario": "MILTON",
       "genero": "Fantasia épica"
     },
@@ -27708,10 +27708,10 @@
       "colecao": "Cosmere",
       "ordemColecao": 4,
       "ordem": 43,
-      "status": "Aguardando",
+      "status": "Completo",
       "totalPag": 423,
-      "pagAtual": 0,
-      "pct": 0,
+      "pagAtual": 423,
+      "pct": 1,
       "usuario": "MILTON",
       "genero": "Fantasia épica"
     },
@@ -30168,7 +30168,7 @@
       "autor": "Fonda Lee",
       "isbn": "",
       "coverUrl": "https://m.media-amazon.com/images/I/71Uggal-rPL._AC_UY218_.jpg",
-      "metaAno": "2025",
+      "metaAno": "AINDA NÃO DEFINIDO",
       "depende": "",
       "colecao": "A Saga dos Ossos Verdes",
       "ordemColecao": 1,
@@ -32378,7 +32378,7 @@
       "autor": "Mark Lawrence",
       "isbn": "",
       "coverUrl": "https://m.media-amazon.com/images/I/81MWmyuX2sL._AC_UY218_.jpg",
-      "metaAno": "2025",
+      "metaAno": "AINDA NÃO DEFINIDO",
       "depende": "Rei dos Espinhos",
       "colecao": "Trilogia dos Espinhos",
       "ordemColecao": 1,
@@ -35559,40 +35559,6 @@
   ],
   "aguardando": [
     {
-      "livro": "Jardins da Lua",
-      "autor": "Steven Erikson",
-      "isbn": "9780765348784",
-      "coverUrl": "https://m.media-amazon.com/images/I/61jfhKVoKtL._AC_UF1000,1000_QL80_.jpg",
-      "metaAno": "2025",
-      "depende": "",
-      "colecao": "Saga do Império Malazano",
-      "ordemColecao": 1,
-      "ordem": 35,
-      "status": "Aguardando",
-      "totalPag": 863,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "MILTON",
-      "genero": "Fantasia épica"
-    },
-    {
-      "livro": "A Liga da Lei",
-      "autor": "Brandon Sanderson",
-      "isbn": "9780765368553",
-      "coverUrl": "https://m.media-amazon.com/images/I/71rO9YgTk1L._AC_UF1000,1000_QL80_.jpg",
-      "metaAno": "2025",
-      "depende": "O herói das Eras",
-      "colecao": "Cosmere",
-      "ordemColecao": 4,
-      "ordem": 43,
-      "status": "Aguardando",
-      "totalPag": 423,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "MILTON",
-      "genero": "Fantasia épica"
-    },
-    {
       "livro": "Rise of the Ranger",
       "autor": "Philip C. Quaintrell",
       "isbn": "9781073408702",
@@ -37314,7 +37280,7 @@
       "autor": "Fonda Lee",
       "isbn": "",
       "coverUrl": "https://m.media-amazon.com/images/I/71Uggal-rPL._AC_UY218_.jpg",
-      "metaAno": "2025",
+      "metaAno": "AINDA NÃO DEFINIDO",
       "depende": "",
       "colecao": "A Saga dos Ossos Verdes",
       "ordemColecao": 1,
@@ -39524,7 +39490,7 @@
       "autor": "Mark Lawrence",
       "isbn": "",
       "coverUrl": "https://m.media-amazon.com/images/I/81MWmyuX2sL._AC_UY218_.jpg",
-      "metaAno": "2025",
+      "metaAno": "AINDA NÃO DEFINIDO",
       "depende": "Rei dos Espinhos",
       "colecao": "Trilogia dos Espinhos",
       "ordemColecao": 1,
