@@ -648,8 +648,8 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
 
   <!-- ── 3. Rankings e Distribuição ── -->
   <div class="sec">🏅 Rankings &amp; Distribuição</div>
-  <!-- Linha 1: Ranking + Dia da Semana -->
-  <div class="grid2" style="margin-bottom:16px;">
+  <!-- Linha 1: Ranking + Dia da Semana + Gêneros -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
 
     <!-- Ranking notas -->
     <div class="card">
@@ -682,33 +682,38 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
       <div id="rankList" class="rank-list"></div>
     </div>
 
-    <!-- Dia da semana -->
-    <div class="card" style="display:flex;flex-direction:column;gap:0;">
-      <div class="card-title">📆 Dia da Semana & Livros por Mês</div>
-      <div class="ctrl" style="margin-bottom:10px;">
-        <label>Ano:</label>
-        <select id="selWd" onchange="buildWd();buildLivrosMes()">
-          <option value="total">Total</option>
-        </select>
-      </div>
-      <div style="margin-bottom:8px;">
-        <div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Média págs/dia</div>
-        <div id="wdAvg" class="wd-bars"></div>
-      </div>
-      <div style="border-top:1px solid var(--border);padding-top:8px;margin-bottom:8px;">
-        <div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Total de páginas</div>
-        <div id="wdSum" class="wd-bars"></div>
-      </div>
-      <div style="border-top:1px solid var(--border);padding-top:8px;margin-bottom:8px;">
-        <div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Livros concluídos por mês</div>
-        <div id="livrosMes" class="wd-bars"></div>
-      </div>
-    </div>
+    <!-- Coluna direita: Dia da Semana + Gêneros Lidos empilhados -->
+    <div style="display:flex;flex-direction:column;gap:16px;">
 
-    <!-- Gêneros lidos — card separado -->
-    <div class="card">
-      <div class="card-title">🌎 Gêneros Lidos</div>
-      <div style="height:260px;position:relative;"><canvas id="cGeneros"></canvas></div>
+      <!-- Dia da semana -->
+      <div class="card" style="flex:0 0 auto;">
+        <div class="card-title">📆 Dia da Semana & Livros por Mês</div>
+        <div class="ctrl" style="margin-bottom:10px;">
+          <label>Ano:</label>
+          <select id="selWd" onchange="buildWd();buildLivrosMes()">
+            <option value="total">Total</option>
+          </select>
+        </div>
+        <div style="margin-bottom:8px;">
+          <div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Média págs/dia</div>
+          <div id="wdAvg" class="wd-bars"></div>
+        </div>
+        <div style="border-top:1px solid var(--border);padding-top:8px;margin-bottom:8px;">
+          <div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Total de páginas</div>
+          <div id="wdSum" class="wd-bars"></div>
+        </div>
+        <div style="border-top:1px solid var(--border);padding-top:8px;">
+          <div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Livros concluídos por mês</div>
+          <div id="livrosMes" class="wd-bars"></div>
+        </div>
+      </div>
+
+      <!-- Gêneros lidos -->
+      <div class="card" style="flex:1;">
+        <div class="card-title">🌎 Gêneros Lidos</div>
+        <div style="height:220px;position:relative;"><canvas id="cGeneros"></canvas></div>
+      </div>
+
     </div>
 
   </div>
@@ -3975,24 +3980,28 @@ function toggleListaStatus(status) {
   document.getElementById('painelStatusTitulo').textContent = titulos[status];
 
   const _anoBtn = document.getElementById('selVGAno')?.value || 'total';
-  const _sessBtn = _anoBtn === 'total' ? (window._sessoes||[]) : (window._sessoes||[]).filter(s=>String(s.ano)===String(_anoBtn));
-  const _livrosBtn = new Set(_sessBtn.map(s=>s.livro));
-
-  // Para concluídos: usa metaAno OU ano da última sessão como fallback
   const _sessAll = window._sessoes || [];
+
+  // Mapa: livro -> ano da última sessão
   const _ultimaAnoLivro = {};
   _sessAll.forEach(s => {
-    if (!_ultimaAnoLivro[s.livro] || s.data > _ultimaAnoLivro[s.livro]) _ultimaAnoLivro[s.livro] = s.data?.slice(0,4);
+    const a = s.ano ? String(s.ano) : s.data?.slice(0,4) || '';
+    if (a && (!_ultimaAnoLivro[s.livro] || a > _ultimaAnoLivro[s.livro]))
+      _ultimaAnoLivro[s.livro] = a;
   });
+
+  // Livros com sessão no ano selecionado
+  const _sessAno = _anoBtn === 'total' ? _sessAll : _sessAll.filter(s => String(s.ano || s.data?.slice(0,4)) === _anoBtn);
+  const _livrosBtn = new Set(_sessAno.map(s=>s.livro));
 
   livrosStatusAtual = (status === 'Todos' ? (window._livros||[]) : (window._livros||[]).filter(l=>l.status===status))
     .filter(l => {
       if (_anoBtn === 'total') return true;
-      if (l.status === 'Completo') {
-        const anoRef = l.metaAno ? String(l.metaAno) : _ultimaAnoLivro[l.livro] || '';
-        return anoRef === String(_anoBtn);
-      }
-      return String(l.metaAno) === String(_anoBtn) || _livrosBtn.has(l.livro);
+      // Usa metaAno se preenchido, senão ano da última sessão
+      const anoRef = l.metaAno ? String(l.metaAno) : (_ultimaAnoLivro[l.livro] || '');
+      if (l.status === 'Completo') return anoRef === _anoBtn;
+      // Lendo/Pausado/Aguardando: metaAno ou teve sessão no ano
+      return anoRef === _anoBtn || _livrosBtn.has(l.livro);
     });
 
   // Coleção: usa campo do livro, ou busca nas sessões, ou usa colecao do livro do JSON global
