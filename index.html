@@ -368,7 +368,7 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
       </button>
     </div>
     <div class="badge" id="header-badge">— livros · — sessões</div>
-    <button onclick="toggleChangelog()" style="background:rgba(139,124,248,0.2);border:1px solid var(--purple);color:var(--purple);padding:6px 12px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;white-space:nowrap;">📋 v2.1</button>
+    <button onclick="toggleChangelog()" style="background:rgba(139,124,248,0.2);border:1px solid var(--purple);color:var(--purple);padding:6px 12px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;white-space:nowrap;">📋 v2.2</button>
     <button id="btn-refresh" onclick="manualRefresh()" style="background:rgba(78,205,196,0.15);border:1px solid var(--teal);color:var(--teal);padding:6px 12px;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;white-space:nowrap;" title="Atualizar dados">🔄</button>
   </div>
 </header>
@@ -711,7 +711,7 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
       <!-- Gêneros lidos -->
       <div class="card" style="flex:1;">
         <div class="card-title">🌎 Gêneros Lidos</div>
-        <div style="height:280px;position:relative;"><canvas id="cGeneros"></canvas></div>
+        <div style="height:380px;position:relative;"><canvas id="cGeneros"></canvas></div>
       </div>
 
     </div>
@@ -2405,7 +2405,8 @@ function buildGeneros() {
       datasets: [{
         data: sorted.map(([,n]) => Math.round(n/total*100)),
         backgroundColor: sorted.map((_,i) => CORES[i%CORES.length]),
-        borderRadius: 4, borderWidth: 0
+        borderRadius: 4, borderWidth: 0,
+        barThickness: 22
       }]
     },
     options: {
@@ -3562,7 +3563,7 @@ function renderBatalha() {
     <!-- Competição por gêneros -->
     <div class="bat-section-hdr" style="margin-top:14px;">🌎 COMPETIÇÃO POR GÊNEROS</div>
     <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:16px;">
-      <div style="height:320px;"><canvas id="bat-generos"></canvas></div>
+      <div style="height:420px;"><canvas id="bat-generos"></canvas></div>
       <div id="bat-generos-vazio" style="display:none;font-family:'Exo 2',sans-serif;font-size:11px;color:rgba(248,250,252,0.3);text-align:center;padding:20px;">Adicione gêneros via ✏️ Atualizar Livro</div>
     </div>
   </div>
@@ -3877,8 +3878,8 @@ function renderBatalha() {
           data:{
             labels: allGen,
             datasets:[
-              {label:pA, data:allGen.map(g=>Math.round((genA[g]||0)/totA*100)), backgroundColor:'rgba(168,85,247,0.75)', borderColor:'#A855F7', borderWidth:1, borderRadius:4},
-              {label:pB, data:allGen.map(g=>Math.round((genB[g]||0)/totB*100)), backgroundColor:'rgba(249,115,22,0.75)', borderColor:'#FB923C', borderWidth:1, borderRadius:4},
+              {label:pA, data:allGen.map(g=>Math.round((genA[g]||0)/totA*100)), backgroundColor:'rgba(168,85,247,0.75)', borderColor:'#A855F7', borderWidth:1, borderRadius:4, barThickness:14},
+              {label:pB, data:allGen.map(g=>Math.round((genB[g]||0)/totB*100)), backgroundColor:'rgba(249,115,22,0.75)', borderColor:'#FB923C', borderWidth:1, borderRadius:4, barThickness:14},
             ]
           },
           options:{
@@ -3909,6 +3910,21 @@ window.setUsuario = setUsuario;
 
 // ── Changelog ────────────────────────────────────
 const CHANGELOG = [
+  {
+    versao: '2.2', data: '18/05/2026', titulo: 'Gêneros, Filtros & Batalha V3',
+    itens: [
+      'Campo Gênero adicionado em Adicionar/Atualizar Livro (coluna AE)',
+      'Gráfico 🌎 Gêneros Lidos no dashboard com barras horizontais e %',
+      'Filtro de ano na Visão Geral agora filtra maior/menor livro, melhor/pior avaliado e listas por status',
+      'Filtro usa data de conclusão (coluna Q) como referência principal',
+      'Batalha V3: visual dark RPG completo com conquistas por tier, títulos exclusivos e competição por gêneros',
+      'Sistema de conquistas com 6 tiers: Bronze → Prata → Ouro → Platina → Diamante → Mestre',
+      'Ranking por Notas: filtro por coleção adicionado',
+      'Backup automático da planilha no Google Drive (função fazerBackupDrive)',
+      'Nota média visível em Detalhes do Livro com relatório por critério clicável',
+      'Registrar Sessão: grava data de conclusão (col Q) e início (col AC) automaticamente',
+    ]
+  },
   {
     versao: '2.1', data: '15/05/2026', titulo: 'Correções & Polimento',
     itens: [
