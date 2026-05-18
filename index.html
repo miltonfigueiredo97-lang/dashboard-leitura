@@ -1231,8 +1231,12 @@ function recalcularDados(d, sessoes) {
   const diasValsTemp = Object.values(dayMapTemp);
   const mediaParDia = diasValsTemp.length ? Math.round(diasValsTemp.reduce((a,b)=>a+b,0)/diasValsTemp.length*10)/10 : 50;
 
-  // Maior e menor livro
-  const livrosLidos = (window._livros||[]).filter(l => l.status === 'Completo' && l.totalPag > 0);
+  // Maior e menor livro — filtra por ano
+  const livrosNoAnoSet = new Set(sessoes.map(s => s.livro));
+  const livrosLidos = (window._livros||[]).filter(l =>
+    l.status === 'Completo' && l.totalPag > 0 &&
+    (ano === 'total' || String(l.metaAno) === String(ano) || livrosNoAnoSet.has(l.livro))
+  );
   if (livrosLidos.length) {
     const sorted = [...livrosLidos].sort((a,b) => b.totalPag - a.totalPag);
     const maior = sorted[0], menor = sorted[sorted.length-1];
@@ -1250,9 +1254,12 @@ function recalcularDados(d, sessoes) {
     ['capa-maior','capa-menor'].forEach(id => { const e2 = document.getElementById(id); if(e2) e2.innerHTML = ''; });
   }
 
-  // Melhor e pior avaliado
-  if (NOTES && NOTES.length) {
-    const ns = [...NOTES].sort((a,b) => b.media - a.media);
+  // Melhor e pior avaliado — filtra por ano
+  const notasDoAno = (NOTES||[]).filter(n =>
+    ano === 'total' || String(n.ano) === String(ano) || livrosNoAnoSet.has(n.livro)
+  );
+  if (notasDoAno.length) {
+    const ns = [...notasDoAno].sort((a,b) => b.media - a.media);
     const melhor = ns[0], pior = ns[ns.length-1];
     const allLivrosVG = [...(window._livros||[]),...(window._dadosD?.lendo||[]),...(window._dadosD?.pausados||[]),...(window._dadosD?.aguardando||[])];
     const melhorL = allLivrosVG.find(l => l.livro === melhor.livro);
@@ -3895,9 +3902,11 @@ function toggleListaStatus(status) {
   const titulos = { Completo:'✅ Concluídos', Lendo:'📖 Lendo', Pausado:'⏸️ Pausados', Aguardando:'📋 Aguardando', Todos:'📚 Todos os Livros' };
   document.getElementById('painelStatusTitulo').textContent = titulos[status];
 
-  livrosStatusAtual = status === 'Todos'
-    ? (window._livros||[])
-    : (window._livros||[]).filter(l => l.status === status);
+  const _anoBtn = document.getElementById('selVGAno')?.value || 'total';
+  const _sessBtn = _anoBtn === 'total' ? (window._sessoes||[]) : (window._sessoes||[]).filter(s=>String(s.ano)===String(_anoBtn));
+  const _livrosBtn = new Set(_sessBtn.map(s=>s.livro));
+  livrosStatusAtual = (status === 'Todos' ? (window._livros||[]) : (window._livros||[]).filter(l=>l.status===status))
+    .filter(l => _anoBtn==='total' || String(l.metaAno)===String(_anoBtn) || _livrosBtn.has(l.livro));
 
   // Coleção: usa campo do livro, ou busca nas sessões, ou usa colecao do livro do JSON global
   const getColecao = (l) => {
