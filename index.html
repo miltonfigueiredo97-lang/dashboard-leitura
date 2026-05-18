@@ -1232,12 +1232,8 @@ function recalcularDados(d, sessoes) {
   const diasValsTemp = Object.values(dayMapTemp);
   const mediaParDia = diasValsTemp.length ? Math.round(diasValsTemp.reduce((a,b)=>a+b,0)/diasValsTemp.length*10)/10 : 50;
 
-  // Maior e menor livro — filtra por ano
-  const livrosNoAnoSet = new Set(sessoes.map(s => s.livro));
-  const livrosLidos = (window._livros||[]).filter(l =>
-    l.status === 'Completo' && l.totalPag > 0 &&
-    (ano === 'total' || String(l.metaAno) === String(ano) || livrosNoAnoSet.has(l.livro))
-  );
+  // Maior e menor livro — sem filtro de ano aqui (atualizarVisaoGeral faz o filtro)
+  const livrosLidos = (window._livros||[]).filter(l => l.status === 'Completo' && l.totalPag > 0);
   if (livrosLidos.length) {
     const sorted = [...livrosLidos].sort((a,b) => b.totalPag - a.totalPag);
     const maior = sorted[0], menor = sorted[sorted.length-1];
@@ -1256,9 +1252,7 @@ function recalcularDados(d, sessoes) {
   }
 
   // Melhor e pior avaliado — filtra por ano
-  const notasDoAno = (window.NOTES||[]).filter(n =>
-    ano === 'total' || String(n.ano) === String(ano) || livrosNoAnoSet.has(n.livro)
-  );
+  const notasDoAno = window.NOTES || [];
   if (notasDoAno.length) {
     const ns = [...notasDoAno].sort((a,b) => b.media - a.media);
     const melhor = ns[0], pior = ns[ns.length-1];
@@ -1431,6 +1425,44 @@ function atualizarVisaoGeral() {
   el('kpi-recorde-data').textContent = recordeLabelVG;
   el('kpi-recorde-livro').textContent = recordeLivroVG;
   el('kpi-recorde-autor').textContent = recordeLivroDataVG?.autor || '';
+
+  // Maior e menor livro — filtrado por ano
+  const sessNoAno = new Set(sessoes.map(s => s.livro));
+  const livrosLidosVG = (window._livros||[]).filter(l =>
+    l.status === 'Completo' && l.totalPag > 0 &&
+    (ano === 'total' || String(l.metaAno) === String(ano) || sessNoAno.has(l.livro))
+  );
+  if (livrosLidosVG.length) {
+    const sorted = [...livrosLidosVG].sort((a,b) => b.totalPag - a.totalPag);
+    const maior = sorted[0], menor = sorted[sorted.length-1];
+    el('kpi-maior-val').textContent   = maior.totalPag.toLocaleString('pt-BR');
+    el('kpi-maior-nome').textContent  = maior.livro;
+    el('kpi-maior-autor').textContent = maior.autor || '';
+    const cMaior = document.getElementById('capa-maior'); if(cMaior) cMaior.innerHTML = coverImg(maior.isbn,'📖','',maior.coverUrl||'');
+    el('kpi-menor-val').textContent   = menor.totalPag.toLocaleString('pt-BR');
+    el('kpi-menor-nome').textContent  = menor.livro;
+    el('kpi-menor-autor').textContent = menor.autor || '';
+    const cMenor = document.getElementById('capa-menor'); if(cMenor) cMenor.innerHTML = coverImg(menor.isbn,'📕','',menor.coverUrl||'');
+  }
+
+  // Melhor e pior avaliado — filtrado por ano
+  const notasVG = (window.NOTES||[]).filter(n =>
+    ano === 'total' || String(n.ano) === String(ano) || sessNoAno.has(n.livro)
+  );
+  if (notasVG.length) {
+    const ns = [...notasVG].sort((a,b) => b.media - a.media);
+    const melhor = ns[0], pior = ns[ns.length-1];
+    const allL = [...(window._livros||[]),...(window._dadosD?.lendo||[]),...(window._dadosD?.pausados||[]),...(window._dadosD?.aguardando||[])];
+    const mL = allL.find(l=>l.livro===melhor.livro), pL = allL.find(l=>l.livro===pior.livro);
+    el('kpi-melhor-val').textContent   = melhor.media.toFixed(1);
+    el('kpi-melhor-nome').textContent  = melhor.livro;
+    el('kpi-melhor-autor').textContent = mL?.autor || '';
+    const cMelhor = document.getElementById('capa-melhor'); if(cMelhor) cMelhor.innerHTML = coverImg(mL?.isbn,'⭐','',mL?.coverUrl||'');
+    el('kpi-pior-val').textContent     = pior.media.toFixed(1);
+    el('kpi-pior-nome').textContent    = pior.livro;
+    el('kpi-pior-autor').textContent   = pL?.autor || '';
+    const cPior = document.getElementById('capa-pior'); if(cPior) cPior.innerHTML = coverImg(pL?.isbn,'💀','',pL?.coverUrl||'');
+  }
 }
 window.atualizarVisaoGeral = atualizarVisaoGeral;
 
