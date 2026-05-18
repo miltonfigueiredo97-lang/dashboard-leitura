@@ -3462,6 +3462,13 @@ function renderBatalha() {
         </div>
       </div>
     </div>
+
+    <!-- Competição por gêneros -->
+    <div class="bat-section-hdr" style="margin-top:14px;">🌎 COMPETIÇÃO POR GÊNEROS</div>
+    <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:16px;">
+      <div style="height:180px;"><canvas id="bat-generos"></canvas></div>
+      <div id="bat-generos-vazio" style="display:none;font-family:'Exo 2',sans-serif;font-size:11px;color:rgba(248,250,252,0.3);text-align:center;padding:20px;">Adicione gêneros via ✏️ Atualizar Livro</div>
+    </div>
   </div>
 </div>
 
@@ -3750,8 +3757,44 @@ function renderBatalha() {
     ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#8892a8',font:{size:11}}},tooltip:{...(window.TT||{}),callbacks:{afterBody:items=>{const i=items[0].dataIndex;const a=mA[i],b=mB[i];if(!a&&!b)return'';return a>b?'🏆 '+pA+' venceu':b>a?'🏆 '+pB+' venceu':'🤝 Empate';}}}},
     scales:{x:{ticks:{color:'#8892a8',font:{size:10}},grid:{color:'rgba(42,50,72,0.4)'}},y:{ticks:{color:'#8892a8',font:{size:10},callback:v=>v>=1000?(v/1000).toFixed(1)+'k':v},grid:{color:'rgba(42,50,72,0.4)'},beginAtZero:true}}}});}
 
-    // WD
-    const wEl=document.getElementById('bat-wd');
+    // Gêneros comparativo
+    const genEl = document.getElementById('bat-generos');
+    if (genEl) {
+      const ex = Chart.getChart(genEl); if(ex) ex.destroy();
+      // Conta gêneros por player
+      const genA = {}, genB = {};
+      dA.todos.filter(l=>l.status==='Completo'&&l.genero).forEach(l=>{ genA[l.genero]=(genA[l.genero]||0)+1; });
+      dB.todos.filter(l=>l.status==='Completo'&&l.genero).forEach(l=>{ genB[l.genero]=(genB[l.genero]||0)+1; });
+      const allGen = [...new Set([...Object.keys(genA),...Object.keys(genB)])].sort();
+      const vaziEl = document.getElementById('bat-generos-vazio');
+      if (!allGen.length) {
+        genEl.style.display='none';
+        if(vaziEl) vaziEl.style.display='block';
+      } else {
+        if(vaziEl) vaziEl.style.display='none';
+        new Chart(genEl, {
+          type:'bar',
+          data:{
+            labels: allGen,
+            datasets:[
+              {label:pA, data:allGen.map(g=>genA[g]||0), backgroundColor:'rgba(168,85,247,0.7)', borderColor:'#A855F7', borderWidth:1, borderRadius:4},
+              {label:pB, data:allGen.map(g=>genB[g]||0), backgroundColor:'rgba(249,115,22,0.7)',  borderColor:'#FB923C', borderWidth:1, borderRadius:4},
+            ]
+          },
+          options:{
+            responsive:true, maintainAspectRatio:false,
+            plugins:{
+              legend:{labels:{color:'#8892a8',font:{size:11}}},
+              tooltip:{...(window.TT||{}), callbacks:{label:c=>` ${c.dataset.label}: ${c.parsed.y} livro${c.parsed.y!==1?'s':''}`}}
+            },
+            scales:{
+              x:{ticks:{color:'#8892a8',font:{size:10}},grid:{color:'rgba(42,50,72,0.3)'}},
+              y:{ticks:{color:'#8892a8',font:{size:10},stepSize:1},grid:{color:'rgba(42,50,72,0.3)'},beginAtZero:true}
+            }
+          }
+        });
+      }
+    }
     if(wEl){const ex=Chart.getChart(wEl);if(ex)ex.destroy();
     new Chart(wEl,{type:'bar',data:{labels:['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'],datasets:[
       {label:pA,data:dA.wdMap,backgroundColor:CA+'aa',borderColor:CA,borderWidth:1,borderRadius:4},
