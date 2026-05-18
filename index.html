@@ -3903,7 +3903,8 @@ function toggleListaStatus(status) {
   const titulos = { Completo:'✅ Concluídos', Lendo:'📖 Lendo', Pausado:'⏸️ Pausados', Aguardando:'📋 Aguardando', Todos:'📚 Todos os Livros' };
   document.getElementById('painelStatusTitulo').textContent = titulos[status];
 
-  const anoVG = window._anoVG || 'total';
+  const anoVG = document.getElementById('selVGAno')?.value || 'total';
+  window._anoVG = anoVG;
   const sessAnoVG = anoVG === 'total' ? (window._sessoes||[]) : (window._sessoes||[]).filter(s => String(s.ano) === String(anoVG));
   const livrosComSessaoVG = new Set(sessAnoVG.map(s => s.livro));
 
