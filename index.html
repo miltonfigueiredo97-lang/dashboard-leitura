@@ -1231,13 +1231,8 @@ function recalcularDados(d, sessoes) {
   const diasValsTemp = Object.values(dayMapTemp);
   const mediaParDia = diasValsTemp.length ? Math.round(diasValsTemp.reduce((a,b)=>a+b,0)/diasValsTemp.length*10)/10 : 50;
 
-  // Maior e menor livro — filtra por ano se selecionado
-  const livrosLidos = (window._livros||[]).filter(l => {
-    if (l.status !== 'Completo' || l.totalPag <= 0) return false;
-    if (ano === 'total') return true;
-    // inclui se metaAno bate ou se teve sessão no ano
-    return String(l.metaAno) === String(ano) || sessoes.some(s => s.livro === l.livro);
-  });
+  // Maior e menor livro — usa window._livros (já filtrado por usuário)
+  const livrosLidos = (window._livros||[]).filter(l => l.status === 'Completo' && l.totalPag > 0);
   if (livrosLidos.length) {
     const sorted = [...livrosLidos].sort((a,b) => b.totalPag - a.totalPag);
     const maior = sorted[0];
@@ -1256,18 +1251,13 @@ function recalcularDados(d, sessoes) {
     ['capa-maior','capa-menor'].forEach(id => { const el = document.getElementById(id); if(el) el.innerHTML = ''; });
   }
 
-  // Melhor e pior avaliado — filtra por ano
-  const notasAno = (NOTES||[]).filter(n => {
-    if (ano === 'total') return true;
-    return String(n.ano) === String(ano) || sessoes.some(s => s.livro === n.livro);
-  });
-  if (notasAno.length) {
-    const notasSorted = [...notasAno].sort((a,b) => b.media - a.media);
+  // Melhor e pior avaliado — NOTES já filtrado por usuário via recalcularDados
+  if (NOTES && NOTES.length) {
+    const notasSorted = [...NOTES].sort((a,b) => b.media - a.media);
     const melhor = notasSorted[0];
     const pior   = notasSorted[notasSorted.length-1];
-    const allLivros = [...(window._livros||[]),...(window._dadosD?.lendo||[]),...(window._dadosD?.pausados||[]),...(window._dadosD?.aguardando||[])];
-    const melhorLivro = allLivros.find(l => l.livro === melhor.livro);
-    const piorLivro   = allLivros.find(l => l.livro === pior.livro);
+    const melhorLivro = (window._livros||[]).find(l => l.livro === melhor.livro);
+    const piorLivro   = (window._livros||[]).find(l => l.livro === pior.livro);
     document.getElementById('kpi-melhor-val').textContent   = melhor.media.toFixed(1);
     document.getElementById('kpi-melhor-nome').textContent  = melhor.livro;
     document.getElementById('kpi-melhor-autor').textContent = melhorLivro?.autor || AUTOR_MAP[melhor.livro] || '';
@@ -3904,18 +3894,9 @@ function toggleListaStatus(status) {
   const titulos = { Completo:'✅ Concluídos', Lendo:'📖 Lendo', Pausado:'⏸️ Pausados', Aguardando:'📋 Aguardando', Todos:'📚 Todos os Livros' };
   document.getElementById('painelStatusTitulo').textContent = titulos[status];
 
-  const anoVG = document.getElementById('selVGAno')?.value || 'total';
-  const sessAll = window._sessoes || [];
-  const sessAno = anoVG === 'total' ? sessAll : sessAll.filter(s => String(s.ano) === String(anoVG));
-  const livrosComSessao = new Set(sessAno.map(s => s.livro));
-
-  livrosStatusAtual = (window._livros||[]).filter(l => {
-    // filtro de status
-    if (status !== 'Todos' && l.status !== status) return false;
-    // filtro de ano
-    if (anoVG === 'total') return true;
-    return String(l.metaAno) === String(anoVG) || livrosComSessao.has(l.livro);
-  });
+  livrosStatusAtual = status === 'Todos'
+    ? (window._livros||[])
+    : (window._livros||[]).filter(l => l.status === status);
 
   // Coleção: usa campo do livro, ou busca nas sessões, ou usa colecao do livro do JSON global
   const getColecao = (l) => {
