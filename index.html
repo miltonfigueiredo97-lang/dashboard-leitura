@@ -3972,6 +3972,7 @@ function renderBatalha() {
         });
       }
     }
+    const wEl=document.getElementById('bat-wd');
     if(wEl){const ex=Chart.getChart(wEl);if(ex)ex.destroy();
     new Chart(wEl,{type:'bar',data:{labels:['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'],datasets:[
       {label:pA,data:dA.wdMap,backgroundColor:CA+'aa',borderColor:CA,borderWidth:1,borderRadius:4},
