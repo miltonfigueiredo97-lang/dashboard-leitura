@@ -1,13 +1,9 @@
 {
   "version": 2,
   "routes": [
-    {
-      "src": "/data.json",
-      "dest": "/data.json"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
+    { "src": "/data.json", "dest": "/data.json" },
+    { "src": "/sw.js", "dest": "/sw.js" },
+    { "src": "/manifest.json", "dest": "/manifest.json" },
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
