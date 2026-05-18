@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-18T14:15:20.128Z",
+  "geradoEm": "2026-05-18T14:19:58.352Z",
   "meta": {
     "total": 54,
-    "lidos": 22,
-    "faltando": 32,
+    "lidos": 23,
+    "faltando": 31,
     "paginasTotal": 26813,
-    "paginasLidas": 11094,
-    "paginasFaltando": 15719,
+    "paginasLidas": 11982,
+    "paginasFaltando": 14831,
     "mediaDiaria": 75.3,
     "ritmoAtual": 51.4,
-    "dataPrevistoAtual": "20/03/2027"
+    "dataPrevistoAtual": "03/03/2027"
   },
   "metasPorAno": {
     "2022": {
@@ -70,17 +70,17 @@
     },
     "2026": {
       "total": 54,
-      "lidos": 22,
+      "lidos": 23,
       "lendo": 3,
       "pausados": 0,
-      "aguardando": 29,
+      "aguardando": 28,
       "paginasTotal": 26813,
-      "paginasLidas": 11094,
-      "paginasFaltando": 15719,
-      "faltando": 32,
+      "paginasLidas": 11982,
+      "paginasFaltando": 14831,
+      "faltando": 31,
       "mediaDiaria": 75.3,
       "ritmoAtual": 51.4,
-      "dataPrevistoAtual": "20/03/2027"
+      "dataPrevistoAtual": "03/03/2027"
     },
     "PAUSADO": {
       "total": 2,
@@ -9055,8 +9055,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "The Echoes Saga - Rise of the Ranger",
-      "colecao": "",
+      "livro": "Rise of the Ranger",
+      "colecao": "Verda Saga",
       "data": "2026-03-10",
       "paginas": 36,
       "minutos": 36,
@@ -9064,8 +9064,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "The Echoes Saga - Rise of the Ranger",
-      "colecao": "",
+      "livro": "Rise of the Ranger",
+      "colecao": "Verda Saga",
       "data": "2026-03-11",
       "paginas": 53,
       "minutos": 35,
@@ -9073,8 +9073,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "The Echoes Saga - Rise of the Ranger",
-      "colecao": "",
+      "livro": "Rise of the Ranger",
+      "colecao": "Verda Saga",
       "data": "2026-03-12",
       "paginas": 26,
       "minutos": 25,
@@ -9082,8 +9082,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "The Echoes Saga - Rise of the Ranger",
-      "colecao": "",
+      "livro": "Rise of the Ranger",
+      "colecao": "Verda Saga",
       "data": "2026-03-13",
       "paginas": 27,
       "minutos": 20,
@@ -9091,8 +9091,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "The Echoes Saga - Rise of the Ranger",
-      "colecao": "",
+      "livro": "Rise of the Ranger",
+      "colecao": "Verda Saga",
       "data": "2026-03-14",
       "paginas": 36,
       "minutos": 20,
@@ -9100,8 +9100,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "The Echoes Saga - Rise of the Ranger",
-      "colecao": "",
+      "livro": "Rise of the Ranger",
+      "colecao": "Verda Saga",
       "data": "2026-03-16",
       "paginas": 44,
       "minutos": 25,
@@ -9109,8 +9109,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "The Echoes Saga - Rise of the Ranger",
-      "colecao": "",
+      "livro": "Rise of the Ranger",
+      "colecao": "Verda Saga",
       "data": "2026-03-17",
       "paginas": 44,
       "minutos": 42,
@@ -9118,8 +9118,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "The Echoes Saga - Rise of the Ranger",
-      "colecao": "",
+      "livro": "Rise of the Ranger",
+      "colecao": "Verda Saga",
       "data": "2026-03-18",
       "paginas": 24,
       "minutos": 26,
@@ -9127,8 +9127,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "The Echoes Saga - Rise of the Ranger",
-      "colecao": "",
+      "livro": "Rise of the Ranger",
+      "colecao": "Verda Saga",
       "data": "2026-03-23",
       "paginas": 21,
       "minutos": 12,
@@ -9136,8 +9136,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "The Echoes Saga - Rise of the Ranger",
-      "colecao": "",
+      "livro": "Rise of the Ranger",
+      "colecao": "Verda Saga",
       "data": "2026-03-25",
       "paginas": 44,
       "minutos": 20,
@@ -9145,8 +9145,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "The Echoes Saga - Rise of the Ranger",
-      "colecao": "",
+      "livro": "Rise of the Ranger",
+      "colecao": "Verda Saga",
       "data": "2026-03-31",
       "paginas": 9,
       "minutos": 13,
@@ -9154,8 +9154,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "The Echoes Saga - Rise of the Ranger",
-      "colecao": "",
+      "livro": "Rise of the Ranger",
+      "colecao": "Verda Saga",
       "data": "2026-04-01",
       "paginas": 37,
       "minutos": 38,
@@ -9163,8 +9163,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "The Echoes Saga - Rise of the Ranger",
-      "colecao": "",
+      "livro": "Rise of the Ranger",
+      "colecao": "Verda Saga",
       "data": "2026-04-01",
       "paginas": 87,
       "minutos": 52,
@@ -9172,8 +9172,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "The Echoes Saga - Rise of the Ranger",
-      "colecao": "",
+      "livro": "Rise of the Ranger",
+      "colecao": "Verda Saga",
       "data": "2026-04-02",
       "paginas": 54,
       "minutos": 37,
@@ -9181,8 +9181,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "The Echoes Saga - Rise of the Ranger",
-      "colecao": "",
+      "livro": "Rise of the Ranger",
+      "colecao": "Verda Saga",
       "data": "2026-04-03",
       "paginas": 42,
       "minutos": 29,
@@ -9190,8 +9190,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "The Echoes Saga - Rise of the Ranger",
-      "colecao": "",
+      "livro": "Rise of the Ranger",
+      "colecao": "Verda Saga",
       "data": "2026-04-05",
       "paginas": 100,
       "minutos": 46,
@@ -9199,8 +9199,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "The Echoes Saga - Rise of the Ranger",
-      "colecao": "",
+      "livro": "Rise of the Ranger",
+      "colecao": "Verda Saga",
       "data": "2026-04-08",
       "paginas": 53,
       "minutos": 45,
@@ -9208,8 +9208,8 @@
       "usuario": "MILTON"
     },
     {
-      "livro": "The Echoes Saga - Rise of the Ranger",
-      "colecao": "",
+      "livro": "Rise of the Ranger",
+      "colecao": "Verda Saga",
       "data": "2026-04-12",
       "paginas": 151,
       "minutos": 49,
@@ -28039,10 +28039,10 @@
       "colecao": "Verda Saga",
       "ordemColecao": 1,
       "ordem": 57,
-      "status": "Aguardando",
+      "status": "Completo",
       "totalPag": 888,
-      "pagAtual": 0,
-      "pct": 0,
+      "pagAtual": 888,
+      "pct": 1,
       "usuario": "MILTON",
       "genero": "Fantasia épica"
     },
@@ -36098,24 +36098,6 @@
     }
   ],
   "aguardando": [
-    {
-      "livro": "Rise of the Ranger",
-      "autor": "Philip C. Quaintrell",
-      "isbn": "9781073408702",
-      "coverUrl": "https://m.media-amazon.com/images/I/61-AuecLDjL._AC_UF1000,1000_QL80_.jpg",
-      "metaAno": "2026",
-      "anoConclusao": "2026",
-      "depende": "",
-      "colecao": "Verda Saga",
-      "ordemColecao": 1,
-      "ordem": 57,
-      "status": "Aguardando",
-      "totalPag": 888,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "MILTON",
-      "genero": "Fantasia épica"
-    },
     {
       "livro": "A Alma do Imperador",
       "autor": "Brandon Sanderson",
