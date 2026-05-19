@@ -3364,7 +3364,7 @@ function renderBatalha() {
       while(diasSet.has(c.toISOString().slice(0,10))){streakAtual++;c=new Date(c-86400000);}
     }
     // bosses
-    const bosses=lidos.filter(l=>l.totalPag>=500);
+    const bosses=lidos.filter(l=>l.totalPag>=1000);
     // autor top
     const autMap={};
     sess.forEach(s=>{const l=todos.find(x=>x.livro===s.livro);const a=l?.autor||'?';autMap[a]=(autMap[a]||0)+s.paginas;});
@@ -3520,7 +3520,7 @@ function renderBatalha() {
     disputa('🔥','Combo Supremo',         ddA.streakRecord,       ddB.streakRecord,       v=>`Streak recorde: ${v} dias`);
     disputa('🧠','Crítico Supremo',       ddA.notaMedia||0,       ddB.notaMedia||0,       v=>`Nota média ${v.toFixed(1)} — avaliações mais refinadas`);
     disputa('⚡','Leitor Relâmpago',      Math.round(ddA.media),  Math.round(ddB.media),  v=>`Média de ${v} págs/dia — mais veloz`);
-    disputa('💀','Boss Slayer',           ddA.bosses.length,      ddB.bosses.length,      v=>`${v} bosses derrotados — mais poderoso`);
+    disputa('💀','Boss Slayer',           ddA.bosses.length,      ddB.bosses.length,      v=>`${v} bosses (1000+ págs) — mais poderoso`);
     disputa('📅','Dominador das Sessões', ddA.sessoes,            ddB.sessoes,            v=>`${v} sessões registradas — mais disciplinado`);
     disputa('🏆','Senhor das Séries',     ddA.seriesConcluidas||0,ddB.seriesConcluidas||0,v=>`${v} séries completas`);
     disputa('🌎','Explorador Supremo',    autA,                   autB,                   v=>`${v} autores diferentes`);
@@ -3558,7 +3558,7 @@ function renderBatalha() {
       conquista('⚡', 'Velocidade',            Math.round(dd.media),     [10,30,50,80,120,200],                [], v=>`Média de ${v} págs/dia`),
       conquista('📅', 'Sessões de Treino',     dd.sessoes,               [20,80,200,400,700,1000],             [], v=>`${v} sessões registradas`),
       conquista('🧠', 'Crítico Literário',     dd.notaMedia||0,          [5,6,7,7.5,8,9],                     [], v=>`Nota média: ${v.toFixed(1)}`),
-      conquista('💀', 'Boss Slayer',           dd.bosses.length,         [1,5,10,20,35,50],                   [], v=>`${v} livros 500+ págs`),
+      conquista('💀', 'Boss Slayer',           dd.bosses.length,         [1,5,10,20,35,50],                   [], v=>`${v} livros 1000+ págs`),
       conquista('🏛️', 'Explorador de Reinos',  dd.colSet.size,           [3,8,15,25,40,60],                   [], v=>`${v} coleções exploradas`),
       conquista('✍️', 'Colecionador',          autoresCount,             [5,15,30,50,80,120],                  [], v=>`${v} autores diferentes`),
       conquista('🏆', 'Senhor das Séries',     dd.seriesConcluidas||0,   [1,3,5,8,12,20],                     [], v=>`${v} séries concluídas`),
@@ -3711,7 +3711,7 @@ function renderBatalha() {
 <!-- BOSSES + SLIMES — 2 colunas simétricas -->
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
   <div>
-    <div class="bat-section-hdr">💀 BOSSES DERROTADOS (500+ págs)</div>
+    <div class="bat-section-hdr">💀 BOSSES DERROTADOS (1000+ págs)</div>
     <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:14px;">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
         <div>
@@ -4066,7 +4066,7 @@ const CHANGELOG = [
       'Dashboard: clique em Autores Favoritos (gráfico e legenda) abre popup com livros do autor',
       'Capas no popup de gênero agora usam coverUrl diretamente',
       'Fix: batalha voltando ao dashboard não escondia elementos do grid',
-      'Fix: Service Worker corrigido para não servir cache antigo',
+      'Bosses redefinidos para 1000+ páginas (era 500+) — mais balanceado com o estilo de leitura',
     ]
   },
   {
