@@ -3203,7 +3203,7 @@ function setUsuario(usuario) {
     document.body.scrollTop = 0;
     window.scrollTo(0, 0);
   } else {
-    document.querySelectorAll('#app > .sec, #app > .card, #app > .grid2, #app > .grid3, #app > .grid4').forEach(el => { el.style.display = ''; });
+    document.querySelectorAll('#app > *').forEach(el => { el.style.display = ''; });
   }
 
   if (usuario === 'Batalha') {
