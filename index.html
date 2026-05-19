@@ -3611,7 +3611,7 @@ function renderBatalha() {
 <div class="bat-section-hdr">⚡ ATRIBUTOS DE COMBATE</div>
 <div id="bat-attrs" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px;"></div>
 
-<!-- PERFIL + GUERRA -->
+<!-- PERFIL + GUERRA + DIA SAGRADO -->
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
   <div>
     <div class="bat-section-hdr">🕸️ PERFIL DE COMBATE</div>
@@ -3620,22 +3620,40 @@ function renderBatalha() {
       <canvas id="bat-radar" width="240" height="240"></canvas>
     </div>
   </div>
-  <div>
-    <div class="bat-section-hdr">📈 GUERRA DAS TEMPORADAS</div>
-    <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:16px;">
-      <div style="height:200px;"><canvas id="bat-linha"></canvas></div>
-      <div style="display:flex;justify-content:space-around;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.06);">
-        <div style="text-align:center;">
-          <div style="font-family:'Orbitron',sans-serif;font-size:20px;font-weight:900;color:#A855F7;">${vitA}</div>
-          <div style="font-family:'Exo 2',sans-serif;font-size:9px;color:rgba(248,250,252,0.4);">${pA} venceu</div>
+  <div style="display:flex;flex-direction:column;gap:16px;">
+    <div>
+      <div class="bat-section-hdr">📈 GUERRA DAS TEMPORADAS</div>
+      <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:16px;">
+        <div style="height:180px;"><canvas id="bat-linha"></canvas></div>
+        <div style="display:flex;justify-content:space-around;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.06);">
+          <div style="text-align:center;">
+            <div style="font-family:'Orbitron',sans-serif;font-size:20px;font-weight:900;color:#A855F7;">${vitA}</div>
+            <div style="font-family:'Exo 2',sans-serif;font-size:9px;color:rgba(248,250,252,0.4);">${pA} venceu</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:'Orbitron',sans-serif;font-size:20px;font-weight:900;color:rgba(248,250,252,0.3);">${emp}</div>
+            <div style="font-family:'Exo 2',sans-serif;font-size:9px;color:rgba(248,250,252,0.3);">empates</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:'Orbitron',sans-serif;font-size:20px;font-weight:900;color:#FB923C;">${vitB}</div>
+            <div style="font-family:'Exo 2',sans-serif;font-size:9px;color:rgba(248,250,252,0.4);">${pB} venceu</div>
+          </div>
         </div>
-        <div style="text-align:center;">
-          <div style="font-family:'Orbitron',sans-serif;font-size:20px;font-weight:900;color:rgba(248,250,252,0.3);">${emp}</div>
-          <div style="font-family:'Exo 2',sans-serif;font-size:9px;color:rgba(248,250,252,0.3);">empates</div>
-        </div>
-        <div style="text-align:center;">
-          <div style="font-family:'Orbitron',sans-serif;font-size:20px;font-weight:900;color:#FB923C;">${vitB}</div>
-          <div style="font-family:'Exo 2',sans-serif;font-size:9px;color:rgba(248,250,252,0.4);">${pB} venceu</div>
+      </div>
+    </div>
+    <div>
+      <div class="bat-section-hdr">📅 DIA SAGRADO</div>
+      <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:16px;">
+        <div style="height:130px;"><canvas id="bat-wd"></canvas></div>
+        <div style="display:flex;justify-content:space-between;margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);">
+          <div style="text-align:center;">
+            <div style="font-family:'Rajdhani',sans-serif;font-size:11px;color:#A855F7;font-weight:700;">${pA.toUpperCase()}</div>
+            <div id="bat-wd-dia-a" style="font-family:'Orbitron',sans-serif;font-size:13px;font-weight:700;color:#F8FAFC;"></div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:'Rajdhani',sans-serif;font-size:11px;color:#FB923C;font-weight:700;">${pB.toUpperCase()}</div>
+            <div id="bat-wd-dia-b" style="font-family:'Orbitron',sans-serif;font-size:13px;font-weight:700;color:#F8FAFC;"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -3651,24 +3669,8 @@ function renderBatalha() {
   </div>
 </div>
 
-<!-- DIA + BOSSES + SLIMES -->
-<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;">
-  <div>
-    <div class="bat-section-hdr">📅 DIA SAGRADO</div>
-    <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:16px;">
-      <div style="height:160px;"><canvas id="bat-wd"></canvas></div>
-      <div style="display:flex;justify-content:space-between;margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);">
-        <div style="text-align:center;">
-          <div style="font-family:'Rajdhani',sans-serif;font-size:11px;color:#A855F7;font-weight:700;">${pA.toUpperCase()}</div>
-          <div id="bat-wd-dia-a" style="font-family:'Orbitron',sans-serif;font-size:13px;font-weight:700;color:#F8FAFC;"></div>
-        </div>
-        <div style="text-align:center;">
-          <div style="font-family:'Rajdhani',sans-serif;font-size:11px;color:#FB923C;font-weight:700;">${pB.toUpperCase()}</div>
-          <div id="bat-wd-dia-b" style="font-family:'Orbitron',sans-serif;font-size:13px;font-weight:700;color:#F8FAFC;"></div>
-        </div>
-      </div>
-    </div>
-  </div>
+<!-- BOSSES + SLIMES — 2 colunas simétricas -->
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
   <div>
     <div class="bat-section-hdr">💀 BOSSES DERROTADOS (500+ págs)</div>
     <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:14px;">
