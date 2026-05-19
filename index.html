@@ -3958,69 +3958,45 @@ function renderBatalha() {
         genEl.style.display='block';
         const totA = dA.todos.filter(l=>l.status==='Completo'&&l.genero).length||1;
         const totB = dB.todos.filter(l=>l.status==='Completo'&&l.genero).length||1;
-        new Chart(genEl, {
-          type:'bar',
-          data:{
-            labels: allGen,
-            datasets:[
-              {label:pA, data:allGen.map(g=>Math.round((genA[g]||0)/totA*100)), backgroundColor:'rgba(168,85,247,0.85)', borderColor:'#A855F7', borderWidth:0, borderRadius:4, barPercentage:0.6, categoryPercentage:0.8},
-              {label:pB, data:allGen.map(g=>Math.round((genB[g]||0)/totB*100)), backgroundColor:'rgba(249,115,22,0.85)',  borderColor:'#FB923C', borderWidth:0, borderRadius:4, barPercentage:0.6, categoryPercentage:0.8},
-            ]
-          },
-          options:{
-            indexAxis:'y',
-            responsive:true, maintainAspectRatio:false,
-            plugins:{
-              legend:{
-                position:'top',
-                labels:{color:'#c0c8d8',font:{size:13},boxWidth:20,padding:20}
-              },
-              tooltip:{...(window.TT||{}), callbacks:{
-                label:c=>{
-                  const g=allGen[c.dataIndex];
-                  const n=c.datasetIndex===0?(genA[g]||0):(genB[g]||0);
-                  return ` ${c.dataset.label}: ${c.parsed.x}% (${n} livro${n!==1?'s':''})`;
-                }
-              }},
-              datalabels: false
-            },
-            animation: {
-              onComplete: function(ctx) {
-                const chart = ctx.chart;
-                const c2d = chart.ctx;
-                chart.data.datasets.forEach((dataset, di) => {
-                  const meta = chart.getDatasetMeta(di);
-                  meta.data.forEach((bar, idx) => {
-                    const val = dataset.data[idx];
-                    if (!val) return;
-                    const x = bar.x + 4;
-                    const y = bar.y;
-                    c2d.fillStyle = di === 0 ? '#C084FC' : '#FB923C';
-                    c2d.font = 'bold 11px Rajdhani, sans-serif';
-                    c2d.textAlign = 'left';
-                    c2d.textBaseline = 'middle';
-                    c2d.fillText(val + '%', x, y);
-                  });
-                });
-              }
-            },
-            scales:{
-              x:{
-                ticks:{color:'#8892a8',font:{size:12},callback:v=>v+'%'},
-                grid:{color:'rgba(255,255,255,0.05)'},
-                beginAtZero:true,
-                max:Math.min(100, Math.max(...allGen.map(g=>Math.max(
-                  Math.round((genA[g]||0)/totA*100),
-                  Math.round((genB[g]||0)/totB*100)
-                )))+10)
-              },
-              y:{
-                ticks:{color:'#c0c8d8',font:{size:13},padding:8},
-                grid:{display:false}
-              }
-            }
-          }
-        });
+        // Build divergent chart using canvas directly
+        genEl.style.display = 'none';
+        let divEl = document.getElementById('bat-generos-div');
+        if (!divEl) {
+          divEl = document.createElement('div');
+          divEl.id = 'bat-generos-div';
+          genEl.parentElement.insertBefore(divEl, genEl);
+        }
+
+        const maxPct = Math.max(...allGen.map(g => Math.max(
+          Math.round((genA[g]||0)/totA*100),
+          Math.round((genB[g]||0)/totB*100)
+        )), 1);
+
+        divEl.innerHTML = `
+          <div style="display:flex;justify-content:center;gap:24px;margin-bottom:16px;">
+            <div style="display:flex;align-items:center;gap:8px;"><div style="width:14px;height:14px;background:#A855F7;border-radius:2px;"></div><span style="font-family:'Rajdhani',sans-serif;font-size:13px;color:#c0c8d8;">${pA}</span></div>
+            <div style="display:flex;align-items:center;gap:8px;"><div style="width:14px;height:14px;background:#FB923C;border-radius:2px;"></div><span style="font-family:'Rajdhani',sans-serif;font-size:13px;color:#c0c8d8;">${pB}</span></div>
+          </div>
+          ${allGen.map(g => {
+            const pctA = Math.round((genA[g]||0)/totA*100);
+            const pctB = Math.round((genB[g]||0)/totB*100);
+            const wA = Math.round(pctA/maxPct*45);
+            const wB = Math.round(pctB/maxPct*45);
+            return `
+            <div style="display:grid;grid-template-columns:140px 1fr 1fr;align-items:center;gap:8px;margin-bottom:10px;">
+              <div style="font-family:'Rajdhani',sans-serif;font-size:12px;color:#c0c8d8;text-align:right;font-weight:600;letter-spacing:1px;text-transform:uppercase;">${g}</div>
+              <div style="display:flex;align-items:center;justify-content:flex-end;gap:6px;">
+                <span style="font-family:'Orbitron',sans-serif;font-size:11px;font-weight:700;color:#A855F7;">${pctA}%</span>
+                <div style="height:22px;width:${wA}%;background:linear-gradient(90deg,rgba(168,85,247,0.5),#A855F7);border-radius:3px 0 0 3px;min-width:${pctA?2:0}px;"></div>
+              </div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <div style="height:22px;width:${wB}%;background:linear-gradient(90deg,#FB923C,rgba(249,115,22,0.5));border-radius:0 3px 3px 0;min-width:${pctB?2:0}px;"></div>
+                <span style="font-family:'Orbitron',sans-serif;font-size:11px;font-weight:700;color:#FB923C;">${pctB}%</span>
+              </div>
+            </div>`;
+          }).join('')}
+        `;
+
       }
     }
     const wEl=document.getElementById('bat-wd');
