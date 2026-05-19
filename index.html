@@ -1957,6 +1957,7 @@ function buildDonuts() {
     type:'doughnut',
     data:{ labels: COLS.map(c=>c.c), datasets:[{ data:COLS.map(c=>c.p), backgroundColor:DONUT_COLORS, borderColor:'#161b27', borderWidth:3 }] },
     options:{ responsive:true, maintainAspectRatio:false, cutout:'62%',
+      onClick:(evt,els)=>{ if(els.length) abrirPainelColecao(COLS[els[0].index].c); },
       plugins:{ legend:{display:false}, tooltip:{...TT, callbacks:{label:c=>` ${c.parsed.toLocaleString('pt-BR')}${colLabel}`}} } }
   });
   const tot = COLS.reduce((s,c)=>s+c.p, 0);
@@ -1966,7 +1967,7 @@ function buildDonuts() {
   COLS.forEach((c,i) => {
     const pct = i === COLS.length-1 ? 100-pctUsed : Math.round(c.p/tot*100);
     pctUsed += pct;
-    elD.innerHTML += `<div class="donut-leg-item">
+    elD.innerHTML += `<div class="donut-leg-item" style="cursor:pointer;" onclick="abrirPainelColecao('${c.c.replace(/'/g,"\\'")}')">
       <div class="dot" style="background:${DONUT_COLORS[i%DONUT_COLORS.length]}"></div>
       <span class="donut-leg-name">${c.c}</span>
       <span class="donut-leg-pct">${pct}%</span>
@@ -1979,6 +1980,7 @@ function buildDonuts() {
     type:'doughnut',
     data:{ labels: AUTS.map(a=>a.a), datasets:[{ data:AUTS.map(a=>a.p), backgroundColor:DONUT_COLORS, borderColor:'#161b27', borderWidth:3 }] },
     options:{ responsive:true, maintainAspectRatio:false, cutout:'62%',
+      onClick:(evt,els)=>{ if(els.length) abrirPainelAutor(AUTS[els[0].index].a); },
       plugins:{ legend:{display:false}, tooltip:{...TT, callbacks:{label:c=>` ${c.parsed.toLocaleString('pt-BR')} págs`}} } }
   });
   const totA = AUTS.reduce((s,a)=>s+a.p, 0);
@@ -1988,7 +1990,7 @@ function buildDonuts() {
   AUTS.forEach((a,i) => {
     const pct = i === AUTS.length-1 ? 100-pctUsedA : Math.round(a.p/totA*100);
     pctUsedA += pct;
-    elA.innerHTML += `<div class="donut-leg-item">
+    elA.innerHTML += `<div class="donut-leg-item" style="cursor:pointer;" onclick="abrirPainelAutor('${a.a.replace(/'/g,"\\'")}')">
       <div class="dot" style="background:${DONUT_COLORS[i%DONUT_COLORS.length]}"></div>
       <span class="donut-leg-name">${a.a}</span>
       <span class="donut-leg-pct">${pct}%</span>
@@ -2443,6 +2445,43 @@ function buildGeneros() {
 }
 window.buildGeneros = buildGeneros;
 
+function _abrirPainelOverlay(titulo, livros) {
+  const painel = document.getElementById('painelGenero');
+  const overlay = document.getElementById('painelGeneroOverlay');
+  const tituloEl = document.getElementById('painelGeneroTitulo');
+  const lista = document.getElementById('painelGeneroLista');
+  if (!painel || !tituloEl || !lista) return;
+  tituloEl.textContent = titulo;
+  lista.innerHTML = livros.map(l => `
+    <div style="display:flex;align-items:center;gap:12px;padding:10px;background:var(--bg3);border-radius:10px;">
+      ${l.coverUrl ? `<img src="${l.coverUrl}" style="width:36px;height:50px;object-fit:cover;border-radius:4px;flex-shrink:0;" onerror="this.style.display='none'">` : ''}
+      <div style="flex:1;min-width:0;">
+        <div style="font-size:14px;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${l.livro}</div>
+        <div style="font-size:12px;color:var(--muted);">${l.autor||''} ${l.colecao?'· '+l.colecao:''}</div>
+      </div>
+      <div style="text-align:right;flex-shrink:0;">
+        <div style="font-size:15px;font-weight:700;color:var(--teal);">${(l.totalPag||0).toLocaleString('pt-BR')}</div>
+        <div style="font-size:10px;color:var(--muted);">págs</div>
+      </div>
+    </div>`).join('');
+  painel.style.display = 'block';
+  if (overlay) overlay.style.display = 'block';
+}
+
+function abrirPainelColecao(colecao) {
+  const allLivros = [...(window._livros||[]),...(window._dadosD?.lendo||[]),...(window._dadosD?.pausados||[])];
+  const livros = allLivros.filter(l => l.colecao === colecao).sort((a,b)=>(a.ordemColecao||0)-(b.ordemColecao||0)||(a.livro.localeCompare(b.livro)));
+  _abrirPainelOverlay(`📦 ${colecao} — ${livros.length} livro${livros.length!==1?'s':''}`, livros);
+}
+window.abrirPainelColecao = abrirPainelColecao;
+
+function abrirPainelAutor(autor) {
+  const allLivros = [...(window._livros||[]),...(window._dadosD?.lendo||[]),...(window._dadosD?.pausados||[])];
+  const livros = allLivros.filter(l => l.autor === autor).sort((a,b)=>a.livro.localeCompare(b.livro));
+  _abrirPainelOverlay(`✍️ ${autor} — ${livros.length} livro${livros.length!==1?'s':''}`, livros);
+}
+window.abrirPainelAutor = abrirPainelAutor;
+
 function abrirPainelGenero(genero) {
   const painel = document.getElementById('painelGenero');
   const overlay = document.getElementById('painelGeneroOverlay');
@@ -2456,7 +2495,7 @@ function abrirPainelGenero(genero) {
   titulo.textContent = `🌎 ${genero} — ${livrosGenero.length} livro${livrosGenero.length!==1?'s':''}`;
   lista.innerHTML = livrosGenero.map(l => `
     <div style="display:flex;align-items:center;gap:12px;padding:10px;background:var(--bg3);border-radius:10px;">
-      <div style="flex-shrink:0;">${coverThumb(l.isbn, l.coverUrl||'')}</div>
+      <div style="flex-shrink:0;">${l.coverUrl ? `<img src="${l.coverUrl}" style="width:36px;height:50px;object-fit:cover;border-radius:4px;flex-shrink:0;" onerror="this.style.display='none'">` : ''}</div>
       <div style="flex:1;min-width:0;">
         <div style="font-size:14px;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${l.livro}</div>
         <div style="font-size:12px;color:var(--muted);">${l.autor||''} ${l.colecao?'· '+l.colecao:''}</div>
