@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-19T00:32:11.123Z",
+  "geradoEm": "2026-05-19T10:30:58.707Z",
   "meta": {
     "total": 54,
     "lidos": 23,
     "faltando": 31,
     "paginasTotal": 26813,
-    "paginasLidas": 12028,
-    "paginasFaltando": 14785,
-    "mediaDiaria": 75.6,
-    "ritmoAtual": 53,
-    "dataPrevistoAtual": "21/02/2027"
+    "paginasLidas": 12054,
+    "paginasFaltando": 14759,
+    "mediaDiaria": 75.3,
+    "ritmoAtual": 52.3,
+    "dataPrevistoAtual": "26/02/2027"
   },
   "metasPorAno": {
     "2022": {
@@ -75,12 +75,12 @@
       "pausados": 0,
       "aguardando": 28,
       "paginasTotal": 26813,
-      "paginasLidas": 12028,
-      "paginasFaltando": 14785,
+      "paginasLidas": 12054,
+      "paginasFaltando": 14759,
       "faltando": 31,
-      "mediaDiaria": 75.6,
-      "ritmoAtual": 53,
-      "dataPrevistoAtual": "21/02/2027"
+      "mediaDiaria": 75.3,
+      "ritmoAtual": 52.3,
+      "dataPrevistoAtual": "26/02/2027"
     },
     "PAUSADO": {
       "total": 2,
@@ -27026,6 +27026,15 @@
       "minutos": 44,
       "ano": 2026,
       "usuario": "Daniel"
+    },
+    {
+      "livro": "Shadows for Silence in the Forests of Hell",
+      "colecao": "Cosmere",
+      "data": "2026-05-19",
+      "paginas": 26,
+      "minutos": 42,
+      "ano": 2026,
+      "usuario": "Daniel"
     }
   ],
   "livros": [
@@ -35639,15 +35648,15 @@
       "isbn": "",
       "coverUrl": "https://m.media-amazon.com/images/I/81-TqssCMmL._AC_UY218_.jpg",
       "metaAno": "2026",
-      "anoConclusao": "",
+      "anoConclusao": "2026",
       "depende": "",
       "colecao": "Cosmere",
       "ordemColecao": 0,
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 89,
-      "pagAtual": 46,
-      "pct": 0.517,
+      "pagAtual": 72,
+      "pct": 0.809,
       "usuario": "Daniel",
       "genero": "Fantasia épica"
     },
@@ -36075,15 +36084,15 @@
       "isbn": "",
       "coverUrl": "https://m.media-amazon.com/images/I/81-TqssCMmL._AC_UY218_.jpg",
       "metaAno": "2026",
-      "anoConclusao": "",
+      "anoConclusao": "2026",
       "depende": "",
       "colecao": "Cosmere",
       "ordemColecao": 0,
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 89,
-      "pagAtual": 46,
-      "pct": 0.517,
+      "pagAtual": 72,
+      "pct": 0.809,
       "usuario": "Daniel",
       "genero": "Fantasia épica"
     },
