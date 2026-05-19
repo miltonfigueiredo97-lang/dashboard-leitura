@@ -3948,7 +3948,7 @@ function renderBatalha() {
       dB.todos.filter(l=>l.status==='Completo'&&l.genero).forEach(l=>{ genB[l.genero]=(genB[l.genero]||0)+1; });
       const allGen = [...new Set([...Object.keys(genA),...Object.keys(genB)])].sort((a,b)=>{
         return ((genA[b]||0)+(genB[b]||0)) - ((genA[a]||0)+(genB[a]||0));
-      }).slice(0,8); // top 8 gêneros mais lidos entre os dois
+      }).slice(0,10); // top 10 gêneros mais lidos entre os dois
       const vaziEl = document.getElementById('bat-generos-vazio');
       if (!allGen.length) {
         genEl.style.display='none';
