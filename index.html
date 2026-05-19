@@ -584,7 +584,7 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
   </div>
   <div id="painelGeneroOverlay" style="display:none;position:fixed;inset:0;z-index:8999;background:rgba(0,0,0,0.5);" onclick="fecharPainelGenero()"></div>
 
-  <div class="grid4" style="margin-bottom:16px;grid-template-columns:repeat(4,1fr);">
+  <div id="kpi-books-grid" class="grid4" style="margin-bottom:16px;grid-template-columns:repeat(4,1fr);">
     <div class="kpi" style="--accent:#ffd166">
       <div style="font-size:11px;font-weight:700;letter-spacing:1px;color:var(--muted);margin-bottom:8px;">📖 MAIOR LIVRO</div>
       <div class="kpi-book">
@@ -3206,6 +3206,9 @@ function setUsuario(usuario) {
     window.scrollTo(0, 0);
   } else {
     document.querySelectorAll('#app > *').forEach(el => { el.style.display = ''; });
+    // Restaura o grid dos 4 kpi cards explicitamente
+    const kg = document.getElementById('kpi-books-grid');
+    if (kg) kg.style.display = 'grid';
   }
 
   if (usuario === 'Batalha') {
