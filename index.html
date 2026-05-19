@@ -3646,7 +3646,7 @@ function renderBatalha() {
 <div style="margin-bottom:20px;">
   <div class="bat-section-hdr">🌎 COMPETIÇÃO POR GÊNEROS</div>
   <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:20px;">
-    <div style="height:480px;"><canvas id="bat-generos"></canvas></div>
+    <div style="height:360px;"><canvas id="bat-generos"></canvas></div>
     <div id="bat-generos-vazio" style="display:none;font-family:'Exo 2',sans-serif;font-size:11px;color:rgba(248,250,252,0.3);text-align:center;padding:20px;">Adicione gêneros via ✏️ Atualizar Livro</div>
   </div>
 </div>
@@ -3948,7 +3948,7 @@ function renderBatalha() {
       dB.todos.filter(l=>l.status==='Completo'&&l.genero).forEach(l=>{ genB[l.genero]=(genB[l.genero]||0)+1; });
       const allGen = [...new Set([...Object.keys(genA),...Object.keys(genB)])].sort((a,b)=>{
         return ((genA[b]||0)+(genB[b]||0)) - ((genA[a]||0)+(genB[a]||0));
-      });
+      }).slice(0,8); // top 8 gêneros mais lidos entre os dois
       const vaziEl = document.getElementById('bat-generos-vazio');
       if (!allGen.length) {
         genEl.style.display='none';
@@ -3963,8 +3963,8 @@ function renderBatalha() {
           data:{
             labels: allGen,
             datasets:[
-              {label:pA, data:allGen.map(g=>Math.round((genA[g]||0)/totA*100)), backgroundColor:'rgba(168,85,247,0.8)', borderColor:'#A855F7', borderWidth:0, borderRadius:3, barPercentage:0.85, categoryPercentage:0.7},
-              {label:pB, data:allGen.map(g=>Math.round((genB[g]||0)/totB*100)), backgroundColor:'rgba(249,115,22,0.8)',  borderColor:'#FB923C', borderWidth:0, borderRadius:3, barPercentage:0.85, categoryPercentage:0.7},
+              {label:pA, data:allGen.map(g=>Math.round((genA[g]||0)/totA*100)), backgroundColor:'rgba(168,85,247,0.85)', borderColor:'#A855F7', borderWidth:0, borderRadius:4, barPercentage:0.6, categoryPercentage:0.8},
+              {label:pB, data:allGen.map(g=>Math.round((genB[g]||0)/totB*100)), backgroundColor:'rgba(249,115,22,0.85)',  borderColor:'#FB923C', borderWidth:0, borderRadius:4, barPercentage:0.6, categoryPercentage:0.8},
             ]
           },
           options:{
@@ -3983,6 +3983,26 @@ function renderBatalha() {
                 }
               }},
               datalabels: false
+            },
+            animation: {
+              onComplete: function(ctx) {
+                const chart = ctx.chart;
+                const c2d = chart.ctx;
+                chart.data.datasets.forEach((dataset, di) => {
+                  const meta = chart.getDatasetMeta(di);
+                  meta.data.forEach((bar, idx) => {
+                    const val = dataset.data[idx];
+                    if (!val) return;
+                    const x = bar.x + 4;
+                    const y = bar.y;
+                    c2d.fillStyle = di === 0 ? '#C084FC' : '#FB923C';
+                    c2d.font = 'bold 11px Rajdhani, sans-serif';
+                    c2d.textAlign = 'left';
+                    c2d.textBaseline = 'middle';
+                    c2d.fillText(val + '%', x, y);
+                  });
+                });
+              }
             },
             scales:{
               x:{
