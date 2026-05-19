@@ -368,7 +368,7 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
       </button>
     </div>
     <div class="badge" id="header-badge">— livros · — sessões</div>
-    <button onclick="toggleChangelog()" style="background:rgba(139,124,248,0.2);border:1px solid var(--purple);color:var(--purple);padding:6px 12px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;white-space:nowrap;">📋 v2.2</button>
+    <button onclick="toggleChangelog()" style="background:rgba(139,124,248,0.2);border:1px solid var(--purple);color:var(--purple);padding:6px 12px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;white-space:nowrap;">📋 v2.3</button>
     <button id="btn-refresh" onclick="manualRefresh()" style="background:rgba(78,205,196,0.15);border:1px solid var(--teal);color:var(--teal);padding:6px 12px;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;white-space:nowrap;" title="Atualizar dados">🔄</button>
   </div>
 </header>
@@ -4054,6 +4054,21 @@ window.setUsuario = setUsuario;
 
 // ── Changelog ────────────────────────────────────
 const CHANGELOG = [
+  {
+    versao: '2.3', data: '18/05/2026', titulo: 'Layout Batalha & Interatividade',
+    itens: [
+      'Batalha: Competição por Gêneros reformulada — barras divergentes lado a lado igual referência visual',
+      'Batalha: Dia Sagrado movido para abaixo de Guerra das Temporadas (layout simétrico)',
+      'Batalha: Bosses e Slimes em 2 colunas simétricas',
+      'Batalha: Gêneros em linha própria full-width com top 10',
+      'Dashboard: clique no gráfico de Gêneros Lidos abre popup com livros do gênero',
+      'Dashboard: clique em Coleções Favoritas (gráfico e legenda) abre popup com livros da coleção',
+      'Dashboard: clique em Autores Favoritos (gráfico e legenda) abre popup com livros do autor',
+      'Capas no popup de gênero agora usam coverUrl diretamente',
+      'Fix: batalha voltando ao dashboard não escondia elementos do grid',
+      'Fix: Service Worker corrigido para não servir cache antigo',
+    ]
+  },
   {
     versao: '2.2', data: '18/05/2026', titulo: 'Gêneros, Filtros & Batalha V3',
     itens: [
