@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-20T02:12:42.417Z",
+  "geradoEm": "2026-05-20T09:00:47.470Z",
   "meta": {
     "total": 53,
     "lidos": 24,
@@ -9,7 +9,7 @@
     "paginasFaltando": 14613,
     "mediaDiaria": 75.6,
     "ritmoAtual": 54.5,
-    "dataPrevistoAtual": "12/02/2027"
+    "dataPrevistoAtual": "13/02/2027"
   },
   "metasPorAno": {
     "2022": {
@@ -60,8 +60,8 @@
       "lendo": 0,
       "pausados": 0,
       "aguardando": 0,
-      "paginasTotal": 43678,
-      "paginasLidas": 43678,
+      "paginasTotal": 43706,
+      "paginasLidas": 43706,
       "paginasFaltando": 0,
       "faltando": 0,
       "mediaDiaria": 121.8,
@@ -80,7 +80,7 @@
       "faltando": 29,
       "mediaDiaria": 75.6,
       "ritmoAtual": 54.5,
-      "dataPrevistoAtual": "12/02/2027"
+      "dataPrevistoAtual": "13/02/2027"
     },
     "PAUSADO": {
       "total": 2,
@@ -27843,7 +27843,7 @@
       "livro": "Dawnshard",
       "autor": "Brandon Sanderson",
       "isbn": "9780593198957",
-      "coverUrl": "https://m.media-amazon.com/images/I/81Ox9WrOojL.jpg",
+      "coverUrl": "https://m.media-amazon.com/images/I/81Ox9WrOojL._AC_UY218_.jpg",
       "metaAno": "2025",
       "anoConclusao": "2025",
       "depende": "Ritmo de Guerra",
@@ -27851,9 +27851,9 @@
       "ordemColecao": 16,
       "ordem": 44,
       "status": "Completo",
-      "totalPag": 232,
+      "totalPag": 260,
       "pagAtual": 232,
-      "pct": 1,
+      "pct": 0.892,
       "usuario": "MILTON",
       "genero": "Fantasia épica"
     },
