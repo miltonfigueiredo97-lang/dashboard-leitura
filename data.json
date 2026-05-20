@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-19T17:13:23.553Z",
+  "geradoEm": "2026-05-20T00:04:25.217Z",
   "meta": {
     "total": 54,
-    "lidos": 23,
-    "faltando": 31,
+    "lidos": 24,
+    "faltando": 30,
     "paginasTotal": 26813,
-    "paginasLidas": 12124,
-    "paginasFaltando": 14689,
-    "mediaDiaria": 75.8,
-    "ritmoAtual": 54.5,
-    "dataPrevistoAtual": "13/02/2027"
+    "paginasLidas": 12141,
+    "paginasFaltando": 14672,
+    "mediaDiaria": 75.4,
+    "ritmoAtual": 53.5,
+    "dataPrevistoAtual": "18/02/2027"
   },
   "metasPorAno": {
     "2022": {
@@ -70,17 +70,17 @@
     },
     "2026": {
       "total": 54,
-      "lidos": 23,
-      "lendo": 3,
+      "lidos": 24,
+      "lendo": 2,
       "pausados": 0,
       "aguardando": 28,
       "paginasTotal": 26813,
-      "paginasLidas": 12124,
-      "paginasFaltando": 14689,
-      "faltando": 31,
-      "mediaDiaria": 75.8,
-      "ritmoAtual": 54.5,
-      "dataPrevistoAtual": "13/02/2027"
+      "paginasLidas": 12141,
+      "paginasFaltando": 14672,
+      "faltando": 30,
+      "mediaDiaria": 75.4,
+      "ritmoAtual": 53.5,
+      "dataPrevistoAtual": "18/02/2027"
     },
     "PAUSADO": {
       "total": 2,
@@ -27044,6 +27044,15 @@
       "minutos": 75,
       "ano": 2026,
       "usuario": "Milton"
+    },
+    {
+      "livro": "Shadows for Silence in the Forests of Hell",
+      "colecao": "Cosmere",
+      "data": "2026-05-20",
+      "paginas": 17,
+      "minutos": 20,
+      "ano": 2026,
+      "usuario": "Daniel"
     }
   ],
   "livros": [
@@ -35662,10 +35671,10 @@
       "colecao": "Cosmere",
       "ordemColecao": 0,
       "ordem": 0,
-      "status": "Lendo",
+      "status": "Completo",
       "totalPag": 89,
-      "pagAtual": 72,
-      "pct": 0.809,
+      "pagAtual": 89,
+      "pct": 1,
       "usuario": "Daniel",
       "genero": "Fantasia épica"
     },
@@ -36086,24 +36095,6 @@
       "pct": 0.655,
       "usuario": "MILTON",
       "genero": "Fantasia histórica"
-    },
-    {
-      "livro": "Shadows for Silence in the Forests of Hell",
-      "autor": "Brandon Sanderson",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/81-TqssCMmL._AC_UY218_.jpg",
-      "metaAno": "2026",
-      "anoConclusao": "2026",
-      "depende": "",
-      "colecao": "Cosmere",
-      "ordemColecao": 0,
-      "ordem": 0,
-      "status": "Lendo",
-      "totalPag": 89,
-      "pagAtual": 72,
-      "pct": 0.809,
-      "usuario": "Daniel",
-      "genero": "Fantasia épica"
     },
     {
       "livro": "Guerra de Jade",
