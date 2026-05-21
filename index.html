@@ -4695,6 +4695,9 @@ let _paginaAtual = 0, _totalPag = 0, _startY = null, _startPag = null;
 function iniciarScrollPagina(pagAtual, totalPag) {
   _paginaAtual = pagAtual;
   _totalPag = totalPag;
+  // Seta a página anterior (onde parou) no campo hidden
+  const campoAnterior = document.getElementById('s-pagina-atual');
+  if (campoAnterior) campoAnterior.value = pagAtual;
   atualizarDisplayPagina();
   const el = document.getElementById('s-pagina-scroll');
   if (!el) return;
@@ -4727,16 +4730,16 @@ function stepPagina(delta) {
 window.stepPagina = stepPagina;
 
 function atualizarDisplayPagina() {
-  const pagAnterior = parseInt(document.getElementById('s-pagina-atual').value) || 0;
+  const pagAnterior = parseInt(document.getElementById('s-pagina-atual')?.value) || 0;
   const paginasLidas = Math.max(0, _paginaAtual - pagAnterior);
   const pct = _totalPag > 0 ? Math.round(_paginaAtual / _totalPag * 100) : 0;
   const el = (id) => document.getElementById(id);
-  if (el('s-pagina-prev')) el('s-pagina-prev').textContent = pagAnterior > 0 ? pagAnterior : '—';
+  if (el('s-pagina-prev')) el('s-pagina-prev').textContent = pagAnterior > 0 ? `anterior: ${pagAnterior}` : '—';
   if (el('s-pagina-cur')) el('s-pagina-cur').textContent = _paginaAtual || '—';
   if (el('s-pagina-pct')) el('s-pagina-pct').textContent = `${pct}% do livro`;
   if (el('s-pagina-lidas-label')) el('s-pagina-lidas-label').textContent = paginasLidas > 0 ? `+${paginasLidas} págs lidas` : '';
   if (el('s-paginas')) el('s-paginas').value = paginasLidas;
-  if (el('s-pagina-atual')) el('s-pagina-atual').value = pagAnterior;
+  // NÃO sobrescreve s-pagina-atual aqui
 }
 window.atualizarDisplayPagina = atualizarDisplayPagina;
 
