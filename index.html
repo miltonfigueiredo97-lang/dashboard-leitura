@@ -2897,8 +2897,20 @@ function abrirPainelMeta() {
   const lista = document.getElementById('painelMetaLista');
   if (!painel) return;
 
+  const u = usuarioAtual === 'Batalha' ? 'Milton' : usuarioAtual;
   const allLivros = [...(window._livros||[]),...(window._dadosD?.lendo||[]),...(window._dadosD?.pausados||[]),...(window._dadosD?.aguardando||[])];
-  const livrosMeta = allLivros.filter(l => String(l.metaAno) === String(ano))
+  // Deduplica por nome e filtra pelo usuário correto
+  const seen = new Set();
+  const livrosMeta = allLivros.filter(l => {
+    if (String(l.metaAno) !== String(ano)) return false;
+    const userOk = u === 'Milton'
+      ? (!l.usuario || l.usuario === '' || l.usuario.toUpperCase() === 'MILTON')
+      : l.usuario?.toUpperCase() === u.toUpperCase();
+    if (!userOk) return false;
+    if (seen.has(l.livro)) return false;
+    seen.add(l.livro);
+    return true;
+  })
     .sort((a,b) => {
       const ord = {Completo:0,Lendo:1,Pausado:2,Aguardando:3};
       return (ord[a.status]??9)-(ord[b.status]??9) || a.livro.localeCompare(b.livro);
