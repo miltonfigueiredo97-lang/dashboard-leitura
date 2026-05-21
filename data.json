@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-21T15:12:52.732Z",
+  "geradoEm": "2026-05-21T15:24:54.188Z",
   "meta": {
     "total": 53,
     "lidos": 24,
     "faltando": 29,
     "paginasTotal": 26792,
-    "paginasLidas": 12270,
-    "paginasFaltando": 14522,
-    "mediaDiaria": 75.7,
-    "ritmoAtual": 54.2,
-    "dataPrevistoAtual": "13/02/2027"
+    "paginasLidas": 12704,
+    "paginasFaltando": 14088,
+    "mediaDiaria": 78.7,
+    "ritmoAtual": 65.6,
+    "dataPrevistoAtual": "22/12/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -75,12 +75,12 @@
       "pausados": 0,
       "aguardando": 27,
       "paginasTotal": 26792,
-      "paginasLidas": 12270,
-      "paginasFaltando": 14522,
+      "paginasLidas": 12704,
+      "paginasFaltando": 14088,
       "faltando": 29,
-      "mediaDiaria": 75.7,
-      "ritmoAtual": 54.2,
-      "dataPrevistoAtual": "13/02/2027"
+      "mediaDiaria": 78.7,
+      "ritmoAtual": 65.6,
+      "dataPrevistoAtual": "22/12/2026"
     },
     "PAUSADO": {
       "total": 2,
@@ -27089,6 +27089,15 @@
       "minutos": 15,
       "ano": 2026,
       "usuario": "Milton"
+    },
+    {
+      "livro": "A Cidade de Bronze",
+      "colecao": "Trilogia de Daevabad",
+      "data": "2026-05-21",
+      "paginas": 434,
+      "minutos": 1,
+      "ano": 2026,
+      "usuario": "Milton"
     }
   ],
   "livros": [
@@ -28142,15 +28151,15 @@
       "isbn": "9780062678119",
       "coverUrl": "https://m.media-amazon.com/images/I/91JQ7RcYcrL._UF1000,1000_QL80_.jpg",
       "metaAno": "2026",
-      "anoConclusao": "",
+      "anoConclusao": "2026",
       "depende": "",
       "colecao": "Trilogia de Daevabad",
       "ordemColecao": 1,
       "ordem": 59,
       "status": "Lendo",
       "totalPag": 641,
-      "pagAtual": 433,
-      "pct": 0.676,
+      "pagAtual": 867,
+      "pct": 1.353,
       "usuario": "MILTON",
       "genero": "Fantasia histórica"
     },
@@ -36102,15 +36111,15 @@
       "isbn": "9780062678119",
       "coverUrl": "https://m.media-amazon.com/images/I/91JQ7RcYcrL._UF1000,1000_QL80_.jpg",
       "metaAno": "2026",
-      "anoConclusao": "",
+      "anoConclusao": "2026",
       "depende": "",
       "colecao": "Trilogia de Daevabad",
       "ordemColecao": 1,
       "ordem": 59,
       "status": "Lendo",
       "totalPag": 641,
-      "pagAtual": 433,
-      "pct": 0.676,
+      "pagAtual": 867,
+      "pct": 1.353,
       "usuario": "MILTON",
       "genero": "Fantasia histórica"
     },
