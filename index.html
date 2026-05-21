@@ -3372,6 +3372,7 @@ function renderBatalha() {
     });
     const notas = (d.notas||[]).filter(filterU).filter(n => anoFiltro === 'total' || String(n.ano) === String(anoFiltro));
     const diasSet = new Set(sess.map(s=>s.data).filter(Boolean));
+    if (u === 'Milton') console.log('[calcDados] Milton diasSet.size:', diasSet.size, 'sess.length:', sess.length, 'anoFiltro:', anoFiltro, 'amostra data:', [...diasSet][0]);
     const pagTotal = sess.reduce((a,s)=>a+s.paginas,0);
     const horas = Math.round(sess.reduce((a,s)=>a+(s.minutos||0),0)/60);
     const media = diasSet.size>0 ? Math.round(pagTotal/diasSet.size*10)/10 : 0;
