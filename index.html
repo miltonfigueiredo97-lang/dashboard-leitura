@@ -368,7 +368,7 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
       </button>
     </div>
     <div class="badge" id="header-badge">— livros · — sessões</div>
-    <button onclick="toggleChangelog()" style="background:rgba(139,124,248,0.2);border:1px solid var(--purple);color:var(--purple);padding:6px 12px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;white-space:nowrap;">📋 v2.3</button>
+    <button onclick="toggleChangelog()" style="background:rgba(139,124,248,0.2);border:1px solid var(--purple);color:var(--purple);padding:6px 12px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;white-space:nowrap;">📋 v2.4</button>
     <button id="btn-refresh" onclick="manualRefresh()" style="background:rgba(78,205,196,0.15);border:1px solid var(--teal);color:var(--teal);padding:6px 12px;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;white-space:nowrap;" title="Atualizar dados">🔄</button>
   </div>
 </header>
@@ -419,7 +419,7 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
               stroke-dasharray="314.16" stroke-dashoffset="227.47" stroke-linecap="round"/>
           </svg>
           <div class="ring-center">
-            <div class="ring-pct" id="meta-ring-pct">—</div>
+            <div class="ring-pct" id="meta-ring-pct" onclick="abrirPainelMeta()" style="cursor:pointer;" title="Ver livros da meta">—</div>
             <div class="ring-sub">páginas</div>
           </div>
         </div>
@@ -437,7 +437,7 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
             <div class="meta-stat-lbl">Págs totais da meta</div>
           </div>
           <div class="meta-stat">
-            <div class="meta-stat-val" style="color:var(--teal)" id="meta-livros">—</div>
+            <div class="meta-stat-val" style="color:var(--teal);cursor:pointer;" id="meta-livros" onclick="abrirPainelMeta()" title="Ver livros da meta">—</div>
             <div class="meta-stat-lbl">Livros lidos</div>
           </div>
           <div class="meta-stat">
@@ -583,6 +583,16 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
     <div id="painelGeneroLista" style="display:flex;flex-direction:column;gap:8px;"></div>
   </div>
   <div id="painelGeneroOverlay" style="display:none;position:fixed;inset:0;z-index:8999;background:rgba(0,0,0,0.5);" onclick="fecharPainelGenero()"></div>
+
+  <!-- Painel Meta -->
+  <div id="painelMeta" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:9000;background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:16px;width:min(800px,95vw);max-height:75vh;overflow-y:auto;box-shadow:0 8px 40px rgba(0,0,0,0.7);">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+      <div id="painelMetaTitulo" style="font-size:16px;font-weight:700;color:var(--text)"></div>
+      <button onclick="fecharPainelMeta()" style="background:var(--bg3);border:none;color:var(--muted);width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:16px;">✕</button>
+    </div>
+    <div id="painelMetaLista" style="display:flex;flex-wrap:wrap;gap:10px;"></div>
+  </div>
+  <div id="painelMetaOverlay" style="display:none;position:fixed;inset:0;z-index:8998;background:rgba(0,0,0,0.5);" onclick="fecharPainelMeta()"></div>
 
   <div id="kpi-books-grid" class="grid4" style="margin-bottom:16px;grid-template-columns:repeat(4,1fr);">
     <div class="kpi" style="--accent:#ffd166">
@@ -1222,10 +1232,16 @@ function recalcularDados(d, sessoes) {
   const BOOK_DAILY = {};
   sessoes.forEach(s => {
     if (!s.livro || !s.data || !s.paginas) return;
+    // Normaliza data para yyyy-MM-dd
+    let dataKey = s.data;
+    if (dataKey.includes('/')) {
+      const [d,m,y] = dataKey.split('/');
+      dataKey = `${y}-${m.padStart(2,'0')}-${d.padStart(2,'0')}`;
+    }
     if (!BOOK_DAILY[s.livro]) BOOK_DAILY[s.livro] = [];
-    const existing = BOOK_DAILY[s.livro].find(r => r.d === s.data);
+    const existing = BOOK_DAILY[s.livro].find(r => r.d === dataKey);
     if (existing) existing.p += s.paginas;
-    else BOOK_DAILY[s.livro].push({ d: s.data, p: s.paginas });
+    else BOOK_DAILY[s.livro].push({ d: dataKey, p: s.paginas });
   });
   Object.keys(BOOK_DAILY).forEach(k => BOOK_DAILY[k].sort((a,b) => a.d.localeCompare(b.d)));
 
@@ -2873,6 +2889,55 @@ function buildMeta() {
 }
 window.buildMeta = buildMeta;
 
+function abrirPainelMeta() {
+  const ano = document.getElementById('selMetaAno')?.value || '2026';
+  const painel = document.getElementById('painelMeta');
+  const overlay = document.getElementById('painelMetaOverlay');
+  const titulo = document.getElementById('painelMetaTitulo');
+  const lista = document.getElementById('painelMetaLista');
+  if (!painel) return;
+
+  const allLivros = [...(window._livros||[]),...(window._dadosD?.lendo||[]),...(window._dadosD?.pausados||[]),...(window._dadosD?.aguardando||[])];
+  const livrosMeta = allLivros.filter(l => String(l.metaAno) === String(ano))
+    .sort((a,b) => {
+      const ord = {Completo:0,Lendo:1,Pausado:2,Aguardando:3};
+      return (ord[a.status]??9)-(ord[b.status]??9) || a.livro.localeCompare(b.livro);
+    });
+
+  const statusIcon = {
+    Completo:  { icon:'✅', color:'#22c55e' },
+    Lendo:     { icon:'📖', color:'#3b82f6' },
+    Pausado:   { icon:'⏸️', color:'#ef4444' },
+    Aguardando:{ icon:'⏳', color:'#e2e8f0' },
+  };
+
+  titulo.textContent = `🎯 Meta ${ano} — ${livrosMeta.length} livros`;
+  lista.innerHTML = livrosMeta.map(l => {
+    const st = statusIcon[l.status] || statusIcon.Aguardando;
+    const capa = l.coverUrl
+      ? `<img src="${l.coverUrl}" style="width:100%;height:100%;object-fit:cover;border-radius:6px;" onerror="this.style.display='none'">`
+      : `<div style="width:100%;height:100%;background:var(--bg3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:24px;">📚</div>`;
+    return `
+    <div title="${l.livro}" style="position:relative;width:70px;flex-shrink:0;cursor:default;">
+      <div style="width:70px;height:100px;position:relative;border-radius:6px;overflow:hidden;box-shadow:2px 4px 12px rgba(0,0,0,0.5);">
+        ${capa}
+      </div>
+      <div style="position:absolute;bottom:4px;right:4px;width:20px;height:20px;border-radius:50%;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;font-size:12px;" title="${l.status}">${st.icon}</div>
+      <div style="font-size:9px;color:var(--muted);text-align:center;margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${l.livro.slice(0,14)}</div>
+    </div>`;
+  }).join('');
+
+  painel.style.display = 'block';
+  if (overlay) overlay.style.display = 'block';
+}
+window.abrirPainelMeta = abrirPainelMeta;
+
+function fecharPainelMeta() {
+  document.getElementById('painelMeta').style.display = 'none';
+  document.getElementById('painelMetaOverlay').style.display = 'none';
+}
+window.fecharPainelMeta = fecharPainelMeta;
+
 carregarDados();
 </script>
 <!-- ── FAB + Modais PWA ── -->
@@ -2974,9 +3039,32 @@ carregarDados();
       <input id="s-data" type="date">
     </div>
     <div class="pwa-row">
-      <div class="pwa-field">
-        <label>Páginas lidas</label>
-        <input id="s-paginas" type="number" min="1" placeholder="0">
+      <div class="pwa-field" style="flex:2;">
+        <label>Página atual</label>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div style="position:relative;flex:1;">
+            <div id="s-pagina-scroll" style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;overflow:hidden;height:120px;position:relative;cursor:ns-resize;user-select:none;">
+              <div id="s-pagina-display" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;">
+                <div style="font-size:11px;color:var(--muted);margin-bottom:2px;">anterior</div>
+                <div id="s-pagina-prev" style="font-size:14px;color:var(--muted);opacity:0.5;">—</div>
+                <div id="s-pagina-cur" style="font-size:28px;font-weight:900;color:var(--teal);margin:4px 0;line-height:1;">—</div>
+                <div id="s-pagina-pct" style="font-size:11px;color:var(--purple);">0%</div>
+                <div style="font-size:11px;color:var(--muted);margin-top:2px;" id="s-pagina-lidas-label"></div>
+              </div>
+              <div style="position:absolute;top:0;left:0;right:0;height:35px;background:linear-gradient(var(--bg2),transparent);pointer-events:none;"></div>
+              <div style="position:absolute;bottom:0;left:0;right:0;height:35px;background:linear-gradient(transparent,var(--bg2));pointer-events:none;"></div>
+              <div style="position:absolute;top:50%;left:0;right:0;height:2px;background:var(--purple);opacity:0.3;transform:translateY(-50%);pointer-events:none;"></div>
+            </div>
+            <input id="s-paginas" type="hidden" value="0">
+            <input id="s-pagina-atual" type="hidden" value="0">
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <button type="button" onclick="stepPagina(10)" style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);width:40px;height:36px;cursor:pointer;font-size:16px;">▲</button>
+            <button type="button" onclick="stepPagina(1)"  style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);width:40px;height:36px;cursor:pointer;font-size:14px;">↑</button>
+            <button type="button" onclick="stepPagina(-1)" style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);width:40px;height:36px;cursor:pointer;font-size:14px;">↓</button>
+            <button type="button" onclick="stepPagina(-10)" style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);width:40px;height:36px;cursor:pointer;font-size:16px;">▼</button>
+          </div>
+        </div>
       </div>
       <div class="pwa-field">
         <label>Horas</label>
@@ -3419,25 +3507,70 @@ function renderBatalha() {
 
   // Radar
   // ── Perfil de Combate — tetos fixos por temporada (0-10) ─────────
-  const TETOS = { paginas:15000, velocidade:80, notaMax:10, bosses:10, variedade:40 };
-  const allDatas = [...new Set([...(dA.sess||[]),...(dB.sess||[])].map(s=>s.data).filter(Boolean))].sort();
-  const diasPeriodo = allDatas.length > 1
-    ? Math.round((new Date(allDatas[allDatas.length-1]+'T12:00:00')-new Date(allDatas[0]+'T12:00:00'))/86400000)+1
-    : Math.max(dA.diasSet.size,dB.diasSet.size,1);
+  const TETOS_BASE = { paginas:15000, velocidade:80, notaMax:10, bosses:10, variedade:40 };
+
+  const hoje = new Date(); hoje.setHours(12,0,0,0);
+
+  // Dias do período por player:
+  // - ano específico: 1 jan até 31 dez (ou hoje se ano atual)
+  // - total: primeira sessão do player até hoje
+  function calcDiasPeriodo(dd) {
+    const todasDatas = (dd.sess||[]).map(s=>s.data).filter(Boolean).sort();
+    if (!todasDatas.length) return 365;
+    if (anoFiltro === 'total') {
+      const primeira = new Date(todasDatas[0]+'T12:00:00');
+      return Math.max(1, Math.round((hoje - primeira)/86400000)+1);
+    } else {
+      // Ano específico: sempre 1/jan até 31/dez (ou hoje se ano atual)
+      const anoNum = parseInt(anoFiltro);
+      const inicio = new Date(anoNum, 0, 1, 12);
+      const fim = anoNum === hoje.getFullYear() ? hoje : new Date(anoNum, 11, 31, 12);
+      return Math.max(1, Math.round((fim - inicio)/86400000)+1);
+    }
+  }
+
+  // Número de anos ativos por player
+  function anosAtivos(dd) {
+    const anos = new Set((dd.sess||[]).map(s=>s.data?.slice(0,4)).filter(Boolean));
+    return Math.max(anos.size, 1);
+  }
 
   function calcRadar(dd){
-    const n=(val,teto)=>Math.min(Math.round(Math.max(val,0)/Math.max(teto,1)*100)/10,10);
-    const velMedia=dd.diasSet.size>0?dd.pagTotal/dd.diasSet.size:0;
-    const autUnicos=Object.keys(dd.autMap||{}).length;
-    const genUnicos=dd.generosSet?.size||0;
-    return [
-      n(dd.pagTotal,       TETOS.paginas),   // Volume
-      n(dd.diasSet.size,   diasPeriodo),      // Consistência
-      n(velMedia,          TETOS.velocidade), // Velocidade
-      n(dd.notaMedia||0,   TETOS.notaMax),    // Qualidade
-      n(dd.bosses.length,  TETOS.bosses),     // Resistência
-      n(autUnicos+genUnicos,TETOS.variedade), // Variedade
-    ];
+    const clamp = (val,teto) => Math.min(parseFloat((Math.max(val,0)/Math.max(teto,1)*10).toFixed(1)), 10);
+
+    // Escala tetos pelo número de anos ativos se filtro = total
+    const anos = anoFiltro === 'total' ? anosAtivos(dd) : 1;
+    const TETOS = {
+      paginas:  TETOS_BASE.paginas  * anos,
+      bosses:   TETOS_BASE.bosses   * anos,
+      variedade:TETOS_BASE.variedade * anos,
+      velocidade:TETOS_BASE.velocidade,
+      notaMax:   TETOS_BASE.notaMax,
+    };
+
+    // 1. Volume
+    const volume = clamp(dd.pagTotal, TETOS.paginas);
+
+    // 2. Consistência: dias lidos / período real do player
+    const diasPeriodoPlayer = calcDiasPeriodo(dd);
+    const consistencia = clamp(dd.diasSet.size, diasPeriodoPlayer);
+
+    // 3. Velocidade: média págs nos dias lidos
+    const diasLidos = dd.diasSet.size || 1;
+    const velocidade = clamp(dd.pagTotal / diasLidos, TETOS.velocidade);
+
+    // 4. Qualidade
+    const qualidade = clamp(dd.notaMedia||0, TETOS.notaMax);
+
+    // 5. Resistência
+    const resistencia = clamp(dd.bosses.length, TETOS.bosses);
+
+    // 6. Variedade
+    const autUnicos = Object.keys(dd.autMap||{}).length;
+    const genUnicos = dd.generosSet?.size||0;
+    const variedade = clamp(autUnicos+genUnicos, TETOS.variedade);
+
+    return [volume, consistencia, velocidade, qualidade, resistencia, variedade];
   }
   const radarA=calcRadar(dA);
   const radarB=calcRadar(dB);
@@ -3476,7 +3609,7 @@ function renderBatalha() {
     { nome:'Ouro',    min:2, cor:'#FACC15', glow:'rgba(250,204,21,0.6)',  borda:'#EAB308', anim:false },
     { nome:'Platina', min:3, cor:'#22C55E', glow:'rgba(34,197,94,0.65)',  borda:'#16A34A', anim:false },
     { nome:'Diamante',min:4, cor:'#38BDF8', glow:'rgba(56,189,248,0.7)',  borda:'#2563EB', anim:false },
-    { nome:'Mestre',  min:5, cor:'#FACC15', glow:'rgba(147,51,234,0.9)',  borda:'#9333EA', anim:true  },
+    { nome:'Mestre',  min:5, cor:'#A855F7', glow:'rgba(147,51,234,0.9)',  borda:'#9333EA', anim:true  },
   ];
 
   function getTier(val, thresholds) {
@@ -3654,9 +3787,12 @@ function renderBatalha() {
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
   <div>
     <div class="bat-section-hdr">🕸️ PERFIL DE COMBATE</div>
-    <div style="font-family:'Exo 2',sans-serif;font-size:10px;color:rgba(248,250,252,0.35);margin-bottom:10px;">Relativo ao maior valor entre os dois</div>
-    <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:16px;display:flex;align-items:center;justify-content:center;">
-      <canvas id="bat-radar" width="240" height="240"></canvas>
+    <div style="font-family:'Exo 2',sans-serif;font-size:10px;color:rgba(248,250,252,0.35);margin-bottom:10px;">Tetos fixos — escala 0 a 10</div>
+    <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:16px;">
+      <div style="display:flex;align-items:center;justify-content:center;">
+        <canvas id="bat-radar" width="260" height="260"></canvas>
+      </div>
+      <div id="bat-radar-scores" style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.06);display:grid;grid-template-columns:repeat(3,1fr);gap:6px;"></div>
     </div>
   </div>
   <div style="display:flex;flex-direction:column;gap:16px;">
@@ -3695,6 +3831,38 @@ function renderBatalha() {
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- DIAS LIDOS NO PERÍODO -->
+<div style="margin-bottom:20px;">
+  <div class="bat-section-hdr">📆 DIAS LIDOS NO PERÍODO</div>
+  <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:20px;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;">
+      <div style="text-align:center;">
+        <div style="font-family:'Orbitron',sans-serif;font-size:48px;font-weight:900;color:#A855F7;text-shadow:0 0 20px rgba(168,85,247,0.5);line-height:1;">${dA.diasSet.size}</div>
+        <div style="font-family:'Rajdhani',sans-serif;font-size:13px;color:#A855F7;letter-spacing:2px;margin-top:4px;">${pA.toUpperCase()}</div>
+        <div style="font-family:'Exo 2',sans-serif;font-size:11px;color:rgba(248,250,252,0.4);margin-top:2px;">dias com leitura</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-family:'Orbitron',sans-serif;font-size:48px;font-weight:900;color:#FB923C;text-shadow:0 0 20px rgba(249,115,22,0.5);line-height:1;">${dB.diasSet.size}</div>
+        <div style="font-family:'Rajdhani',sans-serif;font-size:13px;color:#FB923C;letter-spacing:2px;margin-top:4px;">${pB.toUpperCase()}</div>
+        <div style="font-family:'Exo 2',sans-serif;font-size:11px;color:rgba(248,250,252,0.4);margin-top:2px;">dias com leitura</div>
+      </div>
+    </div>
+    <div style="margin-top:16px;height:8px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden;">
+      ${(()=>{
+        const tot = dA.diasSet.size + dB.diasSet.size || 1;
+        const pctA = Math.round(dA.diasSet.size/tot*100);
+        return `<div style="height:100%;background:linear-gradient(90deg,#A855F7,rgba(168,85,247,0.5));width:${pctA}%;float:left;border-radius:4px 0 0 4px;"></div>
+                <div style="height:100%;background:linear-gradient(90deg,rgba(249,115,22,0.5),#FB923C);width:${100-pctA}%;float:left;border-radius:0 4px 4px 0;"></div>`;
+      })()}
+    </div>
+    <div style="display:flex;justify-content:space-between;margin-top:6px;">
+      <span style="font-family:'Exo 2',sans-serif;font-size:10px;color:#A855F7;">${Math.round(dA.diasSet.size/(dA.diasSet.size+dB.diasSet.size||1)*100)}%</span>
+      <span style="font-family:'Exo 2',sans-serif;font-size:10px;color:rgba(248,250,252,0.3);">distribuição de dias</span>
+      <span style="font-family:'Exo 2',sans-serif;font-size:10px;color:#FB923C;">${Math.round(dB.diasSet.size/(dA.diasSet.size+dB.diasSet.size||1)*100)}%</span>
     </div>
   </div>
 </div>
@@ -3962,15 +4130,65 @@ function renderBatalha() {
     // Radar
     const rEl=document.getElementById('bat-radar');
     if(rEl){const ex=Chart.getChart(rEl);if(ex)ex.destroy();
-    new Chart(rEl,{type:'radar',data:{labels:['Volume','Consistência','Velocidade','Qualidade','Resistência','Variedade'],datasets:[
-      {label:pA,data:radarA,borderColor:CA,backgroundColor:CA+'26',pointBackgroundColor:CA,borderWidth:2},
-      {label:pB,data:radarB,borderColor:CB,backgroundColor:CB+'26',pointBackgroundColor:CB,borderWidth:2}
-    ]},options:{responsive:true,maintainAspectRatio:true,
-      scales:{r:{min:0,max:10,ticks:{display:true,stepSize:2,color:'rgba(255,255,255,0.3)',font:{size:9}},grid:{color:'rgba(255,255,255,0.07)'},pointLabels:{color:'#8892a8',font:{size:11}}}},
-      plugins:{legend:{labels:{color:'#8892a8',font:{size:11}}},tooltip:{...(window.TT||{}),callbacks:{label:c=>`${c.dataset.label}: ${c.parsed.r.toFixed(1)}/10`}}}
-    }});}
+    new Chart(rEl,{type:'radar',
+      data:{
+        labels:['Volume','Consistência','Velocidade','Qualidade','Resistência','Variedade'],
+        datasets:[
+          {label:pA,data:radarA,borderColor:CA,backgroundColor:CA+'22',
+           pointBackgroundColor:CA,pointBorderColor:CA,pointHoverBackgroundColor:'#fff',
+           pointRadius:4,pointHoverRadius:6,borderWidth:2.5},
+          {label:pB,data:radarB,borderColor:CB,backgroundColor:CB+'22',
+           pointBackgroundColor:CB,pointBorderColor:CB,pointHoverBackgroundColor:'#fff',
+           pointRadius:4,pointHoverRadius:6,borderWidth:2.5}
+        ]
+      },
+      options:{
+        responsive:true,maintainAspectRatio:true,
+        scales:{r:{
+          min:0,max:10,
+          ticks:{display:true,stepSize:2,color:'rgba(255,255,255,0.25)',font:{size:9},backdropColor:'transparent'},
+          grid:{color:'rgba(255,255,255,0.06)'},
+          angleLines:{color:'rgba(255,255,255,0.06)'},
+          pointLabels:{color:'#c0c8d8',font:{size:12,weight:'600'}}
+        }},
+        plugins:{
+          legend:{labels:{color:'#8892a8',font:{size:12},padding:16}},
+          tooltip:{
+            ...(window.TT||{}),
+            callbacks:{
+              label:c=>{
+                const ddX = c.dataset.label===pA ? dA : dB;
+                const anosX = anoFiltro==='total' ? anosAtivos(ddX) : 1;
+                const explica=[
+                  `págs/${(TETOS_BASE.paginas*anosX).toLocaleString('pt-BR')} meta`,
+                  `${ddX.diasSet.size} dias lidos/${calcDiasPeriodo(ddX)} do período`,
+                  `${Math.round(ddX.pagTotal/(ddX.diasSet.size||1))} págs/dia lido`,
+                  `nota média ${(ddX.notaMedia||0).toFixed(1)}`,
+                  `${ddX.bosses.length} bosses / ${TETOS_BASE.bosses*anosX} meta`,
+                  `autores+gêneros / ${TETOS_BASE.variedade*anosX} meta`
+                ];
+                return ` ${c.dataset.label}: ${c.parsed.r.toFixed(1)}/10 — ${explica[c.dataIndex]}`;
+              }
+            }
+          }
+        }
+      }
+    });}
 
-    // Linha
+    // Scores grid
+    const scoresEl = document.getElementById('bat-radar-scores');
+    if (scoresEl) {
+      const labels = ['Volume','Consistência','Velocidade','Qualidade','Resistência','Variedade'];
+      scoresEl.innerHTML = labels.map((l,i) => `
+        <div style="text-align:center;padding:4px;background:rgba(255,255,255,0.03);border-radius:6px;">
+          <div style="font-family:'Exo 2',sans-serif;font-size:9px;color:rgba(248,250,252,0.4);margin-bottom:3px;">${l}</div>
+          <div style="display:flex;justify-content:center;gap:8px;">
+            <span style="font-family:'Orbitron',sans-serif;font-size:11px;font-weight:700;color:#A855F7;">${radarA[i].toFixed(1)}</span>
+            <span style="color:rgba(255,255,255,0.2);font-size:11px;">·</span>
+            <span style="font-family:'Orbitron',sans-serif;font-size:11px;font-weight:700;color:#FB923C;">${radarB[i].toFixed(1)}</span>
+          </div>
+        </div>`).join('');
+    }
     const lEl=document.getElementById('bat-linha');
     if(lEl){const ex=Chart.getChart(lEl);if(ex)ex.destroy();
     const mA=meses12.map(m=>dA.mesPags[m]||0), mB=meses12.map(m=>dB.mesPags[m]||0);
@@ -4054,6 +4272,20 @@ window.setUsuario = setUsuario;
 
 // ── Changelog ────────────────────────────────────
 const CHANGELOG = [
+  {
+    versao: '2.4', data: '21/05/2026', titulo: 'Perfil de Combate & UX',
+    itens: [
+      'Perfil de Combate: cálculo correto com tetos fixos por temporada (0-10)',
+      'Consistência: calculada por player — dias lidos / período real (1/jan até hoje no ano atual)',
+      'Volume/Resistência/Variedade: teto escala pelo número de anos ativos no filtro "Todos"',
+      'Radar: pontos coloridos por player, grid mais sutil, tooltip com explicação do cálculo',
+      'Grid de scores abaixo do radar mostrando notas individuais',
+      'Batalha: card 📆 DIAS LIDOS NO PERÍODO com barra comparativa',
+      'Registrar Sessão: scroll roleta para página atual — calcula páginas lidas automaticamente',
+      'Gráfico Páginas por Dia: múltiplas sessões no mesmo dia somadas corretamente',
+      'Bosses redefinidos para 1000+ páginas',
+    ]
+  },
   {
     versao: '2.3', data: '18/05/2026', titulo: 'Layout Batalha & Interatividade',
     itens: [
@@ -4565,6 +4797,8 @@ function selecionarLivroSessao(l) {
   const icon = l.status==='Lendo'?'📖':l.status==='Pausado'?'⏸️':'📋';
   sel.textContent = icon + ' ' + l.livro + ' ✕';
   sel.style.display = 'block';
+  // Inicializa scroll de página com pagAtual do livro
+  iniciarScrollPagina(l.pagAtual||0, l.totalPag||0);
   // Verifica dependência
   if (l.depende) {
     const dep = livrosCache.find(x => x.livro === l.depende);
@@ -4574,10 +4808,66 @@ function selecionarLivroSessao(l) {
   }
 }
 
+// ── Scroll de página ──────────────────────────────────────────────
+let _paginaAtual = 0, _totalPag = 0, _startY = null, _startPag = null;
+
+function iniciarScrollPagina(pagAtual, totalPag) {
+  _paginaAtual = pagAtual;
+  _totalPag = totalPag;
+  // Seta a página anterior (onde parou) no campo hidden
+  const campoAnterior = document.getElementById('s-pagina-atual');
+  if (campoAnterior) campoAnterior.value = pagAtual;
+  atualizarDisplayPagina();
+  const el = document.getElementById('s-pagina-scroll');
+  if (!el) return;
+  el.addEventListener('wheel', e => { e.preventDefault(); stepPagina(e.deltaY < 0 ? 1 : -1); }, { passive: false });
+  el.addEventListener('touchstart', e => { _startY = e.touches[0].clientY; _startPag = _paginaAtual; }, { passive: true });
+  el.addEventListener('touchmove', e => {
+    if (_startY === null) return;
+    const dy = _startY - e.touches[0].clientY;
+    const delta = Math.round(dy / 4);
+    _paginaAtual = Math.max(_startPag||0, Math.min(_totalPag, (_startPag||0) + delta));
+    atualizarDisplayPagina();
+  }, { passive: true });
+  el.addEventListener('mousedown', e => { _startY = e.clientY; _startPag = _paginaAtual; });
+  el.addEventListener('mousemove', e => {
+    if (_startY === null) return;
+    const dy = _startY - e.clientY;
+    const delta = Math.round(dy / 4);
+    _paginaAtual = Math.max(_startPag||0, Math.min(_totalPag, (_startPag||0) + delta));
+    atualizarDisplayPagina();
+  });
+  el.addEventListener('mouseup', () => { _startY = null; _startPag = null; });
+  el.addEventListener('mouseleave', () => { _startY = null; _startPag = null; });
+}
+window.iniciarScrollPagina = iniciarScrollPagina;
+
+function stepPagina(delta) {
+  _paginaAtual = Math.max(0, Math.min(_totalPag, _paginaAtual + delta));
+  atualizarDisplayPagina();
+}
+window.stepPagina = stepPagina;
+
+function atualizarDisplayPagina() {
+  const pagAnterior = parseInt(document.getElementById('s-pagina-atual')?.value) || 0;
+  const paginasLidas = Math.max(0, _paginaAtual - pagAnterior);
+  const pct = _totalPag > 0 ? Math.round(_paginaAtual / _totalPag * 100) : 0;
+  const el = (id) => document.getElementById(id);
+  if (el('s-pagina-prev')) el('s-pagina-prev').textContent = pagAnterior > 0 ? `anterior: ${pagAnterior}` : '—';
+  if (el('s-pagina-cur')) el('s-pagina-cur').textContent = _paginaAtual || '—';
+  if (el('s-pagina-pct')) el('s-pagina-pct').textContent = `${pct}% do livro`;
+  if (el('s-pagina-lidas-label')) el('s-pagina-lidas-label').textContent = paginasLidas > 0 ? `+${paginasLidas} págs lidas` : '';
+  if (el('s-paginas')) el('s-paginas').value = paginasLidas;
+  // NÃO sobrescreve s-pagina-atual aqui
+}
+window.atualizarDisplayPagina = atualizarDisplayPagina;
+
 function limparLivroSessao() {
   document.getElementById('s-livro').value = '';
   document.getElementById('s-livro-busca').placeholder = 'Digite para buscar...';
   document.getElementById('s-livro-selecionado').style.display = 'none';
+  _paginaAtual = 0; _totalPag = 0; _startY = null; _startPag = null;
+  atualizarDisplayPagina();
   const msg = document.getElementById('s-msg');
   if (msg?.textContent.includes('depende')) { msg.className='pwa-msg'; msg.textContent=''; }
 }
