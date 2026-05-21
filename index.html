@@ -3450,11 +3450,25 @@ function renderBatalha() {
   // ── Perfil de Combate — tetos fixos por temporada (0-10) ─────────
   const TETOS_BASE = { paginas:15000, velocidade:80, notaMax:10, bosses:10, variedade:40 };
 
-  // Dias do período real (primeiro ao último dia com sessão entre os dois)
-  const allDatas = [...new Set([...(dA.sess||[]),...(dB.sess||[])].map(s=>s.data).filter(Boolean))].sort();
-  const diasPeriodo = allDatas.length > 1
-    ? Math.round((new Date(allDatas[allDatas.length-1]+'T12:00:00')-new Date(allDatas[0]+'T12:00:00'))/86400000)+1
-    : Math.max(dA.diasSet.size,dB.diasSet.size,1);
+  const hoje = new Date(); hoje.setHours(12,0,0,0);
+
+  // Dias do período por player:
+  // - ano específico: 1 jan até 31 dez (ou hoje se ano atual)
+  // - total: primeira sessão do player até hoje
+  function calcDiasPeriodo(dd) {
+    const todasDatas = (dd.sess||[]).map(s=>s.data).filter(Boolean).sort();
+    if (!todasDatas.length) return 365;
+    if (anoFiltro === 'total') {
+      const primeira = new Date(todasDatas[0]+'T12:00:00');
+      return Math.max(1, Math.round((hoje - primeira)/86400000)+1);
+    } else {
+      // Ano específico: sempre 1/jan até 31/dez (ou hoje se ano atual)
+      const anoNum = parseInt(anoFiltro);
+      const inicio = new Date(anoNum, 0, 1, 12);
+      const fim = anoNum === hoje.getFullYear() ? hoje : new Date(anoNum, 11, 31, 12);
+      return Math.max(1, Math.round((fim - inicio)/86400000)+1);
+    }
+  }
 
   // Número de anos ativos por player
   function anosAtivos(dd) {
@@ -3475,24 +3489,24 @@ function renderBatalha() {
       notaMax:   TETOS_BASE.notaMax,
     };
 
-    // 1. Volume: páginas totais / meta × anos
+    // 1. Volume
     const volume = clamp(dd.pagTotal, TETOS.paginas);
 
-    // 2. Consistência: dias com leitura / dias do período
-    const consistencia = clamp(dd.diasSet.size, diasPeriodo);
+    // 2. Consistência: dias lidos / período real do player
+    const diasPeriodoPlayer = calcDiasPeriodo(dd);
+    const consistencia = clamp(dd.diasSet.size, diasPeriodoPlayer);
 
-    // 3. Velocidade: média de págs nos dias em que houve leitura / teto
+    // 3. Velocidade: média págs nos dias lidos
     const diasLidos = dd.diasSet.size || 1;
-    const velMedia = dd.pagTotal / diasLidos;
-    const velocidade = clamp(velMedia, TETOS.velocidade);
+    const velocidade = clamp(dd.pagTotal / diasLidos, TETOS.velocidade);
 
-    // 4. Qualidade: nota média / nota máxima do sistema
+    // 4. Qualidade
     const qualidade = clamp(dd.notaMedia||0, TETOS.notaMax);
 
-    // 5. Resistência: livros 1000+ págs / teto × anos
+    // 5. Resistência
     const resistencia = clamp(dd.bosses.length, TETOS.bosses);
 
-    // 6. Variedade: autores únicos + gêneros únicos / teto × anos
+    // 6. Variedade
     const autUnicos = Object.keys(dd.autMap||{}).length;
     const genUnicos = dd.generosSet?.size||0;
     const variedade = clamp(autUnicos+genUnicos, TETOS.variedade);
@@ -3758,6 +3772,38 @@ function renderBatalha() {
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- DIAS LIDOS NO PERÍODO -->
+<div style="margin-bottom:20px;">
+  <div class="bat-section-hdr">📆 DIAS LIDOS NO PERÍODO</div>
+  <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:20px;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;">
+      <div style="text-align:center;">
+        <div style="font-family:'Orbitron',sans-serif;font-size:48px;font-weight:900;color:#A855F7;text-shadow:0 0 20px rgba(168,85,247,0.5);line-height:1;">${dA.diasSet.size}</div>
+        <div style="font-family:'Rajdhani',sans-serif;font-size:13px;color:#A855F7;letter-spacing:2px;margin-top:4px;">${pA.toUpperCase()}</div>
+        <div style="font-family:'Exo 2',sans-serif;font-size:11px;color:rgba(248,250,252,0.4);margin-top:2px;">dias com leitura</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-family:'Orbitron',sans-serif;font-size:48px;font-weight:900;color:#FB923C;text-shadow:0 0 20px rgba(249,115,22,0.5);line-height:1;">${dB.diasSet.size}</div>
+        <div style="font-family:'Rajdhani',sans-serif;font-size:13px;color:#FB923C;letter-spacing:2px;margin-top:4px;">${pB.toUpperCase()}</div>
+        <div style="font-family:'Exo 2',sans-serif;font-size:11px;color:rgba(248,250,252,0.4);margin-top:2px;">dias com leitura</div>
+      </div>
+    </div>
+    <div style="margin-top:16px;height:8px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden;">
+      ${(()=>{
+        const tot = dA.diasSet.size + dB.diasSet.size || 1;
+        const pctA = Math.round(dA.diasSet.size/tot*100);
+        return `<div style="height:100%;background:linear-gradient(90deg,#A855F7,rgba(168,85,247,0.5));width:${pctA}%;float:left;border-radius:4px 0 0 4px;"></div>
+                <div style="height:100%;background:linear-gradient(90deg,rgba(249,115,22,0.5),#FB923C);width:${100-pctA}%;float:left;border-radius:0 4px 4px 0;"></div>`;
+      })()}
+    </div>
+    <div style="display:flex;justify-content:space-between;margin-top:6px;">
+      <span style="font-family:'Exo 2',sans-serif;font-size:10px;color:#A855F7;">${Math.round(dA.diasSet.size/(dA.diasSet.size+dB.diasSet.size||1)*100)}%</span>
+      <span style="font-family:'Exo 2',sans-serif;font-size:10px;color:rgba(248,250,252,0.3);">distribuição de dias</span>
+      <span style="font-family:'Exo 2',sans-serif;font-size:10px;color:#FB923C;">${Math.round(dB.diasSet.size/(dA.diasSet.size+dB.diasSet.size||1)*100)}%</span>
     </div>
   </div>
 </div>
@@ -4056,7 +4102,7 @@ function renderBatalha() {
                 const anosX = anoFiltro==='total' ? anosAtivos(ddX) : 1;
                 const explica=[
                   `págs/${(TETOS_BASE.paginas*anosX).toLocaleString('pt-BR')} meta`,
-                  `dias lidos/${diasPeriodo} do período`,
+                  `${ddX.diasSet.size} dias lidos/${calcDiasPeriodo(ddX)} do período`,
                   `${Math.round(ddX.pagTotal/(ddX.diasSet.size||1))} págs/dia lido`,
                   `nota média ${(ddX.notaMedia||0).toFixed(1)}`,
                   `${ddX.bosses.length} bosses / ${TETOS_BASE.bosses*anosX} meta`,
