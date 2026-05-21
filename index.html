@@ -1222,10 +1222,16 @@ function recalcularDados(d, sessoes) {
   const BOOK_DAILY = {};
   sessoes.forEach(s => {
     if (!s.livro || !s.data || !s.paginas) return;
+    // Normaliza data para yyyy-MM-dd
+    let dataKey = s.data;
+    if (dataKey.includes('/')) {
+      const [d,m,y] = dataKey.split('/');
+      dataKey = `${y}-${m.padStart(2,'0')}-${d.padStart(2,'0')}`;
+    }
     if (!BOOK_DAILY[s.livro]) BOOK_DAILY[s.livro] = [];
-    const existing = BOOK_DAILY[s.livro].find(r => r.d === s.data);
+    const existing = BOOK_DAILY[s.livro].find(r => r.d === dataKey);
     if (existing) existing.p += s.paginas;
-    else BOOK_DAILY[s.livro].push({ d: s.data, p: s.paginas });
+    else BOOK_DAILY[s.livro].push({ d: dataKey, p: s.paginas });
   });
   Object.keys(BOOK_DAILY).forEach(k => BOOK_DAILY[k].sort((a,b) => a.d.localeCompare(b.d)));
 
@@ -2974,9 +2980,32 @@ carregarDados();
       <input id="s-data" type="date">
     </div>
     <div class="pwa-row">
-      <div class="pwa-field">
-        <label>Páginas lidas</label>
-        <input id="s-paginas" type="number" min="1" placeholder="0">
+      <div class="pwa-field" style="flex:2;">
+        <label>Página atual</label>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div style="position:relative;flex:1;">
+            <div id="s-pagina-scroll" style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;overflow:hidden;height:120px;position:relative;cursor:ns-resize;user-select:none;">
+              <div id="s-pagina-display" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;">
+                <div style="font-size:11px;color:var(--muted);margin-bottom:2px;">anterior</div>
+                <div id="s-pagina-prev" style="font-size:14px;color:var(--muted);opacity:0.5;">—</div>
+                <div id="s-pagina-cur" style="font-size:28px;font-weight:900;color:var(--teal);margin:4px 0;line-height:1;">—</div>
+                <div id="s-pagina-pct" style="font-size:11px;color:var(--purple);">0%</div>
+                <div style="font-size:11px;color:var(--muted);margin-top:2px;" id="s-pagina-lidas-label"></div>
+              </div>
+              <div style="position:absolute;top:0;left:0;right:0;height:35px;background:linear-gradient(var(--bg2),transparent);pointer-events:none;"></div>
+              <div style="position:absolute;bottom:0;left:0;right:0;height:35px;background:linear-gradient(transparent,var(--bg2));pointer-events:none;"></div>
+              <div style="position:absolute;top:50%;left:0;right:0;height:2px;background:var(--purple);opacity:0.3;transform:translateY(-50%);pointer-events:none;"></div>
+            </div>
+            <input id="s-paginas" type="hidden" value="0">
+            <input id="s-pagina-atual" type="hidden" value="0">
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <button type="button" onclick="stepPagina(10)" style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);width:40px;height:36px;cursor:pointer;font-size:16px;">▲</button>
+            <button type="button" onclick="stepPagina(1)"  style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);width:40px;height:36px;cursor:pointer;font-size:14px;">↑</button>
+            <button type="button" onclick="stepPagina(-1)" style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);width:40px;height:36px;cursor:pointer;font-size:14px;">↓</button>
+            <button type="button" onclick="stepPagina(-10)" style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);width:40px;height:36px;cursor:pointer;font-size:16px;">▼</button>
+          </div>
+        </div>
       </div>
       <div class="pwa-field">
         <label>Horas</label>
@@ -4632,6 +4661,8 @@ function selecionarLivroSessao(l) {
   const icon = l.status==='Lendo'?'📖':l.status==='Pausado'?'⏸️':'📋';
   sel.textContent = icon + ' ' + l.livro + ' ✕';
   sel.style.display = 'block';
+  // Inicializa scroll de página com pagAtual do livro
+  iniciarScrollPagina(l.pagAtual||0, l.totalPag||0);
   // Verifica dependência
   if (l.depende) {
     const dep = livrosCache.find(x => x.livro === l.depende);
@@ -4641,10 +4672,63 @@ function selecionarLivroSessao(l) {
   }
 }
 
+// ── Scroll de página ──────────────────────────────────────────────
+let _paginaAtual = 0, _totalPag = 0, _startY = null, _startPag = null;
+
+function iniciarScrollPagina(pagAtual, totalPag) {
+  _paginaAtual = pagAtual;
+  _totalPag = totalPag;
+  atualizarDisplayPagina();
+  const el = document.getElementById('s-pagina-scroll');
+  if (!el) return;
+  el.addEventListener('wheel', e => { e.preventDefault(); stepPagina(e.deltaY < 0 ? 1 : -1); }, { passive: false });
+  el.addEventListener('touchstart', e => { _startY = e.touches[0].clientY; _startPag = _paginaAtual; }, { passive: true });
+  el.addEventListener('touchmove', e => {
+    if (_startY === null) return;
+    const dy = _startY - e.touches[0].clientY;
+    const delta = Math.round(dy / 4);
+    _paginaAtual = Math.max(_startPag||0, Math.min(_totalPag, (_startPag||0) + delta));
+    atualizarDisplayPagina();
+  }, { passive: true });
+  el.addEventListener('mousedown', e => { _startY = e.clientY; _startPag = _paginaAtual; });
+  el.addEventListener('mousemove', e => {
+    if (_startY === null) return;
+    const dy = _startY - e.clientY;
+    const delta = Math.round(dy / 4);
+    _paginaAtual = Math.max(_startPag||0, Math.min(_totalPag, (_startPag||0) + delta));
+    atualizarDisplayPagina();
+  });
+  el.addEventListener('mouseup', () => { _startY = null; _startPag = null; });
+  el.addEventListener('mouseleave', () => { _startY = null; _startPag = null; });
+}
+window.iniciarScrollPagina = iniciarScrollPagina;
+
+function stepPagina(delta) {
+  _paginaAtual = Math.max(0, Math.min(_totalPag, _paginaAtual + delta));
+  atualizarDisplayPagina();
+}
+window.stepPagina = stepPagina;
+
+function atualizarDisplayPagina() {
+  const pagAnterior = parseInt(document.getElementById('s-pagina-atual').value) || 0;
+  const paginasLidas = Math.max(0, _paginaAtual - pagAnterior);
+  const pct = _totalPag > 0 ? Math.round(_paginaAtual / _totalPag * 100) : 0;
+  const el = (id) => document.getElementById(id);
+  if (el('s-pagina-prev')) el('s-pagina-prev').textContent = pagAnterior > 0 ? pagAnterior : '—';
+  if (el('s-pagina-cur')) el('s-pagina-cur').textContent = _paginaAtual || '—';
+  if (el('s-pagina-pct')) el('s-pagina-pct').textContent = `${pct}% do livro`;
+  if (el('s-pagina-lidas-label')) el('s-pagina-lidas-label').textContent = paginasLidas > 0 ? `+${paginasLidas} págs lidas` : '';
+  if (el('s-paginas')) el('s-paginas').value = paginasLidas;
+  if (el('s-pagina-atual')) el('s-pagina-atual').value = pagAnterior;
+}
+window.atualizarDisplayPagina = atualizarDisplayPagina;
+
 function limparLivroSessao() {
   document.getElementById('s-livro').value = '';
   document.getElementById('s-livro-busca').placeholder = 'Digite para buscar...';
   document.getElementById('s-livro-selecionado').style.display = 'none';
+  _paginaAtual = 0; _totalPag = 0; _startY = null; _startPag = null;
+  atualizarDisplayPagina();
   const msg = document.getElementById('s-msg');
   if (msg?.textContent.includes('depende')) { msg.className='pwa-msg'; msg.textContent=''; }
 }
