@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-21T15:34:55.059Z",
+  "geradoEm": "2026-05-21T17:24:54.001Z",
   "meta": {
     "total": 53,
     "lidos": 24,
@@ -7,9 +7,9 @@
     "paginasTotal": 26792,
     "paginasLidas": 12271,
     "paginasFaltando": 14521,
-    "mediaDiaria": 75.7,
-    "ritmoAtual": 54.2,
-    "dataPrevistoAtual": "13/02/2027"
+    "mediaDiaria": 78.6,
+    "ritmoAtual": 61.4,
+    "dataPrevistoAtual": "13/01/2027"
   },
   "metasPorAno": {
     "2022": {
@@ -36,7 +36,7 @@
       "paginasLidas": 5199,
       "paginasFaltando": 0,
       "faltando": 0,
-      "mediaDiaria": 39.6,
+      "mediaDiaria": 40.4,
       "ritmoAtual": 0,
       "dataPrevistoAtual": "Concluída!"
     },
@@ -78,9 +78,9 @@
       "paginasLidas": 12271,
       "paginasFaltando": 14521,
       "faltando": 29,
-      "mediaDiaria": 75.7,
-      "ritmoAtual": 54.2,
-      "dataPrevistoAtual": "13/02/2027"
+      "mediaDiaria": 78.6,
+      "ritmoAtual": 61.4,
+      "dataPrevistoAtual": "13/01/2027"
     },
     "PAUSADO": {
       "total": 2,
@@ -26265,73 +26265,73 @@
     {
       "livro": "A Marca de Atena",
       "colecao": "Os Heróis do Olimpo",
-      "data": "2026-09-10",
+      "data": "2023-09-10",
       "paginas": 22,
       "minutos": 0,
-      "ano": 2026,
+      "ano": 2023,
       "usuario": "MILTON"
     },
     {
       "livro": "A Marca de Atena",
       "colecao": "Os Heróis do Olimpo",
-      "data": "2026-09-11",
+      "data": "2023-09-11",
       "paginas": 5,
       "minutos": 0,
-      "ano": 2026,
+      "ano": 2023,
       "usuario": "MILTON"
     },
     {
       "livro": "A Marca de Atena",
       "colecao": "Os Heróis do Olimpo",
-      "data": "2026-12-15",
+      "data": "2023-12-15",
       "paginas": 10,
       "minutos": 0,
-      "ano": 2026,
+      "ano": 2023,
       "usuario": "MILTON"
     },
     {
       "livro": "A Marca de Atena",
       "colecao": "Os Heróis do Olimpo",
-      "data": "2026-12-16",
+      "data": "2023-12-16",
       "paginas": 12,
       "minutos": 0,
-      "ano": 2026,
+      "ano": 2023,
       "usuario": "MILTON"
     },
     {
       "livro": "A Marca de Atena",
       "colecao": "Os Heróis do Olimpo",
-      "data": "2026-12-17",
+      "data": "2023-12-17",
       "paginas": 45,
       "minutos": 0,
-      "ano": 2026,
+      "ano": 2023,
       "usuario": "MILTON"
     },
     {
       "livro": "A Marca de Atena",
       "colecao": "Os Heróis do Olimpo",
-      "data": "2026-12-18",
+      "data": "2023-12-18",
       "paginas": 50,
       "minutos": 0,
-      "ano": 2026,
+      "ano": 2023,
       "usuario": "MILTON"
     },
     {
       "livro": "A Marca de Atena",
       "colecao": "Os Heróis do Olimpo",
-      "data": "2026-12-19",
+      "data": "2023-12-19",
       "paginas": 56,
       "minutos": 0,
-      "ano": 2026,
+      "ano": 2023,
       "usuario": "MILTON"
     },
     {
       "livro": "A Marca de Atena",
       "colecao": "Os Heróis do Olimpo",
-      "data": "2026-12-20",
+      "data": "2023-12-20",
       "paginas": 17,
       "minutos": 0,
-      "ano": 2026,
+      "ano": 2023,
       "usuario": "MILTON"
     },
     {
