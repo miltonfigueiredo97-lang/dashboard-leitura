@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-19T00:32:11.123Z",
+  "geradoEm": "2026-05-21T22:52:12.522Z",
   "meta": {
-    "total": 54,
-    "lidos": 23,
-    "faltando": 31,
-    "paginasTotal": 26813,
-    "paginasLidas": 12028,
-    "paginasFaltando": 14785,
-    "mediaDiaria": 75.6,
-    "ritmoAtual": 53,
-    "dataPrevistoAtual": "21/02/2027"
+    "total": 53,
+    "lidos": 24,
+    "faltando": 29,
+    "paginasTotal": 26792,
+    "paginasLidas": 12408,
+    "paginasFaltando": 14384,
+    "mediaDiaria": 79.6,
+    "ritmoAtual": 66,
+    "dataPrevistoAtual": "25/12/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -36,18 +36,18 @@
       "paginasLidas": 5199,
       "paginasFaltando": 0,
       "faltando": 0,
-      "mediaDiaria": 39.6,
+      "mediaDiaria": 40.4,
       "ritmoAtual": 0,
       "dataPrevistoAtual": "Concluída!"
     },
     "2024": {
-      "total": 53,
-      "lidos": 53,
+      "total": 64,
+      "lidos": 64,
       "lendo": 0,
       "pausados": 0,
       "aguardando": 0,
-      "paginasTotal": 29826,
-      "paginasLidas": 29826,
+      "paginasTotal": 33461,
+      "paginasLidas": 33461,
       "paginasFaltando": 0,
       "faltando": 0,
       "mediaDiaria": 85.2,
@@ -60,8 +60,8 @@
       "lendo": 0,
       "pausados": 0,
       "aguardando": 0,
-      "paginasTotal": 43678,
-      "paginasLidas": 43678,
+      "paginasTotal": 43706,
+      "paginasLidas": 43706,
       "paginasFaltando": 0,
       "faltando": 0,
       "mediaDiaria": 121.8,
@@ -69,18 +69,18 @@
       "dataPrevistoAtual": "Concluída!"
     },
     "2026": {
-      "total": 54,
-      "lidos": 23,
-      "lendo": 3,
+      "total": 53,
+      "lidos": 24,
+      "lendo": 2,
       "pausados": 0,
-      "aguardando": 28,
-      "paginasTotal": 26813,
-      "paginasLidas": 12028,
-      "paginasFaltando": 14785,
-      "faltando": 31,
-      "mediaDiaria": 75.6,
-      "ritmoAtual": 53,
-      "dataPrevistoAtual": "21/02/2027"
+      "aguardando": 27,
+      "paginasTotal": 26792,
+      "paginasLidas": 12408,
+      "paginasFaltando": 14384,
+      "faltando": 29,
+      "mediaDiaria": 79.6,
+      "ritmoAtual": 66,
+      "dataPrevistoAtual": "25/12/2026"
     },
     "PAUSADO": {
       "total": 2,
@@ -97,15 +97,15 @@
       "dataPrevistoAtual": "—"
     },
     "AINDA NÃO DEFINIDO": {
-      "total": 223,
+      "total": 212,
       "lidos": 0,
       "lendo": 0,
       "pausados": 0,
-      "aguardando": 223,
-      "paginasTotal": 108749,
+      "aguardando": 212,
+      "paginasTotal": 105114,
       "paginasLidas": 0,
-      "paginasFaltando": 108749,
-      "faltando": 223,
+      "paginasFaltando": 105114,
+      "faltando": 212,
       "mediaDiaria": 50,
       "ritmoAtual": 0,
       "dataPrevistoAtual": "—"
@@ -9596,7 +9596,7 @@
     },
     {
       "livro": "A Deusa em Chamas",
-      "colecao": "A Guerra da Papoula",
+      "colecao": "Guerra da Papoula",
       "data": "2025-12-23",
       "paginas": 89,
       "minutos": 89.7,
@@ -9605,7 +9605,7 @@
     },
     {
       "livro": "A Deusa em Chamas",
-      "colecao": "A Guerra da Papoula",
+      "colecao": "Guerra da Papoula",
       "data": "2025-12-28",
       "paginas": 30,
       "minutos": 31.1,
@@ -9614,7 +9614,7 @@
     },
     {
       "livro": "A Deusa em Chamas",
-      "colecao": "A Guerra da Papoula",
+      "colecao": "Guerra da Papoula",
       "data": "2025-12-29",
       "paginas": 30,
       "minutos": 31.1,
@@ -9623,7 +9623,7 @@
     },
     {
       "livro": "A Deusa em Chamas",
-      "colecao": "A Guerra da Papoula",
+      "colecao": "Guerra da Papoula",
       "data": "2025-12-30",
       "paginas": 30,
       "minutos": 31.1,
@@ -9632,7 +9632,7 @@
     },
     {
       "livro": "A Deusa em Chamas",
-      "colecao": "A Guerra da Papoula",
+      "colecao": "Guerra da Papoula",
       "data": "2025-12-31",
       "paginas": 30,
       "minutos": 31.1,
@@ -9641,7 +9641,7 @@
     },
     {
       "livro": "A Deusa em Chamas",
-      "colecao": "A Guerra da Papoula",
+      "colecao": "Guerra da Papoula",
       "data": "2026-01-01",
       "paginas": 30,
       "minutos": 31.1,
@@ -9650,7 +9650,7 @@
     },
     {
       "livro": "A Deusa em Chamas",
-      "colecao": "A Guerra da Papoula",
+      "colecao": "Guerra da Papoula",
       "data": "2026-01-02",
       "paginas": 30,
       "minutos": 31.1,
@@ -9659,7 +9659,7 @@
     },
     {
       "livro": "A Deusa em Chamas",
-      "colecao": "A Guerra da Papoula",
+      "colecao": "Guerra da Papoula",
       "data": "2026-01-03",
       "paginas": 30,
       "minutos": 31.1,
@@ -9668,7 +9668,7 @@
     },
     {
       "livro": "A Deusa em Chamas",
-      "colecao": "A Guerra da Papoula",
+      "colecao": "Guerra da Papoula",
       "data": "2026-01-04",
       "paginas": 30,
       "minutos": 31.1,
@@ -9677,7 +9677,7 @@
     },
     {
       "livro": "A Deusa em Chamas",
-      "colecao": "A Guerra da Papoula",
+      "colecao": "Guerra da Papoula",
       "data": "2026-01-05",
       "paginas": 30,
       "minutos": 31.1,
@@ -9686,7 +9686,7 @@
     },
     {
       "livro": "A Deusa em Chamas",
-      "colecao": "A Guerra da Papoula",
+      "colecao": "Guerra da Papoula",
       "data": "2026-01-06",
       "paginas": 30,
       "minutos": 31.1,
@@ -9695,7 +9695,7 @@
     },
     {
       "livro": "A Deusa em Chamas",
-      "colecao": "A Guerra da Papoula",
+      "colecao": "Guerra da Papoula",
       "data": "2026-01-07",
       "paginas": 30,
       "minutos": 31.1,
@@ -9704,7 +9704,7 @@
     },
     {
       "livro": "A Deusa em Chamas",
-      "colecao": "A Guerra da Papoula",
+      "colecao": "Guerra da Papoula",
       "data": "2026-01-08",
       "paginas": 30,
       "minutos": 31.1,
@@ -9713,7 +9713,7 @@
     },
     {
       "livro": "A Deusa em Chamas",
-      "colecao": "A Guerra da Papoula",
+      "colecao": "Guerra da Papoula",
       "data": "2026-01-09",
       "paginas": 30,
       "minutos": 31.1,
@@ -9722,7 +9722,7 @@
     },
     {
       "livro": "A Deusa em Chamas",
-      "colecao": "A Guerra da Papoula",
+      "colecao": "Guerra da Papoula",
       "data": "2026-01-10",
       "paginas": 30,
       "minutos": 31.1,
@@ -9731,7 +9731,7 @@
     },
     {
       "livro": "A Deusa em Chamas",
-      "colecao": "A Guerra da Papoula",
+      "colecao": "Guerra da Papoula",
       "data": "2026-01-11",
       "paginas": 30,
       "minutos": 31.1,
@@ -9740,7 +9740,7 @@
     },
     {
       "livro": "A Deusa em Chamas",
-      "colecao": "A Guerra da Papoula",
+      "colecao": "Guerra da Papoula",
       "data": "2026-01-12",
       "paginas": 30,
       "minutos": 31.1,
@@ -9749,7 +9749,7 @@
     },
     {
       "livro": "A Deusa em Chamas",
-      "colecao": "A Guerra da Papoula",
+      "colecao": "Guerra da Papoula",
       "data": "2026-01-13",
       "paginas": 30,
       "minutos": 31.1,
@@ -9758,7 +9758,7 @@
     },
     {
       "livro": "A Deusa no Labirinto",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-06-07",
       "paginas": 22,
       "minutos": 23.4,
@@ -9767,7 +9767,7 @@
     },
     {
       "livro": "A Deusa no Labirinto",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-06-08",
       "paginas": 22,
       "minutos": 23.4,
@@ -9776,7 +9776,7 @@
     },
     {
       "livro": "A Deusa no Labirinto",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-06-09",
       "paginas": 22,
       "minutos": 23.4,
@@ -9785,7 +9785,7 @@
     },
     {
       "livro": "A Deusa no Labirinto",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-06-10",
       "paginas": 22,
       "minutos": 23.4,
@@ -9794,7 +9794,7 @@
     },
     {
       "livro": "A Deusa no Labirinto",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-06-11",
       "paginas": 22,
       "minutos": 23.4,
@@ -9803,7 +9803,7 @@
     },
     {
       "livro": "A Deusa no Labirinto",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-06-12",
       "paginas": 22,
       "minutos": 23.4,
@@ -9812,7 +9812,7 @@
     },
     {
       "livro": "A Deusa no Labirinto",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-06-13",
       "paginas": 22,
       "minutos": 23.4,
@@ -9821,7 +9821,7 @@
     },
     {
       "livro": "A Deusa no Labirinto",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-06-14",
       "paginas": 22,
       "minutos": 23.4,
@@ -9830,7 +9830,7 @@
     },
     {
       "livro": "A Deusa no Labirinto",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-06-15",
       "paginas": 22,
       "minutos": 23.4,
@@ -9839,7 +9839,7 @@
     },
     {
       "livro": "A Deusa no Labirinto",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-06-16",
       "paginas": 22,
       "minutos": 23.4,
@@ -9848,7 +9848,7 @@
     },
     {
       "livro": "A Deusa no Labirinto",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-06-17",
       "paginas": 22,
       "minutos": 23.4,
@@ -9857,7 +9857,7 @@
     },
     {
       "livro": "A Deusa no Labirinto",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-06-19",
       "paginas": 22,
       "minutos": 23.4,
@@ -9866,7 +9866,7 @@
     },
     {
       "livro": "A Deusa no Labirinto",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-06-20",
       "paginas": 22,
       "minutos": 23.4,
@@ -9875,7 +9875,7 @@
     },
     {
       "livro": "A Deusa no Labirinto",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-06-21",
       "paginas": 22,
       "minutos": 23.4,
@@ -9884,7 +9884,7 @@
     },
     {
       "livro": "A Deusa no Labirinto",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-06-22",
       "paginas": 22,
       "minutos": 23.4,
@@ -9893,7 +9893,7 @@
     },
     {
       "livro": "A Deusa no Labirinto",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-06-23",
       "paginas": 22,
       "minutos": 23.4,
@@ -9902,7 +9902,7 @@
     },
     {
       "livro": "A Deusa no Labirinto",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-06-24",
       "paginas": 22,
       "minutos": 23.4,
@@ -9911,7 +9911,7 @@
     },
     {
       "livro": "A Deusa no Labirinto",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-06-25",
       "paginas": 22,
       "minutos": 23.4,
@@ -9920,7 +9920,7 @@
     },
     {
       "livro": "A Deusa no Labirinto",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-06-26",
       "paginas": 22,
       "minutos": 23.4,
@@ -9929,7 +9929,7 @@
     },
     {
       "livro": "A Deusa no Labirinto",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-06-27",
       "paginas": 22,
       "minutos": 23.4,
@@ -9938,7 +9938,7 @@
     },
     {
       "livro": "A Deusa no Labirinto",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-06-28",
       "paginas": 22,
       "minutos": 23.4,
@@ -9947,7 +9947,7 @@
     },
     {
       "livro": "A Deusa no Labirinto",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-06-29",
       "paginas": 22,
       "minutos": 23.4,
@@ -9956,7 +9956,7 @@
     },
     {
       "livro": "A Deusa no Labirinto",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-06-30",
       "paginas": 22,
       "minutos": 23.4,
@@ -9965,7 +9965,7 @@
     },
     {
       "livro": "A Espada do Destino",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2022-07-15",
       "paginas": 30,
       "minutos": 31,
@@ -9974,7 +9974,7 @@
     },
     {
       "livro": "A Espada do Destino",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2022-07-16",
       "paginas": 30,
       "minutos": 31,
@@ -9983,7 +9983,7 @@
     },
     {
       "livro": "A Espada do Destino",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2022-07-18",
       "paginas": 30,
       "minutos": 31,
@@ -9992,7 +9992,7 @@
     },
     {
       "livro": "A Espada do Destino",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2022-07-19",
       "paginas": 30,
       "minutos": 31,
@@ -10001,7 +10001,7 @@
     },
     {
       "livro": "A Espada do Destino",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2022-07-20",
       "paginas": 30,
       "minutos": 31,
@@ -10010,7 +10010,7 @@
     },
     {
       "livro": "A Espada do Destino",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2022-07-21",
       "paginas": 30,
       "minutos": 31,
@@ -10019,7 +10019,7 @@
     },
     {
       "livro": "A Espada do Destino",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2022-07-22",
       "paginas": 30,
       "minutos": 31,
@@ -10028,7 +10028,7 @@
     },
     {
       "livro": "A Espada do Destino",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2022-07-23",
       "paginas": 30,
       "minutos": 31,
@@ -10037,7 +10037,7 @@
     },
     {
       "livro": "A Espada do Destino",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2022-07-24",
       "paginas": 30,
       "minutos": 31,
@@ -10046,7 +10046,7 @@
     },
     {
       "livro": "A Espada do Destino",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2022-07-25",
       "paginas": 30,
       "minutos": 31,
@@ -10055,7 +10055,7 @@
     },
     {
       "livro": "A Espada do Destino",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2022-07-26",
       "paginas": 30,
       "minutos": 31,
@@ -10064,7 +10064,7 @@
     },
     {
       "livro": "A Espada do Destino",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2022-07-27",
       "paginas": 30,
       "minutos": 31,
@@ -10073,7 +10073,7 @@
     },
     {
       "livro": "A Espada do Destino",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2022-07-28",
       "paginas": 30,
       "minutos": 31,
@@ -10235,7 +10235,7 @@
     },
     {
       "livro": "A Flecha de Fogo",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-02-22",
       "paginas": 23,
       "minutos": 24.2,
@@ -10244,7 +10244,7 @@
     },
     {
       "livro": "A Flecha de Fogo",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-02-23",
       "paginas": 23,
       "minutos": 24.2,
@@ -10253,7 +10253,7 @@
     },
     {
       "livro": "A Flecha de Fogo",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-02-24",
       "paginas": 23,
       "minutos": 24.2,
@@ -10262,7 +10262,7 @@
     },
     {
       "livro": "A Flecha de Fogo",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-02-25",
       "paginas": 23,
       "minutos": 24.2,
@@ -10271,7 +10271,7 @@
     },
     {
       "livro": "A Flecha de Fogo",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-02-26",
       "paginas": 23,
       "minutos": 24.2,
@@ -10280,7 +10280,7 @@
     },
     {
       "livro": "A Flecha de Fogo",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-02-28",
       "paginas": 23,
       "minutos": 24.2,
@@ -10289,7 +10289,7 @@
     },
     {
       "livro": "A Flecha de Fogo",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-02-29",
       "paginas": 23,
       "minutos": 24.2,
@@ -10298,7 +10298,7 @@
     },
     {
       "livro": "A Flecha de Fogo",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-03-01",
       "paginas": 23,
       "minutos": 24.2,
@@ -10307,7 +10307,7 @@
     },
     {
       "livro": "A Flecha de Fogo",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-03-02",
       "paginas": 23,
       "minutos": 24.2,
@@ -10316,7 +10316,7 @@
     },
     {
       "livro": "A Flecha de Fogo",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-03-03",
       "paginas": 23,
       "minutos": 24.2,
@@ -10325,7 +10325,7 @@
     },
     {
       "livro": "A Flecha de Fogo",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-03-04",
       "paginas": 23,
       "minutos": 24.2,
@@ -10334,7 +10334,7 @@
     },
     {
       "livro": "A Flecha de Fogo",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-03-05",
       "paginas": 23,
       "minutos": 24.2,
@@ -10343,7 +10343,7 @@
     },
     {
       "livro": "A Flecha de Fogo",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-03-06",
       "paginas": 23,
       "minutos": 24.2,
@@ -10352,7 +10352,7 @@
     },
     {
       "livro": "A Flecha de Fogo",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-03-07",
       "paginas": 23,
       "minutos": 24.2,
@@ -10361,7 +10361,7 @@
     },
     {
       "livro": "A Flecha de Fogo",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-03-08",
       "paginas": 23,
       "minutos": 24.2,
@@ -10370,7 +10370,7 @@
     },
     {
       "livro": "A Flecha de Fogo",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-03-09",
       "paginas": 23,
       "minutos": 24.2,
@@ -10379,7 +10379,7 @@
     },
     {
       "livro": "A Flecha de Fogo",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-03-10",
       "paginas": 23,
       "minutos": 24.2,
@@ -10388,7 +10388,7 @@
     },
     {
       "livro": "A Flecha de Fogo",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-03-11",
       "paginas": 23,
       "minutos": 24.2,
@@ -10397,7 +10397,7 @@
     },
     {
       "livro": "A Flecha de Fogo",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-03-12",
       "paginas": 23,
       "minutos": 24.2,
@@ -10406,7 +10406,7 @@
     },
     {
       "livro": "A Flecha de Fogo",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-03-13",
       "paginas": 23,
       "minutos": 24.2,
@@ -10415,7 +10415,7 @@
     },
     {
       "livro": "A Flecha de Fogo",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-03-14",
       "paginas": 23,
       "minutos": 24.2,
@@ -10424,7 +10424,7 @@
     },
     {
       "livro": "A Flecha de Fogo",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-03-15",
       "paginas": 23,
       "minutos": 24.2,
@@ -10433,7 +10433,7 @@
     },
     {
       "livro": "A Flecha de Fogo",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-03-16",
       "paginas": 23,
       "minutos": 24.2,
@@ -10442,7 +10442,7 @@
     },
     {
       "livro": "A Flecha de Fogo",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-03-17",
       "paginas": 23,
       "minutos": 24.2,
@@ -10451,7 +10451,7 @@
     },
     {
       "livro": "A Flecha de Fogo",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-03-18",
       "paginas": 23,
       "minutos": 24.2,
@@ -10460,7 +10460,7 @@
     },
     {
       "livro": "A Flecha de Fogo",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-03-19",
       "paginas": 23,
       "minutos": 24.2,
@@ -10469,7 +10469,7 @@
     },
     {
       "livro": "A Flecha de Fogo",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-03-20",
       "paginas": 23,
       "minutos": 24.2,
@@ -10478,7 +10478,7 @@
     },
     {
       "livro": "A Flecha de Fogo",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-03-21",
       "paginas": 23,
       "minutos": 24.2,
@@ -10487,7 +10487,7 @@
     },
     {
       "livro": "A Flecha de Fogo",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-03-22",
       "paginas": 23,
       "minutos": 24.2,
@@ -10496,7 +10496,7 @@
     },
     {
       "livro": "A Flecha de Fogo",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-03-23",
       "paginas": 23,
       "minutos": 24.2,
@@ -10505,7 +10505,7 @@
     },
     {
       "livro": "A Flecha de Fogo",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-03-24",
       "paginas": 23,
       "minutos": 24.2,
@@ -10514,7 +10514,7 @@
     },
     {
       "livro": "A Flecha de Fogo",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-03-25",
       "paginas": 23,
       "minutos": 24.2,
@@ -11315,7 +11315,7 @@
     },
     {
       "livro": "A Joia da Alma",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-05-30",
       "paginas": 48,
       "minutos": 50.4,
@@ -11324,7 +11324,7 @@
     },
     {
       "livro": "A Joia da Alma",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-05-31",
       "paginas": 48,
       "minutos": 50.4,
@@ -11333,7 +11333,7 @@
     },
     {
       "livro": "A Joia da Alma",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-06-02",
       "paginas": 48,
       "minutos": 50.4,
@@ -11342,7 +11342,7 @@
     },
     {
       "livro": "A Joia da Alma",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-06-03",
       "paginas": 48,
       "minutos": 50.4,
@@ -11351,7 +11351,7 @@
     },
     {
       "livro": "A Joia da Alma",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-06-04",
       "paginas": 48,
       "minutos": 50.4,
@@ -11360,7 +11360,7 @@
     },
     {
       "livro": "A Joia da Alma",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-06-05",
       "paginas": 48,
       "minutos": 50.4,
@@ -11369,7 +11369,7 @@
     },
     {
       "livro": "A Joia da Alma",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-06-06",
       "paginas": 48,
       "minutos": 50.4,
@@ -11378,7 +11378,7 @@
     },
     {
       "livro": "A Joia da Alma",
-      "colecao": "",
+      "colecao": "Tormenta 20",
       "data": "2024-06-07",
       "paginas": 48,
       "minutos": 50.4,
@@ -11972,7 +11972,7 @@
     },
     {
       "livro": "A Senhora do Lago",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2023-02-25",
       "paginas": 94,
       "minutos": 98.7,
@@ -11981,7 +11981,7 @@
     },
     {
       "livro": "A Senhora do Lago",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2023-02-26",
       "paginas": 94,
       "minutos": 98.7,
@@ -11990,7 +11990,7 @@
     },
     {
       "livro": "A Senhora do Lago",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2023-02-27",
       "paginas": 94,
       "minutos": 98.7,
@@ -11999,7 +11999,7 @@
     },
     {
       "livro": "A Senhora do Lago",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2023-03-01",
       "paginas": 94,
       "minutos": 98.7,
@@ -12008,7 +12008,7 @@
     },
     {
       "livro": "A Senhora do Lago",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2023-03-02",
       "paginas": 94,
       "minutos": 98.7,
@@ -12017,7 +12017,7 @@
     },
     {
       "livro": "A Senhora do Lago",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2023-03-03",
       "paginas": 94,
       "minutos": 98.7,
@@ -12080,7 +12080,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-01-29",
       "paginas": 14,
       "minutos": 14.8,
@@ -12089,7 +12089,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-01-30",
       "paginas": 14,
       "minutos": 14.8,
@@ -12098,7 +12098,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-01-31",
       "paginas": 14,
       "minutos": 14.8,
@@ -12107,7 +12107,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-02-02",
       "paginas": 14,
       "minutos": 14.8,
@@ -12116,7 +12116,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-02-03",
       "paginas": 14,
       "minutos": 14.8,
@@ -12125,7 +12125,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-02-04",
       "paginas": 14,
       "minutos": 14.8,
@@ -12134,7 +12134,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-02-05",
       "paginas": 14,
       "minutos": 14.8,
@@ -12143,7 +12143,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-02-06",
       "paginas": 14,
       "minutos": 14.8,
@@ -12152,7 +12152,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-02-07",
       "paginas": 14,
       "minutos": 14.8,
@@ -12161,7 +12161,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-02-08",
       "paginas": 14,
       "minutos": 14.8,
@@ -12170,7 +12170,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-02-09",
       "paginas": 14,
       "minutos": 14.8,
@@ -12179,7 +12179,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-02-10",
       "paginas": 14,
       "minutos": 14.8,
@@ -12188,7 +12188,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-02-11",
       "paginas": 14,
       "minutos": 14.8,
@@ -12197,7 +12197,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-02-12",
       "paginas": 14,
       "minutos": 14.8,
@@ -12206,7 +12206,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-02-13",
       "paginas": 14,
       "minutos": 14.8,
@@ -12215,7 +12215,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-02-14",
       "paginas": 14,
       "minutos": 14.8,
@@ -12224,7 +12224,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-02-15",
       "paginas": 14,
       "minutos": 14.8,
@@ -12233,7 +12233,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-02-16",
       "paginas": 14,
       "minutos": 14.8,
@@ -12242,7 +12242,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-02-17",
       "paginas": 14,
       "minutos": 14.8,
@@ -12251,7 +12251,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-02-18",
       "paginas": 14,
       "minutos": 14.8,
@@ -12260,7 +12260,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-02-19",
       "paginas": 14,
       "minutos": 14.8,
@@ -12269,7 +12269,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-02-20",
       "paginas": 14,
       "minutos": 14.8,
@@ -12278,7 +12278,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-02-21",
       "paginas": 14,
       "minutos": 14.8,
@@ -12287,7 +12287,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-02-22",
       "paginas": 14,
       "minutos": 14.8,
@@ -12296,7 +12296,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-02-23",
       "paginas": 14,
       "minutos": 14.8,
@@ -12305,7 +12305,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-02-24",
       "paginas": 14,
       "minutos": 14.8,
@@ -12314,7 +12314,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-02-25",
       "paginas": 14,
       "minutos": 14.8,
@@ -12323,7 +12323,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-02-26",
       "paginas": 14,
       "minutos": 14.8,
@@ -12332,7 +12332,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-02-27",
       "paginas": 14,
       "minutos": 14.8,
@@ -12341,7 +12341,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-02-28",
       "paginas": 14,
       "minutos": 14.8,
@@ -12350,7 +12350,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-03-01",
       "paginas": 14,
       "minutos": 14.8,
@@ -12359,7 +12359,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-03-02",
       "paginas": 14,
       "minutos": 14.8,
@@ -12368,7 +12368,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-03-03",
       "paginas": 14,
       "minutos": 14.8,
@@ -12377,7 +12377,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-03-04",
       "paginas": 14,
       "minutos": 14.8,
@@ -12386,7 +12386,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-03-05",
       "paginas": 14,
       "minutos": 14.8,
@@ -12395,7 +12395,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-03-06",
       "paginas": 14,
       "minutos": 14.8,
@@ -12404,7 +12404,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-03-07",
       "paginas": 14,
       "minutos": 14.8,
@@ -12413,7 +12413,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-03-08",
       "paginas": 14,
       "minutos": 14.8,
@@ -12422,7 +12422,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-03-09",
       "paginas": 14,
       "minutos": 14.8,
@@ -12431,7 +12431,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-03-10",
       "paginas": 14,
       "minutos": 14.8,
@@ -12440,7 +12440,7 @@
     },
     {
       "livro": "A Sombra dos Deuses",
-      "colecao": "Saga Bloodworn",
+      "colecao": "Bloodwarm trilogy",
       "data": "2026-03-11",
       "paginas": 14,
       "minutos": 14.8,
@@ -12521,7 +12521,7 @@
     },
     {
       "livro": "A Torre da Andorinha",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2023-01-23",
       "paginas": 15,
       "minutos": 15.4,
@@ -12530,7 +12530,7 @@
     },
     {
       "livro": "A Torre da Andorinha",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2023-01-24",
       "paginas": 15,
       "minutos": 15.4,
@@ -12539,7 +12539,7 @@
     },
     {
       "livro": "A Torre da Andorinha",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2023-01-25",
       "paginas": 15,
       "minutos": 15.4,
@@ -12548,7 +12548,7 @@
     },
     {
       "livro": "A Torre da Andorinha",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2023-01-26",
       "paginas": 15,
       "minutos": 15.4,
@@ -12557,7 +12557,7 @@
     },
     {
       "livro": "A Torre da Andorinha",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2023-01-27",
       "paginas": 15,
       "minutos": 15.4,
@@ -12566,7 +12566,7 @@
     },
     {
       "livro": "A Torre da Andorinha",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2023-01-28",
       "paginas": 15,
       "minutos": 15.4,
@@ -12575,7 +12575,7 @@
     },
     {
       "livro": "A Torre da Andorinha",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2023-01-30",
       "paginas": 15,
       "minutos": 15.4,
@@ -12584,7 +12584,7 @@
     },
     {
       "livro": "A Torre da Andorinha",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2023-01-31",
       "paginas": 15,
       "minutos": 15.4,
@@ -12593,7 +12593,7 @@
     },
     {
       "livro": "A Torre da Andorinha",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2023-02-01",
       "paginas": 15,
       "minutos": 15.4,
@@ -12602,7 +12602,7 @@
     },
     {
       "livro": "A Torre da Andorinha",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2023-02-02",
       "paginas": 15,
       "minutos": 15.4,
@@ -12611,7 +12611,7 @@
     },
     {
       "livro": "A Torre da Andorinha",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2023-02-03",
       "paginas": 15,
       "minutos": 15.4,
@@ -12620,7 +12620,7 @@
     },
     {
       "livro": "A Torre da Andorinha",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2023-02-04",
       "paginas": 15,
       "minutos": 15.4,
@@ -12629,7 +12629,7 @@
     },
     {
       "livro": "A Torre da Andorinha",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2023-02-05",
       "paginas": 15,
       "minutos": 15.4,
@@ -12638,7 +12638,7 @@
     },
     {
       "livro": "A Torre da Andorinha",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2023-02-06",
       "paginas": 15,
       "minutos": 15.4,
@@ -12647,7 +12647,7 @@
     },
     {
       "livro": "A Torre da Andorinha",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2023-02-07",
       "paginas": 15,
       "minutos": 15.4,
@@ -12656,7 +12656,7 @@
     },
     {
       "livro": "A Torre da Andorinha",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2023-02-08",
       "paginas": 15,
       "minutos": 15.4,
@@ -12665,7 +12665,7 @@
     },
     {
       "livro": "A Torre da Andorinha",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2023-02-09",
       "paginas": 15,
       "minutos": 15.4,
@@ -12674,7 +12674,7 @@
     },
     {
       "livro": "A Torre da Andorinha",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2023-02-10",
       "paginas": 15,
       "minutos": 15.4,
@@ -12683,7 +12683,7 @@
     },
     {
       "livro": "A Torre da Andorinha",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2023-02-11",
       "paginas": 15,
       "minutos": 15.4,
@@ -12692,7 +12692,7 @@
     },
     {
       "livro": "A Torre da Andorinha",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2023-02-12",
       "paginas": 15,
       "minutos": 15.4,
@@ -12701,7 +12701,7 @@
     },
     {
       "livro": "A Torre da Andorinha",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2023-02-13",
       "paginas": 15,
       "minutos": 15.4,
@@ -12710,7 +12710,7 @@
     },
     {
       "livro": "A Torre da Andorinha",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2023-02-14",
       "paginas": 15,
       "minutos": 15.4,
@@ -12719,7 +12719,7 @@
     },
     {
       "livro": "A Torre da Andorinha",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2023-02-15",
       "paginas": 15,
       "minutos": 15.4,
@@ -12728,7 +12728,7 @@
     },
     {
       "livro": "A Torre da Andorinha",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2023-02-16",
       "paginas": 15,
       "minutos": 15.4,
@@ -12737,7 +12737,7 @@
     },
     {
       "livro": "A Torre da Andorinha",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2023-02-17",
       "paginas": 15,
       "minutos": 15.4,
@@ -12746,7 +12746,7 @@
     },
     {
       "livro": "A Torre da Andorinha",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2023-02-18",
       "paginas": 15,
       "minutos": 15.4,
@@ -12755,7 +12755,7 @@
     },
     {
       "livro": "A Torre da Andorinha",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2023-02-19",
       "paginas": 15,
       "minutos": 15.4,
@@ -12764,7 +12764,7 @@
     },
     {
       "livro": "A Torre da Andorinha",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2023-02-20",
       "paginas": 15,
       "minutos": 15.4,
@@ -12773,7 +12773,7 @@
     },
     {
       "livro": "A Torre da Andorinha",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2023-02-21",
       "paginas": 15,
       "minutos": 15.4,
@@ -12782,7 +12782,7 @@
     },
     {
       "livro": "A Torre da Andorinha",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2023-02-22",
       "paginas": 15,
       "minutos": 15.4,
@@ -12791,7 +12791,7 @@
     },
     {
       "livro": "A Torre da Andorinha",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2023-02-23",
       "paginas": 15,
       "minutos": 15.4,
@@ -13142,7 +13142,7 @@
     },
     {
       "livro": "Batismo de Fogo",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2022-11-01",
       "paginas": 15,
       "minutos": 16.3,
@@ -13151,7 +13151,7 @@
     },
     {
       "livro": "Batismo de Fogo",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2022-11-02",
       "paginas": 15,
       "minutos": 16.3,
@@ -13160,7 +13160,7 @@
     },
     {
       "livro": "Batismo de Fogo",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2022-11-03",
       "paginas": 15,
       "minutos": 16.3,
@@ -13169,7 +13169,7 @@
     },
     {
       "livro": "Batismo de Fogo",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2022-11-04",
       "paginas": 15,
       "minutos": 16.3,
@@ -13178,7 +13178,7 @@
     },
     {
       "livro": "Batismo de Fogo",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2022-11-05",
       "paginas": 15,
       "minutos": 16.3,
@@ -13187,7 +13187,7 @@
     },
     {
       "livro": "Batismo de Fogo",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2022-11-06",
       "paginas": 15,
       "minutos": 16.3,
@@ -13196,7 +13196,7 @@
     },
     {
       "livro": "Batismo de Fogo",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2022-11-07",
       "paginas": 15,
       "minutos": 16.3,
@@ -13205,7 +13205,7 @@
     },
     {
       "livro": "Batismo de Fogo",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2022-11-08",
       "paginas": 15,
       "minutos": 16.3,
@@ -13214,7 +13214,7 @@
     },
     {
       "livro": "Batismo de Fogo",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2022-11-09",
       "paginas": 15,
       "minutos": 16.3,
@@ -13223,7 +13223,7 @@
     },
     {
       "livro": "Batismo de Fogo",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2022-11-10",
       "paginas": 15,
       "minutos": 16.3,
@@ -13232,7 +13232,7 @@
     },
     {
       "livro": "Batismo de Fogo",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2022-11-12",
       "paginas": 15,
       "minutos": 16.3,
@@ -13241,7 +13241,7 @@
     },
     {
       "livro": "Batismo de Fogo",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2022-11-13",
       "paginas": 15,
       "minutos": 16.3,
@@ -13250,7 +13250,7 @@
     },
     {
       "livro": "Batismo de Fogo",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2022-11-14",
       "paginas": 15,
       "minutos": 16.3,
@@ -13259,7 +13259,7 @@
     },
     {
       "livro": "Batismo de Fogo",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2022-11-15",
       "paginas": 15,
       "minutos": 16.3,
@@ -13268,7 +13268,7 @@
     },
     {
       "livro": "Batismo de Fogo",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2022-11-16",
       "paginas": 15,
       "minutos": 16.3,
@@ -13277,7 +13277,7 @@
     },
     {
       "livro": "Batismo de Fogo",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2022-11-17",
       "paginas": 15,
       "minutos": 16.3,
@@ -13286,7 +13286,7 @@
     },
     {
       "livro": "Batismo de Fogo",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2022-11-18",
       "paginas": 15,
       "minutos": 16.3,
@@ -13295,7 +13295,7 @@
     },
     {
       "livro": "Batismo de Fogo",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2022-11-19",
       "paginas": 15,
       "minutos": 16.3,
@@ -13304,7 +13304,7 @@
     },
     {
       "livro": "Batismo de Fogo",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2022-11-20",
       "paginas": 15,
       "minutos": 16.3,
@@ -13313,7 +13313,7 @@
     },
     {
       "livro": "Batismo de Fogo",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2022-11-21",
       "paginas": 15,
       "minutos": 16.3,
@@ -13322,7 +13322,7 @@
     },
     {
       "livro": "Batismo de Fogo",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2022-11-22",
       "paginas": 15,
       "minutos": 16.3,
@@ -13331,7 +13331,7 @@
     },
     {
       "livro": "Batismo de Fogo",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2022-11-23",
       "paginas": 15,
       "minutos": 16.3,
@@ -13340,7 +13340,7 @@
     },
     {
       "livro": "Batismo de Fogo",
-      "colecao": "The Witcher",
+      "colecao": "The Witcher: A Saga do Bruxo Geralt de Rívia",
       "data": "2022-11-24",
       "paginas": 15,
       "minutos": 16.3,
@@ -13835,7 +13835,7 @@
     },
     {
       "livro": "Cidade de Jade",
-      "colecao": "Cidade de Jade",
+      "colecao": "A Saga dos Ossos Verdes",
       "data": "2025-06-11",
       "paginas": 28,
       "minutos": 29.6,
@@ -13844,7 +13844,7 @@
     },
     {
       "livro": "Cidade de Jade",
-      "colecao": "Cidade de Jade",
+      "colecao": "A Saga dos Ossos Verdes",
       "data": "2025-06-12",
       "paginas": 28,
       "minutos": 29.6,
@@ -13853,7 +13853,7 @@
     },
     {
       "livro": "Cidade de Jade",
-      "colecao": "Cidade de Jade",
+      "colecao": "A Saga dos Ossos Verdes",
       "data": "2025-06-14",
       "paginas": 28,
       "minutos": 29.6,
@@ -13862,7 +13862,7 @@
     },
     {
       "livro": "Cidade de Jade",
-      "colecao": "Cidade de Jade",
+      "colecao": "A Saga dos Ossos Verdes",
       "data": "2025-06-15",
       "paginas": 28,
       "minutos": 29.6,
@@ -13871,7 +13871,7 @@
     },
     {
       "livro": "Cidade de Jade",
-      "colecao": "Cidade de Jade",
+      "colecao": "A Saga dos Ossos Verdes",
       "data": "2025-06-16",
       "paginas": 28,
       "minutos": 29.6,
@@ -13880,7 +13880,7 @@
     },
     {
       "livro": "Cidade de Jade",
-      "colecao": "Cidade de Jade",
+      "colecao": "A Saga dos Ossos Verdes",
       "data": "2025-06-17",
       "paginas": 28,
       "minutos": 29.6,
@@ -13889,7 +13889,7 @@
     },
     {
       "livro": "Cidade de Jade",
-      "colecao": "Cidade de Jade",
+      "colecao": "A Saga dos Ossos Verdes",
       "data": "2025-06-18",
       "paginas": 28,
       "minutos": 29.6,
@@ -13898,7 +13898,7 @@
     },
     {
       "livro": "Cidade de Jade",
-      "colecao": "Cidade de Jade",
+      "colecao": "A Saga dos Ossos Verdes",
       "data": "2025-06-19",
       "paginas": 28,
       "minutos": 29.6,
@@ -13907,7 +13907,7 @@
     },
     {
       "livro": "Cidade de Jade",
-      "colecao": "Cidade de Jade",
+      "colecao": "A Saga dos Ossos Verdes",
       "data": "2025-06-20",
       "paginas": 28,
       "minutos": 29.6,
@@ -13916,7 +13916,7 @@
     },
     {
       "livro": "Cidade de Jade",
-      "colecao": "Cidade de Jade",
+      "colecao": "A Saga dos Ossos Verdes",
       "data": "2025-06-21",
       "paginas": 28,
       "minutos": 29.6,
@@ -13925,7 +13925,7 @@
     },
     {
       "livro": "Cidade de Jade",
-      "colecao": "Cidade de Jade",
+      "colecao": "A Saga dos Ossos Verdes",
       "data": "2025-06-22",
       "paginas": 28,
       "minutos": 29.6,
@@ -13934,7 +13934,7 @@
     },
     {
       "livro": "Cidade de Jade",
-      "colecao": "Cidade de Jade",
+      "colecao": "A Saga dos Ossos Verdes",
       "data": "2025-06-23",
       "paginas": 28,
       "minutos": 29.6,
@@ -13943,7 +13943,7 @@
     },
     {
       "livro": "Cidade de Jade",
-      "colecao": "Cidade de Jade",
+      "colecao": "A Saga dos Ossos Verdes",
       "data": "2025-06-24",
       "paginas": 28,
       "minutos": 29.6,
@@ -13952,7 +13952,7 @@
     },
     {
       "livro": "Cidade de Jade",
-      "colecao": "Cidade de Jade",
+      "colecao": "A Saga dos Ossos Verdes",
       "data": "2025-06-25",
       "paginas": 28,
       "minutos": 29.6,
@@ -13961,7 +13961,7 @@
     },
     {
       "livro": "Cidade de Jade",
-      "colecao": "Cidade de Jade",
+      "colecao": "A Saga dos Ossos Verdes",
       "data": "2025-06-26",
       "paginas": 28,
       "minutos": 29.6,
@@ -13970,7 +13970,7 @@
     },
     {
       "livro": "Cidade de Jade",
-      "colecao": "Cidade de Jade",
+      "colecao": "A Saga dos Ossos Verdes",
       "data": "2025-06-27",
       "paginas": 28,
       "minutos": 29.6,
@@ -13979,7 +13979,7 @@
     },
     {
       "livro": "Cidade de Jade",
-      "colecao": "Cidade de Jade",
+      "colecao": "A Saga dos Ossos Verdes",
       "data": "2025-06-28",
       "paginas": 28,
       "minutos": 29.6,
@@ -14438,7 +14438,7 @@
     },
     {
       "livro": "Darkdawn",
-      "colecao": "As Crônicas da quasinoite",
+      "colecao": "Cronicas de Quasinoite",
       "data": "2025-12-23",
       "paginas": 21,
       "minutos": 22.4,
@@ -14447,7 +14447,7 @@
     },
     {
       "livro": "Darkdawn",
-      "colecao": "As Crônicas da quasinoite",
+      "colecao": "Cronicas de Quasinoite",
       "data": "2025-12-24",
       "paginas": 21,
       "minutos": 22.4,
@@ -14456,7 +14456,7 @@
     },
     {
       "livro": "Darkdawn",
-      "colecao": "As Crônicas da quasinoite",
+      "colecao": "Cronicas de Quasinoite",
       "data": "2025-12-26",
       "paginas": 21,
       "minutos": 22.4,
@@ -14465,7 +14465,7 @@
     },
     {
       "livro": "Darkdawn",
-      "colecao": "As Crônicas da quasinoite",
+      "colecao": "Cronicas de Quasinoite",
       "data": "2025-12-27",
       "paginas": 21,
       "minutos": 22.4,
@@ -14474,7 +14474,7 @@
     },
     {
       "livro": "Darkdawn",
-      "colecao": "As Crônicas da quasinoite",
+      "colecao": "Cronicas de Quasinoite",
       "data": "2025-12-28",
       "paginas": 21,
       "minutos": 22.4,
@@ -14483,7 +14483,7 @@
     },
     {
       "livro": "Darkdawn",
-      "colecao": "As Crônicas da quasinoite",
+      "colecao": "Cronicas de Quasinoite",
       "data": "2025-12-29",
       "paginas": 21,
       "minutos": 22.4,
@@ -14492,7 +14492,7 @@
     },
     {
       "livro": "Darkdawn",
-      "colecao": "As Crônicas da quasinoite",
+      "colecao": "Cronicas de Quasinoite",
       "data": "2025-12-30",
       "paginas": 21,
       "minutos": 22.4,
@@ -14501,7 +14501,7 @@
     },
     {
       "livro": "Darkdawn",
-      "colecao": "As Crônicas da quasinoite",
+      "colecao": "Cronicas de Quasinoite",
       "data": "2025-12-31",
       "paginas": 21,
       "minutos": 22.4,
@@ -14510,7 +14510,7 @@
     },
     {
       "livro": "Darkdawn",
-      "colecao": "As Crônicas da quasinoite",
+      "colecao": "Cronicas de Quasinoite",
       "data": "2026-01-01",
       "paginas": 21,
       "minutos": 22.4,
@@ -14519,7 +14519,7 @@
     },
     {
       "livro": "Darkdawn",
-      "colecao": "As Crônicas da quasinoite",
+      "colecao": "Cronicas de Quasinoite",
       "data": "2026-01-02",
       "paginas": 21,
       "minutos": 22.4,
@@ -14528,7 +14528,7 @@
     },
     {
       "livro": "Darkdawn",
-      "colecao": "As Crônicas da quasinoite",
+      "colecao": "Cronicas de Quasinoite",
       "data": "2026-01-03",
       "paginas": 21,
       "minutos": 22.4,
@@ -14537,7 +14537,7 @@
     },
     {
       "livro": "Darkdawn",
-      "colecao": "As Crônicas da quasinoite",
+      "colecao": "Cronicas de Quasinoite",
       "data": "2026-01-04",
       "paginas": 21,
       "minutos": 22.4,
@@ -14546,7 +14546,7 @@
     },
     {
       "livro": "Darkdawn",
-      "colecao": "As Crônicas da quasinoite",
+      "colecao": "Cronicas de Quasinoite",
       "data": "2026-01-05",
       "paginas": 21,
       "minutos": 22.4,
@@ -14555,7 +14555,7 @@
     },
     {
       "livro": "Darkdawn",
-      "colecao": "As Crônicas da quasinoite",
+      "colecao": "Cronicas de Quasinoite",
       "data": "2026-01-06",
       "paginas": 21,
       "minutos": 22.4,
@@ -14564,7 +14564,7 @@
     },
     {
       "livro": "Darkdawn",
-      "colecao": "As Crônicas da quasinoite",
+      "colecao": "Cronicas de Quasinoite",
       "data": "2026-01-07",
       "paginas": 21,
       "minutos": 22.4,
@@ -14573,7 +14573,7 @@
     },
     {
       "livro": "Darkdawn",
-      "colecao": "As Crônicas da quasinoite",
+      "colecao": "Cronicas de Quasinoite",
       "data": "2026-01-08",
       "paginas": 21,
       "minutos": 22.4,
@@ -14582,7 +14582,7 @@
     },
     {
       "livro": "Darkdawn",
-      "colecao": "As Crônicas da quasinoite",
+      "colecao": "Cronicas de Quasinoite",
       "data": "2026-01-09",
       "paginas": 21,
       "minutos": 22.4,
@@ -14591,7 +14591,7 @@
     },
     {
       "livro": "Darkdawn",
-      "colecao": "As Crônicas da quasinoite",
+      "colecao": "Cronicas de Quasinoite",
       "data": "2026-01-10",
       "paginas": 21,
       "minutos": 22.4,
@@ -14600,7 +14600,7 @@
     },
     {
       "livro": "Darkdawn",
-      "colecao": "As Crônicas da quasinoite",
+      "colecao": "Cronicas de Quasinoite",
       "data": "2026-01-11",
       "paginas": 21,
       "minutos": 22.4,
@@ -14609,7 +14609,7 @@
     },
     {
       "livro": "Darkdawn",
-      "colecao": "As Crônicas da quasinoite",
+      "colecao": "Cronicas de Quasinoite",
       "data": "2026-01-12",
       "paginas": 21,
       "minutos": 22.4,
@@ -14618,7 +14618,7 @@
     },
     {
       "livro": "Darkdawn",
-      "colecao": "As Crônicas da quasinoite",
+      "colecao": "Cronicas de Quasinoite",
       "data": "2026-01-13",
       "paginas": 21,
       "minutos": 22.4,
@@ -14627,7 +14627,7 @@
     },
     {
       "livro": "Darkdawn",
-      "colecao": "As Crônicas da quasinoite",
+      "colecao": "Cronicas de Quasinoite",
       "data": "2026-01-14",
       "paginas": 21,
       "minutos": 22.4,
@@ -14636,7 +14636,7 @@
     },
     {
       "livro": "Darkdawn",
-      "colecao": "As Crônicas da quasinoite",
+      "colecao": "Cronicas de Quasinoite",
       "data": "2026-01-15",
       "paginas": 21,
       "minutos": 22.4,
@@ -14645,7 +14645,7 @@
     },
     {
       "livro": "Darkdawn",
-      "colecao": "As Crônicas da quasinoite",
+      "colecao": "Cronicas de Quasinoite",
       "data": "2026-01-16",
       "paginas": 21,
       "minutos": 22.4,
@@ -14654,7 +14654,7 @@
     },
     {
       "livro": "Darkdawn",
-      "colecao": "As Crônicas da quasinoite",
+      "colecao": "Cronicas de Quasinoite",
       "data": "2026-01-17",
       "paginas": 21,
       "minutos": 22.4,
@@ -14663,7 +14663,7 @@
     },
     {
       "livro": "Darkdawn",
-      "colecao": "As Crônicas da quasinoite",
+      "colecao": "Cronicas de Quasinoite",
       "data": "2026-01-18",
       "paginas": 21,
       "minutos": 22.4,
@@ -14672,7 +14672,7 @@
     },
     {
       "livro": "Darkdawn",
-      "colecao": "As Crônicas da quasinoite",
+      "colecao": "Cronicas de Quasinoite",
       "data": "2026-01-19",
       "paginas": 21,
       "minutos": 22.4,
@@ -14681,7 +14681,7 @@
     },
     {
       "livro": "Darkdawn",
-      "colecao": "As Crônicas da quasinoite",
+      "colecao": "Cronicas de Quasinoite",
       "data": "2026-01-20",
       "paginas": 21,
       "minutos": 22.4,
@@ -14690,7 +14690,7 @@
     },
     {
       "livro": "Darkdawn",
-      "colecao": "As Crônicas da quasinoite",
+      "colecao": "Cronicas de Quasinoite",
       "data": "2026-01-21",
       "paginas": 21,
       "minutos": 22.4,
@@ -14699,7 +14699,7 @@
     },
     {
       "livro": "Darkdawn",
-      "colecao": "As Crônicas da quasinoite",
+      "colecao": "Cronicas de Quasinoite",
       "data": "2026-01-22",
       "paginas": 21,
       "minutos": 22.4,
@@ -14708,7 +14708,7 @@
     },
     {
       "livro": "Darkdawn",
-      "colecao": "As Crônicas da quasinoite",
+      "colecao": "Cronicas de Quasinoite",
       "data": "2026-01-23",
       "paginas": 21,
       "minutos": 22.4,
@@ -14717,7 +14717,7 @@
     },
     {
       "livro": "Darkdawn",
-      "colecao": "As Crônicas da quasinoite",
+      "colecao": "Cronicas de Quasinoite",
       "data": "2026-01-24",
       "paginas": 21,
       "minutos": 22.4,
@@ -14726,7 +14726,7 @@
     },
     {
       "livro": "Darkdawn",
-      "colecao": "As Crônicas da quasinoite",
+      "colecao": "Cronicas de Quasinoite",
       "data": "2026-01-25",
       "paginas": 21,
       "minutos": 22.4,
@@ -14735,7 +14735,7 @@
     },
     {
       "livro": "Dawnshard",
-      "colecao": "As Crônicas Vampirescas",
+      "colecao": "Os Relatos da Guerra das Tempestades",
       "data": "2025-03-31",
       "paginas": 52,
       "minutos": 55,
@@ -14744,7 +14744,7 @@
     },
     {
       "livro": "Dawnshard",
-      "colecao": "As Crônicas Vampirescas",
+      "colecao": "Os Relatos da Guerra das Tempestades",
       "data": "2025-04-01",
       "paginas": 52,
       "minutos": 55,
@@ -14753,7 +14753,7 @@
     },
     {
       "livro": "Dawnshard",
-      "colecao": "As Crônicas Vampirescas",
+      "colecao": "Os Relatos da Guerra das Tempestades",
       "data": "2025-04-03",
       "paginas": 52,
       "minutos": 55,
@@ -14762,7 +14762,7 @@
     },
     {
       "livro": "Dawnshard",
-      "colecao": "As Crônicas Vampirescas",
+      "colecao": "Os Relatos da Guerra das Tempestades",
       "data": "2025-04-04",
       "paginas": 52,
       "minutos": 55,
@@ -14771,7 +14771,7 @@
     },
     {
       "livro": "Dawnshard",
-      "colecao": "As Crônicas Vampirescas",
+      "colecao": "Os Relatos da Guerra das Tempestades",
       "data": "2025-04-05",
       "paginas": 52,
       "minutos": 55,
@@ -17066,7 +17066,7 @@
     },
     {
       "livro": "Memnoch",
-      "colecao": "Es Crônicas Vampirescas",
+      "colecao": "As Crônicas Vampirescas",
       "data": "2024-11-20",
       "paginas": 11,
       "minutos": 11.4,
@@ -17075,7 +17075,7 @@
     },
     {
       "livro": "Memnoch",
-      "colecao": "Es Crônicas Vampirescas",
+      "colecao": "As Crônicas Vampirescas",
       "data": "2024-11-21",
       "paginas": 11,
       "minutos": 11.4,
@@ -17084,7 +17084,7 @@
     },
     {
       "livro": "Memnoch",
-      "colecao": "Es Crônicas Vampirescas",
+      "colecao": "As Crônicas Vampirescas",
       "data": "2024-11-22",
       "paginas": 11,
       "minutos": 11.4,
@@ -17093,7 +17093,7 @@
     },
     {
       "livro": "Memnoch",
-      "colecao": "Es Crônicas Vampirescas",
+      "colecao": "As Crônicas Vampirescas",
       "data": "2024-11-25",
       "paginas": 11,
       "minutos": 11.4,
@@ -17102,7 +17102,7 @@
     },
     {
       "livro": "Memnoch",
-      "colecao": "Es Crônicas Vampirescas",
+      "colecao": "As Crônicas Vampirescas",
       "data": "2024-11-26",
       "paginas": 11,
       "minutos": 11.4,
@@ -17111,7 +17111,7 @@
     },
     {
       "livro": "Memnoch",
-      "colecao": "Es Crônicas Vampirescas",
+      "colecao": "As Crônicas Vampirescas",
       "data": "2024-11-27",
       "paginas": 11,
       "minutos": 11.4,
@@ -17120,7 +17120,7 @@
     },
     {
       "livro": "Memnoch",
-      "colecao": "Es Crônicas Vampirescas",
+      "colecao": "As Crônicas Vampirescas",
       "data": "2024-11-28",
       "paginas": 11,
       "minutos": 11.4,
@@ -17129,7 +17129,7 @@
     },
     {
       "livro": "Memnoch",
-      "colecao": "Es Crônicas Vampirescas",
+      "colecao": "As Crônicas Vampirescas",
       "data": "2024-11-29",
       "paginas": 11,
       "minutos": 11.4,
@@ -17138,7 +17138,7 @@
     },
     {
       "livro": "Memnoch",
-      "colecao": "Es Crônicas Vampirescas",
+      "colecao": "As Crônicas Vampirescas",
       "data": "2024-11-30",
       "paginas": 11,
       "minutos": 11.4,
@@ -17147,7 +17147,7 @@
     },
     {
       "livro": "Memnoch",
-      "colecao": "Es Crônicas Vampirescas",
+      "colecao": "As Crônicas Vampirescas",
       "data": "2024-12-01",
       "paginas": 11,
       "minutos": 11.4,
@@ -17156,7 +17156,7 @@
     },
     {
       "livro": "Memnoch",
-      "colecao": "Es Crônicas Vampirescas",
+      "colecao": "As Crônicas Vampirescas",
       "data": "2024-12-02",
       "paginas": 11,
       "minutos": 11.4,
@@ -17165,7 +17165,7 @@
     },
     {
       "livro": "Memnoch",
-      "colecao": "Es Crônicas Vampirescas",
+      "colecao": "As Crônicas Vampirescas",
       "data": "2024-12-03",
       "paginas": 11,
       "minutos": 11.4,
@@ -17174,7 +17174,7 @@
     },
     {
       "livro": "Memnoch",
-      "colecao": "Es Crônicas Vampirescas",
+      "colecao": "As Crônicas Vampirescas",
       "data": "2024-12-04",
       "paginas": 11,
       "minutos": 11.4,
@@ -17183,7 +17183,7 @@
     },
     {
       "livro": "Memnoch",
-      "colecao": "Es Crônicas Vampirescas",
+      "colecao": "As Crônicas Vampirescas",
       "data": "2024-12-05",
       "paginas": 11,
       "minutos": 11.4,
@@ -17192,7 +17192,7 @@
     },
     {
       "livro": "Memnoch",
-      "colecao": "Es Crônicas Vampirescas",
+      "colecao": "As Crônicas Vampirescas",
       "data": "2024-12-06",
       "paginas": 11,
       "minutos": 11.4,
@@ -17201,7 +17201,7 @@
     },
     {
       "livro": "Memnoch",
-      "colecao": "Es Crônicas Vampirescas",
+      "colecao": "As Crônicas Vampirescas",
       "data": "2024-12-07",
       "paginas": 11,
       "minutos": 11.4,
@@ -17210,7 +17210,7 @@
     },
     {
       "livro": "Memnoch",
-      "colecao": "Es Crônicas Vampirescas",
+      "colecao": "As Crônicas Vampirescas",
       "data": "2024-12-08",
       "paginas": 11,
       "minutos": 11.4,
@@ -17219,7 +17219,7 @@
     },
     {
       "livro": "Memnoch",
-      "colecao": "Es Crônicas Vampirescas",
+      "colecao": "As Crônicas Vampirescas",
       "data": "2024-12-09",
       "paginas": 11,
       "minutos": 11.4,
@@ -17228,7 +17228,7 @@
     },
     {
       "livro": "Memnoch",
-      "colecao": "Es Crônicas Vampirescas",
+      "colecao": "As Crônicas Vampirescas",
       "data": "2024-12-10",
       "paginas": 11,
       "minutos": 11.4,
@@ -17237,7 +17237,7 @@
     },
     {
       "livro": "Memnoch",
-      "colecao": "Es Crônicas Vampirescas",
+      "colecao": "As Crônicas Vampirescas",
       "data": "2024-12-11",
       "paginas": 11,
       "minutos": 11.4,
@@ -17246,7 +17246,7 @@
     },
     {
       "livro": "Memnoch",
-      "colecao": "Es Crônicas Vampirescas",
+      "colecao": "As Crônicas Vampirescas",
       "data": "2024-12-12",
       "paginas": 11,
       "minutos": 11.4,
@@ -17255,7 +17255,7 @@
     },
     {
       "livro": "Memnoch",
-      "colecao": "Es Crônicas Vampirescas",
+      "colecao": "As Crônicas Vampirescas",
       "data": "2024-12-13",
       "paginas": 11,
       "minutos": 11.4,
@@ -17264,7 +17264,7 @@
     },
     {
       "livro": "Memnoch",
-      "colecao": "Es Crônicas Vampirescas",
+      "colecao": "As Crônicas Vampirescas",
       "data": "2024-12-14",
       "paginas": 11,
       "minutos": 11.4,
@@ -17273,7 +17273,7 @@
     },
     {
       "livro": "Memnoch",
-      "colecao": "Es Crônicas Vampirescas",
+      "colecao": "As Crônicas Vampirescas",
       "data": "2024-12-15",
       "paginas": 11,
       "minutos": 11.4,
@@ -17282,7 +17282,7 @@
     },
     {
       "livro": "Memnoch",
-      "colecao": "Es Crônicas Vampirescas",
+      "colecao": "As Crônicas Vampirescas",
       "data": "2024-12-16",
       "paginas": 11,
       "minutos": 11.4,
@@ -17291,7 +17291,7 @@
     },
     {
       "livro": "Memnoch",
-      "colecao": "Es Crônicas Vampirescas",
+      "colecao": "As Crônicas Vampirescas",
       "data": "2024-12-17",
       "paginas": 11,
       "minutos": 11.4,
@@ -17300,7 +17300,7 @@
     },
     {
       "livro": "Memnoch",
-      "colecao": "Es Crônicas Vampirescas",
+      "colecao": "As Crônicas Vampirescas",
       "data": "2024-12-18",
       "paginas": 11,
       "minutos": 11.4,
@@ -17309,7 +17309,7 @@
     },
     {
       "livro": "Memnoch",
-      "colecao": "Es Crônicas Vampirescas",
+      "colecao": "As Crônicas Vampirescas",
       "data": "2024-12-19",
       "paginas": 11,
       "minutos": 11.4,
@@ -17318,7 +17318,7 @@
     },
     {
       "livro": "Memnoch",
-      "colecao": "Es Crônicas Vampirescas",
+      "colecao": "As Crônicas Vampirescas",
       "data": "2024-12-20",
       "paginas": 11,
       "minutos": 11.4,
@@ -17327,7 +17327,7 @@
     },
     {
       "livro": "Memnoch",
-      "colecao": "Es Crônicas Vampirescas",
+      "colecao": "As Crônicas Vampirescas",
       "data": "2024-12-21",
       "paginas": 11,
       "minutos": 11.4,
@@ -17336,7 +17336,7 @@
     },
     {
       "livro": "Memnoch",
-      "colecao": "Es Crônicas Vampirescas",
+      "colecao": "As Crônicas Vampirescas",
       "data": "2024-12-22",
       "paginas": 11,
       "minutos": 11.4,
@@ -17345,7 +17345,7 @@
     },
     {
       "livro": "Memnoch",
-      "colecao": "Es Crônicas Vampirescas",
+      "colecao": "As Crônicas Vampirescas",
       "data": "2024-12-23",
       "paginas": 11,
       "minutos": 11.4,
@@ -26265,73 +26265,73 @@
     {
       "livro": "A Marca de Atena",
       "colecao": "Os Heróis do Olimpo",
-      "data": "2026-09-10",
+      "data": "2023-09-10",
       "paginas": 22,
       "minutos": 0,
-      "ano": 2026,
+      "ano": 2023,
       "usuario": "MILTON"
     },
     {
       "livro": "A Marca de Atena",
       "colecao": "Os Heróis do Olimpo",
-      "data": "2026-09-11",
+      "data": "2023-09-11",
       "paginas": 5,
       "minutos": 0,
-      "ano": 2026,
+      "ano": 2023,
       "usuario": "MILTON"
     },
     {
       "livro": "A Marca de Atena",
       "colecao": "Os Heróis do Olimpo",
-      "data": "2026-12-15",
+      "data": "2023-12-15",
       "paginas": 10,
       "minutos": 0,
-      "ano": 2026,
+      "ano": 2023,
       "usuario": "MILTON"
     },
     {
       "livro": "A Marca de Atena",
       "colecao": "Os Heróis do Olimpo",
-      "data": "2026-12-16",
+      "data": "2023-12-16",
       "paginas": 12,
       "minutos": 0,
-      "ano": 2026,
+      "ano": 2023,
       "usuario": "MILTON"
     },
     {
       "livro": "A Marca de Atena",
       "colecao": "Os Heróis do Olimpo",
-      "data": "2026-12-17",
+      "data": "2023-12-17",
       "paginas": 45,
       "minutos": 0,
-      "ano": 2026,
+      "ano": 2023,
       "usuario": "MILTON"
     },
     {
       "livro": "A Marca de Atena",
       "colecao": "Os Heróis do Olimpo",
-      "data": "2026-12-18",
+      "data": "2023-12-18",
       "paginas": 50,
       "minutos": 0,
-      "ano": 2026,
+      "ano": 2023,
       "usuario": "MILTON"
     },
     {
       "livro": "A Marca de Atena",
       "colecao": "Os Heróis do Olimpo",
-      "data": "2026-12-19",
+      "data": "2023-12-19",
       "paginas": 56,
       "minutos": 0,
-      "ano": 2026,
+      "ano": 2023,
       "usuario": "MILTON"
     },
     {
       "livro": "A Marca de Atena",
       "colecao": "Os Heróis do Olimpo",
-      "data": "2026-12-20",
+      "data": "2023-12-20",
       "paginas": 17,
       "minutos": 0,
-      "ano": 2026,
+      "ano": 2023,
       "usuario": "MILTON"
     },
     {
@@ -27024,6 +27024,96 @@
       "data": "2026-05-18",
       "paginas": 40,
       "minutos": 44,
+      "ano": 2026,
+      "usuario": "Daniel"
+    },
+    {
+      "livro": "Shadows for Silence in the Forests of Hell",
+      "colecao": "Cosmere",
+      "data": "2026-05-19",
+      "paginas": 26,
+      "minutos": 42,
+      "ano": 2026,
+      "usuario": "Daniel"
+    },
+    {
+      "livro": "A Cidade de Bronze",
+      "colecao": "Trilogia de Daevabad",
+      "data": "2026-05-19",
+      "paginas": 70,
+      "minutos": 75,
+      "ano": 2026,
+      "usuario": "Milton"
+    },
+    {
+      "livro": "Shadows for Silence in the Forests of Hell",
+      "colecao": "Cosmere",
+      "data": "2026-05-20",
+      "paginas": 17,
+      "minutos": 20,
+      "ano": 2026,
+      "usuario": "Daniel"
+    },
+    {
+      "livro": "Guerra de Jade",
+      "colecao": "A Saga dos Ossos Verdes",
+      "data": "2026-05-20",
+      "paginas": 38,
+      "minutos": 44,
+      "ano": 2026,
+      "usuario": "Daniel"
+    },
+    {
+      "livro": "Guerra de Jade",
+      "colecao": "A Saga dos Ossos Verdes",
+      "data": "2026-05-20",
+      "paginas": 62,
+      "minutos": 77,
+      "ano": 2026,
+      "usuario": "Daniel"
+    },
+    {
+      "livro": "Guerra de Jade",
+      "colecao": "A Saga dos Ossos Verdes",
+      "data": "2026-05-21",
+      "paginas": 16,
+      "minutos": 20,
+      "ano": 2026,
+      "usuario": "Daniel"
+    },
+    {
+      "livro": "A Cidade de Bronze",
+      "colecao": "Trilogia de Daevabad",
+      "data": "2026-05-20",
+      "paginas": 13,
+      "minutos": 15,
+      "ano": 2026,
+      "usuario": "Milton"
+    },
+    {
+      "livro": "A Cidade de Bronze",
+      "colecao": "Trilogia de Daevabad",
+      "data": "2026-05-21",
+      "paginas": 1,
+      "minutos": 1,
+      "ano": 2026,
+      "usuario": "Milton"
+    },
+    {
+      "livro": "A Cidade de Bronze",
+      "colecao": "Trilogia de Daevabad",
+      "data": "2026-05-21",
+      "paginas": 47,
+      "minutos": 50,
+      "ano": 2026,
+      "usuario": "Milton"
+    },
+    {
+      "livro": "Guerra de Jade",
+      "colecao": "A Saga dos Ossos Verdes",
+      "data": "2026-05-21",
+      "paginas": 90,
+      "minutos": 74,
       "ano": 2026,
       "usuario": "Daniel"
     }
@@ -27807,7 +27897,7 @@
       "livro": "Dawnshard",
       "autor": "Brandon Sanderson",
       "isbn": "9780593198957",
-      "coverUrl": "https://m.media-amazon.com/images/I/81Ox9WrOojL.jpg",
+      "coverUrl": "https://m.media-amazon.com/images/I/81Ox9WrOojL._AC_UY218_.jpg",
       "metaAno": "2025",
       "anoConclusao": "2025",
       "depende": "Ritmo de Guerra",
@@ -27815,9 +27905,9 @@
       "ordemColecao": 16,
       "ordem": 44,
       "status": "Completo",
-      "totalPag": 232,
+      "totalPag": 260,
       "pagAtual": 232,
-      "pct": 1,
+      "pct": 0.892,
       "usuario": "MILTON",
       "genero": "Fantasia épica"
     },
@@ -28079,15 +28169,15 @@
       "isbn": "9780062678119",
       "coverUrl": "https://m.media-amazon.com/images/I/91JQ7RcYcrL._UF1000,1000_QL80_.jpg",
       "metaAno": "2026",
-      "anoConclusao": "",
+      "anoConclusao": "2026",
       "depende": "",
       "colecao": "Trilogia de Daevabad",
       "ordemColecao": 1,
       "ordem": 59,
       "status": "Lendo",
       "totalPag": 641,
-      "pagAtual": 350,
-      "pct": 0.546,
+      "pagAtual": 481,
+      "pct": 0.75,
       "usuario": "MILTON",
       "genero": "Fantasia histórica"
     },
@@ -33154,16 +33244,16 @@
       "autor": "Rifujin na Magonote",
       "isbn": "",
       "coverUrl": "https://m.media-amazon.com/images/I/81vgliRXgRL._AC_UY218_.jpg",
-      "metaAno": "AINDA NÃO DEFINIDO",
-      "anoConclusao": "",
+      "metaAno": "2024",
+      "anoConclusao": "2024",
       "depende": "",
       "colecao": "Mushoku Tensei",
       "ordemColecao": 1,
       "ordem": 0,
-      "status": "Aguardando",
+      "status": "Completo",
       "totalPag": 314,
-      "pagAtual": 0,
-      "pct": 0,
+      "pagAtual": 314,
+      "pct": 1,
       "usuario": "MILTON",
       "genero": "Fantasia isekai"
     },
@@ -33172,16 +33262,16 @@
       "autor": "Rifujin na Magonote",
       "isbn": "",
       "coverUrl": "https://m.media-amazon.com/images/I/812LyOp4tFL._AC_UY218_.jpg",
-      "metaAno": "AINDA NÃO DEFINIDO",
-      "anoConclusao": "",
+      "metaAno": "2024",
+      "anoConclusao": "2024",
       "depende": "Mushoku Tensei: Jobless Reincarnation - Vol. 1",
       "colecao": "Mushoku Tensei",
       "ordemColecao": 2,
       "ordem": 0,
-      "status": "Aguardando",
+      "status": "Completo",
       "totalPag": 299,
-      "pagAtual": 0,
-      "pct": 0,
+      "pagAtual": 299,
+      "pct": 1,
       "usuario": "MILTON",
       "genero": "Fantasia isekai"
     },
@@ -33190,16 +33280,16 @@
       "autor": "Rifujin na Magonote",
       "isbn": "",
       "coverUrl": "https://m.media-amazon.com/images/I/91BbpPA2VoL._AC_UY218_.jpg",
-      "metaAno": "AINDA NÃO DEFINIDO",
-      "anoConclusao": "",
+      "metaAno": "2024",
+      "anoConclusao": "2024",
       "depende": "Mushoku Tensei: Jobless Reincarnation - Vol. 2",
       "colecao": "Mushoku Tensei",
       "ordemColecao": 3,
       "ordem": 0,
-      "status": "Aguardando",
+      "status": "Completo",
       "totalPag": 401,
-      "pagAtual": 0,
-      "pct": 0,
+      "pagAtual": 401,
+      "pct": 1,
       "usuario": "MILTON",
       "genero": "Fantasia isekai"
     },
@@ -33208,16 +33298,16 @@
       "autor": "Rifujin na Magonote",
       "isbn": "",
       "coverUrl": "https://m.media-amazon.com/images/I/916ma62KOaL._AC_UY218_.jpg",
-      "metaAno": "AINDA NÃO DEFINIDO",
-      "anoConclusao": "",
+      "metaAno": "2024",
+      "anoConclusao": "2024",
       "depende": "Mushoku Tensei: Jobless Reincarnation - Vol. 3",
       "colecao": "Mushoku Tensei",
       "ordemColecao": 4,
       "ordem": 0,
-      "status": "Aguardando",
+      "status": "Completo",
       "totalPag": 317,
-      "pagAtual": 0,
-      "pct": 0,
+      "pagAtual": 317,
+      "pct": 1,
       "usuario": "MILTON",
       "genero": "Fantasia isekai"
     },
@@ -33226,16 +33316,16 @@
       "autor": "Rifujin na Magonote",
       "isbn": "",
       "coverUrl": "https://m.media-amazon.com/images/I/91DxJP7Jb2L._AC_UY218_.jpg",
-      "metaAno": "AINDA NÃO DEFINIDO",
-      "anoConclusao": "",
+      "metaAno": "2024",
+      "anoConclusao": "2024",
       "depende": "Mushoku Tensei: Jobless Reincarnation - Vol. 4",
       "colecao": "Mushoku Tensei",
       "ordemColecao": 5,
       "ordem": 0,
-      "status": "Aguardando",
+      "status": "Completo",
       "totalPag": 338,
-      "pagAtual": 0,
-      "pct": 0,
+      "pagAtual": 338,
+      "pct": 1,
       "usuario": "MILTON",
       "genero": "Fantasia isekai"
     },
@@ -33244,16 +33334,16 @@
       "autor": "Rifujin na Magonote",
       "isbn": "",
       "coverUrl": "https://m.media-amazon.com/images/I/81NV2VflGPL._AC_UY218_.jpg",
-      "metaAno": "AINDA NÃO DEFINIDO",
-      "anoConclusao": "",
+      "metaAno": "2024",
+      "anoConclusao": "2024",
       "depende": "Mushoku Tensei: Jobless Reincarnation - Vol. 5",
       "colecao": "Mushoku Tensei",
       "ordemColecao": 6,
       "ordem": 0,
-      "status": "Aguardando",
+      "status": "Completo",
       "totalPag": 310,
-      "pagAtual": 0,
-      "pct": 0,
+      "pagAtual": 310,
+      "pct": 1,
       "usuario": "MILTON",
       "genero": "Fantasia isekai"
     },
@@ -33262,16 +33352,16 @@
       "autor": "Rifujin na Magonote",
       "isbn": "",
       "coverUrl": "https://m.media-amazon.com/images/I/91N4z0Hhg4L._AC_UY218_.jpg",
-      "metaAno": "AINDA NÃO DEFINIDO",
-      "anoConclusao": "",
+      "metaAno": "2024",
+      "anoConclusao": "2024",
       "depende": "Mushoku Tensei: Jobless Reincarnation - Vol. 6",
       "colecao": "Mushoku Tensei",
       "ordemColecao": 7,
       "ordem": 0,
-      "status": "Aguardando",
+      "status": "Completo",
       "totalPag": 308,
-      "pagAtual": 0,
-      "pct": 0,
+      "pagAtual": 308,
+      "pct": 1,
       "usuario": "MILTON",
       "genero": "Fantasia isekai"
     },
@@ -33280,16 +33370,16 @@
       "autor": "Rifujin na Magonote",
       "isbn": "",
       "coverUrl": "https://m.media-amazon.com/images/I/81CKLwVz43L._AC_UY218_.jpg",
-      "metaAno": "AINDA NÃO DEFINIDO",
-      "anoConclusao": "",
+      "metaAno": "2024",
+      "anoConclusao": "2024",
       "depende": "Mushoku Tensei: Jobless Reincarnation - Vol. 7",
       "colecao": "Mushoku Tensei",
       "ordemColecao": 8,
       "ordem": 0,
-      "status": "Aguardando",
+      "status": "Completo",
       "totalPag": 408,
-      "pagAtual": 0,
-      "pct": 0,
+      "pagAtual": 408,
+      "pct": 1,
       "usuario": "MILTON",
       "genero": "Fantasia isekai"
     },
@@ -33298,16 +33388,16 @@
       "autor": "Rifujin na Magonote",
       "isbn": "",
       "coverUrl": "https://m.media-amazon.com/images/I/81Ah+RFtEIL._AC_UY218_.jpg",
-      "metaAno": "AINDA NÃO DEFINIDO",
-      "anoConclusao": "",
+      "metaAno": "2024",
+      "anoConclusao": "2024",
       "depende": "Mushoku Tensei: Jobless Reincarnation - Vol. 8",
       "colecao": "Mushoku Tensei",
       "ordemColecao": 9,
       "ordem": 0,
-      "status": "Aguardando",
+      "status": "Completo",
       "totalPag": 365,
-      "pagAtual": 0,
-      "pct": 0,
+      "pagAtual": 365,
+      "pct": 1,
       "usuario": "MILTON",
       "genero": "Fantasia isekai"
     },
@@ -33316,16 +33406,16 @@
       "autor": "Rifujin na Magonote",
       "isbn": "",
       "coverUrl": "https://m.media-amazon.com/images/I/81bsEU8xBrL._AC_UY218_.jpg",
-      "metaAno": "AINDA NÃO DEFINIDO",
-      "anoConclusao": "",
+      "metaAno": "2024",
+      "anoConclusao": "2024",
       "depende": "Mushoku Tensei: Jobless Reincarnation - Vol. 9",
       "colecao": "Mushoku Tensei",
       "ordemColecao": 10,
       "ordem": 0,
-      "status": "Aguardando",
+      "status": "Completo",
       "totalPag": 264,
-      "pagAtual": 0,
-      "pct": 0,
+      "pagAtual": 264,
+      "pct": 1,
       "usuario": "MILTON",
       "genero": "Fantasia isekai"
     },
@@ -33334,16 +33424,16 @@
       "autor": "Rifujin na Magonote",
       "isbn": "",
       "coverUrl": "https://m.media-amazon.com/images/I/81nk-b7+tNL._AC_UY218_.jpg",
-      "metaAno": "AINDA NÃO DEFINIDO",
-      "anoConclusao": "",
+      "metaAno": "2024",
+      "anoConclusao": "2024",
       "depende": "Mushoku Tensei: Jobless Reincarnation - Vol. 10",
       "colecao": "Mushoku Tensei",
       "ordemColecao": 11,
       "ordem": 0,
-      "status": "Aguardando",
+      "status": "Completo",
       "totalPag": 311,
-      "pagAtual": 0,
-      "pct": 0,
+      "pagAtual": 311,
+      "pct": 1,
       "usuario": "MILTON",
       "genero": "Fantasia isekai"
     },
@@ -34597,7 +34687,7 @@
       "metaAno": "2024",
       "anoConclusao": "2024",
       "depende": "",
-      "colecao": "Es Crônicas Vampirescas",
+      "colecao": "As Crônicas Vampirescas",
       "ordemColecao": 0,
       "ordem": 0,
       "status": "Completo",
@@ -35616,38 +35706,20 @@
       "genero": "Fantasia épica"
     },
     {
-      "livro": "The Eleventh Metal",
-      "autor": "Brandon Sanderson",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/91De3EgfmkL._AC_UY218_.jpg",
-      "metaAno": "2026",
-      "anoConclusao": "",
-      "depende": "",
-      "colecao": "Cosmere",
-      "ordemColecao": 0,
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 21,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "Daniel",
-      "genero": "Fantasia épica"
-    },
-    {
       "livro": "Shadows for Silence in the Forests of Hell",
       "autor": "Brandon Sanderson",
       "isbn": "",
       "coverUrl": "https://m.media-amazon.com/images/I/81-TqssCMmL._AC_UY218_.jpg",
       "metaAno": "2026",
-      "anoConclusao": "",
+      "anoConclusao": "2026",
       "depende": "",
       "colecao": "Cosmere",
       "ordemColecao": 0,
       "ordem": 0,
-      "status": "Lendo",
+      "status": "Completo",
       "totalPag": 89,
-      "pagAtual": 46,
-      "pct": 0.517,
+      "pagAtual": 89,
+      "pct": 1,
       "usuario": "Daniel",
       "genero": "Fantasia épica"
     },
@@ -36006,8 +36078,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 773,
-      "pagAtual": 132,
-      "pct": 0.171,
+      "pagAtual": 338,
+      "pct": 0.437,
       "usuario": "Daniel",
       "genero": "Fantasia urbana"
     }
@@ -36057,35 +36129,17 @@
       "isbn": "9780062678119",
       "coverUrl": "https://m.media-amazon.com/images/I/91JQ7RcYcrL._UF1000,1000_QL80_.jpg",
       "metaAno": "2026",
-      "anoConclusao": "",
+      "anoConclusao": "2026",
       "depende": "",
       "colecao": "Trilogia de Daevabad",
       "ordemColecao": 1,
       "ordem": 59,
       "status": "Lendo",
       "totalPag": 641,
-      "pagAtual": 350,
-      "pct": 0.546,
+      "pagAtual": 481,
+      "pct": 0.75,
       "usuario": "MILTON",
       "genero": "Fantasia histórica"
-    },
-    {
-      "livro": "Shadows for Silence in the Forests of Hell",
-      "autor": "Brandon Sanderson",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/81-TqssCMmL._AC_UY218_.jpg",
-      "metaAno": "2026",
-      "anoConclusao": "",
-      "depende": "",
-      "colecao": "Cosmere",
-      "ordemColecao": 0,
-      "ordem": 0,
-      "status": "Lendo",
-      "totalPag": 89,
-      "pagAtual": 46,
-      "pct": 0.517,
-      "usuario": "Daniel",
-      "genero": "Fantasia épica"
     },
     {
       "livro": "Guerra de Jade",
@@ -36100,8 +36154,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 773,
-      "pagAtual": 132,
-      "pct": 0.171,
+      "pagAtual": 338,
+      "pct": 0.437,
       "usuario": "Daniel",
       "genero": "Fantasia urbana"
     }
@@ -40176,204 +40230,6 @@
       "genero": "Romantasia"
     },
     {
-      "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 1",
-      "autor": "Rifujin na Magonote",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/81vgliRXgRL._AC_UY218_.jpg",
-      "metaAno": "AINDA NÃO DEFINIDO",
-      "anoConclusao": "",
-      "depende": "",
-      "colecao": "Mushoku Tensei",
-      "ordemColecao": 1,
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 314,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "MILTON",
-      "genero": "Fantasia isekai"
-    },
-    {
-      "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 2",
-      "autor": "Rifujin na Magonote",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/812LyOp4tFL._AC_UY218_.jpg",
-      "metaAno": "AINDA NÃO DEFINIDO",
-      "anoConclusao": "",
-      "depende": "Mushoku Tensei: Jobless Reincarnation - Vol. 1",
-      "colecao": "Mushoku Tensei",
-      "ordemColecao": 2,
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 299,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "MILTON",
-      "genero": "Fantasia isekai"
-    },
-    {
-      "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 3",
-      "autor": "Rifujin na Magonote",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/91BbpPA2VoL._AC_UY218_.jpg",
-      "metaAno": "AINDA NÃO DEFINIDO",
-      "anoConclusao": "",
-      "depende": "Mushoku Tensei: Jobless Reincarnation - Vol. 2",
-      "colecao": "Mushoku Tensei",
-      "ordemColecao": 3,
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 401,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "MILTON",
-      "genero": "Fantasia isekai"
-    },
-    {
-      "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 4",
-      "autor": "Rifujin na Magonote",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/916ma62KOaL._AC_UY218_.jpg",
-      "metaAno": "AINDA NÃO DEFINIDO",
-      "anoConclusao": "",
-      "depende": "Mushoku Tensei: Jobless Reincarnation - Vol. 3",
-      "colecao": "Mushoku Tensei",
-      "ordemColecao": 4,
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 317,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "MILTON",
-      "genero": "Fantasia isekai"
-    },
-    {
-      "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 5",
-      "autor": "Rifujin na Magonote",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/91DxJP7Jb2L._AC_UY218_.jpg",
-      "metaAno": "AINDA NÃO DEFINIDO",
-      "anoConclusao": "",
-      "depende": "Mushoku Tensei: Jobless Reincarnation - Vol. 4",
-      "colecao": "Mushoku Tensei",
-      "ordemColecao": 5,
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 338,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "MILTON",
-      "genero": "Fantasia isekai"
-    },
-    {
-      "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 6",
-      "autor": "Rifujin na Magonote",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/81NV2VflGPL._AC_UY218_.jpg",
-      "metaAno": "AINDA NÃO DEFINIDO",
-      "anoConclusao": "",
-      "depende": "Mushoku Tensei: Jobless Reincarnation - Vol. 5",
-      "colecao": "Mushoku Tensei",
-      "ordemColecao": 6,
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 310,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "MILTON",
-      "genero": "Fantasia isekai"
-    },
-    {
-      "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 7",
-      "autor": "Rifujin na Magonote",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/91N4z0Hhg4L._AC_UY218_.jpg",
-      "metaAno": "AINDA NÃO DEFINIDO",
-      "anoConclusao": "",
-      "depende": "Mushoku Tensei: Jobless Reincarnation - Vol. 6",
-      "colecao": "Mushoku Tensei",
-      "ordemColecao": 7,
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 308,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "MILTON",
-      "genero": "Fantasia isekai"
-    },
-    {
-      "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 8",
-      "autor": "Rifujin na Magonote",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/81CKLwVz43L._AC_UY218_.jpg",
-      "metaAno": "AINDA NÃO DEFINIDO",
-      "anoConclusao": "",
-      "depende": "Mushoku Tensei: Jobless Reincarnation - Vol. 7",
-      "colecao": "Mushoku Tensei",
-      "ordemColecao": 8,
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 408,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "MILTON",
-      "genero": "Fantasia isekai"
-    },
-    {
-      "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 9",
-      "autor": "Rifujin na Magonote",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/81Ah+RFtEIL._AC_UY218_.jpg",
-      "metaAno": "AINDA NÃO DEFINIDO",
-      "anoConclusao": "",
-      "depende": "Mushoku Tensei: Jobless Reincarnation - Vol. 8",
-      "colecao": "Mushoku Tensei",
-      "ordemColecao": 9,
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 365,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "MILTON",
-      "genero": "Fantasia isekai"
-    },
-    {
-      "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 10",
-      "autor": "Rifujin na Magonote",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/81bsEU8xBrL._AC_UY218_.jpg",
-      "metaAno": "AINDA NÃO DEFINIDO",
-      "anoConclusao": "",
-      "depende": "Mushoku Tensei: Jobless Reincarnation - Vol. 9",
-      "colecao": "Mushoku Tensei",
-      "ordemColecao": 10,
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 264,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "MILTON",
-      "genero": "Fantasia isekai"
-    },
-    {
-      "livro": "Mushoku Tensei: Jobless Reincarnation - Vol. 11",
-      "autor": "Rifujin na Magonote",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/81nk-b7+tNL._AC_UY218_.jpg",
-      "metaAno": "AINDA NÃO DEFINIDO",
-      "anoConclusao": "",
-      "depende": "Mushoku Tensei: Jobless Reincarnation - Vol. 10",
-      "colecao": "Mushoku Tensei",
-      "ordemColecao": 11,
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 311,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "MILTON",
-      "genero": "Fantasia isekai"
-    },
-    {
       "livro": "O Coração do Inverno",
       "autor": "Robert Jordan",
       "isbn": "",
@@ -40584,24 +40440,6 @@
       "ordem": 0,
       "status": "Aguardando",
       "totalPag": 384,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "Daniel",
-      "genero": "Fantasia épica"
-    },
-    {
-      "livro": "The Eleventh Metal",
-      "autor": "Brandon Sanderson",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/91De3EgfmkL._AC_UY218_.jpg",
-      "metaAno": "2026",
-      "anoConclusao": "",
-      "depende": "",
-      "colecao": "Cosmere",
-      "ordemColecao": 0,
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 21,
       "pagAtual": 0,
       "pct": 0,
       "usuario": "Daniel",
@@ -43934,6 +43772,24 @@
         "Personagens": 8.5,
         "Ritmo": 9,
         "Temas": 7.5
+      },
+      "usuario": "Daniel"
+    },
+    {
+      "livro": "Shadows for Silence in the Forests of Hell",
+      "ano": 2026,
+      "media": 7.95,
+      "criterios": {
+        "Diálogos": 7,
+        "Enredo": 8,
+        "Estilo Visual": 7.5,
+        "Finalização": 7,
+        "Imersão": 8.5,
+        "Impacto Emocional": 7.5,
+        "Originalidade": 9,
+        "Personagens": 8,
+        "Ritmo": 9,
+        "Temas": 8
       },
       "usuario": "Daniel"
     }
