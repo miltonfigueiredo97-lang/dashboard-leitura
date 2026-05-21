@@ -2933,7 +2933,7 @@ function abrirPainelMeta() {
     return `
     <div title="${l.livro}" onclick="fecharPainelMeta();abrirLivroDetalhes('${livroEsc}')"
       style="position:relative;width:70px;flex-shrink:0;cursor:pointer;transition:transform .2s;z-index:1;"
-      onmouseenter="this.style.transform='scale(1.18)';this.style.zIndex='10'"
+      onmouseenter="this.style.transform='scale(1.6)';this.style.zIndex='10'"
       onmouseleave="this.style.transform='scale(1)';this.style.zIndex='1'">
       <div style="width:70px;height:100px;position:relative;border-radius:6px;overflow:hidden;box-shadow:2px 4px 12px rgba(0,0,0,0.5);">
         ${capa}
@@ -2955,24 +2955,17 @@ function fecharPainelMeta() {
 window.fecharPainelMeta = fecharPainelMeta;
 
 function abrirLivroDetalhes(livro) {
-  // Seleciona o livro no select de detalhes
-  const sel = document.getElementById('selBook');
-  if (!sel) return;
-  // Encontra a opção correspondente
-  const opt = [...sel.options].find(o => o.value === livro || o.text === livro);
-  if (opt) {
-    sel.value = opt.value;
-  } else {
-    // Tenta match parcial
-    const partial = [...sel.options].find(o => o.value.includes(livro) || livro.includes(o.value));
-    if (partial) sel.value = partial.value;
-  }
-  // Dispara o rebuild do gráfico e info
+  // selBook é hidden, selBookBusca é o campo de texto
+  const hidden = document.getElementById('selBook');
+  const busca  = document.getElementById('selBookBusca');
+  if (!hidden || !busca) return;
+  hidden.value = livro;
+  busca.value  = livro;
   if (window.buildBookChart) window.buildBookChart();
-  if (window.buildBookInfo) window.buildBookInfo();
+  if (window.buildBookInfo)  window.buildBookInfo();
   // Scroll até a seção de detalhes
-  const secao = document.getElementById('selBook')?.closest('.card');
-  if (secao) secao.scrollIntoView({ behavior:'smooth', block:'center' });
+  const card = busca.closest('.card') || document.getElementById('selBookBusca')?.closest('[class]');
+  if (card) card.scrollIntoView({ behavior:'smooth', block:'center' });
 }
 window.abrirLivroDetalhes = abrirLivroDetalhes;
 
