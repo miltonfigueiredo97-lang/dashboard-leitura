@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-21T15:24:54.188Z",
+  "geradoEm": "2026-05-21T15:25:51.375Z",
   "meta": {
     "total": 53,
     "lidos": 24,
     "faltando": 29,
     "paginasTotal": 26792,
-    "paginasLidas": 12704,
-    "paginasFaltando": 14088,
-    "mediaDiaria": 78.7,
-    "ritmoAtual": 65.6,
-    "dataPrevistoAtual": "22/12/2026"
+    "paginasLidas": 12270,
+    "paginasFaltando": 14522,
+    "mediaDiaria": 75.7,
+    "ritmoAtual": 54.2,
+    "dataPrevistoAtual": "13/02/2027"
   },
   "metasPorAno": {
     "2022": {
@@ -75,12 +75,12 @@
       "pausados": 0,
       "aguardando": 27,
       "paginasTotal": 26792,
-      "paginasLidas": 12704,
-      "paginasFaltando": 14088,
+      "paginasLidas": 12270,
+      "paginasFaltando": 14522,
       "faltando": 29,
-      "mediaDiaria": 78.7,
-      "ritmoAtual": 65.6,
-      "dataPrevistoAtual": "22/12/2026"
+      "mediaDiaria": 75.7,
+      "ritmoAtual": 54.2,
+      "dataPrevistoAtual": "13/02/2027"
     },
     "PAUSADO": {
       "total": 2,
@@ -27089,15 +27089,6 @@
       "minutos": 15,
       "ano": 2026,
       "usuario": "Milton"
-    },
-    {
-      "livro": "A Cidade de Bronze",
-      "colecao": "Trilogia de Daevabad",
-      "data": "2026-05-21",
-      "paginas": 434,
-      "minutos": 1,
-      "ano": 2026,
-      "usuario": "Milton"
     }
   ],
   "livros": [
@@ -28158,8 +28149,8 @@
       "ordem": 59,
       "status": "Lendo",
       "totalPag": 641,
-      "pagAtual": 867,
-      "pct": 1.353,
+      "pagAtual": 433,
+      "pct": 0.676,
       "usuario": "MILTON",
       "genero": "Fantasia histórica"
     },
@@ -36118,8 +36109,8 @@
       "ordem": 59,
       "status": "Lendo",
       "totalPag": 641,
-      "pagAtual": 867,
-      "pct": 1.353,
+      "pagAtual": 433,
+      "pct": 0.676,
       "usuario": "MILTON",
       "genero": "Fantasia histórica"
     },
