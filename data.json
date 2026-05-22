@@ -1,14 +1,14 @@
 {
-  "geradoEm": "2026-05-21T22:52:12.522Z",
+  "geradoEm": "2026-05-22T11:44:54.665Z",
   "meta": {
     "total": 53,
     "lidos": 24,
     "faltando": 29,
     "paginasTotal": 26792,
-    "paginasLidas": 12408,
-    "paginasFaltando": 14384,
-    "mediaDiaria": 79.6,
-    "ritmoAtual": 66,
+    "paginasLidas": 12478,
+    "paginasFaltando": 14314,
+    "mediaDiaria": 79.5,
+    "ritmoAtual": 66.1,
     "dataPrevistoAtual": "25/12/2026"
   },
   "metasPorAno": {
@@ -75,11 +75,11 @@
       "pausados": 0,
       "aguardando": 27,
       "paginasTotal": 26792,
-      "paginasLidas": 12408,
-      "paginasFaltando": 14384,
+      "paginasLidas": 12478,
+      "paginasFaltando": 14314,
       "faltando": 29,
-      "mediaDiaria": 79.6,
-      "ritmoAtual": 66,
+      "mediaDiaria": 79.5,
+      "ritmoAtual": 66.1,
       "dataPrevistoAtual": "25/12/2026"
     },
     "PAUSADO": {
@@ -27116,6 +27116,15 @@
       "minutos": 74,
       "ano": 2026,
       "usuario": "Daniel"
+    },
+    {
+      "livro": "Guerra de Jade",
+      "colecao": "A Saga dos Ossos Verdes",
+      "data": "2026-05-22",
+      "paginas": 70,
+      "minutos": 73,
+      "ano": 2026,
+      "usuario": "Daniel"
     }
   ],
   "livros": [
@@ -36078,8 +36087,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 773,
-      "pagAtual": 338,
-      "pct": 0.437,
+      "pagAtual": 408,
+      "pct": 0.528,
       "usuario": "Daniel",
       "genero": "Fantasia urbana"
     }
@@ -36154,8 +36163,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 773,
-      "pagAtual": 338,
-      "pct": 0.437,
+      "pagAtual": 408,
+      "pct": 0.528,
       "usuario": "Daniel",
       "genero": "Fantasia urbana"
     }
