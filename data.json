@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-21T22:52:12.522Z",
+  "geradoEm": "2026-05-22T13:22:06.149Z",
   "meta": {
     "total": 53,
     "lidos": 24,
     "faltando": 29,
     "paginasTotal": 26792,
-    "paginasLidas": 12408,
-    "paginasFaltando": 14384,
-    "mediaDiaria": 79.6,
-    "ritmoAtual": 66,
-    "dataPrevistoAtual": "25/12/2026"
+    "paginasLidas": 12538,
+    "paginasFaltando": 14254,
+    "mediaDiaria": 79.9,
+    "ritmoAtual": 68,
+    "dataPrevistoAtual": "18/12/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -75,12 +75,12 @@
       "pausados": 0,
       "aguardando": 27,
       "paginasTotal": 26792,
-      "paginasLidas": 12408,
-      "paginasFaltando": 14384,
+      "paginasLidas": 12538,
+      "paginasFaltando": 14254,
       "faltando": 29,
-      "mediaDiaria": 79.6,
-      "ritmoAtual": 66,
-      "dataPrevistoAtual": "25/12/2026"
+      "mediaDiaria": 79.9,
+      "ritmoAtual": 68,
+      "dataPrevistoAtual": "18/12/2026"
     },
     "PAUSADO": {
       "total": 2,
@@ -27116,6 +27116,24 @@
       "minutos": 74,
       "ano": 2026,
       "usuario": "Daniel"
+    },
+    {
+      "livro": "Guerra de Jade",
+      "colecao": "A Saga dos Ossos Verdes",
+      "data": "2026-05-22",
+      "paginas": 70,
+      "minutos": 73,
+      "ano": 2026,
+      "usuario": "Daniel"
+    },
+    {
+      "livro": "A Cidade de Bronze",
+      "colecao": "Trilogia de Daevabad",
+      "data": "2026-05-22",
+      "paginas": 60,
+      "minutos": 75,
+      "ano": 2026,
+      "usuario": "Milton"
     }
   ],
   "livros": [
@@ -28176,8 +28194,8 @@
       "ordem": 59,
       "status": "Lendo",
       "totalPag": 641,
-      "pagAtual": 481,
-      "pct": 0.75,
+      "pagAtual": 541,
+      "pct": 0.844,
       "usuario": "MILTON",
       "genero": "Fantasia histórica"
     },
@@ -36078,8 +36096,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 773,
-      "pagAtual": 338,
-      "pct": 0.437,
+      "pagAtual": 408,
+      "pct": 0.528,
       "usuario": "Daniel",
       "genero": "Fantasia urbana"
     }
@@ -36136,8 +36154,8 @@
       "ordem": 59,
       "status": "Lendo",
       "totalPag": 641,
-      "pagAtual": 481,
-      "pct": 0.75,
+      "pagAtual": 541,
+      "pct": 0.844,
       "usuario": "MILTON",
       "genero": "Fantasia histórica"
     },
@@ -36154,8 +36172,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 773,
-      "pagAtual": 338,
-      "pct": 0.437,
+      "pagAtual": 408,
+      "pct": 0.528,
       "usuario": "Daniel",
       "genero": "Fantasia urbana"
     }
