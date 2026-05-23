@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-23T22:53:52.073Z",
+  "geradoEm": "2026-05-23T22:55:57.477Z",
   "meta": {
-    "total": 52,
+    "total": 53,
     "lidos": 24,
-    "faltando": 28,
-    "paginasTotal": 26668,
+    "faltando": 29,
+    "paginasTotal": 26920,
     "paginasLidas": 12561,
-    "paginasFaltando": 14107,
+    "paginasFaltando": 14359,
     "mediaDiaria": 79.5,
     "ritmoAtual": 67.3,
-    "dataPrevistoAtual": "19/12/2026"
+    "dataPrevistoAtual": "23/12/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -69,18 +69,18 @@
       "dataPrevistoAtual": "Concluída!"
     },
     "2026": {
-      "total": 52,
+      "total": 53,
       "lidos": 24,
       "lendo": 2,
       "pausados": 0,
-      "aguardando": 26,
-      "paginasTotal": 26668,
+      "aguardando": 27,
+      "paginasTotal": 26920,
       "paginasLidas": 12561,
-      "paginasFaltando": 14107,
-      "faltando": 28,
+      "paginasFaltando": 14359,
+      "faltando": 29,
       "mediaDiaria": 79.5,
       "ritmoAtual": 67.3,
-      "dataPrevistoAtual": "19/12/2026"
+      "dataPrevistoAtual": "23/12/2026"
     },
     "2027": {
       "total": 1,
@@ -28389,7 +28389,7 @@
       "autor": "J. K. Rowling",
       "isbn": "9788532523051",
       "coverUrl": "https://m.media-amazon.com/images/I/81jbivNEVML._AC_UF1000,1000_QL80_.jpg",
-      "metaAno": "",
+      "metaAno": "2026",
       "anoConclusao": "",
       "depende": "Harry Potter - A Pedra Filosofal",
       "colecao": "Harry Potter",
@@ -36369,7 +36369,7 @@
       "autor": "J. K. Rowling",
       "isbn": "9788532523051",
       "coverUrl": "https://m.media-amazon.com/images/I/81jbivNEVML._AC_UF1000,1000_QL80_.jpg",
-      "metaAno": "",
+      "metaAno": "2026",
       "anoConclusao": "",
       "depende": "Harry Potter - A Pedra Filosofal",
       "colecao": "Harry Potter",
