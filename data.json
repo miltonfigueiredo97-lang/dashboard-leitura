@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-23T21:41:02.395Z",
+  "geradoEm": "2026-05-23T21:41:49.644Z",
   "meta": {
     "total": 53,
     "lidos": 24,
@@ -82,6 +82,20 @@
       "ritmoAtual": 68.8,
       "dataPrevistoAtual": "17/12/2026"
     },
+    "2027": {
+      "total": 1,
+      "lidos": 0,
+      "lendo": 0,
+      "pausados": 0,
+      "aguardando": 1,
+      "paginasTotal": 416,
+      "paginasLidas": 0,
+      "paginasFaltando": 416,
+      "faltando": 1,
+      "mediaDiaria": 50,
+      "ritmoAtual": 0,
+      "dataPrevistoAtual": "—"
+    },
     "PAUSADO": {
       "total": 2,
       "lidos": 0,
@@ -97,15 +111,15 @@
       "dataPrevistoAtual": "—"
     },
     "AINDA NÃO DEFINIDO": {
-      "total": 212,
+      "total": 211,
       "lidos": 0,
       "lendo": 0,
       "pausados": 0,
-      "aguardando": 212,
-      "paginasTotal": 105114,
+      "aguardando": 211,
+      "paginasTotal": 104698,
       "paginasLidas": 0,
-      "paginasFaltando": 105114,
-      "faltando": 212,
+      "paginasFaltando": 104698,
+      "faltando": 211,
       "mediaDiaria": 50,
       "ritmoAtual": 0,
       "dataPrevistoAtual": "—"
@@ -31372,7 +31386,7 @@
       "autor": "Leonel Caldela",
       "isbn": "",
       "coverUrl": "https://m.media-amazon.com/images/I/911Ter80EmL._AC_UY218_.jpg",
-      "metaAno": "AINDA NÃO DEFINIDO",
+      "metaAno": "2027",
       "anoConclusao": "",
       "depende": "",
       "colecao": "O caçador de apóstolos",
@@ -38362,7 +38376,7 @@
       "autor": "Leonel Caldela",
       "isbn": "",
       "coverUrl": "https://m.media-amazon.com/images/I/911Ter80EmL._AC_UY218_.jpg",
-      "metaAno": "AINDA NÃO DEFINIDO",
+      "metaAno": "2027",
       "anoConclusao": "",
       "depende": "",
       "colecao": "O caçador de apóstolos",
