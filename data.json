@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-22T13:22:06.149Z",
+  "geradoEm": "2026-05-23T22:22:10.619Z",
   "meta": {
     "total": 53,
     "lidos": 24,
     "faltando": 29,
-    "paginasTotal": 26792,
-    "paginasLidas": 12538,
-    "paginasFaltando": 14254,
-    "mediaDiaria": 79.9,
-    "ritmoAtual": 68,
-    "dataPrevistoAtual": "18/12/2026"
+    "paginasTotal": 26920,
+    "paginasLidas": 12561,
+    "paginasFaltando": 14359,
+    "mediaDiaria": 79.5,
+    "ritmoAtual": 67.3,
+    "dataPrevistoAtual": "23/12/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -74,13 +74,27 @@
       "lendo": 2,
       "pausados": 0,
       "aguardando": 27,
-      "paginasTotal": 26792,
-      "paginasLidas": 12538,
-      "paginasFaltando": 14254,
+      "paginasTotal": 26920,
+      "paginasLidas": 12561,
+      "paginasFaltando": 14359,
       "faltando": 29,
-      "mediaDiaria": 79.9,
-      "ritmoAtual": 68,
-      "dataPrevistoAtual": "18/12/2026"
+      "mediaDiaria": 79.5,
+      "ritmoAtual": 67.3,
+      "dataPrevistoAtual": "23/12/2026"
+    },
+    "2027": {
+      "total": 1,
+      "lidos": 0,
+      "lendo": 0,
+      "pausados": 0,
+      "aguardando": 1,
+      "paginasTotal": 416,
+      "paginasLidas": 0,
+      "paginasFaltando": 416,
+      "faltando": 1,
+      "mediaDiaria": 50,
+      "ritmoAtual": 0,
+      "dataPrevistoAtual": "—"
     },
     "PAUSADO": {
       "total": 2,
@@ -97,15 +111,15 @@
       "dataPrevistoAtual": "—"
     },
     "AINDA NÃO DEFINIDO": {
-      "total": 212,
+      "total": 211,
       "lidos": 0,
       "lendo": 0,
       "pausados": 0,
-      "aguardando": 212,
-      "paginasTotal": 105114,
+      "aguardando": 211,
+      "paginasTotal": 104698,
       "paginasLidas": 0,
-      "paginasFaltando": 105114,
-      "faltando": 212,
+      "paginasFaltando": 104698,
+      "faltando": 211,
       "mediaDiaria": 50,
       "ritmoAtual": 0,
       "dataPrevistoAtual": "—"
@@ -27134,6 +27148,15 @@
       "minutos": 75,
       "ano": 2026,
       "usuario": "Milton"
+    },
+    {
+      "livro": "Guerra de Jade",
+      "colecao": "A Saga dos Ossos Verdes",
+      "data": "2026-05-23",
+      "paginas": 23,
+      "minutos": 22,
+      "ano": 2026,
+      "usuario": "Daniel"
     }
   ],
   "livros": [
@@ -28281,7 +28304,7 @@
       "depende": "",
       "colecao": "Cosmere",
       "ordemColecao": 20,
-      "ordem": 0,
+      "ordem": 20,
       "status": "Aguardando",
       "totalPag": 448,
       "pagAtual": 0,
@@ -31371,8 +31394,8 @@
       "livro": "O caçador de apóstolos",
       "autor": "Leonel Caldela",
       "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/61ICjPMc-3S._AC_UY218_.jpg",
-      "metaAno": "AINDA NÃO DEFINIDO",
+      "coverUrl": "https://m.media-amazon.com/images/I/911Ter80EmL._AC_UY218_.jpg",
+      "metaAno": "2027",
       "anoConclusao": "",
       "depende": "",
       "colecao": "O caçador de apóstolos",
@@ -35796,24 +35819,6 @@
       "genero": "Fantasia"
     },
     {
-      "livro": "O caçador de apóstolos",
-      "autor": "Leonel Caldela",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/911Ter80EmL._AC_UY218_.jpg",
-      "metaAno": "2026",
-      "anoConclusao": "",
-      "depende": "",
-      "colecao": "",
-      "ordemColecao": 0,
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 416,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "Daniel",
-      "genero": "Fantasia"
-    },
-    {
       "livro": "Deus máquina",
       "autor": "Leonel Caldela",
       "isbn": "",
@@ -36096,10 +36101,28 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 773,
-      "pagAtual": 408,
-      "pct": 0.528,
+      "pagAtual": 431,
+      "pct": 0.558,
       "usuario": "Daniel",
       "genero": "Fantasia urbana"
+    },
+    {
+      "livro": "O Rei do Inverno",
+      "autor": "Bernard Cornwell",
+      "isbn": "",
+      "coverUrl": "https://m.media-amazon.com/images/I/91hlR+R60cL._SL1500_.jpg",
+      "metaAno": "2026",
+      "anoConclusao": "",
+      "depende": "",
+      "colecao": "As Crônicas de Artur",
+      "ordemColecao": 0,
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 544,
+      "pagAtual": 0,
+      "pct": 0,
+      "usuario": "Daniel",
+      "genero": "Fantasia histórica"
     }
   ],
   "pausados": [
@@ -36172,8 +36195,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 773,
-      "pagAtual": 408,
-      "pct": 0.528,
+      "pagAtual": 431,
+      "pct": 0.558,
       "usuario": "Daniel",
       "genero": "Fantasia urbana"
     }
@@ -36261,7 +36284,7 @@
       "depende": "",
       "colecao": "Cosmere",
       "ordemColecao": 20,
-      "ordem": 0,
+      "ordem": 20,
       "status": "Aguardando",
       "totalPag": 448,
       "pagAtual": 0,
@@ -38361,8 +38384,8 @@
       "livro": "O caçador de apóstolos",
       "autor": "Leonel Caldela",
       "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/61ICjPMc-3S._AC_UY218_.jpg",
-      "metaAno": "AINDA NÃO DEFINIDO",
+      "coverUrl": "https://m.media-amazon.com/images/I/911Ter80EmL._AC_UY218_.jpg",
+      "metaAno": "2027",
       "anoConclusao": "",
       "depende": "",
       "colecao": "O caçador de apóstolos",
@@ -40500,24 +40523,6 @@
       "genero": "Fantasia"
     },
     {
-      "livro": "O caçador de apóstolos",
-      "autor": "Leonel Caldela",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/911Ter80EmL._AC_UY218_.jpg",
-      "metaAno": "2026",
-      "anoConclusao": "",
-      "depende": "",
-      "colecao": "",
-      "ordemColecao": 0,
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 416,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "Daniel",
-      "genero": "Fantasia"
-    },
-    {
       "livro": "Deus máquina",
       "autor": "Leonel Caldela",
       "isbn": "",
@@ -40786,6 +40791,24 @@
       "pct": 0,
       "usuario": "Milton",
       "genero": "Fantasia épica"
+    },
+    {
+      "livro": "O Rei do Inverno",
+      "autor": "Bernard Cornwell",
+      "isbn": "",
+      "coverUrl": "https://m.media-amazon.com/images/I/91hlR+R60cL._SL1500_.jpg",
+      "metaAno": "2026",
+      "anoConclusao": "",
+      "depende": "",
+      "colecao": "As Crônicas de Artur",
+      "ordemColecao": 0,
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 544,
+      "pagAtual": 0,
+      "pct": 0,
+      "usuario": "Daniel",
+      "genero": "Fantasia histórica"
     }
   ],
   "notas": [
