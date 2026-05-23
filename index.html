@@ -3257,7 +3257,7 @@ carregarDados();
       </div>
       <div class="pwa-field">
         <label>Ano da Meta</label>
-        <input id="l-metaano" type="number" min="2023" max="2030" placeholder="—">
+        <input id="l-metaano" type="text" pattern="\d{4}" placeholder="Ex: 2026 (deixe vazio para remover da meta)">
       </div>
       <div class="pwa-field">
         <label>Ordem</label>
@@ -5067,7 +5067,7 @@ async function enviarLivro() {
   if (status)  body.status  = status;
   if (autor)   body.autor   = autor;
   if (paginas) body.paginas = Number(paginas);
-  if (metaAno) body.metaAno = metaAno;
+  body.metaAno = metaAno; // sempre envia — vazio limpa a coluna P
   if (ordem)   body.ordem   = Number(ordem);
   if (depende) body.depende = depende;
   if (capa)    body.capa    = capa;
