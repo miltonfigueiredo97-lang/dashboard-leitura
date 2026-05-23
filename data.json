@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-23T22:52:34.402Z",
+  "geradoEm": "2026-05-23T22:53:52.073Z",
   "meta": {
-    "total": 53,
+    "total": 52,
     "lidos": 24,
-    "faltando": 29,
-    "paginasTotal": 26920,
+    "faltando": 28,
+    "paginasTotal": 26668,
     "paginasLidas": 12561,
-    "paginasFaltando": 14359,
+    "paginasFaltando": 14107,
     "mediaDiaria": 79.5,
     "ritmoAtual": 67.3,
-    "dataPrevistoAtual": "23/12/2026"
+    "dataPrevistoAtual": "19/12/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -41,13 +41,13 @@
       "dataPrevistoAtual": "Concluída!"
     },
     "2024": {
-      "total": 64,
-      "lidos": 64,
+      "total": 63,
+      "lidos": 63,
       "lendo": 0,
       "pausados": 0,
       "aguardando": 0,
-      "paginasTotal": 33461,
-      "paginasLidas": 33461,
+      "paginasTotal": 32748,
+      "paginasLidas": 32748,
       "paginasFaltando": 0,
       "faltando": 0,
       "mediaDiaria": 85.2,
@@ -69,18 +69,18 @@
       "dataPrevistoAtual": "Concluída!"
     },
     "2026": {
-      "total": 53,
+      "total": 52,
       "lidos": 24,
       "lendo": 2,
       "pausados": 0,
-      "aguardando": 27,
-      "paginasTotal": 26920,
+      "aguardando": 26,
+      "paginasTotal": 26668,
       "paginasLidas": 12561,
-      "paginasFaltando": 14359,
-      "faltando": 29,
+      "paginasFaltando": 14107,
+      "faltando": 28,
       "mediaDiaria": 79.5,
       "ritmoAtual": 67.3,
-      "dataPrevistoAtual": "23/12/2026"
+      "dataPrevistoAtual": "19/12/2026"
     },
     "2027": {
       "total": 1,
@@ -27165,7 +27165,7 @@
       "autor": "Rebecca Yarros",
       "isbn": "9788542225853",
       "coverUrl": "https://static.skeelo.com/remote/320/480/100/https://skoob.s3.amazonaws.com/livros/122289122/FOURTH_WING_1679069801122289122SK-V11679069802B.jpg",
-      "metaAno": "2024",
+      "metaAno": "",
       "anoConclusao": "2024",
       "depende": "",
       "colecao": "O Empyriano",
@@ -28389,7 +28389,7 @@
       "autor": "J. K. Rowling",
       "isbn": "9788532523051",
       "coverUrl": "https://m.media-amazon.com/images/I/81jbivNEVML._AC_UF1000,1000_QL80_.jpg",
-      "metaAno": "2026",
+      "metaAno": "",
       "anoConclusao": "",
       "depende": "Harry Potter - A Pedra Filosofal",
       "colecao": "Harry Potter",
@@ -36369,7 +36369,7 @@
       "autor": "J. K. Rowling",
       "isbn": "9788532523051",
       "coverUrl": "https://m.media-amazon.com/images/I/81jbivNEVML._AC_UF1000,1000_QL80_.jpg",
-      "metaAno": "2026",
+      "metaAno": "",
       "anoConclusao": "",
       "depende": "Harry Potter - A Pedra Filosofal",
       "colecao": "Harry Potter",
