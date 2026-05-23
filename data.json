@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-23T21:47:44.855Z",
+  "geradoEm": "2026-05-23T21:48:30.948Z",
   "meta": {
-    "total": 53,
+    "total": 52,
     "lidos": 24,
-    "faltando": 29,
-    "paginasTotal": 26920,
+    "faltando": 28,
+    "paginasTotal": 26376,
     "paginasLidas": 12538,
-    "paginasFaltando": 14382,
+    "paginasFaltando": 13838,
     "mediaDiaria": 79.9,
     "ritmoAtual": 68.8,
-    "dataPrevistoAtual": "19/12/2026"
+    "dataPrevistoAtual": "11/12/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -69,18 +69,18 @@
       "dataPrevistoAtual": "Concluída!"
     },
     "2026": {
-      "total": 53,
+      "total": 52,
       "lidos": 24,
       "lendo": 2,
       "pausados": 0,
-      "aguardando": 27,
-      "paginasTotal": 26920,
+      "aguardando": 26,
+      "paginasTotal": 26376,
       "paginasLidas": 12538,
-      "paginasFaltando": 14382,
-      "faltando": 29,
+      "paginasFaltando": 13838,
+      "faltando": 28,
       "mediaDiaria": 79.9,
       "ritmoAtual": 68.8,
-      "dataPrevistoAtual": "19/12/2026"
+      "dataPrevistoAtual": "11/12/2026"
     },
     "2027": {
       "total": 1,
@@ -36096,24 +36096,6 @@
       "pct": 0.528,
       "usuario": "Daniel",
       "genero": "Fantasia urbana"
-    },
-    {
-      "livro": "O Rei do Inverno",
-      "autor": "Bernard Cornwell",
-      "isbn": "978-8501061140",
-      "coverUrl": "https://www.amazon.com.br/rei-inverno-Vol-cr%C3%B4nicas-Artur/dp/8577994643",
-      "metaAno": "2026",
-      "anoConclusao": "",
-      "depende": "",
-      "colecao": "As Crônicas de Artur",
-      "ordemColecao": 0,
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 544,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "Daniel",
-      "genero": "Fantasia Histórica"
     }
   ],
   "pausados": [
@@ -40782,24 +40764,6 @@
       "pct": 0,
       "usuario": "Milton",
       "genero": "Fantasia épica"
-    },
-    {
-      "livro": "O Rei do Inverno",
-      "autor": "Bernard Cornwell",
-      "isbn": "978-8501061140",
-      "coverUrl": "https://www.amazon.com.br/rei-inverno-Vol-cr%C3%B4nicas-Artur/dp/8577994643",
-      "metaAno": "2026",
-      "anoConclusao": "",
-      "depende": "",
-      "colecao": "As Crônicas de Artur",
-      "ordemColecao": 0,
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 544,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "Daniel",
-      "genero": "Fantasia Histórica"
     }
   ],
   "notas": [
