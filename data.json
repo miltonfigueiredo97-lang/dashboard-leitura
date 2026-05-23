@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-22T13:22:06.149Z",
+  "geradoEm": "2026-05-23T21:41:02.395Z",
   "meta": {
     "total": 53,
     "lidos": 24,
@@ -8,8 +8,8 @@
     "paginasLidas": 12538,
     "paginasFaltando": 14254,
     "mediaDiaria": 79.9,
-    "ritmoAtual": 68,
-    "dataPrevistoAtual": "18/12/2026"
+    "ritmoAtual": 68.8,
+    "dataPrevistoAtual": "17/12/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -79,8 +79,8 @@
       "paginasFaltando": 14254,
       "faltando": 29,
       "mediaDiaria": 79.9,
-      "ritmoAtual": 68,
-      "dataPrevistoAtual": "18/12/2026"
+      "ritmoAtual": 68.8,
+      "dataPrevistoAtual": "17/12/2026"
     },
     "PAUSADO": {
       "total": 2,
@@ -31371,7 +31371,7 @@
       "livro": "O caçador de apóstolos",
       "autor": "Leonel Caldela",
       "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/61ICjPMc-3S._AC_UY218_.jpg",
+      "coverUrl": "https://m.media-amazon.com/images/I/911Ter80EmL._AC_UY218_.jpg",
       "metaAno": "AINDA NÃO DEFINIDO",
       "anoConclusao": "",
       "depende": "",
@@ -38361,7 +38361,7 @@
       "livro": "O caçador de apóstolos",
       "autor": "Leonel Caldela",
       "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/61ICjPMc-3S._AC_UY218_.jpg",
+      "coverUrl": "https://m.media-amazon.com/images/I/911Ter80EmL._AC_UY218_.jpg",
       "metaAno": "AINDA NÃO DEFINIDO",
       "anoConclusao": "",
       "depende": "",
