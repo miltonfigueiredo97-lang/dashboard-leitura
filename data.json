@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-24T23:52:11.103Z",
+  "geradoEm": "2026-05-24T23:52:42.180Z",
   "meta": {
     "total": 53,
     "lidos": 25,
@@ -7,9 +7,9 @@
     "paginasTotal": 26920,
     "paginasLidas": 12731,
     "paginasFaltando": 14189,
-    "mediaDiaria": 80.2,
-    "ritmoAtual": 71.4,
-    "dataPrevistoAtual": "09/12/2026"
+    "mediaDiaria": 80.3,
+    "ritmoAtual": 71.7,
+    "dataPrevistoAtual": "08/12/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -78,9 +78,9 @@
       "paginasLidas": 12731,
       "paginasFaltando": 14189,
       "faltando": 28,
-      "mediaDiaria": 80.2,
-      "ritmoAtual": 71.4,
-      "dataPrevistoAtual": "09/12/2026"
+      "mediaDiaria": 80.3,
+      "ritmoAtual": 71.7,
+      "dataPrevistoAtual": "08/12/2026"
     },
     "2027": {
       "total": 1,
@@ -27202,6 +27202,15 @@
       "minutos": 0,
       "ano": 2026,
       "usuario": "Milton"
+    },
+    {
+      "livro": "Harry Potter - Camara Secreta",
+      "colecao": "Harry Potter",
+      "data": "2026-05-24",
+      "paginas": 10,
+      "minutos": 12,
+      "ano": 2026,
+      "usuario": "Milton"
     }
   ],
   "livros": [
@@ -28442,8 +28451,8 @@
       "ordem": 2,
       "status": "Aguardando",
       "totalPag": 252,
-      "pagAtual": 10,
-      "pct": 0.04,
+      "pagAtual": 20,
+      "pct": 0.079,
       "usuario": "MILTON",
       "genero": "Fantasia"
     },
@@ -36404,8 +36413,8 @@
       "ordem": 2,
       "status": "Aguardando",
       "totalPag": 252,
-      "pagAtual": 10,
-      "pct": 0.04,
+      "pagAtual": 20,
+      "pct": 0.079,
       "usuario": "MILTON",
       "genero": "Fantasia"
     },
