@@ -343,13 +343,13 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
 
 
 /* ═══════════════════════════════════════
-   MOBILE VIEW SYSTEM
+   MOBILE — media query pura, sem JS
 ═══════════════════════════════════════ */
 :root { --nav-h: 58px; }
 
-/* Toggle button - sempre visível, pequeno */
+/* Toggle button — sempre visível */
 #btn-view-toggle {
-  position:fixed;bottom:calc(var(--nav-h) + 10px);right:10px;z-index:3000;
+  position:fixed;bottom:10px;right:10px;z-index:3000;
   width:32px;height:32px;border-radius:50%;
   background:rgba(15,20,35,0.9);border:1px solid rgba(139,124,248,0.4);
   color:var(--purple);font-size:14px;cursor:pointer;
@@ -369,72 +369,108 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
   justify-content:center;gap:2px;border:none;background:transparent;
   cursor:pointer;color:var(--muted);font-size:9px;font-weight:700;
   padding:4px 0;transition:all .15s;-webkit-tap-highlight-color:transparent;
-  letter-spacing:0.3px;text-transform:uppercase;
+  text-transform:uppercase;letter-spacing:0.3px;
 }
 .m-nav-btn .m-nav-icon { font-size:20px;line-height:1.2; }
 .m-nav-btn.active { color:var(--purple);background:rgba(139,124,248,0.08); }
 .m-nav-btn.active .m-nav-icon { filter:drop-shadow(0 0 5px var(--purple)); }
 
-/* MOBILE VIEW — core fix */
-body.mobile-view {
-  overflow-x:hidden;
+/* ── MOBILE MEDIA QUERY ─────────────────────── */
+@media (max-width: 600px) {
+  /* Nav bar visível */
+  #mobile-nav { display:flex !important; }
+  #btn-view-toggle { bottom:calc(var(--nav-h) + 8px); }
+
+  /* Header compacto */
+  header {
+    padding:6px 10px !important;
+    position:sticky;top:0;z-index:1000;
+    gap:6px !important;flex-wrap:nowrap !important;
+  }
+  header .icon { font-size:20px; }
+  header h1 { font-size:13px !important;white-space:nowrap; }
+  header p, .badge { display:none !important; }
+  header > div:last-child { gap:4px !important;flex-wrap:nowrap !important; }
+  #btn-user-milton, #btn-user-daniel, #btn-user-batalha {
+    padding:5px 8px !important;font-size:11px !important;
+  }
+  button[onclick="toggleChangelog()"],
+  button[onclick="manualRefresh()"] { padding:4px 8px !important;font-size:11px !important; }
+
+  /* Container principal — 100% da tela */
+  #app, .page {
+    width:100% !important;
+    max-width:100% !important;
+    margin:0 !important;
+    padding:6px 6px calc(var(--nav-h) + 8px) 6px !important;
+    box-sizing:border-box !important;
+    overflow-x:hidden !important;
+  }
+
+  /* Lendo wrap */
+  .lendo-wrap { width:100% !important;max-width:100% !important;padding:0 6px; }
+  .lendo-inner { flex-direction:column !important;gap:8px !important;padding:6px 0 !important; }
+  .lendo-card { min-width:unset !important;width:100% !important; }
+
+  /* Grids */
+  .grid2, .grid3, .grid4 { grid-template-columns:1fr !important; }
+  .kpi-grid-5 { grid-template-columns:repeat(2,1fr) !important; }
+  .grid6 { grid-template-columns:repeat(2,1fr) !important; }
+  #kpi-books-grid { grid-template-columns:repeat(2,1fr) !important; }
+
+  /* Cards */
+  .card { padding:10px !important;border-radius:10px !important; }
+  .sec { font-size:9px !important;margin:12px 0 6px !important; }
+
+  /* KPI valores */
+  .kpi-val { font-size:26px !important; }
+  .kpi-book { flex-direction:row !important;align-items:center !important; }
+
+  /* Rank */
+  .rank-bar-wrap { display:none !important; }
+  .rank-name { font-size:12px !important; }
+
+  /* FAB */
+  .fab { bottom:calc(var(--nav-h) + 14px) !important;right:10px !important;
+         width:48px !important;height:48px !important;font-size:22px !important; }
+  .fab-menu { bottom:calc(var(--nav-h) + 70px) !important;right:10px !important; }
+
+  /* Scroll targets */
+  [data-msection] { scroll-margin-top:60px; }
+
+  /* Charts — altura reduzida */
+  canvas { max-height:220px; }
+  #bookInfoStats { grid-template-columns:1fr 1fr !important; }
+
+  /* Batalha */
+  #pageBatalha > div > div { padding:0 !important; }
 }
-body.mobile-view header {
-  padding:8px 10px;
-  position:sticky;top:0;z-index:1000;background:var(--bg2);
-  flex-wrap:nowrap;gap:6px;
-}
-body.mobile-view header .icon { font-size:20px; }
-body.mobile-view header h1 { font-size:13px;white-space:nowrap; }
-body.mobile-view header p { display:none; }
-body.mobile-view .badge { display:none !important; }
-body.mobile-view header > div:last-child { gap:4px;flex-wrap:nowrap; }
+
+/* Quando JS ativa mobile-view no desktop */
+body.mobile-view #mobile-nav { display:flex !important; }
+body.mobile-view #btn-view-toggle { bottom:calc(var(--nav-h) + 8px); }
+body.mobile-view header { padding:6px 10px !important;position:sticky;top:0;z-index:1000; }
+body.mobile-view header h1 { font-size:13px !important; }
+body.mobile-view header p, body.mobile-view .badge { display:none !important; }
 body.mobile-view #btn-user-milton,
 body.mobile-view #btn-user-daniel,
-body.mobile-view #btn-user-batalha { padding:5px 9px;font-size:11px; }
-
-/* The key fix: override the 1500px container */
-body.mobile-view #app { display:block !important; }
-body.mobile-view #app > .page,
-body.mobile-view #app > #pageDashboard,
-body.mobile-view #app > #pageBatalha {
-  width:100vw !important;
-  max-width:100vw !important;
+body.mobile-view #btn-user-batalha { padding:5px 8px !important;font-size:11px !important; }
+body.mobile-view #app, body.mobile-view .page {
+  width:100% !important;max-width:100% !important;
   margin:0 !important;
-  padding:8px 8px calc(var(--nav-h) + 10px) 8px !important;
+  padding:6px 6px calc(var(--nav-h) + 8px) 6px !important;
   box-sizing:border-box !important;
 }
-body.mobile-view .lendo-wrap {
-  width:100vw !important;
-  max-width:100vw !important;
-  box-sizing:border-box !important;
-}
-body.mobile-view .lendo-inner {
-  flex-direction:column !important;
-  padding:8px !important;
-}
-body.mobile-view .lendo-card {
-  min-width:unset !important;
-  width:100% !important;
-}
-
-/* Grids → single column */
-body.mobile-view .grid2,
-body.mobile-view .grid3,
+body.mobile-view .lendo-wrap { width:100% !important;max-width:100% !important; }
+body.mobile-view .lendo-inner { flex-direction:column !important;gap:8px !important; }
+body.mobile-view .lendo-card { min-width:unset !important;width:100% !important; }
+body.mobile-view .grid2, body.mobile-view .grid3,
 body.mobile-view .grid4 { grid-template-columns:1fr !important; }
 body.mobile-view .kpi-grid-5 { grid-template-columns:repeat(2,1fr) !important; }
 body.mobile-view .grid6 { grid-template-columns:repeat(2,1fr) !important; }
 body.mobile-view #kpi-books-grid { grid-template-columns:repeat(2,1fr) !important; }
-
-/* FAB above nav */
-body.mobile-view .fab { bottom:calc(var(--nav-h) + 14px) !important;right:10px; }
-body.mobile-view .fab-menu { bottom:calc(var(--nav-h) + 76px) !important;right:10px; }
-
-/* Scroll targets */
-body.mobile-view [data-msection] { scroll-margin-top:65px; }
-
-/* Batalha em mobile */
-body.mobile-view #pageBatalha > div { padding:0 8px 0; }
+body.mobile-view .fab { bottom:calc(var(--nav-h) + 14px) !important;right:10px !important; }
+body.mobile-view .fab-menu { bottom:calc(var(--nav-h) + 70px) !important;right:10px !important; }
 </style>
 </head>
 <body>
@@ -4484,16 +4520,23 @@ function mNavTo(section) {
 }
 window.mNavTo = mNavTo;
 
-// Auto-detect mobile on load
-window.addEventListener('load', () => {
-  if (window.innerWidth <= 600) {
-    toggleMobileView();
+// Auto-detect mobile — ativa nav bar via media query, JS só para toggle manual
+const _mq = window.matchMedia('(max-width: 600px)');
+function _applyMQ(e) {
+  const nav = document.getElementById('mobile-nav');
+  const btn = document.getElementById('btn-view-toggle');
+  if (e.matches) {
+    if (nav) nav.style.display = 'flex';
+    if (btn) { btn.textContent = '🖥️'; btn.title = 'Visão Desktop'; }
+    _mobileView = true;
+    document.body.classList.add('mobile-view');
+  } else if (!_mobileView) {
+    if (nav) nav.style.display = 'none';
+    if (btn) { btn.textContent = '📱'; btn.title = 'Visão Mobile'; }
   }
-});
-window.addEventListener('resize', () => {
-  if (window.innerWidth <= 600 && !_mobileView) toggleMobileView();
-  if (window.innerWidth > 900 && _mobileView) toggleMobileView();
-});
+}
+_mq.addEventListener('change', _applyMQ);
+window.addEventListener('load', () => _applyMQ(_mq));
 
 // ── Changelog ────────────────────────────────────
 const CHANGELOG = [
