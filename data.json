@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-24T17:05:03.701Z",
+  "geradoEm": "2026-05-24T17:15:38.365Z",
   "meta": {
     "total": 53,
     "lidos": 25,
@@ -43842,6 +43842,24 @@
         "Temas": 8
       },
       "usuario": "Daniel"
+    },
+    {
+      "livro": "A Cidade de Bronze",
+      "ano": 2026,
+      "media": 7.5,
+      "criterios": {
+        "Diálogos": 6,
+        "Enredo": 9,
+        "Estilo Visual": 6,
+        "Finalização": 9,
+        "Imersão": 7.5,
+        "Impacto Emocional": 5,
+        "Originalidade": 8,
+        "Personagens": 7,
+        "Ritmo": 9,
+        "Temas": 8.5
+      },
+      "usuario": "Milton"
     }
   ]
 }
