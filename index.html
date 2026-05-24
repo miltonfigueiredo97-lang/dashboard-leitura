@@ -385,9 +385,9 @@ body.mobile-view header p  { display:none; }
 body.mobile-view .badge    { display:none; }
 body.mobile-view #btn-view-toggle { bottom:calc(var(--nav-h) + 12px); }
 
-/* Mobile section panels */
-body.mobile-view .m-section { display:none !important; }
-body.mobile-view .m-section.m-active { display:block !important; }
+/* Mobile section visibility - scroll based, no hiding */
+body.mobile-view .page { padding:8px 8px calc(var(--nav-h) + 8px); scroll-behavior:smooth; }
+body.mobile-view [data-msection] { scroll-margin-top: 80px; }
 
 /* Mobile user selector - smaller */
 body.mobile-view #user-selector button { padding:5px 10px;font-size:12px; }
@@ -4428,84 +4428,30 @@ function toggleMobileView() {
     nav.style.display = 'none';
     btn.textContent = '📱';
     btn.title = 'Visão Mobile';
-    // Restore all sections
-    document.querySelectorAll('[data-msection]').forEach(el => {
-      el.closest('.card, .grid2, .grid3, .grid4, .sec, div[style]') && (el.style.display = '');
-    });
-    // Remove m-section hiding
-    document.querySelectorAll('.m-section').forEach(el => el.classList.remove('m-section','m-active'));
+    window.scrollTo(0,0);
   }
 }
 window.toggleMobileView = toggleMobileView;
 
 function mNavTo(section) {
   _mNavActive = section;
-  // Update nav buttons
   document.querySelectorAll('.m-nav-btn').forEach(b => b.classList.remove('active'));
   const activeBtn = document.getElementById('mnav-' + section);
   if (activeBtn) activeBtn.classList.add('active');
-
   if (!_mobileView) return;
 
-  // Show/hide sections based on data-msection
-  const allSecDivs = document.querySelectorAll('[data-msection]');
-  
-  // Group elements by section
-  const pageDash = document.getElementById('pageDashboard');
-  if (!pageDash) return;
+  // Simple scroll to section anchor
+  const secEl = document.querySelector('[data-msection="' + section + '"]');
+  if (secEl) {
+    const top = secEl.getBoundingClientRect().top + window.scrollY - 80;
+    window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+  }
 
-  // Get all direct children of pageDashboard to show/hide
-  const children = [...pageDash.children];
-  let currentSection = null;
-  let showCurrent = false;
-
-  // First pass: mark all with display none
-  children.forEach(el => { el.style.display = 'none'; });
-
-  // Second pass: show elements belonging to active section
-  // Find section boundaries using data-msection divs
-  const secMap = {
-    meta:     s => s.includes('🎯 Meta') || s.includes('Meta'),
-    visao:    s => s.includes('Visão Geral') || s.includes('📊'),
-    graficos: s => s.includes('Comparativo') || s.includes('Tendência') || s.includes('Rankings') || s.includes('Distribuição'),
-    ranking:  s => s.includes('Rankings') || s.includes('Distribuição'),
-    livro:    s => s.includes('Progresso'),
-    mais:     s => s.includes('Sequências') || s.includes('Calendário') || s.includes('Mapa de Calor'),
-  };
-
-  let inSection = false;
-  let sectionCount = 0;
-  
-  children.forEach(el => {
-    const hasMSec = el.getAttribute('data-msection');
-    const txt = el.textContent?.slice(0,40) || '';
-    
-    if (hasMSec) {
-      inSection = hasMSec === section;
-      sectionCount = 0;
-    }
-    
-    if (inSection) {
-      el.style.display = '';
-      sectionCount++;
-    }
-  });
-
-  // Also show the kpi-books-grid and painelGenero (always available)
-  ['kpi-books-grid','painelGenero','painelGeneroOverlay','painelMeta','painelMetaOverlay'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.style.display = '';
-  });
-
-  window.scrollTo(0,0);
-
-  // Rebuild charts in the active section
   setTimeout(() => {
-    if (section === 'graficos') { if(window.buildWd) buildWd(); if(window.buildLivrosMes) buildLivrosMes(); if(window.buildGeneros) buildGeneros(); }
-    if (section === 'ranking')  { if(window.buildRanking) buildRanking(); }
-    if (section === 'livro')    { if(window.buildBookChart) buildBookChart(); if(window.buildBookInfo) buildBookInfo(); }
-    if (section === 'mais')     { if(window.buildStreak) buildStreak(); }
-  }, 100);
+    if (section === 'graficos') { try{buildWd();}catch(e){} try{buildLivrosMes();}catch(e){} try{buildGeneros();}catch(e){} }
+    if (section === 'ranking')  { try{buildRanking();}catch(e){} }
+    if (section === 'livro')    { try{buildBookChart();}catch(e){} try{buildBookInfo();}catch(e){} }
+  }, 200);
 }
 window.mNavTo = mNavTo;
 
