@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-24T16:27:39.093Z",
+  "geradoEm": "2026-05-24T17:05:03.701Z",
   "meta": {
     "total": 53,
-    "lidos": 24,
-    "faltando": 29,
+    "lidos": 25,
+    "faltando": 28,
     "paginasTotal": 26920,
-    "paginasLidas": 12583,
-    "paginasFaltando": 14337,
-    "mediaDiaria": 79.1,
-    "ritmoAtual": 66.1,
-    "dataPrevistoAtual": "27/12/2026"
+    "paginasLidas": 12683,
+    "paginasFaltando": 14237,
+    "mediaDiaria": 79.8,
+    "ritmoAtual": 69.4,
+    "dataPrevistoAtual": "16/12/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -70,17 +70,17 @@
     },
     "2026": {
       "total": 53,
-      "lidos": 24,
-      "lendo": 2,
+      "lidos": 25,
+      "lendo": 1,
       "pausados": 0,
       "aguardando": 27,
       "paginasTotal": 26920,
-      "paginasLidas": 12583,
-      "paginasFaltando": 14337,
-      "faltando": 29,
-      "mediaDiaria": 79.1,
-      "ritmoAtual": 66.1,
-      "dataPrevistoAtual": "27/12/2026"
+      "paginasLidas": 12683,
+      "paginasFaltando": 14237,
+      "faltando": 28,
+      "mediaDiaria": 79.8,
+      "ritmoAtual": 69.4,
+      "dataPrevistoAtual": "16/12/2026"
     },
     "2027": {
       "total": 1,
@@ -27175,6 +27175,15 @@
       "minutos": 7,
       "ano": 2026,
       "usuario": "Daniel"
+    },
+    {
+      "livro": "A Cidade de Bronze",
+      "colecao": "Trilogia de Daevabad",
+      "data": "2026-05-24",
+      "paginas": 100,
+      "minutos": 70,
+      "ano": 2026,
+      "usuario": "Milton"
     }
   ],
   "livros": [
@@ -28233,10 +28242,10 @@
       "colecao": "Trilogia de Daevabad",
       "ordemColecao": 1,
       "ordem": 59,
-      "status": "Lendo",
+      "status": "Completo",
       "totalPag": 641,
-      "pagAtual": 541,
-      "pct": 0.844,
+      "pagAtual": 641,
+      "pct": 1,
       "usuario": "MILTON",
       "genero": "Fantasia histórica"
     },
@@ -36182,24 +36191,6 @@
     }
   ],
   "lendo": [
-    {
-      "livro": "A Cidade de Bronze",
-      "autor": "S. A. Chakraborty",
-      "isbn": "9780062678119",
-      "coverUrl": "https://m.media-amazon.com/images/I/91JQ7RcYcrL._UF1000,1000_QL80_.jpg",
-      "metaAno": "2026",
-      "anoConclusao": "2026",
-      "depende": "",
-      "colecao": "Trilogia de Daevabad",
-      "ordemColecao": 1,
-      "ordem": 59,
-      "status": "Lendo",
-      "totalPag": 641,
-      "pagAtual": 541,
-      "pct": 0.844,
-      "usuario": "MILTON",
-      "genero": "Fantasia histórica"
-    },
     {
       "livro": "Guerra de Jade",
       "autor": "Fonda Lee",
