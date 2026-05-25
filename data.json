@@ -1,14 +1,14 @@
 {
-  "geradoEm": "2026-05-25T11:57:43.811Z",
+  "geradoEm": "2026-05-25T18:10:29.710Z",
   "meta": {
-    "total": 53,
+    "total": 54,
     "lidos": 25,
-    "faltando": 28,
-    "paginasTotal": 26956,
+    "faltando": 29,
+    "paginasTotal": 27099,
     "paginasLidas": 12825,
-    "paginasFaltando": 14131,
+    "paginasFaltando": 14274,
     "mediaDiaria": 80.3,
-    "ritmoAtual": 71.8,
+    "ritmoAtual": 72.7,
     "dataPrevistoAtual": "08/12/2026"
   },
   "metasPorAno": {
@@ -69,17 +69,17 @@
       "dataPrevistoAtual": "Concluída!"
     },
     "2026": {
-      "total": 53,
+      "total": 54,
       "lidos": 25,
       "lendo": 2,
       "pausados": 0,
-      "aguardando": 26,
-      "paginasTotal": 26956,
+      "aguardando": 27,
+      "paginasTotal": 27099,
       "paginasLidas": 12825,
-      "paginasFaltando": 14131,
-      "faltando": 28,
+      "paginasFaltando": 14274,
+      "faltando": 29,
       "mediaDiaria": 80.3,
-      "ritmoAtual": 71.8,
+      "ritmoAtual": 72.7,
       "dataPrevistoAtual": "08/12/2026"
     },
     "2027": {
@@ -36186,6 +36186,24 @@
       "pct": 0,
       "usuario": "Daniel",
       "genero": "Fantasia histórica"
+    },
+    {
+      "livro": "As crônicas das tranças de um careca",
+      "autor": "Tatu-Caminhaden Too",
+      "isbn": "",
+      "coverUrl": "",
+      "metaAno": "2026",
+      "anoConclusao": "",
+      "depende": "",
+      "colecao": "",
+      "ordemColecao": 0,
+      "ordem": 5,
+      "status": "Aguardando",
+      "totalPag": 143,
+      "pagAtual": 0,
+      "pct": 0,
+      "usuario": "Milton",
+      "genero": ""
     }
   ],
   "pausados": [
@@ -40854,6 +40872,24 @@
       "pct": 0,
       "usuario": "Daniel",
       "genero": "Fantasia histórica"
+    },
+    {
+      "livro": "As crônicas das tranças de um careca",
+      "autor": "Tatu-Caminhaden Too",
+      "isbn": "",
+      "coverUrl": "",
+      "metaAno": "2026",
+      "anoConclusao": "",
+      "depende": "",
+      "colecao": "",
+      "ordemColecao": 0,
+      "ordem": 5,
+      "status": "Aguardando",
+      "totalPag": 143,
+      "pagAtual": 0,
+      "pct": 0,
+      "usuario": "Milton",
+      "genero": ""
     }
   ],
   "notas": [
