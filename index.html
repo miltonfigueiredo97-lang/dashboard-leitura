@@ -1799,6 +1799,7 @@ function renderizarGraficos(dados) {
   buildStreaks();
   buildHeatmap();
   buildCalendar();
+  if (isMobile()) setTimeout(applyMobileLayout, 400);
 }
 
 // ════════════════════════════════════════════════
@@ -3546,6 +3547,7 @@ function setUsuario(usuario) {
 
   if (usuario === 'Batalha') {
     renderBatalha();
+    if (isMobile()) setTimeout(applyMobileLayout, 400);
     return;
   }
 
@@ -4476,6 +4478,32 @@ function renderBatalha() {
 
 // ── Mobile View System ───────────────────────────────────────────
 let _mobileView = false;
+// ── Mobile layout patcher ─────────────────────────────────────────
+function applyMobileLayout() {
+  if (!isMobile()) return;
+  // Patch all elements with inline grid-template-columns to 1fr
+  document.querySelectorAll('[style]').forEach(el => {
+    const s = el.style;
+    if (s.gridTemplateColumns && s.gridTemplateColumns !== '1fr') {
+      // Keep 2-col only for kpi-books and kpi-grid-5
+      if (!el.id?.includes('kpi-books') && !el.classList.contains('kpi-grid-5')) {
+        s.gridTemplateColumns = '1fr';
+      }
+    }
+    // Fix flex rows that cause side-by-side layouts
+    if (s.display === 'grid' && !el.id?.includes('kpi-books')) {
+      s.gridTemplateColumns = '1fr';
+    }
+  });
+  // Fix the specific inline flex containers used in batalha
+  document.querySelectorAll('#pageBatalha [style*="grid-template-columns"]').forEach(el => {
+    el.style.gridTemplateColumns = '1fr';
+  });
+  document.querySelectorAll('#pageBatalha [style*="display:grid"], #pageBatalha [style*="display: grid"]').forEach(el => {
+    el.style.gridTemplateColumns = '1fr';
+  });
+}
+window.applyMobileLayout = applyMobileLayout;
 let _mNavActive = 'meta';
 
 // Sections mapped to nav items
@@ -4541,13 +4569,14 @@ function _applyMQ(e) {
     if (btn) { btn.textContent = '🖥️'; btn.title = 'Visão Desktop'; }
     _mobileView = true;
     document.body.classList.add('mobile-view');
+    setTimeout(applyMobileLayout, 100);
   } else if (!_mobileView) {
     if (nav) nav.style.display = 'none';
     if (btn) { btn.textContent = '📱'; btn.title = 'Visão Mobile'; }
   }
 }
 _mq.addEventListener('change', _applyMQ);
-window.addEventListener('load', () => _applyMQ(_mq));
+window.addEventListener('load', () => { _applyMQ(_mq); if(isMobile()) setTimeout(applyMobileLayout, 500); });
 
 // ── Changelog ────────────────────────────────────
 const CHANGELOG = [
