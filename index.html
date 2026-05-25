@@ -484,33 +484,38 @@ body.mobile-view .fab { bottom:calc(var(--nav-h) + 14px) !important; right:10px 
 body.mobile-view .fab-menu { bottom:calc(var(--nav-h) + 70px) !important; right:10px !important; }
 
 /* ── Mobile: força todos inline grids para 1 coluna ── */
-@media (max-width: 600px), body.mobile-view {
+@media (max-width: 600px) {
   [data-desktop-grid] {
     grid-template-columns: 1fr !important;
     width: 100% !important;
     box-sizing: border-box !important;
   }
-  /* Exceções que ficam 2 colunas */
   #kpi-books-grid[data-desktop-grid],
   #bookInfoStats[data-desktop-grid],
   #heatmapGrid[data-desktop-grid],
   .kpi-grid-5[data-desktop-grid] {
     grid-template-columns: 1fr 1fr !important;
   }
-  /* Canvas sem corte */
-  canvas {
-    max-width: 100% !important;
-    width: 100% !important;
-    height: auto !important;
-    min-height: 180px !important;
-  }
-  #cGeneros { min-height: 320px !important; }
-  #cMonthly { min-height: 240px !important; }
-  /* pwa-row — formulários em 1 coluna */
-  .pwa-row { grid-template-columns: 1fr !important; }
-  /* meta-stats em 2 colunas */
-  .meta-stats { grid-template-columns: 1fr 1fr !important; }
+  canvas { max-width:100% !important; width:100% !important; }
+  #cGeneros { min-height:320px !important; }
+  #cMonthly  { min-height:240px !important; }
+  .pwa-row   { grid-template-columns:1fr !important; }
+  .meta-stats{ grid-template-columns:1fr 1fr !important; }
 }
+body.mobile-view [data-desktop-grid] {
+  grid-template-columns: 1fr !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+body.mobile-view #kpi-books-grid[data-desktop-grid],
+body.mobile-view #bookInfoStats[data-desktop-grid],
+body.mobile-view #heatmapGrid[data-desktop-grid],
+body.mobile-view .kpi-grid-5[data-desktop-grid] {
+  grid-template-columns: 1fr 1fr !important;
+}
+body.mobile-view canvas { max-width:100% !important; width:100% !important; }
+body.mobile-view .pwa-row { grid-template-columns:1fr !important; }
+body.mobile-view .meta-stats { grid-template-columns:1fr 1fr !important; }
 </style>
 </head>
 <body>
