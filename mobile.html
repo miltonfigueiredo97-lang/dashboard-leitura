@@ -2077,39 +2077,28 @@ function buildWd() {
 
 function inicializarGraficos() {
   inicializarMonthlySelectors();
+  inicializarHeatmapChart();
+  inicializarBookChart();
 
-// Popular seletores imediatamente com os dados disponíveis
-(function() {
-  // Seletor anos ranking — usa anos das NOTAS, não das sessões
+  // Popular seletores com dados disponíveis
   const selNotasAno = document.getElementById('selNotasAno');
   const anosNotas = [...new Set(NOTES.map(n => n.ano).filter(a => a > 2000))].sort();
   selNotasAno.innerHTML = '<option value="all">Todos os anos</option>';
-  anosNotas.forEach(a => {
-    selNotasAno.innerHTML += `<option value="${a}">${a}</option>`;
-  });
+  anosNotas.forEach(a => { selNotasAno.innerHTML += `<option value="${a}">${a}</option>`; });
 
-  // Seletor coleções ranking
   const selNotasColecao = document.getElementById('selNotasColecao');
   if (selNotasColecao) {
     const allLivrosCol = [...(window._livros||[]),...(window._dadosD?.lendo||[]),...(window._dadosD?.pausados||[]),...(window._dadosD?.aguardando||[])];
-    const colecoesNotas = [...new Set(NOTES.map(n => {
-      const l = allLivrosCol.find(x => x.livro === n.livro);
-      return l?.colecao || '';
-    }).filter(Boolean))].sort();
+    const colecoesNotas = [...new Set(NOTES.map(n => { const l = allLivrosCol.find(x => x.livro === n.livro); return l?.colecao || ''; }).filter(Boolean))].sort();
     selNotasColecao.innerHTML = '<option value="all">Todas as coleções</option>';
-    colecoesNotas.forEach(c => {
-      selNotasColecao.innerHTML += `<option value="${c}">${c}</option>`;
-    });
+    colecoesNotas.forEach(c => { selNotasColecao.innerHTML += `<option value="${c}">${c}</option>`; });
   }
 
-  // Seletor anos dia da semana
   const selWd = document.getElementById('selWd');
   const anosWd = Object.keys(WD_AVG).filter(k => k !== 'total').sort();
   selWd.innerHTML = '<option value="total">Total</option>';
-  anosWd.forEach(a => {
-    selWd.innerHTML += `<option value="${a}">${a}</option>`;
-  });
-})();
+  anosWd.forEach(a => { selWd.innerHTML += `<option value="${a}">${a}</option>`; });
+}
 
 // ════════════════════════════════════════════════
 // CHART DEFAULTS
@@ -2412,9 +2401,10 @@ function filtrarSelBook(termo) {
 }
 window.filtrarSelBook = filtrarSelBook;
 
-(function() {
+function inicializarBookChart() {
   let chart = null;
-  const ctx = document.getElementById('cBook').getContext('2d');
+  const ctx = document.getElementById('cBook')?.getContext('2d');
+  if (!ctx) return;
   const existingBookChart = Chart.getChart('cBook');
   if (existingBookChart) existingBookChart.destroy();
 
@@ -2656,12 +2646,13 @@ window.filtrarSelBook = filtrarSelBook;
 
   buildBookChart();
   buildBookInfo();
-})();
+}
 
 // ════════════════════════════════════════════════
 // 7. HEATMAP
 // ════════════════════════════════════════════════
-(function() {
+function inicializarHeatmapChart() {
+  if (!MONTHLY) return;
   const months = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
   const byYearMonth = {};
   MONTHLY.forEach(d => {
@@ -2698,7 +2689,8 @@ window.filtrarSelBook = filtrarSelBook;
       scales: baseScales(0)
     }
   });
-})();
+}
+window.inicializarHeatmapChart = inicializarHeatmapChart;
 
 // Popular seletor de anos dos donuts
 const selDonutAno = document.getElementById('selDonutAno');
@@ -2707,8 +2699,6 @@ if (selDonutAno) {
   const anosDonut = [...new Set((window._sessoes||[]).map(s=>s.ano).filter(a=>a>2000))].sort();
   anosDonut.forEach(a => selDonutAno.innerHTML += `<option value="${a}">${a}</option>`);
 }
-
-} // fim inicializarGraficos
 
 function buildLivrosMes() {
   const meses = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
@@ -3724,6 +3714,8 @@ function setUsuario(usuario) {
     // Restaura o grid dos 4 kpi cards explicitamente
     const kg = document.getElementById('kpi-books-grid');
     if (kg) kg.style.display = 'grid';
+    // Garante que batalha fica sempre escondida quando não é batalha
+    document.getElementById('pageBatalha').style.display = 'none';
   }
 
   if (usuario === 'Batalha') {
