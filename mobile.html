@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Dashboard de Leitura</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root {
+  --bg:    #0d1117; --bg2: #161b27; --bg3: #1e2535; --bg4: #252d40;
+  --text:  #e2e8f0; --muted: #8892a8; --border: #2a3248;
+  --purple: #8b7cf8; --teal: #5eead4; --amber: #fbbf24;
+  --nav-h: 64px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: system-ui, sans-serif; font-size: 15px; padding-bottom: var(--nav-h); }
+
+/* ── Header ── */
+header {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--bg2); border-bottom: 1px solid var(--border);
+  padding: 10px 14px; display: flex; align-items: center; justify-content: space-between;
+}
+.hdr-left { display: flex; align-items: center; gap: 8px; }
+.hdr-left h1 { font-size: 15px; font-weight: 700; }
+.hdr-btns { display: flex; gap: 6px; }
+.usr-btn {
+  padding: 6px 12px; border-radius: 20px; border: 1px solid var(--border);
+  background: transparent; color: var(--muted); font-size: 12px; font-weight: 600; cursor: pointer;
+}
+.usr-btn.active { background: var(--purple); color: #fff; border-color: var(--purple); }
+.usr-btn.batalha.active { background: #e56cff; border-color: #e56cff; }
+
+/* ── Nav bar ── */
+nav {
+  position: fixed; bottom: 0; left: 0; right: 0; height: var(--nav-h);
+  background: var(--bg2); border-top: 1px solid var(--border);
+  display: flex; align-items: center; z-index: 100;
+}
+.nav-btn {
+  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 3px; background: none; border: none; color: var(--muted); font-size: 10px;
+  font-weight: 600; cursor: pointer; padding: 8px 0;
+}
+.nav-btn .icon { font-size: 20px; }
+.nav-btn.active { color: var(--purple); }
+
+/* ── Cards ── */
+.card {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 14px; padding: 16px; margin: 0 12px 12px;
+}
+.card-title { font-size: 16px; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+.sec-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 1.5px; color: var(--muted);
+  padding: 16px 14px 6px; text-transform: uppercase;
+}
+
+/* ── Páginas ── */
+.page { display: none; }
+.page.active { display: block; padding-top: 8px; }
+
+/* ── Lendo card ── */
+.lendo-card {
+  background: var(--bg2); border: 1px solid var(--border); border-radius: 14px;
+  padding: 14px; margin: 0 12px 10px; display: flex; gap: 12px; align-items: flex-start;
+}
+.lendo-cover img { width: 60px; height: 84px; object-fit: cover; border-radius: 6px; }
+.lendo-info { flex: 1; min-width: 0; }
+.lendo-titulo { font-size: 15px; font-weight: 700; line-height: 1.3; margin-bottom: 4px; }
+.lendo-autor { font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+.lendo-prog-bar { height: 4px; background: var(--bg4); border-radius: 2px; margin-bottom: 6px; }
+.lendo-prog-fill { height: 100%; border-radius: 2px; background: var(--purple); }
+.lendo-stats { display: flex; gap: 12px; flex-wrap: wrap; }
+.lendo-stat { font-size: 11px; color: var(--muted); }
+.lendo-stat span { color: var(--teal); font-weight: 700; }
+
+/* ── Meta ring ── */
+.meta-ring-wrap { display: flex; align-items: center; gap: 16px; margin-bottom: 14px; }
+.meta-ring { position: relative; width: 80px; height: 80px; cursor: pointer; }
+.meta-ring svg { transform: rotate(-90deg); }
+.meta-ring-pct {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 900; color: var(--purple);
+}
+.meta-info { flex: 1; }
+.meta-livros { font-size: 28px; font-weight: 900; color: var(--teal); cursor: pointer; }
+.meta-sub { font-size: 12px; color: var(--muted); }
+.meta-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.meta-stat-card { background: var(--bg3); border-radius: 10px; padding: 10px; }
+.meta-stat-val { font-size: 18px; font-weight: 800; color: var(--purple); }
+.meta-stat-lbl { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+
+/* ── KPI cards ── */
+.kpi-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 0 12px 12px; }
+.kpi-card {
+  background: var(--bg2); border: 1px solid var(--border); border-radius: 12px;
+  padding: 12px; cursor: pointer;
+}
+.kpi-card-lbl { font-size: 9px; font-weight: 700; letter-spacing: 1px; color: var(--muted); text-transform: uppercase; margin-bottom: 6px; }
+.kpi-card-val { font-size: 22px; font-weight: 900; margin-bottom: 4px; }
+.kpi-card-nome { font-size: 12px; font-weight: 600; line-height: 1.3; }
+.kpi-card-autor { font-size: 11px; color: var(--muted); }
+.kpi-cover { width: 36px; height: 50px; object-fit: cover; border-radius: 4px; float: right; margin-left: 8px; }
+
+/* ── Stats visão geral ── */
+.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 0 12px 12px; }
+.stat-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 12px; }
+.stat-icon { font-size: 18px; margin-bottom: 4px; }
+.stat-val { font-size: 22px; font-weight: 900; }
+.stat-lbl { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+
+/* ── Ranking ── */
+.rank-item {
+  display: flex; align-items: center; gap: 10px; padding: 10px 0;
+  border-bottom: 1px solid var(--border); cursor: pointer;
+}
+.rank-item:last-child { border-bottom: none; }
+.rank-pos { font-size: 12px; color: var(--muted); width: 24px; text-align: center; flex-shrink: 0; }
+.rank-cover { width: 36px; height: 50px; object-fit: cover; border-radius: 4px; flex-shrink: 0; }
+.rank-info { flex: 1; min-width: 0; }
+.rank-nome { font-size: 14px; font-weight: 700; line-height: 1.3; }
+.rank-ano { font-size: 11px; color: var(--muted); }
+.rank-nota { font-size: 18px; font-weight: 900; flex-shrink: 0; }
+
+/* ── Gráfico wrapper ── */
+.chart-wrap { position: relative; width: 100%; margin-bottom: 12px; }
+.chart-wrap canvas { width: 100% !important; }
+
+/* ── FAB ── */
+.fab {
+  position: fixed; bottom: calc(var(--nav-h) + 16px); right: 16px;
+  width: 52px; height: 52px; border-radius: 50%; background: var(--purple);
+  border: none; color: #fff; font-size: 26px; cursor: pointer; z-index: 99;
+  box-shadow: 0 4px 16px rgba(139,124,248,0.5);
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* ── Modal ── */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 200;
+  display: flex; align-items: flex-end; justify-content: center;
+}
+.modal-sheet {
+  background: var(--bg2); border-radius: 20px 20px 0 0; width: 100%;
+  max-height: 90vh; overflow-y: auto; padding: 20px 16px;
+}
+.modal-handle { width: 40px; height: 4px; background: var(--border); border-radius: 2px; margin: 0 auto 16px; }
+.modal-title { font-size: 18px; font-weight: 700; margin-bottom: 16px; }
+.field-group { margin-bottom: 14px; }
+.field-label { font-size: 12px; color: var(--muted); margin-bottom: 4px; display: block; }
+.field-input {
+  width: 100%; padding: 12px; background: var(--bg3); border: 1px solid var(--border);
+  border-radius: 10px; color: var(--text); font-size: 15px;
+}
+.field-input:focus { outline: none; border-color: var(--purple); }
+select.field-input { appearance: none; }
+.btn-primary {
+  width: 100%; padding: 14px; background: var(--purple); border: none; border-radius: 12px;
+  color: #fff; font-size: 16px; font-weight: 700; cursor: pointer; margin-top: 8px;
+}
+.btn-secondary {
+  width: 100%; padding: 12px; background: var(--bg3); border: 1px solid var(--border);
+  border-radius: 12px; color: var(--text); font-size: 14px; cursor: pointer; margin-top: 8px;
+}
+.msg { padding: 10px; border-radius: 8px; font-size: 13px; margin-top: 8px; display: none; }
+.msg.ok { background: rgba(94,234,212,0.1); color: var(--teal); display: block; }
+.msg.err { background: rgba(239,68,68,0.1); color: #ef4444; display: block; }
+
+/* ── Batalha ── */
+.bat-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; padding: 14px; margin: 0 12px 12px; }
+.bat-label { font-size: 9px; font-weight: 700; letter-spacing: 1.5px; color: var(--muted); text-transform: uppercase; margin-bottom: 10px; }
+.bat-players { display: flex; gap: 8px; margin-bottom: 12px; }
+.bat-player-sel { flex: 1; padding: 10px; border-radius: 10px; border: 1px solid var(--border); background: var(--bg3); color: var(--text); font-size: 13px; font-weight: 700; }
+.bat-ano-sel { padding: 10px; border-radius: 10px; border: 1px solid var(--border); background: var(--bg3); color: var(--text); font-size: 13px; }
+
+/* ── Conquistas ── */
+.conquista-item { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); }
+.conquista-item:last-child { border-bottom: none; }
+.conquista-bar-wrap { flex: 1; }
+.conquista-bar-bg { height: 6px; background: var(--bg4); border-radius: 3px; }
+.conquista-bar-fill { height: 6px; border-radius: 3px; }
+
+/* ── Prateleira meta ── */
+.shelf-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+.shelf-book { position: relative; cursor: pointer; }
+.shelf-book img { width: 64px; height: 90px; object-fit: cover; border-radius: 6px; display: block; }
+.shelf-badge {
+  position: absolute; bottom: 3px; right: 3px; width: 18px; height: 18px;
+  border-radius: 50%; background: rgba(0,0,0,0.8); display: flex; align-items: center;
+  justify-content: center; font-size: 10px;
+}
+
+/* ── Scroll roda sessão ── */
+.pag-roller {
+  background: var(--bg3); border-radius: 12px; padding: 16px; text-align: center;
+  margin-bottom: 12px; cursor: ns-resize; user-select: none;
+}
+.pag-roller-cur { font-size: 48px; font-weight: 900; color: var(--teal); line-height: 1; }
+.pag-roller-pct { font-size: 14px; color: var(--purple); margin-top: 4px; }
+.pag-roller-diff { font-size: 13px; color: var(--muted); margin-top: 2px; }
+.pag-roller-prev { font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+.roller-btns { display: flex; justify-content: center; gap: 8px; margin-top: 12px; }
+.roller-btn {
+  padding: 8px 18px; background: var(--bg4); border: 1px solid var(--border);
+  border-radius: 8px; color: var(--text); font-size: 15px; cursor: pointer;
+}
+
+/* ── Detalhes livro ── */
+.book-detail-header { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; }
+.book-detail-cover { width: 70px; height: 98px; object-fit: cover; border-radius: 8px; flex-shrink: 0; }
+.book-detail-info { flex: 1; }
+.book-detail-titulo { font-size: 16px; font-weight: 800; line-height: 1.3; margin-bottom: 4px; }
+.book-detail-autor { font-size: 13px; color: var(--muted); margin-bottom: 8px; }
+.book-detail-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 14px; }
+.book-detail-stat { background: var(--bg3); border-radius: 8px; padding: 8px; }
+.book-detail-stat-val { font-size: 16px; font-weight: 800; }
+.book-detail-stat-lbl { font-size: 10px; color: var(--muted); }
+
+/* ── Search dropdown ── */
+.search-wrap { position: relative; margin-bottom: 12px; }
+.search-list {
+  position: absolute; top: 100%; left: 0; right: 0; background: var(--bg3);
+  border: 1px solid var(--border); border-radius: 10px; max-height: 200px; overflow-y: auto;
+  z-index: 50;
+}
+.search-item { padding: 10px 14px; cursor: pointer; font-size: 14px; border-bottom: 1px solid var(--border); }
+.search-item:last-child { border-bottom: none; }
+.search-item:active { background: var(--bg4); }
+
+/* ── Wd bars ── */
+.wd-bar-row { display: flex; align-items: flex-end; gap: 6px; height: 80px; padding-bottom: 20px; position: relative; }
+.wd-bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 2px; }
+.wd-bar-fill { width: 100%; border-radius: 4px 4px 0 0; min-height: 2px; background: var(--purple); }
+.wd-bar-lbl { font-size: 9px; color: var(--muted); position: absolute; bottom: 0; text-align: center; }
+.wd-bar-val { font-size: 9px; color: var(--text); }
+
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <div class="hdr-left">
+    <span style="font-size:22px">📚</span>
+    <h1>Dashboard de Leitura</h1>
+  </div>
+  <div class="hdr-btns">
+    <button class="usr-btn active" id="btn-milton" onclick="setUsuario('Milton')">📖 Milton</button>
+    <button class="usr-btn" id="btn-daniel" onclick="setUsuario('Daniel')">📖 Daniel</button>
+    <button class="usr-btn batalha" id="btn-batalha" onclick="setUsuario('Batalha')">⚔️</button>
+  </div>
+</header>
+
+<!-- Nav bar -->
+<nav>
+  <button class="nav-btn active" id="nav-meta" onclick="navTo('meta')"><span class="icon">🎯</span>META</button>
+  <button class="nav-btn" id="nav-geral" onclick="navTo('geral')"><span class="icon">📊</span>GERAL</button>
+  <button class="nav-btn" id="nav-graficos" onclick="navTo('graficos')"><span class="icon">📈</span>GRÁFICOS</button>
+  <button class="nav-btn" id="nav-ranking" onclick="navTo('ranking')"><span class="icon">🏅</span>RANKING</button>
+  <button class="nav-btn" id="nav-livro" onclick="navTo('livro')"><span class="icon">📚</span>LIVRO</button>
+  <button class="nav-btn" id="nav-mais" onclick="navTo('mais')"><span class="icon">···</span>MAIS</button>
+</nav>
+
+<!-- FAB -->
+<button class="fab" onclick="abrirFAB()">+</button>
+
+<!-- ── PÁGINA META ── -->
+<div class="page active" id="page-meta">
+  <!-- Lendo atualmente -->
+  <div class="sec-label">📖 Lendo Atualmente</div>
+  <div id="m-lendo-wrap"></div>
+
+  <!-- Meta -->
+  <div class="sec-label" style="display:flex;align-items:center;justify-content:space-between;padding-right:14px;">
+    <span>🎯 Meta de Leitura</span>
+    <select id="m-sel-meta-ano" onchange="buildMetaMobile()" style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;color:var(--text);padding:4px 8px;font-size:12px;"></select>
+  </div>
+  <div class="card" id="m-meta-card">
+    <div class="meta-ring-wrap">
+      <div class="meta-ring" onclick="abrirPrateleiraMeta()">
+        <svg width="80" height="80" viewBox="0 0 80 80">
+          <circle cx="40" cy="40" r="32" fill="none" stroke="var(--bg4)" stroke-width="8"/>
+          <circle id="m-meta-ring-circle" cx="40" cy="40" r="32" fill="none" stroke="var(--purple)" stroke-width="8"
+            stroke-dasharray="201.06" stroke-dashoffset="201.06" stroke-linecap="round"/>
+        </svg>
+        <div class="meta-ring-pct" id="m-meta-pct">—</div>
+      </div>
+      <div class="meta-info">
+        <div class="meta-livros" id="m-meta-livros" onclick="abrirPrateleiraMeta()">— / —</div>
+        <div class="meta-sub">livros concluídos</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:4px;" id="m-meta-previsao">—</div>
+      </div>
+    </div>
+    <div class="meta-stats-grid">
+      <div class="meta-stat-card">
+        <div class="meta-stat-val" id="m-meta-pag-lidas">—</div>
+        <div class="meta-stat-lbl">Págs lidas</div>
+      </div>
+      <div class="meta-stat-card">
+        <div class="meta-stat-val" id="m-meta-pag-total">—</div>
+        <div class="meta-stat-lbl">Págs total</div>
+      </div>
+      <div class="meta-stat-card">
+        <div class="meta-stat-val" id="m-meta-ritmo">—</div>
+        <div class="meta-stat-lbl">Ritmo atual</div>
+      </div>
+      <div class="meta-stat-card">
+        <div class="meta-stat-val" id="m-meta-dias">—</div>
+        <div class="meta-stat-lbl">Dias para acabar</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KPI books -->
+  <div class="sec-label">📊 Destaques</div>
+  <div class="kpi-row" id="m-kpi-books"></div>
+</div>
+
+<!-- ── PÁGINA GERAL ── -->
+<div class="page" id="page-geral">
+  <div class="sec-label" style="display:flex;align-items:center;justify-content:space-between;padding-right:14px;">
+    <span>📊 Visão Geral</span>
+    <select id="m-sel-vg-ano" onchange="buildGeralMobile()" style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;color:var(--text);padding:4px 8px;font-size:12px;"></select>
+  </div>
+  <div class="stats-grid" id="m-stats-grid"></div>
+
+  <div class="sec-label">📅 Resumo por Ano</div>
+  <div class="card" id="m-year-bars"></div>
+</div>
+
+<!-- ── PÁGINA GRÁFICOS ── -->
+<div class="page" id="page-graficos">
+  <div class="sec-label">📈 Páginas por Mês</div>
+  <div class="card">
+    <div class="chart-wrap" style="height:240px;"><canvas id="m-cMonthly"></canvas></div>
+  </div>
+
+  <div class="sec-label">📆 Dia da Semana</div>
+  <div class="card">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+      <span style="font-size:12px;color:var(--muted);">Ano:</span>
+      <select id="m-sel-wd" onchange="buildWdMobile()" style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;color:var(--text);padding:4px 8px;font-size:12px;"></select>
+    </div>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:6px;">Média págs/dia</div>
+    <div id="m-wd-avg" class="chart-wrap" style="height:100px;"></div>
+    <div style="font-size:11px;color:var(--muted);margin:10px 0 6px;">Livros por mês</div>
+    <div id="m-livros-mes" class="chart-wrap" style="height:100px;"></div>
+  </div>
+
+  <div class="sec-label">🌎 Gêneros Lidos</div>
+  <div class="card">
+    <div class="chart-wrap" style="height:320px;"><canvas id="m-cGeneros"></canvas></div>
+  </div>
+
+  <div class="sec-label">📦 Coleções Favoritas</div>
+  <div class="card">
+    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px;">
+      <select id="m-sel-col-ano" onchange="buildDonutsMobile()" style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;color:var(--text);padding:4px 8px;font-size:12px;flex:1;"></select>
+      <select id="m-sel-col-modo" onchange="buildDonutsMobile()" style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;color:var(--text);padding:4px 8px;font-size:12px;flex:1;"></select>
+    </div>
+    <div class="chart-wrap" style="height:200px;"><canvas id="m-cDonut"></canvas></div>
+    <div id="m-leg-donut" style="margin-top:8px;display:flex;flex-direction:column;gap:4px;"></div>
+  </div>
+
+  <div class="sec-label">✍️ Autores Favoritos</div>
+  <div class="card">
+    <div class="chart-wrap" style="height:200px;"><canvas id="m-cAutores"></canvas></div>
+    <div id="m-leg-autores" style="margin-top:8px;display:flex;flex-direction:column;gap:4px;"></div>
+  </div>
+</div>
+
+<!-- ── PÁGINA RANKING ── -->
+<div class="page" id="page-ranking">
+  <div class="sec-label">🏅 Ranking por Notas</div>
+  <div class="card">
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">
+      <select id="m-rank-ano" onchange="buildRankingMobile()" style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;color:var(--text);padding:8px;font-size:13px;flex:1;"></select>
+      <select id="m-rank-colecao" onchange="buildRankingMobile()" style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;color:var(--text);padding:8px;font-size:13px;flex:1;"></select>
+    </div>
+    <div style="display:flex;gap:8px;margin-bottom:14px;">
+      <button id="m-btn-best" onclick="m_rankMode='best';buildRankingMobile()" style="flex:1;padding:10px;background:var(--purple);border:none;border-radius:10px;color:#fff;font-size:14px;font-weight:700;cursor:pointer;">🥇 Melhores</button>
+      <button id="m-btn-worst" onclick="m_rankMode='worst';buildRankingMobile()" style="flex:1;padding:10px;background:var(--bg3);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:14px;cursor:pointer;">💀 Piores</button>
+    </div>
+    <div id="m-rank-list"></div>
+  </div>
+</div>
+
+<!-- ── PÁGINA LIVRO ── -->
+<div class="page" id="page-livro">
+  <div class="sec-label">📚 Detalhes do Livro</div>
+  <div class="card">
+    <div class="search-wrap">
+      <input id="m-book-busca" class="field-input" placeholder="Buscar livro..." oninput="filtrarBookMobile(this.value)" autocomplete="off">
+      <div id="m-book-lista" class="search-list" style="display:none;"></div>
+    </div>
+    <div id="m-book-header" style="display:none;"></div>
+  </div>
+  <div class="card" id="m-book-stats-card" style="display:none;">
+    <div class="book-detail-stats" id="m-book-stats"></div>
+  </div>
+  <div class="card" id="m-book-chart-card" style="display:none;">
+    <div class="card-title">📖 Páginas Lidas por Dia</div>
+    <div class="chart-wrap" style="height:220px;"><canvas id="m-cBook"></canvas></div>
+  </div>
+</div>
+
+<!-- ── PÁGINA MAIS ── -->
+<div class="page" id="page-mais">
+  <div class="sec-label">⚡ Sequências de Leitura</div>
+  <div class="card" id="m-streaks"></div>
+
+  <div class="sec-label">📅 Calendário</div>
+  <div class="card">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+      <button onclick="calNavM(-1)" style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:6px 12px;cursor:pointer;">‹</button>
+      <span id="m-cal-title" style="font-weight:700;"></span>
+      <button onclick="calNavM(1)" style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:6px 12px;cursor:pointer;">›</button>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:4px;">
+      <div style="text-align:center;font-size:10px;color:var(--muted);font-weight:700;">D</div>
+      <div style="text-align:center;font-size:10px;color:var(--muted);font-weight:700;">S</div>
+      <div style="text-align:center;font-size:10px;color:var(--muted);font-weight:700;">T</div>
+      <div style="text-align:center;font-size:10px;color:var(--muted);font-weight:700;">Q</div>
+      <div style="text-align:center;font-size:10px;color:var(--muted);font-weight:700;">Q</div>
+      <div style="text-align:center;font-size:10px;color:var(--muted);font-weight:700;">S</div>
+      <div style="text-align:center;font-size:10px;color:var(--muted);font-weight:700;">S</div>
+    </div>
+    <div id="m-cal-grid" style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;"></div>
+    <div id="m-cal-detail" style="display:none;margin-top:12px;padding-top:12px;border-top:1px solid var(--border);"></div>
+  </div>
+
+  <div class="sec-label">🔥 Heatmap</div>
+  <div class="card" id="m-heatmap"></div>
+
+  <div class="sec-label">🏅 Conquistas</div>
+  <div class="card" id="m-conquistas"></div>
+</div>
+
+<!-- ── BATALHA ── -->
+<div class="page" id="page-batalha">
+  <div class="bat-card">
+    <div class="bat-label">Configurar Batalha</div>
+    <div class="bat-players">
+      <select id="m-bat-pA" onchange="renderBatalhaMobile()" class="bat-player-sel">
+        <option value="Milton">Milton</option>
+        <option value="Daniel">Daniel</option>
+      </select>
+      <span style="color:var(--muted);font-size:18px;font-weight:900;align-self:center;">VS</span>
+      <select id="m-bat-pB" onchange="renderBatalhaMobile()" class="bat-player-sel">
+        <option value="Daniel">Daniel</option>
+        <option value="Milton">Milton</option>
+      </select>
+    </div>
+    <select id="m-bat-ano" onchange="renderBatalhaMobile()" class="bat-ano-sel" style="width:100%;"></select>
+  </div>
+
+  <div class="sec-label">🕸️ Perfil de Combate</div>
+  <div class="bat-card">
+    <div class="chart-wrap" style="height:260px;"><canvas id="m-bat-radar"></canvas></div>
+    <div id="m-bat-scores" style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px;"></div>
+  </div>
+
+  <div class="sec-label">📈 Guerra das Temporadas</div>
+  <div class="bat-card">
+    <div class="chart-wrap" style="height:200px;"><canvas id="m-bat-linha"></canvas></div>
+    <div id="m-bat-guerra-scores" style="display:flex;justify-content:space-around;margin-top:12px;padding-top:12px;border-top:1px solid var(--border);"></div>
+  </div>
+
+  <div class="sec-label">📆 Dias Lidos</div>
+  <div class="bat-card" id="m-bat-dias"></div>
+
+  <div class="sec-label">🌎 Competição por Gêneros</div>
+  <div class="bat-card" id="m-bat-generos"></div>
+
+  <div class="sec-label">💀 Bosses (1000+ págs)</div>
+  <div class="bat-card">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div><div id="m-bat-boss-a-lbl" style="font-size:11px;font-weight:700;color:#A855F7;margin-bottom:8px;"></div><div id="m-bat-boss-a"></div></div>
+      <div><div id="m-bat-boss-b-lbl" style="font-size:11px;font-weight:700;color:#FB923C;margin-bottom:8px;"></div><div id="m-bat-boss-b"></div></div>
+    </div>
+  </div>
+
+  <div class="sec-label">🏅 Conquistas</div>
+  <div class="bat-card" id="m-bat-conquistas"></div>
+</div>
+
+<!-- ── MODAIS ── -->
+<!-- Modal FAB -->
+<div id="modal-fab" class="modal-overlay" style="display:none;" onclick="if(event.target===this)fecharFAB()">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+      <button class="btn-secondary" onclick="fecharFAB();abrirModalSessao()">📖 Registrar Sessão</button>
+      <button class="btn-secondary" onclick="fecharFAB();abrirModalLivro()">✏️ Atualizar Livro</button>
+      <button class="btn-secondary" onclick="fecharFAB();abrirModalAdicionar()">➕ Adicionar Livro</button>
+      <button class="btn-secondary" onclick="fecharFAB();manualRefreshM()">🔄 Atualizar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Sessão -->
+<div id="modal-sessao" class="modal-overlay" style="display:none;" onclick="if(event.target===this)fecharModalSessao()">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title">📖 Registrar Sessão</div>
+    <div class="field-group">
+      <label class="field-label">Livro</label>
+      <div class="search-wrap">
+        <input id="ms-busca" class="field-input" placeholder="Buscar livro..." oninput="filtrarLivroSessao(this.value)" autocomplete="off">
+        <div id="ms-lista" class="search-list" style="display:none;"></div>
+      </div>
+      <div id="ms-selecionado" style="display:none;padding:8px 12px;background:var(--bg3);border-radius:8px;color:var(--teal);font-size:13px;cursor:pointer;" onclick="limparSessaoLivro()"></div>
+    </div>
+    <input type="hidden" id="ms-livro">
+    <input type="hidden" id="ms-pag-anterior" value="0">
+
+    <!-- Roda de página -->
+    <div class="field-group" id="ms-roller-wrap" style="display:none;">
+      <label class="field-label">Página atual</label>
+      <div class="pag-roller" id="ms-roller"
+        ontouchstart="rollerStart(event)"
+        ontouchmove="rollerMove(event)"
+        ontouchend="rollerEnd(event)">
+        <div class="pag-roller-prev" id="ms-roller-prev">anterior: —</div>
+        <div class="pag-roller-cur" id="ms-roller-cur">—</div>
+        <div class="pag-roller-pct" id="ms-roller-pct">0% do livro</div>
+        <div class="pag-roller-diff" id="ms-roller-diff"></div>
+      </div>
+      <div class="roller-btns">
+        <button class="roller-btn" onclick="stepRoller(-10)">-10</button>
+        <button class="roller-btn" onclick="stepRoller(-1)">-1</button>
+        <button class="roller-btn" onclick="stepRoller(1)">+1</button>
+        <button class="roller-btn" onclick="stepRoller(10)">+10</button>
+      </div>
+      <input type="hidden" id="ms-paginas" value="0">
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;" class="field-group">
+      <div>
+        <label class="field-label">Horas</label>
+        <input id="ms-horas" type="number" min="0" class="field-input" placeholder="0">
+      </div>
+      <div>
+        <label class="field-label">Minutos</label>
+        <input id="ms-minutos" type="number" min="0" max="59" class="field-input" placeholder="0">
+      </div>
+    </div>
+    <div id="ms-msg" class="msg"></div>
+    <button class="btn-primary" onclick="enviarSessaoM()">Salvar Sessão</button>
+    <button class="btn-secondary" onclick="fecharModalSessao()">Cancelar</button>
+  </div>
+</div>
+
+<!-- Modal Atualizar Livro -->
+<div id="modal-livro" class="modal-overlay" style="display:none;" onclick="if(event.target===this)fecharModalLivro()">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title">✏️ Atualizar Livro</div>
+    <div class="field-group">
+      <label class="field-label">Livro</label>
+      <div class="search-wrap">
+        <input id="ml-busca" class="field-input" placeholder="Buscar livro..." oninput="filtrarLivroModal(this.value,'ml')" autocomplete="off">
+        <div id="ml-lista" class="search-list" style="display:none;"></div>
+      </div>
+      <div id="ml-selecionado" style="display:none;padding:8px 12px;background:var(--bg3);border-radius:8px;color:var(--teal);font-size:13px;cursor:pointer;" onclick="limparLivroModal('ml')"></div>
+    </div>
+    <input type="hidden" id="ml-livro">
+    <div class="field-group">
+      <label class="field-label">Status</label>
+      <select id="ml-status" class="field-input">
+        <option value="">— manter —</option>
+        <option>Lendo</option><option>Pausado</option><option>Aguardando</option><option>Completo</option>
+      </select>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;" class="field-group">
+      <div><label class="field-label">Ano da Meta</label><input id="ml-metaano" class="field-input" placeholder="2026 ou vazio"></div>
+      <div><label class="field-label">Gênero</label><input id="ml-genero" class="field-input" placeholder="Fantasia épica"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;" class="field-group">
+      <div><label class="field-label">Coleção</label><input id="ml-colecao" class="field-input" placeholder="—"></div>
+      <div><label class="field-label">Nota</label><input id="ml-nota" type="number" min="0" max="10" step="0.1" class="field-input" placeholder="—"></div>
+    </div>
+    <div id="ml-msg" class="msg"></div>
+    <button class="btn-primary" onclick="enviarAtualizarLivroM()">Salvar</button>
+    <button class="btn-secondary" onclick="fecharModalLivro()">Cancelar</button>
+  </div>
+</div>
+
+<!-- Modal Prateleira Meta -->
+<div id="modal-prateleira" class="modal-overlay" style="display:none;" onclick="if(event.target===this)fecharPrateleira()">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title" id="mp-titulo">🎯 Meta</div>
+    <div class="shelf-wrap" id="mp-lista"></div>
+  </div>
+</div>
+
+<!-- Modal Detalhes Livro (de clique) -->
+<div id="modal-detalhe" class="modal-overlay" style="display:none;" onclick="if(event.target===this)fecharDetalhe()">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div id="md-content"></div>
+  </div>
+</div>
+
+<script>
+const DATA_URL = '/data.json';
+const API_URL  = 'https://script.google.com/macros/s/AKfycbzuNZzuy8fzaql5xpecEG6yG2aXMdkkeDpPbkaTV_ro6f1TkixI37s8aJxO0lPqIYOM/exec';
+
+// ── Estado global ──
+let usuarioAtual = 'Milton';
+let dadosD = null;
+let livrosCache = [];
+let sessoesCache = [];
+let anoAtual = String(new Date().getFullYear());
+let m_rankMode = 'best';
+let m_calMonth = new Date().getMonth();
+let m_calYear  = new Date().getFullYear();
+let m_calSelected = null;
+let m_rollerPag = 0, m_rollerTotal = 0, m_rollerAnterior = 0;
+let m_rollerStartY = null, m_rollerStartPag = null;
+
+// ── Charts ──
+let m_charts = {};
+
+function destroyChart(id) {
+  if (m_charts[id]) { m_charts[id].destroy(); delete m_charts[id]; }
+  const el = document.getElementById(id);
+  if (el) { const c = Chart.getChart(el); if (c) c.destroy(); }
+}
+
+// ── Carregar dados ──
+async function carregarDados() {
+  try {
+    const r = await fetch(DATA_URL + '?t=' + Date.now());
+    dadosD = await r.json();
+    livrosCache = dadosD.livros || [];
+    sessoesCache = dadosD.sessoes || [];
+    popularAnos();
+    setUsuario(usuarioAtual);
+  } catch(e) { console.error(e); }
+}
+
+function popularAnos() {
+  const anos = [...new Set(sessoesCache.map(s => String(s.ano)).filter(Boolean))].sort().reverse();
+  const metas = Object.keys(dadosD?.metasPorAno || {}).filter(a => /^\d{4}$/.test(a)).sort().reverse();
+  const todosAnos = [...new Set([...anos, ...metas])].sort().reverse();
+
+  // Meta ano
+  const selMeta = document.getElementById('m-sel-meta-ano');
+  if (selMeta) {
+    selMeta.innerHTML = metas.map(a => `<option value="${a}"${a===anoAtual?'selected':''}>${a}</option>`).join('');
+  }
+
+  // VG ano
+  const selVG = document.getElementById('m-sel-vg-ano');
+  if (selVG) {
+    selVG.innerHTML = '<option value="total">Todos os anos</option>' + todosAnos.map(a => `<option value="${a}"${a===anoAtual?'selected':''}>${a}</option>`).join('');
+  }
+
+  // Ranking
+  const selRank = document.getElementById('m-rank-ano');
+  if (selRank) {
+    selRank.innerHTML = '<option value="all">Todos os anos</option>' + todosAnos.map(a => `<option value="${a}">${a}</option>`).join('');
+  }
+
+  // WD
+  const selWd = document.getElementById('m-sel-wd');
+  if (selWd) {
+    selWd.innerHTML = '<option value="total">Total</option>' + todosAnos.map(a => `<option value="${a}">${a}</option>`).join('');
+  }
+
+  // Donut
+  const selCol = document.getElementById('m-sel-col-ano');
+  if (selCol) {
+    selCol.innerHTML = '<option value="total">Todos os anos</option>' + todosAnos.map(a => `<option value="${a}">${a}</option>`).join('');
+  }
+  const selColModo = document.getElementById('m-sel-col-modo');
+  if (selColModo) {
+    selColModo.innerHTML = '<option value="paginas">Páginas</option><option value="livros">Livros</option>';
+  }
+
+  // Ranking coleção
+  const selRankCol = document.getElementById('m-rank-colecao');
+  if (selRankCol) {
+    const cols = [...new Set(livrosCache.map(l => l.colecao).filter(Boolean))].sort();
+    selRankCol.innerHTML = '<option value="all">Todas as coleções</option>' + cols.map(c => `<option value="${c}">${c}</option>`).join('');
+  }
+
+  // Batalha anos
+  const selBatAno = document.getElementById('m-bat-ano');
+  if (selBatAno) {
+    selBatAno.innerHTML = '<option value="total">Todos os anos</option>' + todosAnos.map(a => `<option value="${a}"${a===anoAtual?'selected':''}>${a}</option>`).join('');
+  }
+}
+
+// ── Usuário ──
+function setUsuario(u) {
+  usuarioAtual = u;
+  ['milton','daniel','batalha'].forEach(x => {
+    document.getElementById('btn-'+x)?.classList.remove('active');
+  });
+  document.getElementById('btn-'+u.toLowerCase())?.classList.add('active');
+
+  const isBat = u === 'Batalha';
+  // Nav
+  document.getElementById('nav-meta').style.display   = isBat ? 'none' : '';
+  document.getElementById('nav-geral').style.display  = isBat ? 'none' : '';
+  document.getElementById('nav-graficos').style.display = isBat ? 'none' : '';
+  document.getElementById('nav-ranking').style.display = isBat ? 'none' : '';
+  document.getElementById('nav-livro').style.display  = isBat ? 'none' : '';
+  document.getElementById('nav-mais').style.display   = isBat ? 'none' : '';
+
+  if (isBat) {
+    mostrarPagina('batalha');
+    renderBatalhaMobile();
+  } else {
+    navTo('meta');
+    buildMetaMobile();
+  }
+}
+window.setUsuario = setUsuario;
+
+// ── Navegação ──
+function navTo(sec) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  mostrarPagina(sec);
+  document.getElementById('nav-'+sec)?.classList.add('active');
+
+  if (sec === 'geral')    buildGeralMobile();
+  if (sec === 'graficos') buildGraficosMobile();
+  if (sec === 'ranking')  buildRankingMobile();
+  if (sec === 'mais')     buildMaisMobile();
+}
+window.navTo = navTo;
+
+function mostrarPagina(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const el = document.getElementById('page-'+id);
+  if (el) el.classList.add('active');
+}
+
+// ── Helpers ──
+function filtrarUsuario(l) {
+  if (usuarioAtual === 'Milton') return !l.usuario || l.usuario === '' || l.usuario.toUpperCase() === 'MILTON';
+  return l.usuario?.toUpperCase() === usuarioAtual.toUpperCase();
+}
+function filtrarSessaoUsuario(s) {
+  if (usuarioAtual === 'Milton') return !s.usuario || s.usuario === '' || s.usuario.toUpperCase() === 'MILTON';
+  return s.usuario?.toUpperCase() === usuarioAtual.toUpperCase();
+}
+function coverHtml(l, w=60, h=84) {
+  if (!l) return `<div style="width:${w}px;height:${h}px;background:var(--bg3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:24px;">📚</div>`;
+  const url = l.coverUrl || '';
+  if (url) return `<img src="${url}" style="width:${w}px;height:${h}px;object-fit:cover;border-radius:6px;" onerror="this.style.display='none'">`;
+  return `<div style="width:${w}px;height:${h}px;background:var(--bg3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:24px;">📚</div>`;
+}
+function fmtNum(n) { return (n||0).toLocaleString('pt-BR'); }
+
+// ── META ──
+function buildMetaMobile() {
+  if (!dadosD) return;
+  const ano = document.getElementById('m-sel-meta-ano')?.value || anoAtual;
+  const m = (dadosD.metasPorAno || {})[ano] || {};
+  const pctPag = m.paginasTotal > 0 ? m.paginasLidas / m.paginasTotal : (m.total > 0 ? m.lidos / m.total : 0);
+  const offset = 201.06 * (1 - Math.min(pctPag, 1));
+
+  document.getElementById('m-meta-ring-circle').setAttribute('stroke-dashoffset', offset.toFixed(1));
+  document.getElementById('m-meta-pct').textContent = (pctPag*100).toFixed(1).replace('.',',') + '%';
+  document.getElementById('m-meta-livros').textContent = `${m.lidos||0} / ${m.total||0}`;
+  document.getElementById('m-meta-pag-lidas').textContent = fmtNum(m.paginasLidas);
+  document.getElementById('m-meta-pag-total').textContent = fmtNum(m.paginasTotal);
+  document.getElementById('m-meta-ritmo').textContent = m.ritmoAtual > 0 ? m.ritmoAtual.toFixed(1) + ' p/dia' : '—';
+  document.getElementById('m-meta-dias').textContent = m.ritmoAtual > 0 && m.paginasFaltando > 0 ? Math.ceil(m.paginasFaltando / m.ritmoAtual) : '—';
+  document.getElementById('m-meta-previsao').textContent = m.dataPrevistoAtual ? '📅 ' + m.dataPrevistoAtual : '';
+
+  // Lendo
+  const lendo = (dadosD.lendo || []).filter(filtrarUsuario);
+  const pausados = (dadosD.pausados || []).filter(filtrarUsuario);
+  const wrap = document.getElementById('m-lendo-wrap');
+  const todos = [...lendo, ...pausados.slice(0,2)];
+  wrap.innerHTML = todos.length === 0 ? '<div class="card" style="text-align:center;color:var(--muted);">Nenhum livro em leitura</div>' :
+    todos.map(l => {
+      const pct = l.totalPag > 0 ? Math.round(l.pagAtual/l.totalPag*100) : 0;
+      const status = l.status === 'Pausado' ? '⏸️ Pausado' : '📖 Lendo';
+      return `<div class="lendo-card" onclick="abrirDetalheRapido('${l.livro.replace(/'/g,"\\'")}')">
+        <div class="lendo-cover">${coverHtml(l,60,84)}</div>
+        <div class="lendo-info">
+          <div style="font-size:10px;color:var(--muted);margin-bottom:2px;">${status}</div>
+          <div class="lendo-titulo">${l.livro}</div>
+          <div class="lendo-autor">${l.autor||''}</div>
+          <div class="lendo-prog-bar"><div class="lendo-prog-fill" style="width:${pct}%"></div></div>
+          <div class="lendo-stats">
+            <div class="lendo-stat">Pág <span>${l.pagAtual||0}</span>/${l.totalPag||0}</div>
+            <div class="lendo-stat"><span>${pct}%</span></div>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+
+  // KPI books
+  buildKpiBooksMobile();
+}
+window.buildMetaMobile = buildMetaMobile;
+
+function buildKpiBooksMobile() {
+  const todos = livrosCache.filter(filtrarUsuario).filter(l => l.status === 'Completo' && l.totalPag > 0);
+  const notas = livrosCache.filter(filtrarUsuario).filter(l => l.notaMedia > 0);
+  if (!todos.length) return;
+
+  const maior  = todos.reduce((a,b) => a.totalPag > b.totalPag ? a : b);
+  const menor  = todos.reduce((a,b) => a.totalPag < b.totalPag ? a : b);
+  const melhor = notas.length ? notas.reduce((a,b) => a.notaMedia > b.notaMedia ? a : b) : null;
+  const pior   = notas.length ? notas.reduce((a,b) => a.notaMedia < b.notaMedia ? a : b) : null;
+
+  const kpiCard = (emoji, lbl, val, lbl2, livro) => livro ? `
+    <div class="kpi-card" onclick="abrirDetalheRapido('${livro.livro.replace(/'/g,"\\'")}')">
+      ${livro.coverUrl ? `<img src="${livro.coverUrl}" class="kpi-cover" onerror="this.style.display='none'">` : ''}
+      <div class="kpi-card-lbl">${emoji} ${lbl}</div>
+      <div class="kpi-card-val" style="color:var(--teal);">${val}</div>
+      <div style="font-size:10px;color:var(--muted);">${lbl2}</div>
+      <div class="kpi-card-nome">${livro.livro}</div>
+      <div class="kpi-card-autor">${livro.autor||''}</div>
+    </div>` : '';
+
+  document.getElementById('m-kpi-books').innerHTML =
+    kpiCard('📖','Maior Livro', fmtNum(maior.totalPag), 'páginas', maior) +
+    kpiCard('📕','Menor Livro', fmtNum(menor.totalPag), 'páginas', menor) +
+    (melhor ? kpiCard('⭐','Melhor Avaliado', melhor.notaMedia.toFixed(1), 'nota geral', melhor) : '') +
+    (pior   ? kpiCard('💀','Pior Avaliado',   pior.notaMedia.toFixed(1),   'nota geral', pior)   : '');
+}
+
+// ── GERAL ──
+function buildGeralMobile() {
+  if (!dadosD) return;
+  const ano = document.getElementById('m-sel-vg-ano')?.value || 'total';
+  const sessoes = sessoesCache.filter(filtrarSessaoUsuario).filter(s => ano === 'total' || String(s.ano) === ano);
+  const livros  = livrosCache.filter(filtrarUsuario);
+  const lidos   = livros.filter(l => l.status === 'Completo' && (ano === 'total' || String(l.anoConclusao) === ano));
+  const totalPag = sessoes.reduce((a,s) => a + (s.paginas||0), 0);
+  const totalMin = sessoes.reduce((a,s) => a + (s.minutos||0), 0);
+  const diasSet  = new Set(sessoes.map(s => s.data).filter(Boolean));
+  const mediaDia = diasSet.size > 0 ? (totalPag / diasSet.size).toFixed(1) : '—';
+  const notaMedia = lidos.filter(l=>l.notaMedia>0).length > 0 ?
+    (lidos.filter(l=>l.notaMedia>0).reduce((a,l)=>a+l.notaMedia,0) / lidos.filter(l=>l.notaMedia>0).length).toFixed(1) : '—';
+
+  const stats = [
+    { icon:'📄', val: fmtNum(totalPag), lbl: 'Páginas lidas' },
+    { icon:'📚', val: lidos.length,     lbl: 'Livros concluídos' },
+    { icon:'📋', val: sessoes.length,   lbl: 'Sessões' },
+    { icon:'📅', val: diasSet.size,     lbl: 'Dias lendo' },
+    { icon:'📈', val: mediaDia,         lbl: 'Págs/dia' },
+    { icon:'⭐', val: notaMedia,        lbl: 'Nota média' },
+    { icon:'⏱️', val: Math.round(totalMin/60)+'h', lbl: 'Horas lidas' },
+    { icon:'✍️', val: new Set(lidos.map(l=>l.autor).filter(Boolean)).size, lbl: 'Autores únicos' },
+  ];
+
+  document.getElementById('m-stats-grid').innerHTML = stats.map(s =>
+    `<div class="stat-card">
+      <div class="stat-icon">${s.icon}</div>
+      <div class="stat-val">${s.val}</div>
+      <div class="stat-lbl">${s.lbl}</div>
+    </div>`).join('');
+
+  // Year bars
+  const anos = [...new Set(sessoesCache.filter(filtrarSessaoUsuario).map(s=>String(s.ano)).filter(Boolean))].sort();
+  const yb = document.getElementById('m-year-bars');
+  yb.innerHTML = '<div class="card-title">📅 Resumo por Ano</div>' + anos.map(a => {
+    const sessA = sessoesCache.filter(filtrarSessaoUsuario).filter(s=>String(s.ano)===a);
+    const pags = sessA.reduce((x,s)=>x+(s.paginas||0),0);
+    const dias = new Set(sessA.map(s=>s.data).filter(Boolean)).size;
+    const med  = dias > 0 ? (pags/dias).toFixed(1) : '—';
+    const maxP = Math.max(...anos.map(x => sessoesCache.filter(filtrarSessaoUsuario).filter(s=>String(s.ano)===x).reduce((t,s)=>t+(s.paginas||0),0)),1);
+    const w = Math.round(pags/maxP*100);
+    return `<div style="margin-bottom:12px;">
+      <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+        <span style="font-weight:700;color:var(--teal);">${a}</span>
+        <span style="font-size:12px;color:var(--muted);">${fmtNum(pags)} págs</span>
+      </div>
+      <div style="height:8px;background:var(--bg4);border-radius:4px;margin-bottom:4px;">
+        <div style="height:8px;width:${w}%;background:var(--purple);border-radius:4px;"></div>
+      </div>
+      <div style="font-size:11px;color:var(--muted);">Sessões: ${sessA.length} · Média: ${med} p/dia · Dias: ${dias}</div>
+    </div>`;
+  }).join('');
+}
+window.buildGeralMobile = buildGeralMobile;
+
+// ── GRÁFICOS ──
+function buildGraficosMobile() {
+  if (!dadosD) return;
+  buildMonthlyMobile();
+  buildWdMobile();
+  buildGênerosMobile();
+  buildDonutsMobile();
+}
+
+function buildMonthlyMobile() {
+  destroyChart('m-cMonthly');
+  const sess = sessoesCache.filter(filtrarSessaoUsuario);
+  const map = {};
+  sess.forEach(s => {
+    if (!s.data) return;
+    const [y,m] = s.data.split('-');
+    const key = `${y}-${m}`;
+    map[key] = (map[key]||0) + (s.paginas||0);
+  });
+  const keys = Object.keys(map).sort();
+  const labels = keys.map(k => { const [y,m] = k.split('-'); return `${['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'][parseInt(m)-1]}/${y.slice(2)}`; });
+  const el = document.getElementById('m-cMonthly');
+  if (!el) return;
+  m_charts['m-cMonthly'] = new Chart(el, {
+    type: 'line',
+    data: { labels, datasets: [{ data: keys.map(k=>map[k]), borderColor: '#8b7cf8', backgroundColor: 'rgba(139,124,248,0.1)', fill: true, tension: 0.4, pointRadius: 3 }] },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
+      scales: { x: { ticks: { color: '#8892a8', font: { size: 10 }, maxRotation: 45 }, grid: { display: false } },
+                y: { ticks: { color: '#8892a8', font: { size: 10 } }, grid: { color: 'rgba(42,50,72,0.4)' } } } }
+  });
+}
+
+function buildWdMobile() {
+  const ano = document.getElementById('m-sel-wd')?.value || 'total';
+  const sess = sessoesCache.filter(filtrarSessaoUsuario).filter(s => ano === 'total' || String(s.ano) === ano);
+  const wdAvg = Array(7).fill(0), wdCnt = Array(7).fill(0), livrosMes = {};
+  sess.forEach(s => {
+    if (!s.data) return;
+    const wd = new Date(s.data + 'T12:00:00').getDay();
+    wdAvg[wd] += s.paginas||0; wdCnt[wd]++;
+    const [y,m] = s.data.split('-'); const key = `${y}-${m}`;
+    livrosMes[key] = (livrosMes[key]||0);
+  });
+  livrosCache.filter(filtrarUsuario).filter(l=>l.status==='Completo'&&l.anoConclusao).forEach(l => {
+    const a = String(l.anoConclusao); if (ano !== 'total' && a !== ano) return;
+    // approx mes
+  });
+  const dias = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+  const avgs = wdAvg.map((t,i) => wdCnt[i]>0 ? Math.round(t/wdCnt[i]) : 0);
+  const max = Math.max(...avgs, 1);
+
+  const wdEl = document.getElementById('m-wd-avg');
+  if (wdEl) {
+    wdEl.innerHTML = `<div style="display:flex;align-items:flex-end;gap:4px;height:100px;padding-bottom:20px;position:relative;">
+      ${avgs.map((v,i) => `<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:2px;height:100%;">
+        <div style="font-size:9px;color:var(--text);">${v||''}</div>
+        <div style="width:100%;height:${Math.round(v/max*60)+4}px;background:var(--purple);border-radius:4px 4px 0 0;min-height:2px;"></div>
+        <div style="font-size:9px;color:var(--muted);position:absolute;bottom:0;">${dias[i]}</div>
+      </div>`).join('')}
+    </div>`;
+  }
+
+  // Livros por mês via lidos
+  const lmMap = {};
+  livrosCache.filter(filtrarUsuario).filter(l=>l.status==='Completo').forEach(l => {
+    if (!l.anoConclusao) return;
+    if (ano !== 'total' && String(l.anoConclusao) !== ano) return;
+    // Need month — use sessões last session
+    const lastSess = sessoesCache.filter(s=>s.livro===l.livro&&filtrarSessaoUsuario(s)).sort((a,b)=>b.data?.localeCompare(a.data||'')||0)[0];
+    if (lastSess?.data) {
+      const [y,m] = lastSess.data.split('-'); const key = `${y}-${m}`;
+      lmMap[key] = (lmMap[key]||0)+1;
+    }
+  });
+  const lmKeys = Object.keys(lmMap).sort().slice(-12);
+  const lmLabels = lmKeys.map(k => { const [y,m]=k.split('-'); return `${['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'][parseInt(m)-1]}/${y.slice(2)}`; });
+  const lmMax = Math.max(...lmKeys.map(k=>lmMap[k]),1);
+  const lmEl = document.getElementById('m-livros-mes');
+  if (lmEl) {
+    lmEl.innerHTML = `<div style="display:flex;align-items:flex-end;gap:3px;height:100px;padding-bottom:24px;position:relative;overflow-x:auto;">
+      ${lmKeys.map((k,i) => `<div style="min-width:30px;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:2px;height:100%;">
+        <div style="font-size:9px;color:var(--teal);">${lmMap[k]}</div>
+        <div style="width:100%;height:${Math.round(lmMap[k]/lmMax*55)+4}px;background:var(--teal);border-radius:4px 4px 0 0;"></div>
+        <div style="font-size:8px;color:var(--muted);position:absolute;bottom:0;transform:rotate(-45deg);transform-origin:top left;">${lmLabels[i]}</div>
+      </div>`).join('')}
+    </div>`;
+  }
+}
+window.buildWdMobile = buildWdMobile;
+
+function buildGênerosMobile() {
+  destroyChart('m-cGeneros');
+  const sessU = sessoesCache.filter(filtrarSessaoUsuario);
+  const genMap = {};
+  livrosCache.filter(filtrarUsuario).filter(l=>l.status==='Completo'&&l.genero).forEach(l => {
+    genMap[l.genero] = (genMap[l.genero]||0)+1;
+  });
+  const sorted = Object.entries(genMap).sort((a,b)=>b[1]-a[1]).slice(0,10);
+  const total = sorted.reduce((a,x)=>a+x[1],0)||1;
+  const el = document.getElementById('m-cGeneros');
+  if (!el) return;
+  const colors = ['#8b7cf8','#5eead4','#fbbf24','#f87171','#34d399','#60a5fa','#a78bfa','#fb923c','#f472b6','#4ade80'];
+  m_charts['m-cGeneros'] = new Chart(el, {
+    type: 'bar',
+    data: { labels: sorted.map(x=>x[0]), datasets: [{ data: sorted.map(x=>Math.round(x[1]/total*100)), backgroundColor: colors, borderRadius: 4 }] },
+    options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => ` ${c.parsed.x}%` } } },
+      scales: { x: { ticks: { color: '#8892a8', callback: v => v+'%' }, grid: { color: 'rgba(42,50,72,0.3)' } },
+                y: { ticks: { color: '#e2e8f0', font: { size: 11 } }, grid: { display: false } } } }
+  });
+}
+
+function buildDonutsMobile() {
+  destroyChart('m-cDonut'); destroyChart('m-cAutores');
+  const ano  = document.getElementById('m-sel-col-ano')?.value || 'total';
+  const modo = document.getElementById('m-sel-col-modo')?.value || 'paginas';
+  const sess = sessoesCache.filter(filtrarSessaoUsuario).filter(s => ano === 'total' || String(s.ano) === ano);
+  const lidos = livrosCache.filter(filtrarUsuario).filter(l => l.status === 'Completo' && (ano === 'total' || String(l.anoConclusao) === ano));
+  const colors = ['#8b7cf8','#5eead4','#fbbf24','#f87171','#34d399','#60a5fa','#a78bfa','#fb923c'];
+
+  // Coleções
+  const colMap = {};
+  if (modo === 'paginas') {
+    sess.forEach(s => { const l = livrosCache.find(x=>x.livro===s.livro); if (l?.colecao) colMap[l.colecao] = (colMap[l.colecao]||0)+(s.paginas||0); });
+  } else {
+    lidos.forEach(l => { if (l.colecao) colMap[l.colecao] = (colMap[l.colecao]||0)+1; });
+  }
+  const cols = Object.entries(colMap).sort((a,b)=>b[1]-a[1]).slice(0,8);
+  const elD = document.getElementById('m-cDonut');
+  if (elD && cols.length) {
+    m_charts['m-cDonut'] = new Chart(elD, {
+      type: 'doughnut',
+      data: { labels: cols.map(x=>x[0]), datasets: [{ data: cols.map(x=>x[1]), backgroundColor: colors, borderColor: '#161b27', borderWidth: 3 }] },
+      options: { responsive: true, maintainAspectRatio: false, cutout: '60%', plugins: { legend: { display: false } } }
+    });
+    const total = cols.reduce((a,x)=>a+x[1],0)||1;
+    document.getElementById('m-leg-donut').innerHTML = cols.map((x,i) =>
+      `<div style="display:flex;align-items:center;gap:8px;cursor:pointer;" onclick="abrirPainelColecaoM('${x[0].replace(/'/g,"\\'")}')">
+        <div style="width:10px;height:10px;border-radius:50%;background:${colors[i%8]};flex-shrink:0;"></div>
+        <span style="flex:1;font-size:13px;">${x[0]}</span>
+        <span style="font-size:12px;color:var(--muted);">${Math.round(x[1]/total*100)}%</span>
+      </div>`).join('');
+  }
+
+  // Autores
+  const autMap = {};
+  if (modo === 'paginas') {
+    sess.forEach(s => { const l = livrosCache.find(x=>x.livro===s.livro); if (l?.autor) autMap[l.autor] = (autMap[l.autor]||0)+(s.paginas||0); });
+  } else {
+    lidos.forEach(l => { if (l.autor) autMap[l.autor] = (autMap[l.autor]||0)+1; });
+  }
+  const auts = Object.entries(autMap).sort((a,b)=>b[1]-a[1]).slice(0,8);
+  const elA = document.getElementById('m-cAutores');
+  if (elA && auts.length) {
+    m_charts['m-cAutores'] = new Chart(elA, {
+      type: 'doughnut',
+      data: { labels: auts.map(x=>x[0]), datasets: [{ data: auts.map(x=>x[1]), backgroundColor: colors, borderColor: '#161b27', borderWidth: 3 }] },
+      options: { responsive: true, maintainAspectRatio: false, cutout: '60%', plugins: { legend: { display: false } } }
+    });
+    const total = auts.reduce((a,x)=>a+x[1],0)||1;
+    document.getElementById('m-leg-autores').innerHTML = auts.map((x,i) =>
+      `<div style="display:flex;align-items:center;gap:8px;cursor:pointer;" onclick="abrirPainelAutorM('${x[0].replace(/'/g,"\\'")}')">
+        <div style="width:10px;height:10px;border-radius:50%;background:${colors[i%8]};flex-shrink:0;"></div>
+        <span style="flex:1;font-size:13px;">${x[0]}</span>
+        <span style="font-size:12px;color:var(--muted);">${Math.round(x[1]/total*100)}%</span>
+      </div>`).join('');
+  }
+}
+window.buildDonutsMobile = buildDonutsMobile;
+
+// ── RANKING ──
+function buildRankingMobile() {
+  if (!dadosD) return;
+  const ano = document.getElementById('m-rank-ano')?.value || 'all';
+  const col = document.getElementById('m-rank-colecao')?.value || 'all';
+  let livros = livrosCache.filter(filtrarUsuario).filter(l => l.notaMedia > 0 && l.status === 'Completo');
+  if (ano !== 'all') livros = livros.filter(l => String(l.anoConclusao) === ano);
+  if (col !== 'all') livros = livros.filter(l => l.colecao === col);
+  livros = livros.sort((a,b) => m_rankMode === 'best' ? b.notaMedia - a.notaMedia : a.notaMedia - b.notaMedia);
+
+  document.getElementById('m-btn-best').style.background = m_rankMode==='best' ? 'var(--purple)' : 'var(--bg3)';
+  document.getElementById('m-btn-best').style.border     = m_rankMode==='best' ? 'none' : '1px solid var(--border)';
+  document.getElementById('m-btn-worst').style.background= m_rankMode==='worst'? 'var(--purple)' : 'var(--bg3)';
+  document.getElementById('m-btn-worst').style.border    = m_rankMode==='worst'? 'none' : '1px solid var(--border)';
+
+  const medals = ['🥇','🥈','🥉'];
+  document.getElementById('m-rank-list').innerHTML = livros.map((l,i) =>
+    `<div class="rank-item" onclick="abrirDetalheRapido('${l.livro.replace(/'/g,"\\'")}')">
+      <div class="rank-pos">${medals[i]||'#'+(i+1)}</div>
+      ${l.coverUrl ? `<img src="${l.coverUrl}" class="rank-cover" onerror="this.style.display='none'">` : '<div class="rank-cover" style="background:var(--bg3);border-radius:4px;display:flex;align-items:center;justify-content:center;">📚</div>'}
+      <div class="rank-info">
+        <div class="rank-nome">${l.livro}</div>
+        <div class="rank-ano">${l.anoConclusao||''} ${l.colecao?'· '+l.colecao:''}</div>
+      </div>
+      <div class="rank-nota" style="color:${l.notaMedia>=8?'var(--teal)':l.notaMedia>=6?'var(--amber)':'#f87171'};">${l.notaMedia.toFixed(1)}</div>
+    </div>`).join('');
+}
+window.buildRankingMobile = buildRankingMobile;
+
+// ── LIVRO ──
+function filtrarBookMobile(termo) {
+  const lista = document.getElementById('m-book-lista');
+  if (!termo.trim()) { lista.style.display='none'; return; }
+  const matches = livrosCache.filter(filtrarUsuario).filter(l => l.livro.toLowerCase().includes(termo.toLowerCase())).slice(0,8);
+  lista.innerHTML = matches.map(l => `<div class="search-item" onclick="selecionarBookMobile('${l.livro.replace(/'/g,"\\'")}')"> ${l.livro}</div>`).join('');
+  lista.style.display = matches.length ? 'block' : 'none';
+}
+window.filtrarBookMobile = filtrarBookMobile;
+
+function selecionarBookMobile(nome) {
+  document.getElementById('m-book-busca').value = nome;
+  document.getElementById('m-book-lista').style.display = 'none';
+  buildBookDetailMobile(nome);
+}
+window.selecionarBookMobile = selecionarBookMobile;
+
+function buildBookDetailMobile(nome) {
+  const l = livrosCache.find(x => x.livro === nome);
+  if (!l) return;
+  const sessL = sessoesCache.filter(s => s.livro === nome && filtrarSessaoUsuario(s));
+  const totalPag = sessL.reduce((a,s)=>a+(s.paginas||0),0);
+  const totalMin = sessL.reduce((a,s)=>a+(s.minutos||0),0);
+  const pct = l.totalPag > 0 ? Math.round((l.pagAtual||0)/l.totalPag*100) : 0;
+
+  const hdr = document.getElementById('m-book-header');
+  hdr.style.display = 'block';
+  hdr.innerHTML = `
+    <div class="book-detail-header">
+      ${coverHtml(l,70,98)}
+      <div class="book-detail-info">
+        <div class="book-detail-titulo">${l.livro}</div>
+        <div class="book-detail-autor">${l.autor||''}</div>
+        <div style="font-size:12px;color:var(--muted);">${l.status||''} ${l.colecao?'· '+l.colecao:''}</div>
+        ${l.notaMedia ? `<div style="font-size:14px;font-weight:700;color:var(--amber);margin-top:4px;">⭐ ${l.notaMedia.toFixed(1)}</div>` : ''}
+      </div>
+    </div>`;
+
+  const sc = document.getElementById('m-book-stats-card');
+  sc.style.display = 'block';
+  document.getElementById('m-book-stats').innerHTML = [
+    { val: fmtNum(l.totalPag||0), lbl: 'Total páginas' },
+    { val: pct+'%', lbl: 'Progresso' },
+    { val: fmtNum(totalPag), lbl: 'Págs lidas' },
+    { val: Math.round(totalMin/60)+'h', lbl: 'Horas' },
+    { val: sessL.length, lbl: 'Sessões' },
+    { val: new Set(sessL.map(s=>s.data).filter(Boolean)).size, lbl: 'Dias' },
+  ].map(s => `<div class="book-detail-stat"><div class="book-detail-stat-val">${s.val}</div><div class="book-detail-stat-lbl">${s.lbl}</div></div>`).join('');
+
+  // Chart
+  const cc = document.getElementById('m-book-chart-card');
+  cc.style.display = 'block';
+  destroyChart('m-cBook');
+  const dayMap = {};
+  sessL.forEach(s => { if (s.data) dayMap[s.data] = (dayMap[s.data]||0)+(s.paginas||0); });
+  const days = Object.keys(dayMap).sort().slice(-20);
+  const elB = document.getElementById('m-cBook');
+  if (elB && days.length) {
+    m_charts['m-cBook'] = new Chart(elB, {
+      type: 'bar',
+      data: { labels: days.map(d => d.slice(5)), datasets: [{ data: days.map(d=>dayMap[d]), backgroundColor: '#8b7cf8', borderRadius: 4 }] },
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
+        scales: { x: { ticks: { color: '#8892a8', font: { size: 9 }, maxRotation: 45 }, grid: { display: false } },
+                  y: { ticks: { color: '#8892a8', font: { size: 10 } }, grid: { color: 'rgba(42,50,72,0.3)' } } } }
+    });
+  }
+}
+
+// ── MAIS ──
+function buildMaisMobile() {
+  if (!dadosD) return;
+  buildCalendarMobile();
+  buildHeatmapMobile();
+  buildStreaksMobile();
+  buildConquistasMobile();
+}
+
+function buildStreaksMobile() {
+  const sess = sessoesCache.filter(filtrarSessaoUsuario);
+  const dias = [...new Set(sess.map(s=>s.data).filter(Boolean))].sort();
+  if (!dias.length) return;
+
+  // Streak atual
+  const hoje = new Date(); hoje.setHours(12,0,0,0);
+  let streakAtual = 0;
+  for (let i = 0; i < 365; i++) {
+    const d = new Date(hoje); d.setDate(d.getDate()-i);
+    const ds = d.toISOString().slice(0,10);
+    if (dias.includes(ds)) streakAtual++;
+    else if (i > 0) break;
+  }
+
+  // Melhor streak
+  let melhorStreak = 0, cur = 1;
+  for (let i = 1; i < dias.length; i++) {
+    const prev = new Date(dias[i-1]+'T12:00:00'), curr = new Date(dias[i]+'T12:00:00');
+    const diff = Math.round((curr-prev)/86400000);
+    if (diff === 1) { cur++; melhorStreak = Math.max(melhorStreak, cur); }
+    else cur = 1;
+  }
+
+  document.getElementById('m-streaks').innerHTML = `
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;">
+      <div style="text-align:center;background:var(--bg3);border-radius:10px;padding:14px;">
+        <div style="font-size:36px;font-weight:900;color:var(--purple);">${streakAtual}</div>
+        <div style="font-size:11px;color:var(--muted);">🔥 Streak Atual</div>
+      </div>
+      <div style="text-align:center;background:var(--bg3);border-radius:10px;padding:14px;">
+        <div style="font-size:36px;font-weight:900;color:var(--amber);">${melhorStreak}</div>
+        <div style="font-size:11px;color:var(--muted);">🏆 Recorde</div>
+      </div>
+    </div>
+    <div style="font-size:12px;color:var(--muted);">Total de dias lidos: <span style="color:var(--teal);font-weight:700;">${dias.length}</span></div>`;
+}
+
+function buildCalendarMobile() {
+  const sess = sessoesCache.filter(filtrarSessaoUsuario);
+  const meses = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+  document.getElementById('m-cal-title').textContent = `${meses[m_calMonth]} ${m_calYear}`;
+
+  const prefix = `${m_calYear}-${String(m_calMonth+1).padStart(2,'0')}`;
+  const dayData = {};
+  sess.filter(s=>s.data?.startsWith(prefix)).forEach(s => {
+    dayData[s.data] = dayData[s.data] || { pags: 0, livros: {} };
+    dayData[s.data].pags += s.paginas||0;
+    dayData[s.data].livros[s.livro] = (dayData[s.data].livros[s.livro]||0)+(s.paginas||0);
+  });
+
+  const firstDay = new Date(m_calYear, m_calMonth, 1).getDay();
+  const daysInMonth = new Date(m_calYear, m_calMonth+1, 0).getDate();
+  const maxPag = Math.max(...Object.values(dayData).map(d=>d.pags), 1);
+  let html = '';
+  for (let i=0; i<firstDay; i++) html += '<div></div>';
+  for (let day=1; day<=daysInMonth; day++) {
+    const ds = `${m_calYear}-${String(m_calMonth+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+    const d = dayData[ds];
+    const pct = d ? Math.round(d.pags/maxPag*100) : 0;
+    const isToday = ds === new Date().toISOString().slice(0,10);
+    html += `<div onclick="calSelectM('${ds}')" style="
+      aspect-ratio:1;border-radius:6px;padding:2px;cursor:pointer;
+      background:${d ? `rgba(139,124,248,${0.1+pct/200})` : 'var(--bg3)'};
+      border:${isToday?'2px solid var(--purple)':'1px solid var(--border)'};
+      ${m_calSelected===ds?'outline:2px solid var(--teal);':''}
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+    ">
+      <div style="font-size:10px;color:${isToday?'var(--purple)':'var(--muted)'};font-weight:${isToday?'900':'600'}">${day}</div>
+      ${d?`<div style="font-size:8px;color:var(--teal);font-weight:700;">${d.pags}</div>`:''}
+    </div>`;
+  }
+  document.getElementById('m-cal-grid').innerHTML = html;
+
+  if (m_calSelected?.startsWith(prefix) && dayData[m_calSelected]) {
+    calShowDetailM(m_calSelected, dayData[m_calSelected]);
+  } else {
+    document.getElementById('m-cal-detail').style.display = 'none';
+  }
+}
+window.buildCalendarMobile = buildCalendarMobile;
+
+function calNavM(dir) {
+  m_calMonth += dir;
+  if (m_calMonth > 11) { m_calMonth = 0; m_calYear++; }
+  if (m_calMonth < 0)  { m_calMonth = 11; m_calYear--; }
+  m_calSelected = null;
+  buildCalendarMobile();
+}
+window.calNavM = calNavM;
+
+function calSelectM(ds) {
+  const sess = sessoesCache.filter(filtrarSessaoUsuario);
+  const prefix = ds.slice(0,7);
+  const dayData = {};
+  sess.filter(s=>s.data?.startsWith(prefix)).forEach(s => {
+    dayData[s.data] = dayData[s.data] || { pags: 0, livros: {} };
+    dayData[s.data].pags += s.paginas||0;
+    dayData[s.data].livros[s.livro] = (dayData[s.data].livros[s.livro]||0)+(s.paginas||0);
+  });
+  m_calSelected = ds;
+  buildCalendarMobile();
+  if (dayData[ds]) calShowDetailM(ds, dayData[ds]);
+}
+window.calSelectM = calSelectM;
+
+function calShowDetailM(ds, d) {
+  const el = document.getElementById('m-cal-detail');
+  el.style.display = 'block';
+  el.innerHTML = `<div style="font-weight:700;margin-bottom:8px;">${ds}</div>` +
+    Object.entries(d.livros).map(([livro,pags]) =>
+      `<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border);font-size:13px;">
+        <span>${livro}</span><span style="color:var(--teal);font-weight:700;">${pags} págs</span>
+      </div>`).join('') +
+    `<div style="text-align:right;margin-top:6px;font-size:12px;color:var(--muted);">Total: <span style="color:var(--teal);font-weight:700;">${d.pags} págs</span></div>`;
+}
+
+function buildHeatmapMobile() {
+  const sess = sessoesCache.filter(filtrarSessaoUsuario);
+  const anos = [...new Set(sess.map(s=>String(s.ano)).filter(Boolean))].sort().reverse().slice(0,3);
+  const el = document.getElementById('m-heatmap');
+  let html = '';
+  anos.forEach(ano => {
+    const sessA = sess.filter(s=>String(s.ano)===ano);
+    const map = {};
+    sessA.forEach(s => { if (s.data) map[s.data] = (map[s.data]||0)+(s.paginas||0); });
+    const vals = Object.values(map); const max = Math.max(...vals,1);
+    const meses = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+    html += `<div style="margin-bottom:12px;"><div style="font-weight:700;color:var(--teal);margin-bottom:6px;">${ano}</div>
+      <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:3px;">
+      ${meses.map((m,mi) => {
+        const prefix = `${ano}-${String(mi+1).padStart(2,'0')}`;
+        const mpags = sessA.filter(s=>s.data?.startsWith(prefix)).reduce((a,s)=>a+(s.paginas||0),0);
+        const alpha = mpags > 0 ? 0.2 + (mpags/max)*0.8 : 0.05;
+        return `<div title="${m}: ${fmtNum(mpags)} págs" style="height:24px;border-radius:3px;background:rgba(139,124,248,${alpha.toFixed(2)});display:flex;align-items:center;justify-content:center;">
+          <span style="font-size:7px;color:rgba(255,255,255,0.6);">${m}</span>
+        </div>`;
+      }).join('')}
+    </div></div>`;
+  });
+  el.innerHTML = html || '<div style="color:var(--muted);font-size:13px;">Sem dados</div>';
+}
+
+// ── INIT ──
+carregarDados();
+</script>
+</body>
+</html>
