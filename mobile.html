@@ -2076,6 +2076,7 @@ function buildWd() {
 
 
 function inicializarGraficos() {
+  inicializarMonthlySelectors();
 
 // Popular seletores imediatamente com os dados disponíveis
 (function() {
@@ -2154,9 +2155,10 @@ buildYearBars();
 // ════════════════════════════════════════════════
 // 2. MONTHLY CHART
 // ════════════════════════════════════════════════
-(function() {
+function inicializarMonthlySelectors() {
   const selFrom = document.getElementById('selFrom');
   const selTo   = document.getElementById('selTo');
+  if (!MONTHLY || !selFrom || !selTo) return;
   MONTHLY.forEach((d,i) => {
     selFrom.innerHTML += `<option value="${i}">${d.m}</option>`;
     selTo.innerHTML   += `<option value="${i}"${i===MONTHLY.length-1?' selected':''}>${d.m}</option>`;
@@ -2220,7 +2222,8 @@ buildYearBars();
   selFrom.addEventListener('change', render);
   selTo.addEventListener('change', render);
   render();
-})();
+}
+window.inicializarMonthlySelectors = inicializarMonthlySelectors;
 
 
 // ════════════════════════════════════════════════
