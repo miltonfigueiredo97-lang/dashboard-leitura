@@ -482,6 +482,35 @@ body.mobile-view .kpi-nome { white-space:normal !important; word-break:break-wor
 body.mobile-view .rank-bar-wrap { display:none !important; }
 body.mobile-view .fab { bottom:calc(var(--nav-h) + 14px) !important; right:10px !important; }
 body.mobile-view .fab-menu { bottom:calc(var(--nav-h) + 70px) !important; right:10px !important; }
+
+/* ── Mobile: força todos inline grids para 1 coluna ── */
+@media (max-width: 600px), body.mobile-view {
+  [data-desktop-grid] {
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  /* Exceções que ficam 2 colunas */
+  #kpi-books-grid[data-desktop-grid],
+  #bookInfoStats[data-desktop-grid],
+  #heatmapGrid[data-desktop-grid],
+  .kpi-grid-5[data-desktop-grid] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  /* Canvas sem corte */
+  canvas {
+    max-width: 100% !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 180px !important;
+  }
+  #cGeneros { min-height: 320px !important; }
+  #cMonthly { min-height: 240px !important; }
+  /* pwa-row — formulários em 1 coluna */
+  .pwa-row { grid-template-columns: 1fr !important; }
+  /* meta-stats em 2 colunas */
+  .meta-stats { grid-template-columns: 1fr 1fr !important; }
+}
 </style>
 </head>
 <body>
@@ -758,7 +787,7 @@ body.mobile-view .fab-menu { bottom:calc(var(--nav-h) + 70px) !important; right:
   </div>
   <div id="painelMetaOverlay" style="display:none;position:fixed;inset:0;z-index:8998;background:rgba(0,0,0,0.5);" onclick="fecharPainelMeta()"></div>
 
-  <div id="kpi-books-grid" class="grid4" style="margin-bottom:16px;grid-template-columns:repeat(4,1fr);">
+  <div id="kpi-books-grid" class="grid4" data-desktop-grid="1" style="margin-bottom:16px;grid-template-columns:repeat(4,1fr);">
     <div class="kpi" style="--accent:#ffd166">
       <div style="font-size:11px;font-weight:700;letter-spacing:1px;color:var(--muted);margin-bottom:8px;">📖 MAIOR LIVRO</div>
       <div class="kpi-book" onclick="abrirLivroDetalhes(document.getElementById('kpi-maior-nome').textContent)" style="cursor:pointer;">
@@ -833,7 +862,7 @@ body.mobile-view .fab-menu { bottom:calc(var(--nav-h) + 70px) !important; right:
   <!-- ── 3. Rankings e Distribuição ── -->
   <div class="sec" data-msection="ranking">🏅 Rankings &amp; Distribuição</div>
   <!-- Linha 1: Ranking + Dia da Semana + Gêneros -->
-  <div id="grid-rankings" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+  <div id="grid-rankings" data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
 
     <!-- Ranking notas -->
     <div class="card">
@@ -960,7 +989,7 @@ body.mobile-view .fab-menu { bottom:calc(var(--nav-h) + 70px) !important; right:
             <div id="bookInfoAutor" style="font-size:16px;color:var(--muted);"></div>
           </div>
         </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;" id="bookInfoStats"></div>
+        <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;" id="bookInfoStats"></div>
       </div>
     </div>
 
@@ -978,7 +1007,7 @@ body.mobile-view .fab-menu { bottom:calc(var(--nav-h) + 70px) !important; right:
   <!-- ── Sequências ── -->
   <div class="sec" data-msection="mais">⚡ Sequências de Leitura</div>
   <div class="card" style="margin-bottom:16px;">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+    <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
       <div style="background:var(--bg3);border-radius:10px;padding:14px;text-align:center;">
         <div style="font-size:36px;font-weight:700;color:var(--orange)" id="streakAtual">—</div>
         <div style="font-size:11px;color:var(--muted);margin-top:4px;">🔥 Streak Atual</div>
@@ -2827,7 +2856,7 @@ function buildHeatmap() {
 
   const isMobile = window.innerWidth < 600;
   const cols = isMobile ? 2 : 4;
-  let html = `<div style="display:grid;grid-template-columns:repeat(${cols},1fr);gap:${isMobile?10:16}px;">`;
+  let html = `<div data-desktop-grid="1" style="display:grid;grid-template-columns:repeat(${cols},1fr);gap:${isMobile?10:16}px;">`;
 
   for (let mo = 0; mo < 12; mo++) {
     const daysInMonth = new Date(yr, mo+1, 0).getDate();
@@ -3310,7 +3339,7 @@ carregarDados();
       <label>Ano de leitura</label>
       <input id="n-ano" type="number" value="2026" min="2020" max="2030">
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
+    <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
       <div class="pwa-criterio"><label>Diálogos</label><input id="n-0" type="number" min="0" max="10" step="0.5" placeholder="0-10"></div>
       <div class="pwa-criterio"><label>Enredo</label><input id="n-1" type="number" min="0" max="10" step="0.5" placeholder="0-10"></div>
       <div class="pwa-criterio"><label>Estilo Visual</label><input id="n-2" type="number" min="0" max="10" step="0.5" placeholder="0-10"></div>
@@ -3938,7 +3967,7 @@ function renderBatalha() {
 </div>
 
 <!-- HERO VS -->
-<div style="display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;margin-bottom:20px;">
+<div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;margin-bottom:20px;">
   <div style="background:linear-gradient(135deg,rgba(168,85,247,0.12),rgba(15,23,42,0.8));border:1px solid rgba(168,85,247,0.35);border-radius:16px;padding:20px;text-align:center;box-shadow:0 0 30px rgba(168,85,247,0.15);">
     ${avatar('#A855F7','⚔️')}
     <div style="font-family:'Orbitron',sans-serif;font-size:22px;font-weight:900;color:#A855F7;margin:10px 0 3px;letter-spacing:3px;text-shadow:0 0 20px rgba(168,85,247,0.5);">${pA.toUpperCase()}</div>
@@ -3989,10 +4018,10 @@ function renderBatalha() {
 
 <!-- ATRIBUTOS -->
 <div class="bat-section-hdr">⚡ ATRIBUTOS DE COMBATE</div>
-<div id="bat-attrs" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px;"></div>
+<div id="bat-attrs" data-desktop-grid="1" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px;"></div>
 
 <!-- PERFIL + GUERRA + DIA SAGRADO -->
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
+<div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
   <div>
     <div class="bat-section-hdr">🕸️ PERFIL DE COMBATE</div>
     <div style="font-family:'Exo 2',sans-serif;font-size:10px;color:rgba(248,250,252,0.35);margin-bottom:10px;">Tetos fixos — escala 0 a 10</div>
@@ -4000,7 +4029,7 @@ function renderBatalha() {
       <div style="display:flex;align-items:center;justify-content:center;">
         <canvas id="bat-radar" width="260" height="260"></canvas>
       </div>
-      <div id="bat-radar-scores" style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.06);display:grid;grid-template-columns:repeat(3,1fr);gap:6px;"></div>
+      <div id="bat-radar-scores" data-desktop-grid="1" style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.06);display:grid;grid-template-columns:repeat(3,1fr);gap:6px;"></div>
     </div>
   </div>
   <div style="display:flex;flex-direction:column;gap:16px;">
@@ -4047,7 +4076,7 @@ function renderBatalha() {
 <div style="margin-bottom:20px;">
   <div class="bat-section-hdr">📆 DIAS LIDOS NO PERÍODO</div>
   <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:20px;">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;">
+    <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;">
       <div style="text-align:center;">
         <div style="font-family:'Orbitron',sans-serif;font-size:48px;font-weight:900;color:#A855F7;text-shadow:0 0 20px rgba(168,85,247,0.5);line-height:1;">${dA.diasSet.size}</div>
         <div style="font-family:'Rajdhani',sans-serif;font-size:13px;color:#A855F7;letter-spacing:2px;margin-top:4px;">${pA.toUpperCase()}</div>
@@ -4085,11 +4114,11 @@ function renderBatalha() {
 </div>
 
 <!-- BOSSES + SLIMES — 2 colunas simétricas -->
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
+<div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
   <div>
     <div class="bat-section-hdr">💀 BOSSES DERROTADOS (1000+ págs)</div>
     <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:14px;">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
         <div>
           <div style="font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:#A855F7;margin-bottom:8px;letter-spacing:1px;">${pA.toUpperCase()} · ${dA.bosses.length}</div>
           <div id="bat-boss-a"></div>
@@ -4104,23 +4133,23 @@ function renderBatalha() {
   <div>
     <div class="bat-section-hdr">🐛 VENCENDO SLIMES (até 200 págs)</div>
     <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:14px;">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;" id="bat-slimes"></div>
+      <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;" id="bat-slimes"></div>
     </div>
   </div>
 </div>
 
 <!-- ARTEFATOS + MALDIÇÕES -->
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
+<div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
   <div>
     <div class="bat-section-hdr">⭐ ARTEFATOS LENDÁRIOS — MELHORES AVALIADOS</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;overflow:visible;" id="bat-artefatos">
+    <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;overflow:visible;" id="bat-artefatos">
       <div><div style="font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:#A855F7;margin-bottom:8px;letter-spacing:2px;">${pA.toUpperCase()}</div></div>
       <div><div style="font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:#FB923C;margin-bottom:8px;letter-spacing:2px;">${pB.toUpperCase()}</div></div>
     </div>
   </div>
   <div>
     <div class="bat-section-hdr">💀 MALDIÇÕES — PIORES AVALIADOS</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;overflow:visible;" id="bat-maldicoes">
+    <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;overflow:visible;" id="bat-maldicoes">
       <div><div style="font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:#A855F7;margin-bottom:8px;letter-spacing:2px;">${pA.toUpperCase()}</div></div>
       <div><div style="font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:#FB923C;margin-bottom:8px;letter-spacing:2px;">${pB.toUpperCase()}</div></div>
     </div>
@@ -4130,7 +4159,7 @@ function renderBatalha() {
 <!-- AUTOR DOMINADO -->
 <div style="margin-bottom:20px;">
   <div class="bat-section-hdr">📚 AUTOR DOMINADO</div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+  <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
     ${[{p:pA,dd:dA,cor:'#A855F7'},{p:pB,dd:dB,cor:'#FB923C'}].map(({p,dd,cor})=>`
     <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:16px;display:flex;align-items:center;gap:12px;">
       <div style="width:44px;height:44px;border-radius:50%;background:${cor}22;border:2px solid ${cor};display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;box-shadow:0 0 12px ${cor}44;">📖</div>
@@ -4158,7 +4187,7 @@ function renderBatalha() {
 <!-- CRÔNICAS DA GUERRA -->
 <div class="bat-section-hdr">📜 CRÔNICAS DA GUERRA — HISTÓRICO DA RIVALIDADE</div>
 <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:20px;margin-bottom:20px;">
-  <div style="display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:20px;align-items:center;">
+  <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:20px;align-items:center;">
     <div style="text-align:center;">
       <div style="font-family:'Exo 2',sans-serif;font-size:9px;color:rgba(248,250,252,0.4);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">MESES VENCIDOS</div>
       <div style="display:flex;justify-content:center;align-items:center;gap:16px;">
@@ -4450,7 +4479,7 @@ function renderBatalha() {
             const wA = Math.round(pctA/maxPct*45);
             const wB = Math.round(pctB/maxPct*45);
             return `
-            <div style="display:grid;grid-template-columns:140px 1fr 1fr;align-items:center;gap:8px;margin-bottom:10px;">
+            <div data-desktop-grid="1" style="display:grid;grid-template-columns:140px 1fr 1fr;align-items:center;gap:8px;margin-bottom:10px;">
               <div style="font-family:'Rajdhani',sans-serif;font-size:12px;color:#c0c8d8;text-align:right;font-weight:600;letter-spacing:1px;text-transform:uppercase;">${g}</div>
               <div style="display:flex;align-items:center;justify-content:flex-end;gap:6px;">
                 <span style="font-family:'Orbitron',sans-serif;font-size:11px;font-weight:700;color:#A855F7;">${pctA}%</span>
@@ -4481,52 +4510,16 @@ let _mobileView = false;
 // ── Mobile layout patcher ─────────────────────────────────────────
 function applyMobileLayout() {
   if (!isMobile()) return;
-
-  // Injeta style tag com regras de máxima especificidade
-  let tag = document.getElementById('mobile-style-inject');
-  if (!tag) {
-    tag = document.createElement('style');
-    tag.id = 'mobile-style-inject';
-    document.head.appendChild(tag);
-  }
-  tag.textContent = `
-    /* Force all inline grids to 1 col on mobile */
-    @media (max-width: 600px) {
-      #pageDashboard *[style], #pageBatalha *[style] {
-        grid-template-columns: 1fr !important;
-        min-width: 0 !important;
-      }
-      #kpi-books-grid[style] { grid-template-columns: 1fr 1fr !important; }
-      .kpi-grid-5[style]     { grid-template-columns: 1fr 1fr !important; }
-      #bookInfoStats[style]  { grid-template-columns: 1fr 1fr !important; }
-      #heatmapGrid[style]    { grid-template-columns: 1fr 1fr !important; }
-    }
-  `;
-
-  // Diretamente patcheia todos os elementos inline para garantia
-  document.querySelectorAll('#pageDashboard [style], #pageBatalha [style]').forEach(el => {
+  // Tag dynamically created grid elements
+  document.querySelectorAll('[style*="grid-template-columns"]').forEach(el => {
     const skip = ['kpi-books-grid','bookInfoStats','heatmapGrid'].includes(el.id) ||
-                 el.classList.contains('kpi-grid-5');
-    if (!skip && el.style.gridTemplateColumns && el.style.gridTemplateColumns !== '1fr') {
-      el.style.setProperty('grid-template-columns', '1fr', 'important');
-    }
-    if (!skip && el.style.display === 'grid') {
-      el.style.setProperty('grid-template-columns', '1fr', 'important');
-    }
-    el.style.setProperty('min-width', '0', 'important');
-    el.style.setProperty('max-width', '100%', 'important');
-    el.style.setProperty('box-sizing', 'border-box', 'important');
+                 el.classList.contains('kpi-grid-5') ||
+                 el.style.gridTemplateColumns.includes('repeat(7') ||
+                 el.style.gridTemplateColumns.includes('repeat(5');
+    if (!skip) el.setAttribute('data-desktop-grid', '1');
   });
-
-  // Canvas — força largura total
-  document.querySelectorAll('canvas').forEach(c => {
-    c.style.setProperty('max-width', '100%', 'important');
-    c.style.setProperty('width', '100%', 'important');
-  });
-
-  // Charts — resize para nova largura
+  // Resize charts
   if (window.Chart) {
-    Chart.instances?.forEach?.(ch => { try { ch.resize(); } catch(e){} });
     Object.values(Chart.instances || {}).forEach(ch => { try { ch.resize(); } catch(e){} });
   }
 }
