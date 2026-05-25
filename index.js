@@ -1,4 +1,4 @@
-// v1779713055
+// v1779713294
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import s from '../styles/Home.module.css';
 import {
@@ -2357,31 +2357,17 @@ export default function Home() {
   const tipos = TIPO_ORDEM.filter(t=>[...new Set(pecas.map(p=>p.tipo))].includes(t))
     .concat([...new Set(pecas.map(p=>p.tipo))].filter(t=>!TIPO_ORDEM.includes(t)).sort());
   // Filtrar peças pelo filtroConc para KPIs
-  const pecasParaKPI = filtroConc==='todas' ? pecas : (() => {
-    // Ajusta o volume de cada peça pelo percentual vinculado a esta concretagem
-    const vcs = pecaConc.filter(pc=>pc.concretagemId===filtroConc);
-    return pecas
-      .filter(p=>vcs.some(pc=>pc.pecaId===p.id))
+  const _vcsKPI = filtroConc==='todas' ? [] : pecaConc.filter(pc=>pc.concretagemId===filtroConc);
+  const pecasParaKPI = filtroConc==='todas' ? pecas :
+    pecas
+      .filter(p=>_vcsKPI.some(pc=>pc.pecaId===p.id))
       .map(p=>{
-        const vc = vcs.find(pc=>pc.pecaId===p.id);
-        const pct = vc ? (parseFloat(vc.pctConcretagem)||100) : 100;
-        return {...p, volume: p.volume * (pct/100)};
+        const vc = _vcsKPI.find(pc=>pc.pecaId===p.id);
+        const pct = (vc && parseFloat(vc.pctConcretagem)>0) ? parseFloat(vc.pctConcretagem) : 100;
+        return {...p, volume: +(p.volume * pct / 100).toFixed(6)};
       });
-  })();
   const btsParaKPI = filtroConc==='todas' ? btsConfig : btsConfig.filter(b=>b.concretagemId===filtroConc);
   const lansParaKPI = filtroConc==='todas' ? lancamentos : lancamentos.filter(l=>l.concretagemId===filtroConc);
-  // DEBUG temporário
-  if(filtroConc!=='todas') {
-    const vcs2 = pecaConc.filter(pc=>pc.concretagemId===filtroConc);
-    const totalDebug = pecas.filter(p=>vcs2.some(pc=>pc.pecaId===p.id)).reduce((s,p)=>{
-      const vc=vcs2.find(pc=>pc.pecaId===p.id);
-      const pct=(parseFloat(vc?.pctConcretagem)||100);
-      console.log(`Peça: ${p.nome} | vol: ${p.volume} | pct: ${pct} | ajustado: ${p.volume*(pct/100)}`);
-      return s+p.volume*(pct/100);
-    },0);
-    console.log(`TOTAL AJUSTADO: ${totalDebug} | peças: ${vcs2.length}`);
-    console.log(`TOTAL SEM AJUSTE: ${pecas.filter(p=>vcs2.some(pc=>pc.pecaId===p.id)).reduce((s,p)=>s+p.volume,0)}`);
-  }
   const kpis    = calcKPIs(pecasParaKPI,lansParaKPI,btsParaKPI,filtroAndar);
   const perdaInfo = kpis.perdaInfo;
   // Usar lancamentos filtrados para progresso por tipo
@@ -2475,6 +2461,16 @@ export default function Home() {
               filtroConc={filtroConc}
               setFiltroConc={setFiltroConc}
             />
+
+            {/* DEBUG VISUAL TEMPORÁRIO */}
+            {filtroConc!=='todas'&&(
+              <div style={{background:'rgba(255,0,0,0.1)',border:'1px solid red',padding:'8px 12px',marginBottom:8,fontSize:11,fontFamily:'monospace'}}>
+                filtroConc: {filtroConc} | 
+                pecaConc matches: {pecaConc.filter(pc=>pc.concretagemId===filtroConc).length} |
+                pecaConc total: {pecaConc.length} |
+                concretagem IDs no pecaConc: {[...new Set(pecaConc.map(pc=>pc.concretagemId))].join(', ')}
+              </div>
+            )}
 
             {/* KPIs */}
             <div className={s.kpiGrid}>
