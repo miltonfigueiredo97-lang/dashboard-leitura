@@ -5,6 +5,11 @@
     { "src": "/sw.js",        "dest": "/sw.js" },
     { "src": "/mobile.html",  "dest": "/mobile.html" },
     { "src": "/manifest.json","dest": "/manifest.json" },
-    { "src": "/(.*)",         "dest": "/index.html" }
+    {
+      "src": "/",
+      "has": [{ "type": "header", "key": "user-agent", "value": ".*(Android|iPhone|iPad|Mobile).*" }],
+      "dest": "/mobile.html"
+    },
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
