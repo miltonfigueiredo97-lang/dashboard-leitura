@@ -627,6 +627,22 @@ body.mobile-view .meta-stats { grid-template-columns:1fr 1fr !important; }
 
   /* Scroll targets */
   [data-msection] { scroll-margin-top:65px !important; }
+
+  /* Status kpi grid - 3 colunas no mobile */
+  #status-kpi-grid { grid-template-columns:repeat(3,1fr) !important; }
+  #status-kpi-grid .kpi { padding:8px 4px !important; }
+  #status-kpi-grid .kpi-val { font-size:18px !important; }
+  #status-kpi-grid .kpi-lbl { font-size:9px !important; }
+  #status-kpi-grid .kpi-sub { display:none !important; }
+  #status-kpi-grid .kpi-icon { font-size:16px !important; }
+
+  /* Batalha — artefatos/maldições menores no mobile */
+  .bat-art-card { min-width:unset !important; }
+  .bat-art-capa { padding-top:100% !important; }
+  #bat-artefatos, #bat-maldicoes { grid-template-columns:1fr 1fr !important; }
+
+  /* Conquistas batalha */
+  #bat-conquistas-wrap { grid-template-columns:1fr !important; }
 }
 /* Mobile nav scroll */
 @media (max-width: 768px) {
@@ -835,7 +851,7 @@ body.mobile-view .meta-stats { grid-template-columns:1fr 1fr !important; }
     <div style="display:none" id="kpi-recorde-livro-wrap"></div>
   </div>
   <!-- Livros por status -->
-  <div class="grid4" style="margin-bottom:8px;grid-template-columns:repeat(5,1fr);">
+  <div class="grid4" id="status-kpi-grid" data-desktop-grid="1" style="margin-bottom:8px;grid-template-columns:repeat(5,1fr);">
     <div class="kpi" style="--accent:#4ecdc4;cursor:pointer;" onclick="toggleListaStatus('Completo')">
       <span class="kpi-icon">✅</span>
       <div class="kpi-val" id="kpi-livros">—</div>
@@ -1698,6 +1714,14 @@ function recalcularDados(d, sessoes) {
   buildMeta();
   document.getElementById('header-badge').textContent =
     `${(window._livros||[]).length} livros · ${(window._sessoes||[]).length} sessões`;
+
+  // Mobile: força resize de todos os charts após layout estabilizar
+  if (isMobile()) {
+    setTimeout(() => {
+      applyMobileLayout();
+      Object.values(Chart.instances || {}).forEach(ch => { try { ch.resize(); } catch(e){} });
+    }, 500);
+  }
 }
 // Variáveis globais dos gráficos
 let MONTHLY, YEARS, WD_AVG, WD_SUM, NOTES, COLECOES, BOOK_DAILY;
