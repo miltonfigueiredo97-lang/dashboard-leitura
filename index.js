@@ -1,4 +1,4 @@
-// v1779713756
+// v1779713936
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import s from '../styles/Home.module.css';
 import {
@@ -958,10 +958,10 @@ function ModalConcretagem({ open, onClose, pecas, concretagens, pecaConc, btsCon
                 <span style={{fontFamily:'var(--mono)',fontSize:13,color:'var(--accent)',fontWeight:700}}>{vinculos.length} peças · {fmt4(volTotalVinculos)} m³</span>
                 {filtroAndar!=='todos'&&<button className={s.btnAction} style={{padding:'6px 14px',fontSize:12}} onClick={()=>toggleAndar(filtroAndar)}>{pecas.filter(p=>p.andar===filtroAndar).every(p=>vinculos.find(v=>v.pecaId===p.id))?'Desmarcar tudo do andar':'Marcar tudo do andar'}</button>}
               </div>
-              <div style={{display:'flex',gap:8,marginBottom:12,flexWrap:'wrap'}}>
-                <select className={s.formSelect} style={{minWidth:160}} value={filtroAndar} onChange={e=>setFiltroAndar(e.target.value)}>{andares.map(a=><option key={a} value={a}>{a==='todos'?'Todos os andares':a}</option>)}</select>
-                <select className={s.formSelect} style={{minWidth:140}} value={filtroTipo} onChange={e=>setFiltroTipo(e.target.value)}>{tipos.map(t=><option key={t} value={t}>{t==='todos'?'Todos os tipos':t}</option>)}</select>
-                <input className={s.formInput} style={{flex:1,minWidth:160}} placeholder="🔍 Buscar por nome..." value={buscaPeca} onChange={e=>setBuscaPeca(e.target.value)}/>
+              <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:8,marginBottom:12}}>
+                <select className={s.formSelect} value={filtroAndar} onChange={e=>setFiltroAndar(e.target.value)}>{andares.map(a=><option key={a} value={a}>{a==='todos'?'Todos os andares':a}</option>)}</select>
+                <select className={s.formSelect} value={filtroTipo} onChange={e=>setFiltroTipo(e.target.value)}>{tipos.map(t=><option key={t} value={t}>{t==='todos'?'Todos os tipos':t}</option>)}</select>
+                <input className={s.formInput} placeholder="🔍 Buscar por nome..." value={buscaPeca} onChange={e=>setBuscaPeca(e.target.value)}/>
               </div>
               <div style={{maxHeight:320,overflowY:'auto',border:'1px solid var(--border)'}}>
                 {pecasVisiveis.length===0?<div className={s.empty}>Nenhuma peça.</div>
