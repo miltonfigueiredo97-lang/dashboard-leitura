@@ -523,125 +523,111 @@ body.mobile-view .meta-stats { grid-template-columns:1fr 1fr !important; }
    ═══════════════════════════════════════════ */
 @media (max-width: 768px) {
 
-  /* Reset geral */
+  /* Reset */
   * { box-sizing: border-box !important; }
   body { overflow-x: hidden !important; }
 
-  /* Header compacto */
-  header {
-    padding: 8px 12px !important;
-    position: sticky !important; top: 0 !important; z-index: 1000 !important;
-    gap: 6px !important; flex-wrap: nowrap !important;
-  }
-  header .icon { font-size: 20px !important; }
-  header h1 { font-size: 13px !important; white-space: nowrap !important; }
-  header p, .badge { display: none !important; }
-  header > div:last-child { gap: 4px !important; flex-wrap: nowrap !important; }
-  #btn-user-milton, #btn-user-daniel, #btn-user-batalha {
-    padding: 6px 10px !important; font-size: 12px !important;
-  }
-  button[onclick="toggleChangelog()"],
-  button[onclick="manualRefresh()"] { display: none !important; }
-  #btn-view-toggle { display: none !important; }
+  /* Header */
+  header { padding:8px 10px !important; position:sticky !important; top:0 !important; z-index:1000 !important; gap:4px !important; flex-wrap:nowrap !important; }
+  header .icon { font-size:18px !important; }
+  header h1 { font-size:12px !important; white-space:nowrap !important; }
+  header p, .badge { display:none !important; }
+  header > div:last-child { gap:3px !important; flex-wrap:nowrap !important; }
+  #btn-user-milton, #btn-user-daniel, #btn-user-batalha { padding:5px 8px !important; font-size:11px !important; }
+  button[onclick="toggleChangelog()"], button[onclick="manualRefresh()"] { display:none !important; }
+  #btn-view-toggle { display:none !important; }
 
-  /* Lendo wrap */
-  .lendo-wrap {
-    width: 100% !important; max-width: 100% !important;
-    padding: 8px 12px !important;
-  }
-  .lendo-inner {
-    flex-direction: column !important;
-    gap: 10px !important; padding: 0 !important;
-  }
-  .lendo-card { min-width: unset !important; width: 100% !important; }
+  /* App + page */
+  #app, .page { width:100% !important; max-width:100% !important; margin:0 !important; padding:6px 10px 80px 10px !important; overflow-x:hidden !important; }
 
-  /* App container */
-  #app, .page {
-    width: 100% !important; max-width: 100% !important;
-    margin: 0 !important; padding: 8px 12px 80px 12px !important;
-    box-sizing: border-box !important; overflow-x: hidden !important;
-  }
+  /* Lendo */
+  .lendo-wrap { width:100% !important; max-width:100% !important; padding:8px 10px !important; }
+  .lendo-inner { flex-direction:column !important; gap:8px !important; padding:0 !important; }
+  .lendo-card { min-width:unset !important; width:100% !important; }
+  /* Capas nas lendo cards — proporcionais */
+  .lendo-card .cover-img { width:52px !important; height:72px !important; }
+  .lendo-card .fallback  { width:52px !important; height:72px !important; }
 
-  /* Todos os grids -> 1 coluna */
-  .grid2, .grid3, .grid4, .grid6 { grid-template-columns: 1fr !important; }
-  #kpi-books-grid { grid-template-columns: 1fr 1fr !important; }
-  .kpi-grid-5 { grid-template-columns: 1fr 1fr !important; }
-  [data-desktop-grid] { grid-template-columns: 1fr !important; }
-  #kpi-books-grid[data-desktop-grid],
-  .kpi-grid-5[data-desktop-grid] { grid-template-columns: 1fr 1fr !important; }
+  /* Grids */
+  .grid2, .grid3, .grid4, .grid6 { grid-template-columns:1fr !important; }
+  [data-desktop-grid] { grid-template-columns:1fr !important; }
+  #kpi-books-grid, #kpi-books-grid[data-desktop-grid] { grid-template-columns:1fr 1fr !important; }
+  .kpi-grid-5, .kpi-grid-5[data-desktop-grid] { grid-template-columns:1fr 1fr !important; }
+  #bookInfoStats { grid-template-columns:1fr 1fr !important; }
 
   /* Cards */
-  .card { padding: 12px !important; border-radius: 12px !important; }
-  .sec { font-size: 10px !important; margin: 16px 0 6px !important; }
-  .card-title { font-size: 15px !important; }
+  .card { padding:10px !important; border-radius:12px !important; }
+  .sec { font-size:10px !important; margin:14px 0 5px !important; }
+  .card-title { font-size:14px !important; }
 
-  /* KPI books */
-  .kpi { overflow: hidden !important; cursor: pointer !important; }
-  .kpi-book { flex-direction: row !important; align-items: flex-start !important; gap: 8px !important; }
-  .kpi-book img, .kpi-book .fallback { width: 44px !important; height: 62px !important; flex-shrink: 0 !important; }
-  .kpi-nome { font-size: 13px !important; line-height: 1.3 !important; white-space: normal !important; word-break: break-word !important; }
-  .kpi-autor { font-size: 11px !important; white-space: normal !important; }
-  .kpi-val { font-size: 22px !important; }
-  .kpi-lbl { font-size: 9px !important; }
+  /* KPI books — capas menores e proporcionais */
+  .kpi { overflow:hidden !important; cursor:pointer !important; }
+  .kpi-book { flex-direction:row !important; align-items:flex-start !important; gap:8px !important; }
+  .kpi-book img  { width:40px !important; height:56px !important; flex-shrink:0 !important; object-fit:cover !important; }
+  .kpi-book .fallback { width:40px !important; height:56px !important; flex-shrink:0 !important; }
+  .kpi-nome  { font-size:12px !important; line-height:1.3 !important; white-space:normal !important; word-break:break-word !important; }
+  .kpi-autor { font-size:10px !important; white-space:normal !important; }
+  .kpi-val   { font-size:20px !important; }
+  .kpi-lbl   { font-size:8px !important; }
+
+  /* Visão Geral — kpi-grid-5 bem distribuída */
+  .kpi-grid-5 .kpi { min-height: unset !important; padding:10px !important; }
+  .kpi-grid-5 .kpi-val { font-size:18px !important; }
 
   /* Ranking */
-  .rank-bar-wrap { display: none !important; }
-  .rank-name { font-size: 13px !important; white-space: normal !important; word-break: break-word !important; }
-  .rank-item { cursor: pointer !important; }
+  .rank-bar-wrap { display:none !important; }
+  .rank-name { font-size:13px !important; white-space:normal !important; word-break:break-word !important; }
+  .rank-item { cursor:pointer !important; }
+  .rank-item img { width:36px !important; height:50px !important; }
 
-  /* Canvas */
-  canvas { max-width: 100% !important; width: 100% !important; }
+  /* Donut legend items */
+  .donut-leg-item { cursor:pointer !important; }
 
-  /* Calendário — células compactas */
-  .cal-day { min-height: 44px !important; padding: 3px 2px !important; }
-  .cal-day-num { font-size: 11px !important; }
-  .cal-day-pag { font-size: 11px !important; }
-  #calGrid { gap: 2px !important; }
+  /* Canvas — 100% largura */
+  canvas { max-width:100% !important; width:100% !important; }
+
+  /* Calendário */
+  .cal-day { min-height:40px !important; padding:2px !important; }
+  .cal-day-num { font-size:10px !important; }
+  .cal-day-pag { font-size:10px !important; }
+  #calGrid { gap:2px !important; }
 
   /* Heatmap — 2 meses por linha */
-  #heatmapGrid { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
+  #heatmapGrid { display:grid !important; grid-template-columns:1fr 1fr !important; gap:6px !important; }
 
-  /* Streak list */
-  #streakList > div { flex-direction: column !important; gap: 4px !important; }
+  /* Streak */
+  #streakList > div { flex-direction:column !important; gap:4px !important; }
 
   /* Ctrl */
-  .ctrl { flex-wrap: wrap !important; gap: 6px !important; }
-  .ctrl select { font-size: 12px !important; }
+  .ctrl { flex-wrap:wrap !important; gap:6px !important; }
+  .ctrl select { font-size:12px !important; }
 
   /* Book info */
-  #bookInfoStats { grid-template-columns: 1fr 1fr !important; }
-  #bookInfoNome { font-size: 15px !important; }
+  #bookInfoNome { font-size:14px !important; }
 
-  /* FAB */
-  .fab { bottom: 72px !important; right: 14px !important;
-         width: 52px !important; height: 52px !important; font-size: 24px !important; }
-  .fab-menu { bottom: 132px !important; right: 14px !important; }
+  /* FAB acima da nav */
+  .fab { bottom:68px !important; right:12px !important; width:50px !important; height:50px !important; font-size:22px !important; }
+  .fab-menu { bottom:126px !important; right:12px !important; }
 
-  /* Nav bar mobile */
-  #mobile-nav { display: flex !important; }
+  /* Nav bar */
+  #mobile-nav { display:flex !important; }
 
-  /* Batalha */
-  #pageBatalha [data-desktop-grid] { grid-template-columns: 1fr !important; }
+  /* Batalha — capas de artefatos/maldições menores */
+  #bat-artefatos img, #bat-maldicoes img { width:44px !important; height:62px !important; }
+  #bat-artefatos .cover-img, #bat-maldicoes .cover-img { width:44px !important; height:62px !important; }
+  #pageBatalha [data-desktop-grid] { grid-template-columns:1fr !important; }
 
   /* Painéis overlay */
-  #painelGenero, #painelMeta, #painelStatus {
-    width: 95vw !important; max-height: 80vh !important;
-  }
-
-  /* Visão geral — stats clicáveis */
-  #kpiGrid .kpi-card { cursor: pointer !important; }
+  #painelGenero, #painelMeta, #painelStatus { width:95vw !important; max-height:82vh !important; }
+  #painelMetaLista { gap:6px !important; }
 
   /* PWA forms */
-  .pwa-row { grid-template-columns: 1fr 1fr !important; }
-  .pwa-field input, .pwa-field select { font-size: 15px !important; }
+  .pwa-row { grid-template-columns:1fr 1fr !important; }
+  .pwa-field input, .pwa-field select { font-size:14px !important; }
 
-  /* Donut legend */
-  .donut-leg-item { cursor: pointer !important; }
-
-  /* Scroll sections */
-  [data-msection] { scroll-margin-top: 70px !important; }
+  /* Scroll targets */
+  [data-msection] { scroll-margin-top:65px !important; }
 }
-
 /* Mobile nav scroll */
 @media (max-width: 768px) {
   #mobile-nav { display: flex !important; }
@@ -3720,21 +3706,7 @@ function setUsuario(usuario) {
   }
 
   // No mobile, pageDashboard fica sempre visível (scroll infinito)
-  if (isMobile()) {
-    document.getElementById('pageDashboard').style.display = 'block';
-    document.getElementById('pageBatalha').style.display = 'none';
-    const lw = document.querySelector('.lendo-wrap');
-    if (lw) lw.style.display = 'block';
-    const fab = document.querySelector('.fab');
-    if (fab) fab.style.display = 'flex';
-    // Render all sections
-    setTimeout(() => {
-      applyMobileLayout();
-      // Rebuild all charts for mobile
-      if (window.renderizarGraficos && window._lastDados) renderizarGraficos(window._lastDados);
-    }, 300);
-    return;
-  }
+  // NÃO retorna — deixa o fluxo normal do setUsuario continuar abaixo
 
   const d = window._dadosD;
   if (!d) return;
