@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-25T01:51:32.537Z",
+  "geradoEm": "2026-05-25T01:51:55.665Z",
   "meta": {
     "total": 53,
     "lidos": 25,
@@ -7,9 +7,9 @@
     "paginasTotal": 26956,
     "paginasLidas": 12741,
     "paginasFaltando": 14215,
-    "mediaDiaria": 80.1,
-    "ritmoAtual": 70.7,
-    "dataPrevistoAtual": "12/12/2026"
+    "mediaDiaria": 80.2,
+    "ritmoAtual": 71.4,
+    "dataPrevistoAtual": "10/12/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -78,9 +78,9 @@
       "paginasLidas": 12741,
       "paginasFaltando": 14215,
       "faltando": 28,
-      "mediaDiaria": 80.1,
-      "ritmoAtual": 70.7,
-      "dataPrevistoAtual": "12/12/2026"
+      "mediaDiaria": 80.2,
+      "ritmoAtual": 71.4,
+      "dataPrevistoAtual": "10/12/2026"
     },
     "2027": {
       "total": 1,
@@ -27206,10 +27206,10 @@
     {
       "livro": "A Cidade de Bronze",
       "colecao": "Trilogia de Daevabad",
-      "data": "",
+      "data": "2026-05-23",
       "paginas": 19,
       "minutos": 70,
-      "ano": 0,
+      "ano": 2026,
       "usuario": "Milton"
     }
   ],
