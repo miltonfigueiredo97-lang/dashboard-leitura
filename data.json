@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-25T03:55:21.008Z",
+  "geradoEm": "2026-05-25T03:55:44.510Z",
   "meta": {
     "total": 53,
     "lidos": 25,
     "faltando": 28,
     "paginasTotal": 26956,
-    "paginasLidas": 12771,
-    "paginasFaltando": 14185,
-    "mediaDiaria": 79.9,
-    "ritmoAtual": 70,
-    "dataPrevistoAtual": "14/12/2026"
+    "paginasLidas": 12741,
+    "paginasFaltando": 14215,
+    "mediaDiaria": 80.2,
+    "ritmoAtual": 71.4,
+    "dataPrevistoAtual": "11/12/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -71,16 +71,16 @@
     "2026": {
       "total": 53,
       "lidos": 25,
-      "lendo": 3,
+      "lendo": 2,
       "pausados": 0,
-      "aguardando": 25,
+      "aguardando": 26,
       "paginasTotal": 26956,
-      "paginasLidas": 12771,
-      "paginasFaltando": 14185,
+      "paginasLidas": 12741,
+      "paginasFaltando": 14215,
       "faltando": 28,
-      "mediaDiaria": 79.9,
-      "ritmoAtual": 70,
-      "dataPrevistoAtual": "14/12/2026"
+      "mediaDiaria": 80.2,
+      "ritmoAtual": 71.4,
+      "dataPrevistoAtual": "11/12/2026"
     },
     "2027": {
       "total": 1,
@@ -27211,15 +27211,6 @@
       "minutos": 70,
       "ano": 2026,
       "usuario": "Milton"
-    },
-    {
-      "livro": "A Alma do Imperador",
-      "colecao": "Cosmere",
-      "data": "2026-05-25",
-      "paginas": 30,
-      "minutos": 30,
-      "ano": 2026,
-      "usuario": "Milton"
     }
   ],
   "livros": [
@@ -28296,10 +28287,10 @@
       "colecao": "Cosmere",
       "ordemColecao": 10,
       "ordem": 0,
-      "status": "Lendo",
+      "status": "Aguardando",
       "totalPag": 142,
-      "pagAtual": 30,
-      "pct": 0.211,
+      "pagAtual": 0,
+      "pct": 0,
       "usuario": "MILTON",
       "genero": "Fantasia épica"
     },
@@ -36228,24 +36219,6 @@
   ],
   "lendo": [
     {
-      "livro": "A Alma do Imperador",
-      "autor": "Brandon Sanderson",
-      "isbn": "9780765360922",
-      "coverUrl": "https://m.media-amazon.com/images/I/81GB-e9IAgL._AC_UF1000,1000_QL80_.jpg",
-      "metaAno": "2026",
-      "anoConclusao": "",
-      "depende": "Elantris",
-      "colecao": "Cosmere",
-      "ordemColecao": 10,
-      "ordem": 0,
-      "status": "Lendo",
-      "totalPag": 142,
-      "pagAtual": 30,
-      "pct": 0.211,
-      "usuario": "MILTON",
-      "genero": "Fantasia épica"
-    },
-    {
       "livro": "Harry Potter - Camara Secreta",
       "autor": "J. K. Rowling",
       "isbn": "9788532523051",
@@ -36283,6 +36256,24 @@
     }
   ],
   "aguardando": [
+    {
+      "livro": "A Alma do Imperador",
+      "autor": "Brandon Sanderson",
+      "isbn": "9780765360922",
+      "coverUrl": "https://m.media-amazon.com/images/I/81GB-e9IAgL._AC_UF1000,1000_QL80_.jpg",
+      "metaAno": "2026",
+      "anoConclusao": "",
+      "depende": "Elantris",
+      "colecao": "Cosmere",
+      "ordemColecao": 10,
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 142,
+      "pagAtual": 0,
+      "pct": 0,
+      "usuario": "MILTON",
+      "genero": "Fantasia épica"
+    },
     {
       "livro": "Of Darkness and Light",
       "autor": "Ryan Cahill",
