@@ -4481,27 +4481,54 @@ let _mobileView = false;
 // ── Mobile layout patcher ─────────────────────────────────────────
 function applyMobileLayout() {
   if (!isMobile()) return;
-  // Patch all elements with inline grid-template-columns to 1fr
-  document.querySelectorAll('[style]').forEach(el => {
-    const s = el.style;
-    if (s.gridTemplateColumns && s.gridTemplateColumns !== '1fr') {
-      // Keep 2-col only for kpi-books and kpi-grid-5
-      if (!el.id?.includes('kpi-books') && !el.classList.contains('kpi-grid-5')) {
-        s.gridTemplateColumns = '1fr';
+
+  // Injeta style tag com regras de máxima especificidade
+  let tag = document.getElementById('mobile-style-inject');
+  if (!tag) {
+    tag = document.createElement('style');
+    tag.id = 'mobile-style-inject';
+    document.head.appendChild(tag);
+  }
+  tag.textContent = `
+    /* Force all inline grids to 1 col on mobile */
+    @media (max-width: 600px) {
+      #pageDashboard *[style], #pageBatalha *[style] {
+        grid-template-columns: 1fr !important;
+        min-width: 0 !important;
       }
+      #kpi-books-grid[style] { grid-template-columns: 1fr 1fr !important; }
+      .kpi-grid-5[style]     { grid-template-columns: 1fr 1fr !important; }
+      #bookInfoStats[style]  { grid-template-columns: 1fr 1fr !important; }
+      #heatmapGrid[style]    { grid-template-columns: 1fr 1fr !important; }
     }
-    // Fix flex rows that cause side-by-side layouts
-    if (s.display === 'grid' && !el.id?.includes('kpi-books')) {
-      s.gridTemplateColumns = '1fr';
+  `;
+
+  // Diretamente patcheia todos os elementos inline para garantia
+  document.querySelectorAll('#pageDashboard [style], #pageBatalha [style]').forEach(el => {
+    const skip = ['kpi-books-grid','bookInfoStats','heatmapGrid'].includes(el.id) ||
+                 el.classList.contains('kpi-grid-5');
+    if (!skip && el.style.gridTemplateColumns && el.style.gridTemplateColumns !== '1fr') {
+      el.style.setProperty('grid-template-columns', '1fr', 'important');
     }
+    if (!skip && el.style.display === 'grid') {
+      el.style.setProperty('grid-template-columns', '1fr', 'important');
+    }
+    el.style.setProperty('min-width', '0', 'important');
+    el.style.setProperty('max-width', '100%', 'important');
+    el.style.setProperty('box-sizing', 'border-box', 'important');
   });
-  // Fix the specific inline flex containers used in batalha
-  document.querySelectorAll('#pageBatalha [style*="grid-template-columns"]').forEach(el => {
-    el.style.gridTemplateColumns = '1fr';
+
+  // Canvas — força largura total
+  document.querySelectorAll('canvas').forEach(c => {
+    c.style.setProperty('max-width', '100%', 'important');
+    c.style.setProperty('width', '100%', 'important');
   });
-  document.querySelectorAll('#pageBatalha [style*="display:grid"], #pageBatalha [style*="display: grid"]').forEach(el => {
-    el.style.gridTemplateColumns = '1fr';
-  });
+
+  // Charts — resize para nova largura
+  if (window.Chart) {
+    Chart.instances?.forEach?.(ch => { try { ch.resize(); } catch(e){} });
+    Object.values(Chart.instances || {}).forEach(ch => { try { ch.resize(); } catch(e){} });
+  }
 }
 window.applyMobileLayout = applyMobileLayout;
 let _mNavActive = 'meta';
