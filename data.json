@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-24T23:54:37.709Z",
+  "geradoEm": "2026-05-25T01:24:43.470Z",
   "meta": {
     "total": 53,
     "lidos": 25,
     "faltando": 28,
-    "paginasTotal": 26920,
-    "paginasLidas": 12731,
-    "paginasFaltando": 14189,
+    "paginasTotal": 26956,
+    "paginasLidas": 12741,
+    "paginasFaltando": 14215,
     "mediaDiaria": 80.2,
     "ritmoAtual": 71.4,
-    "dataPrevistoAtual": "09/12/2026"
+    "dataPrevistoAtual": "10/12/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -71,16 +71,16 @@
     "2026": {
       "total": 53,
       "lidos": 25,
-      "lendo": 1,
+      "lendo": 2,
       "pausados": 0,
-      "aguardando": 27,
-      "paginasTotal": 26920,
-      "paginasLidas": 12731,
-      "paginasFaltando": 14189,
+      "aguardando": 26,
+      "paginasTotal": 26956,
+      "paginasLidas": 12741,
+      "paginasFaltando": 14215,
       "faltando": 28,
       "mediaDiaria": 80.2,
       "ritmoAtual": 71.4,
-      "dataPrevistoAtual": "09/12/2026"
+      "dataPrevistoAtual": "10/12/2026"
     },
     "2027": {
       "total": 1,
@@ -28440,10 +28440,10 @@
       "colecao": "Harry Potter",
       "ordemColecao": 2,
       "ordem": 2,
-      "status": "Aguardando",
-      "totalPag": 252,
+      "status": "Lendo",
+      "totalPag": 288,
       "pagAtual": 10,
-      "pct": 0.04,
+      "pct": 0.035,
       "usuario": "MILTON",
       "genero": "Fantasia"
     },
@@ -36210,6 +36210,24 @@
   ],
   "lendo": [
     {
+      "livro": "Harry Potter - Camara Secreta",
+      "autor": "J. K. Rowling",
+      "isbn": "9788532523051",
+      "coverUrl": "https://m.media-amazon.com/images/I/81jbivNEVML._AC_UF1000,1000_QL80_.jpg",
+      "metaAno": "2026",
+      "anoConclusao": "",
+      "depende": "Harry Potter - A Pedra Filosofal",
+      "colecao": "Harry Potter",
+      "ordemColecao": 2,
+      "ordem": 2,
+      "status": "Lendo",
+      "totalPag": 288,
+      "pagAtual": 10,
+      "pct": 0.035,
+      "usuario": "MILTON",
+      "genero": "Fantasia"
+    },
+    {
       "livro": "Guerra de Jade",
       "autor": "Fonda Lee",
       "isbn": "978-8550820590",
@@ -36388,24 +36406,6 @@
       "totalPag": 643,
       "pagAtual": 0,
       "pct": 0,
-      "usuario": "MILTON",
-      "genero": "Fantasia"
-    },
-    {
-      "livro": "Harry Potter - Camara Secreta",
-      "autor": "J. K. Rowling",
-      "isbn": "9788532523051",
-      "coverUrl": "https://m.media-amazon.com/images/I/81jbivNEVML._AC_UF1000,1000_QL80_.jpg",
-      "metaAno": "2026",
-      "anoConclusao": "",
-      "depende": "Harry Potter - A Pedra Filosofal",
-      "colecao": "Harry Potter",
-      "ordemColecao": 2,
-      "ordem": 2,
-      "status": "Aguardando",
-      "totalPag": 252,
-      "pagAtual": 10,
-      "pct": 0.04,
       "usuario": "MILTON",
       "genero": "Fantasia"
     },
