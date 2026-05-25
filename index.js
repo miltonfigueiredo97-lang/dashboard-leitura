@@ -1,4 +1,4 @@
-// v1779712651
+// v1779713055
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import s from '../styles/Home.module.css';
 import {
@@ -2370,6 +2370,18 @@ export default function Home() {
   })();
   const btsParaKPI = filtroConc==='todas' ? btsConfig : btsConfig.filter(b=>b.concretagemId===filtroConc);
   const lansParaKPI = filtroConc==='todas' ? lancamentos : lancamentos.filter(l=>l.concretagemId===filtroConc);
+  // DEBUG temporário
+  if(filtroConc!=='todas') {
+    const vcs2 = pecaConc.filter(pc=>pc.concretagemId===filtroConc);
+    const totalDebug = pecas.filter(p=>vcs2.some(pc=>pc.pecaId===p.id)).reduce((s,p)=>{
+      const vc=vcs2.find(pc=>pc.pecaId===p.id);
+      const pct=(parseFloat(vc?.pctConcretagem)||100);
+      console.log(`Peça: ${p.nome} | vol: ${p.volume} | pct: ${pct} | ajustado: ${p.volume*(pct/100)}`);
+      return s+p.volume*(pct/100);
+    },0);
+    console.log(`TOTAL AJUSTADO: ${totalDebug} | peças: ${vcs2.length}`);
+    console.log(`TOTAL SEM AJUSTE: ${pecas.filter(p=>vcs2.some(pc=>pc.pecaId===p.id)).reduce((s,p)=>s+p.volume,0)}`);
+  }
   const kpis    = calcKPIs(pecasParaKPI,lansParaKPI,btsParaKPI,filtroAndar);
   const perdaInfo = kpis.perdaInfo;
   // Usar lancamentos filtrados para progresso por tipo
