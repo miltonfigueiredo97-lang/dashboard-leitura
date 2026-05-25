@@ -1,4 +1,4 @@
-// v1779713294
+// v1779713575
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import s from '../styles/Home.module.css';
 import {
@@ -2475,7 +2475,7 @@ export default function Home() {
             {/* KPIs */}
             <div className={s.kpiGrid}>
               {[
-                {label:'Volume Total do Projeto', value:fmt4(kpis.totalVol), unit:'m³', sub:`${pecas.length} peças cadastradas`, icon:'📦', v:''},
+                {label:'Volume Total do Projeto', value:fmt4(kpis.totalVol), unit:'m³', sub:filtroConc==='todas'?`${pecas.length} peças cadastradas`:`${pecasParaKPI.length} peças nesta concretagem`, icon:'📦', v:''},
                 {label:'Volume Real Concretado',  value:fmt4(kpis.concVol),  unit:'m³', sub:`${fmt1(kpis.pctConc)}% do projeto`,   icon:'✅', v:'green'},
                 {label:'Faltando (Real)',         value:fmt4(kpis.realFaltando), unit:'m³', sub:'proj. − real concretado', icon:'⚠️', v:'red'},
                 {label:'Faltando (Projeto)',      value:fmt4(kpis.projFaltando), unit:'m³', sub:'proj. − BTs executadas', icon:'📊', v:'blue'},
