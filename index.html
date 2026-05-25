@@ -379,7 +379,6 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
 @media (max-width: 600px) {
   /* Nav bar visível */
   #mobile-nav { display:flex !important; }
-  #btn-view-toggle { bottom:calc(var(--nav-h) + 8px); }
 
   /* Header compacto */
   header {
@@ -397,7 +396,18 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
   button[onclick="toggleChangelog()"],
   button[onclick="manualRefresh()"] { padding:4px 8px !important;font-size:11px !important; }
 
-  /* Container principal — 100% da tela */
+  /* Botão toggle — canto superior direito, longe do FAB */
+  #btn-view-toggle {
+    bottom:auto !important;
+    top:8px !important;
+    right:8px !important;
+    width:28px !important;
+    height:28px !important;
+    font-size:14px !important;
+    z-index:1100 !important;
+  }
+
+  /* Container principal */
   #app, .page {
     width:100% !important;
     max-width:100% !important;
@@ -412,25 +422,30 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
   .lendo-inner { flex-direction:column !important;gap:8px !important;padding:6px 0 !important; }
   .lendo-card { min-width:unset !important;width:100% !important; }
 
-  /* Grids */
-  .grid2, .grid3, .grid4 { grid-template-columns:1fr !important; }
+  /* Grids — tudo 1 coluna no mobile */
+  .grid2, .grid3, .grid4, .grid6 { grid-template-columns:1fr !important; }
   .kpi-grid-5 { grid-template-columns:repeat(2,1fr) !important; }
-  .grid6 { grid-template-columns:repeat(2,1fr) !important; }
-  #kpi-books-grid { grid-template-columns:repeat(2,1fr) !important; }
+  #kpi-books-grid { grid-template-columns:1fr 1fr !important; }
 
   /* Cards */
   .card { padding:10px !important;border-radius:10px !important; }
   .sec { font-size:9px !important;margin:12px 0 6px !important; }
 
+  /* KPI books — texto não cortado */
+  .kpi-book { flex-direction:row !important;align-items:flex-start !important;gap:8px !important; }
+  .kpi-book img { width:44px !important;height:62px !important;flex-shrink:0 !important; }
+  .kpi { overflow:hidden !important; }
+  .kpi-nome { font-size:13px !important;line-height:1.3 !important;white-space:normal !important;word-break:break-word !important; }
+  .kpi-autor { font-size:11px !important;white-space:normal !important; }
+
   /* KPI valores */
   .kpi-val { font-size:26px !important; }
-  .kpi-book { flex-direction:row !important;align-items:center !important; }
 
   /* Rank */
   .rank-bar-wrap { display:none !important; }
-  .rank-name { font-size:12px !important; }
+  .rank-name { font-size:12px !important;white-space:normal !important;word-break:break-word !important; }
 
-  /* FAB */
+  /* FAB — acima da nav bar */
   .fab { bottom:calc(var(--nav-h) + 14px) !important;right:10px !important;
          width:48px !important;height:48px !important;font-size:22px !important; }
   .fab-menu { bottom:calc(var(--nav-h) + 70px) !important;right:10px !important; }
@@ -438,17 +453,23 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
   /* Scroll targets */
   [data-msection] { scroll-margin-top:60px; }
 
-  /* Charts — altura reduzida */
-  canvas { max-height:220px; }
-  #bookInfoStats { grid-template-columns:1fr 1fr !important; }
+  /* Charts — altura adequada sem cortar */
+  #cMonthly { max-height:280px !important; }
+  #cDonut, #cAutores { max-height:200px !important; }
+  #cGeneros { max-height:300px !important; }
+  canvas { max-width:100% !important; }
 
   /* Batalha */
   #pageBatalha > div > div { padding:0 !important; }
+
+  /* Painel meta — prateleira menor */
+  #painelMetaLista { gap:6px !important; }
+  #painelMeta { width:95vw !important; }
 }
 
 /* Quando JS ativa mobile-view no desktop */
 body.mobile-view #mobile-nav { display:flex !important; }
-body.mobile-view #btn-view-toggle { bottom:calc(var(--nav-h) + 8px); }
+body.mobile-view #btn-view-toggle { top:8px !important;bottom:auto !important; }
 body.mobile-view header { padding:6px 10px !important;position:sticky;top:0;z-index:1000; }
 body.mobile-view header h1 { font-size:13px !important; }
 body.mobile-view header p, body.mobile-view .badge { display:none !important; }
@@ -465,10 +486,11 @@ body.mobile-view .lendo-wrap { width:100% !important;max-width:100% !important; 
 body.mobile-view .lendo-inner { flex-direction:column !important;gap:8px !important; }
 body.mobile-view .lendo-card { min-width:unset !important;width:100% !important; }
 body.mobile-view .grid2, body.mobile-view .grid3,
-body.mobile-view .grid4 { grid-template-columns:1fr !important; }
+body.mobile-view .grid4, body.mobile-view .grid6 { grid-template-columns:1fr !important; }
 body.mobile-view .kpi-grid-5 { grid-template-columns:repeat(2,1fr) !important; }
-body.mobile-view .grid6 { grid-template-columns:repeat(2,1fr) !important; }
-body.mobile-view #kpi-books-grid { grid-template-columns:repeat(2,1fr) !important; }
+body.mobile-view #kpi-books-grid { grid-template-columns:1fr 1fr !important; }
+body.mobile-view .kpi { overflow:hidden !important; }
+body.mobile-view .kpi-nome { white-space:normal !important;word-break:break-word !important; }
 body.mobile-view .fab { bottom:calc(var(--nav-h) + 14px) !important;right:10px !important; }
 body.mobile-view .fab-menu { bottom:calc(var(--nav-h) + 70px) !important;right:10px !important; }
 </style>
@@ -755,8 +777,8 @@ body.mobile-view .fab-menu { bottom:calc(var(--nav-h) + 70px) !important;right:1
         <div style="min-width:0">
           <div class="kpi-val" style="font-size:28px;line-height:1;" id="kpi-maior-val">—</div>
           <div class="kpi-lbl" style="margin-bottom:6px;">páginas</div>
-          <div id="kpi-maior-nome" style="font-size:20px;font-weight:700;color:var(--text);line-height:1.3;word-break:break-word">—</div>
-          <div id="kpi-maior-autor" style="font-size:16px;color:var(--muted);margin-top:3px">—</div>
+          <div id="kpi-maior-nome" class="kpi-nome" style="font-size:20px;font-weight:700;color:var(--text);line-height:1.3;word-break:break-word">—</div>
+          <div class="kpi-autor" id="kpi-maior-autor" style="font-size:16px;color:var(--muted);margin-top:3px">—</div>
         </div>
       </div>
     </div>
@@ -767,8 +789,8 @@ body.mobile-view .fab-menu { bottom:calc(var(--nav-h) + 70px) !important;right:1
         <div style="min-width:0">
           <div class="kpi-val" style="font-size:28px;line-height:1;" id="kpi-menor-val">—</div>
           <div class="kpi-lbl" style="margin-bottom:6px;">páginas</div>
-          <div id="kpi-menor-nome" style="font-size:20px;font-weight:700;color:var(--text);line-height:1.3;word-break:break-word">—</div>
-          <div id="kpi-menor-autor" style="font-size:16px;color:var(--muted);margin-top:3px">—</div>
+          <div id="kpi-menor-nome" class="kpi-nome" style="font-size:20px;font-weight:700;color:var(--text);line-height:1.3;word-break:break-word">—</div>
+          <div class="kpi-autor" id="kpi-menor-autor" style="font-size:16px;color:var(--muted);margin-top:3px">—</div>
         </div>
       </div>
     </div>
@@ -779,8 +801,8 @@ body.mobile-view .fab-menu { bottom:calc(var(--nav-h) + 70px) !important;right:1
         <div style="min-width:0">
           <div class="kpi-val" style="font-size:28px;line-height:1;" id="kpi-melhor-val">—</div>
           <div class="kpi-lbl" style="margin-bottom:6px;">nota geral</div>
-          <div id="kpi-melhor-nome" style="font-size:20px;font-weight:700;color:var(--text);line-height:1.3;word-break:break-word">—</div>
-          <div id="kpi-melhor-autor" style="font-size:16px;color:var(--muted);margin-top:3px">—</div>
+          <div id="kpi-melhor-nome" class="kpi-nome" style="font-size:20px;font-weight:700;color:var(--text);line-height:1.3;word-break:break-word">—</div>
+          <div class="kpi-autor" id="kpi-melhor-autor" style="font-size:16px;color:var(--muted);margin-top:3px">—</div>
         </div>
       </div>
     </div>
@@ -791,8 +813,8 @@ body.mobile-view .fab-menu { bottom:calc(var(--nav-h) + 70px) !important;right:1
         <div style="min-width:0">
           <div class="kpi-val" style="font-size:28px;line-height:1;" id="kpi-pior-val">—</div>
           <div class="kpi-lbl" style="margin-bottom:6px;">nota geral</div>
-          <div id="kpi-pior-nome" style="font-size:20px;font-weight:700;color:var(--text);line-height:1.3;word-break:break-word">—</div>
-          <div id="kpi-pior-autor" style="font-size:16px;color:var(--muted);margin-top:3px">—</div>
+          <div id="kpi-pior-nome" class="kpi-nome" style="font-size:20px;font-weight:700;color:var(--text);line-height:1.3;word-break:break-word">—</div>
+          <div class="kpi-autor" id="kpi-pior-autor" style="font-size:16px;color:var(--muted);margin-top:3px">—</div>
         </div>
       </div>
     </div>
