@@ -133,7 +133,7 @@ select:focus { border-color: var(--purple); }
 .rank-score { font-size: 11px; font-weight: 700; width: 32px; text-align: right; flex-shrink: 0; }
 
 /* ── Weekday bars ── */
-.wd-bars { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; align-items: flex-end; height: 110px; overflow: hidden; width: 100%; }
+.wd-bars { display: flex; gap: 2px; align-items: flex-end; height: 110px; overflow: hidden; width: 100%; }
 .wd-col { display: flex; flex-direction: column; align-items: center; gap: 2px; height: 100%; justify-content: flex-end; min-width: 0; }
 .wd-bar { width: 100%; border-radius: 4px 4px 2px 2px; }
 .wd-lbl { font-size: 8px; color: var(--muted); font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
@@ -3116,17 +3116,16 @@ function buildHeatmap() {
                   'Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
   const diasSem = ['D','S','T','Q','Q','S','S'];
 
-  const isMobile = window.innerWidth < 600;
-  const cols = isMobile ? 2 : 4;
-  let html = `<div data-desktop-grid="1" style="display:grid;grid-template-columns:repeat(${cols},1fr);gap:${isMobile?10:16}px;">`;
+  const cols = 2; // sempre 2 colunas no mobile.html
+  let html = `<div data-desktop-grid="1" style="display:grid;grid-template-columns:repeat(${cols},1fr);gap:8px;">`;
 
   for (let mo = 0; mo < 12; mo++) {
     const daysInMonth = new Date(yr, mo+1, 0).getDate();
     const firstDay = new Date(yr, mo, 1).getDay(); // 0=Dom
 
     html += `<div>
-      <div style="font-size:${isMobile?11:13}px;font-weight:700;color:var(--text);margin-bottom:4px;">${meses[mo]}</div>
-      <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:${isMobile?1:2}px;margin-bottom:4px;">`;
+      <div style="font-size:11px;font-weight:700;color:var(--text);margin-bottom:4px;">${meses[mo]}</div>
+      <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:1px;margin-bottom:4px;">`;
 
     // Cabeçalho dias da semana
     diasSem.forEach(d => {
@@ -3232,7 +3231,7 @@ function buildCalendar() {
 
     html += `<div class="cal-day${totalPag?' active':''}${isSelected?' selected':''}" onclick="calSelect('${dateStr}')">
       <div class="cal-day-num">${day}</div>
-      ${totalPag ? `<div class="cal-day-pag">${totalPag}</div><div class="cal-day-bar" style="width:${barW}%"></div>` : ''}
+      ${totalPag ? `<div class="cal-day-pag">${totalPag} págs</div><div class="cal-day-bar" style="width:${barW}%"></div>` : ''}
     </div>`;
   }
 
