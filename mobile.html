@@ -625,6 +625,18 @@ body.mobile-view .meta-stats { grid-template-columns:1fr 1fr !important; }
   .pwa-row { grid-template-columns:1fr 1fr !important; }
   .pwa-field input, .pwa-field select { font-size:14px !important; }
 
+  /* Ranking controls */
+  #rankList .rank-item img { width:36px !important; height:50px !important; }
+  .ctrl select { min-width:0 !important; flex:1 !important; font-size:11px !important; padding:4px !important; }
+  .ctrl { flex-wrap:wrap !important; gap:4px !important; }
+  .btn { white-space:nowrap !important; font-size:12px !important; padding:6px 10px !important; }
+
+  /* Batalha sempre escondida a não ser quando ativo */
+  #pageBatalha { display:none; }
+  body.batalha-ativo #pageBatalha { display:block !important; }
+  body.batalha-ativo #pageDashboard { display:none !important; }
+  body.batalha-ativo .lendo-wrap { display:none !important; }
+
   /* Scroll targets */
   [data-msection] { scroll-margin-top:65px !important; }
 
@@ -1239,6 +1251,11 @@ body.mobile-view .meta-stats { grid-template-columns:1fr 1fr !important; }
 <footer>Dados carregados do Google Sheets · Atualizado em: <span id="footer-data">—</span></footer>
 
 <script>
+// ── Mobile detection — deve ser a primeira coisa ──────────────────
+let _mobileView = false;
+function isMobile() { return _mobileView || window.matchMedia('(max-width:768px)').matches; }
+window.isMobile = isMobile;
+
 // ════════════════════════════════════════════════
 // CARREGA DADOS DO GITHUB E INICIALIZA O DASHBOARD
 // ════════════════════════════════════════════════
@@ -3699,6 +3716,12 @@ function setUsuario(usuario) {
 
   document.getElementById('pageDashboard').style.display = usuario === 'Batalha' ? 'none' : 'block';
   document.getElementById('pageBatalha').style.display   = usuario === 'Batalha' ? 'block' : 'none';
+  // CSS class approach for mobile reliability
+  if (usuario === 'Batalha') {
+    document.body.classList.add('batalha-ativo');
+  } else {
+    document.body.classList.remove('batalha-ativo');
+  }
   const lendoWrap = document.querySelector('.lendo-wrap');
   if (lendoWrap) lendoWrap.style.display = usuario === 'Batalha' ? 'none' : '';
   document.querySelector('.lendo-wrap').style.display    = usuario === 'Batalha' ? 'none' : 'block';
@@ -4653,7 +4676,6 @@ function renderBatalha() {
 }
 
 // ── Mobile View System ───────────────────────────────────────────
-let _mobileView = false;
 // ── Mobile layout patcher ─────────────────────────────────────────
 function applyMobileLayout() {
   if (!isMobile()) return;
