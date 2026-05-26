@@ -3194,6 +3194,13 @@ function buildHeatmap() {
   html += `</div>`;
   document.getElementById('heatmapGrid').innerHTML = html;
 
+  // Forçar largura 100% em todos os grids internos do heatmap
+  document.querySelectorAll('#heatmapGrid div[style*="repeat(7"]').forEach(el => {
+    el.style.setProperty('width', '100%', 'important');
+    el.style.setProperty('display', 'grid', 'important');
+    el.style.setProperty('grid-template-columns', 'repeat(7,minmax(0,1fr))', 'important');
+  });
+
   // Popular seletor de anos
   const sel = document.getElementById('selHeatYear');
   const anos = [...new Set((window._sessoes||[]).map(s=>s.data?.slice(0,4)).filter(Boolean))].sort();
