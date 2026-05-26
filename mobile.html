@@ -133,11 +133,11 @@ select:focus { border-color: var(--purple); }
 .rank-score { font-size: 11px; font-weight: 700; width: 32px; text-align: right; flex-shrink: 0; }
 
 /* ── Weekday bars ── */
-.wd-bars { display: flex; gap: 6px; align-items: flex-end; height: 110px; }
-.wd-col { display: flex; flex-direction: column; align-items: center; gap: 4px; flex: 1; height: 100%; justify-content: flex-end; }
+.wd-bars { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; align-items: flex-end; height: 110px; overflow: hidden; width: 100%; }
+.wd-col { display: flex; flex-direction: column; align-items: center; gap: 2px; height: 100%; justify-content: flex-end; min-width: 0; }
 .wd-bar { width: 100%; border-radius: 4px 4px 2px 2px; }
-.wd-lbl { font-size: 9px; color: var(--muted); font-weight: 600; }
-.wd-val { font-size: 9px; color: var(--muted); }
+.wd-lbl { font-size: 8px; color: var(--muted); font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+.wd-val { font-size: 8px; color: var(--muted); }
 
 /* ── Donut legend ── */
 .donut-leg { display: flex; flex-direction: column; gap: 4px; margin-top: 10px; }
@@ -188,7 +188,6 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
   .ring-wrap { margin-bottom: 12px; }
 
   /* Calendário mobile — células compactas, sem nome do livro */
-  .cal-day { min-height: 36px; padding: 3px 2px; }
   .cal-day-num { font-size: 11px; }
 
   /* Heatmap mobile — 2 colunas de meses */
@@ -438,7 +437,6 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
   #cDonut, #cAutores { height:180px !important; }
 
   #heatmapGrid { display:grid !important; grid-template-columns:1fr 1fr !important; gap:8px !important; }
-  .cal-day { min-height:40px !important; padding:3px 2px !important; }
 
   .fab { bottom:calc(var(--nav-h) + 14px) !important; right:10px !important;
          width:48px !important; height:48px !important; font-size:22px !important; }
@@ -587,7 +585,6 @@ body.mobile-view-disabled .meta-stats { grid-template-columns:1fr 1fr !important
   canvas { max-width:100% !important; width:100% !important; }
 
   /* Calendário */
-  .cal-day { min-height:40px !important; padding:2px !important; }
   .cal-day-num { font-size:10px !important; }
   .cal-day-pag { font-size:10px !important; }
   #calGrid { gap:2px !important; }
@@ -627,7 +624,6 @@ body.mobile-view-disabled .meta-stats { grid-template-columns:1fr 1fr !important
 
   /* ── Calendário: células menores, não overflow ── */
   #calGrid { gap:2px !important; overflow:hidden !important; }
-  .cal-day { min-height:42px !important; padding:2px 1px !important; overflow:hidden !important; }
   .cal-day-num { font-size:9px !important; }
   .cal-day-pag { font-size:10px !important; margin-top:1px !important; }
   .cal-day-livro { display:none !important; }
@@ -1125,14 +1121,16 @@ body.mobile-view-disabled .meta-stats { grid-template-columns:1fr 1fr !important
     <!-- Ranking notas -->
     <div class="card">
       <div class="card-title">🏅 Ranking por Notas</div>
-      <div class="ctrl">
-        <select id="selNotasAno" onchange="buildRanking()">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:6px;">
+        <select id="selNotasAno" onchange="buildRanking()" style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:6px;font-size:12px;">
           <option value="all">Todos os anos</option>
         </select>
-        <select id="selNotasColecao" onchange="buildRanking()">
+        <select id="selNotasColecao" onchange="buildRanking()" style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:6px;font-size:12px;">
           <option value="all">Todas as coleções</option>
         </select>
-        <select id="selNotasTema" onchange="buildRanking()">
+      </div>
+      <div style="margin-bottom:6px;">
+        <select id="selNotasTema" onchange="buildRanking()" style="width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:6px;font-size:12px;">
           <option value="all">Todos os critérios</option>
           <option value="Diálogos">Diálogos</option>
           <option value="Enredo">Enredo</option>
@@ -1146,7 +1144,7 @@ body.mobile-view-disabled .meta-stats { grid-template-columns:1fr 1fr !important
           <option value="Temas">Temas</option>
         </select>
       </div>
-      <div class="ctrl" style="margin-top:-6px;">
+      <div class="ctrl" style="margin-top:6px;">
         <button class="btn on" id="btnBest" onclick="rankMode='best';updateBtns();buildRanking()">🥇 Melhores</button>
         <button class="btn" id="btnWorst" onclick="rankMode='worst';updateBtns();buildRanking()">💀 Piores</button>
       </div>
@@ -3234,7 +3232,7 @@ function buildCalendar() {
 
     html += `<div class="cal-day${totalPag?' active':''}${isSelected?' selected':''}" onclick="calSelect('${dateStr}')">
       <div class="cal-day-num">${day}</div>
-      ${totalPag ? `${livrosHtml}<div class="cal-day-bar" style="width:${barW}%"></div>` : ''}
+      ${totalPag ? `<div class="cal-day-pag">${totalPag}</div><div class="cal-day-bar" style="width:${barW}%"></div>` : ''}
     </div>`;
   }
 
