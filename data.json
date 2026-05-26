@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-26T12:17:37.974Z",
+  "geradoEm": "2026-05-26T13:05:58.238Z",
   "meta": {
     "total": 54,
     "lidos": 26,
@@ -43932,6 +43932,24 @@
         "Temas": 8.5
       },
       "usuario": "Milton"
+    },
+    {
+      "livro": "Guerra de Jade",
+      "ano": 2026,
+      "media": 9.25,
+      "criterios": {
+        "Diálogos": 9.5,
+        "Enredo": 9.5,
+        "Estilo Visual": 9.5,
+        "Finalização": 8.5,
+        "Imersão": 9,
+        "Impacto Emocional": 10,
+        "Originalidade": 9,
+        "Personagens": 9.5,
+        "Ritmo": 9,
+        "Temas": 9
+      },
+      "usuario": "Daniel"
     }
   ]
 }
