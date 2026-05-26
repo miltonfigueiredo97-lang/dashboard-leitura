@@ -3144,15 +3144,15 @@ function buildHeatmap() {
   const diasSem = ['D','S','T','Q','Q','S','S'];
 
   const cols = 2;
-  let html = `<div data-desktop-grid="1" style="display:grid;grid-template-columns:repeat(${cols},1fr);gap:8px;">`;
+  let html = `<div data-desktop-grid="1" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;width:100%;">`;
 
   for (let mo = 0; mo < 12; mo++) {
     const daysInMonth = new Date(yr, mo+1, 0).getDate();
     const firstDay = new Date(yr, mo, 1).getDay(); // 0=Dom
 
-    html += `<div>
+    html += `<div style="width:100%;min-width:0;overflow:hidden;">
       <div style="font-size:9px;font-weight:700;color:var(--text);margin-bottom:2px;">${meses[mo]}</div>
-      <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:1px;margin-bottom:2px;overflow:hidden;">`;
+      <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:1px;margin-bottom:2px;overflow:hidden;width:100%;">`;
 
     // Cabeçalho dias da semana
     diasSem.forEach(d => {
