@@ -849,7 +849,7 @@ body.mobile-view-disabled .meta-stats { grid-template-columns:1fr 1fr !important
   ⏳ Carregando dados da planilha...
 </div>
 <div id="app" style="display:none">
-<div class="page" id="pageDashboard">
+<div class="page" id="pageDashboard" style="max-width:100%;overflow-x:hidden;box-sizing:border-box;">
 
   <!-- ── 5. Meta + Heatmap ── -->
   <div class="sec" data-msection="meta">🎯 Meta de Leitura &amp; Heatmap</div>
@@ -1120,21 +1120,21 @@ body.mobile-view-disabled .meta-stats { grid-template-columns:1fr 1fr !important
   <!-- ── 3. Rankings e Distribuição ── -->
   <div class="sec" data-msection="ranking">🏅 Rankings &amp; Distribuição</div>
   <!-- Linha 1: Ranking + Dia da Semana + Gêneros -->
-  <div id="grid-rankings" data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+  <div id="grid-rankings" style="display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:16px;">
 
     <!-- Ranking notas -->
     <div class="card">
       <div class="card-title">🏅 Ranking por Notas</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:6px;">
-        <select id="selNotasAno" onchange="buildRanking()" style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:6px;font-size:12px;">
+      <div style="display:grid;grid-template-columns:1fr;gap:6px;margin-bottom:6px;">
+        <select id="selNotasAno" onchange="buildRanking()" style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:6px;font-size:12px;width:100%;box-sizing:border-box;">
           <option value="all">Todos os anos</option>
         </select>
-        <select id="selNotasColecao" onchange="buildRanking()" style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:6px;font-size:12px;">
+        <select id="selNotasColecao" onchange="buildRanking()" style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:6px;font-size:12px;width:100%;box-sizing:border-box;">
           <option value="all">Todas as coleções</option>
         </select>
       </div>
       <div style="margin-bottom:6px;">
-        <select id="selNotasTema" onchange="buildRanking()" style="width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:6px;font-size:12px;">
+        <select id="selNotasTema" onchange="buildRanking()" style="width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:6px;font-size:12px;box-sizing:border-box;">
           <option value="all">Todos os critérios</option>
           <option value="Diálogos">Diálogos</option>
           <option value="Enredo">Enredo</option>
@@ -1169,22 +1169,22 @@ body.mobile-view-disabled .meta-stats { grid-template-columns:1fr 1fr !important
         </div>
         <div style="margin-bottom:8px;">
           <div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Média págs/dia</div>
-          <div id="wdAvg" class="wd-bars"></div>
+          <div id="wdAvg" class="wd-bars" style="max-width:100%;overflow:hidden;box-sizing:border-box;"></div>
         </div>
         <div style="border-top:1px solid var(--border);padding-top:8px;margin-bottom:8px;">
           <div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Total de páginas</div>
-          <div id="wdSum" class="wd-bars"></div>
+          <div id="wdSum" class="wd-bars" style="max-width:100%;overflow:hidden;box-sizing:border-box;"></div>
         </div>
         <div style="border-top:1px solid var(--border);padding-top:8px;">
           <div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Livros concluídos por mês</div>
-          <div id="livrosMes" class="wd-bars"></div>
+          <div id="livrosMes" class="wd-bars" style="max-width:100%;overflow:hidden;box-sizing:border-box;"></div>
         </div>
       </div>
 
       <!-- Gêneros lidos -->
       <div class="card" style="flex:1;">
         <div class="card-title">🌎 Gêneros Lidos</div>
-        <div style="height:380px;position:relative;"><canvas id="cGeneros"></canvas></div>
+        <div style="height:380px;position:relative;"><canvas id="cGeneros" style="max-width:100%!important;"></canvas></div>
       </div>
 
     </div>
@@ -1267,7 +1267,7 @@ body.mobile-view-disabled .meta-stats { grid-template-columns:1fr 1fr !important
   <!-- ── Sequências ── -->
   <div class="sec" data-msection="mais">⚡ Sequências de Leitura</div>
   <div class="card" style="margin-bottom:16px;">
-    <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+    <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr;gap:12px;margin-bottom:16px;">
       <div style="background:var(--bg3);border-radius:10px;padding:14px;text-align:center;">
         <div style="font-size:36px;font-weight:700;color:var(--orange)" id="streakAtual">—</div>
         <div style="font-size:11px;color:var(--muted);margin-top:4px;">🔥 Streak Atual</div>
@@ -3606,7 +3606,7 @@ carregarDados();
       <label>Ano de leitura</label>
       <input id="n-ano" type="number" value="2026" min="2020" max="2030">
     </div>
-    <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
+    <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:14px;">
       <div class="pwa-criterio"><label>Diálogos</label><input id="n-0" type="number" min="0" max="10" step="0.5" placeholder="0-10"></div>
       <div class="pwa-criterio"><label>Enredo</label><input id="n-1" type="number" min="0" max="10" step="0.5" placeholder="0-10"></div>
       <div class="pwa-criterio"><label>Estilo Visual</label><input id="n-2" type="number" min="0" max="10" step="0.5" placeholder="0-10"></div>
@@ -4299,7 +4299,7 @@ function renderBatalha() {
 <div id="bat-attrs" data-desktop-grid="1" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px;"></div>
 
 <!-- PERFIL + GUERRA + DIA SAGRADO -->
-<div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
+<div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:20px;">
   <div>
     <div class="bat-section-hdr">🕸️ PERFIL DE COMBATE</div>
     <div style="font-family:'Exo 2',sans-serif;font-size:10px;color:rgba(248,250,252,0.35);margin-bottom:10px;">Tetos fixos — escala 0 a 10</div>
@@ -4354,7 +4354,7 @@ function renderBatalha() {
 <div style="margin-bottom:20px;">
   <div class="bat-section-hdr">📆 DIAS LIDOS NO PERÍODO</div>
   <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:20px;">
-    <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;">
+    <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr;gap:24px;align-items:center;">
       <div style="text-align:center;">
         <div style="font-family:'Orbitron',sans-serif;font-size:48px;font-weight:900;color:#A855F7;text-shadow:0 0 20px rgba(168,85,247,0.5);line-height:1;">${dA.diasSet.size}</div>
         <div style="font-family:'Rajdhani',sans-serif;font-size:13px;color:#A855F7;letter-spacing:2px;margin-top:4px;">${pA.toUpperCase()}</div>
@@ -4392,11 +4392,11 @@ function renderBatalha() {
 </div>
 
 <!-- BOSSES + SLIMES — 2 colunas simétricas -->
-<div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
+<div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:20px;">
   <div>
     <div class="bat-section-hdr">💀 BOSSES DERROTADOS (1000+ págs)</div>
     <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:14px;">
-      <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr;gap:12px;">
         <div>
           <div style="font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:#A855F7;margin-bottom:8px;letter-spacing:1px;">${pA.toUpperCase()} · ${dA.bosses.length}</div>
           <div id="bat-boss-a"></div>
@@ -4411,23 +4411,23 @@ function renderBatalha() {
   <div>
     <div class="bat-section-hdr">🐛 VENCENDO SLIMES (até 200 págs)</div>
     <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:14px;">
-      <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;" id="bat-slimes"></div>
+      <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr;gap:12px;" id="bat-slimes"></div>
     </div>
   </div>
 </div>
 
 <!-- ARTEFATOS + MALDIÇÕES -->
-<div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
+<div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:20px;">
   <div>
     <div class="bat-section-hdr">⭐ ARTEFATOS LENDÁRIOS — MELHORES AVALIADOS</div>
-    <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;overflow:visible;" id="bat-artefatos">
+    <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr;gap:10px;overflow:visible;" id="bat-artefatos">
       <div><div style="font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:#A855F7;margin-bottom:8px;letter-spacing:2px;">${pA.toUpperCase()}</div></div>
       <div><div style="font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:#FB923C;margin-bottom:8px;letter-spacing:2px;">${pB.toUpperCase()}</div></div>
     </div>
   </div>
   <div>
     <div class="bat-section-hdr">💀 MALDIÇÕES — PIORES AVALIADOS</div>
-    <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;overflow:visible;" id="bat-maldicoes">
+    <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr;gap:10px;overflow:visible;" id="bat-maldicoes">
       <div><div style="font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:#A855F7;margin-bottom:8px;letter-spacing:2px;">${pA.toUpperCase()}</div></div>
       <div><div style="font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:#FB923C;margin-bottom:8px;letter-spacing:2px;">${pB.toUpperCase()}</div></div>
     </div>
@@ -4437,7 +4437,7 @@ function renderBatalha() {
 <!-- AUTOR DOMINADO -->
 <div style="margin-bottom:20px;">
   <div class="bat-section-hdr">📚 AUTOR DOMINADO</div>
-  <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+  <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr;gap:12px;">
     ${[{p:pA,dd:dA,cor:'#A855F7'},{p:pB,dd:dB,cor:'#FB923C'}].map(({p,dd,cor})=>`
     <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:16px;display:flex;align-items:center;gap:12px;">
       <div style="width:44px;height:44px;border-radius:50%;background:${cor}22;border:2px solid ${cor};display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;box-shadow:0 0 12px ${cor}44;">📖</div>
@@ -4465,7 +4465,7 @@ function renderBatalha() {
 <!-- CRÔNICAS DA GUERRA -->
 <div class="bat-section-hdr">📜 CRÔNICAS DA GUERRA — HISTÓRICO DA RIVALIDADE</div>
 <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:20px;margin-bottom:20px;">
-  <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:20px;align-items:center;">
+  <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr auto;gap:20px;align-items:center;">
     <div style="text-align:center;">
       <div style="font-family:'Exo 2',sans-serif;font-size:9px;color:rgba(248,250,252,0.4);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">MESES VENCIDOS</div>
       <div style="display:flex;justify-content:center;align-items:center;gap:16px;">
