@@ -651,7 +651,7 @@ body.mobile-view-disabled .meta-stats { grid-template-columns:1fr 1fr !important
   #wdAvg, #wdSum { overflow:hidden !important; }
   /* Wd bars container */
   .wd-bars { overflow-x:hidden !important; }
-  .wd-bar { min-width:0 !important; flex:1 !important; }
+  .wd-bar { min-width:0 !important; }
 
   /* ── Ranking ── */
   #rankList .rank-item img { width:36px !important; height:50px !important; }
@@ -3151,12 +3151,12 @@ function buildHeatmap() {
     const firstDay = new Date(yr, mo, 1).getDay(); // 0=Dom
 
     html += `<div>
-      <div style="font-size:11px;font-weight:700;color:var(--text);margin-bottom:4px;">${meses[mo]}</div>
-      <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:1px;margin-bottom:4px;">`;
+      <div style="font-size:9px;font-weight:700;color:var(--text);margin-bottom:2px;">${meses[mo]}</div>
+      <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:1px;margin-bottom:2px;overflow:hidden;">`;
 
     // Cabeçalho dias da semana
     diasSem.forEach(d => {
-      html += `<div style="font-size:10px;color:var(--muted);text-align:center;font-weight:600;">${d}</div>`;
+      html += `<div style="font-size:8px;color:var(--muted);text-align:center;font-weight:600;">${d}</div>`;
     });
 
     // Células vazias antes do dia 1
@@ -3174,15 +3174,16 @@ function buildHeatmap() {
       html += `<div data-tip="${title}" style="
         aspect-ratio:1;
         background:${color};
-        border-radius:4px;
+        border-radius:3px;
         display:flex;
         align-items:center;
         justify-content:center;
-        font-size:10px;
+        font-size:8px;
         font-weight:${pags?'700':'400'};
         color:${textColor};
         cursor:${pags?'pointer':'default'};
-        border: 1px solid rgba(255,255,255,0.06);
+        overflow:hidden;
+        min-width:0;
       ">${day}</div>`;
     }
 
