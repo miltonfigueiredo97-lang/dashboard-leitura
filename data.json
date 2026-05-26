@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-26T13:05:58.238Z",
+  "geradoEm": "2026-05-26T19:33:05.662Z",
   "meta": {
-    "total": 54,
+    "total": 53,
     "lidos": 26,
-    "faltando": 28,
-    "paginasTotal": 27099,
+    "faltando": 27,
+    "paginasTotal": 26956,
     "paginasLidas": 13013,
-    "paginasFaltando": 14086,
+    "paginasFaltando": 13943,
     "mediaDiaria": 81,
-    "ritmoAtual": 76.5,
-    "dataPrevistoAtual": "27/11/2026"
+    "ritmoAtual": 74.3,
+    "dataPrevistoAtual": "30/11/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -69,18 +69,18 @@
       "dataPrevistoAtual": "Concluída!"
     },
     "2026": {
-      "total": 54,
+      "total": 53,
       "lidos": 26,
       "lendo": 1,
       "pausados": 0,
-      "aguardando": 27,
-      "paginasTotal": 27099,
+      "aguardando": 26,
+      "paginasTotal": 26956,
       "paginasLidas": 13013,
-      "paginasFaltando": 14086,
-      "faltando": 28,
+      "paginasFaltando": 13943,
+      "faltando": 27,
       "mediaDiaria": 81,
-      "ritmoAtual": 76.5,
-      "dataPrevistoAtual": "27/11/2026"
+      "ritmoAtual": 74.3,
+      "dataPrevistoAtual": "30/11/2026"
     },
     "2027": {
       "total": 1,
@@ -36204,24 +36204,6 @@
       "pct": 0,
       "usuario": "Daniel",
       "genero": "Fantasia histórica"
-    },
-    {
-      "livro": "As crônicas das tranças de um careca",
-      "autor": "Tatu-Caminhaden Too",
-      "isbn": "",
-      "coverUrl": "",
-      "metaAno": "2026",
-      "anoConclusao": "",
-      "depende": "",
-      "colecao": "",
-      "ordemColecao": 0,
-      "ordem": 5,
-      "status": "Aguardando",
-      "totalPag": 143,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "Milton",
-      "genero": ""
     }
   ],
   "pausados": [
@@ -40872,24 +40854,6 @@
       "pct": 0,
       "usuario": "Daniel",
       "genero": "Fantasia histórica"
-    },
-    {
-      "livro": "As crônicas das tranças de um careca",
-      "autor": "Tatu-Caminhaden Too",
-      "isbn": "",
-      "coverUrl": "",
-      "metaAno": "2026",
-      "anoConclusao": "",
-      "depende": "",
-      "colecao": "",
-      "ordemColecao": 0,
-      "ordem": 5,
-      "status": "Aguardando",
-      "totalPag": 143,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "Milton",
-      "genero": ""
     }
   ],
   "notas": [
