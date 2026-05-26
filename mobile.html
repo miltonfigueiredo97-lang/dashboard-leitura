@@ -625,11 +625,45 @@ body.mobile-view .meta-stats { grid-template-columns:1fr 1fr !important; }
   .pwa-row { grid-template-columns:1fr 1fr !important; }
   .pwa-field input, .pwa-field select { font-size:14px !important; }
 
-  /* Ranking controls */
+  /* ── Calendário: células menores, não overflow ── */
+  #calGrid { gap:2px !important; overflow:hidden !important; }
+  .cal-day { min-height:42px !important; padding:2px 1px !important; overflow:hidden !important; }
+  .cal-day-num { font-size:9px !important; }
+  .cal-day-pag { font-size:10px !important; margin-top:1px !important; }
+  .cal-day-livro { display:none !important; }
+  .cal-day-bar { height:2px !important; margin-top:2px !important; }
+  #calWrap { overflow:hidden !important; }
+  /* Calendário header dias da semana */
+  #calGrid ~ div, .cal-header { font-size:9px !important; }
+
+  /* ── Heatmap: compacto ── */
+  #heatmapGrid { grid-template-columns:1fr 1fr !important; gap:6px !important; }
+  #heatmapGrid > div { overflow:hidden !important; }
+  /* Mini calendários dentro do heatmap */
+  #heatmapGrid .heat-month { font-size:9px !important; }
+  #heatmapGrid .heat-day { width:10px !important; height:10px !important; }
+
+  /* ── Gêneros: barra horizontal sem overflow ── */
+  #cGeneros { height:280px !important; }
+
+  /* ── Dia da Semana: barras cortadas ── */
+  #wdAvg canvas, #wdSum canvas { max-width:100% !important; }
+  #wdAvg, #wdSum { overflow:hidden !important; }
+  /* Wd bars container */
+  .wd-bars { overflow-x:hidden !important; }
+  .wd-bar { min-width:0 !important; flex:1 !important; }
+
+  /* ── Ranking ── */
   #rankList .rank-item img { width:36px !important; height:50px !important; }
-  .ctrl select { min-width:0 !important; flex:1 !important; font-size:11px !important; padding:4px !important; }
   .ctrl { flex-wrap:wrap !important; gap:4px !important; }
+  .ctrl select { min-width:0 !important; flex:1 !important; font-size:11px !important; padding:4px 6px !important; }
   .btn { white-space:nowrap !important; font-size:12px !important; padding:6px 10px !important; }
+  /* Ranking dois selects por linha */
+  .ctrl select:nth-child(3) { flex:0 0 100% !important; }
+
+  /* ── Tendência Mensal ── */
+  #cMonthly { height:220px !important; }
+  #selFrom, #selTo { font-size:11px !important; padding:3px 6px !important; }
 
   /* Batalha sempre escondida a não ser quando ativo */
   #pageBatalha { display:none; }
@@ -641,12 +675,31 @@ body.mobile-view .meta-stats { grid-template-columns:1fr 1fr !important; }
   [data-msection] { scroll-margin-top:65px !important; }
 
   /* Status kpi grid - 3 colunas no mobile */
-  #status-kpi-grid { grid-template-columns:repeat(3,1fr) !important; }
-  #status-kpi-grid .kpi { padding:8px 4px !important; }
+  /* ── Visão Geral: grid 2-2-1 centralizado ── */
+  .kpi-grid-5, .kpi-grid-5[data-desktop-grid] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .kpi-grid-5 .kpi:nth-child(5) {
+    grid-column: 1 / -1 !important;
+    max-width: 55% !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+  }
+  .kpi-grid-5 .kpi-sub { display:none !important; }
+  .kpi-grid-5 .kpi { padding:12px !important; }
+  .kpi-grid-5 .kpi-val { font-size:20px !important; }
+
+  #status-kpi-grid { grid-template-columns:1fr 1fr !important; }
+  #status-kpi-grid .kpi:nth-child(5) {
+    grid-column: 1 / -1 !important;
+    max-width: 55% !important;
+    margin: 0 auto !important;
+  }
+  #status-kpi-grid .kpi { padding:10px !important; }
   #status-kpi-grid .kpi-val { font-size:18px !important; }
-  #status-kpi-grid .kpi-lbl { font-size:9px !important; }
+  #status-kpi-grid .kpi-lbl { font-size:10px !important; }
   #status-kpi-grid .kpi-sub { display:none !important; }
-  #status-kpi-grid .kpi-icon { font-size:16px !important; }
+  #status-kpi-grid .kpi-icon { font-size:18px !important; }
 
   /* Batalha — artefatos/maldições menores no mobile */
   .bat-art-card { min-width:unset !important; }
