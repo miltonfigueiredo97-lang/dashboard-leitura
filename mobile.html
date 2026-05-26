@@ -802,6 +802,7 @@ canvas { max-width: 100% !important; }
 #heatmapGrid { overflow: hidden !important; }
 #heatmapGrid > div { overflow: hidden !important; min-width: 0 !important; }
 #heatmapGrid > div > div > div { overflow: hidden !important; font-size: 7px !important; }
+#heatmapGrid div[style*="repeat(7"] { width: 100% !important; display: grid !important; grid-template-columns: repeat(7,minmax(0,1fr)) !important; }
 </style>
 </head>
 <body>
@@ -3152,7 +3153,7 @@ function buildHeatmap() {
 
     html += `<div style="width:100%;min-width:0;overflow:hidden;">
       <div style="font-size:9px;font-weight:700;color:var(--text);margin-bottom:2px;">${meses[mo]}</div>
-      <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:1px;margin-bottom:2px;overflow:hidden;width:100%;">`;
+      <div style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:1px;margin-bottom:2px;overflow:hidden;width:100%;box-sizing:border-box;">`;
 
     // Cabeçalho dias da semana
     diasSem.forEach(d => {
