@@ -44,7 +44,7 @@ header .badge {
 }
 
 /* ── Layout ── */
-.page { padding: 28px 36px; max-width: 1500px; margin: 0 auto; }
+.page { padding: 6px 10px 80px 10px; max-width: 100%; margin: 0; width: 100%; box-sizing: border-box; overflow-x: hidden; }
 .sec { font-size: 14px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
   color: var(--muted); display: flex; align-items: center; gap: 10px; margin-bottom: 14px; margin-top: 28px; }
 .sec::after { content: ''; flex: 1; height: 1px; background: var(--border); }
@@ -89,7 +89,8 @@ header .badge {
 /* ── Cards ── */
 .card {
   background: var(--bg2); border: 1px solid var(--border);
-  border-radius: 14px; padding: 20px;
+  border-radius: 12px; padding: 10px;
+  overflow: hidden; box-sizing: border-box; width: 100%;
 }
 .card-title { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
 .card-sub { font-size: 14px; color: var(--muted); margin-bottom: 14px; }
@@ -136,7 +137,7 @@ select:focus { border-color: var(--purple); }
 .rank-score { font-size: 11px; font-weight: 700; width: 32px; text-align: right; flex-shrink: 0; }
 
 /* ── Weekday bars ── */
-.wd-bars { display: flex; gap: 2px; align-items: flex-end; height: 80px; overflow: hidden; width: 100%; }
+.wd-bars { display: flex; gap: 2px; align-items: flex-end; height: 80px; overflow: hidden; width: 100%; box-sizing: border-box; }
 .wd-col { display: flex; flex-direction: column; align-items: center; gap: 2px; height: 100%; justify-content: flex-end; min-width: 0; }
 .wd-bar { width: 100%; border-radius: 4px 4px 2px 2px; }
 .wd-lbl { font-size: 8px; color: var(--muted); font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
@@ -3121,7 +3122,7 @@ function buildHeatmap() {
                   'Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
   const diasSem = ['D','S','T','Q','Q','S','S'];
 
-  const cols = 2; // sempre 2 colunas no mobile.html
+  const cols = 2;
   let html = `<div data-desktop-grid="1" style="display:grid;grid-template-columns:repeat(${cols},1fr);gap:8px;">`;
 
   for (let mo = 0; mo < 12; mo++) {
