@@ -665,6 +665,58 @@ body.mobile-view .meta-stats { grid-template-columns:1fr 1fr !important; }
   #cMonthly { height:220px !important; }
   #selFrom, #selTo { font-size:11px !important; padding:3px 6px !important; }
 
+  /* ── Overflow fix global: NADA deve vazar da tela ── */
+  .card, .sec, #app, .page, .lendo-wrap {
+    overflow:hidden !important;
+    max-width:100% !important;
+  }
+  /* Exceções: painéis sobrepostos devem rolar */
+  #painelGenero, #painelStatus, #painelMeta, #painelColecao, #painelAutor {
+    overflow-y:auto !important;
+    overflow-x:hidden !important;
+  }
+
+  /* ── Calendário: forçar células quadradas compactas ── */
+  #calGrid {
+    display:grid !important;
+    grid-template-columns:repeat(7,minmax(0,1fr)) !important;
+    gap:2px !important;
+    width:100% !important;
+    overflow:hidden !important;
+  }
+  .cal-day {
+    min-height:0 !important;
+    aspect-ratio:1 !important;
+    padding:2px !important;
+    font-size:9px !important;
+    overflow:hidden !important;
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:flex-start !important;
+  }
+  .cal-day-num { font-size:9px !important; line-height:1 !important; }
+  .cal-day-pag { font-size:9px !important; line-height:1.1 !important; white-space:nowrap !important; overflow:hidden !important; text-overflow:ellipsis !important; }
+  .cal-day-livro { display:none !important; }
+  .cal-day-bar { height:2px !important; margin-top:auto !important; }
+
+  /* ── Dia da Semana: barras dentro do container ── */
+  .wd-bars { width:100% !important; overflow:hidden !important; gap:3px !important; }
+  .wd-col { min-width:0 !important; }
+  .wd-val { font-size:8px !important; }
+  .wd-lbl { font-size:8px !important; }
+
+  /* ── Gêneros: canvas 100% ── */
+  #cGeneros { height:260px !important; width:100% !important; }
+
+  /* ── Ranking: card sem overflow ── */
+  #rankList { width:100% !important; overflow:hidden !important; }
+  .rank-item { width:100% !important; overflow:hidden !important; }
+  .rank-bar-wrap { display:none !important; }
+  .rank-name { white-space:normal !important; overflow:hidden !important; font-size:13px !important; }
+
+  /* ── Charts: forçar dentro do card ── */
+  canvas { display:block !important; box-sizing:border-box !important; }
+
   /* Batalha sempre escondida a não ser quando ativo */
   #pageBatalha { display:none; }
   body.batalha-ativo #pageBatalha { display:block !important; }
