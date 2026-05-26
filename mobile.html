@@ -786,7 +786,9 @@ body.mobile-view-disabled .meta-stats { grid-template-columns:1fr 1fr !important
 <style id="mobile-override">
 /* MOBILE OVERRIDE - força tudo dentro da tela */
 html, body { max-width: 100vw !important; overflow-x: hidden !important; }
-* { max-width: 100% !important; box-sizing: border-box !important; }
+*:not(.wd-bar):not(.wd-col):not(.wd-bars) { max-width: 100% !important; box-sizing: border-box !important; }
+.wd-bars { overflow: hidden !important; width: 100% !important; box-sizing: border-box !important; }
+.wd-col { min-width: 0 !important; box-sizing: border-box !important; }
 .card { width: 100% !important; overflow: hidden !important; }
 .card-title { white-space: normal !important; overflow: hidden !important; }
 .ctrl { display: flex !important; flex-wrap: wrap !important; gap: 4px !important; }
@@ -794,10 +796,12 @@ html, body { max-width: 100vw !important; overflow-x: hidden !important; }
 #grid-rankings { display: grid !important; grid-template-columns: minmax(0,1fr) !important; }
 #rankList { overflow: hidden !important; }
 .rank-item { overflow: hidden !important; }
-.wd-bars { overflow: hidden !important; }
-.wd-col { min-width: 0 !important; }
 canvas { max-width: 100% !important; }
 #pageDashboard { overflow-x: hidden !important; }
+/* Heatmap inner grids */
+#heatmapGrid { overflow: hidden !important; }
+#heatmapGrid > div { overflow: hidden !important; min-width: 0 !important; }
+#heatmapGrid > div > div > div { overflow: hidden !important; font-size: 7px !important; }
 </style>
 </head>
 <body>
