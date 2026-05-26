@@ -136,7 +136,7 @@ select:focus { border-color: var(--purple); }
 .rank-score { font-size: 11px; font-weight: 700; width: 32px; text-align: right; flex-shrink: 0; }
 
 /* ── Weekday bars ── */
-.wd-bars { display: flex; gap: 2px; align-items: flex-end; height: 110px; overflow: hidden; width: 100%; }
+.wd-bars { display: flex; gap: 2px; align-items: flex-end; height: 80px; overflow: hidden; width: 100%; }
 .wd-col { display: flex; flex-direction: column; align-items: center; gap: 2px; height: 100%; justify-content: flex-end; min-width: 0; }
 .wd-bar { width: 100%; border-radius: 4px 4px 2px 2px; }
 .wd-lbl { font-size: 8px; color: var(--muted); font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
@@ -2181,11 +2181,13 @@ function buildWd() {
     const src  = type==='avg' ? WD_AVG : WD_SUM;
     const vals = src[yr] || src['total'] || [0,0,0,0,0,0,0];
     const maxV = Math.max(...vals, 1);
+    const minV = Math.min(...vals.filter(v=>v>0), maxV);
+    const range = maxV - minV || 1;
     const el   = document.getElementById(type==='avg' ? 'wdAvg' : 'wdSum');
     if (!el) return;
     el.innerHTML = '';
     vals.forEach((v, i) => {
-      const h    = Math.max(6, Math.round(v/maxV * 90));
+      const h    = v > 0 ? Math.max(8, Math.round(20 + ((v - minV) / range) * 55)) : 0;
       const disp = type==='avg' ? v.toFixed(0) : v.toLocaleString('pt-BR');
       el.innerHTML += `
         <div class="wd-col">
