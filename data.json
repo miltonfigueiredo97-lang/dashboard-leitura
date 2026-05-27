@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-26T19:33:05.662Z",
+  "geradoEm": "2026-05-27T02:20:19.749Z",
   "meta": {
     "total": 53,
     "lidos": 26,
     "faltando": 27,
     "paginasTotal": 26956,
-    "paginasLidas": 13013,
-    "paginasFaltando": 13943,
-    "mediaDiaria": 81,
-    "ritmoAtual": 74.3,
-    "dataPrevistoAtual": "30/11/2026"
+    "paginasLidas": 13053,
+    "paginasFaltando": 13903,
+    "mediaDiaria": 80.7,
+    "ritmoAtual": 73.2,
+    "dataPrevistoAtual": "02/12/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -71,16 +71,16 @@
     "2026": {
       "total": 53,
       "lidos": 26,
-      "lendo": 1,
+      "lendo": 2,
       "pausados": 0,
-      "aguardando": 26,
+      "aguardando": 25,
       "paginasTotal": 26956,
-      "paginasLidas": 13013,
-      "paginasFaltando": 13943,
+      "paginasLidas": 13053,
+      "paginasFaltando": 13903,
       "faltando": 27,
-      "mediaDiaria": 81,
-      "ritmoAtual": 74.3,
-      "dataPrevistoAtual": "30/11/2026"
+      "mediaDiaria": 80.7,
+      "ritmoAtual": 73.2,
+      "dataPrevistoAtual": "02/12/2026"
     },
     "2027": {
       "total": 1,
@@ -27238,6 +27238,15 @@
       "minutos": 125,
       "ano": 2026,
       "usuario": "Daniel"
+    },
+    {
+      "livro": "Ascendant",
+      "colecao": "Som do Caos",
+      "data": "2026-05-27",
+      "paginas": 40,
+      "minutos": 45,
+      "ano": 2026,
+      "usuario": "Daniel"
     }
   ],
   "livros": [
@@ -35676,10 +35685,10 @@
       "colecao": "Som do Caos",
       "ordemColecao": 0,
       "ordem": 0,
-      "status": "Aguardando",
+      "status": "Lendo",
       "totalPag": 550,
-      "pagAtual": 0,
-      "pct": 0,
+      "pagAtual": 40,
+      "pct": 0.073,
       "usuario": "Daniel",
       "genero": "Fantasia épica"
     },
@@ -36262,6 +36271,24 @@
       "pct": 0.035,
       "usuario": "MILTON",
       "genero": "Fantasia"
+    },
+    {
+      "livro": "Ascendant",
+      "autor": "Michael R. Miller",
+      "isbn": "",
+      "coverUrl": "https://m.media-amazon.com/images/I/713-KqDyIdL._AC_UY218_.jpg",
+      "metaAno": "2026",
+      "anoConclusao": "",
+      "depende": "",
+      "colecao": "Som do Caos",
+      "ordemColecao": 0,
+      "ordem": 0,
+      "status": "Lendo",
+      "totalPag": 550,
+      "pagAtual": 40,
+      "pct": 0.073,
+      "usuario": "Daniel",
+      "genero": "Fantasia épica"
     }
   ],
   "aguardando": [
@@ -40367,24 +40394,6 @@
       "pagAtual": 0,
       "pct": 0,
       "usuario": "MILTON",
-      "genero": "Fantasia épica"
-    },
-    {
-      "livro": "Ascendant",
-      "autor": "Michael R. Miller",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/713-KqDyIdL._AC_UY218_.jpg",
-      "metaAno": "2026",
-      "anoConclusao": "",
-      "depende": "",
-      "colecao": "Som do Caos",
-      "ordemColecao": 0,
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 550,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "Daniel",
       "genero": "Fantasia épica"
     },
     {
