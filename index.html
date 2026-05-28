@@ -1862,13 +1862,17 @@ function renderizarGraficos(dados) {
   if (isMobile()) setTimeout(applyMobileLayout, 400);
   setTimeout(buildDrilldown, 300);
   setTimeout(buildDrilldown, 1000);
-  // Renderizar quando o canvas entrar na viewport
-  const ddCanvas = document.getElementById('cDrilldown');
-  if (ddCanvas && window.IntersectionObserver) {
-    const ddObs = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) { buildDrilldown(); ddObs.disconnect(); }
-    }, { threshold: 0.1 });
-    ddObs.observe(ddCanvas);
+  // Chamar no primeiro scroll da página
+  const ddScrollHandler = () => {
+    buildDrilldown();
+    window.removeEventListener('scroll', ddScrollHandler);
+  };
+  window.addEventListener('scroll', ddScrollHandler, { once: true });
+  // Chamar quando clicar no container
+  const ddContainer = document.getElementById('cDrilldown')?.closest('.card');
+  if (ddContainer && !ddContainer._ddListenerAdded) {
+    ddContainer._ddListenerAdded = true;
+    ddContainer.addEventListener('mouseenter', () => buildDrilldown(), { once: true });
   }
 }
 
