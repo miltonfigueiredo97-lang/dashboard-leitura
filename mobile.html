@@ -1142,8 +1142,8 @@ canvas { max-width: 100% !important; }
     <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:10px;">
       <div class="card-title" style="margin:0;font-size:14px;">📊 Detalhe de Leitura</div>
       <div style="display:flex;gap:4px;">
-        <button onclick="ddSetModo('semana')" id="dd-btn-semana" style="padding:4px 8px;border-radius:6px;border:1px solid var(--border);cursor:pointer;font-size:11px;background:var(--purple);color:white;">Semana</button>
-        <button onclick="ddSetModo('mes')" id="dd-btn-mes" style="padding:4px 8px;border-radius:6px;border:1px solid var(--border);cursor:pointer;font-size:11px;background:var(--bg3);color:var(--text);">Mês</button>
+        <button onclick="ddSetModo('semana')" id="dd-btn-semana" style="padding:4px 8px;border-radius:6px;border:1px solid var(--border);cursor:pointer;font-size:11px;background:var(--bg3);color:var(--text);">Semana</button>
+        <button onclick="ddSetModo('mes')" id="dd-btn-mes" style="padding:4px 8px;border-radius:6px;border:1px solid var(--border);cursor:pointer;font-size:11px;background:var(--purple);color:white;">Mês</button>
       </div>
     </div>
     <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:10px;">
@@ -2964,7 +2964,7 @@ function buildGeneros() {
 window.buildGeneros = buildGeneros;
 
 // ── Gráfico Drill-down ─────────────────────────────────────────────
-let _ddModo = 'semana';
+let _ddModo = 'mes';
 let _ddOffset = 0;
 let _ddChart = null;
 let _ddLivroColors = {};
