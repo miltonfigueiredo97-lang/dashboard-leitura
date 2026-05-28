@@ -2785,12 +2785,11 @@ function buildDrilldown() {
   if (_ddChart) { _ddChart.destroy(); _ddChart = null; }
   const ddEl = document.getElementById('cDrilldown');
   if (!ddEl) return;
-  // Forçar tamanho correto antes de criar o chart
+  // Sempre destruir qualquer chart existente no canvas
+  const existingDD = Chart.getChart(ddEl);
+  if (existingDD) existingDD.destroy();
   const ddParent = ddEl.parentElement;
-  if (ddParent) {
-    ddEl.style.width = '100%';
-    ddEl.style.height = (ddParent.offsetHeight || 260) + 'px';
-  }
+  if (ddParent) { ddEl.style.width = '100%'; ddEl.style.height = (ddParent.offsetHeight || 260) + 'px'; }
   const ctx = ddEl.getContext('2d');
 
   _ddChart = new Chart(ctx, {
