@@ -3254,7 +3254,7 @@ carregarDados();
 <!-- Modal: Excluir Sessão -->
 <div class="pwa-overlay" id="modalExcluirSessao">
   <div class="pwa-modal">
-    <h2>📅 Excluir Sessão</h2>
+    <h2>📅 Gerenciar Sessões</h2>
     <div class="pwa-field">
       <label>Filtrar por livro (opcional)</label>
       <input id="es-filtro" type="text" placeholder="Digite para filtrar..."
@@ -3264,6 +3264,43 @@ carregarDados();
     <div id="es-lista" style="max-height:380px;overflow-y:auto;display:flex;flex-direction:column;gap:6px;"></div>
     <div id="es-msg" class="pwa-msg"></div>
     <button class="pwa-btn-cancel" onclick="fecharModal('excluirSessao')">Fechar</button>
+  </div>
+</div>
+
+<!-- Modal: Editar Sessão -->
+<div class="pwa-overlay" id="modalEditarSessao">
+  <div class="pwa-modal">
+    <h2>✏️ Editar Sessão</h2>
+    <input type="hidden" id="ee-livro-original">
+    <input type="hidden" id="ee-data-original">
+    <input type="hidden" id="ee-paginas-original">
+    <div class="pwa-field">
+      <label>Livro</label>
+      <div id="ee-livro-nome" style="padding:8px 12px;background:var(--bg3);border-radius:8px;color:var(--teal);font-size:14px;"></div>
+    </div>
+    <div class="pwa-row">
+      <div class="pwa-field">
+        <label>Data</label>
+        <input id="ee-data" type="date" style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:8px;">
+      </div>
+      <div class="pwa-field">
+        <label>Páginas lidas</label>
+        <input id="ee-paginas" type="number" min="1">
+      </div>
+    </div>
+    <div class="pwa-row">
+      <div class="pwa-field">
+        <label>Horas</label>
+        <input id="ee-horas" type="number" min="0" placeholder="0">
+      </div>
+      <div class="pwa-field">
+        <label>Minutos</label>
+        <input id="ee-minutos" type="number" min="0" max="59" placeholder="0">
+      </div>
+    </div>
+    <div id="ee-msg" class="pwa-msg"></div>
+    <button class="pwa-btn" onclick="salvarEdicaoSessao()">💾 Salvar alterações</button>
+    <button class="pwa-btn-cancel" onclick="fecharModal('editarSessao')">Cancelar</button>
   </div>
 </div>
 
@@ -5000,30 +5037,58 @@ window.renderSessoesExcluir = renderSessoesExcluir;
 
 function editarSessaoDesktop(s) {
   fecharModal('excluirSessao');
-  abrirModal('sessao');
-  setTimeout(() => {
-    const livroEl = document.getElementById('s-livro');
-    const livroDisplay = document.getElementById('s-livro-selecionado');
-    const livrosBusca = document.getElementById('s-livro-busca');
-    if (livroEl) livroEl.value = s.livro;
-    if (livroDisplay) { livroDisplay.textContent = '📖 ' + s.livro + ' ✕'; livroDisplay.style.display = 'block'; }
-    if (livrosBusca) livrosBusca.placeholder = s.livro;
-    const pagEl = document.getElementById('s-paginas');
-    if (pagEl) pagEl.value = s.paginas;
-    if (s.minutos) {
-      const h = Math.floor(s.minutos / 60);
-      const m = Math.round(s.minutos % 60);
-      const horasEl = document.getElementById('s-horas');
-      const minsEl = document.getElementById('s-minutos');
-      if (horasEl) horasEl.value = h || '';
-      if (minsEl) minsEl.value = m || '';
-    }
-    const livro = (window._livros||[]).find(l => l.livro === s.livro);
-    if (livro && window.iniciarScrollPagina) iniciarScrollPagina(livro.pagAtual||0, livro.totalPag||0);
-    mostrarMsg('s-msg', `✏️ Editando sessão de ${s.data}`, 'ok');
-  }, 200);
+  // Preenche o modal de edição
+  document.getElementById('ee-livro-original').value = s.livro;
+  document.getElementById('ee-data-original').value = s.data;
+  document.getElementById('ee-paginas-original').value = s.paginas;
+  document.getElementById('ee-livro-nome').textContent = s.livro;
+  document.getElementById('ee-data').value = s.data;
+  document.getElementById('ee-paginas').value = s.paginas;
+  const h = s.minutos ? Math.floor(s.minutos/60) : 0;
+  const m = s.minutos ? Math.round(s.minutos%60) : 0;
+  document.getElementById('ee-horas').value = h || '';
+  document.getElementById('ee-minutos').value = m || '';
+  document.getElementById('ee-msg').className = 'pwa-msg';
+  document.getElementById('ee-msg').textContent = '';
+  abrirModal('editarSessao');
 }
 window.editarSessaoDesktop = editarSessaoDesktop;
+
+async function salvarEdicaoSessao() {
+  const livro         = document.getElementById('ee-livro-original').value;
+  const dataOriginal  = document.getElementById('ee-data-original').value;
+  const paginasOrig   = Number(document.getElementById('ee-paginas-original').value);
+  const novaData      = document.getElementById('ee-data').value;
+  const novasPaginas  = Number(document.getElementById('ee-paginas').value);
+  const horas         = Number(document.getElementById('ee-horas').value) || 0;
+  const minutos       = Number(document.getElementById('ee-minutos').value) || 0;
+  const totalMinutos  = horas * 60 + minutos;
+  const usuario       = usuarioAtual === 'Batalha' ? 'Milton' : usuarioAtual;
+
+  if (!novaData || !novasPaginas) {
+    mostrarMsg('ee-msg', '⚠️ Preencha data e páginas', 'err'); return;
+  }
+  mostrarMsg('ee-msg', 'Salvando...', '');
+  try {
+    // 1. Excluir sessão original
+    const r1 = await fetch(API_URL, { method:'POST',
+      body: JSON.stringify({ acao:'excluirSessao', livro, data:dataOriginal, paginas:paginasOrig, usuario })
+    });
+    const d1 = await r1.json();
+    if (!d1.ok) { mostrarMsg('ee-msg', '❌ Erro ao excluir original: '+(d1.erro||''), 'err'); return; }
+
+    // 2. Criar nova sessão com dados editados
+    const r2 = await fetch(API_URL, { method:'POST',
+      body: JSON.stringify({ acao:'registrarSessao', livro, paginas:novasPaginas, minutos:totalMinutos, data:novaData, usuario })
+    });
+    const d2 = await r2.json();
+    if (d2.ok) {
+      mostrarMsg('ee-msg', '✅ Sessão editada!', 'ok');
+      setTimeout(() => { fecharModal('editarSessao'); recarregarAteAtualizar(); }, 1200);
+    } else { mostrarMsg('ee-msg', '❌ Erro ao criar nova: '+(d2.erro||''), 'err'); }
+  } catch(e) { mostrarMsg('ee-msg', '❌ Erro de conexão', 'err'); }
+}
+window.salvarEdicaoSessao = salvarEdicaoSessao;
 
 async function excluirSessao(livro, data, paginas) {
   if (!confirm(`Excluir sessão de "${livro}" em ${data}?`)) return;
