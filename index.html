@@ -4982,16 +4982,48 @@ function renderSessoesExcluir() {
         <div style="font-size:13px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${s.livro}</div>
         <div style="font-size:12px;color:var(--muted);">${s.data} · ${s.paginas} págs${s.minutos ? ' · '+Math.round(s.minutos)+'min' : ''}</div>
       </div>
+      <button class="es-edit-btn"
+        style="background:var(--purple);border:none;color:white;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:16px;flex-shrink:0;">✏️</button>
       <button data-livro="${s.livro.replace(/"/g,'&quot;')}" data-data="${s.data}" data-paginas="${s.paginas}"
         class="es-del-btn"
         style="background:#e53935;border:none;color:white;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:16px;flex-shrink:0;">🗑️</button>`;
     div.querySelector('.es-del-btn').addEventListener('click', () => {
       excluirSessao(s.livro, s.data, s.paginas);
     });
+    div.querySelector('.es-edit-btn').addEventListener('click', () => {
+      editarSessaoDesktop(s);
+    });
     lista.appendChild(div);
   });
 }
 window.renderSessoesExcluir = renderSessoesExcluir;
+
+function editarSessaoDesktop(s) {
+  fecharModal('excluirSessao');
+  abrirModal('sessao');
+  setTimeout(() => {
+    const livroEl = document.getElementById('s-livro');
+    const livroDisplay = document.getElementById('s-livro-selecionado');
+    const livrosBusca = document.getElementById('s-livro-busca');
+    if (livroEl) livroEl.value = s.livro;
+    if (livroDisplay) { livroDisplay.textContent = '📖 ' + s.livro + ' ✕'; livroDisplay.style.display = 'block'; }
+    if (livrosBusca) livrosBusca.placeholder = s.livro;
+    const pagEl = document.getElementById('s-paginas');
+    if (pagEl) pagEl.value = s.paginas;
+    if (s.minutos) {
+      const h = Math.floor(s.minutos / 60);
+      const m = Math.round(s.minutos % 60);
+      const horasEl = document.getElementById('s-horas');
+      const minsEl = document.getElementById('s-minutos');
+      if (horasEl) horasEl.value = h || '';
+      if (minsEl) minsEl.value = m || '';
+    }
+    const livro = (window._livros||[]).find(l => l.livro === s.livro);
+    if (livro && window.iniciarScrollPagina) iniciarScrollPagina(livro.pagAtual||0, livro.totalPag||0);
+    mostrarMsg('s-msg', `✏️ Editando sessão de ${s.data}`, 'ok');
+  }, 200);
+}
+window.editarSessaoDesktop = editarSessaoDesktop;
 
 async function excluirSessao(livro, data, paginas) {
   if (!confirm(`Excluir sessão de "${livro}" em ${data}?`)) return;
