@@ -871,6 +871,25 @@ body.mobile-view .meta-stats { grid-template-columns:1fr 1fr !important; }
     <div style="height:240px;position:relative;"><canvas id="cMonthly"></canvas></div>
   </div>
 
+  <!-- ── Gráfico Drill-down ── -->
+  <div class="card" style="margin-bottom:16px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:12px;">
+      <div class="card-title" style="margin:0;">📊 Detalhe de Leitura</div>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <button id="dd-prev" onclick="ddNavegar(-1)" style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;color:var(--text);padding:4px 10px;cursor:pointer;">‹</button>
+        <span id="dd-label" style="font-size:13px;font-weight:600;color:var(--text);min-width:120px;text-align:center;">—</span>
+        <button id="dd-next" onclick="ddNavegar(1)" style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;color:var(--text);padding:4px 10px;cursor:pointer;">›</button>
+      </div>
+      <div style="display:flex;gap:4px;">
+        <button onclick="ddSetModo('semana')" id="dd-btn-semana" style="padding:4px 10px;border-radius:6px;border:1px solid var(--border);cursor:pointer;font-size:12px;background:var(--purple);color:white;">Semana</button>
+        <button onclick="ddSetModo('mes')" id="dd-btn-mes" style="padding:4px 10px;border-radius:6px;border:1px solid var(--border);cursor:pointer;font-size:12px;background:var(--bg3);color:var(--text);">Mês</button>
+      </div>
+    </div>
+    <div style="height:260px;position:relative;"><canvas id="cDrilldown"></canvas></div>
+    <div id="dd-detalhe" style="display:none;margin-top:12px;padding:10px;background:var(--bg3);border-radius:8px;font-size:13px;"></div>
+    <div id="dd-legenda" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;"></div>
+  </div>
+
   <!-- ── 3. Rankings e Distribuição ── -->
   <div class="sec" data-msection="ranking">🏅 Rankings &amp; Distribuição</div>
   <!-- Linha 1: Ranking + Dia da Semana + Gêneros -->
@@ -1841,6 +1860,7 @@ function renderizarGraficos(dados) {
   buildHeatmap();
   buildCalendar();
   if (isMobile()) setTimeout(applyMobileLayout, 400);
+  buildDrilldown();
 }
 
 // ════════════════════════════════════════════════
@@ -2666,6 +2686,170 @@ function buildGeneros() {
   });
 }
 window.buildGeneros = buildGeneros;
+
+// ── Gráfico Drill-down ─────────────────────────────────────────────
+let _ddModo = 'semana';
+let _ddOffset = 0;
+let _ddChart = null;
+let _ddLivroColors = {};
+const _ddPaleta = ['#8b7cf8','#5eead4','#fbbf24','#f87171','#34d399','#60a5fa','#a78bfa','#fb923c','#f472b6','#4ade80','#e879f9','#38bdf8'];
+
+function ddGetLivroColor(livro) {
+  if (!_ddLivroColors[livro]) {
+    const idx = Object.keys(_ddLivroColors).length % _ddPaleta.length;
+    _ddLivroColors[livro] = _ddPaleta[idx];
+  }
+  return _ddLivroColors[livro];
+}
+
+function ddSetModo(modo) {
+  _ddModo = modo;
+  _ddOffset = 0;
+  document.getElementById('dd-btn-semana').style.background = modo === 'semana' ? 'var(--purple)' : 'var(--bg3)';
+  document.getElementById('dd-btn-semana').style.color = modo === 'semana' ? 'white' : 'var(--text)';
+  document.getElementById('dd-btn-mes').style.background = modo === 'mes' ? 'var(--purple)' : 'var(--bg3)';
+  document.getElementById('dd-btn-mes').style.color = modo === 'mes' ? 'white' : 'var(--text)';
+  buildDrilldown();
+}
+window.ddSetModo = ddSetModo;
+
+function ddNavegar(dir) {
+  _ddOffset += dir;
+  buildDrilldown();
+}
+window.ddNavegar = ddNavegar;
+
+function ddGetPeriodo() {
+  const hoje = new Date(); hoje.setHours(12,0,0,0);
+  if (_ddModo === 'semana') {
+    const dow = hoje.getDay(); // 0=dom
+    const seg = new Date(hoje); seg.setDate(hoje.getDate() - dow + (_ddOffset * 7));
+    const dom = new Date(seg); dom.setDate(seg.getDate() + 6);
+    const dias = [];
+    for (let i = 0; i < 7; i++) {
+      const d = new Date(seg); d.setDate(seg.getDate() + i);
+      dias.push(d.toISOString().slice(0,10));
+    }
+    const label = `${seg.getDate().toString().padStart(2,'0')}/${(seg.getMonth()+1).toString().padStart(2,'0')} – ${dom.getDate().toString().padStart(2,'0')}/${(dom.getMonth()+1).toString().padStart(2,'0')}`;
+    return { dias, label };
+  } else {
+    const ref = new Date(hoje.getFullYear(), hoje.getMonth() + _ddOffset, 1);
+    const meses = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+    const label = `${meses[ref.getMonth()]} ${ref.getFullYear()}`;
+    const daysInMonth = new Date(ref.getFullYear(), ref.getMonth()+1, 0).getDate();
+    const dias = [];
+    for (let d = 1; d <= daysInMonth; d++) {
+      dias.push(`${ref.getFullYear()}-${String(ref.getMonth()+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`);
+    }
+    return { dias, label };
+  }
+}
+
+function buildDrilldown() {
+  const sess = window._sessoes || [];
+  const { dias, label } = ddGetPeriodo();
+  document.getElementById('dd-label').textContent = label;
+
+  // Agrupar sessões por dia e livro
+  const dadosPorDia = {};
+  dias.forEach(d => { dadosPorDia[d] = {}; });
+  sess.forEach(s => {
+    if (!s.data || !dias.includes(s.data)) return;
+    if (!dadosPorDia[s.data][s.livro]) dadosPorDia[s.data][s.livro] = 0;
+    dadosPorDia[s.data][s.livro] += s.paginas || 0;
+  });
+
+  // Livros presentes no período
+  const livrosPresentes = [...new Set(
+    Object.values(dadosPorDia).flatMap(d => Object.keys(d))
+  )];
+
+  // Labels dos dias
+  const labels = dias.map(d => {
+    const dt = new Date(d + 'T12:00:00');
+    const nomes = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+    return `${nomes[dt.getDay()]} ${dt.getDate()}`;
+  });
+
+  // Datasets — um por livro, empilhado
+  const datasets = livrosPresentes.map(livro => ({
+    label: livro,
+    data: dias.map(d => dadosPorDia[d][livro] || 0),
+    backgroundColor: ddGetLivroColor(livro),
+    borderRadius: 3,
+    stack: 'stack'
+  }));
+
+  // Destruir chart anterior
+  if (_ddChart) { _ddChart.destroy(); _ddChart = null; }
+  const ctx = document.getElementById('cDrilldown')?.getContext('2d');
+  if (!ctx) return;
+
+  _ddChart = new Chart(ctx, {
+    type: 'bar',
+    data: { labels, datasets },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      onClick: (evt, els) => {
+        if (!els.length) return;
+        const diaIdx = els[0].index;
+        const dia = dias[diaIdx];
+        ddMostrarDetalhe(dia, dadosPorDia[dia]);
+      },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            title: items => {
+              const dia = dias[items[0].dataIndex];
+              const total = Object.values(dadosPorDia[dia]).reduce((a,b)=>a+b,0);
+              return `${labels[items[0].dataIndex]} — ${total} págs total`;
+            },
+            label: item => ` ${item.dataset.label}: ${item.parsed.y} págs`
+          }
+        }
+      },
+      scales: {
+        x: { stacked: true, ticks: { color: '#8892a8', font: { size: 11 } }, grid: { display: false } },
+        y: { stacked: true, ticks: { color: '#8892a8' }, grid: { color: 'rgba(42,50,72,0.3)' }, beginAtZero: true }
+      }
+    }
+  });
+
+  // Legenda
+  const legEl = document.getElementById('dd-legenda');
+  legEl.innerHTML = livrosPresentes.map(l =>
+    `<div style="display:flex;align-items:center;gap:4px;">
+      <div style="width:10px;height:10px;border-radius:2px;background:${ddGetLivroColor(l)};flex-shrink:0;"></div>
+      <span style="font-size:11px;color:var(--muted);">${l.length > 25 ? l.slice(0,25)+'…' : l}</span>
+    </div>`
+  ).join('');
+
+  document.getElementById('dd-detalhe').style.display = 'none';
+}
+window.buildDrilldown = buildDrilldown;
+
+function ddMostrarDetalhe(dia, dados) {
+  const el = document.getElementById('dd-detalhe');
+  const dt = new Date(dia + 'T12:00:00');
+  const meses = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+  const total = Object.values(dados).reduce((a,b)=>a+b,0);
+  if (!total) { el.style.display = 'none'; return; }
+  const sessoesDia = (window._sessoes||[]).filter(s => s.data === dia);
+  const minutosDia = sessoesDia.reduce((a,s)=>a+(s.minutos||0),0);
+
+  el.style.display = 'block';
+  el.innerHTML = `<div style="font-weight:700;margin-bottom:8px;color:var(--text);">
+    📅 ${dt.getDate()} ${meses[dt.getMonth()]} ${dt.getFullYear()} — <span style="color:var(--teal);">${total} págs</span>${minutosDia ? ` · ${Math.round(minutosDia)}min` : ''}
+  </div>` +
+  Object.entries(dados).map(([livro, pags]) => `
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+      <div style="width:8px;height:8px;border-radius:50%;background:${ddGetLivroColor(livro)};flex-shrink:0;"></div>
+      <span style="flex:1;font-size:12px;">${livro}</span>
+      <span style="font-size:12px;font-weight:700;color:var(--teal);">${pags} págs</span>
+    </div>`).join('');
+}
+window.ddMostrarDetalhe = ddMostrarDetalhe;
 
 function _abrirPainelOverlay(titulo, livros) {
   const painel = document.getElementById('painelGenero');
