@@ -2140,7 +2140,7 @@ function renderizarGraficos(dados) {
   buildStreaks();
   buildHeatmap();
   buildCalendar();
-  buildDrilldown();
+  setTimeout(buildDrilldown, 200);
   if (isMobile()) setTimeout(applyMobileLayout, 400);
 }
 
@@ -3030,8 +3030,11 @@ function buildDrilldown() {
     backgroundColor: ddGetLivroColor(livro), borderRadius:3, stack:'stack'
   }));
   if (_ddChart) { _ddChart.destroy(); _ddChart=null; }
-  const ctx = document.getElementById('cDrilldown')?.getContext('2d');
-  if (!ctx) return;
+  const ddEl = document.getElementById('cDrilldown');
+  if (!ddEl) return;
+  const ddParent = ddEl.parentElement;
+  if (ddParent) { ddEl.style.width='100%'; ddEl.style.height=(ddParent.offsetHeight||220)+'px'; }
+  const ctx = ddEl.getContext('2d');
   _ddChart = new Chart(ctx, {
     type:'bar', data:{labels,datasets},
     options:{

@@ -1860,7 +1860,7 @@ function renderizarGraficos(dados) {
   buildHeatmap();
   buildCalendar();
   if (isMobile()) setTimeout(applyMobileLayout, 400);
-  buildDrilldown();
+  setTimeout(buildDrilldown, 200);
 }
 
 // ════════════════════════════════════════════════
@@ -2782,8 +2782,15 @@ function buildDrilldown() {
 
   // Destruir chart anterior
   if (_ddChart) { _ddChart.destroy(); _ddChart = null; }
-  const ctx = document.getElementById('cDrilldown')?.getContext('2d');
-  if (!ctx) return;
+  const ddEl = document.getElementById('cDrilldown');
+  if (!ddEl) return;
+  // Forçar tamanho correto antes de criar o chart
+  const ddParent = ddEl.parentElement;
+  if (ddParent) {
+    ddEl.style.width = '100%';
+    ddEl.style.height = (ddParent.offsetHeight || 260) + 'px';
+  }
+  const ctx = ddEl.getContext('2d');
 
   _ddChart = new Chart(ctx, {
     type: 'bar',
