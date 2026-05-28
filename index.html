@@ -1860,19 +1860,14 @@ function renderizarGraficos(dados) {
   buildHeatmap();
   buildCalendar();
   if (isMobile()) setTimeout(applyMobileLayout, 400);
-  setTimeout(buildDrilldown, 300);
-  setTimeout(buildDrilldown, 1000);
-  // Chamar no primeiro scroll da página
-  const ddScrollHandler = () => {
-    buildDrilldown();
-    window.removeEventListener('scroll', ddScrollHandler);
-  };
+  setTimeout(() => ddSetModo('mes'), 300);
+  setTimeout(() => ddSetModo('mes'), 1000);
+  const ddScrollHandler = () => { ddSetModo('mes'); window.removeEventListener('scroll', ddScrollHandler); };
   window.addEventListener('scroll', ddScrollHandler, { once: true });
-  // Chamar quando clicar no container
   const ddContainer = document.getElementById('cDrilldown')?.closest('.card');
   if (ddContainer && !ddContainer._ddListenerAdded) {
     ddContainer._ddListenerAdded = true;
-    ddContainer.addEventListener('mouseenter', () => buildDrilldown(), { once: true });
+    ddContainer.addEventListener('mouseenter', () => ddSetModo('mes'), { once: true });
   }
 }
 
