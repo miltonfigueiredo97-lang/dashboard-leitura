@@ -885,7 +885,7 @@ body.mobile-view .meta-stats { grid-template-columns:1fr 1fr !important; }
         <button onclick="ddSetModo('mes')" id="dd-btn-mes" style="padding:4px 10px;border-radius:6px;border:1px solid var(--border);cursor:pointer;font-size:12px;background:var(--purple);color:white;">Mês</button>
       </div>
     </div>
-    <div style="height:260px;position:relative;"><canvas id="cDrilldown"></canvas></div>
+    <div style="height:260px;position:relative;"><canvas id="cDrilldown" style="height:260px!important;"></canvas></div>
     <div id="dd-detalhe" style="display:none;margin-top:12px;padding:10px;background:var(--bg3);border-radius:8px;font-size:13px;"></div>
     <div id="dd-legenda" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;"></div>
   </div>
@@ -1860,7 +1860,8 @@ function renderizarGraficos(dados) {
   buildHeatmap();
   buildCalendar();
   if (isMobile()) setTimeout(applyMobileLayout, 400);
-  setTimeout(buildDrilldown, 200);
+  setTimeout(buildDrilldown, 300);
+  setTimeout(buildDrilldown, 1000);
 }
 
 // ════════════════════════════════════════════════
