@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-29T00:41:10.460Z",
+  "geradoEm": "2026-05-29T01:52:52.373Z",
   "meta": {
     "total": 53,
     "lidos": 26,
     "faltando": 27,
     "paginasTotal": 26956,
-    "paginasLidas": 13333,
-    "paginasFaltando": 13623,
-    "mediaDiaria": 81.5,
-    "ritmoAtual": 79.8,
-    "dataPrevistoAtual": "15/11/2026"
+    "paginasLidas": 13408,
+    "paginasFaltando": 13548,
+    "mediaDiaria": 82,
+    "ritmoAtual": 82.2,
+    "dataPrevistoAtual": "09/11/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -75,12 +75,12 @@
       "pausados": 0,
       "aguardando": 25,
       "paginasTotal": 26956,
-      "paginasLidas": 13333,
-      "paginasFaltando": 13623,
+      "paginasLidas": 13408,
+      "paginasFaltando": 13548,
       "faltando": 27,
-      "mediaDiaria": 81.5,
-      "ritmoAtual": 79.8,
-      "dataPrevistoAtual": "15/11/2026"
+      "mediaDiaria": 82,
+      "ritmoAtual": 82.2,
+      "dataPrevistoAtual": "09/11/2026"
     },
     "2027": {
       "total": 1,
@@ -27310,6 +27310,15 @@
       "minutos": 100,
       "ano": 2026,
       "usuario": "Milton"
+    },
+    {
+      "livro": "Ascendant",
+      "colecao": "Som do Caos",
+      "data": "2026-05-29",
+      "paginas": 75,
+      "minutos": 82,
+      "ano": 2026,
+      "usuario": "Daniel"
     }
   ],
   "livros": [
@@ -35750,8 +35759,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 550,
-      "pagAtual": 121,
-      "pct": 0.22,
+      "pagAtual": 196,
+      "pct": 0.356,
       "usuario": "Daniel",
       "genero": "Fantasia épica"
     },
@@ -36348,8 +36357,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 550,
-      "pagAtual": 121,
-      "pct": 0.22,
+      "pagAtual": 196,
+      "pct": 0.356,
       "usuario": "Daniel",
       "genero": "Fantasia épica"
     }
