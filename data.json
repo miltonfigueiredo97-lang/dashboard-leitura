@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-29T01:52:52.373Z",
+  "geradoEm": "2026-05-29T03:34:33.076Z",
   "meta": {
     "total": 53,
     "lidos": 26,
@@ -9,7 +9,7 @@
     "paginasFaltando": 13548,
     "mediaDiaria": 82,
     "ritmoAtual": 82.2,
-    "dataPrevistoAtual": "09/11/2026"
+    "dataPrevistoAtual": "10/11/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -80,7 +80,7 @@
       "faltando": 27,
       "mediaDiaria": 82,
       "ritmoAtual": 82.2,
-      "dataPrevistoAtual": "09/11/2026"
+      "dataPrevistoAtual": "10/11/2026"
     },
     "2027": {
       "total": 1,
@@ -30386,13 +30386,13 @@
       "livro": "O Imperador das Lâminas",
       "autor": "Brian McClellan",
       "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/81knGJjDerL._AC_UY218_.jpg",
+      "coverUrl": "https://m.media-amazon.com/images/I/81STUYIykjL._UF1000,1000_QL80_.jpg",
       "metaAno": "AINDA NÃO DEFINIDO",
       "anoConclusao": "",
       "depende": "",
       "colecao": "As Crônicas do Trono de Pedra Bruta",
       "ordemColecao": 1,
-      "ordem": 0,
+      "ordem": 1,
       "status": "Aguardando",
       "totalPag": 544,
       "pagAtual": 0,
@@ -37358,13 +37358,13 @@
       "livro": "O Imperador das Lâminas",
       "autor": "Brian McClellan",
       "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/81knGJjDerL._AC_UY218_.jpg",
+      "coverUrl": "https://m.media-amazon.com/images/I/81STUYIykjL._UF1000,1000_QL80_.jpg",
       "metaAno": "AINDA NÃO DEFINIDO",
       "anoConclusao": "",
       "depende": "",
       "colecao": "As Crônicas do Trono de Pedra Bruta",
       "ordemColecao": 1,
-      "ordem": 0,
+      "ordem": 1,
       "status": "Aguardando",
       "totalPag": 544,
       "pagAtual": 0,
@@ -41535,7 +41535,7 @@
     {
       "livro": "O Sobrinho do Mago",
       "ano": 2025,
-      "media": 5.8,
+      "media": 5.65,
       "criterios": {
         "Diálogos": 3,
         "Enredo": 4,
@@ -41545,7 +41545,7 @@
         "Impacto Emocional": 4,
         "Originalidade": 9,
         "Personagens": 7,
-        "Ritmo": 9,
+        "Ritmo": 7.5,
         "Temas": 5
       },
       "usuario": "MILTON"
@@ -43963,7 +43963,7 @@
     {
       "livro": "A Cidade de Bronze",
       "ano": 2026,
-      "media": 7.5,
+      "media": 7.35,
       "criterios": {
         "Diálogos": 6,
         "Enredo": 9,
@@ -43973,7 +43973,7 @@
         "Impacto Emocional": 5,
         "Originalidade": 8,
         "Personagens": 7,
-        "Ritmo": 9,
+        "Ritmo": 7.5,
         "Temas": 8.5
       },
       "usuario": "Milton"
