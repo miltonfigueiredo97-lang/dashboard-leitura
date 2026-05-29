@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-28T12:39:08.260Z",
+  "geradoEm": "2026-05-29T00:41:10.460Z",
   "meta": {
     "total": 53,
     "lidos": 26,
     "faltando": 27,
     "paginasTotal": 26956,
-    "paginasLidas": 13242,
-    "paginasFaltando": 13714,
+    "paginasLidas": 13333,
+    "paginasFaltando": 13623,
     "mediaDiaria": 81.5,
-    "ritmoAtual": 78.1,
-    "dataPrevistoAtual": "20/11/2026"
+    "ritmoAtual": 79.8,
+    "dataPrevistoAtual": "15/11/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -75,12 +75,12 @@
       "pausados": 0,
       "aguardando": 25,
       "paginasTotal": 26956,
-      "paginasLidas": 13242,
-      "paginasFaltando": 13714,
+      "paginasLidas": 13333,
+      "paginasFaltando": 13623,
       "faltando": 27,
       "mediaDiaria": 81.5,
-      "ritmoAtual": 78.1,
-      "dataPrevistoAtual": "20/11/2026"
+      "ritmoAtual": 79.8,
+      "dataPrevistoAtual": "15/11/2026"
     },
     "2027": {
       "total": 1,
@@ -27301,6 +27301,15 @@
       "minutos": 24,
       "ano": 2026,
       "usuario": "Daniel"
+    },
+    {
+      "livro": "Harry Potter - Camara Secreta",
+      "colecao": "Harry Potter",
+      "data": "2026-05-29",
+      "paginas": 91,
+      "minutos": 100,
+      "ano": 2026,
+      "usuario": "Milton"
     }
   ],
   "livros": [
@@ -28534,15 +28543,15 @@
       "isbn": "9788532523051",
       "coverUrl": "https://m.media-amazon.com/images/I/81jbivNEVML._AC_UF1000,1000_QL80_.jpg",
       "metaAno": "2026",
-      "anoConclusao": "",
+      "anoConclusao": "2026",
       "depende": "Harry Potter - A Pedra Filosofal",
       "colecao": "Harry Potter",
       "ordemColecao": 2,
       "ordem": 2,
       "status": "Lendo",
       "totalPag": 288,
-      "pagAtual": 118,
-      "pct": 0.41,
+      "pagAtual": 209,
+      "pct": 0.726,
       "usuario": "MILTON",
       "genero": "Fantasia"
     },
@@ -36314,15 +36323,15 @@
       "isbn": "9788532523051",
       "coverUrl": "https://m.media-amazon.com/images/I/81jbivNEVML._AC_UF1000,1000_QL80_.jpg",
       "metaAno": "2026",
-      "anoConclusao": "",
+      "anoConclusao": "2026",
       "depende": "Harry Potter - A Pedra Filosofal",
       "colecao": "Harry Potter",
       "ordemColecao": 2,
       "ordem": 2,
       "status": "Lendo",
       "totalPag": 288,
-      "pagAtual": 118,
-      "pct": 0.41,
+      "pagAtual": 209,
+      "pct": 0.726,
       "usuario": "MILTON",
       "genero": "Fantasia"
     },
