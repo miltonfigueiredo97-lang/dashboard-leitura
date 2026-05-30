@@ -647,7 +647,7 @@ body.mobile-view .meta-stats { grid-template-columns:1fr 1fr !important; }
           </div>
           <div class="meta-stat">
             <div class="meta-stat-val" style="color:var(--yellow)" id="meta-pgdia">—</div>
-            <div class="meta-stat-lbl">Págs/dia necessário</div>
+            <div class="meta-stat-lbl">Págs/dia p/ bater a meta</div>
           </div>
           <div class="meta-stat" style="grid-column:1/-1">
             <div style="display:flex;justify-content:space-between;align-items:center;">
@@ -1789,7 +1789,13 @@ function renderLendoCards() {
             <div class="lendo-bar-bg"><div class="lendo-bar-fg" style="width:${Math.min(pctVal,100)}%;background:${cor}"></div></div>
             <span class="lendo-pct-label" style="color:${cor}">${pctVal}%</span>
           </div>
-          <div class="lendo-meta"><span>Faltam: <b>${faltam.toLocaleString('pt-BR')} páginas</b></span></div>
+          <div class="lendo-meta" style="display:flex;align-items:center;justify-content:space-between;">
+            <span>Faltam: <b>${faltam.toLocaleString('pt-BR')} páginas</b></span>
+            <button onclick="abrirSessaoRapida('${p.livro.replace(/'/g,"\\'")}')"
+              style="background:var(--purple);border:none;color:white;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;">
+              + Registrar sessão
+            </button>
+          </div>
         </div>`;
     });
   }
@@ -1835,6 +1841,28 @@ function renderLendoCards() {
 }
 window.renderLendoCards = renderLendoCards;
 
+function abrirSessaoRapida(livroNome) {
+  abrirModal('sessao');
+  setTimeout(() => {
+    // Preencher o livro automaticamente
+    const inputBusca = document.getElementById('s-livro-busca');
+    const inputHidden = document.getElementById('s-livro');
+    const display = document.getElementById('s-livro-selecionado');
+    if (inputHidden) inputHidden.value = livroNome;
+    if (inputBusca) inputBusca.value = '';
+    if (display) { display.textContent = '📖 ' + livroNome + ' ✕'; display.style.display = 'block'; }
+    // Iniciar scroll na página atual do livro
+    const livro = (window._livros||[]).find(l => l.livro === livroNome);
+    if (livro && window.iniciarScrollPagina) {
+      iniciarScrollPagina(livro.pagAtual||0, livro.totalPag||0);
+    }
+    // Esconder o campo de busca
+    const buscaWrap = inputBusca?.closest('.pwa-field');
+    if (buscaWrap) buscaWrap.style.display = 'none';
+  }, 150);
+}
+window.abrirSessaoRapida = abrirSessaoRapida;
+
 function renderizarGraficos(dados) {
   MONTHLY   = dados.MONTHLY;
   YEARS     = dados.YEARS;
@@ -1862,6 +1890,7 @@ function renderizarGraficos(dados) {
   if (isMobile()) setTimeout(applyMobileLayout, 400);
   setTimeout(() => ddSetModo('mes'), 300);
   setTimeout(() => ddSetModo('mes'), 1000);
+  setTimeout(() => { try { buildDrilldown(); } catch(e) {} }, 1500);
   const ddScrollHandler = () => { ddSetModo('mes'); window.removeEventListener('scroll', ddScrollHandler); };
   window.addEventListener('scroll', ddScrollHandler, { once: true });
   const ddContainer = document.getElementById('cDrilldown')?.closest('.card');
@@ -3283,7 +3312,13 @@ function buildMeta() {
   document.getElementById('meta-pag-falt').textContent   = pagFalt.toLocaleString('pt-BR');
   document.getElementById('meta-pag-total').textContent  = pagTotal.toLocaleString('pt-BR');
   document.getElementById('meta-livros').textContent     = lidos + ' / ' + total;
-  document.getElementById('meta-pgdia').textContent      = ritmo > 0 && pagFalt > 0 ? Math.ceil(pagFalt / ritmo) : '—';
+  // Calcular págs/dia necessárias para bater a meta até 31/12
+  const hoje = new Date(); hoje.setHours(0,0,0,0);
+  const fimAno = new Date(parseInt(ano), 11, 31); fimAno.setHours(0,0,0,0);
+  const diasRestantes = Math.max(1, Math.ceil((fimAno - hoje) / 86400000));
+  const pagDiaNec = pagFalt > 0 ? Math.ceil(pagFalt / diasRestantes) : 0;
+
+  document.getElementById('meta-pgdia').textContent = pagDiaNec > 0 ? pagDiaNec + ' págs/dia' : '✅ Meta batida!';
   document.getElementById('meta-ritmo').textContent      = ritmo > 0 ? ritmo.toFixed(1) + ' págs/dia' : '—';
   document.getElementById('meta-media-ano').textContent  = mediaDia > 0 ? mediaDia.toFixed(1) + ' págs/dia' : '—';
   document.getElementById('meta-data-ini').textContent   = '—';

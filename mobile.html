@@ -913,7 +913,7 @@ canvas { max-width: 100% !important; }
           </div>
           <div class="meta-stat">
             <div class="meta-stat-val" style="color:var(--yellow)" id="meta-pgdia">—</div>
-            <div class="meta-stat-lbl">Págs/dia necessário</div>
+            <div class="meta-stat-lbl">Págs/dia p/ bater a meta</div>
           </div>
           <div class="meta-stat" style="grid-column:1/-1">
             <div style="display:flex;justify-content:space-between;align-items:center;">
@@ -2070,7 +2070,13 @@ function renderLendoCards() {
             <div class="lendo-bar-bg"><div class="lendo-bar-fg" style="width:${Math.min(pctVal,100)}%;background:${cor}"></div></div>
             <span class="lendo-pct-label" style="color:${cor}">${pctVal}%</span>
           </div>
-          <div class="lendo-meta"><span>Faltam: <b>${faltam.toLocaleString('pt-BR')} páginas</b></span></div>
+          <div class="lendo-meta" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+            <span>Faltam: <b>${faltam.toLocaleString('pt-BR')} páginas</b></span>
+            <button onclick="abrirSessaoRapida('${p.livro.replace(/'/g,"\\'")}')"
+              style="background:var(--purple);border:none;color:white;padding:5px 10px;border-radius:20px;font-size:11px;font-weight:700;cursor:pointer;white-space:nowrap;">
+              + Sessão
+            </button>
+          </div>
         </div>`;
     });
   }
@@ -2115,6 +2121,23 @@ function renderLendoCards() {
   }
 }
 window.renderLendoCards = renderLendoCards;
+
+function abrirSessaoRapida(livroNome) {
+  abrirModal('sessao');
+  setTimeout(() => {
+    const inputHidden = document.getElementById('s-livro');
+    const display = document.getElementById('s-livro-selecionado');
+    const inputBusca = document.getElementById('s-livro-busca');
+    if (inputHidden) inputHidden.value = livroNome;
+    if (display) { display.textContent = '📖 ' + livroNome + ' ✕'; display.style.display = 'block'; }
+    if (inputBusca) inputBusca.value = '';
+    const livro = (window._livros||[]).find(l => l.livro === livroNome);
+    if (livro && window.iniciarScrollPagina) iniciarScrollPagina(livro.pagAtual||0, livro.totalPag||0);
+    const buscaWrap = inputBusca?.closest('.pwa-field');
+    if (buscaWrap) buscaWrap.style.display = 'none';
+  }, 150);
+}
+window.abrirSessaoRapida = abrirSessaoRapida;
 
 function renderizarGraficos(dados) {
   window._lastDados = dados;
@@ -3500,7 +3523,11 @@ function buildMeta() {
   document.getElementById('meta-pag-falt').textContent   = pagFalt.toLocaleString('pt-BR');
   document.getElementById('meta-pag-total').textContent  = pagTotal.toLocaleString('pt-BR');
   document.getElementById('meta-livros').textContent     = lidos + ' / ' + total;
-  document.getElementById('meta-pgdia').textContent      = ritmo > 0 && pagFalt > 0 ? Math.ceil(pagFalt / ritmo) : '—';
+  const _hoje = new Date(); _hoje.setHours(0,0,0,0);
+  const _fimAno = new Date(parseInt(ano), 11, 31); _fimAno.setHours(0,0,0,0);
+  const _diasRest = Math.max(1, Math.ceil((_fimAno - _hoje) / 86400000));
+  const _pagDiaNec = pagFalt > 0 ? Math.ceil(pagFalt / _diasRest) : 0;
+  document.getElementById('meta-pgdia').textContent = _pagDiaNec > 0 ? _pagDiaNec + ' págs/dia' : '✅ Meta batida!';
   document.getElementById('meta-ritmo').textContent      = ritmo > 0 ? ritmo.toFixed(1) + ' págs/dia' : '—';
   document.getElementById('meta-media-ano').textContent  = mediaDia > 0 ? mediaDia.toFixed(1) + ' págs/dia' : '—';
   document.getElementById('meta-data-ini').textContent   = '—';
