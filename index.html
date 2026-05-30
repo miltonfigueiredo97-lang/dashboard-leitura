@@ -4869,7 +4869,7 @@ function _applyMQ(e) {
   }
 }
 _mq.addEventListener('change', _applyMQ);
-window.addEventListener('load', () => { _applyMQ(_mq); if(isMobile()) setTimeout(applyMobileLayout, 500); setTimeout(() => ddSetModo('mes'), 200); });
+window.addEventListener('load', () => { _applyMQ(_mq); if(window.innerWidth < 900) setTimeout(applyMobileLayout, 500); setTimeout(() => ddSetModo('mes'), 200); });
 
 // ── Changelog ────────────────────────────────────
 const CHANGELOG = [
