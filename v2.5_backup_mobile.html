@@ -2,12 +2,9 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<script>
-// Redirect mobile browsers to mobile.html
-if (/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) && window.innerWidth < 768) {
-  window.location.replace('/mobile.html');
-}
-</script>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0d1117">
@@ -47,7 +44,7 @@ header .badge {
 }
 
 /* ── Layout ── */
-.page { padding: 28px 36px; max-width: 1500px; margin: 0 auto; }
+.page { padding: 6px 10px 80px 10px; max-width: 100%; margin: 0; width: 100%; box-sizing: border-box; overflow-x: hidden; }
 .sec { font-size: 14px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
   color: var(--muted); display: flex; align-items: center; gap: 10px; margin-bottom: 14px; margin-top: 28px; }
 .sec::after { content: ''; flex: 1; height: 1px; background: var(--border); }
@@ -78,12 +75,12 @@ header .badge {
 .kpi-book .fallback { width: 44px; height: 62px; background: var(--bg4); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
 .cover-img { transition: transform 0.2s ease, box-shadow 0.2s ease; transform-origin: left center; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; cursor: zoom-in; }
 .cover-img:hover { transform: scale(5); box-shadow: 0 8px 32px rgba(0,0,0,0.7); z-index: 9999; position: relative; }
-.cal-day { border-radius:6px;padding:4px;min-height:64px;cursor:pointer;transition:background 0.15s;position:relative;background:var(--bg3); }
+.cal-day { border-radius:4px;padding:2px;min-height:0;aspect-ratio:1;cursor:pointer;transition:background 0.15s;position:relative;background:var(--bg3);overflow:hidden; }
 .cal-day:hover { background:var(--bg4); }
 .cal-day.active { background:rgba(139,124,248,0.15);border:1px solid rgba(139,124,248,0.4); }
 .cal-day.selected { background:rgba(139,124,248,0.3);border:1px solid var(--purple); }
-.cal-day-num { font-size:16px;color:var(--muted);font-weight:600; }
-.cal-day-pag { font-size:15px;color:var(--teal);font-weight:700;margin-top:2px; }
+.cal-day-num { font-size:10px;color:var(--muted);font-weight:600; }
+.cal-day-pag { font-size:10px;color:var(--teal);font-weight:700;margin-top:2px; }
 .cal-day-bar { height:3px;border-radius:2px;margin-top:3px;background:var(--purple); }
 .cal-empty { min-height:52px; }
 .heat-cell { width:16px;height:16px;border-radius:3px;display:inline-block;cursor:pointer;transition:transform 0.1s;flex-shrink:0; }
@@ -92,7 +89,8 @@ header .badge {
 /* ── Cards ── */
 .card {
   background: var(--bg2); border: 1px solid var(--border);
-  border-radius: 14px; padding: 20px;
+  border-radius: 12px; padding: 10px;
+  overflow: hidden; box-sizing: border-box; width: 100%;
 }
 .card-title { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
 .card-sub { font-size: 14px; color: var(--muted); margin-bottom: 14px; }
@@ -139,11 +137,11 @@ select:focus { border-color: var(--purple); }
 .rank-score { font-size: 11px; font-weight: 700; width: 32px; text-align: right; flex-shrink: 0; }
 
 /* ── Weekday bars ── */
-.wd-bars { display: flex; gap: 6px; align-items: flex-end; height: 110px; }
-.wd-col { display: flex; flex-direction: column; align-items: center; gap: 4px; flex: 1; height: 100%; justify-content: flex-end; }
+.wd-bars { display: flex; gap: 2px; align-items: flex-end; height: 80px; overflow: hidden; width: 100%; box-sizing: border-box; }
+.wd-col { display: flex; flex-direction: column; align-items: center; gap: 2px; height: 100%; justify-content: flex-end; min-width: 0; }
 .wd-bar { width: 100%; border-radius: 4px 4px 2px 2px; }
-.wd-lbl { font-size: 9px; color: var(--muted); font-weight: 600; }
-.wd-val { font-size: 9px; color: var(--muted); }
+.wd-lbl { font-size: 8px; color: var(--muted); font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+.wd-val { font-size: 8px; color: var(--muted); }
 
 /* ── Donut legend ── */
 .donut-leg { display: flex; flex-direction: column; gap: 4px; margin-top: 10px; }
@@ -171,7 +169,7 @@ select:focus { border-color: var(--purple); }
 
 footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px; border-top: 1px solid var(--border); margin-top: 20px; }
 
-@media(max-width:900px) {
+@media(max-width:1400px) {
   .page { padding: 12px; }
   header { padding: 12px 16px; }
   header h1 { font-size: 18px; }
@@ -181,7 +179,7 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
   .card { padding: 12px; }
   .sec  { font-size: 9px; margin: 16px 0 8px; }
 }
-@media(max-width:600px) {
+@media(max-width:1400px) {
   .page { padding: 8px; }
   .grid2,.grid3,.grid4,.grid6 { grid-template-columns: 1fr; }
   .kpi-grid-5 { grid-template-columns: 1fr 1fr !important; }
@@ -194,7 +192,6 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
   .ring-wrap { margin-bottom: 12px; }
 
   /* Calendário mobile — células compactas, sem nome do livro */
-  .cal-day { min-height: 36px; padding: 3px 2px; }
   .cal-day-num { font-size: 11px; }
 
   /* Heatmap mobile — 2 colunas de meses */
@@ -383,7 +380,7 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
 .m-nav-btn.active .m-nav-icon { filter:drop-shadow(0 0 5px var(--purple)); }
 
 /* ── MOBILE MEDIA QUERY ─────────────────────── */
-@media (max-width: 600px) {
+@media (max-width: 1400px) {
   #mobile-nav { display:flex !important; }
 
   #btn-view-toggle {
@@ -444,7 +441,6 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
   #cDonut, #cAutores { height:180px !important; }
 
   #heatmapGrid { display:grid !important; grid-template-columns:1fr 1fr !important; gap:8px !important; }
-  .cal-day { min-height:40px !important; padding:3px 2px !important; }
 
   .fab { bottom:calc(var(--nav-h) + 14px) !important; right:10px !important;
          width:48px !important; height:48px !important; font-size:22px !important; }
@@ -463,35 +459,35 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
 }
 
 /* Quando JS ativa mobile-view no desktop */
-body.mobile-view #mobile-nav { display:flex !important; }
-body.mobile-view #btn-view-toggle { top:56px !important; bottom:auto !important; right:6px !important; }
-body.mobile-view header { padding:6px 8px !important; position:sticky; top:0; z-index:1000; }
-body.mobile-view header h1 { font-size:12px !important; }
-body.mobile-view header p, body.mobile-view .badge { display:none !important; }
-body.mobile-view #btn-user-milton,
-body.mobile-view #btn-user-daniel,
-body.mobile-view #btn-user-batalha { padding:4px 7px !important; font-size:11px !important; }
-body.mobile-view #app, body.mobile-view .page {
+body.mobile-view-disabled #mobile-nav { display:flex !important; }
+body.mobile-view-disabled #btn-view-toggle { top:56px !important; bottom:auto !important; right:6px !important; }
+body.mobile-view-disabled header { padding:6px 8px !important; position:sticky; top:0; z-index:1000; }
+body.mobile-view-disabled header h1 { font-size:12px !important; }
+body.mobile-view-disabled header p, body.mobile-view-disabled .badge { display:none !important; }
+body.mobile-view-disabled #btn-user-milton,
+body.mobile-view-disabled #btn-user-daniel,
+body.mobile-view-disabled #btn-user-batalha { padding:4px 7px !important; font-size:11px !important; }
+body.mobile-view-disabled #app, body.mobile-view-disabled .page {
   width:100% !important; max-width:100% !important; margin:0 !important;
   padding:6px 8px calc(var(--nav-h) + 12px) 8px !important;
   box-sizing:border-box !important;
 }
-body.mobile-view .lendo-wrap { width:100% !important; max-width:100% !important; }
-body.mobile-view .lendo-inner { flex-direction:column !important; gap:8px !important; }
-body.mobile-view .lendo-card { min-width:unset !important; width:100% !important; }
-body.mobile-view .grid2, body.mobile-view .grid3,
-body.mobile-view .grid4, body.mobile-view .grid6 { grid-template-columns:1fr !important; }
-body.mobile-view .kpi-grid-5 { grid-template-columns:repeat(2,1fr) !important; }
-body.mobile-view #kpi-books-grid { grid-template-columns:1fr 1fr !important; }
-body.mobile-view #grid-rankings { grid-template-columns:1fr !important; }
-body.mobile-view .kpi { overflow:hidden !important; }
-body.mobile-view .kpi-nome { white-space:normal !important; word-break:break-word !important; }
-body.mobile-view .rank-bar-wrap { display:none !important; }
-body.mobile-view .fab { bottom:calc(var(--nav-h) + 14px) !important; right:10px !important; }
-body.mobile-view .fab-menu { bottom:calc(var(--nav-h) + 70px) !important; right:10px !important; }
+body.mobile-view-disabled .lendo-wrap { width:100% !important; max-width:100% !important; }
+body.mobile-view-disabled .lendo-inner { flex-direction:column !important; gap:8px !important; }
+body.mobile-view-disabled .lendo-card { min-width:unset !important; width:100% !important; }
+body.mobile-view-disabled .grid2, body.mobile-view-disabled .grid3,
+body.mobile-view-disabled .grid4, body.mobile-view-disabled .grid6 { grid-template-columns:1fr !important; }
+body.mobile-view-disabled .kpi-grid-5 { grid-template-columns:repeat(2,1fr) !important; }
+body.mobile-view-disabled #kpi-books-grid { grid-template-columns:1fr 1fr !important; }
+body.mobile-view-disabled #grid-rankings { grid-template-columns:1fr !important; }
+body.mobile-view-disabled .kpi { overflow:hidden !important; }
+body.mobile-view-disabled .kpi-nome { white-space:normal !important; word-break:break-word !important; }
+body.mobile-view-disabled .rank-bar-wrap { display:none !important; }
+body.mobile-view-disabled .fab { bottom:calc(var(--nav-h) + 14px) !important; right:10px !important; }
+body.mobile-view-disabled .fab-menu { bottom:calc(var(--nav-h) + 70px) !important; right:10px !important; }
 
 /* ── Mobile: força todos inline grids para 1 coluna ── */
-@media (max-width: 600px) {
+@media (max-width: 1400px) {
   [data-desktop-grid] {
     grid-template-columns: 1fr !important;
     width: 100% !important;
@@ -509,20 +505,302 @@ body.mobile-view .fab-menu { bottom:calc(var(--nav-h) + 70px) !important; right:
   .pwa-row   { grid-template-columns:1fr !important; }
   .meta-stats{ grid-template-columns:1fr 1fr !important; }
 }
-body.mobile-view [data-desktop-grid] {
+body.mobile-view-disabled [data-desktop-grid] {
   grid-template-columns: 1fr !important;
   width: 100% !important;
   box-sizing: border-box !important;
 }
-body.mobile-view #kpi-books-grid[data-desktop-grid],
-body.mobile-view #bookInfoStats[data-desktop-grid],
-body.mobile-view #heatmapGrid[data-desktop-grid],
-body.mobile-view .kpi-grid-5[data-desktop-grid] {
+body.mobile-view-disabled #kpi-books-grid[data-desktop-grid],
+body.mobile-view-disabled #bookInfoStats[data-desktop-grid],
+body.mobile-view-disabled #heatmapGrid[data-desktop-grid],
+body.mobile-view-disabled .kpi-grid-5[data-desktop-grid] {
   grid-template-columns: 1fr 1fr !important;
 }
-body.mobile-view canvas { max-width:100% !important; width:100% !important; }
-body.mobile-view .pwa-row { grid-template-columns:1fr !important; }
-body.mobile-view .meta-stats { grid-template-columns:1fr 1fr !important; }
+body.mobile-view-disabled canvas { max-width:100% !important; width:100% !important; }
+body.mobile-view-disabled .pwa-row { grid-template-columns:1fr !important; }
+body.mobile-view-disabled .meta-stats { grid-template-columns:1fr 1fr !important; }
+
+/* ═══════════════════════════════════════════
+   MOBILE STYLES — scroll infinito
+   ═══════════════════════════════════════════ */
+@media (max-width: 1400px) {
+
+  /* Reset */
+  * { box-sizing: border-box !important; }
+  body { overflow-x: hidden !important; }
+
+  /* Header */
+  header { padding:8px 10px !important; position:sticky !important; top:0 !important; z-index:1000 !important; gap:4px !important; flex-wrap:nowrap !important; }
+  header .icon { font-size:18px !important; }
+  header h1 { font-size:12px !important; white-space:nowrap !important; }
+  header p, .badge { display:none !important; }
+  header > div:last-child { gap:3px !important; flex-wrap:nowrap !important; }
+  #btn-user-milton, #btn-user-daniel, #btn-user-batalha { padding:5px 8px !important; font-size:11px !important; }
+  button[onclick="toggleChangelog()"], button[onclick="manualRefresh()"] { display:none !important; }
+  #btn-view-toggle { display:none !important; }
+
+  /* App + page */
+  #app, .page { width:100% !important; max-width:100% !important; margin:0 !important; padding:6px 10px 80px 10px !important; overflow-x:hidden !important; }
+
+  /* Lendo */
+  .lendo-wrap { width:100% !important; max-width:100% !important; padding:8px 10px !important; }
+  .lendo-inner { flex-direction:column !important; gap:8px !important; padding:0 !important; }
+  .lendo-card { min-width:unset !important; width:100% !important; }
+  /* Capas nas lendo cards — proporcionais */
+  .lendo-card .cover-img { width:52px !important; height:72px !important; }
+  .lendo-card .fallback  { width:52px !important; height:72px !important; }
+
+  /* Grids */
+  .grid2, .grid3, .grid4, .grid6 { grid-template-columns:1fr !important; }
+  [data-desktop-grid] { grid-template-columns:1fr !important; }
+  #kpi-books-grid, #kpi-books-grid[data-desktop-grid] { grid-template-columns:1fr 1fr !important; }
+  .kpi-grid-5, .kpi-grid-5[data-desktop-grid] { grid-template-columns:1fr 1fr !important; }
+  #bookInfoStats { grid-template-columns:1fr 1fr !important; }
+
+  /* Cards */
+  .card { padding:10px !important; border-radius:12px !important; }
+  .sec { font-size:10px !important; margin:14px 0 5px !important; }
+  .card-title { font-size:14px !important; }
+
+  /* KPI books — capas menores e proporcionais */
+  .kpi { overflow:hidden !important; cursor:pointer !important; }
+  .kpi-book { flex-direction:row !important; align-items:flex-start !important; gap:8px !important; }
+  .kpi-book img  { width:40px !important; height:56px !important; flex-shrink:0 !important; object-fit:cover !important; }
+  .kpi-book .fallback { width:40px !important; height:56px !important; flex-shrink:0 !important; }
+  .kpi-nome  { font-size:12px !important; line-height:1.3 !important; white-space:normal !important; word-break:break-word !important; }
+  .kpi-autor { font-size:10px !important; white-space:normal !important; }
+  .kpi-val   { font-size:20px !important; }
+  .kpi-lbl   { font-size:8px !important; }
+
+  /* Visão Geral — kpi-grid-5 bem distribuída */
+  .kpi-grid-5 .kpi { min-height: unset !important; padding:10px !important; }
+  .kpi-grid-5 .kpi-val { font-size:18px !important; }
+
+  /* Ranking */
+  .rank-bar-wrap { display:none !important; }
+  .rank-name { font-size:13px !important; white-space:normal !important; word-break:break-word !important; }
+  .rank-item { cursor:pointer !important; }
+  .rank-item img { width:36px !important; height:50px !important; }
+
+  /* Donut legend items */
+  .donut-leg-item { cursor:pointer !important; }
+
+  /* Canvas — 100% largura */
+  canvas { max-width:100% !important; width:100% !important; }
+
+  /* Calendário */
+  .cal-day-num { font-size:10px !important; }
+  .cal-day-pag { font-size:10px !important; }
+  #calGrid { gap:2px !important; }
+
+  /* Heatmap — 2 meses por linha */
+  #heatmapGrid { display:grid !important; grid-template-columns:1fr 1fr !important; gap:6px !important; }
+
+  /* Streak */
+  #streakList > div { flex-direction:column !important; gap:4px !important; }
+
+  /* Ctrl */
+  .ctrl { flex-wrap:wrap !important; gap:6px !important; }
+  .ctrl select { font-size:12px !important; }
+
+  /* Book info */
+  #bookInfoNome { font-size:14px !important; }
+
+  /* FAB acima da nav */
+  .fab { bottom:68px !important; right:12px !important; width:50px !important; height:50px !important; font-size:22px !important; }
+  .fab-menu { bottom:126px !important; right:12px !important; }
+
+  /* Nav bar */
+  #mobile-nav { display:flex !important; }
+
+  /* Batalha — capas de artefatos/maldições menores */
+  #bat-artefatos img, #bat-maldicoes img { width:44px !important; height:62px !important; }
+  #bat-artefatos .cover-img, #bat-maldicoes .cover-img { width:44px !important; height:62px !important; }
+  #pageBatalha [data-desktop-grid] { grid-template-columns:1fr !important; }
+
+  /* Painéis overlay */
+  #painelGenero, #painelMeta, #painelStatus { width:95vw !important; max-height:82vh !important; }
+  #painelMetaLista { gap:6px !important; }
+
+  /* PWA forms */
+  .pwa-row { grid-template-columns:1fr 1fr !important; }
+  .pwa-field input, .pwa-field select { font-size:14px !important; }
+
+  /* ── Calendário: células menores, não overflow ── */
+  #calGrid { gap:2px !important; overflow:hidden !important; }
+  .cal-day-num { font-size:9px !important; }
+  .cal-day-pag { font-size:10px !important; margin-top:1px !important; }
+  .cal-day-livro { display:none !important; }
+  .cal-day-bar { height:2px !important; margin-top:2px !important; }
+  #calWrap { overflow:hidden !important; }
+  /* Calendário header dias da semana */
+  #calGrid ~ div, .cal-header { font-size:9px !important; }
+
+  /* ── Heatmap: compacto ── */
+  #heatmapGrid { grid-template-columns:1fr 1fr !important; gap:6px !important; }
+  #heatmapGrid > div { overflow:hidden !important; }
+  /* Mini calendários dentro do heatmap */
+  #heatmapGrid .heat-month { font-size:9px !important; }
+  #heatmapGrid .heat-day { width:10px !important; height:10px !important; }
+
+  /* ── Gêneros: barra horizontal sem overflow ── */
+  #cGeneros { height:280px !important; }
+
+  /* ── Dia da Semana: barras cortadas ── */
+  #wdAvg canvas, #wdSum canvas { max-width:100% !important; }
+  #wdAvg, #wdSum { overflow:hidden !important; }
+  /* Wd bars container */
+  .wd-bars { overflow-x:hidden !important; }
+  .wd-bar { min-width:0 !important; }
+
+  /* ── Ranking ── */
+  #rankList .rank-item img { width:36px !important; height:50px !important; }
+  .ctrl { flex-wrap:wrap !important; gap:4px !important; }
+  .ctrl select { min-width:0 !important; flex:1 !important; font-size:11px !important; padding:4px 6px !important; }
+  .btn { white-space:nowrap !important; font-size:12px !important; padding:6px 10px !important; }
+  /* Ranking dois selects por linha */
+  .ctrl select:nth-child(3) { flex:0 0 100% !important; }
+
+  /* ── Tendência Mensal ── */
+  #cMonthly { height:220px !important; }
+  #selFrom, #selTo { font-size:11px !important; padding:3px 6px !important; }
+
+  /* ── Overflow fix global: NADA deve vazar da tela ── */
+  .card, .sec, #app, .page, .lendo-wrap {
+    overflow:hidden !important;
+    max-width:100% !important;
+  }
+  /* Exceções: painéis sobrepostos devem rolar */
+  #painelGenero, #painelStatus, #painelMeta, #painelColecao, #painelAutor {
+    overflow-y:auto !important;
+    overflow-x:hidden !important;
+  }
+
+  /* ── Calendário: forçar células quadradas compactas ── */
+  #calGrid {
+    display:grid !important;
+    grid-template-columns:repeat(7,minmax(0,1fr)) !important;
+    gap:2px !important;
+    width:100% !important;
+    overflow:hidden !important;
+  }
+  .cal-day {
+    min-height:0 !important;
+    aspect-ratio:1 !important;
+    padding:2px !important;
+    font-size:9px !important;
+    overflow:hidden !important;
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:flex-start !important;
+  }
+  .cal-day-num { font-size:9px !important; line-height:1 !important; }
+  .cal-day-pag { font-size:9px !important; line-height:1.1 !important; white-space:nowrap !important; overflow:hidden !important; text-overflow:ellipsis !important; }
+  .cal-day-livro { display:none !important; }
+  .cal-day-bar { height:2px !important; margin-top:auto !important; }
+
+  /* ── Dia da Semana: barras dentro do container ── */
+  .wd-bars { width:100% !important; overflow:hidden !important; gap:3px !important; }
+  .wd-col { min-width:0 !important; }
+  .wd-val { font-size:8px !important; }
+  .wd-lbl { font-size:8px !important; }
+
+  /* ── Gêneros: canvas 100% ── */
+  #cGeneros { height:260px !important; width:100% !important; }
+
+  /* ── Ranking: card sem overflow ── */
+  #rankList { width:100% !important; overflow:hidden !important; }
+  .rank-item { width:100% !important; overflow:hidden !important; }
+  .rank-bar-wrap { display:none !important; }
+  .rank-name { white-space:normal !important; overflow:hidden !important; font-size:13px !important; }
+
+  /* ── Charts: forçar dentro do card ── */
+  canvas { display:block !important; box-sizing:border-box !important; }
+
+  /* Batalha sempre escondida a não ser quando ativo */
+  #pageBatalha { display:none; }
+  body.batalha-ativo #pageBatalha { display:block !important; }
+  body.batalha-ativo #pageDashboard { display:none !important; }
+  body.batalha-ativo .lendo-wrap { display:none !important; }
+
+  /* Scroll targets */
+  [data-msection] { scroll-margin-top:65px !important; }
+
+  /* Status kpi grid - 3 colunas no mobile */
+  /* ── Visão Geral: grid 2-2-1 centralizado ── */
+  .kpi-grid-5, .kpi-grid-5[data-desktop-grid] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .kpi-grid-5 .kpi:nth-child(5) {
+    grid-column: 1 / -1 !important;
+    max-width: 55% !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+  }
+  .kpi-grid-5 .kpi-sub { display:none !important; }
+  .kpi-grid-5 .kpi { padding:12px !important; }
+  .kpi-grid-5 .kpi-val { font-size:20px !important; }
+
+  #status-kpi-grid { grid-template-columns:1fr 1fr !important; }
+  #status-kpi-grid .kpi:nth-child(5) {
+    grid-column: 1 / -1 !important;
+    max-width: 55% !important;
+    margin: 0 auto !important;
+  }
+  #status-kpi-grid .kpi { padding:10px !important; }
+  #status-kpi-grid .kpi-val { font-size:18px !important; }
+  #status-kpi-grid .kpi-lbl { font-size:10px !important; }
+  #status-kpi-grid .kpi-sub { display:none !important; }
+  #status-kpi-grid .kpi-icon { font-size:18px !important; }
+
+  /* Batalha — artefatos/maldições menores no mobile */
+  .bat-art-card { min-width:unset !important; }
+  .bat-art-capa { padding-top:100% !important; }
+  #bat-artefatos, #bat-maldicoes { grid-template-columns:1fr 1fr !important; }
+
+  /* Conquistas batalha */
+  #bat-conquistas-wrap { grid-template-columns:1fr !important; }
+}
+/* Mobile nav scroll */
+@media (max-width: 1400px) {
+  #mobile-nav { display: flex !important; }
+  .m-nav-btn {
+    flex: 0 0 auto !important;
+    min-width: 60px !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 6px 10px !important;
+    font-size: 10px !important;
+    font-weight: 600 !important;
+    color: var(--muted) !important;
+    background: none !important;
+    border: none !important;
+    cursor: pointer !important;
+    gap: 2px !important;
+  }
+  .m-nav-icon { font-size: 20px !important; display: block !important; }
+}
+</style>
+
+<style id="mobile-override">
+/* MOBILE OVERRIDE */
+html, body { max-width: 100vw !important; overflow-x: hidden !important; }
+.card { width: 100% !important; overflow: hidden !important; box-sizing: border-box !important; }
+.card-title { white-space: normal !important; overflow: hidden !important; box-sizing: border-box !important; }
+.ctrl { display: flex !important; flex-wrap: wrap !important; gap: 4px !important; }
+.ctrl select { flex: 1 !important; min-width: 0 !important; width: auto !important; }
+#grid-rankings { display: grid !important; grid-template-columns: minmax(0,1fr) !important; width: 100% !important; }
+#rankList { overflow: hidden !important; width: 100% !important; }
+.rank-item { overflow: hidden !important; max-width: 100% !important; box-sizing: border-box !important; }
+.rank-bar-wrap { display: none !important; }
+.wd-bars { overflow: hidden !important; width: 100% !important; box-sizing: border-box !important; }
+.wd-col { min-width: 0 !important; box-sizing: border-box !important; }
+canvas { max-width: 100% !important; }
+#pageDashboard { overflow-x: hidden !important; max-width: 100% !important; }
+/* Heatmap */
+#heatmapGrid { overflow: hidden !important; width: 100% !important; }
+#heatmapGrid > div > div { width: 100% !important; }
 </style>
 </head>
 <body>
@@ -570,25 +848,13 @@ body.mobile-view .meta-stats { grid-template-columns:1fr 1fr !important; }
 </div>
 
 <!-- Mobile nav bar -->
-<nav id="mobile-nav">
-  <button class="m-nav-btn active" id="mnav-meta"     onclick="mNavTo('meta')"     >
-    <span class="m-nav-icon">🎯</span>Meta
-  </button>
-  <button class="m-nav-btn" id="mnav-visao"    onclick="mNavTo('visao')"    >
-    <span class="m-nav-icon">📊</span>Geral
-  </button>
-  <button class="m-nav-btn" id="mnav-graficos" onclick="mNavTo('graficos')" >
-    <span class="m-nav-icon">📈</span>Gráficos
-  </button>
-  <button class="m-nav-btn" id="mnav-ranking"  onclick="mNavTo('ranking')"  >
-    <span class="m-nav-icon">🏅</span>Ranking
-  </button>
-  <button class="m-nav-btn" id="mnav-livro"    onclick="mNavTo('livro')"    >
-    <span class="m-nav-icon">📖</span>Livro
-  </button>
-  <button class="m-nav-btn" id="mnav-mais"     onclick="mNavTo('mais')"     >
-    <span class="m-nav-icon">⋯</span>Mais
-  </button>
+<nav id="mobile-nav" style="position:fixed;bottom:0;left:0;right:0;height:60px;background:var(--bg2);border-top:1px solid var(--border);display:none;align-items:center;z-index:1000;overflow-x:auto;padding:0 4px;">
+  <button class="m-nav-btn" onclick="scrollToSec('meta')"><span class="m-nav-icon">🎯</span>Meta</button>
+  <button class="m-nav-btn" onclick="scrollToSec('visao')"><span class="m-nav-icon">📊</span>Geral</button>
+  <button class="m-nav-btn" onclick="scrollToSec('graficos')"><span class="m-nav-icon">📈</span>Gráficos</button>
+  <button class="m-nav-btn" onclick="scrollToSec('ranking')"><span class="m-nav-icon">🏅</span>Ranking</button>
+  <button class="m-nav-btn" onclick="scrollToSec('livro')"><span class="m-nav-icon">📚</span>Livro</button>
+  <button class="m-nav-btn" onclick="scrollToSec('mais')"><span class="m-nav-icon">···</span>Mais</button>
 </nav>
 
 <!-- View toggle button -->
@@ -603,7 +869,7 @@ body.mobile-view .meta-stats { grid-template-columns:1fr 1fr !important; }
   ⏳ Carregando dados da planilha...
 </div>
 <div id="app" style="display:none">
-<div class="page" id="pageDashboard">
+<div class="page" id="pageDashboard" style="max-width:100%;overflow-x:hidden;box-sizing:border-box;">
 
   <!-- ── 5. Meta + Heatmap ── -->
   <div class="sec" data-msection="meta">🎯 Meta de Leitura &amp; Heatmap</div>
@@ -722,7 +988,7 @@ body.mobile-view .meta-stats { grid-template-columns:1fr 1fr !important; }
     <div style="display:none" id="kpi-recorde-livro-wrap"></div>
   </div>
   <!-- Livros por status -->
-  <div class="grid4" style="margin-bottom:8px;grid-template-columns:repeat(5,1fr);">
+  <div class="grid4" id="status-kpi-grid" data-desktop-grid="1" style="margin-bottom:8px;grid-template-columns:repeat(5,1fr);">
     <div class="kpi" style="--accent:#4ecdc4;cursor:pointer;" onclick="toggleListaStatus('Completo')">
       <span class="kpi-icon">✅</span>
       <div class="kpi-val" id="kpi-livros">—</div>
@@ -873,39 +1139,41 @@ body.mobile-view .meta-stats { grid-template-columns:1fr 1fr !important; }
 
   <!-- ── Gráfico Drill-down ── -->
   <div class="card" style="margin-bottom:16px;">
-    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:12px;">
-      <div class="card-title" style="margin:0;">📊 Detalhe de Leitura</div>
-      <div style="display:flex;align-items:center;gap:6px;">
-        <button id="dd-prev" onclick="ddNavegar(-1)" style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;color:var(--text);padding:4px 10px;cursor:pointer;">‹</button>
-        <span id="dd-label" style="font-size:13px;font-weight:600;color:var(--text);min-width:120px;text-align:center;">—</span>
-        <button id="dd-next" onclick="ddNavegar(1)" style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;color:var(--text);padding:4px 10px;cursor:pointer;">›</button>
-      </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:10px;">
+      <div class="card-title" style="margin:0;font-size:14px;">📊 Detalhe de Leitura</div>
       <div style="display:flex;gap:4px;">
-        <button onclick="ddSetModo('semana')" id="dd-btn-semana" style="padding:4px 10px;border-radius:6px;border:1px solid var(--border);cursor:pointer;font-size:12px;background:var(--bg3);color:var(--text);">Semana</button>
-        <button onclick="ddSetModo('mes')" id="dd-btn-mes" style="padding:4px 10px;border-radius:6px;border:1px solid var(--border);cursor:pointer;font-size:12px;background:var(--purple);color:white;">Mês</button>
+        <button onclick="ddSetModo('semana')" id="dd-btn-semana" style="padding:4px 8px;border-radius:6px;border:1px solid var(--border);cursor:pointer;font-size:11px;background:var(--bg3);color:var(--text);">Semana</button>
+        <button onclick="ddSetModo('mes')" id="dd-btn-mes" style="padding:4px 8px;border-radius:6px;border:1px solid var(--border);cursor:pointer;font-size:11px;background:var(--purple);color:white;">Mês</button>
       </div>
     </div>
-    <div style="height:260px;position:relative;"><canvas id="cDrilldown" style="height:260px!important;"></canvas></div>
-    <div id="dd-detalhe" style="display:none;margin-top:12px;padding:10px;background:var(--bg3);border-radius:8px;font-size:13px;"></div>
-    <div id="dd-legenda" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;"></div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:10px;">
+      <button id="dd-prev" onclick="ddNavegar(-1)" style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;color:var(--text);padding:4px 12px;cursor:pointer;">‹</button>
+      <span id="dd-label" style="font-size:13px;font-weight:600;color:var(--text);min-width:140px;text-align:center;">—</span>
+      <button id="dd-next" onclick="ddNavegar(1)" style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;color:var(--text);padding:4px 12px;cursor:pointer;">›</button>
+    </div>
+    <div style="height:220px;position:relative;"><canvas id="cDrilldown"></canvas></div>
+    <div id="dd-detalhe" style="display:none;margin-top:10px;padding:10px;background:var(--bg3);border-radius:8px;font-size:12px;"></div>
+    <div id="dd-legenda" style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;"></div>
   </div>
 
   <!-- ── 3. Rankings e Distribuição ── -->
   <div class="sec" data-msection="ranking">🏅 Rankings &amp; Distribuição</div>
   <!-- Linha 1: Ranking + Dia da Semana + Gêneros -->
-  <div id="grid-rankings" data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+  <div id="grid-rankings" style="display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:16px;">
 
     <!-- Ranking notas -->
     <div class="card">
       <div class="card-title">🏅 Ranking por Notas</div>
-      <div class="ctrl">
-        <select id="selNotasAno" onchange="buildRanking()">
+      <div style="display:grid;grid-template-columns:1fr;gap:6px;margin-bottom:6px;">
+        <select id="selNotasAno" onchange="buildRanking()" style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:6px;font-size:12px;width:100%;box-sizing:border-box;">
           <option value="all">Todos os anos</option>
         </select>
-        <select id="selNotasColecao" onchange="buildRanking()">
+        <select id="selNotasColecao" onchange="buildRanking()" style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:6px;font-size:12px;width:100%;box-sizing:border-box;">
           <option value="all">Todas as coleções</option>
         </select>
-        <select id="selNotasTema" onchange="buildRanking()">
+      </div>
+      <div style="margin-bottom:6px;">
+        <select id="selNotasTema" onchange="buildRanking()" style="width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:6px;font-size:12px;box-sizing:border-box;">
           <option value="all">Todos os critérios</option>
           <option value="Diálogos">Diálogos</option>
           <option value="Enredo">Enredo</option>
@@ -919,7 +1187,7 @@ body.mobile-view .meta-stats { grid-template-columns:1fr 1fr !important; }
           <option value="Temas">Temas</option>
         </select>
       </div>
-      <div class="ctrl" style="margin-top:-6px;">
+      <div class="ctrl" style="margin-top:6px;">
         <button class="btn on" id="btnBest" onclick="rankMode='best';updateBtns();buildRanking()">🥇 Melhores</button>
         <button class="btn" id="btnWorst" onclick="rankMode='worst';updateBtns();buildRanking()">💀 Piores</button>
       </div>
@@ -940,22 +1208,22 @@ body.mobile-view .meta-stats { grid-template-columns:1fr 1fr !important; }
         </div>
         <div style="margin-bottom:8px;">
           <div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Média págs/dia</div>
-          <div id="wdAvg" class="wd-bars"></div>
+          <div id="wdAvg" class="wd-bars" style="max-width:100%;overflow:hidden;box-sizing:border-box;"></div>
         </div>
         <div style="border-top:1px solid var(--border);padding-top:8px;margin-bottom:8px;">
           <div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Total de páginas</div>
-          <div id="wdSum" class="wd-bars"></div>
+          <div id="wdSum" class="wd-bars" style="max-width:100%;overflow:hidden;box-sizing:border-box;"></div>
         </div>
         <div style="border-top:1px solid var(--border);padding-top:8px;">
           <div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Livros concluídos por mês</div>
-          <div id="livrosMes" class="wd-bars"></div>
+          <div id="livrosMes" class="wd-bars" style="max-width:100%;overflow:hidden;box-sizing:border-box;"></div>
         </div>
       </div>
 
       <!-- Gêneros lidos -->
       <div class="card" style="flex:1;">
         <div class="card-title">🌎 Gêneros Lidos</div>
-        <div style="height:380px;position:relative;"><canvas id="cGeneros"></canvas></div>
+        <div style="height:380px;position:relative;"><canvas id="cGeneros" style="max-width:100%!important;"></canvas></div>
       </div>
 
     </div>
@@ -1038,7 +1306,7 @@ body.mobile-view .meta-stats { grid-template-columns:1fr 1fr !important; }
   <!-- ── Sequências ── -->
   <div class="sec" data-msection="mais">⚡ Sequências de Leitura</div>
   <div class="card" style="margin-bottom:16px;">
-    <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+    <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr;gap:12px;margin-bottom:16px;">
       <div style="background:var(--bg3);border-radius:10px;padding:14px;text-align:center;">
         <div style="font-size:36px;font-weight:700;color:var(--orange)" id="streakAtual">—</div>
         <div style="font-size:11px;color:var(--muted);margin-top:4px;">🔥 Streak Atual</div>
@@ -1129,6 +1397,11 @@ body.mobile-view .meta-stats { grid-template-columns:1fr 1fr !important; }
 <footer>Dados carregados do Google Sheets · Atualizado em: <span id="footer-data">—</span></footer>
 
 <script>
+// ── Mobile detection — deve ser a primeira coisa ──────────────────
+let _mobileView = false;
+function isMobile() { return _mobileView || window.matchMedia('(max-width:768px)').matches; }
+window.isMobile = isMobile;
+
 // ════════════════════════════════════════════════
 // CARREGA DADOS DO GITHUB E INICIALIZA O DASHBOARD
 // ════════════════════════════════════════════════
@@ -1379,7 +1652,7 @@ function recalcularDados(d, sessoes) {
     const label = meses[parseInt(m)-1] + '/' + y.slice(2);
     byMonth[ym] = { label, v: (byMonth[ym]?.v || 0) + s.paginas };
   });
-  const MONTHLY = Object.keys(byMonth).sort().map(k => ({ m: byMonth[k].label, v: byMonth[k].v }));
+  MONTHLY = Object.keys(byMonth).sort().map(k => ({ m: byMonth[k].label, v: byMonth[k].v }));
 
   // ── YEARS ───────────────────────────────────────────
   const byYear = {};
@@ -1393,7 +1666,7 @@ function recalcularDados(d, sessoes) {
     byYear[yr].min  += s.minutos || 0;
     if (s.data) byYear[yr].days[s.data] = (byYear[yr].days[s.data]||0) + s.paginas;
   });
-  const YEARS = Object.keys(byYear).sort().map(yr => {
+  YEARS = Object.keys(byYear).sort().map(yr => {
     const y = byYear[yr];
     const dias = Object.values(y.days);
     const pgdia = dias.length ? Math.round(dias.reduce((a,b)=>a+b,0)/dias.length*10)/10 : 0;
@@ -1420,8 +1693,8 @@ function recalcularDados(d, sessoes) {
   const WD_2024 = calcWd(2024);
   const WD_2025 = calcWd(2025);
   const WD_2026 = calcWd(2026);
-  const WD_AVG = { 'total': WD_ALL.avg, '2024': WD_2024.avg, '2025': WD_2025.avg, '2026': WD_2026.avg };
-  const WD_SUM = { 'total': WD_ALL.sum, '2024': WD_2024.sum, '2025': WD_2025.sum, '2026': WD_2026.sum };
+  WD_AVG = { 'total': WD_ALL.avg, '2024': WD_2024.avg, '2025': WD_2025.avg, '2026': WD_2026.avg };
+  WD_SUM = { 'total': WD_ALL.sum, '2024': WD_2024.sum, '2025': WD_2025.sum, '2026': WD_2026.sum };
 
   // ── NOTES ────────────────────────────────────────────
   // Enrich notas with real year from sessoes (ano field in NOTAS sheet is nota geral, not year)
@@ -1435,7 +1708,7 @@ function recalcularDados(d, sessoes) {
       ? (!n.usuario || n.usuario === '' || n.usuario.toUpperCase() === 'MILTON')
       : n.usuario?.toUpperCase() === u.toUpperCase()
   );
-  const NOTES = notasFiltradas.map(n => ({
+  NOTES = notasFiltradas.map(n => ({
     ...n,
     ano: bookFinishYear[n.livro] || (n.ano > 2000 ? n.ano : 0)
   })).sort((a,b) => b.media - a.media);
@@ -1450,10 +1723,10 @@ function recalcularDados(d, sessoes) {
   const colSort = Object.entries(byCol).sort((a,b) => b[1]-a[1]);
   const top9 = colSort.slice(0,9);
   const outros = colSort.slice(9).reduce((s,[,v]) => s+v, 0);
-  const COLECOES = [...top9.map(([c,p]) => ({c,p})), ...(outros>0 ? [{c:'Outros',p:outros}] : [])];
+  COLECOES = [...top9.map(([c,p]) => ({c,p})), ...(outros>0 ? [{c:'Outros',p:outros}] : [])];
 
   // ── BOOK DAILY ───────────────────────────────────────
-  const BOOK_DAILY = {};
+  BOOK_DAILY = {};
   sessoes.forEach(s => {
     if (!s.livro || !s.data || !s.paginas) return;
     // Normaliza data para yyyy-MM-dd
@@ -1604,6 +1877,14 @@ function recalcularDados(d, sessoes) {
   buildMeta();
   document.getElementById('header-badge').textContent =
     `${(window._livros||[]).length} livros · ${(window._sessoes||[]).length} sessões`;
+
+  // Mobile: força resize de todos os charts após layout estabilizar
+  if (isMobile()) {
+    setTimeout(() => {
+      applyMobileLayout();
+      Object.values(Chart.instances || {}).forEach(ch => { try { ch.resize(); } catch(e){} });
+    }, 500);
+  }
 }
 // Variáveis globais dos gráficos
 let MONTHLY, YEARS, WD_AVG, WD_SUM, NOTES, COLECOES, BOOK_DAILY;
@@ -1789,11 +2070,11 @@ function renderLendoCards() {
             <div class="lendo-bar-bg"><div class="lendo-bar-fg" style="width:${Math.min(pctVal,100)}%;background:${cor}"></div></div>
             <span class="lendo-pct-label" style="color:${cor}">${pctVal}%</span>
           </div>
-          <div class="lendo-meta" style="display:flex;align-items:center;justify-content:space-between;">
+          <div class="lendo-meta" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
             <span>Faltam: <b>${faltam.toLocaleString('pt-BR')} páginas</b></span>
             <button onclick="abrirSessaoRapida('${p.livro.replace(/'/g,"\\'")}')"
-              style="background:var(--purple);border:none;color:white;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;">
-              + Registrar sessão
+              style="background:var(--purple);border:none;color:white;padding:5px 10px;border-radius:20px;font-size:11px;font-weight:700;cursor:pointer;white-space:nowrap;">
+              + Sessão
             </button>
           </div>
         </div>`;
@@ -1844,19 +2125,14 @@ window.renderLendoCards = renderLendoCards;
 function abrirSessaoRapida(livroNome) {
   abrirModal('sessao');
   setTimeout(() => {
-    // Preencher o livro automaticamente
-    const inputBusca = document.getElementById('s-livro-busca');
     const inputHidden = document.getElementById('s-livro');
     const display = document.getElementById('s-livro-selecionado');
+    const inputBusca = document.getElementById('s-livro-busca');
     if (inputHidden) inputHidden.value = livroNome;
-    if (inputBusca) inputBusca.value = '';
     if (display) { display.textContent = '📖 ' + livroNome + ' ✕'; display.style.display = 'block'; }
-    // Iniciar scroll na página atual do livro
+    if (inputBusca) inputBusca.value = '';
     const livro = (window._livros||[]).find(l => l.livro === livroNome);
-    if (livro && window.iniciarScrollPagina) {
-      iniciarScrollPagina(livro.pagAtual||0, livro.totalPag||0);
-    }
-    // Esconder o campo de busca
+    if (livro && window.iniciarScrollPagina) iniciarScrollPagina(livro.pagAtual||0, livro.totalPag||0);
     const buscaWrap = inputBusca?.closest('.pwa-field');
     if (buscaWrap) buscaWrap.style.display = 'none';
   }, 150);
@@ -1864,7 +2140,7 @@ function abrirSessaoRapida(livroNome) {
 window.abrirSessaoRapida = abrirSessaoRapida;
 
 function renderizarGraficos(dados) {
-  MONTHLY   = dados.MONTHLY;
+  window._lastDados = dados;
   YEARS     = dados.YEARS;
   WD_AVG    = dados.WD_AVG;
   WD_SUM    = dados.WD_SUM;
@@ -1887,8 +2163,8 @@ function renderizarGraficos(dados) {
   buildStreaks();
   buildHeatmap();
   buildCalendar();
+  setTimeout(buildDrilldown, 200);
   if (isMobile()) setTimeout(applyMobileLayout, 400);
-  setTimeout(() => ddSetModo('mes'), 300);
 }
 
 // ════════════════════════════════════════════════
@@ -1969,11 +2245,13 @@ function buildWd() {
     const src  = type==='avg' ? WD_AVG : WD_SUM;
     const vals = src[yr] || src['total'] || [0,0,0,0,0,0,0];
     const maxV = Math.max(...vals, 1);
+    const minV = Math.min(...vals.filter(v=>v>0), maxV);
+    const range = maxV - minV || 1;
     const el   = document.getElementById(type==='avg' ? 'wdAvg' : 'wdSum');
     if (!el) return;
     el.innerHTML = '';
     vals.forEach((v, i) => {
-      const h    = Math.max(6, Math.round(v/maxV * 90));
+      const h    = v > 0 ? Math.max(8, Math.round(20 + ((v - minV) / range) * 55)) : 0;
       const disp = type==='avg' ? v.toFixed(0) : v.toLocaleString('pt-BR');
       el.innerHTML += `
         <div class="wd-col">
@@ -1987,39 +2265,29 @@ function buildWd() {
 
 
 function inicializarGraficos() {
+  inicializarMonthlySelectors();
+  inicializarHeatmapChart();
+  inicializarBookChart();
 
-// Popular seletores imediatamente com os dados disponíveis
-(function() {
-  // Seletor anos ranking — usa anos das NOTAS, não das sessões
+  // Popular seletores com dados disponíveis
   const selNotasAno = document.getElementById('selNotasAno');
   const anosNotas = [...new Set(NOTES.map(n => n.ano).filter(a => a > 2000))].sort();
   selNotasAno.innerHTML = '<option value="all">Todos os anos</option>';
-  anosNotas.forEach(a => {
-    selNotasAno.innerHTML += `<option value="${a}">${a}</option>`;
-  });
+  anosNotas.forEach(a => { selNotasAno.innerHTML += `<option value="${a}">${a}</option>`; });
 
-  // Seletor coleções ranking
   const selNotasColecao = document.getElementById('selNotasColecao');
   if (selNotasColecao) {
     const allLivrosCol = [...(window._livros||[]),...(window._dadosD?.lendo||[]),...(window._dadosD?.pausados||[]),...(window._dadosD?.aguardando||[])];
-    const colecoesNotas = [...new Set(NOTES.map(n => {
-      const l = allLivrosCol.find(x => x.livro === n.livro);
-      return l?.colecao || '';
-    }).filter(Boolean))].sort();
+    const colecoesNotas = [...new Set(NOTES.map(n => { const l = allLivrosCol.find(x => x.livro === n.livro); return l?.colecao || ''; }).filter(Boolean))].sort();
     selNotasColecao.innerHTML = '<option value="all">Todas as coleções</option>';
-    colecoesNotas.forEach(c => {
-      selNotasColecao.innerHTML += `<option value="${c}">${c}</option>`;
-    });
+    colecoesNotas.forEach(c => { selNotasColecao.innerHTML += `<option value="${c}">${c}</option>`; });
   }
 
-  // Seletor anos dia da semana
   const selWd = document.getElementById('selWd');
   const anosWd = Object.keys(WD_AVG).filter(k => k !== 'total').sort();
   selWd.innerHTML = '<option value="total">Total</option>';
-  anosWd.forEach(a => {
-    selWd.innerHTML += `<option value="${a}">${a}</option>`;
-  });
-})();
+  anosWd.forEach(a => { selWd.innerHTML += `<option value="${a}">${a}</option>`; });
+}
 
 // ════════════════════════════════════════════════
 // CHART DEFAULTS
@@ -2065,9 +2333,10 @@ buildYearBars();
 // ════════════════════════════════════════════════
 // 2. MONTHLY CHART
 // ════════════════════════════════════════════════
-(function() {
+function inicializarMonthlySelectors() {
   const selFrom = document.getElementById('selFrom');
   const selTo   = document.getElementById('selTo');
+  if (!MONTHLY || !selFrom || !selTo) return;
   MONTHLY.forEach((d,i) => {
     selFrom.innerHTML += `<option value="${i}">${d.m}</option>`;
     selTo.innerHTML   += `<option value="${i}"${i===MONTHLY.length-1?' selected':''}>${d.m}</option>`;
@@ -2131,7 +2400,8 @@ buildYearBars();
   selFrom.addEventListener('change', render);
   selTo.addEventListener('change', render);
   render();
-})();
+}
+window.inicializarMonthlySelectors = inicializarMonthlySelectors;
 
 
 // ════════════════════════════════════════════════
@@ -2320,9 +2590,10 @@ function filtrarSelBook(termo) {
 }
 window.filtrarSelBook = filtrarSelBook;
 
-(function() {
+function inicializarBookChart() {
   let chart = null;
-  const ctx = document.getElementById('cBook').getContext('2d');
+  const ctx = document.getElementById('cBook')?.getContext('2d');
+  if (!ctx) return;
   const existingBookChart = Chart.getChart('cBook');
   if (existingBookChart) existingBookChart.destroy();
 
@@ -2564,12 +2835,13 @@ window.filtrarSelBook = filtrarSelBook;
 
   buildBookChart();
   buildBookInfo();
-})();
+}
 
 // ════════════════════════════════════════════════
 // 7. HEATMAP
 // ════════════════════════════════════════════════
-(function() {
+function inicializarHeatmapChart() {
+  if (!MONTHLY) return;
   const months = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
   const byYearMonth = {};
   MONTHLY.forEach(d => {
@@ -2606,7 +2878,8 @@ window.filtrarSelBook = filtrarSelBook;
       scales: baseScales(0)
     }
   });
-})();
+}
+window.inicializarHeatmapChart = inicializarHeatmapChart;
 
 // Popular seletor de anos dos donuts
 const selDonutAno = document.getElementById('selDonutAno');
@@ -2615,8 +2888,6 @@ if (selDonutAno) {
   const anosDonut = [...new Set((window._sessoes||[]).map(s=>s.ano).filter(a=>a>2000))].sort();
   anosDonut.forEach(a => selDonutAno.innerHTML += `<option value="${a}">${a}</option>`);
 }
-
-} // fim inicializarGraficos
 
 function buildLivrosMes() {
   const meses = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
@@ -2729,159 +3000,101 @@ function ddGetLivroColor(livro) {
   }
   return _ddLivroColors[livro];
 }
-
 function ddSetModo(modo) {
-  _ddModo = modo;
-  _ddOffset = 0;
-  document.getElementById('dd-btn-semana').style.background = modo === 'semana' ? 'var(--purple)' : 'var(--bg3)';
-  document.getElementById('dd-btn-semana').style.color = modo === 'semana' ? 'white' : 'var(--text)';
-  document.getElementById('dd-btn-mes').style.background = modo === 'mes' ? 'var(--purple)' : 'var(--bg3)';
-  document.getElementById('dd-btn-mes').style.color = modo === 'mes' ? 'white' : 'var(--text)';
+  _ddModo = modo; _ddOffset = 0;
+  document.getElementById('dd-btn-semana').style.background = modo==='semana'?'var(--purple)':'var(--bg3)';
+  document.getElementById('dd-btn-semana').style.color = modo==='semana'?'white':'var(--text)';
+  document.getElementById('dd-btn-mes').style.background = modo==='mes'?'var(--purple)':'var(--bg3)';
+  document.getElementById('dd-btn-mes').style.color = modo==='mes'?'white':'var(--text)';
   buildDrilldown();
 }
 window.ddSetModo = ddSetModo;
-
-function ddNavegar(dir) {
-  _ddOffset += dir;
-  buildDrilldown();
-}
+function ddNavegar(dir) { _ddOffset += dir; buildDrilldown(); }
 window.ddNavegar = ddNavegar;
-
 function ddGetPeriodo() {
   const hoje = new Date(); hoje.setHours(12,0,0,0);
   if (_ddModo === 'semana') {
-    const dow = hoje.getDay(); // 0=dom
-    const seg = new Date(hoje); seg.setDate(hoje.getDate() - dow + (_ddOffset * 7));
-    const dom = new Date(seg); dom.setDate(seg.getDate() + 6);
+    const dow = hoje.getDay();
+    const seg = new Date(hoje); seg.setDate(hoje.getDate() - dow + (_ddOffset*7));
+    const dom = new Date(seg); dom.setDate(seg.getDate()+6);
     const dias = [];
-    for (let i = 0; i < 7; i++) {
-      const d = new Date(seg); d.setDate(seg.getDate() + i);
-      dias.push(d.toISOString().slice(0,10));
-    }
+    for (let i=0;i<7;i++) { const d=new Date(seg); d.setDate(seg.getDate()+i); dias.push(d.toISOString().slice(0,10)); }
     const label = `${seg.getDate().toString().padStart(2,'0')}/${(seg.getMonth()+1).toString().padStart(2,'0')} – ${dom.getDate().toString().padStart(2,'0')}/${(dom.getMonth()+1).toString().padStart(2,'0')}`;
     return { dias, label };
   } else {
-    const ref = new Date(hoje.getFullYear(), hoje.getMonth() + _ddOffset, 1);
+    const ref = new Date(hoje.getFullYear(), hoje.getMonth()+_ddOffset, 1);
     const meses = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
     const label = `${meses[ref.getMonth()]} ${ref.getFullYear()}`;
     const daysInMonth = new Date(ref.getFullYear(), ref.getMonth()+1, 0).getDate();
     const dias = [];
-    for (let d = 1; d <= daysInMonth; d++) {
-      dias.push(`${ref.getFullYear()}-${String(ref.getMonth()+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`);
-    }
+    for (let d=1;d<=daysInMonth;d++) dias.push(`${ref.getFullYear()}-${String(ref.getMonth()+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`);
     return { dias, label };
   }
 }
-
 function buildDrilldown() {
   const sess = window._sessoes || [];
   const { dias, label } = ddGetPeriodo();
   document.getElementById('dd-label').textContent = label;
-
-  // Agrupar sessões por dia e livro
   const dadosPorDia = {};
   dias.forEach(d => { dadosPorDia[d] = {}; });
   sess.forEach(s => {
     if (!s.data || !dias.includes(s.data)) return;
     if (!dadosPorDia[s.data][s.livro]) dadosPorDia[s.data][s.livro] = 0;
-    dadosPorDia[s.data][s.livro] += s.paginas || 0;
+    dadosPorDia[s.data][s.livro] += s.paginas||0;
   });
-
-  // Livros presentes no período
-  const livrosPresentes = [...new Set(
-    Object.values(dadosPorDia).flatMap(d => Object.keys(d))
-  )];
-
-  // Labels dos dias
+  const livrosPresentes = [...new Set(Object.values(dadosPorDia).flatMap(d=>Object.keys(d)))];
   const labels = dias.map(d => {
-    const dt = new Date(d + 'T12:00:00');
-    const nomes = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
-    return `${nomes[dt.getDay()]} ${dt.getDate()}`;
+    const dt = new Date(d+'T12:00:00');
+    const n = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+    return `${n[dt.getDay()]} ${dt.getDate()}`;
   });
-
-  // Datasets — um por livro, empilhado
   const datasets = livrosPresentes.map(livro => ({
-    label: livro,
-    data: dias.map(d => dadosPorDia[d][livro] || 0),
-    backgroundColor: ddGetLivroColor(livro),
-    borderRadius: 3,
-    stack: 'stack'
+    label: livro, data: dias.map(d=>dadosPorDia[d][livro]||0),
+    backgroundColor: ddGetLivroColor(livro), borderRadius:3, stack:'stack'
   }));
-
-  // Destruir chart anterior
-  if (_ddChart) { _ddChart.destroy(); _ddChart = null; }
+  if (_ddChart) { _ddChart.destroy(); _ddChart=null; }
   const ddEl = document.getElementById('cDrilldown');
   if (!ddEl) return;
-  // Sempre destruir qualquer chart existente no canvas
-  const existingDD = Chart.getChart(ddEl);
-  if (existingDD) existingDD.destroy();
   const ddParent = ddEl.parentElement;
-  if (ddParent) { ddEl.style.width = '100%'; ddEl.style.height = (ddParent.offsetHeight || 260) + 'px'; }
+  if (ddParent) { ddEl.style.width='100%'; ddEl.style.height=(ddParent.offsetHeight||220)+'px'; }
   const ctx = ddEl.getContext('2d');
-
   _ddChart = new Chart(ctx, {
-    type: 'bar',
-    data: { labels, datasets },
-    options: {
-      responsive: true, maintainAspectRatio: false,
-      onClick: (evt, els) => {
-        if (!els.length) return;
-        const diaIdx = els[0].index;
-        const dia = dias[diaIdx];
-        ddMostrarDetalhe(dia, dadosPorDia[dia]);
+    type:'bar', data:{labels,datasets},
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      onClick:(evt,els)=>{ if(!els.length)return; ddMostrarDetalhe(dias[els[0].index],dadosPorDia[dias[els[0].index]]); },
+      plugins:{
+        legend:{display:false},
+        tooltip:{callbacks:{
+          title:items=>{const dia=dias[items[0].dataIndex];const total=Object.values(dadosPorDia[dia]).reduce((a,b)=>a+b,0);return `${labels[items[0].dataIndex]} — ${total} págs`;},
+          label:item=>` ${item.dataset.label}: ${item.parsed.y} págs`
+        }}
       },
-      plugins: {
-        legend: { display: false },
-        tooltip: {
-          callbacks: {
-            title: items => {
-              const dia = dias[items[0].dataIndex];
-              const total = Object.values(dadosPorDia[dia]).reduce((a,b)=>a+b,0);
-              return `${labels[items[0].dataIndex]} — ${total} págs total`;
-            },
-            label: item => ` ${item.dataset.label}: ${item.parsed.y} págs`
-          }
-        }
-      },
-      scales: {
-        x: { stacked: true, ticks: { color: '#8892a8', font: { size: 11 } }, grid: { display: false } },
-        y: { stacked: true, ticks: { color: '#8892a8' }, grid: { color: 'rgba(42,50,72,0.3)' }, beginAtZero: true }
+      scales:{
+        x:{stacked:true,ticks:{color:'#8892a8',font:{size:10}},grid:{display:false}},
+        y:{stacked:true,ticks:{color:'#8892a8'},grid:{color:'rgba(42,50,72,0.3)'},beginAtZero:true}
       }
     }
   });
-
-  // Legenda
-  const legEl = document.getElementById('dd-legenda');
-  legEl.innerHTML = livrosPresentes.map(l =>
+  document.getElementById('dd-legenda').innerHTML = livrosPresentes.map(l=>
     `<div style="display:flex;align-items:center;gap:4px;">
-      <div style="width:10px;height:10px;border-radius:2px;background:${ddGetLivroColor(l)};flex-shrink:0;"></div>
-      <span style="font-size:11px;color:var(--muted);">${l.length > 25 ? l.slice(0,25)+'…' : l}</span>
-    </div>`
-  ).join('');
-
-  document.getElementById('dd-detalhe').style.display = 'none';
+      <div style="width:8px;height:8px;border-radius:2px;background:${ddGetLivroColor(l)};flex-shrink:0;"></div>
+      <span style="font-size:10px;color:var(--muted);">${l.length>20?l.slice(0,20)+'…':l}</span>
+    </div>`).join('');
+  document.getElementById('dd-detalhe').style.display='none';
 }
 window.buildDrilldown = buildDrilldown;
-
 function ddMostrarDetalhe(dia, dados) {
   const el = document.getElementById('dd-detalhe');
-  const dt = new Date(dia + 'T12:00:00');
-  const meses = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+  const dt = new Date(dia+'T12:00:00');
+  const meses=['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
   const total = Object.values(dados).reduce((a,b)=>a+b,0);
-  if (!total) { el.style.display = 'none'; return; }
-  const sessoesDia = (window._sessoes||[]).filter(s => s.data === dia);
-  const minutosDia = sessoesDia.reduce((a,s)=>a+(s.minutos||0),0);
-
-  el.style.display = 'block';
-  el.innerHTML = `<div style="font-weight:700;margin-bottom:8px;color:var(--text);">
-    📅 ${dt.getDate()} ${meses[dt.getMonth()]} ${dt.getFullYear()} — <span style="color:var(--teal);">${total} págs</span>${minutosDia ? ` · ${Math.round(minutosDia)}min` : ''}
-  </div>` +
-  Object.entries(dados).map(([livro, pags]) => `
-    <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
-      <div style="width:8px;height:8px;border-radius:50%;background:${ddGetLivroColor(livro)};flex-shrink:0;"></div>
-      <span style="flex:1;font-size:12px;">${livro}</span>
-      <span style="font-size:12px;font-weight:700;color:var(--teal);">${pags} págs</span>
-    </div>`).join('');
+  if (!total) { el.style.display='none'; return; }
+  const sessoesDia = (window._sessoes||[]).filter(s=>s.data===dia);
+  const min = sessoesDia.reduce((a,s)=>a+(s.minutos||0),0);
+  el.style.display='block';
+  el.innerHTML=`<div style="font-weight:700;margin-bottom:6px;color:var(--text);">📅 ${dt.getDate()} ${meses[dt.getMonth()]} — <span style="color:var(--teal);">${total} págs</span>${min?` · ${Math.round(min)}min`:''}</div>`+
+    Object.entries(dados).map(([l,p])=>`<div style="display:flex;align-items:center;gap:6px;margin-bottom:3px;"><div style="width:7px;height:7px;border-radius:50%;background:${ddGetLivroColor(l)};flex-shrink:0;"></div><span style="flex:1;font-size:11px;">${l}</span><span style="font-size:11px;font-weight:700;color:var(--teal);">${p} págs</span></div>`).join('');
 }
 window.ddMostrarDetalhe = ddMostrarDetalhe;
 
@@ -3084,21 +3297,20 @@ function buildHeatmap() {
                   'Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
   const diasSem = ['D','S','T','Q','Q','S','S'];
 
-  const isMobile = window.innerWidth < 600;
-  const cols = isMobile ? 2 : 4;
-  let html = `<div data-desktop-grid="1" style="display:grid;grid-template-columns:repeat(${cols},1fr);gap:${isMobile?10:16}px;">`;
+  const cols = 2;
+  let html = `<div data-desktop-grid="1" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;width:100%;">`;
 
   for (let mo = 0; mo < 12; mo++) {
     const daysInMonth = new Date(yr, mo+1, 0).getDate();
     const firstDay = new Date(yr, mo, 1).getDay(); // 0=Dom
 
-    html += `<div>
-      <div style="font-size:${isMobile?11:13}px;font-weight:700;color:var(--text);margin-bottom:4px;">${meses[mo]}</div>
-      <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:${isMobile?1:2}px;margin-bottom:4px;">`;
+    html += `<div style="width:100%;min-width:0;overflow:hidden;">
+      <div style="font-size:9px;font-weight:700;color:var(--text);margin-bottom:2px;">${meses[mo]}</div>
+      <div style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:1px;margin-bottom:2px;overflow:hidden;width:100%;box-sizing:border-box;">`;
 
     // Cabeçalho dias da semana
     diasSem.forEach(d => {
-      html += `<div style="font-size:10px;color:var(--muted);text-align:center;font-weight:600;">${d}</div>`;
+      html += `<div style="font-size:8px;color:var(--muted);text-align:center;font-weight:600;">${d}</div>`;
     });
 
     // Células vazias antes do dia 1
@@ -3116,15 +3328,16 @@ function buildHeatmap() {
       html += `<div data-tip="${title}" style="
         aspect-ratio:1;
         background:${color};
-        border-radius:4px;
+        border-radius:3px;
         display:flex;
         align-items:center;
         justify-content:center;
-        font-size:10px;
+        font-size:8px;
         font-weight:${pags?'700':'400'};
         color:${textColor};
         cursor:${pags?'pointer':'default'};
-        border: 1px solid rgba(255,255,255,0.06);
+        overflow:hidden;
+        min-width:0;
       ">${day}</div>`;
     }
 
@@ -3133,6 +3346,13 @@ function buildHeatmap() {
 
   html += `</div>`;
   document.getElementById('heatmapGrid').innerHTML = html;
+
+  // Forçar largura 100% em todos os grids internos do heatmap
+  document.querySelectorAll('#heatmapGrid div[style*="repeat(7"]').forEach(el => {
+    el.style.setProperty('width', '100%', 'important');
+    el.style.setProperty('display', 'grid', 'important');
+    el.style.setProperty('grid-template-columns', 'repeat(7,minmax(0,1fr))', 'important');
+  });
 
   // Popular seletor de anos
   const sel = document.getElementById('selHeatYear');
@@ -3200,7 +3420,7 @@ function buildCalendar() {
 
     html += `<div class="cal-day${totalPag?' active':''}${isSelected?' selected':''}" onclick="calSelect('${dateStr}')">
       <div class="cal-day-num">${day}</div>
-      ${totalPag ? `${livrosHtml}<div class="cal-day-bar" style="width:${barW}%"></div>` : ''}
+      ${totalPag ? `<div class="cal-day-pag">${totalPag} págs</div><div class="cal-day-bar" style="width:${barW}%"></div>` : ''}
     </div>`;
   }
 
@@ -3303,13 +3523,11 @@ function buildMeta() {
   document.getElementById('meta-pag-falt').textContent   = pagFalt.toLocaleString('pt-BR');
   document.getElementById('meta-pag-total').textContent  = pagTotal.toLocaleString('pt-BR');
   document.getElementById('meta-livros').textContent     = lidos + ' / ' + total;
-  // Calcular págs/dia necessárias para bater a meta até 31/12
-  const hoje = new Date(); hoje.setHours(0,0,0,0);
-  const fimAno = new Date(parseInt(ano), 11, 31); fimAno.setHours(0,0,0,0);
-  const diasRestantes = Math.max(1, Math.ceil((fimAno - hoje) / 86400000));
-  const pagDiaNec = pagFalt > 0 ? Math.ceil(pagFalt / diasRestantes) : 0;
-
-  document.getElementById('meta-pgdia').textContent = pagDiaNec > 0 ? pagDiaNec + ' págs/dia' : '✅ Meta batida!';
+  const _hoje = new Date(); _hoje.setHours(0,0,0,0);
+  const _fimAno = new Date(parseInt(ano), 11, 31); _fimAno.setHours(0,0,0,0);
+  const _diasRest = Math.max(1, Math.ceil((_fimAno - _hoje) / 86400000));
+  const _pagDiaNec = pagFalt > 0 ? Math.ceil(pagFalt / _diasRest) : 0;
+  document.getElementById('meta-pgdia').textContent = _pagDiaNec > 0 ? _pagDiaNec + ' págs/dia' : '✅ Meta batida!';
   document.getElementById('meta-ritmo').textContent      = ritmo > 0 ? ritmo.toFixed(1) + ' págs/dia' : '—';
   document.getElementById('meta-media-ano').textContent  = mediaDia > 0 ? mediaDia.toFixed(1) + ' págs/dia' : '—';
   document.getElementById('meta-data-ini').textContent   = '—';
@@ -3505,7 +3723,7 @@ carregarDados();
     <div class="pwa-row">
       <div class="pwa-field">
         <label>Data</label>
-        <input id="ee-data" type="date" style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:8px;">
+        <input id="ee-data" type="date" style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:8px;width:100%;">
       </div>
       <div class="pwa-field">
         <label>Páginas lidas</label>
@@ -3612,7 +3830,7 @@ carregarDados();
       <label>Ano de leitura</label>
       <input id="n-ano" type="number" value="2026" min="2020" max="2030">
     </div>
-    <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
+    <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:14px;">
       <div class="pwa-criterio"><label>Diálogos</label><input id="n-0" type="number" min="0" max="10" step="0.5" placeholder="0-10"></div>
       <div class="pwa-criterio"><label>Enredo</label><input id="n-1" type="number" min="0" max="10" step="0.5" placeholder="0-10"></div>
       <div class="pwa-criterio"><label>Estilo Visual</label><input id="n-2" type="number" min="0" max="10" step="0.5" placeholder="0-10"></div>
@@ -3830,6 +4048,12 @@ function setUsuario(usuario) {
 
   document.getElementById('pageDashboard').style.display = usuario === 'Batalha' ? 'none' : 'block';
   document.getElementById('pageBatalha').style.display   = usuario === 'Batalha' ? 'block' : 'none';
+  // CSS class approach for mobile reliability
+  if (usuario === 'Batalha') {
+    document.body.classList.add('batalha-ativo');
+  } else {
+    document.body.classList.remove('batalha-ativo');
+  }
   const lendoWrap = document.querySelector('.lendo-wrap');
   if (lendoWrap) lendoWrap.style.display = usuario === 'Batalha' ? 'none' : '';
   document.querySelector('.lendo-wrap').style.display    = usuario === 'Batalha' ? 'none' : 'block';
@@ -3845,6 +4069,8 @@ function setUsuario(usuario) {
     // Restaura o grid dos 4 kpi cards explicitamente
     const kg = document.getElementById('kpi-books-grid');
     if (kg) kg.style.display = 'grid';
+    // Garante que batalha fica sempre escondida quando não é batalha
+    document.getElementById('pageBatalha').style.display = 'none';
   }
 
   if (usuario === 'Batalha') {
@@ -3852,6 +4078,9 @@ function setUsuario(usuario) {
     if (isMobile()) setTimeout(applyMobileLayout, 400);
     return;
   }
+
+  // No mobile, pageDashboard fica sempre visível (scroll infinito)
+  // NÃO retorna — deixa o fluxo normal do setUsuario continuar abaixo
 
   const d = window._dadosD;
   if (!d) return;
@@ -4294,7 +4523,7 @@ function renderBatalha() {
 <div id="bat-attrs" data-desktop-grid="1" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px;"></div>
 
 <!-- PERFIL + GUERRA + DIA SAGRADO -->
-<div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
+<div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:20px;">
   <div>
     <div class="bat-section-hdr">🕸️ PERFIL DE COMBATE</div>
     <div style="font-family:'Exo 2',sans-serif;font-size:10px;color:rgba(248,250,252,0.35);margin-bottom:10px;">Tetos fixos — escala 0 a 10</div>
@@ -4349,7 +4578,7 @@ function renderBatalha() {
 <div style="margin-bottom:20px;">
   <div class="bat-section-hdr">📆 DIAS LIDOS NO PERÍODO</div>
   <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:20px;">
-    <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;">
+    <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr;gap:24px;align-items:center;">
       <div style="text-align:center;">
         <div style="font-family:'Orbitron',sans-serif;font-size:48px;font-weight:900;color:#A855F7;text-shadow:0 0 20px rgba(168,85,247,0.5);line-height:1;">${dA.diasSet.size}</div>
         <div style="font-family:'Rajdhani',sans-serif;font-size:13px;color:#A855F7;letter-spacing:2px;margin-top:4px;">${pA.toUpperCase()}</div>
@@ -4387,11 +4616,11 @@ function renderBatalha() {
 </div>
 
 <!-- BOSSES + SLIMES — 2 colunas simétricas -->
-<div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
+<div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:20px;">
   <div>
     <div class="bat-section-hdr">💀 BOSSES DERROTADOS (1000+ págs)</div>
     <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:14px;">
-      <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr;gap:12px;">
         <div>
           <div style="font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:#A855F7;margin-bottom:8px;letter-spacing:1px;">${pA.toUpperCase()} · ${dA.bosses.length}</div>
           <div id="bat-boss-a"></div>
@@ -4406,23 +4635,23 @@ function renderBatalha() {
   <div>
     <div class="bat-section-hdr">🐛 VENCENDO SLIMES (até 200 págs)</div>
     <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:14px;">
-      <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;" id="bat-slimes"></div>
+      <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr;gap:12px;" id="bat-slimes"></div>
     </div>
   </div>
 </div>
 
 <!-- ARTEFATOS + MALDIÇÕES -->
-<div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
+<div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:20px;">
   <div>
     <div class="bat-section-hdr">⭐ ARTEFATOS LENDÁRIOS — MELHORES AVALIADOS</div>
-    <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;overflow:visible;" id="bat-artefatos">
+    <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr;gap:10px;overflow:visible;" id="bat-artefatos">
       <div><div style="font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:#A855F7;margin-bottom:8px;letter-spacing:2px;">${pA.toUpperCase()}</div></div>
       <div><div style="font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:#FB923C;margin-bottom:8px;letter-spacing:2px;">${pB.toUpperCase()}</div></div>
     </div>
   </div>
   <div>
     <div class="bat-section-hdr">💀 MALDIÇÕES — PIORES AVALIADOS</div>
-    <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;overflow:visible;" id="bat-maldicoes">
+    <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr;gap:10px;overflow:visible;" id="bat-maldicoes">
       <div><div style="font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:#A855F7;margin-bottom:8px;letter-spacing:2px;">${pA.toUpperCase()}</div></div>
       <div><div style="font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:#FB923C;margin-bottom:8px;letter-spacing:2px;">${pB.toUpperCase()}</div></div>
     </div>
@@ -4432,7 +4661,7 @@ function renderBatalha() {
 <!-- AUTOR DOMINADO -->
 <div style="margin-bottom:20px;">
   <div class="bat-section-hdr">📚 AUTOR DOMINADO</div>
-  <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+  <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr;gap:12px;">
     ${[{p:pA,dd:dA,cor:'#A855F7'},{p:pB,dd:dB,cor:'#FB923C'}].map(({p,dd,cor})=>`
     <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:16px;display:flex;align-items:center;gap:12px;">
       <div style="width:44px;height:44px;border-radius:50%;background:${cor}22;border:2px solid ${cor};display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;box-shadow:0 0 12px ${cor}44;">📖</div>
@@ -4460,7 +4689,7 @@ function renderBatalha() {
 <!-- CRÔNICAS DA GUERRA -->
 <div class="bat-section-hdr">📜 CRÔNICAS DA GUERRA — HISTÓRICO DA RIVALIDADE</div>
 <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:20px;margin-bottom:20px;">
-  <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:20px;align-items:center;">
+  <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr 1fr auto;gap:20px;align-items:center;">
     <div style="text-align:center;">
       <div style="font-family:'Exo 2',sans-serif;font-size:9px;color:rgba(248,250,252,0.4);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">MESES VENCIDOS</div>
       <div style="display:flex;justify-content:center;align-items:center;gap:16px;">
@@ -4779,7 +5008,6 @@ function renderBatalha() {
 }
 
 // ── Mobile View System ───────────────────────────────────────────
-let _mobileView = false;
 // ── Mobile layout patcher ─────────────────────────────────────────
 function applyMobileLayout() {
   if (!isMobile()) return;
@@ -4869,23 +5097,22 @@ function _applyMQ(e) {
   }
 }
 _mq.addEventListener('change', _applyMQ);
-window.addEventListener('load', () => { _applyMQ(_mq); if(window.innerWidth < 900) setTimeout(applyMobileLayout, 500); setTimeout(() => ddSetModo('mes'), 200); });
+window.addEventListener('load', () => { _applyMQ(_mq); if(isMobile()) setTimeout(applyMobileLayout, 500); });
+
+// ── Mobile: scroll infinito ──────────────────────────────────────
+function scrollToSec(sec) {
+  const el = document.querySelector('[data-msection="' + sec + '"]');
+  if (!el) return;
+  const top = el.getBoundingClientRect().top + window.scrollY - 65;
+  window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+}
+window.scrollToSec = scrollToSec;
+
+// Override _applyMQ para mobile: mostra tudo em scroll, nao em abas
+const _origApplyMQ = typeof _applyMQ === 'function' ? _applyMQ : null;
 
 // ── Changelog ────────────────────────────────────
 const CHANGELOG = [
-  {
-    versao: '2.5', data: '30/05/2026', titulo: 'Mobile, Drill-down & UX',
-    itens: [
-      'Dashboard Mobile: layout otimizado para celular com scroll infinito (sem abas)',
-      'Dashboard Mobile: nav bar inferior com atalhos para cada seção',
-      'Gráfico Detalhe de Leitura: barras empilhadas por livro, modo Semana/Mês com navegação ‹ ›',
-      'Gráfico Detalhe de Leitura: clique na barra mostra detalhes do dia (livros, páginas, minutos)',
-      'Botão + Registrar Sessão nos cards de Lendo e Pausado — abre modal já com livro preenchido',
-      'Meta: novo indicador "Págs/dia p/ bater a meta" calculado pelos dias restantes até 31/dez',
-      'Gerenciar Sessões: botão ✏️ editar — exclui sessão original e cria nova com dados corrigidos',
-      'Campo de data editável no modal de edição de sessão',
-    ]
-  },
   {
     versao: '2.4', data: '21/05/2026', titulo: 'Perfil de Combate & UX',
     itens: [
@@ -5256,7 +5483,8 @@ function renderSessoesExcluir() {
         <div style="font-size:13px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${s.livro}</div>
         <div style="font-size:12px;color:var(--muted);">${s.data} · ${s.paginas} págs${s.minutos ? ' · '+Math.round(s.minutos)+'min' : ''}</div>
       </div>
-      <button class="es-edit-btn"
+      <button data-livro="${s.livro.replace(/"/g,'&quot;')}" data-data="${s.data}" data-paginas="${s.paginas}"
+        class="es-edit-btn"
         style="background:var(--purple);border:none;color:white;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:16px;flex-shrink:0;">✏️</button>
       <button data-livro="${s.livro.replace(/"/g,'&quot;')}" data-data="${s.data}" data-paginas="${s.paginas}"
         class="es-del-btn"
@@ -5265,16 +5493,15 @@ function renderSessoesExcluir() {
       excluirSessao(s.livro, s.data, s.paginas);
     });
     div.querySelector('.es-edit-btn').addEventListener('click', () => {
-      editarSessaoDesktop(s);
+      editarSessao(s);
     });
     lista.appendChild(div);
   });
 }
 window.renderSessoesExcluir = renderSessoesExcluir;
 
-function editarSessaoDesktop(s) {
+function editarSessao(s) {
   fecharModal('excluirSessao');
-  // Preenche o modal de edição
   document.getElementById('ee-livro-original').value = s.livro;
   document.getElementById('ee-data-original').value = s.data;
   document.getElementById('ee-paginas-original').value = s.paginas;
@@ -5289,32 +5516,30 @@ function editarSessaoDesktop(s) {
   document.getElementById('ee-msg').textContent = '';
   abrirModal('editarSessao');
 }
-window.editarSessaoDesktop = editarSessaoDesktop;
+window.editarSessao = editarSessao;
 
 async function salvarEdicaoSessao() {
-  const livro         = document.getElementById('ee-livro-original').value;
-  const dataOriginal  = document.getElementById('ee-data-original').value;
-  const paginasOrig   = Number(document.getElementById('ee-paginas-original').value);
-  const novaData      = document.getElementById('ee-data').value;
-  const novasPaginas  = Number(document.getElementById('ee-paginas').value);
-  const horas         = Number(document.getElementById('ee-horas').value) || 0;
-  const minutos       = Number(document.getElementById('ee-minutos').value) || 0;
-  const totalMinutos  = horas * 60 + minutos;
-  const usuario       = usuarioAtual === 'Batalha' ? 'Milton' : usuarioAtual;
+  const livro        = document.getElementById('ee-livro-original').value;
+  const dataOriginal = document.getElementById('ee-data-original').value;
+  const paginasOrig  = Number(document.getElementById('ee-paginas-original').value);
+  const novaData     = document.getElementById('ee-data').value;
+  const novasPaginas = Number(document.getElementById('ee-paginas').value);
+  const horas        = Number(document.getElementById('ee-horas').value) || 0;
+  const minutos      = Number(document.getElementById('ee-minutos').value) || 0;
+  const totalMinutos = horas * 60 + minutos;
+  const usuario      = usuarioAtual === 'Batalha' ? 'Milton' : usuarioAtual;
 
   if (!novaData || !novasPaginas) {
     mostrarMsg('ee-msg', '⚠️ Preencha data e páginas', 'err'); return;
   }
   mostrarMsg('ee-msg', 'Salvando...', '');
   try {
-    // 1. Excluir sessão original
     const r1 = await fetch(API_URL, { method:'POST',
       body: JSON.stringify({ acao:'excluirSessao', livro, data:dataOriginal, paginas:paginasOrig, usuario })
     });
     const d1 = await r1.json();
-    if (!d1.ok) { mostrarMsg('ee-msg', '❌ Erro ao excluir original: '+(d1.erro||''), 'err'); return; }
+    if (!d1.ok) { mostrarMsg('ee-msg', '❌ Erro ao excluir: '+(d1.erro||''), 'err'); return; }
 
-    // 2. Criar nova sessão com dados editados
     const r2 = await fetch(API_URL, { method:'POST',
       body: JSON.stringify({ acao:'registrarSessao', livro, paginas:novasPaginas, minutos:totalMinutos, data:novaData, usuario })
     });
@@ -5322,7 +5547,7 @@ async function salvarEdicaoSessao() {
     if (d2.ok) {
       mostrarMsg('ee-msg', '✅ Sessão editada!', 'ok');
       setTimeout(() => { fecharModal('editarSessao'); recarregarAteAtualizar(); }, 1200);
-    } else { mostrarMsg('ee-msg', '❌ Erro ao criar nova: '+(d2.erro||''), 'err'); }
+    } else { mostrarMsg('ee-msg', '❌ Erro ao criar: '+(d2.erro||''), 'err'); }
   } catch(e) { mostrarMsg('ee-msg', '❌ Erro de conexão', 'err'); }
 }
 window.salvarEdicaoSessao = salvarEdicaoSessao;
