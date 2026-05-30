@@ -1889,15 +1889,6 @@ function renderizarGraficos(dados) {
   buildCalendar();
   if (isMobile()) setTimeout(applyMobileLayout, 400);
   setTimeout(() => ddSetModo('mes'), 300);
-  setTimeout(() => ddSetModo('mes'), 1000);
-  setTimeout(() => { try { buildDrilldown(); } catch(e) {} }, 1500);
-  const ddScrollHandler = () => { ddSetModo('mes'); window.removeEventListener('scroll', ddScrollHandler); };
-  window.addEventListener('scroll', ddScrollHandler, { once: true });
-  const ddContainer = document.getElementById('cDrilldown')?.closest('.card');
-  if (ddContainer && !ddContainer._ddListenerAdded) {
-    ddContainer._ddListenerAdded = true;
-    ddContainer.addEventListener('mouseenter', () => ddSetModo('mes'), { once: true });
-  }
 }
 
 // ════════════════════════════════════════════════
@@ -4878,7 +4869,7 @@ function _applyMQ(e) {
   }
 }
 _mq.addEventListener('change', _applyMQ);
-window.addEventListener('load', () => { _applyMQ(_mq); if(isMobile()) setTimeout(applyMobileLayout, 500); });
+window.addEventListener('load', () => { _applyMQ(_mq); if(isMobile()) setTimeout(applyMobileLayout, 500); setTimeout(() => ddSetModo('mes'), 200); });
 
 // ── Changelog ────────────────────────────────────
 const CHANGELOG = [
