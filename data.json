@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-31T20:50:38.028Z",
+  "geradoEm": "2026-05-31T23:30:42.911Z",
   "meta": {
     "total": 54,
-    "lidos": 28,
-    "faltando": 26,
+    "lidos": 29,
+    "faltando": 25,
     "paginasTotal": 27016,
-    "paginasLidas": 13783,
-    "paginasFaltando": 13233,
-    "mediaDiaria": 83.5,
-    "ritmoAtual": 93.7,
-    "dataPrevistoAtual": "20/10/2026"
+    "paginasLidas": 13925,
+    "paginasFaltando": 13091,
+    "mediaDiaria": 84.4,
+    "ritmoAtual": 98.4,
+    "dataPrevistoAtual": "12/10/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -70,17 +70,17 @@
     },
     "2026": {
       "total": 54,
-      "lidos": 28,
+      "lidos": 29,
       "lendo": 1,
       "pausados": 0,
-      "aguardando": 25,
+      "aguardando": 24,
       "paginasTotal": 27016,
-      "paginasLidas": 13783,
-      "paginasFaltando": 13233,
-      "faltando": 26,
-      "mediaDiaria": 83.5,
-      "ritmoAtual": 93.7,
-      "dataPrevistoAtual": "20/10/2026"
+      "paginasLidas": 13925,
+      "paginasFaltando": 13091,
+      "faltando": 25,
+      "mediaDiaria": 84.4,
+      "ritmoAtual": 98.4,
+      "dataPrevistoAtual": "12/10/2026"
     },
     "2027": {
       "total": 1,
@@ -27418,6 +27418,15 @@
       "minutos": 65,
       "ano": 2026,
       "usuario": "Daniel"
+    },
+    {
+      "livro": "A Alma do Imperador",
+      "colecao": "Cosmere",
+      "data": "2026-05-31",
+      "paginas": 142,
+      "minutos": 120,
+      "ano": 2026,
+      "usuario": "Milton"
     }
   ],
   "livros": [
@@ -28489,15 +28498,15 @@
       "isbn": "9780765360922",
       "coverUrl": "https://m.media-amazon.com/images/I/81GB-e9IAgL._AC_UF1000,1000_QL80_.jpg",
       "metaAno": "2026",
-      "anoConclusao": "",
+      "anoConclusao": "2026",
       "depende": "Elantris",
       "colecao": "Cosmere",
       "ordemColecao": 10,
       "ordem": 0,
-      "status": "Aguardando",
+      "status": "Completo",
       "totalPag": 142,
-      "pagAtual": 0,
-      "pct": 0,
+      "pagAtual": 142,
+      "pct": 1,
       "usuario": "MILTON",
       "genero": "Fantasia épica"
     },
@@ -36445,24 +36454,6 @@
     }
   ],
   "aguardando": [
-    {
-      "livro": "A Alma do Imperador",
-      "autor": "Brandon Sanderson",
-      "isbn": "9780765360922",
-      "coverUrl": "https://m.media-amazon.com/images/I/81GB-e9IAgL._AC_UF1000,1000_QL80_.jpg",
-      "metaAno": "2026",
-      "anoConclusao": "",
-      "depende": "Elantris",
-      "colecao": "Cosmere",
-      "ordemColecao": 10,
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 142,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "MILTON",
-      "genero": "Fantasia épica"
-    },
     {
       "livro": "Of Darkness and Light",
       "autor": "Ryan Cahill",
