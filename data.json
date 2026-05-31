@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-31T04:44:21.982Z",
+  "geradoEm": "2026-05-31T04:44:56.437Z",
   "meta": {
     "total": 53,
     "lidos": 27,
     "faltando": 26,
     "paginasTotal": 26956,
-    "paginasLidas": 13671,
-    "paginasFaltando": 13285,
-    "mediaDiaria": 82.7,
-    "ritmoAtual": 88.3,
-    "dataPrevistoAtual": "29/10/2026"
+    "paginasLidas": 13692,
+    "paginasFaltando": 13264,
+    "mediaDiaria": 82.9,
+    "ritmoAtual": 88.9,
+    "dataPrevistoAtual": "28/10/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -75,12 +75,12 @@
       "pausados": 0,
       "aguardando": 24,
       "paginasTotal": 26956,
-      "paginasLidas": 13671,
-      "paginasFaltando": 13285,
+      "paginasLidas": 13692,
+      "paginasFaltando": 13264,
       "faltando": 26,
-      "mediaDiaria": 82.7,
-      "ritmoAtual": 88.3,
-      "dataPrevistoAtual": "29/10/2026"
+      "mediaDiaria": 82.9,
+      "ritmoAtual": 88.9,
+      "dataPrevistoAtual": "28/10/2026"
     },
     "2027": {
       "total": 1,
@@ -27400,6 +27400,15 @@
       "minutos": 21,
       "ano": 2026,
       "usuario": "Milton"
+    },
+    {
+      "livro": "Shadows for Silence in The Forest of Hell",
+      "colecao": "Cosmere",
+      "data": "2026-05-30",
+      "paginas": 21,
+      "minutos": 21,
+      "ano": 2026,
+      "usuario": "Milton"
     }
   ],
   "livros": [
@@ -28568,8 +28577,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 73,
-      "pagAtual": 21,
-      "pct": 0.288,
+      "pagAtual": 42,
+      "pct": 0.575,
       "usuario": "MILTON",
       "genero": "Fantasia épica"
     },
@@ -36420,8 +36429,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 73,
-      "pagAtual": 21,
-      "pct": 0.288,
+      "pagAtual": 42,
+      "pct": 0.575,
       "usuario": "MILTON",
       "genero": "Fantasia épica"
     },
