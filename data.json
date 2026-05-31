@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-31T04:49:38.429Z",
+  "geradoEm": "2026-05-31T20:37:01.540Z",
   "meta": {
     "total": 54,
-    "lidos": 27,
-    "faltando": 27,
+    "lidos": 28,
+    "faltando": 26,
     "paginasTotal": 27016,
-    "paginasLidas": 13671,
-    "paginasFaltando": 13345,
-    "mediaDiaria": 82.7,
-    "ritmoAtual": 88.3,
-    "dataPrevistoAtual": "30/10/2026"
+    "paginasLidas": 13723,
+    "paginasFaltando": 13293,
+    "mediaDiaria": 83.1,
+    "ritmoAtual": 91.7,
+    "dataPrevistoAtual": "23/10/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -70,17 +70,17 @@
     },
     "2026": {
       "total": 54,
-      "lidos": 27,
-      "lendo": 2,
+      "lidos": 28,
+      "lendo": 1,
       "pausados": 0,
       "aguardando": 25,
       "paginasTotal": 27016,
-      "paginasLidas": 13671,
-      "paginasFaltando": 13345,
-      "faltando": 27,
-      "mediaDiaria": 82.7,
-      "ritmoAtual": 88.3,
-      "dataPrevistoAtual": "30/10/2026"
+      "paginasLidas": 13723,
+      "paginasFaltando": 13293,
+      "faltando": 26,
+      "mediaDiaria": 83.1,
+      "ritmoAtual": 91.7,
+      "dataPrevistoAtual": "23/10/2026"
     },
     "2027": {
       "total": 1,
@@ -27400,6 +27400,15 @@
       "minutos": 90,
       "ano": 2026,
       "usuario": "Milton"
+    },
+    {
+      "livro": "Shadows for Silence in The Forest of Hell",
+      "colecao": "Cosmere",
+      "data": "2026-05-31",
+      "paginas": 52,
+      "minutos": 102,
+      "ano": 2026,
+      "usuario": "Milton"
     }
   ],
   "livros": [
@@ -28561,15 +28570,15 @@
       "isbn": "9780765375421",
       "coverUrl": "https://m.media-amazon.com/images/I/81-TqssCMmL._UF1000,1000_QL80_.jpg",
       "metaAno": "2026",
-      "anoConclusao": "",
+      "anoConclusao": "2026",
       "depende": "",
       "colecao": "Cosmere",
       "ordemColecao": 19,
       "ordem": 0,
-      "status": "Lendo",
+      "status": "Completo",
       "totalPag": 73,
-      "pagAtual": 21,
-      "pct": 0.288,
+      "pagAtual": 73,
+      "pct": 1,
       "usuario": "MILTON",
       "genero": "Fantasia épica"
     },
@@ -36407,24 +36416,6 @@
     }
   ],
   "lendo": [
-    {
-      "livro": "Shadows for Silence in The Forest of Hell",
-      "autor": "Brandon Sanderson",
-      "isbn": "9780765375421",
-      "coverUrl": "https://m.media-amazon.com/images/I/81-TqssCMmL._UF1000,1000_QL80_.jpg",
-      "metaAno": "2026",
-      "anoConclusao": "",
-      "depende": "",
-      "colecao": "Cosmere",
-      "ordemColecao": 19,
-      "ordem": 0,
-      "status": "Lendo",
-      "totalPag": 73,
-      "pagAtual": 21,
-      "pct": 0.288,
-      "usuario": "MILTON",
-      "genero": "Fantasia épica"
-    },
     {
       "livro": "Ascendant",
       "autor": "Michael R. Miller",
