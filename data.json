@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-31T02:22:14.275Z",
+  "geradoEm": "2026-05-31T02:33:08.223Z",
   "meta": {
     "total": 53,
-    "lidos": 26,
-    "faltando": 27,
+    "lidos": 27,
+    "faltando": 26,
     "paginasTotal": 26956,
-    "paginasLidas": 13583,
-    "paginasFaltando": 13373,
-    "mediaDiaria": 82.1,
-    "ritmoAtual": 85.4,
-    "dataPrevistoAtual": "03/11/2026"
+    "paginasLidas": 13650,
+    "paginasFaltando": 13306,
+    "mediaDiaria": 82.6,
+    "ritmoAtual": 87.6,
+    "dataPrevistoAtual": "29/10/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -70,17 +70,17 @@
     },
     "2026": {
       "total": 53,
-      "lidos": 26,
-      "lendo": 2,
+      "lidos": 27,
+      "lendo": 1,
       "pausados": 0,
       "aguardando": 25,
       "paginasTotal": 26956,
-      "paginasLidas": 13583,
-      "paginasFaltando": 13373,
-      "faltando": 27,
-      "mediaDiaria": 82.1,
-      "ritmoAtual": 85.4,
-      "dataPrevistoAtual": "03/11/2026"
+      "paginasLidas": 13650,
+      "paginasFaltando": 13306,
+      "faltando": 26,
+      "mediaDiaria": 82.6,
+      "ritmoAtual": 87.6,
+      "dataPrevistoAtual": "29/10/2026"
     },
     "2027": {
       "total": 1,
@@ -27382,6 +27382,15 @@
       "minutos": 30,
       "ano": 2026,
       "usuario": "Daniel"
+    },
+    {
+      "livro": "Harry Potter - Camara Secreta",
+      "colecao": "Harry Potter",
+      "data": "2026-05-31",
+      "paginas": 67,
+      "minutos": 90,
+      "ano": 2026,
+      "usuario": "Milton"
     }
   ],
   "livros": [
@@ -28620,10 +28629,10 @@
       "colecao": "Harry Potter",
       "ordemColecao": 2,
       "ordem": 2,
-      "status": "Lendo",
+      "status": "Completo",
       "totalPag": 288,
-      "pagAtual": 221,
-      "pct": 0.767,
+      "pagAtual": 288,
+      "pct": 1,
       "usuario": "MILTON",
       "genero": "Fantasia"
     },
@@ -36389,24 +36398,6 @@
     }
   ],
   "lendo": [
-    {
-      "livro": "Harry Potter - Camara Secreta",
-      "autor": "J. K. Rowling",
-      "isbn": "9788532523051",
-      "coverUrl": "https://m.media-amazon.com/images/I/81jbivNEVML._AC_UF1000,1000_QL80_.jpg",
-      "metaAno": "2026",
-      "anoConclusao": "2026",
-      "depende": "Harry Potter - A Pedra Filosofal",
-      "colecao": "Harry Potter",
-      "ordemColecao": 2,
-      "ordem": 2,
-      "status": "Lendo",
-      "totalPag": 288,
-      "pagAtual": 221,
-      "pct": 0.767,
-      "usuario": "MILTON",
-      "genero": "Fantasia"
-    },
     {
       "livro": "Ascendant",
       "autor": "Michael R. Miller",
