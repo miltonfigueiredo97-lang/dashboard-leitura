@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-31T23:30:42.911Z",
+  "geradoEm": "2026-05-31T23:31:37.194Z",
   "meta": {
     "total": 54,
     "lidos": 29,
@@ -44083,6 +44083,24 @@
         "Personagens": 7,
         "Ritmo": 7,
         "Temas": 7
+      },
+      "usuario": "Milton"
+    },
+    {
+      "livro": "A Alma do Imperador",
+      "ano": 2026,
+      "media": 6.95,
+      "criterios": {
+        "Diálogos": 8,
+        "Enredo": 9,
+        "Estilo Visual": 7,
+        "Finalização": 5,
+        "Imersão": 8,
+        "Impacto Emocional": 5,
+        "Originalidade": 6,
+        "Personagens": 6.5,
+        "Ritmo": 8.5,
+        "Temas": 6.5
       },
       "usuario": "Milton"
     }
