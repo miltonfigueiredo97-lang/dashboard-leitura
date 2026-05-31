@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-31T04:46:22.495Z",
+  "geradoEm": "2026-05-31T04:46:34.062Z",
   "meta": {
     "total": 53,
-    "lidos": 26,
-    "faltando": 27,
+    "lidos": 27,
+    "faltando": 26,
     "paginasTotal": 26956,
-    "paginasLidas": 13604,
-    "paginasFaltando": 13352,
-    "mediaDiaria": 82.3,
-    "ritmoAtual": 86.1,
-    "dataPrevistoAtual": "03/11/2026"
+    "paginasLidas": 13671,
+    "paginasFaltando": 13285,
+    "mediaDiaria": 82.7,
+    "ritmoAtual": 88.3,
+    "dataPrevistoAtual": "29/10/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -70,17 +70,17 @@
     },
     "2026": {
       "total": 53,
-      "lidos": 26,
-      "lendo": 3,
+      "lidos": 27,
+      "lendo": 2,
       "pausados": 0,
       "aguardando": 24,
       "paginasTotal": 26956,
-      "paginasLidas": 13604,
-      "paginasFaltando": 13352,
-      "faltando": 27,
-      "mediaDiaria": 82.3,
-      "ritmoAtual": 86.1,
-      "dataPrevistoAtual": "03/11/2026"
+      "paginasLidas": 13671,
+      "paginasFaltando": 13285,
+      "faltando": 26,
+      "mediaDiaria": 82.7,
+      "ritmoAtual": 88.3,
+      "dataPrevistoAtual": "29/10/2026"
     },
     "2027": {
       "total": 1,
@@ -27391,6 +27391,15 @@
       "minutos": 21,
       "ano": 2026,
       "usuario": "Milton"
+    },
+    {
+      "livro": "Harry Potter - Camara Secreta",
+      "colecao": "Harry Potter",
+      "data": "2026-05-30",
+      "paginas": 67,
+      "minutos": 90,
+      "ano": 2026,
+      "usuario": "Milton"
     }
   ],
   "livros": [
@@ -28629,10 +28638,10 @@
       "colecao": "Harry Potter",
       "ordemColecao": 2,
       "ordem": 2,
-      "status": "Lendo",
+      "status": "Completo",
       "totalPag": 288,
-      "pagAtual": 221,
-      "pct": 0.767,
+      "pagAtual": 288,
+      "pct": 1,
       "usuario": "MILTON",
       "genero": "Fantasia"
     },
@@ -36415,24 +36424,6 @@
       "pct": 0.288,
       "usuario": "MILTON",
       "genero": "Fantasia épica"
-    },
-    {
-      "livro": "Harry Potter - Camara Secreta",
-      "autor": "J. K. Rowling",
-      "isbn": "9788532523051",
-      "coverUrl": "https://m.media-amazon.com/images/I/81jbivNEVML._AC_UF1000,1000_QL80_.jpg",
-      "metaAno": "2026",
-      "anoConclusao": "2026",
-      "depende": "Harry Potter - A Pedra Filosofal",
-      "colecao": "Harry Potter",
-      "ordemColecao": 2,
-      "ordem": 2,
-      "status": "Lendo",
-      "totalPag": 288,
-      "pagAtual": 221,
-      "pct": 0.767,
-      "usuario": "MILTON",
-      "genero": "Fantasia"
     },
     {
       "livro": "Ascendant",
