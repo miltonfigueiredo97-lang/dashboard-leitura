@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-31T20:37:01.540Z",
+  "geradoEm": "2026-05-31T20:43:31.261Z",
   "meta": {
     "total": 54,
     "lidos": 28,
@@ -44065,6 +44065,24 @@
         "Personagens": 8,
         "Ritmo": 9.5,
         "Temas": 6
+      },
+      "usuario": "Milton"
+    },
+    {
+      "livro": "Shadows for Silence in The Forest of Hell",
+      "ano": 2026,
+      "media": 6.75,
+      "criterios": {
+        "Diálogos": 6.5,
+        "Enredo": 7,
+        "Estilo Visual": 8,
+        "Finalização": 6,
+        "Imersão": 6,
+        "Impacto Emocional": 5,
+        "Originalidade": 8,
+        "Personagens": 7,
+        "Ritmo": 7,
+        "Temas": 7
       },
       "usuario": "Milton"
     }
