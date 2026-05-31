@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-05-31T02:33:08.223Z",
+  "geradoEm": "2026-05-31T02:34:32.059Z",
   "meta": {
     "total": 53,
     "lidos": 27,
@@ -44049,6 +44049,24 @@
         "Temas": 9
       },
       "usuario": "Daniel"
+    },
+    {
+      "livro": "Harry Potter - Camara Secreta",
+      "ano": 2026,
+      "media": 7.7,
+      "criterios": {
+        "Diálogos": 6,
+        "Enredo": 7,
+        "Estilo Visual": 8,
+        "Finalização": 8.5,
+        "Imersão": 9,
+        "Impacto Emocional": 7,
+        "Originalidade": 8,
+        "Personagens": 8,
+        "Ritmo": 9.5,
+        "Temas": 6
+      },
+      "usuario": "Milton"
     }
   ]
 }
