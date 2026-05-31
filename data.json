@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-05-31T04:46:34.062Z",
+  "geradoEm": "2026-05-31T04:49:38.429Z",
   "meta": {
-    "total": 53,
+    "total": 54,
     "lidos": 27,
-    "faltando": 26,
-    "paginasTotal": 26956,
+    "faltando": 27,
+    "paginasTotal": 27016,
     "paginasLidas": 13671,
-    "paginasFaltando": 13285,
+    "paginasFaltando": 13345,
     "mediaDiaria": 82.7,
     "ritmoAtual": 88.3,
-    "dataPrevistoAtual": "29/10/2026"
+    "dataPrevistoAtual": "30/10/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -69,18 +69,18 @@
       "dataPrevistoAtual": "Concluída!"
     },
     "2026": {
-      "total": 53,
+      "total": 54,
       "lidos": 27,
       "lendo": 2,
       "pausados": 0,
-      "aguardando": 24,
-      "paginasTotal": 26956,
+      "aguardando": 25,
+      "paginasTotal": 27016,
       "paginasLidas": 13671,
-      "paginasFaltando": 13285,
-      "faltando": 26,
+      "paginasFaltando": 13345,
+      "faltando": 27,
       "mediaDiaria": 82.7,
       "ritmoAtual": 88.3,
-      "dataPrevistoAtual": "29/10/2026"
+      "dataPrevistoAtual": "30/10/2026"
     },
     "2027": {
       "total": 1,
@@ -111,15 +111,15 @@
       "dataPrevistoAtual": "—"
     },
     "AINDA NÃO DEFINIDO": {
-      "total": 211,
+      "total": 210,
       "lidos": 0,
       "lendo": 0,
       "pausados": 0,
-      "aguardando": 211,
-      "paginasTotal": 104698,
+      "aguardando": 210,
+      "paginasTotal": 104638,
       "paginasLidas": 0,
-      "paginasFaltando": 104698,
-      "faltando": 211,
+      "paginasFaltando": 104638,
+      "faltando": 210,
       "mediaDiaria": 50,
       "ritmoAtual": 0,
       "dataPrevistoAtual": "—"
@@ -36318,7 +36318,7 @@
       "autor": "Brandon Sanderson",
       "isbn": "",
       "coverUrl": "https://m.media-amazon.com/images/I/81saovWy0JL._UF1000,1000_QL80_.jpg",
-      "metaAno": "AINDA NÃO DEFINIDO",
+      "metaAno": "2026",
       "anoConclusao": "",
       "depende": "",
       "colecao": "Cosmere",
@@ -40968,7 +40968,7 @@
       "autor": "Brandon Sanderson",
       "isbn": "",
       "coverUrl": "https://m.media-amazon.com/images/I/81saovWy0JL._UF1000,1000_QL80_.jpg",
-      "metaAno": "AINDA NÃO DEFINIDO",
+      "metaAno": "2026",
       "anoConclusao": "",
       "depende": "",
       "colecao": "Cosmere",
