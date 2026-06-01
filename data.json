@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-06-01T21:48:14.968Z",
+  "geradoEm": "2026-06-01T21:49:30.899Z",
   "meta": {
     "total": 54,
     "lidos": 30,
@@ -44112,6 +44112,24 @@
         "Temas": 6.5
       },
       "usuario": "Milton"
+    },
+    {
+      "livro": "Ascendant",
+      "ano": 2026,
+      "media": 8.25,
+      "criterios": {
+        "Diálogos": 7,
+        "Enredo": 8,
+        "Estilo Visual": 9,
+        "Finalização": 8.5,
+        "Imersão": 8.5,
+        "Impacto Emocional": 8,
+        "Originalidade": 8,
+        "Personagens": 7.5,
+        "Ritmo": 9,
+        "Temas": 9
+      },
+      "usuario": "Daniel"
     }
   ]
 }
