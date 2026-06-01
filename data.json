@@ -1,12 +1,12 @@
 {
-  "geradoEm": "2026-05-31T23:31:37.194Z",
+  "geradoEm": "2026-06-01T00:01:31.367Z",
   "meta": {
     "total": 54,
     "lidos": 29,
     "faltando": 25,
     "paginasTotal": 27016,
-    "paginasLidas": 13925,
-    "paginasFaltando": 13091,
+    "paginasLidas": 13926,
+    "paginasFaltando": 13090,
     "mediaDiaria": 84.4,
     "ritmoAtual": 98.4,
     "dataPrevistoAtual": "12/10/2026"
@@ -71,12 +71,12 @@
     "2026": {
       "total": 54,
       "lidos": 29,
-      "lendo": 1,
+      "lendo": 2,
       "pausados": 0,
-      "aguardando": 24,
+      "aguardando": 23,
       "paginasTotal": 27016,
-      "paginasLidas": 13925,
-      "paginasFaltando": 13091,
+      "paginasLidas": 13926,
+      "paginasFaltando": 13090,
       "faltando": 25,
       "mediaDiaria": 84.4,
       "ritmoAtual": 98.4,
@@ -27427,6 +27427,15 @@
       "minutos": 120,
       "ano": 2026,
       "usuario": "Milton"
+    },
+    {
+      "livro": "Meio Mundo",
+      "colecao": "Mar Despedaçado",
+      "data": "2026-05-31",
+      "paginas": 1,
+      "minutos": 1,
+      "ano": 2026,
+      "usuario": "Milton"
     }
   ],
   "livros": [
@@ -28737,10 +28746,10 @@
       "colecao": "Mar Despedaçado",
       "ordemColecao": 2,
       "ordem": 0,
-      "status": "Aguardando",
+      "status": "Lendo",
       "totalPag": 442,
-      "pagAtual": 0,
-      "pct": 0,
+      "pagAtual": 1,
+      "pct": 0.002,
       "usuario": "MILTON",
       "genero": "Fantasia sombria"
     },
@@ -36435,6 +36444,24 @@
   ],
   "lendo": [
     {
+      "livro": "Meio Mundo",
+      "autor": "Joe Abercrombie",
+      "isbn": "9780385743785",
+      "coverUrl": "https://m.media-amazon.com/images/I/614aCYKcYfL._AC_UF350,350_QL50_.jpg",
+      "metaAno": "2026",
+      "anoConclusao": "",
+      "depende": "Meio Rei",
+      "colecao": "Mar Despedaçado",
+      "ordemColecao": 2,
+      "ordem": 0,
+      "status": "Lendo",
+      "totalPag": 442,
+      "pagAtual": 1,
+      "pct": 0.002,
+      "usuario": "MILTON",
+      "genero": "Fantasia sombria"
+    },
+    {
       "livro": "Ascendant",
       "autor": "Michael R. Miller",
       "isbn": "",
@@ -36633,24 +36660,6 @@
       "pct": 0,
       "usuario": "MILTON",
       "genero": "Fantasia épica"
-    },
-    {
-      "livro": "Meio Mundo",
-      "autor": "Joe Abercrombie",
-      "isbn": "9780385743785",
-      "coverUrl": "https://m.media-amazon.com/images/I/614aCYKcYfL._AC_UF350,350_QL50_.jpg",
-      "metaAno": "2026",
-      "anoConclusao": "",
-      "depende": "Meio Rei",
-      "colecao": "Mar Despedaçado",
-      "ordemColecao": 2,
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 442,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "MILTON",
-      "genero": "Fantasia sombria"
     },
     {
       "livro": "Fúria vermelha",
