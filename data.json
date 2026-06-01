@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-06-01T21:49:30.899Z",
+  "geradoEm": "2026-06-01T22:56:56.728Z",
   "meta": {
     "total": 54,
     "lidos": 30,
     "faltando": 24,
     "paginasTotal": 27016,
-    "paginasLidas": 14066,
-    "paginasFaltando": 12950,
-    "mediaDiaria": 84.8,
-    "ritmoAtual": 101.8,
-    "dataPrevistoAtual": "07/10/2026"
+    "paginasLidas": 14087,
+    "paginasFaltando": 12929,
+    "mediaDiaria": 85,
+    "ritmoAtual": 102.5,
+    "dataPrevistoAtual": "06/10/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -71,16 +71,16 @@
     "2026": {
       "total": 54,
       "lidos": 30,
-      "lendo": 1,
+      "lendo": 2,
       "pausados": 0,
-      "aguardando": 23,
+      "aguardando": 22,
       "paginasTotal": 27016,
-      "paginasLidas": 14066,
-      "paginasFaltando": 12950,
+      "paginasLidas": 14087,
+      "paginasFaltando": 12929,
       "faltando": 24,
-      "mediaDiaria": 84.8,
-      "ritmoAtual": 101.8,
-      "dataPrevistoAtual": "07/10/2026"
+      "mediaDiaria": 85,
+      "ritmoAtual": 102.5,
+      "dataPrevistoAtual": "06/10/2026"
     },
     "2027": {
       "total": 1,
@@ -27454,6 +27454,15 @@
       "minutos": 154,
       "ano": 2026,
       "usuario": "Daniel"
+    },
+    {
+      "livro": "A Cidade da Raposa",
+      "colecao": "",
+      "data": "2026-06-01",
+      "paginas": 21,
+      "minutos": 22,
+      "ano": 2026,
+      "usuario": "Daniel"
     }
   ],
   "livros": [
@@ -35982,10 +35991,10 @@
       "colecao": "",
       "ordemColecao": 0,
       "ordem": 0,
-      "status": "Aguardando",
+      "status": "Lendo",
       "totalPag": 360,
-      "pagAtual": 0,
-      "pct": 0,
+      "pagAtual": 21,
+      "pct": 0.058,
       "usuario": "Daniel",
       "genero": "Fantasia"
     },
@@ -36478,6 +36487,24 @@
       "pct": 0.023,
       "usuario": "MILTON",
       "genero": "Fantasia sombria"
+    },
+    {
+      "livro": "A Cidade da Raposa",
+      "autor": "Lucas Borne",
+      "isbn": "",
+      "coverUrl": "https://m.media-amazon.com/images/I/51MHhAw4gbL._AC_UY218_.jpg",
+      "metaAno": "2026",
+      "anoConclusao": "",
+      "depende": "",
+      "colecao": "",
+      "ordemColecao": 0,
+      "ordem": 0,
+      "status": "Lendo",
+      "totalPag": 360,
+      "pagAtual": 21,
+      "pct": 0.058,
+      "usuario": "Daniel",
+      "genero": "Fantasia"
     }
   ],
   "aguardando": [
@@ -40602,24 +40629,6 @@
       "pct": 0,
       "usuario": "Daniel",
       "genero": "Fantasia épica"
-    },
-    {
-      "livro": "A Cidade da Raposa",
-      "autor": "Lucas Borne",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/51MHhAw4gbL._AC_UY218_.jpg",
-      "metaAno": "2026",
-      "anoConclusao": "",
-      "depende": "",
-      "colecao": "",
-      "ordemColecao": 0,
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 360,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "Daniel",
-      "genero": "Fantasia"
     },
     {
       "livro": "The Devils",
