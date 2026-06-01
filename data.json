@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-06-01T00:07:08.875Z",
+  "geradoEm": "2026-06-01T21:48:14.968Z",
   "meta": {
     "total": 54,
-    "lidos": 29,
-    "faltando": 25,
+    "lidos": 30,
+    "faltando": 24,
     "paginasTotal": 27016,
-    "paginasLidas": 13935,
-    "paginasFaltando": 13081,
-    "mediaDiaria": 84.5,
-    "ritmoAtual": 98.7,
-    "dataPrevistoAtual": "11/10/2026"
+    "paginasLidas": 14066,
+    "paginasFaltando": 12950,
+    "mediaDiaria": 84.8,
+    "ritmoAtual": 101.8,
+    "dataPrevistoAtual": "07/10/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -70,17 +70,17 @@
     },
     "2026": {
       "total": 54,
-      "lidos": 29,
-      "lendo": 2,
+      "lidos": 30,
+      "lendo": 1,
       "pausados": 0,
       "aguardando": 23,
       "paginasTotal": 27016,
-      "paginasLidas": 13935,
-      "paginasFaltando": 13081,
-      "faltando": 25,
-      "mediaDiaria": 84.5,
-      "ritmoAtual": 98.7,
-      "dataPrevistoAtual": "11/10/2026"
+      "paginasLidas": 14066,
+      "paginasFaltando": 12950,
+      "faltando": 24,
+      "mediaDiaria": 84.8,
+      "ritmoAtual": 101.8,
+      "dataPrevistoAtual": "07/10/2026"
     },
     "2027": {
       "total": 1,
@@ -27445,6 +27445,15 @@
       "minutos": 6,
       "ano": 2026,
       "usuario": "Milton"
+    },
+    {
+      "livro": "Ascendant",
+      "colecao": "Som do Caos",
+      "data": "2026-06-01",
+      "paginas": 131,
+      "minutos": 154,
+      "ano": 2026,
+      "usuario": "Daniel"
     }
   ],
   "livros": [
@@ -35878,15 +35887,15 @@
       "isbn": "",
       "coverUrl": "https://m.media-amazon.com/images/I/713-KqDyIdL._AC_UY218_.jpg",
       "metaAno": "2026",
-      "anoConclusao": "",
+      "anoConclusao": "2026",
       "depende": "",
       "colecao": "Som do Caos",
       "ordemColecao": 0,
       "ordem": 0,
-      "status": "Lendo",
+      "status": "Completo",
       "totalPag": 550,
-      "pagAtual": 419,
-      "pct": 0.762,
+      "pagAtual": 550,
+      "pct": 1,
       "usuario": "Daniel",
       "genero": "Fantasia épica"
     },
@@ -36469,24 +36478,6 @@
       "pct": 0.023,
       "usuario": "MILTON",
       "genero": "Fantasia sombria"
-    },
-    {
-      "livro": "Ascendant",
-      "autor": "Michael R. Miller",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/713-KqDyIdL._AC_UY218_.jpg",
-      "metaAno": "2026",
-      "anoConclusao": "",
-      "depende": "",
-      "colecao": "Som do Caos",
-      "ordemColecao": 0,
-      "ordem": 0,
-      "status": "Lendo",
-      "totalPag": 550,
-      "pagAtual": 419,
-      "pct": 0.762,
-      "usuario": "Daniel",
-      "genero": "Fantasia épica"
     }
   ],
   "aguardando": [
