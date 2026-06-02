@@ -4609,8 +4609,8 @@ function renderBatalha() {
 <!-- COMPETIÇÃO POR GÊNEROS — full width -->
 <div style="margin-bottom:20px;">
   <div class="bat-section-hdr">🌎 COMPETIÇÃO POR GÊNEROS</div>
-  <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:20px;">
-    <div style="height:360px;"><canvas id="bat-generos"></canvas></div>
+  <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:16px;overflow:hidden;">
+    <div><canvas id="bat-generos"></canvas></div>
     <div id="bat-generos-vazio" style="display:none;font-family:'Exo 2',sans-serif;font-size:11px;color:rgba(248,250,252,0.3);text-align:center;padding:20px;">Adicione gêneros via ✏️ Atualizar Livro</div>
   </div>
 </div>
@@ -4641,20 +4641,18 @@ function renderBatalha() {
 </div>
 
 <!-- ARTEFATOS + MALDIÇÕES -->
-<div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:20px;">
-  <div>
-    <div class="bat-section-hdr">⭐ ARTEFATOS LENDÁRIOS — MELHORES AVALIADOS</div>
-    <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr;gap:10px;overflow:visible;" id="bat-artefatos">
-      <div><div style="font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:#A855F7;margin-bottom:8px;letter-spacing:2px;">${pA.toUpperCase()}</div></div>
-      <div><div style="font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:#FB923C;margin-bottom:8px;letter-spacing:2px;">${pB.toUpperCase()}</div></div>
-    </div>
+<div style="margin-bottom:20px;">
+  <div class="bat-section-hdr">⭐ ARTEFATOS LENDÁRIOS — MELHORES AVALIADOS</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;overflow:visible;" id="bat-artefatos">
+    <div><div style="font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:#A855F7;margin-bottom:8px;letter-spacing:2px;">${pA.toUpperCase()}</div></div>
+    <div><div style="font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:#FB923C;margin-bottom:8px;letter-spacing:2px;">${pB.toUpperCase()}</div></div>
   </div>
-  <div>
-    <div class="bat-section-hdr">💀 MALDIÇÕES — PIORES AVALIADOS</div>
-    <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr;gap:10px;overflow:visible;" id="bat-maldicoes">
-      <div><div style="font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:#A855F7;margin-bottom:8px;letter-spacing:2px;">${pA.toUpperCase()}</div></div>
-      <div><div style="font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:#FB923C;margin-bottom:8px;letter-spacing:2px;">${pB.toUpperCase()}</div></div>
-    </div>
+</div>
+<div style="margin-bottom:20px;">
+  <div class="bat-section-hdr">💀 MALDIÇÕES — PIORES AVALIADOS</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;overflow:visible;" id="bat-maldicoes">
+    <div><div style="font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:#A855F7;margin-bottom:8px;letter-spacing:2px;">${pA.toUpperCase()}</div></div>
+    <div><div style="font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:#FB923C;margin-bottom:8px;letter-spacing:2px;">${pB.toUpperCase()}</div></div>
   </div>
 </div>
 
@@ -4720,13 +4718,16 @@ function renderBatalha() {
           const vA=getValA(nome),vB=getValB(nome);
           const getTier=(v)=>{let t=-1;thresholds.forEach((th,i)=>{if(v>=th)t=i;});return t;};
           const tA=getTier(vA),tB=getTier(vB);
+          const nenhum=tA<0&&tB<0;
           const labelA=tA>=0?tiers[tA].n:'—',labelB=tB>=0?tiers[tB].n:'—';
-          const corA=tA>=0?tiers[tA].c:'rgba(255,255,255,0.2)',corB=tB>=0?tiers[tB].c:'rgba(255,255,255,0.2)';
-          return `<div style="display:grid;grid-template-columns:24px 1fr 80px 80px;align-items:center;gap:8px;padding:7px 10px;background:rgba(255,255,255,0.03);border-radius:8px;">
-            <span style="font-size:16px;">${icon}</span>
-            <div style="font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:600;color:#F8FAFC;">${nome}</div>
-            <div style="text-align:center;"><span style="font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:${corA};">${labelA}</span><div style="font-family:'Exo 2',sans-serif;font-size:9px;color:rgba(248,250,252,0.3);">${pA}</div></div>
-            <div style="text-align:center;"><span style="font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:${corB};">${labelB}</span><div style="font-family:'Exo 2',sans-serif;font-size:9px;color:rgba(248,250,252,0.3);">${pB}</div></div>
+          const corA=tA>=0?tiers[tA].c:'rgba(255,255,255,0.15)',corB=tB>=0?tiers[tB].c:'rgba(255,255,255,0.15)';
+          const bg=nenhum?'rgba(255,255,255,0.01)':'rgba(255,255,255,0.03)';
+          const iconOpacity=nenhum?'opacity:0.3;':'';
+          return `<div style="display:grid;grid-template-columns:24px 1fr 72px 72px;align-items:center;gap:8px;padding:7px 10px;background:${bg};border-radius:8px;${nenhum?'border:1px solid rgba(255,255,255,0.04);':''}">
+            <span style="font-size:16px;${iconOpacity}">${icon}</span>
+            <div style="font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:600;color:${nenhum?'rgba(248,250,252,0.3)':'#F8FAFC'};">${nome}</div>
+            <div style="text-align:center;"><span style="font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:${corA};">${labelA}</span><div style="font-family:'Exo 2',sans-serif;font-size:9px;color:rgba(248,250,252,0.25);">${pA}</div></div>
+            <div style="text-align:center;"><span style="font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:${corB};">${labelB}</span><div style="font-family:'Exo 2',sans-serif;font-size:9px;color:rgba(248,250,252,0.25);">${pB}</div></div>
           </div>`;
         }).join('');
       })()}
@@ -4752,10 +4753,12 @@ function renderBatalha() {
         return todosT.map(({icon,nome,valA,valB})=>{
           const dono=valA===0&&valB===0?'nenhum':valA>valB?pA:valB>valA?pB:'empate';
           const cor=dono===pA?'#A855F7':dono===pB?'#FB923C':dono==='empate'?'rgba(248,250,252,0.4)':'rgba(248,250,252,0.15)';
-          const label=dono==='nenhum'?'Nenhum ainda':dono==='empate'?'🤝 Empate':'🏆 '+dono;
-          return `<div style="display:grid;grid-template-columns:24px 1fr auto;align-items:center;gap:8px;padding:7px 10px;background:rgba(250,204,21,0.04);border:1px solid rgba(250,204,21,0.08);border-radius:8px;">
-            <span style="font-size:16px;">${icon}</span>
-            <div style="font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:600;color:#F8FAFC;">${nome}</div>
+          const label=dono==='nenhum'?'⬜ Nenhum ainda':dono==='empate'?'🤝 Empate':'🏆 '+dono;
+          const bg=dono==='nenhum'?'rgba(250,204,21,0.02)':'rgba(250,204,21,0.04)';
+          const opacity=dono==='nenhum'?'opacity:0.4;':'';
+          return `<div style="display:grid;grid-template-columns:24px 1fr auto;align-items:center;gap:8px;padding:7px 10px;background:${bg};border:1px solid rgba(250,204,21,0.08);border-radius:8px;">
+            <span style="font-size:16px;${opacity}">${icon}</span>
+            <div style="font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:600;color:${dono==='nenhum'?'rgba(248,250,252,0.3)':'#F8FAFC'};">${nome}</div>
             <div style="font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:${cor};text-align:right;">${label}</div>
           </div>`;
         }).join('');
@@ -4763,6 +4766,8 @@ function renderBatalha() {
     </div>
   </div>
 </div>
+
+
 
 <!-- CRÔNICAS DA GUERRA -->
 <div class="bat-section-hdr">📜 CRÔNICAS DA GUERRA — HISTÓRICO DA RIVALIDADE</div>
