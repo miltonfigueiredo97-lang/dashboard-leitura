@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-06-03T11:36:59.442Z",
+  "geradoEm": "2026-06-03T23:44:23.644Z",
   "meta": {
     "total": 54,
     "lidos": 30,
     "faltando": 24,
     "paginasTotal": 27016,
-    "paginasLidas": 14321,
-    "paginasFaltando": 12695,
-    "mediaDiaria": 85.4,
-    "ritmoAtual": 105,
-    "dataPrevistoAtual": "02/10/2026"
+    "paginasLidas": 14403,
+    "paginasFaltando": 12613,
+    "mediaDiaria": 85.9,
+    "ritmoAtual": 109,
+    "dataPrevistoAtual": "27/09/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -75,12 +75,12 @@
       "pausados": 0,
       "aguardando": 22,
       "paginasTotal": 27016,
-      "paginasLidas": 14321,
-      "paginasFaltando": 12695,
+      "paginasLidas": 14403,
+      "paginasFaltando": 12613,
       "faltando": 24,
-      "mediaDiaria": 85.4,
-      "ritmoAtual": 105,
-      "dataPrevistoAtual": "02/10/2026"
+      "mediaDiaria": 85.9,
+      "ritmoAtual": 109,
+      "dataPrevistoAtual": "27/09/2026"
     },
     "2027": {
       "total": 1,
@@ -27517,6 +27517,15 @@
       "minutos": 63,
       "ano": 2026,
       "usuario": "Daniel"
+    },
+    {
+      "livro": "A Cidade da Raposa",
+      "colecao": "",
+      "data": "2026-06-03",
+      "paginas": 82,
+      "minutos": 85,
+      "ano": 2026,
+      "usuario": "Daniel"
     }
   ],
   "livros": [
@@ -36047,8 +36056,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 360,
-      "pagAtual": 193,
-      "pct": 0.536,
+      "pagAtual": 275,
+      "pct": 0.764,
       "usuario": "Daniel",
       "genero": "Fantasia"
     },
@@ -36555,8 +36564,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 360,
-      "pagAtual": 193,
-      "pct": 0.536,
+      "pagAtual": 275,
+      "pct": 0.764,
       "usuario": "Daniel",
       "genero": "Fantasia"
     }
