@@ -6143,8 +6143,10 @@ function abrirRankingCompleto() {
   // Popula filtros
   const rcAno = document.getElementById('rcAno');
   if (rcAno.options.length <= 1) {
+    const notes = window.NOTES || [];
+    const anos = [...new Set(notes.map(n => n.ano).filter(a => a > 2000))].sort();
     rcAno.innerHTML = '<option value="all">Todos os anos</option>';
-    anosNotas.forEach(a => { rcAno.innerHTML += `<option value="${a}">${a}</option>`; });
+    anos.forEach(a => { rcAno.innerHTML += `<option value="${a}">${a}</option>`; });
     const rcCol = document.getElementById('rcColecao');
     rcCol.innerHTML = '<option value="all">Todas as coleções</option>';
     const cols = [...new Set((window._livros||[]).map(l=>l.colecao).filter(Boolean))].sort();
