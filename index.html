@@ -924,7 +924,40 @@ body.mobile-view .meta-stats { grid-template-columns:1fr 1fr !important; }
         <button class="btn" id="btnWorst" onclick="rankMode='worst';updateBtns();buildRanking()">💀 Piores</button>
       </div>
       <div id="rankList" class="rank-list"></div>
+      <div style="text-align:center;margin-top:12px;">
+        <button onclick="abrirRankingCompleto()" style="background:rgba(139,124,248,0.12);border:1px solid rgba(139,124,248,0.4);border-radius:20px;padding:8px 20px;font-family:'Exo 2',sans-serif;font-size:12px;color:#8b7cf8;cursor:pointer;transition:all .2s;" onmouseover="this.style.background='rgba(139,124,248,0.22)'" onmouseout="this.style.background='rgba(139,124,248,0.12)'">📋 Ver Ranking Completo</button>
+      </div>
     </div>
+
+<!-- MODAL RANKING COMPLETO (desktop) -->
+<div id="modal-ranking-completo" onclick="if(event.target===this)this.style.display='none'" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:99999;align-items:flex-start;justify-content:center;padding:30px 20px;overflow-y:auto;">
+  <div style="background:#0d1424;border:1px solid rgba(139,124,248,0.3);border-radius:18px;padding:24px;max-width:680px;width:100%;margin:auto;position:relative;">
+    <button onclick="document.getElementById('modal-ranking-completo').style.display='none'" style="position:absolute;top:14px;right:14px;background:rgba(255,255,255,0.07);border:none;border-radius:50%;width:30px;height:30px;font-size:15px;color:#F8FAFC;cursor:pointer;line-height:30px;text-align:center;">✕</button>
+    <div style="font-family:'Exo 2',sans-serif;font-size:15px;font-weight:700;color:#8b7cf8;margin-bottom:16px;">🏅 Ranking Completo por Notas</div>
+    <!-- Filtros -->
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;">
+      <select id="rcAno" onchange="buildRankingCompleto()" style="background:#1a2035;border:1px solid rgba(139,124,248,0.3);border-radius:8px;color:#F8FAFC;padding:6px 10px;font-size:12px;"></select>
+      <select id="rcColecao" onchange="buildRankingCompleto()" style="background:#1a2035;border:1px solid rgba(139,124,248,0.3);border-radius:8px;color:#F8FAFC;padding:6px 10px;font-size:12px;"></select>
+      <select id="rcTema" onchange="buildRankingCompleto()" style="background:#1a2035;border:1px solid rgba(139,124,248,0.3);border-radius:8px;color:#F8FAFC;padding:6px 10px;font-size:12px;">
+        <option value="all">Todos os critérios</option>
+        <option value="Diálogos">Diálogos</option>
+        <option value="Enredo">Enredo</option>
+        <option value="Estilo Visual">Estilo Visual</option>
+        <option value="Finalização">Finalização</option>
+        <option value="Imersão">Imersão</option>
+        <option value="Impacto Emocional">Impacto Emocional</option>
+        <option value="Originalidade">Originalidade</option>
+        <option value="Personagens">Personagens</option>
+        <option value="Ritmo">Ritmo</option>
+        <option value="Temas">Temas</option>
+      </select>
+      <button id="rcBtnBest" class="btn on" onclick="rankModeRC='best';updateBtnsRC();buildRankingCompleto()">🥇 Melhores</button>
+      <button id="rcBtnWorst" class="btn" onclick="rankModeRC='worst';updateBtnsRC();buildRankingCompleto()">💀 Piores</button>
+    </div>
+    <div id="rcTotal" style="font-family:'Exo 2',sans-serif;font-size:11px;color:rgba(248,250,252,0.4);margin-bottom:10px;"></div>
+    <div id="rcList" class="rank-list"></div>
+  </div>
+</div>
 
     <!-- Coluna direita: Dia da Semana + Gêneros Lidos empilhados -->
     <div style="display:flex;flex-direction:column;gap:16px;">
@@ -1959,6 +1992,79 @@ function buildRanking() {
       </div>`;
   });
 }
+// ════════════════════════════════════════════════
+// 3b. RANKING COMPLETO (modal desktop)
+// ════════════════════════════════════════════════
+let rankModeRC = 'best';
+
+function updateBtnsRC() {
+  document.getElementById('rcBtnBest').className = 'btn' + (rankModeRC==='best'?' on':'');
+  document.getElementById('rcBtnWorst').className = 'btn' + (rankModeRC==='worst'?' on':'');
+}
+
+function abrirRankingCompleto() {
+  const modal = document.getElementById('modal-ranking-completo');
+  // Popula filtros se ainda não foram populados
+  const rcAno = document.getElementById('rcAno');
+  if (rcAno.options.length <= 1) {
+    rcAno.innerHTML = '<option value="all">Todos os anos</option>';
+    anosNotas.forEach(a => { rcAno.innerHTML += `<option value="${a}">${a}</option>`; });
+    const rcCol = document.getElementById('rcColecao');
+    rcCol.innerHTML = '<option value="all">Todas as coleções</option>';
+    const cols = [...new Set((window._livros||[]).map(l=>l.colecao).filter(Boolean))].sort();
+    cols.forEach(c => { rcCol.innerHTML += `<option value="${c}">${c}</option>`; });
+  }
+  // Sincroniza filtros com o ranking principal
+  document.getElementById('rcAno').value = document.getElementById('selNotasAno').value;
+  document.getElementById('rcColecao').value = document.getElementById('selNotasColecao')?.value || 'all';
+  document.getElementById('rcTema').value = document.getElementById('selNotasTema')?.value || 'all';
+  rankModeRC = rankMode;
+  updateBtnsRC();
+  buildRankingCompleto();
+  modal.style.display = 'flex';
+}
+
+function buildRankingCompleto() {
+  const yr   = document.getElementById('rcAno').value;
+  const col  = document.getElementById('rcColecao').value;
+  const tema = document.getElementById('rcTema').value;
+  const allLivros = [...(window._livros||[])];
+
+  let pool = yr === 'all' ? NOTES : NOTES.filter(b => String(b.ano) === yr);
+  if (col !== 'all') pool = pool.filter(b => { const l = allLivros.find(x => x.livro === b.livro); return l?.colecao === col; });
+
+  const scored = pool.map(b => {
+    const score = tema === 'all' ? b.media : (b.criterios?.[tema] ?? b.media);
+    return { ...b, score };
+  }).filter(b => b.score != null);
+
+  const sorted = [...scored].sort((a,b) => rankModeRC==='best' ? b.score-a.score : a.score-b.score);
+  const maxA   = sorted[0]?.score || 10;
+  const medals = ['🥇','🥈','🥉'];
+  const el     = document.getElementById('rcList');
+  document.getElementById('rcTotal').textContent = `${sorted.length} livro${sorted.length!==1?'s':''} no ranking`;
+  el.innerHTML = '';
+  sorted.forEach((b, i) => {
+    const pct = Math.round(b.score/maxA*100);
+    const cor = rankModeRC==='best' ? (i<3?['#ffd166','#c0c0c0','#cd7f32'][i]:'#8b7cf8') : '#f88c6a';
+    const scoreLabel = tema === 'all' ? b.score.toFixed(1) : `${b.score.toFixed(1)} <span style="font-size:10px;opacity:0.7">(${b.media.toFixed(1)} geral)</span>`;
+    const rankLivro  = allLivros.find(l => l.livro === b.livro);
+    const capaHtml   = coverThumb(rankLivro?.isbn||'', rankLivro?.coverUrl||'');
+    el.innerHTML += `
+      <div class="rank-item" onclick="abrirLivroDetalhes('${b.livro.replace(/'/g,"\\'")}');document.getElementById('modal-ranking-completo').style.display='none'" style="cursor:pointer;">
+        ${capaHtml}
+        <span class="rank-num">${i<3?'':('#'+(i+1))}</span>
+        <span class="rank-medal">${medals[i]||''}</span>
+        <div style="flex:1;min-width:0">
+          <div class="rank-name" data-tip="${b.livro}">${b.livro}</div>
+          <span class="rank-year">${b.ano}</span>
+        </div>
+        <div class="rank-bar-wrap"><div class="rank-bar"><div class="rank-bar-fill" style="width:${pct}%;background:${cor}"></div></div></div>
+        <span class="rank-score" style="color:${cor}">${scoreLabel}</span>
+      </div>`;
+  });
+}
+
 // ════════════════════════════════════════════════
 // 4. WEEKDAY BARS (HTML) — seletor único
 // ════════════════════════════════════════════════

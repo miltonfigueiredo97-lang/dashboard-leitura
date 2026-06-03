@@ -1192,6 +1192,9 @@ canvas { max-width: 100% !important; }
         <button class="btn" id="btnWorst" onclick="rankMode='worst';updateBtns();buildRanking()">💀 Piores</button>
       </div>
       <div id="rankList" class="rank-list"></div>
+      <div style="text-align:center;margin-top:12px;">
+        <button onclick="abrirRankingCompleto()" style="background:rgba(139,124,248,0.12);border:1px solid rgba(139,124,248,0.4);border-radius:20px;padding:8px 20px;font-family:'Exo 2',sans-serif;font-size:12px;color:#8b7cf8;cursor:pointer;width:100%;">📋 Ver Ranking Completo</button>
+      </div>
     </div>
 
     <!-- Coluna direita: Dia da Semana + Gêneros Lidos empilhados -->
@@ -6090,6 +6093,117 @@ async function enviarNovoLivro() {
 // Service Worker para PWA
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/sw.js').catch(() => {});
+}
+</script>
+
+<!-- PÁGINA RANKING COMPLETO (mobile full-screen) -->
+<div id="pagina-ranking-completo" style="display:none;position:fixed;inset:0;background:var(--bg1);z-index:99999;overflow-y:auto;padding:0;">
+  <!-- Header -->
+  <div style="position:sticky;top:0;background:var(--bg1);border-bottom:1px solid rgba(139,124,248,0.2);padding:14px 16px;display:flex;align-items:center;gap:12px;z-index:10;">
+    <button onclick="fecharRankingCompleto()" style="background:rgba(255,255,255,0.07);border:none;border-radius:10px;padding:8px 12px;color:#F8FAFC;font-size:14px;cursor:pointer;display:flex;align-items:center;gap:6px;font-family:'Exo 2',sans-serif;">← Voltar</button>
+    <div style="font-family:'Exo 2',sans-serif;font-size:15px;font-weight:700;color:#8b7cf8;">🏅 Ranking Completo</div>
+  </div>
+  <!-- Filtros -->
+  <div style="padding:12px 16px;display:flex;flex-direction:column;gap:8px;border-bottom:1px solid rgba(255,255,255,0.05);">
+    <select id="rcAno" onchange="buildRankingCompleto()" style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:8px 10px;font-size:13px;width:100%;"></select>
+    <select id="rcColecao" onchange="buildRankingCompleto()" style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:8px 10px;font-size:13px;width:100%;"></select>
+    <select id="rcTema" onchange="buildRankingCompleto()" style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:8px 10px;font-size:13px;width:100%;">
+      <option value="all">Todos os critérios</option>
+      <option value="Diálogos">Diálogos</option>
+      <option value="Enredo">Enredo</option>
+      <option value="Estilo Visual">Estilo Visual</option>
+      <option value="Finalização">Finalização</option>
+      <option value="Imersão">Imersão</option>
+      <option value="Impacto Emocional">Impacto Emocional</option>
+      <option value="Originalidade">Originalidade</option>
+      <option value="Personagens">Personagens</option>
+      <option value="Ritmo">Ritmo</option>
+      <option value="Temas">Temas</option>
+    </select>
+    <div style="display:flex;gap:8px;">
+      <button id="rcBtnBest" class="btn on" onclick="rankModeRC='best';updateBtnsRC();buildRankingCompleto()" style="flex:1;">🥇 Melhores</button>
+      <button id="rcBtnWorst" class="btn" onclick="rankModeRC='worst';updateBtnsRC();buildRankingCompleto()" style="flex:1;">💀 Piores</button>
+    </div>
+    <div id="rcTotal" style="font-family:'Exo 2',sans-serif;font-size:11px;color:rgba(248,250,252,0.4);"></div>
+  </div>
+  <!-- Lista -->
+  <div id="rcList" class="rank-list" style="padding:12px 16px;"></div>
+</div>
+
+<script>
+let rankModeRC = 'best';
+
+function updateBtnsRC() {
+  document.getElementById('rcBtnBest').className = 'btn' + (rankModeRC==='best'?' on':'');
+  document.getElementById('rcBtnWorst').className = 'btn' + (rankModeRC==='worst'?' on':'');
+}
+
+function abrirRankingCompleto() {
+  const pagina = document.getElementById('pagina-ranking-completo');
+  // Popula filtros
+  const rcAno = document.getElementById('rcAno');
+  if (rcAno.options.length <= 1) {
+    rcAno.innerHTML = '<option value="all">Todos os anos</option>';
+    anosNotas.forEach(a => { rcAno.innerHTML += `<option value="${a}">${a}</option>`; });
+    const rcCol = document.getElementById('rcColecao');
+    rcCol.innerHTML = '<option value="all">Todas as coleções</option>';
+    const cols = [...new Set((window._livros||[]).map(l=>l.colecao).filter(Boolean))].sort();
+    cols.forEach(c => { rcCol.innerHTML += `<option value="${c}">${c}</option>`; });
+  }
+  // Sincroniza filtros com o ranking principal
+  document.getElementById('rcAno').value = document.getElementById('selNotasAno').value;
+  document.getElementById('rcColecao').value = document.getElementById('selNotasColecao')?.value || 'all';
+  document.getElementById('rcTema').value = document.getElementById('selNotasTema')?.value || 'all';
+  rankModeRC = rankMode;
+  updateBtnsRC();
+  buildRankingCompleto();
+  pagina.style.display = 'block';
+  pagina.scrollTop = 0;
+  document.body.style.overflow = 'hidden';
+}
+
+function fecharRankingCompleto() {
+  document.getElementById('pagina-ranking-completo').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+function buildRankingCompleto() {
+  const yr   = document.getElementById('rcAno').value;
+  const col  = document.getElementById('rcColecao').value;
+  const tema = document.getElementById('rcTema').value;
+  const allLivros = [...(window._livros||[])];
+
+  let pool = yr === 'all' ? NOTES : NOTES.filter(b => String(b.ano) === yr);
+  if (col !== 'all') pool = pool.filter(b => { const l = allLivros.find(x => x.livro === b.livro); return l?.colecao === col; });
+
+  const scored = pool.map(b => {
+    const score = tema === 'all' ? b.media : (b.criterios?.[tema] ?? b.media);
+    return { ...b, score };
+  }).filter(b => b.score != null);
+
+  const sorted = [...scored].sort((a,b) => rankModeRC==='best' ? b.score-a.score : a.score-b.score);
+  const maxA   = sorted[0]?.score || 10;
+  const medals = ['🥇','🥈','🥉'];
+  const el     = document.getElementById('rcList');
+  document.getElementById('rcTotal').textContent = `${sorted.length} livro${sorted.length!==1?'s':''} no ranking`;
+  el.innerHTML = '';
+  sorted.forEach((b, i) => {
+    const pct = Math.round(b.score/maxA*100);
+    const cor = rankModeRC==='best' ? (i<3?['#ffd166','#c0c0c0','#cd7f32'][i]:'#8b7cf8') : '#f88c6a';
+    const rankLivro = allLivros.find(l => l.livro === b.livro);
+    const capaHtml  = coverThumb(rankLivro?.isbn||'', rankLivro?.coverUrl||'');
+    el.innerHTML += `
+      <div class="rank-item" onclick="fecharRankingCompleto();abrirLivroDetalhes('${b.livro.replace(/'/g,"\\'")}');" style="cursor:pointer;">
+        ${capaHtml}
+        <span class="rank-num">${i<3?'':('#'+(i+1))}</span>
+        <span class="rank-medal">${medals[i]||''}</span>
+        <div style="flex:1;min-width:0">
+          <div class="rank-name">${b.livro}</div>
+          <span class="rank-year">${b.ano}</span>
+        </div>
+        <span class="rank-score" style="color:${cor}">${b.score.toFixed(1)}</span>
+      </div>`;
+  });
 }
 </script>
 </body>
