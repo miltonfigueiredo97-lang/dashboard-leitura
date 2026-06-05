@@ -1,14 +1,14 @@
 {
-  "geradoEm": "2026-06-05T13:28:31.569Z",
+  "geradoEm": "2026-06-05T14:10:14.079Z",
   "meta": {
     "total": 54,
     "lidos": 31,
     "faltando": 23,
     "paginasTotal": 27016,
-    "paginasLidas": 14538,
-    "paginasFaltando": 12478,
-    "mediaDiaria": 85.7,
-    "ritmoAtual": 107.7,
+    "paginasLidas": 14549,
+    "paginasFaltando": 12467,
+    "mediaDiaria": 85.8,
+    "ritmoAtual": 108,
     "dataPrevistoAtual": "29/09/2026"
   },
   "metasPorAno": {
@@ -71,15 +71,15 @@
     "2026": {
       "total": 54,
       "lidos": 31,
-      "lendo": 1,
+      "lendo": 2,
       "pausados": 0,
-      "aguardando": 22,
+      "aguardando": 21,
       "paginasTotal": 27016,
-      "paginasLidas": 14538,
-      "paginasFaltando": 12478,
+      "paginasLidas": 14549,
+      "paginasFaltando": 12467,
       "faltando": 23,
-      "mediaDiaria": 85.7,
-      "ritmoAtual": 107.7,
+      "mediaDiaria": 85.8,
+      "ritmoAtual": 108,
       "dataPrevistoAtual": "29/09/2026"
     },
     "2027": {
@@ -27571,6 +27571,15 @@
       "minutos": 30,
       "ano": 2026,
       "usuario": "Daniel"
+    },
+    {
+      "livro": "Starsight",
+      "colecao": "Skyward",
+      "data": "2026-06-05",
+      "paginas": 11,
+      "minutos": 15,
+      "ano": 2026,
+      "usuario": "Daniel"
     }
   ],
   "livros": [
@@ -36297,10 +36306,10 @@
       "colecao": "Skyward",
       "ordemColecao": 0,
       "ordem": 0,
-      "status": "Aguardando",
+      "status": "Lendo",
       "totalPag": 348,
-      "pagAtual": 0,
-      "pct": 0,
+      "pagAtual": 11,
+      "pct": 0.032,
       "usuario": "Daniel",
       "genero": "Ficção científica YA"
     },
@@ -36595,6 +36604,24 @@
       "pct": 0.276,
       "usuario": "MILTON",
       "genero": "Fantasia sombria"
+    },
+    {
+      "livro": "Starsight",
+      "autor": "Brandon Sanderson",
+      "isbn": "",
+      "coverUrl": "https://m.media-amazon.com/images/I/91KxaoNJ9TL._AC_UY218_.jpg",
+      "metaAno": "2026",
+      "anoConclusao": "",
+      "depende": "",
+      "colecao": "Skyward",
+      "ordemColecao": 0,
+      "ordem": 0,
+      "status": "Lendo",
+      "totalPag": 348,
+      "pagAtual": 11,
+      "pct": 0.032,
+      "usuario": "Daniel",
+      "genero": "Ficção científica YA"
     }
   ],
   "aguardando": [
@@ -40863,24 +40890,6 @@
       "pct": 0,
       "usuario": "Daniel",
       "genero": "Fantasia histórica"
-    },
-    {
-      "livro": "Starsight",
-      "autor": "Brandon Sanderson",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/91KxaoNJ9TL._AC_UY218_.jpg",
-      "metaAno": "2026",
-      "anoConclusao": "",
-      "depende": "",
-      "colecao": "Skyward",
-      "ordemColecao": 0,
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 348,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "Daniel",
-      "genero": "Ficção científica YA"
     },
     {
       "livro": "O Último Reino",
