@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-06-05T13:26:39.277Z",
+  "geradoEm": "2026-06-05T13:28:31.569Z",
   "meta": {
     "total": 54,
     "lidos": 31,
@@ -44227,6 +44227,24 @@
         "Personagens": 7.5,
         "Ritmo": 9,
         "Temas": 9
+      },
+      "usuario": "Daniel"
+    },
+    {
+      "livro": "A Cidade da Raposa",
+      "ano": 2026,
+      "media": 7.6,
+      "criterios": {
+        "Diálogos": 6.5,
+        "Enredo": 7,
+        "Estilo Visual": 8,
+        "Finalização": 7.5,
+        "Imersão": 9,
+        "Impacto Emocional": 7.5,
+        "Originalidade": 8,
+        "Personagens": 7.5,
+        "Ritmo": 7.5,
+        "Temas": 7.5
       },
       "usuario": "Daniel"
     }
