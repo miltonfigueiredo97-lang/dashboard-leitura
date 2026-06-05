@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-06-05T03:57:43.307Z",
+  "geradoEm": "2026-06-05T12:50:51.144Z",
   "meta": {
     "total": 54,
     "lidos": 30,
     "faltando": 24,
     "paginasTotal": 27016,
-    "paginasLidas": 14460,
-    "paginasFaltando": 12556,
-    "mediaDiaria": 85.7,
-    "ritmoAtual": 108.7,
-    "dataPrevistoAtual": "29/09/2026"
+    "paginasLidas": 14511,
+    "paginasFaltando": 12505,
+    "mediaDiaria": 85.5,
+    "ritmoAtual": 106.8,
+    "dataPrevistoAtual": "01/10/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -75,12 +75,12 @@
       "pausados": 0,
       "aguardando": 22,
       "paginasTotal": 27016,
-      "paginasLidas": 14460,
-      "paginasFaltando": 12556,
+      "paginasLidas": 14511,
+      "paginasFaltando": 12505,
       "faltando": 24,
-      "mediaDiaria": 85.7,
-      "ritmoAtual": 108.7,
-      "dataPrevistoAtual": "29/09/2026"
+      "mediaDiaria": 85.5,
+      "ritmoAtual": 106.8,
+      "dataPrevistoAtual": "01/10/2026"
     },
     "2027": {
       "total": 1,
@@ -27553,6 +27553,15 @@
       "minutos": 30,
       "ano": 2026,
       "usuario": "Milton"
+    },
+    {
+      "livro": "A Cidade da Raposa",
+      "colecao": "",
+      "data": "2026-06-05",
+      "paginas": 51,
+      "minutos": 55,
+      "ano": 2026,
+      "usuario": "Daniel"
     }
   ],
   "livros": [
@@ -36076,15 +36085,15 @@
       "isbn": "",
       "coverUrl": "https://m.media-amazon.com/images/I/51MHhAw4gbL._AC_UY218_.jpg",
       "metaAno": "2026",
-      "anoConclusao": "",
+      "anoConclusao": "2026",
       "depende": "",
       "colecao": "",
       "ordemColecao": 0,
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 360,
-      "pagAtual": 282,
-      "pct": 0.783,
+      "pagAtual": 333,
+      "pct": 0.925,
       "usuario": "Daniel",
       "genero": "Fantasia"
     },
@@ -36584,15 +36593,15 @@
       "isbn": "",
       "coverUrl": "https://m.media-amazon.com/images/I/51MHhAw4gbL._AC_UY218_.jpg",
       "metaAno": "2026",
-      "anoConclusao": "",
+      "anoConclusao": "2026",
       "depende": "",
       "colecao": "",
       "ordemColecao": 0,
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 360,
-      "pagAtual": 282,
-      "pct": 0.783,
+      "pagAtual": 333,
+      "pct": 0.925,
       "usuario": "Daniel",
       "genero": "Fantasia"
     }
