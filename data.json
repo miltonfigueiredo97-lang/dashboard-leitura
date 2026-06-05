@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-06-05T12:50:51.144Z",
+  "geradoEm": "2026-06-05T13:26:39.277Z",
   "meta": {
     "total": 54,
-    "lidos": 30,
-    "faltando": 24,
+    "lidos": 31,
+    "faltando": 23,
     "paginasTotal": 27016,
-    "paginasLidas": 14511,
-    "paginasFaltando": 12505,
-    "mediaDiaria": 85.5,
-    "ritmoAtual": 106.8,
-    "dataPrevistoAtual": "01/10/2026"
+    "paginasLidas": 14538,
+    "paginasFaltando": 12478,
+    "mediaDiaria": 85.7,
+    "ritmoAtual": 107.7,
+    "dataPrevistoAtual": "29/09/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -70,17 +70,17 @@
     },
     "2026": {
       "total": 54,
-      "lidos": 30,
-      "lendo": 2,
+      "lidos": 31,
+      "lendo": 1,
       "pausados": 0,
       "aguardando": 22,
       "paginasTotal": 27016,
-      "paginasLidas": 14511,
-      "paginasFaltando": 12505,
-      "faltando": 24,
-      "mediaDiaria": 85.5,
-      "ritmoAtual": 106.8,
-      "dataPrevistoAtual": "01/10/2026"
+      "paginasLidas": 14538,
+      "paginasFaltando": 12478,
+      "faltando": 23,
+      "mediaDiaria": 85.7,
+      "ritmoAtual": 107.7,
+      "dataPrevistoAtual": "29/09/2026"
     },
     "2027": {
       "total": 1,
@@ -27562,6 +27562,15 @@
       "minutos": 55,
       "ano": 2026,
       "usuario": "Daniel"
+    },
+    {
+      "livro": "A Cidade da Raposa",
+      "colecao": "",
+      "data": "2026-06-05",
+      "paginas": 27,
+      "minutos": 30,
+      "ano": 2026,
+      "usuario": "Daniel"
     }
   ],
   "livros": [
@@ -36090,10 +36099,10 @@
       "colecao": "",
       "ordemColecao": 0,
       "ordem": 0,
-      "status": "Lendo",
+      "status": "Completo",
       "totalPag": 360,
-      "pagAtual": 333,
-      "pct": 0.925,
+      "pagAtual": 360,
+      "pct": 1,
       "usuario": "Daniel",
       "genero": "Fantasia"
     },
@@ -36586,24 +36595,6 @@
       "pct": 0.276,
       "usuario": "MILTON",
       "genero": "Fantasia sombria"
-    },
-    {
-      "livro": "A Cidade da Raposa",
-      "autor": "Lucas Borne",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/51MHhAw4gbL._AC_UY218_.jpg",
-      "metaAno": "2026",
-      "anoConclusao": "2026",
-      "depende": "",
-      "colecao": "",
-      "ordemColecao": 0,
-      "ordem": 0,
-      "status": "Lendo",
-      "totalPag": 360,
-      "pagAtual": 333,
-      "pct": 0.925,
-      "usuario": "Daniel",
-      "genero": "Fantasia"
     }
   ],
   "aguardando": [
