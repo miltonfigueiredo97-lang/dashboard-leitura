@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-06-06T22:36:54.751Z",
+  "geradoEm": "2026-06-07T02:24:17.412Z",
   "meta": {
     "total": 54,
     "lidos": 31,
     "faltando": 23,
     "paginasTotal": 27016,
-    "paginasLidas": 14629,
-    "paginasFaltando": 12387,
-    "mediaDiaria": 85.7,
-    "ritmoAtual": 110.6,
-    "dataPrevistoAtual": "26/09/2026"
+    "paginasLidas": 14680,
+    "paginasFaltando": 12336,
+    "mediaDiaria": 86,
+    "ritmoAtual": 112.3,
+    "dataPrevistoAtual": "24/09/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -75,12 +75,12 @@
       "pausados": 0,
       "aguardando": 21,
       "paginasTotal": 27016,
-      "paginasLidas": 14629,
-      "paginasFaltando": 12387,
+      "paginasLidas": 14680,
+      "paginasFaltando": 12336,
       "faltando": 23,
-      "mediaDiaria": 85.7,
-      "ritmoAtual": 110.6,
-      "dataPrevistoAtual": "26/09/2026"
+      "mediaDiaria": 86,
+      "ritmoAtual": 112.3,
+      "dataPrevistoAtual": "24/09/2026"
     },
     "2027": {
       "total": 1,
@@ -27598,6 +27598,15 @@
       "minutos": 28,
       "ano": 2026,
       "usuario": "Daniel"
+    },
+    {
+      "livro": "Meio Mundo",
+      "colecao": "Mar Despedaçado",
+      "data": "2026-06-06",
+      "paginas": 51,
+      "minutos": 85,
+      "ano": 2026,
+      "usuario": "Milton"
     }
   ],
   "livros": [
@@ -28910,8 +28919,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 442,
-      "pagAtual": 177,
-      "pct": 0.4,
+      "pagAtual": 228,
+      "pct": 0.516,
       "usuario": "MILTON",
       "genero": "Fantasia sombria"
     },
@@ -36618,8 +36627,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 442,
-      "pagAtual": 177,
-      "pct": 0.4,
+      "pagAtual": 228,
+      "pct": 0.516,
       "usuario": "MILTON",
       "genero": "Fantasia sombria"
     },
