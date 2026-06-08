@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-06-08T10:18:02.579Z",
+  "geradoEm": "2026-06-08T10:19:43.883Z",
   "meta": {
     "total": 54,
     "lidos": 32,
@@ -44299,6 +44299,24 @@
         "Personagens": 7.5,
         "Ritmo": 7.5,
         "Temas": 7.5
+      },
+      "usuario": "Daniel"
+    },
+    {
+      "livro": "Allomancer Jak and the Pits of Eltania",
+      "ano": 2026,
+      "media": 6.1,
+      "criterios": {
+        "Diálogos": 6,
+        "Enredo": 5.5,
+        "Estilo Visual": 7,
+        "Finalização": 7,
+        "Imersão": 7.5,
+        "Impacto Emocional": 5,
+        "Originalidade": 6,
+        "Personagens": 5,
+        "Ritmo": 6,
+        "Temas": 6
       },
       "usuario": "Daniel"
     }
