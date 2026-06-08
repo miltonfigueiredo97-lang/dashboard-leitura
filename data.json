@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-06-08T13:34:24.469Z",
+  "geradoEm": "2026-06-08T23:19:12.271Z",
   "meta": {
     "total": 54,
     "lidos": 32,
     "faltando": 22,
     "paginasTotal": 27016,
-    "paginasLidas": 14824,
-    "paginasFaltando": 12192,
-    "mediaDiaria": 85.9,
-    "ritmoAtual": 111.1,
-    "dataPrevistoAtual": "26/09/2026"
+    "paginasLidas": 14917,
+    "paginasFaltando": 12099,
+    "mediaDiaria": 86.5,
+    "ritmoAtual": 115.7,
+    "dataPrevistoAtual": "21/09/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -75,12 +75,12 @@
       "pausados": 0,
       "aguardando": 20,
       "paginasTotal": 27016,
-      "paginasLidas": 14824,
-      "paginasFaltando": 12192,
+      "paginasLidas": 14917,
+      "paginasFaltando": 12099,
       "faltando": 22,
-      "mediaDiaria": 85.9,
-      "ritmoAtual": 111.1,
-      "dataPrevistoAtual": "26/09/2026"
+      "mediaDiaria": 86.5,
+      "ritmoAtual": 115.7,
+      "dataPrevistoAtual": "21/09/2026"
     },
     "2027": {
       "total": 1,
@@ -27643,6 +27643,15 @@
       "minutos": 25,
       "ano": 2026,
       "usuario": "Daniel"
+    },
+    {
+      "livro": "Meio Mundo",
+      "colecao": "Mar Despedaçado",
+      "data": "2026-06-08",
+      "paginas": 93,
+      "minutos": 100,
+      "ano": 2026,
+      "usuario": "Milton"
     }
   ],
   "livros": [
@@ -28948,15 +28957,15 @@
       "isbn": "9780385743785",
       "coverUrl": "https://m.media-amazon.com/images/I/614aCYKcYfL._AC_UF350,350_QL50_.jpg",
       "metaAno": "2026",
-      "anoConclusao": "",
+      "anoConclusao": "2026",
       "depende": "Meio Rei",
       "colecao": "Mar Despedaçado",
       "ordemColecao": 2,
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 442,
-      "pagAtual": 261,
-      "pct": 0.59,
+      "pagAtual": 354,
+      "pct": 0.801,
       "usuario": "MILTON",
       "genero": "Fantasia sombria"
     },
@@ -36656,15 +36665,15 @@
       "isbn": "9780385743785",
       "coverUrl": "https://m.media-amazon.com/images/I/614aCYKcYfL._AC_UF350,350_QL50_.jpg",
       "metaAno": "2026",
-      "anoConclusao": "",
+      "anoConclusao": "2026",
       "depende": "Meio Rei",
       "colecao": "Mar Despedaçado",
       "ordemColecao": 2,
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 442,
-      "pagAtual": 261,
-      "pct": 0.59,
+      "pagAtual": 354,
+      "pct": 0.801,
       "usuario": "MILTON",
       "genero": "Fantasia sombria"
     },
