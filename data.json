@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-06-08T10:42:45.605Z",
+  "geradoEm": "2026-06-08T13:34:24.469Z",
   "meta": {
     "total": 54,
     "lidos": 32,
     "faltando": 22,
     "paginasTotal": 27016,
-    "paginasLidas": 14801,
-    "paginasFaltando": 12215,
-    "mediaDiaria": 85.7,
-    "ritmoAtual": 110.4,
-    "dataPrevistoAtual": "27/09/2026"
+    "paginasLidas": 14824,
+    "paginasFaltando": 12192,
+    "mediaDiaria": 85.9,
+    "ritmoAtual": 111.1,
+    "dataPrevistoAtual": "26/09/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -75,12 +75,12 @@
       "pausados": 0,
       "aguardando": 20,
       "paginasTotal": 27016,
-      "paginasLidas": 14801,
-      "paginasFaltando": 12215,
+      "paginasLidas": 14824,
+      "paginasFaltando": 12192,
       "faltando": 22,
-      "mediaDiaria": 85.7,
-      "ritmoAtual": 110.4,
-      "dataPrevistoAtual": "27/09/2026"
+      "mediaDiaria": 85.9,
+      "ritmoAtual": 111.1,
+      "dataPrevistoAtual": "26/09/2026"
     },
     "2027": {
       "total": 1,
@@ -27634,6 +27634,15 @@
       "minutos": 42,
       "ano": 2026,
       "usuario": "Daniel"
+    },
+    {
+      "livro": "Starsight",
+      "colecao": "Skyward",
+      "data": "2026-06-08",
+      "paginas": 23,
+      "minutos": 25,
+      "ano": 2026,
+      "usuario": "Daniel"
     }
   ],
   "livros": [
@@ -36362,8 +36371,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 348,
-      "pagAtual": 84,
-      "pct": 0.241,
+      "pagAtual": 107,
+      "pct": 0.307,
       "usuario": "Daniel",
       "genero": "Ficção científica YA"
     },
@@ -36672,8 +36681,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 348,
-      "pagAtual": 84,
-      "pct": 0.241,
+      "pagAtual": 107,
+      "pct": 0.307,
       "usuario": "Daniel",
       "genero": "Ficção científica YA"
     }
