@@ -1076,6 +1076,7 @@ canvas { max-width: 100% !important; }
         <button onclick="fecharGerenciarMeta()" style="background:rgba(255,255,255,0.07);border:none;color:#F8FAFC;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:15px;flex-shrink:0;">✕</button>
       </div>
       <div style="display:flex;flex-direction:column;gap:8px;">
+        <input id="gmBusca" type="text" oninput="renderGerenciarMeta()" placeholder="🔍 Buscar livro pelo nome..." style="font-size:13px;padding:8px 10px;background:#1a2035;border:1px solid #2a3248;border-radius:8px;color:#F8FAFC;width:100%;">
         <select id="gmFiltroColecao" onchange="renderGerenciarMeta()" style="font-size:13px;padding:8px 10px;background:#1a2035;border:1px solid #2a3248;border-radius:8px;color:#F8FAFC;width:100%;">
           <option value="all">Todas as coleções</option>
         </select>
@@ -3653,6 +3654,8 @@ function abrirGerenciarMeta() {
   colSel.innerHTML = '<option value="all">Todas as coleções</option>' + cols.map(c=>`<option value="${c.replace(/"/g,'&quot;')}">${c}</option>`).join('');
   colSel.value = 'all';
   document.getElementById('gmOrdem').value = 'az';
+  const gmBuscaEl = document.getElementById('gmBusca');
+  if (gmBuscaEl) gmBuscaEl.value = '';
 
   document.getElementById('gmTitulo').textContent = gmSelecionados.size > 0
     ? `⚙️ Gerenciar Meta ${ano}`
@@ -3686,9 +3689,11 @@ window.fecharGerenciarMeta = fecharGerenciarMeta;
 function renderGerenciarMeta() {
   const colFiltro = document.getElementById('gmFiltroColecao').value;
   const ordem = document.getElementById('gmOrdem').value;
+  const busca = (document.getElementById('gmBusca')?.value || '').toLowerCase().trim();
 
-  let pool = (window._livros || []).filter(l => l.status !== 'Completo');
+  let pool = [...(window._livros || [])];
   if (colFiltro !== 'all') pool = pool.filter(l => l.colecao === colFiltro);
+  if (busca) pool = pool.filter(l => l.livro.toLowerCase().includes(busca));
 
   if (ordem === 'az') {
     pool = [...pool].sort((a,b) => a.livro.localeCompare(b.livro));
@@ -3703,6 +3708,13 @@ function renderGerenciarMeta() {
     });
   }
 
+  // Selecionados sempre primeiro
+  pool = [...pool].sort((a,b) => {
+    const selA = gmSelecionados.has(a.livro) ? 0 : 1;
+    const selB = gmSelecionados.has(b.livro) ? 0 : 1;
+    return selA - selB;
+  });
+
   const lista = document.getElementById('gmLista');
   lista.innerHTML = pool.map(l => {
     const checked = gmSelecionados.has(l.livro);
@@ -3710,11 +3722,15 @@ function renderGerenciarMeta() {
       ? `<img src="${l.coverUrl}" style="width:100%;height:100%;object-fit:cover;border-radius:6px;" onerror="this.style.display='none'">`
       : `<div style="width:100%;height:100%;background:#1a2035;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:24px;">📚</div>`;
     const livroEsc = l.livro.replace(/'/g,"\\'");
+    const statusBadge = l.status === 'Completo'
+      ? `<div style="position:absolute;top:4px;left:4px;background:rgba(34,197,94,0.85);border-radius:4px;font-size:9px;padding:1px 4px;color:#fff;">✅</div>`
+      : '';
     return `
     <div onclick="toggleGmLivro('${livroEsc}')" title="${l.livro}"
       style="position:relative;width:30%;flex-shrink:0;cursor:pointer;">
       <div style="width:100%;aspect-ratio:5/7;position:relative;border-radius:6px;overflow:hidden;box-shadow:2px 4px 12px rgba(0,0,0,0.5);${checked?'outline:3px solid #A855F7;outline-offset:2px;':''}">
         ${capa}
+        ${statusBadge}
         ${checked ? `<div style="position:absolute;inset:0;background:rgba(168,85,247,0.25);display:flex;align-items:center;justify-content:center;">
           <div style="width:28px;height:28px;border-radius:50%;background:#A855F7;display:flex;align-items:center;justify-content:center;font-size:16px;color:#fff;">✓</div>
         </div>` : ''}
@@ -3765,6 +3781,20 @@ async function salvarGerenciarMeta() {
     const d = await r.json();
     if (d.ok) {
       mostrarMsg('gmMsg', '✅ ' + d.msg, 'ok');
+      // Atualiza localmente para refletir na hora, sem esperar o recarregamento remoto
+      (window._livros || []).forEach(l => {
+        if (adicionar.includes(l.livro)) l.metaAno = ano;
+        else if (remover.includes(l.livro)) l.metaAno = '';
+      });
+      if (window._dadosD && window._sessoes) {
+        ['livros','lendo','pausados','aguardando'].forEach(k => {
+          (window._dadosD[k]||[]).forEach(l => {
+            if (adicionar.includes(l.livro)) l.metaAno = ano;
+            else if (remover.includes(l.livro)) l.metaAno = '';
+          });
+        });
+        recalcularDados(window._dadosD, window._sessoes);
+      }
       recarregarAteAtualizar((window._dadosD?.sessoes||[]).length);
       setTimeout(() => fecharGerenciarMeta(), 1200);
     } else {
@@ -3918,7 +3948,7 @@ carregarDados();
       </div>
     </div>
     <div id="ee-msg" class="pwa-msg"></div>
-    <button class="pwa-btn" onclick="salvarEdicaoSessao()">💾 Salvar alterações</button>
+    <button class="pwa-btn" id="ee-btn" onclick="salvarEdicaoSessao()">💾 Salvar alterações</button>
     <button class="pwa-btn-cancel" onclick="fecharModal('editarSessao')">Cancelar</button>
   </div>
 </div>
@@ -5784,6 +5814,7 @@ function editarSessao(s) {
 window.editarSessao = editarSessao;
 
 async function salvarEdicaoSessao() {
+  const btn          = document.getElementById('ee-btn');
   const livro        = document.getElementById('ee-livro-original').value;
   const dataOriginal = document.getElementById('ee-data-original').value;
   const paginasOrig  = Number(document.getElementById('ee-paginas-original').value);
@@ -5797,13 +5828,20 @@ async function salvarEdicaoSessao() {
   if (!novaData || !novasPaginas) {
     mostrarMsg('ee-msg', '⚠️ Preencha data e páginas', 'err'); return;
   }
+  btn.disabled = true;
+  const textoOriginal = btn.textContent;
+  btn.textContent = 'Salvando...';
   mostrarMsg('ee-msg', 'Salvando...', '');
   try {
     const r1 = await fetch(API_URL, { method:'POST',
       body: JSON.stringify({ acao:'excluirSessao', livro, data:dataOriginal, paginas:paginasOrig, usuario })
     });
     const d1 = await r1.json();
-    if (!d1.ok) { mostrarMsg('ee-msg', '❌ Erro ao excluir: '+(d1.erro||''), 'err'); return; }
+    if (!d1.ok) {
+      mostrarMsg('ee-msg', '❌ Erro ao excluir: '+(d1.erro||''), 'err');
+      btn.disabled = false; btn.textContent = textoOriginal;
+      return;
+    }
 
     const r2 = await fetch(API_URL, { method:'POST',
       body: JSON.stringify({ acao:'registrarSessao', livro, paginas:novasPaginas, minutos:totalMinutos, data:novaData, usuario })
@@ -5811,9 +5849,16 @@ async function salvarEdicaoSessao() {
     const d2 = await r2.json();
     if (d2.ok) {
       mostrarMsg('ee-msg', '✅ Sessão editada!', 'ok');
-      setTimeout(() => { fecharModal('editarSessao'); recarregarAteAtualizar(); }, 1200);
-    } else { mostrarMsg('ee-msg', '❌ Erro ao criar: '+(d2.erro||''), 'err'); }
-  } catch(e) { mostrarMsg('ee-msg', '❌ Erro de conexão', 'err'); }
+      btn.textContent = '✅ Salvo!';
+      setTimeout(() => { fecharModal('editarSessao'); recarregarAteAtualizar(); btn.disabled=false; btn.textContent=textoOriginal; }, 1200);
+    } else {
+      mostrarMsg('ee-msg', '❌ Erro ao criar: '+(d2.erro||''), 'err');
+      btn.disabled = false; btn.textContent = textoOriginal;
+    }
+  } catch(e) {
+    mostrarMsg('ee-msg', '❌ Erro de conexão', 'err');
+    btn.disabled = false; btn.textContent = textoOriginal;
+  }
 }
 window.salvarEdicaoSessao = salvarEdicaoSessao;
 
