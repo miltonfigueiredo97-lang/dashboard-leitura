@@ -803,7 +803,7 @@ body.mobile-view .meta-stats { grid-template-columns:1fr 1fr !important; }
   <div id="painelMetaOverlay" style="display:none;position:fixed;inset:0;z-index:8998;background:rgba(0,0,0,0.5);" onclick="fecharPainelMeta()"></div>
 
   <!-- Painel Gerenciar Meta (estante de seleção) -->
-  <div id="painelGerenciarMeta" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:9100;background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:16px;width:min(800px,95vw);max-height:85vh;overflow-y:auto;box-shadow:0 8px 40px rgba(0,0,0,0.7);display:flex;flex-direction:column;">
+  <div id="painelGerenciarMeta" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:9100;background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:16px;width:800px;max-width:95vw;max-height:85vh;overflow-y:auto;box-shadow:0 8px 40px rgba(0,0,0,0.7);flex-direction:column;box-sizing:border-box;">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
       <div id="gmTitulo" style="font-size:16px;font-weight:700;color:var(--text)">⚙️ Gerenciar Meta</div>
       <button onclick="fecharGerenciarMeta()" style="background:var(--bg3);border:none;color:var(--muted);width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:16px;flex-shrink:0;">✕</button>
@@ -3613,8 +3613,8 @@ function renderGerenciarMeta() {
       : '';
     return `
     <div onclick="toggleGmLivro('${livroEsc}')" title="${l.livro}"
-      style="position:relative;width:84px;max-width:84px;flex:0 0 84px;flex-shrink:0;cursor:pointer;">
-      <div style="width:84px;height:120px;max-width:84px;max-height:120px;position:relative;border-radius:6px;overflow:hidden;box-shadow:2px 4px 12px rgba(0,0,0,0.5);${checked?'outline:3px solid var(--purple);outline-offset:2px;':''}">
+      style="position:relative;width:84px!important;max-width:84px!important;min-width:84px;flex:0 0 84px!important;flex-shrink:0;flex-grow:0;cursor:pointer;box-sizing:border-box;">
+      <div style="width:84px!important;height:120px!important;max-width:84px;max-height:120px;position:relative;border-radius:6px;overflow:hidden;box-shadow:2px 4px 12px rgba(0,0,0,0.5);box-sizing:border-box;${checked?'outline:3px solid var(--purple);outline-offset:2px;':''}">
         ${capa}
         ${statusBadge}
         ${checked ? `<div style="position:absolute;inset:0;background:rgba(139,124,248,0.25);display:flex;align-items:center;justify-content:center;">
