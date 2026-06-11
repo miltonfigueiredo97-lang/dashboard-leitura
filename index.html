@@ -821,7 +821,7 @@ body.mobile-view .meta-stats { grid-template-columns:1fr 1fr !important; }
       </select>
     </div>
     <div id="gmContador" style="font-size:12px;color:var(--muted);margin-bottom:8px;"></div>
-    <div id="gmLista" style="display:flex;flex-wrap:wrap;gap:40px 24px;flex:1;overflow-y:auto;overflow-x:hidden;align-content:flex-start;min-height:120px;padding:20px;"></div>
+    <div id="gmLista" style="display:flex;flex-wrap:wrap;gap:46px 24px;flex:1;overflow-y:auto;overflow-x:hidden;align-content:flex-start;min-height:120px;padding:20px;"></div>
     <div id="gmMsg" class="pwa-msg" style="margin-top:10px;"></div>
     <div style="display:flex;gap:10px;margin-top:14px;">
       <button class="pwa-btn-cancel" style="flex:1;" onclick="fecharGerenciarMeta()">Cancelar</button>
@@ -1363,9 +1363,9 @@ async function recarregarDados(delay = 3000) {
   await _fetchEAtualizar();
 }
 
-async function recarregarAteAtualizar(referencia) {
-  // Tenta até 10x com 1s de intervalo até o JSON mudar
-  for (let i = 0; i < 10; i++) {
+async function recarregarAteAtualizar(referencia, verificar) {
+  // Tenta até 15x com 1s de intervalo até o JSON mudar (ou até a função verificar() retornar true)
+  for (let i = 0; i < 15; i++) {
     await new Promise(r => setTimeout(r, 1000));
     const u = typeof usuarioAtual !== 'undefined' ? usuarioAtual : 'Milton';
     try {
@@ -1373,7 +1373,10 @@ async function recarregarAteAtualizar(referencia) {
       if (!resp.ok) continue;
       const d = await resp.json();
       const sessoesNow = (d.sessoes||[]).length;
-      if (sessoesNow !== referencia || i === 9) {
+      const mudou = typeof verificar === 'function'
+        ? verificar(d)
+        : (sessoesNow !== referencia);
+      if (mudou || i === 14) {
         window._dadosD = d;
         setUsuario(u);
         const btn = document.getElementById('btn-refresh');
@@ -3613,9 +3616,9 @@ function renderGerenciarMeta() {
       : '';
     return `
     <div onclick="toggleGmLivro('${livroEsc}')" title="${l.livro}"
-      style="position:relative;width:84px!important;max-width:84px!important;min-width:84px;flex:0 0 84px!important;flex-shrink:0;flex-grow:0;cursor:pointer;box-sizing:border-box;transition:transform .2s;transform-origin:center;z-index:1;"
-      onmouseenter="this.style.transform='scale(2)';this.style.zIndex='50'"
-      onmouseleave="this.style.transform='scale(1)';this.style.zIndex='1'">
+      style="position:relative;width:84px!important;max-width:84px!important;min-width:84px;flex:0 0 84px!important;flex-shrink:0;flex-grow:0;cursor:pointer;box-sizing:border-box;transition:transform .2s;transform-origin:center;z-index:1;background:var(--bg2);border-radius:8px;padding:4px;"
+      onmouseenter="this.style.transform='scale(2)';this.style.zIndex='50';this.style.boxShadow='0 8px 32px rgba(0,0,0,0.9)'"
+      onmouseleave="this.style.transform='scale(1)';this.style.zIndex='1';this.style.boxShadow='none'">
       <div style="width:84px!important;height:120px!important;max-width:84px;max-height:120px;position:relative;border-radius:6px;overflow:hidden;box-shadow:2px 4px 12px rgba(0,0,0,0.5);box-sizing:border-box;${checked?'outline:3px solid var(--purple);outline-offset:2px;':''}">
         ${capa}
         ${statusBadge}
@@ -3623,7 +3626,7 @@ function renderGerenciarMeta() {
           <div style="width:28px;height:28px;border-radius:50%;background:var(--purple);display:flex;align-items:center;justify-content:center;font-size:16px;color:#fff;">✓</div>
         </div>` : ''}
       </div>
-      <div style="font-size:10px;color:${checked?'var(--purple)':'var(--muted)'};text-align:center;margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:${checked?'700':'400'};">${l.livro}</div>
+      <div style="font-size:12px;line-height:1.3;color:${checked?'var(--purple)':'var(--text)'};text-align:center;margin-top:5px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-weight:${checked?'700':'500'};">${l.livro}</div>
     </div>`;
   }).join('');
 
@@ -5743,7 +5746,16 @@ async function salvarEdicaoSessao() {
     if (d2.ok) {
       mostrarMsg('ee-msg', '✅ Sessão editada!', 'ok');
       btn.textContent = '✅ Salvo!';
-      setTimeout(() => { fecharModal('editarSessao'); recarregarAteAtualizar(); btn.disabled=false; btn.textContent=textoOriginal; }, 1200);
+      setTimeout(() => {
+        fecharModal('editarSessao');
+        recarregarAteAtualizar(0, (d) => {
+          const sessoes = d.sessoes || [];
+          const aindaTemAntiga = sessoes.some(s => s.livro === livro && s.data === dataOriginal && Number(s.paginas) === paginasOrig);
+          const temNova = sessoes.some(s => s.livro === livro && s.data === novaData && Number(s.paginas) === novasPaginas);
+          return temNova && !aindaTemAntiga;
+        });
+        btn.disabled=false; btn.textContent=textoOriginal;
+      }, 1200);
     } else {
       mostrarMsg('ee-msg', '❌ Erro ao criar nova: '+(d2.erro||''), 'err');
       btn.disabled = false; btn.textContent = textoOriginal;
