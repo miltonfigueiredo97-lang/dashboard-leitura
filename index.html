@@ -4121,7 +4121,7 @@ carregarDados();
         <input id="isbndb-out-nome" type="text" readonly>
       </div>
       <div class="pwa-field">
-        <label>Coleção <span style="color:var(--muted);font-weight:400;">(API não fornece — preencher manualmente)</span></label>
+        <label>Coleção <span style="color:var(--muted);font-weight:400;">(da API quando disponível — editável)</span></label>
         <input id="isbndb-out-colecao" type="text" placeholder="Ex: Cosmere, Grishaverso...">
       </div>
       <div class="pwa-row">
@@ -6404,7 +6404,7 @@ async function buscarIsbndb() {
       document.getElementById('isbndb-out-isbn').value = l.isbn || '';
       document.getElementById('isbndb-out-capa').value = l.capa || '';
       document.getElementById('isbndb-out-genero').value = l.genero || '';
-      document.getElementById('isbndb-out-colecao').value = '';
+      document.getElementById('isbndb-out-colecao').value = l.colecao || '';
       document.getElementById('isbndb-out-ordem').value = '';
       document.getElementById('isbndb-out-metaano').value = '';
       document.getElementById('isbndb-resultado').style.display = 'block';
