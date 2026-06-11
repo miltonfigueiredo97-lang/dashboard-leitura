@@ -550,7 +550,7 @@ body.mobile-view .meta-stats { grid-template-columns:1fr 1fr !important; }
       </button>
     </div>
     <div class="badge" id="header-badge">— livros · — sessões</div>
-    <button onclick="toggleChangelog()" style="background:rgba(139,124,248,0.2);border:1px solid var(--purple);color:var(--purple);padding:6px 12px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;white-space:nowrap;">📋 v2.6</button>
+    <button onclick="toggleChangelog()" style="background:rgba(139,124,248,0.2);border:1px solid var(--purple);color:var(--purple);padding:6px 12px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;white-space:nowrap;">📋 v2.6.1</button>
     <button id="btn-refresh" onclick="manualRefresh()" style="background:rgba(78,205,196,0.15);border:1px solid var(--teal);color:var(--teal);padding:6px 12px;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;white-space:nowrap;" title="Atualizar dados">🔄</button>
   </div>
 </header>
@@ -3606,7 +3606,8 @@ function renderGerenciarMeta() {
   if (!gmMostrarOutrasMetas) {
     pool = pool.filter(l => {
       const ma = String(l.metaAno || '');
-      return !ma || ma === String(gmAnoAtual) || gmSelecionados.has(l.livro);
+      const semMeta = !ma || ma === 'AINDA NÃO DEFINIDO';
+      return semMeta || ma === String(gmAnoAtual) || gmSelecionados.has(l.livro);
     });
   }
 
@@ -3643,7 +3644,7 @@ function renderGerenciarMeta() {
     const statusBadge = l.status === 'Completo'
       ? `<div style="position:absolute;top:4px;left:4px;background:rgba(34,197,94,0.85);border-radius:4px;font-size:9px;padding:1px 4px;color:#fff;">✅</div>`
       : '';
-    const outraMeta = l.metaAno && String(l.metaAno) !== String(gmAnoAtual);
+    const outraMeta = l.metaAno && l.metaAno !== 'AINDA NÃO DEFINIDO' && String(l.metaAno) !== String(gmAnoAtual);
     const metaBadge = outraMeta
       ? `<div style="position:absolute;top:4px;right:4px;background:rgba(249,115,22,0.9);border-radius:4px;font-size:9px;padding:1px 5px;color:#fff;font-weight:700;">🎯 ${l.metaAno}</div>`
       : '';
