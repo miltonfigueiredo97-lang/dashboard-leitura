@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-06-11T04:07:54.751Z",
+  "geradoEm": "2026-06-11T04:08:02.338Z",
   "meta": {
     "total": 54,
-    "lidos": 32,
-    "faltando": 22,
+    "lidos": 33,
+    "faltando": 21,
     "paginasTotal": 27016,
-    "paginasLidas": 15026,
-    "paginasFaltando": 11990,
-    "mediaDiaria": 86.1,
-    "ritmoAtual": 116,
-    "dataPrevistoAtual": "23/09/2026"
+    "paginasLidas": 15093,
+    "paginasFaltando": 11923,
+    "mediaDiaria": 85.9,
+    "ritmoAtual": 114.5,
+    "dataPrevistoAtual": "24/09/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -70,17 +70,17 @@
     },
     "2026": {
       "total": 54,
-      "lidos": 32,
-      "lendo": 2,
+      "lidos": 33,
+      "lendo": 1,
       "pausados": 0,
       "aguardando": 20,
       "paginasTotal": 27016,
-      "paginasLidas": 15026,
-      "paginasFaltando": 11990,
-      "faltando": 22,
-      "mediaDiaria": 86.1,
-      "ritmoAtual": 116,
-      "dataPrevistoAtual": "23/09/2026"
+      "paginasLidas": 15093,
+      "paginasFaltando": 11923,
+      "faltando": 21,
+      "mediaDiaria": 85.9,
+      "ritmoAtual": 114.5,
+      "dataPrevistoAtual": "24/09/2026"
     },
     "2027": {
       "total": 1,
@@ -27697,6 +27697,15 @@
       "minutos": 15,
       "ano": 2026,
       "usuario": "Milton"
+    },
+    {
+      "livro": "Meio Mundo",
+      "colecao": "Mar Despedaçado",
+      "data": "2026-06-11",
+      "paginas": 67,
+      "minutos": 100,
+      "ano": 2026,
+      "usuario": "Milton"
     }
   ],
   "livros": [
@@ -29007,10 +29016,10 @@
       "colecao": "Mar Despedaçado",
       "ordemColecao": 2,
       "ordem": 0,
-      "status": "Lendo",
+      "status": "Completo",
       "totalPag": 442,
-      "pagAtual": 375,
-      "pct": 0.848,
+      "pagAtual": 442,
+      "pct": 1,
       "usuario": "MILTON",
       "genero": "Fantasia sombria"
     },
@@ -36722,24 +36731,6 @@
     }
   ],
   "lendo": [
-    {
-      "livro": "Meio Mundo",
-      "autor": "Joe Abercrombie",
-      "isbn": "9780385743785",
-      "coverUrl": "https://m.media-amazon.com/images/I/614aCYKcYfL._AC_UF350,350_QL50_.jpg",
-      "metaAno": "2026",
-      "anoConclusao": "2026",
-      "depende": "Meio Rei",
-      "colecao": "Mar Despedaçado",
-      "ordemColecao": 2,
-      "ordem": 0,
-      "status": "Lendo",
-      "totalPag": 442,
-      "pagAtual": 375,
-      "pct": 0.848,
-      "usuario": "MILTON",
-      "genero": "Fantasia sombria"
-    },
     {
       "livro": "Starsight",
       "autor": "Brandon Sanderson",
