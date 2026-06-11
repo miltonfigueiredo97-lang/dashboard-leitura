@@ -877,9 +877,12 @@ canvas { max-width: 100% !important; }
     <div class="card">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
         <div class="card-title" id="metaCardTitle" style="margin-bottom:0">🎯 Meta — 28 Livros</div>
-        <select id="selMetaAno" onchange="buildMeta()" style="font-size:13px;padding:4px 8px;background:var(--bg3);border:1px solid var(--border);border-radius:6px;color:var(--text);">
-          <option value="2026">2026</option>
-        </select>
+        <div style="display:flex;align-items:center;gap:6px;">
+          <select id="selMetaAno" onchange="buildMeta()" style="font-size:13px;padding:4px 8px;background:var(--bg3);border:1px solid var(--border);border-radius:6px;color:var(--text);">
+            <option value="2026">2026</option>
+          </select>
+          <button onclick="abrirGerenciarMeta()" title="Gerenciar livros desta meta" style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:13px;color:var(--text);padding:0;flex-shrink:0;">⚙️</button>
+        </div>
       </div>
       <div class="card-sub">Progresso em páginas e livros concluídos</div>
       <div class="meta-row">
@@ -1064,6 +1067,32 @@ canvas { max-width: 100% !important; }
     <div id="painelMetaLista" style="display:flex;flex-wrap:wrap;gap:10px;"></div>
   </div>
   <div id="painelMetaOverlay" style="display:none;position:fixed;inset:0;z-index:8998;background:rgba(0,0,0,0.5);" onclick="fecharPainelMeta()"></div>
+
+  <!-- Painel Gerenciar Meta (full-screen no mobile) -->
+  <div id="painelGerenciarMeta" style="display:none;position:fixed;inset:0;top:0;left:0;right:0;bottom:0;width:100%;height:100%;background:#0B1120;z-index:999998;overflow-y:auto;-webkit-overflow-scrolling:touch;flex-direction:column;">
+    <div style="position:sticky;top:0;background:#0B1120;border-bottom:1px solid rgba(139,124,248,0.2);padding:14px 16px;z-index:10;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+        <div id="gmTitulo" style="font-size:14px;font-weight:700;color:#F8FAFC;">⚙️ Gerenciar Meta</div>
+        <button onclick="fecharGerenciarMeta()" style="background:rgba(255,255,255,0.07);border:none;color:#F8FAFC;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:15px;flex-shrink:0;">✕</button>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <select id="gmFiltroColecao" onchange="renderGerenciarMeta()" style="font-size:13px;padding:8px 10px;background:#1a2035;border:1px solid #2a3248;border-radius:8px;color:#F8FAFC;width:100%;">
+          <option value="all">Todas as coleções</option>
+        </select>
+        <select id="gmOrdem" onchange="renderGerenciarMeta()" style="font-size:13px;padding:8px 10px;background:#1a2035;border:1px solid #2a3248;border-radius:8px;color:#F8FAFC;width:100%;">
+          <option value="az">Ordem A-Z</option>
+          <option value="colecao">Ordem por Coleção</option>
+        </select>
+      </div>
+      <div id="gmContador" style="font-size:11px;color:rgba(248,250,252,0.4);margin-top:8px;"></div>
+    </div>
+    <div id="gmLista" style="display:flex;flex-wrap:wrap;gap:10px;padding:14px 16px;align-content:flex-start;"></div>
+    <div id="gmMsg" class="pwa-msg" style="margin:0 16px 10px;"></div>
+    <div style="position:sticky;bottom:0;background:#0B1120;border-top:1px solid rgba(139,124,248,0.2);padding:12px 16px;display:flex;gap:10px;">
+      <button class="pwa-btn-cancel" style="flex:1;" onclick="fecharGerenciarMeta()">Cancelar</button>
+      <button class="pwa-btn" id="gmBtnSalvar" style="flex:2;" onclick="salvarGerenciarMeta()">✅ Salvar Meta</button>
+    </div>
+  </div>
 
   <div id="kpi-books-grid" class="grid4" data-desktop-grid="1" style="margin-bottom:16px;grid-template-columns:repeat(4,1fr);">
     <div class="kpi" style="--accent:#ffd166">
@@ -3603,6 +3632,151 @@ function fecharPainelMeta() {
   document.getElementById('painelMeta').style.display = 'none';
   document.getElementById('painelMetaOverlay').style.display = 'none';
 }
+
+// ════════════════════════════════════════════════
+// GERENCIAR META — selecionar livros para a meta de um ano (mobile full-screen)
+// ════════════════════════════════════════════════
+let gmSelecionados = new Set();
+let gmAnoAtual = null;
+
+function abrirGerenciarMeta() {
+  const ano = document.getElementById('selMetaAno')?.value || '2026';
+  gmAnoAtual = ano;
+  gmSelecionados = new Set();
+
+  (window._livros || []).forEach(l => {
+    if (String(l.metaAno) === String(ano)) gmSelecionados.add(l.livro);
+  });
+
+  const colSel = document.getElementById('gmFiltroColecao');
+  const cols = [...new Set((window._livros||[]).map(l=>l.colecao).filter(Boolean))].sort();
+  colSel.innerHTML = '<option value="all">Todas as coleções</option>' + cols.map(c=>`<option value="${c.replace(/"/g,'&quot;')}">${c}</option>`).join('');
+  colSel.value = 'all';
+  document.getElementById('gmOrdem').value = 'az';
+
+  document.getElementById('gmTitulo').textContent = gmSelecionados.size > 0
+    ? `⚙️ Gerenciar Meta ${ano}`
+    : `⚙️ Definir Meta ${ano}`;
+
+  document.getElementById('gmMsg').className = 'pwa-msg';
+  document.getElementById('gmMsg').textContent = '';
+
+  renderGerenciarMeta();
+
+  const pagina = document.getElementById('painelGerenciarMeta');
+  document.body.appendChild(pagina);
+  document.body.style.position = 'fixed';
+  document.body.style.top = `-${window.scrollY}px`;
+  document.body.style.width = '100%';
+  pagina.style.display = 'flex';
+  pagina.scrollTop = 0;
+}
+window.abrirGerenciarMeta = abrirGerenciarMeta;
+
+function fecharGerenciarMeta() {
+  document.getElementById('painelGerenciarMeta').style.display = 'none';
+  const scrollY = document.body.style.top;
+  document.body.style.position = '';
+  document.body.style.top = '';
+  document.body.style.width = '';
+  window.scrollTo(0, parseInt(scrollY || '0') * -1);
+}
+window.fecharGerenciarMeta = fecharGerenciarMeta;
+
+function renderGerenciarMeta() {
+  const colFiltro = document.getElementById('gmFiltroColecao').value;
+  const ordem = document.getElementById('gmOrdem').value;
+
+  let pool = (window._livros || []).filter(l => l.status !== 'Completo');
+  if (colFiltro !== 'all') pool = pool.filter(l => l.colecao === colFiltro);
+
+  if (ordem === 'az') {
+    pool = [...pool].sort((a,b) => a.livro.localeCompare(b.livro));
+  } else {
+    pool = [...pool].sort((a,b) => {
+      const ca = a.colecao || 'zzz', cb = b.colecao || 'zzz';
+      if (ca !== cb) return ca.localeCompare(cb);
+      const oa = parseFloat(a.ordemColecao || a.ordem) || 999;
+      const ob = parseFloat(b.ordemColecao || b.ordem) || 999;
+      if (oa !== ob) return oa - ob;
+      return a.livro.localeCompare(b.livro);
+    });
+  }
+
+  const lista = document.getElementById('gmLista');
+  lista.innerHTML = pool.map(l => {
+    const checked = gmSelecionados.has(l.livro);
+    const capa = l.coverUrl
+      ? `<img src="${l.coverUrl}" style="width:100%;height:100%;object-fit:cover;border-radius:6px;" onerror="this.style.display='none'">`
+      : `<div style="width:100%;height:100%;background:#1a2035;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:24px;">📚</div>`;
+    const livroEsc = l.livro.replace(/'/g,"\\'");
+    return `
+    <div onclick="toggleGmLivro('${livroEsc}')" title="${l.livro}"
+      style="position:relative;width:30%;flex-shrink:0;cursor:pointer;">
+      <div style="width:100%;aspect-ratio:5/7;position:relative;border-radius:6px;overflow:hidden;box-shadow:2px 4px 12px rgba(0,0,0,0.5);${checked?'outline:3px solid #A855F7;outline-offset:2px;':''}">
+        ${capa}
+        ${checked ? `<div style="position:absolute;inset:0;background:rgba(168,85,247,0.25);display:flex;align-items:center;justify-content:center;">
+          <div style="width:28px;height:28px;border-radius:50%;background:#A855F7;display:flex;align-items:center;justify-content:center;font-size:16px;color:#fff;">✓</div>
+        </div>` : ''}
+      </div>
+      <div style="font-size:10px;color:${checked?'#A855F7':'rgba(248,250,252,0.4)'};text-align:center;margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:${checked?'700':'400'};">${l.livro}</div>
+    </div>`;
+  }).join('');
+
+  if (!pool.length) {
+    lista.innerHTML = '<div style="color:rgba(248,250,252,0.4);text-align:center;padding:30px;width:100%;">Nenhum livro encontrado para este filtro.</div>';
+  }
+
+  document.getElementById('gmContador').textContent = `${gmSelecionados.size} selecionado(s) para a meta ${gmAnoAtual} · ${pool.length} exibido(s)`;
+}
+window.renderGerenciarMeta = renderGerenciarMeta;
+
+function toggleGmLivro(livro) {
+  if (gmSelecionados.has(livro)) gmSelecionados.delete(livro);
+  else gmSelecionados.add(livro);
+  renderGerenciarMeta();
+}
+window.toggleGmLivro = toggleGmLivro;
+
+async function salvarGerenciarMeta() {
+  const btn = document.getElementById('gmBtnSalvar');
+  const ano = gmAnoAtual;
+
+  const tinhaMeta = new Set();
+  (window._livros || []).forEach(l => {
+    if (String(l.metaAno) === String(ano)) tinhaMeta.add(l.livro);
+  });
+
+  const adicionar = [...gmSelecionados].filter(l => !tinhaMeta.has(l));
+  const remover    = [...tinhaMeta].filter(l => !gmSelecionados.has(l));
+
+  if (!adicionar.length && !remover.length) {
+    fecharGerenciarMeta();
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Salvando...';
+  try {
+    const r = await fetch(API_URL, {
+      method: 'POST',
+      body: JSON.stringify({ acao: 'definirMetaLote', ano, adicionar, remover })
+    });
+    const d = await r.json();
+    if (d.ok) {
+      mostrarMsg('gmMsg', '✅ ' + d.msg, 'ok');
+      recarregarAteAtualizar((window._dadosD?.sessoes||[]).length);
+      setTimeout(() => fecharGerenciarMeta(), 1200);
+    } else {
+      mostrarMsg('gmMsg', '❌ ' + d.erro, 'err');
+    }
+  } catch(e) {
+    mostrarMsg('gmMsg', '❌ Erro de conexão', 'err');
+  }
+  btn.disabled = false;
+  btn.textContent = '✅ Salvar Meta';
+}
+window.salvarGerenciarMeta = salvarGerenciarMeta;
 function fecharPainel() {
   // Fecha qualquer painel overlay aberto
   ['painelStatus','painelGenero','painelMetaOverlay'].forEach(id => {
@@ -5547,6 +5721,9 @@ function fecharModal(tipo) {
     const el = document.getElementById(id);
     if (el) { el.className = 'pwa-msg'; el.textContent = ''; }
   });
+  if (tipo === 'nota') {
+    limparBuscaSelect('n');
+  }
 }
 
 function renderSessoesExcluir() {
@@ -5767,12 +5944,56 @@ function selecionarBuscaSelect(buscaId, hiddenId, l) {
   sel.textContent = `✅ ${l.livro} — toque para limpar`;
   sel.style.display = 'block';
   if (prefix === 'l') preencherDadosLivro(l.livro);
+  if (prefix === 'n') preencherNotaExistente(l.livro);
+}
+
+const CRITERIOS_NOTA = ['Diálogos','Enredo','Estilo Visual','Finalização','Imersão',
+                   'Impacto Emocional','Originalidade','Personagens','Ritmo','Temas'];
+
+function preencherNotaExistente(livro) {
+  const notaExistente = (window.NOTES || []).find(n => n.livro === livro);
+  CRITERIOS_NOTA.forEach((c, i) => {
+    const el = document.getElementById('n-'+i);
+    if (!el) return;
+    const v = notaExistente?.criterios?.[c];
+    el.value = (v !== undefined && v > 0) ? v : '';
+  });
+  if (notaExistente?.ano > 2000) {
+    document.getElementById('n-ano').value = notaExistente.ano;
+  }
+  // Atualiza média exibida
+  const vals = CRITERIOS_NOTA.map((c,i) => parseFloat(document.getElementById('n-'+i)?.value) || 0).filter(v => v > 0);
+  const media = vals.length ? (vals.reduce((a,b)=>a+b,0)/vals.length).toFixed(1) : '—';
+  document.getElementById('n-media').textContent = media;
+  // Aviso visual de edição
+  const msgEl = document.getElementById('n-msg');
+  if (msgEl) {
+    if (notaExistente) {
+      msgEl.className = 'pwa-msg ok';
+      msgEl.textContent = 'ℹ️ Avaliação existente carregada — salvar irá sobrescrevê-la.';
+    } else {
+      msgEl.className = 'pwa-msg';
+      msgEl.textContent = '';
+    }
+  }
 }
 
 function limparBuscaSelect(prefix) {
   document.getElementById(prefix + '-livro').value = '';
   document.getElementById(prefix + '-livro-busca').placeholder = 'Digite para buscar...';
   document.getElementById(prefix + '-livro-sel').style.display = 'none';
+  if (prefix === 'n') limparCamposNota();
+}
+
+function limparCamposNota() {
+  CRITERIOS_NOTA.forEach((c, i) => {
+    const el = document.getElementById('n-'+i);
+    if (el) el.value = '';
+  });
+  document.getElementById('n-ano').value = new Date().getFullYear();
+  document.getElementById('n-media').textContent = '—';
+  const msgEl = document.getElementById('n-msg');
+  if (msgEl) { msgEl.className = 'pwa-msg'; msgEl.textContent = ''; }
 }
 
 function selecionarLivroSessao(l) {
