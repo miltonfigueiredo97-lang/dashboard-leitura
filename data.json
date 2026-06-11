@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-06-11T11:39:17.012Z",
+  "geradoEm": "2026-06-11T15:12:29.231Z",
   "meta": {
     "total": 58,
     "lidos": 34,
@@ -8,8 +8,8 @@
     "paginasLidas": 15144,
     "paginasFaltando": 12995,
     "mediaDiaria": 86.1,
-    "ritmoAtual": 115.4,
-    "dataPrevistoAtual": "02/10/2026"
+    "ritmoAtual": 117,
+    "dataPrevistoAtual": "01/10/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -79,8 +79,8 @@
       "paginasFaltando": 12995,
       "faltando": 24,
       "mediaDiaria": 86.1,
-      "ritmoAtual": 115.4,
-      "dataPrevistoAtual": "02/10/2026"
+      "ritmoAtual": 117,
+      "dataPrevistoAtual": "01/10/2026"
     },
     "2027": {
       "total": 14,
