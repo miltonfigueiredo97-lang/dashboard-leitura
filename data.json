@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-06-11T04:08:59.773Z",
+  "geradoEm": "2026-06-11T04:10:37.844Z",
   "meta": {
-    "total": 54,
+    "total": 55,
     "lidos": 33,
-    "faltando": 21,
-    "paginasTotal": 27016,
+    "faltando": 22,
+    "paginasTotal": 27056,
     "paginasLidas": 15093,
-    "paginasFaltando": 11923,
+    "paginasFaltando": 11963,
     "mediaDiaria": 86.5,
     "ritmoAtual": 118.3,
-    "dataPrevistoAtual": "20/09/2026"
+    "dataPrevistoAtual": "21/09/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -69,18 +69,18 @@
       "dataPrevistoAtual": "Concluída!"
     },
     "2026": {
-      "total": 54,
+      "total": 55,
       "lidos": 33,
       "lendo": 1,
       "pausados": 0,
-      "aguardando": 20,
-      "paginasTotal": 27016,
+      "aguardando": 21,
+      "paginasTotal": 27056,
       "paginasLidas": 15093,
-      "paginasFaltando": 11923,
-      "faltando": 21,
+      "paginasFaltando": 11963,
+      "faltando": 22,
       "mediaDiaria": 86.5,
       "ritmoAtual": 118.3,
-      "dataPrevistoAtual": "20/09/2026"
+      "dataPrevistoAtual": "21/09/2026"
     },
     "2027": {
       "total": 1,
@@ -111,15 +111,15 @@
       "dataPrevistoAtual": "—"
     },
     "AINDA NÃO DEFINIDO": {
-      "total": 211,
+      "total": 210,
       "lidos": 0,
       "lendo": 0,
       "pausados": 0,
-      "aguardando": 211,
-      "paginasTotal": 104678,
+      "aguardando": 210,
+      "paginasTotal": 104638,
       "paginasLidas": 0,
-      "paginasFaltando": 104678,
-      "faltando": 211,
+      "paginasFaltando": 104638,
+      "faltando": 210,
       "mediaDiaria": 50,
       "ritmoAtual": 0,
       "dataPrevistoAtual": "—"
@@ -36678,7 +36678,7 @@
       "autor": "Brandon Sanderson",
       "isbn": "",
       "coverUrl": "https://imgv2-1-f.scribdassets.com/img/document/835939450/original/e6d8dae38b/1?v=1",
-      "metaAno": "AINDA NÃO DEFINIDO",
+      "metaAno": "2026",
       "anoConclusao": "",
       "depende": "Os Braceletes da perdição",
       "colecao": "Cosmere",
@@ -41220,7 +41220,7 @@
       "autor": "Brandon Sanderson",
       "isbn": "",
       "coverUrl": "https://imgv2-1-f.scribdassets.com/img/document/835939450/original/e6d8dae38b/1?v=1",
-      "metaAno": "AINDA NÃO DEFINIDO",
+      "metaAno": "2026",
       "anoConclusao": "",
       "depende": "Os Braceletes da perdição",
       "colecao": "Cosmere",
