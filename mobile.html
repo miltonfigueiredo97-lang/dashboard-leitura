@@ -3650,7 +3650,12 @@ function abrirGerenciarMeta() {
   });
 
   const colSel = document.getElementById('gmFiltroColecao');
-  const cols = [...new Set((window._livros||[]).map(l=>l.colecao).filter(Boolean))].sort();
+  const colecoesComPendentes = new Set(
+    (window._livros||[])
+      .filter(l => l.colecao && l.status !== 'Completo')
+      .map(l => l.colecao)
+  );
+  const cols = [...colecoesComPendentes].sort();
   colSel.innerHTML = '<option value="all">Todas as coleções</option>' + cols.map(c=>`<option value="${c.replace(/"/g,'&quot;')}">${c}</option>`).join('');
   colSel.value = 'all';
   document.getElementById('gmOrdem').value = 'az';
@@ -3691,7 +3696,7 @@ function renderGerenciarMeta() {
   const ordem = document.getElementById('gmOrdem').value;
   const busca = (document.getElementById('gmBusca')?.value || '').toLowerCase().trim();
 
-  let pool = [...(window._livros || [])];
+  let pool = (window._livros || []).filter(l => l.status !== 'Completo');
   if (colFiltro !== 'all') pool = pool.filter(l => l.colecao === colFiltro);
   if (busca) pool = pool.filter(l => l.livro.toLowerCase().includes(busca));
 
