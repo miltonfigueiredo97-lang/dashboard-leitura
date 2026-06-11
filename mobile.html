@@ -1084,6 +1084,7 @@ canvas { max-width: 100% !important; }
           <option value="az">Ordem A-Z</option>
           <option value="colecao">Ordem por Coleção</option>
         </select>
+        <button id="gmToggleOutrasMetas" onclick="gmMostrarOutrasMetas=!gmMostrarOutrasMetas;atualizarBtnOutrasMetas();renderGerenciarMeta()" style="width:100%;text-align:left;font-size:12px;padding:8px 12px;background:#1a2035;border:1px solid #2a3248;border-radius:8px;color:rgba(248,250,252,0.4);cursor:pointer;">☐ Considerar livros que já tenham meta</button>
       </div>
       <div id="gmContador" style="font-size:11px;color:rgba(248,250,252,0.4);margin-top:8px;"></div>
     </div>
@@ -1605,17 +1606,20 @@ async function recarregarDados(delay = 3000) {
   await _fetchEAtualizar();
 }
 
-async function recarregarAteAtualizar(referencia) {
-  // Tenta até 10x com 1s de intervalo até o JSON mudar
-  for (let i = 0; i < 10; i++) {
-    await new Promise(r => setTimeout(r, 1000));
+async function recarregarAteAtualizar(referencia, verificar) {
+  // Tenta até 25x com 1.5s de intervalo (até ~37s) até o JSON mudar (ou até verificar() retornar true)
+  for (let i = 0; i < 25; i++) {
+    await new Promise(r => setTimeout(r, 1500));
     const u = typeof usuarioAtual !== 'undefined' ? usuarioAtual : 'Milton';
     try {
       const resp = await fetch(DATA_URL + '?t=' + Date.now());
       if (!resp.ok) continue;
       const d = await resp.json();
       const sessoesNow = (d.sessoes||[]).length;
-      if (sessoesNow !== referencia || i === 9) {
+      const mudou = typeof verificar === 'function'
+        ? verificar(d)
+        : (sessoesNow !== referencia);
+      if (mudou || i === 24) {
         window._dadosD = d;
         setUsuario(u);
         const btn = document.getElementById('btn-refresh');
@@ -3613,14 +3617,14 @@ function abrirPainelMeta() {
     const livroEsc = l.livro.replace(/'/g,"\\'");
     return `
     <div title="${l.livro}" onclick="fecharPainelMeta();abrirLivroDetalhes('${livroEsc}')"
-      style="position:relative;width:84px;flex-shrink:0;cursor:pointer;transition:transform .2s;z-index:1;"
-      onmouseenter="this.style.transform='scale(1.5)';this.style.zIndex='10'"
+      style="position:relative;width:70px;flex-shrink:0;cursor:pointer;transition:transform .2s;z-index:1;"
+      onmouseenter="this.style.transform='scale(1.6)';this.style.zIndex='10'"
       onmouseleave="this.style.transform='scale(1)';this.style.zIndex='1'">
-      <div style="width:84px;height:120px;position:relative;border-radius:6px;overflow:hidden;box-shadow:2px 4px 12px rgba(0,0,0,0.5);">
+      <div style="width:70px;height:100px;position:relative;border-radius:6px;overflow:hidden;box-shadow:2px 4px 12px rgba(0,0,0,0.5);">
         ${capa}
       </div>
-      <div style="position:absolute;bottom:4px;right:4px;width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;font-size:13px;" title="${l.status}">${st.icon}</div>
-      <div style="font-size:10px;color:var(--muted);text-align:center;margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${l.livro.slice(0,16)}</div>
+      <div style="position:absolute;bottom:4px;right:4px;width:20px;height:20px;border-radius:50%;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;font-size:12px;" title="${l.status}">${st.icon}</div>
+      <div style="font-size:9px;color:var(--muted);text-align:center;margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${l.livro.slice(0,14)}</div>
     </div>`;
   }).join('');
 
@@ -3639,6 +3643,22 @@ function fecharPainelMeta() {
 // ════════════════════════════════════════════════
 let gmSelecionados = new Set();
 let gmAnoAtual = null;
+let gmMostrarOutrasMetas = false;
+
+function atualizarBtnOutrasMetas() {
+  const btn = document.getElementById('gmToggleOutrasMetas');
+  if (!btn) return;
+  if (gmMostrarOutrasMetas) {
+    btn.textContent = '☑ Considerar livros que já tenham meta';
+    btn.style.color = '#A855F7';
+    btn.style.borderColor = '#A855F7';
+  } else {
+    btn.textContent = '☐ Considerar livros que já tenham meta';
+    btn.style.color = 'rgba(248,250,252,0.4)';
+    btn.style.borderColor = '#2a3248';
+  }
+}
+window.atualizarBtnOutrasMetas = atualizarBtnOutrasMetas;
 
 function abrirGerenciarMeta() {
   const ano = document.getElementById('selMetaAno')?.value || '2026';
@@ -3659,6 +3679,8 @@ function abrirGerenciarMeta() {
   colSel.innerHTML = '<option value="all">Todas as coleções</option>' + cols.map(c=>`<option value="${c.replace(/"/g,'&quot;')}">${c}</option>`).join('');
   colSel.value = 'all';
   document.getElementById('gmOrdem').value = 'az';
+  gmMostrarOutrasMetas = false;
+  atualizarBtnOutrasMetas();
   const gmBuscaEl = document.getElementById('gmBusca');
   if (gmBuscaEl) gmBuscaEl.value = '';
 
@@ -3697,6 +3719,15 @@ function renderGerenciarMeta() {
   const busca = (document.getElementById('gmBusca')?.value || '').toLowerCase().trim();
 
   let pool = (window._livros || []).filter(l => String(l.status||'').trim().toLowerCase() !== 'completo');
+
+  // Livros que já têm metaAno definido para OUTRO ano: ocultos por padrão
+  if (!gmMostrarOutrasMetas) {
+    pool = pool.filter(l => {
+      const ma = String(l.metaAno || '');
+      return !ma || ma === String(gmAnoAtual) || gmSelecionados.has(l.livro);
+    });
+  }
+
   if (colFiltro !== 'all') pool = pool.filter(l => l.colecao === colFiltro);
   if (busca) pool = pool.filter(l => l.livro.toLowerCase().includes(busca));
 
@@ -3730,12 +3761,17 @@ function renderGerenciarMeta() {
     const statusBadge = l.status === 'Completo'
       ? `<div style="position:absolute;top:4px;left:4px;background:rgba(34,197,94,0.85);border-radius:4px;font-size:9px;padding:1px 4px;color:#fff;">✅</div>`
       : '';
+    const outraMeta = l.metaAno && String(l.metaAno) !== String(gmAnoAtual);
+    const metaBadge = outraMeta
+      ? `<div style="position:absolute;top:4px;right:4px;background:rgba(249,115,22,0.9);border-radius:4px;font-size:9px;padding:1px 5px;color:#fff;font-weight:700;">🎯 ${l.metaAno}</div>`
+      : '';
     return `
     <div onclick="toggleGmLivro('${livroEsc}')" title="${l.livro}"
       style="position:relative;width:30%;flex-shrink:0;cursor:pointer;">
       <div style="width:100%;aspect-ratio:5/7;position:relative;border-radius:6px;overflow:hidden;box-shadow:2px 4px 12px rgba(0,0,0,0.5);${checked?'outline:3px solid #A855F7;outline-offset:2px;':''}">
         ${capa}
         ${statusBadge}
+        ${metaBadge}
         ${checked ? `<div style="position:absolute;inset:0;background:rgba(168,85,247,0.25);display:flex;align-items:center;justify-content:center;">
           <div style="width:28px;height:28px;border-radius:50%;background:#A855F7;display:flex;align-items:center;justify-content:center;font-size:16px;color:#fff;">✓</div>
         </div>` : ''}
@@ -3800,16 +3836,61 @@ async function salvarGerenciarMeta() {
         });
         recalcularDados(window._dadosD, window._sessoes);
       }
-      recarregarAteAtualizar((window._dadosD?.sessoes||[]).length);
+      recarregarAteAtualizar((window._dadosD?.sessoes||[]).length).catch(()=>{});
       setTimeout(() => fecharGerenciarMeta(), 1200);
     } else {
       mostrarMsg('gmMsg', '❌ ' + d.erro, 'err');
     }
   } catch(e) {
-    mostrarMsg('gmMsg', '❌ Erro de conexão', 'err');
+    // A escrita pode ter sido aplicada mesmo com erro de resposta (timeout do Apps Script).
+    // Aplica localmente, avisa o usuário e confirma com o servidor (com timeout de segurança).
+    mostrarMsg('gmMsg', '⚠️ Sem confirmação do servidor — verificando se foi salvo...', 'err');
+    (window._livros || []).forEach(l => {
+      if (adicionar.includes(l.livro)) l.metaAno = ano;
+      else if (remover.includes(l.livro)) l.metaAno = '';
+    });
+    if (window._dadosD && window._sessoes) {
+      ['livros','lendo','pausados','aguardando'].forEach(k => {
+        (window._dadosD[k]||[]).forEach(l => {
+          if (adicionar.includes(l.livro)) l.metaAno = ano;
+          else if (remover.includes(l.livro)) l.metaAno = '';
+        });
+      });
+      recalcularDados(window._dadosD, window._sessoes);
+    }
+    let confirmado = false;
+    try {
+      confirmado = await Promise.race([
+        new Promise(resolve => {
+          let resolved = false;
+          recarregarAteAtualizar(0, (d) => {
+            const livros = d.livros || [];
+            const ok = adicionar.every(nome => {
+              const l = livros.find(x => x.livro === nome);
+              return l && String(l.metaAno) === String(ano);
+            }) && remover.every(nome => {
+              const l = livros.find(x => x.livro === nome);
+              return l && String(l.metaAno) !== String(ano);
+            });
+            if (ok && !resolved) { resolved = true; resolve(true); }
+            return ok;
+          }).then(() => { if (!resolved) { resolved = true; resolve(false); } }).catch(() => { if (!resolved) { resolved = true; resolve(false); } });
+        }),
+        new Promise(resolve => setTimeout(() => resolve(false), 40000))
+      ]);
+    } catch(e2) {
+      confirmado = false;
+    }
+    if (confirmado) {
+      mostrarMsg('gmMsg', '✅ Confirmado: meta salva com sucesso!', 'ok');
+      setTimeout(() => fecharGerenciarMeta(), 1000);
+    } else {
+      mostrarMsg('gmMsg', '⚠️ Alteração aplicada localmente, mas sem confirmação do servidor. Você pode continuar editando ou recarregar a página depois para conferir.', 'err');
+    }
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '✅ Salvar Meta';
   }
-  btn.disabled = false;
-  btn.textContent = '✅ Salvar Meta';
 }
 window.salvarGerenciarMeta = salvarGerenciarMeta;
 function fecharPainel() {

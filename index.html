@@ -3722,14 +3722,14 @@ async function salvarGerenciarMeta() {
         });
         recalcularDados(window._dadosD, window._sessoes);
       }
-      recarregarAteAtualizar((window._dadosD?.sessoes||[]).length);
+      recarregarAteAtualizar((window._dadosD?.sessoes||[]).length).catch(()=>{});
       setTimeout(() => fecharGerenciarMeta(), 1200);
     } else {
       mostrarMsg('gmMsg', '❌ ' + d.erro, 'err');
     }
   } catch(e) {
     // A escrita pode ter sido aplicada mesmo com erro de resposta (timeout do Apps Script).
-    // Aplica localmente, avisa o usuário e confirma com o servidor.
+    // Aplica localmente, avisa o usuário e confirma com o servidor (com timeout de segurança).
     mostrarMsg('gmMsg', '⚠️ Sem confirmação do servidor — verificando se foi salvo...', 'err');
     (window._livros || []).forEach(l => {
       if (adicionar.includes(l.livro)) l.metaAno = ano;
@@ -3744,30 +3744,39 @@ async function salvarGerenciarMeta() {
       });
       recalcularDados(window._dadosD, window._sessoes);
     }
-    const confirmado = await new Promise(resolve => {
-      let resolved = false;
-      recarregarAteAtualizar(0, (d) => {
-        const livros = d.livros || [];
-        const ok = adicionar.every(nome => {
-          const l = livros.find(x => x.livro === nome);
-          return l && String(l.metaAno) === String(ano);
-        }) && remover.every(nome => {
-          const l = livros.find(x => x.livro === nome);
-          return l && String(l.metaAno) !== String(ano);
-        });
-        if (ok && !resolved) { resolved = true; resolve(true); }
-        return ok;
-      }).then(() => { if (!resolved) { resolved = true; resolve(false); } });
-    });
+    let confirmado = false;
+    try {
+      confirmado = await Promise.race([
+        new Promise(resolve => {
+          let resolved = false;
+          recarregarAteAtualizar(0, (d) => {
+            const livros = d.livros || [];
+            const ok = adicionar.every(nome => {
+              const l = livros.find(x => x.livro === nome);
+              return l && String(l.metaAno) === String(ano);
+            }) && remover.every(nome => {
+              const l = livros.find(x => x.livro === nome);
+              return l && String(l.metaAno) !== String(ano);
+            });
+            if (ok && !resolved) { resolved = true; resolve(true); }
+            return ok;
+          }).then(() => { if (!resolved) { resolved = true; resolve(false); } }).catch(() => { if (!resolved) { resolved = true; resolve(false); } });
+        }),
+        new Promise(resolve => setTimeout(() => resolve(false), 40000)) // timeout de segurança
+      ]);
+    } catch(e2) {
+      confirmado = false;
+    }
     if (confirmado) {
       mostrarMsg('gmMsg', '✅ Confirmado: meta salva com sucesso!', 'ok');
       setTimeout(() => fecharGerenciarMeta(), 1000);
     } else {
-      mostrarMsg('gmMsg', '❌ Não foi possível confirmar o salvamento. Verifique manualmente.', 'err');
+      mostrarMsg('gmMsg', '⚠️ Alteração aplicada localmente, mas sem confirmação do servidor. Você pode continuar editando ou recarregar a página depois para conferir.', 'err');
     }
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '✅ Salvar Meta';
   }
-  btn.disabled = false;
-  btn.textContent = '✅ Salvar Meta';
 }
 window.salvarGerenciarMeta = salvarGerenciarMeta;
 function fecharPainel() {
