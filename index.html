@@ -550,7 +550,7 @@ body.mobile-view .meta-stats { grid-template-columns:1fr 1fr !important; }
       </button>
     </div>
     <div class="badge" id="header-badge">— livros · — sessões</div>
-    <button onclick="toggleChangelog()" style="background:rgba(139,124,248,0.2);border:1px solid var(--purple);color:var(--purple);padding:6px 12px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;white-space:nowrap;">📋 v2.6</button>
+    <button onclick="toggleChangelog()" style="background:rgba(139,124,248,0.2);border:1px solid var(--purple);color:var(--purple);padding:6px 12px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;white-space:nowrap;">📋 v2.6.1</button>
     <button id="btn-refresh" onclick="manualRefresh()" style="background:rgba(78,205,196,0.15);border:1px solid var(--teal);color:var(--teal);padding:6px 12px;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;white-space:nowrap;" title="Atualizar dados">🔄</button>
   </div>
 </header>
@@ -3694,7 +3694,19 @@ async function salvarGerenciarMeta() {
       mostrarMsg('gmMsg', '❌ ' + d.erro, 'err');
     }
   } catch(e) {
-    mostrarMsg('gmMsg', '❌ Erro de conexão', 'err');
+    // A escrita pode ter sido aplicada mesmo com erro de resposta (timeout do Apps Script).
+    // Avisa o usuário e recarrega para verificar o estado real.
+    mostrarMsg('gmMsg', '⚠️ Sem confirmação do servidor — verificando se foi salvo...', 'err');
+    recarregarAteAtualizar(0, (d) => {
+      const livros = d.livros || [];
+      return adicionar.every(nome => {
+        const l = livros.find(x => x.livro === nome);
+        return l && String(l.metaAno) === String(ano);
+      }) && remover.every(nome => {
+        const l = livros.find(x => x.livro === nome);
+        return l && String(l.metaAno) !== String(ano);
+      });
+    });
   }
   btn.disabled = false;
   btn.textContent = '✅ Salvar Meta';
@@ -5275,6 +5287,15 @@ window.addEventListener('load', () => { _applyMQ(_mq); if(window.innerWidth < 90
 
 // ── Changelog ────────────────────────────────────
 const CHANGELOG = [
+  {
+    versao: '2.6.1', data: '11/06/2026', titulo: 'Correções de performance e visual',
+    itens: [
+      'Gerenciar Meta: capas com hover de zoom 100% sem cortar e sem transparência',
+      'Gerenciar Meta: títulos dos livros maiores e em até 2 linhas',
+      'Gerenciar Meta: salvamento em lote otimizado (escrita única na planilha) — evita timeout/erro de conexão',
+      'Editar Sessão: corrige verificação de salvamento que recarregava cedo demais com dados antigos',
+    ]
+  },
   {
     versao: '2.6', data: '11/06/2026', titulo: 'Avaliações editáveis, Gerenciar Meta & Ranking Completo',
     itens: [
