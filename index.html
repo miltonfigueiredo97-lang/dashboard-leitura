@@ -3542,7 +3542,7 @@ function abrirGerenciarMeta() {
   const colSel = document.getElementById('gmFiltroColecao');
   const colecoesComPendentes = new Set(
     (window._livros||[])
-      .filter(l => l.colecao && l.status !== 'Completo')
+      .filter(l => l.colecao && String(l.status||'').trim().toLowerCase() !== 'completo')
       .map(l => l.colecao)
   );
   const cols = [...colecoesComPendentes].sort();
@@ -3576,7 +3576,7 @@ function renderGerenciarMeta() {
   const ordem = document.getElementById('gmOrdem').value;
   const busca = (document.getElementById('gmBusca')?.value || '').toLowerCase().trim();
 
-  let pool = (window._livros || []).filter(l => l.status !== 'Completo');
+  let pool = (window._livros || []).filter(l => String(l.status||'').trim().toLowerCase() !== 'completo');
 
   if (colFiltro !== 'all') pool = pool.filter(l => l.colecao === colFiltro);
   if (busca) pool = pool.filter(l => l.livro.toLowerCase().includes(busca));
