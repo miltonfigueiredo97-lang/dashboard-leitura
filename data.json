@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-06-11T02:40:14.104Z",
+  "geradoEm": "2026-06-11T02:41:22.974Z",
   "meta": {
     "total": 54,
     "lidos": 33,
@@ -44364,6 +44364,24 @@
         "Temas": 6
       },
       "usuario": "Daniel"
+    },
+    {
+      "livro": "Meio Mundo",
+      "ano": 2026,
+      "media": 6.05,
+      "criterios": {
+        "Diálogos": 7,
+        "Enredo": 4,
+        "Estilo Visual": 8,
+        "Finalização": 7.5,
+        "Imersão": 6,
+        "Impacto Emocional": 2,
+        "Originalidade": 1,
+        "Personagens": 8,
+        "Ritmo": 8,
+        "Temas": 9
+      },
+      "usuario": "Milton"
     }
   ]
 }
