@@ -550,7 +550,7 @@ body.mobile-view .meta-stats { grid-template-columns:1fr 1fr !important; }
       </button>
     </div>
     <div class="badge" id="header-badge">— livros · — sessões</div>
-    <button onclick="toggleChangelog()" style="background:rgba(139,124,248,0.2);border:1px solid var(--purple);color:var(--purple);padding:6px 12px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;white-space:nowrap;">📋 v2.6.1</button>
+    <button onclick="toggleChangelog()" style="background:rgba(139,124,248,0.2);border:1px solid var(--purple);color:var(--purple);padding:6px 12px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;white-space:nowrap;">📋 v2.6.2</button>
     <button id="btn-refresh" onclick="manualRefresh()" style="background:rgba(78,205,196,0.15);border:1px solid var(--teal);color:var(--teal);padding:6px 12px;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;white-space:nowrap;" title="Atualizar dados">🔄</button>
   </div>
 </header>
@@ -3748,28 +3748,32 @@ async function salvarGerenciarMeta() {
     let confirmado = false;
     try {
       confirmado = await Promise.race([
-        new Promise(resolve => {
-          let resolved = false;
-          recarregarAteAtualizar(0, (d) => {
-            const livros = d.livros || [];
-            const ok = adicionar.every(nome => {
-              const l = livros.find(x => x.livro === nome);
-              return l && String(l.metaAno) === String(ano);
-            }) && remover.every(nome => {
-              const l = livros.find(x => x.livro === nome);
-              return l && String(l.metaAno) !== String(ano);
-            });
-            if (ok && !resolved) { resolved = true; resolve(true); }
-            return ok;
-          }).then(() => { if (!resolved) { resolved = true; resolve(false); } }).catch(() => { if (!resolved) { resolved = true; resolve(false); } });
-        }),
-        new Promise(resolve => setTimeout(() => resolve(false), 40000)) // timeout de segurança
+        (async () => {
+          const todosAlvo = [...adicionar, ...remover];
+          for (let i = 0; i < 10; i++) {
+            await new Promise(r => setTimeout(r, 1000));
+            try {
+              const r = await fetch(API_URL, {
+                method: 'POST',
+                body: JSON.stringify({ acao: 'consultarMetaAnos', livros: todosAlvo })
+              });
+              const d = await r.json();
+              if (!d.ok) continue;
+              const ok = adicionar.every(nome => String(d.metas[nome]) === String(ano))
+                      && remover.every(nome => String(d.metas[nome]) !== String(ano));
+              if (ok) return true;
+            } catch(e) {}
+          }
+          return false;
+        })(),
+        new Promise(resolve => setTimeout(() => resolve(false), 15000)) // timeout de segurança
       ]);
     } catch(e2) {
       confirmado = false;
     }
     if (confirmado) {
       mostrarMsg('gmMsg', '✅ Confirmado: meta salva com sucesso!', 'ok');
+      recarregarAteAtualizar((window._dadosD?.sessoes||[]).length).catch(()=>{});
       setTimeout(() => fecharGerenciarMeta(), 1000);
     } else {
       mostrarMsg('gmMsg', '⚠️ Alteração aplicada localmente, mas sem confirmação do servidor. Você pode continuar editando ou recarregar a página depois para conferir.', 'err');
@@ -3870,6 +3874,10 @@ carregarDados();
   <div class="fab-item">
     <span>Excluir Sessão</span>
     <button style="background:#b71c1c" onclick="abrirModal('excluirSessao')">📅</button>
+  </div>
+  <div class="fab-item">
+    <span>Teste API ISBNdb</span>
+    <button style="background:#06b6d4" onclick="abrirModal('testeIsbndb')">🔍</button>
   </div>
 </div>
 
@@ -4086,6 +4094,71 @@ carregarDados();
     <div class="pwa-msg" id="nl-msg"></div>
     <button class="pwa-btn" id="nl-btn" onclick="enviarNovoLivro()">✅ Adicionar Livro</button>
     <button class="pwa-btn-cancel" onclick="fecharModal('novoLivro')">Cancelar</button>
+  </div>
+</div>
+
+<!-- Modal: Teste API ISBNdb -->
+<div class="pwa-overlay" id="modalTesteIsbndb">
+  <div class="pwa-modal">
+    <h2>🔍 Teste API ISBNdb</h2>
+    <div class="pwa-field">
+      <label>Nome do livro ou ISBN</label>
+      <input id="isbndb-busca" type="text" placeholder="Ex: O Caminho dos Reis ou 9788580418072" onkeydown="if(event.key==='Enter')buscarIsbndb()">
+    </div>
+    <button class="pwa-btn" id="isbndb-btn" onclick="buscarIsbndb()">🔍 Buscar</button>
+    <div class="pwa-msg" id="isbndb-msg"></div>
+
+    <div id="isbndb-resultado" style="display:none;margin-top:14px;">
+      <div style="display:flex;gap:14px;margin-bottom:14px;">
+        <img id="isbndb-capa" src="" alt="Capa" style="width:90px;height:128px;object-fit:cover;border-radius:6px;box-shadow:2px 4px 12px rgba(0,0,0,0.5);background:var(--bg3);flex-shrink:0;">
+        <div style="flex:1;min-width:0;">
+          <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:4px;" id="isbndb-titulo">—</div>
+          <div style="font-size:12px;color:var(--muted);" id="isbndb-autor">—</div>
+        </div>
+      </div>
+      <div class="pwa-field">
+        <label>Nome do Livro</label>
+        <input id="isbndb-out-nome" type="text" readonly>
+      </div>
+      <div class="pwa-field">
+        <label>Coleção <span style="color:var(--muted);font-weight:400;">(API não fornece — preencher manualmente)</span></label>
+        <input id="isbndb-out-colecao" type="text" placeholder="Ex: Cosmere, Grishaverso...">
+      </div>
+      <div class="pwa-row">
+        <div class="pwa-field">
+          <label>Ordem na Coleção <span style="color:var(--muted);font-weight:400;">(manual)</span></label>
+          <input id="isbndb-out-ordem" type="number" min="1" placeholder="1">
+        </div>
+        <div class="pwa-field">
+          <label>Ano da Meta <span style="color:var(--muted);font-weight:400;">(manual)</span></label>
+          <input id="isbndb-out-metaano" type="number" min="2023" max="2030" placeholder="2026">
+        </div>
+      </div>
+      <div class="pwa-field">
+        <label>Autor</label>
+        <input id="isbndb-out-autor" type="text" readonly>
+      </div>
+      <div class="pwa-row">
+        <div class="pwa-field">
+          <label>Total de Páginas</label>
+          <input id="isbndb-out-paginas" type="number" readonly>
+        </div>
+        <div class="pwa-field">
+          <label>ISBN</label>
+          <input id="isbndb-out-isbn" type="text" readonly>
+        </div>
+      </div>
+      <div class="pwa-field">
+        <label>URL da Capa</label>
+        <input id="isbndb-out-capa" type="url" readonly>
+      </div>
+      <div class="pwa-field">
+        <label>Gênero</label>
+        <input id="isbndb-out-genero" type="text" readonly>
+      </div>
+    </div>
+
+    <button class="pwa-btn-cancel" onclick="fecharModal('testeIsbndb')" style="margin-top:14px;">Fechar</button>
   </div>
 </div>
 <div class="pwa-overlay" id="modalLivro">
@@ -5722,12 +5795,16 @@ function abrirModal(tipo) {
 function fecharModal(tipo) {
   const id = 'modal' + tipo.charAt(0).toUpperCase() + tipo.slice(1);
   document.getElementById(id).classList.remove('open');
-  ['s-msg','n-msg','l-msg','nl-msg','ex-msg','es-msg'].forEach(id => {
+  ['s-msg','n-msg','l-msg','nl-msg','ex-msg','es-msg','isbndb-msg'].forEach(id => {
     const el = document.getElementById(id);
     if (el) { el.className = 'pwa-msg'; el.textContent = ''; }
   });
   if (tipo === 'nota') {
     limparBuscaSelect('n');
+  }
+  if (tipo === 'testeIsbndb') {
+    document.getElementById('isbndb-busca').value = '';
+    document.getElementById('isbndb-resultado').style.display = 'none';
   }
 }
 
@@ -6293,6 +6370,49 @@ function mostrarMsg(id, texto, tipo) {
   el.textContent = texto;
   el.className = 'pwa-msg ' + tipo;
 }
+
+async function buscarIsbndb() {
+  const btn = document.getElementById('isbndb-btn');
+  const termo = document.getElementById('isbndb-busca').value.trim();
+  if (!termo) { mostrarMsg('isbndb-msg', '⚠️ Digite um nome de livro ou ISBN', 'err'); return; }
+
+  btn.disabled = true;
+  btn.textContent = 'Buscando...';
+  document.getElementById('isbndb-resultado').style.display = 'none';
+  mostrarMsg('isbndb-msg', 'Buscando...', '');
+
+  try {
+    const r = await fetch(API_URL, {
+      method: 'POST',
+      body: JSON.stringify({ acao: 'buscarIsbndb', termo })
+    });
+    const d = await r.json();
+    if (d.ok) {
+      const l = d.livro;
+      document.getElementById('isbndb-titulo').textContent = l.nome || '—';
+      document.getElementById('isbndb-autor').textContent = l.autor || '—';
+      document.getElementById('isbndb-capa').src = l.capa ? proxyUrl(l.capa) : '';
+      document.getElementById('isbndb-out-nome').value = l.nome || '';
+      document.getElementById('isbndb-out-autor').value = l.autor || '';
+      document.getElementById('isbndb-out-paginas').value = l.paginas || '';
+      document.getElementById('isbndb-out-isbn').value = l.isbn || '';
+      document.getElementById('isbndb-out-capa').value = l.capa || '';
+      document.getElementById('isbndb-out-genero').value = l.genero || '';
+      document.getElementById('isbndb-out-colecao').value = '';
+      document.getElementById('isbndb-out-ordem').value = '';
+      document.getElementById('isbndb-out-metaano').value = '';
+      document.getElementById('isbndb-resultado').style.display = 'block';
+      mostrarMsg('isbndb-msg', '✅ Livro encontrado!', 'ok');
+    } else {
+      mostrarMsg('isbndb-msg', '❌ ' + d.erro, 'err');
+    }
+  } catch(e) {
+    mostrarMsg('isbndb-msg', '❌ Erro de conexão', 'err');
+  }
+  btn.disabled = false;
+  btn.textContent = '🔍 Buscar';
+}
+window.buscarIsbndb = buscarIsbndb;
 
 async function enviarNovoLivro() {
   const btn = document.getElementById('nl-btn');
