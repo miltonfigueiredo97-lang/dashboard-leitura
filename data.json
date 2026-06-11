@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-06-11T04:20:46.672Z",
+  "geradoEm": "2026-06-11T04:23:40.189Z",
   "meta": {
     "total": 54,
     "lidos": 33,
@@ -83,15 +83,15 @@
       "dataPrevistoAtual": "20/09/2026"
     },
     "2027": {
-      "total": 4,
+      "total": 5,
       "lidos": 0,
       "lendo": 0,
       "pausados": 0,
-      "aguardando": 4,
-      "paginasTotal": 1858,
+      "aguardando": 5,
+      "paginasTotal": 2370,
       "paginasLidas": 0,
-      "paginasFaltando": 1858,
-      "faltando": 4,
+      "paginasFaltando": 2370,
+      "faltando": 5,
       "mediaDiaria": 50,
       "ritmoAtual": 0,
       "dataPrevistoAtual": "—"
@@ -111,15 +111,15 @@
       "dataPrevistoAtual": "—"
     },
     "AINDA NÃO DEFINIDO": {
-      "total": 207,
+      "total": 206,
       "lidos": 0,
       "lendo": 0,
       "pausados": 0,
-      "aguardando": 207,
-      "paginasTotal": 103196,
+      "aguardando": 206,
+      "paginasTotal": 102684,
       "paginasLidas": 0,
-      "paginasFaltando": 103196,
-      "faltando": 207,
+      "paginasFaltando": 102684,
+      "faltando": 206,
       "mediaDiaria": 50,
       "ritmoAtual": 0,
       "dataPrevistoAtual": "—"
@@ -30936,7 +30936,7 @@
       "autor": "John Gwynne",
       "isbn": "",
       "coverUrl": "https://m.media-amazon.com/images/I/81+frZor+UL._AC_UY218_.jpg",
-      "metaAno": "AINDA NÃO DEFINIDO",
+      "metaAno": "2027",
       "anoConclusao": "",
       "depende": "A Sombra dos Deuses",
       "colecao": "Bloodwarm trilogy",
@@ -37854,7 +37854,7 @@
       "autor": "John Gwynne",
       "isbn": "",
       "coverUrl": "https://m.media-amazon.com/images/I/81+frZor+UL._AC_UY218_.jpg",
-      "metaAno": "AINDA NÃO DEFINIDO",
+      "metaAno": "2027",
       "anoConclusao": "",
       "depende": "A Sombra dos Deuses",
       "colecao": "Bloodwarm trilogy",
