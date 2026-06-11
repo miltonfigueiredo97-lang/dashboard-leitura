@@ -6392,6 +6392,12 @@ async function buscarIsbndb() {
       document.getElementById('isbndb-titulo').textContent = l.nome || '—';
       document.getElementById('isbndb-autor').textContent = l.autor || '—';
       document.getElementById('isbndb-capa').src = l.capa ? proxyUrl(l.capa) : '';
+      document.getElementById('isbndb-capa').onerror = function() {
+        if (l.isbn && !this.dataset.fallback) {
+          this.dataset.fallback = '1';
+          this.src = `https://covers.openlibrary.org/b/isbn/${l.isbn}-L.jpg`;
+        }
+      };
       document.getElementById('isbndb-out-nome').value = l.nome || '';
       document.getElementById('isbndb-out-autor').value = l.autor || '';
       document.getElementById('isbndb-out-paginas').value = l.paginas || '';
