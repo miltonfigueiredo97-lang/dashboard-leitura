@@ -550,7 +550,7 @@ body.mobile-view .meta-stats { grid-template-columns:1fr 1fr !important; }
       </button>
     </div>
     <div class="badge" id="header-badge">— livros · — sessões</div>
-    <button onclick="toggleChangelog()" style="background:rgba(139,124,248,0.2);border:1px solid var(--purple);color:var(--purple);padding:6px 12px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;white-space:nowrap;">📋 v2.4</button>
+    <button onclick="toggleChangelog()" style="background:rgba(139,124,248,0.2);border:1px solid var(--purple);color:var(--purple);padding:6px 12px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;white-space:nowrap;">📋 v2.6</button>
     <button id="btn-refresh" onclick="manualRefresh()" style="background:rgba(78,205,196,0.15);border:1px solid var(--teal);color:var(--teal);padding:6px 12px;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;white-space:nowrap;" title="Atualizar dados">🔄</button>
   </div>
 </header>
@@ -5270,6 +5270,17 @@ window.addEventListener('load', () => { _applyMQ(_mq); if(window.innerWidth < 90
 
 // ── Changelog ────────────────────────────────────
 const CHANGELOG = [
+  {
+    versao: '2.6', data: '11/06/2026', titulo: 'Avaliações editáveis, Gerenciar Meta & Ranking Completo',
+    itens: [
+      'Avaliar Livro: ao selecionar um livro já avaliado, as notas existentes são carregadas e podem ser sobrescritas',
+      'Gerenciar Meta (⚙️): selecione em lote quais livros entram na meta de um ano, com busca, filtro por coleção e ordenação',
+      'Gerenciar Meta: livros marcados como Completo (e coleções 100% completas) ficam fora das opções',
+      'Ranking Completo: botão para ver 100% dos livros do ranking com os mesmos filtros (modal no desktop)',
+      'Conquistas: botão "Ver Todas as Conquistas" com tabela comparativa e títulos exclusivos',
+      'Editar Sessão: botão agora mostra feedback visual de salvamento (Salvando... / Salvo!)',
+    ]
+  },
   {
     versao: '2.5', data: '30/05/2026', titulo: 'Mobile, Drill-down & UX',
     itens: [
