@@ -550,7 +550,7 @@ body.mobile-view .meta-stats { grid-template-columns:1fr 1fr !important; }
       </button>
     </div>
     <div class="badge" id="header-badge">— livros · — sessões</div>
-    <button onclick="toggleChangelog()" style="background:rgba(139,124,248,0.2);border:1px solid var(--purple);color:var(--purple);padding:6px 12px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;white-space:nowrap;">📋 v2.6.2</button>
+    <button onclick="toggleChangelog()" style="background:rgba(139,124,248,0.2);border:1px solid var(--purple);color:var(--purple);padding:6px 12px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;white-space:nowrap;">📋 v2.6.3</button>
     <button id="btn-refresh" onclick="manualRefresh()" style="background:rgba(78,205,196,0.15);border:1px solid var(--teal);color:var(--teal);padding:6px 12px;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;white-space:nowrap;" title="Atualizar dados">🔄</button>
   </div>
 </header>
@@ -3879,6 +3879,10 @@ carregarDados();
     <span>Teste API ISBNdb</span>
     <button style="background:#06b6d4" onclick="abrirModal('testeIsbndb')">🔍</button>
   </div>
+  <div class="fab-item">
+    <span>Teste API Open Library</span>
+    <button style="background:#0891b2" onclick="abrirModal('testeOpenLibrary')">📚</button>
+  </div>
 </div>
 
 <!-- Modal: Excluir Sessão -->
@@ -4159,6 +4163,71 @@ carregarDados();
     </div>
 
     <button class="pwa-btn-cancel" onclick="fecharModal('testeIsbndb')" style="margin-top:14px;">Fechar</button>
+  </div>
+</div>
+
+<!-- Modal: Teste API Open Library -->
+<div class="pwa-overlay" id="modalTesteOpenLibrary">
+  <div class="pwa-modal">
+    <h2>📚 Teste API Open Library</h2>
+    <div class="pwa-field">
+      <label>Nome do livro ou ISBN</label>
+      <input id="ol-busca" type="text" placeholder="Ex: O Caminho dos Reis ou 9788580418072" onkeydown="if(event.key==='Enter')buscarOpenLibrary()">
+    </div>
+    <button class="pwa-btn" id="ol-btn" onclick="buscarOpenLibrary()">🔍 Buscar</button>
+    <div class="pwa-msg" id="ol-msg"></div>
+
+    <div id="ol-resultado" style="display:none;margin-top:14px;">
+      <div style="display:flex;gap:14px;margin-bottom:14px;">
+        <img id="ol-capa" src="" alt="Capa" style="width:90px;height:128px;object-fit:cover;border-radius:6px;box-shadow:2px 4px 12px rgba(0,0,0,0.5);background:var(--bg3);flex-shrink:0;">
+        <div style="flex:1;min-width:0;">
+          <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:4px;" id="ol-titulo">—</div>
+          <div style="font-size:12px;color:var(--muted);" id="ol-autor">—</div>
+        </div>
+      </div>
+      <div class="pwa-field">
+        <label>Nome do Livro</label>
+        <input id="ol-out-nome" type="text" readonly>
+      </div>
+      <div class="pwa-field">
+        <label>Coleção <span style="color:var(--muted);font-weight:400;">(da API quando disponível — editável)</span></label>
+        <input id="ol-out-colecao" type="text" placeholder="Ex: Cosmere, Grishaverso...">
+      </div>
+      <div class="pwa-row">
+        <div class="pwa-field">
+          <label>Ordem na Coleção <span style="color:var(--muted);font-weight:400;">(manual)</span></label>
+          <input id="ol-out-ordem" type="number" min="1" placeholder="1">
+        </div>
+        <div class="pwa-field">
+          <label>Ano da Meta <span style="color:var(--muted);font-weight:400;">(manual)</span></label>
+          <input id="ol-out-metaano" type="number" min="2023" max="2030" placeholder="2026">
+        </div>
+      </div>
+      <div class="pwa-field">
+        <label>Autor</label>
+        <input id="ol-out-autor" type="text" readonly>
+      </div>
+      <div class="pwa-row">
+        <div class="pwa-field">
+          <label>Total de Páginas</label>
+          <input id="ol-out-paginas" type="number" readonly>
+        </div>
+        <div class="pwa-field">
+          <label>ISBN</label>
+          <input id="ol-out-isbn" type="text" readonly>
+        </div>
+      </div>
+      <div class="pwa-field">
+        <label>URL da Capa</label>
+        <input id="ol-out-capa" type="url" readonly>
+      </div>
+      <div class="pwa-field">
+        <label>Gênero</label>
+        <input id="ol-out-genero" type="text" readonly>
+      </div>
+    </div>
+
+    <button class="pwa-btn-cancel" onclick="fecharModal('testeOpenLibrary')" style="margin-top:14px;">Fechar</button>
   </div>
 </div>
 <div class="pwa-overlay" id="modalLivro">
@@ -5795,7 +5864,7 @@ function abrirModal(tipo) {
 function fecharModal(tipo) {
   const id = 'modal' + tipo.charAt(0).toUpperCase() + tipo.slice(1);
   document.getElementById(id).classList.remove('open');
-  ['s-msg','n-msg','l-msg','nl-msg','ex-msg','es-msg','isbndb-msg'].forEach(id => {
+  ['s-msg','n-msg','l-msg','nl-msg','ex-msg','es-msg','isbndb-msg','ol-msg'].forEach(id => {
     const el = document.getElementById(id);
     if (el) { el.className = 'pwa-msg'; el.textContent = ''; }
   });
@@ -5805,6 +5874,10 @@ function fecharModal(tipo) {
   if (tipo === 'testeIsbndb') {
     document.getElementById('isbndb-busca').value = '';
     document.getElementById('isbndb-resultado').style.display = 'none';
+  }
+  if (tipo === 'testeOpenLibrary') {
+    document.getElementById('ol-busca').value = '';
+    document.getElementById('ol-resultado').style.display = 'none';
   }
 }
 
@@ -6371,54 +6444,60 @@ function mostrarMsg(id, texto, tipo) {
   el.className = 'pwa-msg ' + tipo;
 }
 
-async function buscarIsbndb() {
-  const btn = document.getElementById('isbndb-btn');
-  const termo = document.getElementById('isbndb-busca').value.trim();
-  if (!termo) { mostrarMsg('isbndb-msg', '⚠️ Digite um nome de livro ou ISBN', 'err'); return; }
+async function buscarLivroApi(prefix, acao) {
+  const btn = document.getElementById(prefix + '-btn');
+  const termo = document.getElementById(prefix + '-busca').value.trim();
+  if (!termo) { mostrarMsg(prefix + '-msg', '⚠️ Digite um nome de livro ou ISBN', 'err'); return; }
 
   btn.disabled = true;
   btn.textContent = 'Buscando...';
-  document.getElementById('isbndb-resultado').style.display = 'none';
-  mostrarMsg('isbndb-msg', 'Buscando...', '');
+  document.getElementById(prefix + '-resultado').style.display = 'none';
+  mostrarMsg(prefix + '-msg', 'Buscando...', '');
 
   try {
     const r = await fetch(API_URL, {
       method: 'POST',
-      body: JSON.stringify({ acao: 'buscarIsbndb', termo })
+      body: JSON.stringify({ acao, termo })
     });
     const d = await r.json();
     if (d.ok) {
       const l = d.livro;
-      document.getElementById('isbndb-titulo').textContent = l.nome || '—';
-      document.getElementById('isbndb-autor').textContent = l.autor || '—';
-      document.getElementById('isbndb-capa').src = l.capa ? proxyUrl(l.capa) : '';
-      document.getElementById('isbndb-capa').onerror = function() {
+      document.getElementById(prefix + '-titulo').textContent = l.nome || '—';
+      document.getElementById(prefix + '-autor').textContent = l.autor || '—';
+      document.getElementById(prefix + '-capa').src = l.capa ? proxyUrl(l.capa) : '';
+      document.getElementById(prefix + '-capa').onerror = function() {
         if (l.isbn && !this.dataset.fallback) {
           this.dataset.fallback = '1';
           this.src = `https://covers.openlibrary.org/b/isbn/${l.isbn}-L.jpg`;
         }
       };
-      document.getElementById('isbndb-out-nome').value = l.nome || '';
-      document.getElementById('isbndb-out-autor').value = l.autor || '';
-      document.getElementById('isbndb-out-paginas').value = l.paginas || '';
-      document.getElementById('isbndb-out-isbn').value = l.isbn || '';
-      document.getElementById('isbndb-out-capa').value = l.capa || '';
-      document.getElementById('isbndb-out-genero').value = l.genero || '';
-      document.getElementById('isbndb-out-colecao').value = l.colecao || '';
-      document.getElementById('isbndb-out-ordem').value = '';
-      document.getElementById('isbndb-out-metaano').value = '';
-      document.getElementById('isbndb-resultado').style.display = 'block';
-      mostrarMsg('isbndb-msg', '✅ Livro encontrado!', 'ok');
+      document.getElementById(prefix + '-out-nome').value = l.nome || '';
+      document.getElementById(prefix + '-out-autor').value = l.autor || '';
+      document.getElementById(prefix + '-out-paginas').value = l.paginas || '';
+      document.getElementById(prefix + '-out-isbn').value = l.isbn || '';
+      document.getElementById(prefix + '-out-capa').value = l.capa || '';
+      document.getElementById(prefix + '-out-genero').value = l.genero || '';
+      document.getElementById(prefix + '-out-colecao').value = l.colecao || '';
+      document.getElementById(prefix + '-out-ordem').value = '';
+      document.getElementById(prefix + '-out-metaano').value = '';
+      document.getElementById(prefix + '-resultado').style.display = 'block';
+      mostrarMsg(prefix + '-msg', '✅ Livro encontrado!', 'ok');
     } else {
-      mostrarMsg('isbndb-msg', '❌ ' + d.erro, 'err');
+      mostrarMsg(prefix + '-msg', '❌ ' + d.erro, 'err');
     }
   } catch(e) {
-    mostrarMsg('isbndb-msg', '❌ Erro de conexão', 'err');
+    mostrarMsg(prefix + '-msg', '❌ Erro de conexão', 'err');
   }
   btn.disabled = false;
   btn.textContent = '🔍 Buscar';
 }
+window.buscarLivroApi = buscarLivroApi;
+
+async function buscarIsbndb() { return buscarLivroApi('isbndb', 'buscarIsbndb'); }
 window.buscarIsbndb = buscarIsbndb;
+
+async function buscarOpenLibrary() { return buscarLivroApi('ol', 'buscarOpenLibrary'); }
+window.buscarOpenLibrary = buscarOpenLibrary;
 
 async function enviarNovoLivro() {
   const btn = document.getElementById('nl-btn');
