@@ -328,10 +328,10 @@ footer { text-align: center; color: var(--muted); font-size: 11px; padding: 20px
   66%  { box-shadow:0 0 0 2px #38BDF8, 0 0 0 3px #9333EA, 0 0 28px rgba(56,189,248,0.9), 0 0 12px rgba(147,51,234,0.6); }
   100% { box-shadow:0 0 0 2px #9333EA, 0 0 0 3px #FACC15, 0 0 28px rgba(147,51,234,0.9), 0 0 12px rgba(250,204,21,0.6); }
 }
-.bat-conquista::after { content:attr(data-tip);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:#0B1020;color:#F8FAFC;padding:7px 12px;border-radius:8px;font-family:'Exo 2',sans-serif;font-size:11px;white-space:normal;max-width:200px;width:max-content;text-align:center;border:1px solid rgba(168,85,247,0.3);z-index:9999;pointer-events:none;box-shadow:0 4px 16px rgba(0,0,0,0.8);opacity:0;transition:opacity .15s; }
+.bat-conquista::after { content:attr(data-tip);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:#0B1020;color:#F8FAFC;padding:7px 12px;border-radius:8px;font-family:'Exo 2',sans-serif;font-size:11px;white-space:nowrap;border:1px solid rgba(168,85,247,0.3);z-index:9999;pointer-events:none;box-shadow:0 4px 16px rgba(0,0,0,0.8);opacity:0;transition:opacity .15s; }
 .bat-conquista:hover::after { opacity:1; }
 .bat-medal { display:inline-block;padding:4px 12px;border-radius:20px;font-family:'Rajdhani',sans-serif;font-size:11px;font-weight:700;margin:3px;cursor:default;position:relative; }
-.bat-medal::after { content:attr(data-tip);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:#0B1020;color:#F8FAFC;padding:7px 12px;border-radius:8px;font-family:'Exo 2',sans-serif;font-size:11px;white-space:normal;max-width:200px;width:max-content;text-align:center;border:1px solid rgba(168,85,247,0.3);z-index:9999;pointer-events:none;box-shadow:0 4px 16px rgba(0,0,0,0.8);opacity:0;transition:opacity .15s; }
+.bat-medal::after { content:attr(data-tip);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:#0B1020;color:#F8FAFC;padding:7px 12px;border-radius:8px;font-family:'Exo 2',sans-serif;font-size:11px;white-space:nowrap;border:1px solid rgba(168,85,247,0.3);z-index:9999;pointer-events:none;box-shadow:0 4px 16px rgba(0,0,0,0.8);opacity:0;transition:opacity .15s; }
 .bat-medal::before { content:"";position:absolute;bottom:calc(100% + 3px);left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:rgba(168,85,247,0.3);z-index:9999;opacity:0;transition:opacity .15s; }
 .bat-medal:hover::after, .bat-medal:hover::before { opacity:1; }
 .bat-art-card { border-radius:12px;overflow:visible;position:relative;cursor:pointer;transition:transform .25s,box-shadow .25s;background:#0B1020; }
@@ -877,12 +877,9 @@ canvas { max-width: 100% !important; }
     <div class="card">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
         <div class="card-title" id="metaCardTitle" style="margin-bottom:0">🎯 Meta — 28 Livros</div>
-        <div style="display:flex;align-items:center;gap:6px;">
-          <select id="selMetaAno" onchange="buildMeta()" style="font-size:13px;padding:4px 8px;background:var(--bg3);border:1px solid var(--border);border-radius:6px;color:var(--text);">
-            <option value="2026">2026</option>
-          </select>
-          <button onclick="abrirGerenciarMeta()" title="Gerenciar livros desta meta" style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:13px;color:var(--text);padding:0;flex-shrink:0;">⚙️</button>
-        </div>
+        <select id="selMetaAno" onchange="buildMeta()" style="font-size:13px;padding:4px 8px;background:var(--bg3);border:1px solid var(--border);border-radius:6px;color:var(--text);">
+          <option value="2026">2026</option>
+        </select>
       </div>
       <div class="card-sub">Progresso em páginas e livros concluídos</div>
       <div class="meta-row">
@@ -1068,33 +1065,6 @@ canvas { max-width: 100% !important; }
   </div>
   <div id="painelMetaOverlay" style="display:none;position:fixed;inset:0;z-index:8998;background:rgba(0,0,0,0.5);" onclick="fecharPainelMeta()"></div>
 
-  <!-- Painel Gerenciar Meta (full-screen no mobile) -->
-  <div id="painelGerenciarMeta" style="display:none;position:fixed;inset:0;top:0;left:0;right:0;bottom:0;width:100%;height:100%;background:#0B1120;z-index:999998;overflow-y:auto;-webkit-overflow-scrolling:touch;flex-direction:column;">
-    <div style="position:sticky;top:0;background:#0B1120;border-bottom:1px solid rgba(139,124,248,0.2);padding:14px 16px;z-index:10;">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
-        <div id="gmTitulo" style="font-size:14px;font-weight:700;color:#F8FAFC;">⚙️ Gerenciar Meta</div>
-        <button onclick="fecharGerenciarMeta()" style="background:rgba(255,255,255,0.07);border:none;color:#F8FAFC;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:15px;flex-shrink:0;">✕</button>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:8px;">
-        <input id="gmBusca" type="text" oninput="renderGerenciarMeta()" placeholder="🔍 Buscar livro pelo nome..." style="font-size:13px;padding:8px 10px;background:#1a2035;border:1px solid #2a3248;border-radius:8px;color:#F8FAFC;width:100%;">
-        <select id="gmFiltroColecao" onchange="renderGerenciarMeta()" style="font-size:13px;padding:8px 10px;background:#1a2035;border:1px solid #2a3248;border-radius:8px;color:#F8FAFC;width:100%;">
-          <option value="all">Todas as coleções</option>
-        </select>
-        <select id="gmOrdem" onchange="renderGerenciarMeta()" style="font-size:13px;padding:8px 10px;background:#1a2035;border:1px solid #2a3248;border-radius:8px;color:#F8FAFC;width:100%;">
-          <option value="az">Ordem A-Z</option>
-          <option value="colecao">Ordem por Coleção</option>
-        </select>
-      </div>
-      <div id="gmContador" style="font-size:11px;color:rgba(248,250,252,0.4);margin-top:8px;"></div>
-    </div>
-    <div id="gmLista" style="display:flex;flex-wrap:wrap;gap:10px;padding:14px 16px;align-content:flex-start;"></div>
-    <div id="gmMsg" class="pwa-msg" style="margin:0 16px 10px;"></div>
-    <div style="position:sticky;bottom:0;background:#0B1120;border-top:1px solid rgba(139,124,248,0.2);padding:12px 16px;display:flex;gap:10px;">
-      <button class="pwa-btn-cancel" style="flex:1;" onclick="fecharGerenciarMeta()">Cancelar</button>
-      <button class="pwa-btn" id="gmBtnSalvar" style="flex:2;" onclick="salvarGerenciarMeta()">✅ Salvar Meta</button>
-    </div>
-  </div>
-
   <div id="kpi-books-grid" class="grid4" data-desktop-grid="1" style="margin-bottom:16px;grid-template-columns:repeat(4,1fr);">
     <div class="kpi" style="--accent:#ffd166">
       <div style="font-size:11px;font-weight:700;letter-spacing:1px;color:var(--muted);margin-bottom:8px;">📖 MAIOR LIVRO</div>
@@ -1222,9 +1192,6 @@ canvas { max-width: 100% !important; }
         <button class="btn" id="btnWorst" onclick="rankMode='worst';updateBtns();buildRanking()">💀 Piores</button>
       </div>
       <div id="rankList" class="rank-list"></div>
-      <div style="text-align:center;margin-top:12px;">
-        <button onclick="abrirRankingCompleto()" style="background:rgba(139,124,248,0.12);border:1px solid rgba(139,124,248,0.4);border-radius:20px;padding:8px 20px;font-family:'Exo 2',sans-serif;font-size:12px;color:#8b7cf8;cursor:pointer;width:100%;">📋 Ver Ranking Completo</button>
-      </div>
     </div>
 
     <!-- Coluna direita: Dia da Semana + Gêneros Lidos empilhados -->
@@ -3633,185 +3600,6 @@ function fecharPainelMeta() {
   document.getElementById('painelMeta').style.display = 'none';
   document.getElementById('painelMetaOverlay').style.display = 'none';
 }
-
-// ════════════════════════════════════════════════
-// GERENCIAR META — selecionar livros para a meta de um ano (mobile full-screen)
-// ════════════════════════════════════════════════
-let gmSelecionados = new Set();
-let gmAnoAtual = null;
-
-function abrirGerenciarMeta() {
-  const ano = document.getElementById('selMetaAno')?.value || '2026';
-  gmAnoAtual = ano;
-  gmSelecionados = new Set();
-
-  (window._livros || []).forEach(l => {
-    if (String(l.metaAno) === String(ano)) gmSelecionados.add(l.livro);
-  });
-
-  const colSel = document.getElementById('gmFiltroColecao');
-  const colecoesComPendentes = new Set(
-    (window._livros||[])
-      .filter(l => l.colecao && String(l.status||'').trim().toLowerCase() !== 'completo')
-      .map(l => l.colecao)
-  );
-  const cols = [...colecoesComPendentes].sort();
-  colSel.innerHTML = '<option value="all">Todas as coleções</option>' + cols.map(c=>`<option value="${c.replace(/"/g,'&quot;')}">${c}</option>`).join('');
-  colSel.value = 'all';
-  document.getElementById('gmOrdem').value = 'az';
-  const gmBuscaEl = document.getElementById('gmBusca');
-  if (gmBuscaEl) gmBuscaEl.value = '';
-
-  document.getElementById('gmTitulo').textContent = gmSelecionados.size > 0
-    ? `⚙️ Gerenciar Meta ${ano}`
-    : `⚙️ Definir Meta ${ano}`;
-
-  document.getElementById('gmMsg').className = 'pwa-msg';
-  document.getElementById('gmMsg').textContent = '';
-
-  renderGerenciarMeta();
-
-  const pagina = document.getElementById('painelGerenciarMeta');
-  document.body.appendChild(pagina);
-  document.body.style.position = 'fixed';
-  document.body.style.top = `-${window.scrollY}px`;
-  document.body.style.width = '100%';
-  pagina.style.display = 'flex';
-  pagina.scrollTop = 0;
-}
-window.abrirGerenciarMeta = abrirGerenciarMeta;
-
-function fecharGerenciarMeta() {
-  document.getElementById('painelGerenciarMeta').style.display = 'none';
-  const scrollY = document.body.style.top;
-  document.body.style.position = '';
-  document.body.style.top = '';
-  document.body.style.width = '';
-  window.scrollTo(0, parseInt(scrollY || '0') * -1);
-}
-window.fecharGerenciarMeta = fecharGerenciarMeta;
-
-function renderGerenciarMeta() {
-  const colFiltro = document.getElementById('gmFiltroColecao').value;
-  const ordem = document.getElementById('gmOrdem').value;
-  const busca = (document.getElementById('gmBusca')?.value || '').toLowerCase().trim();
-
-  let pool = (window._livros || []).filter(l => String(l.status||'').trim().toLowerCase() !== 'completo');
-  if (colFiltro !== 'all') pool = pool.filter(l => l.colecao === colFiltro);
-  if (busca) pool = pool.filter(l => l.livro.toLowerCase().includes(busca));
-
-  if (ordem === 'az') {
-    pool = [...pool].sort((a,b) => a.livro.localeCompare(b.livro));
-  } else {
-    pool = [...pool].sort((a,b) => {
-      const ca = a.colecao || 'zzz', cb = b.colecao || 'zzz';
-      if (ca !== cb) return ca.localeCompare(cb);
-      const oa = parseFloat(a.ordemColecao || a.ordem) || 999;
-      const ob = parseFloat(b.ordemColecao || b.ordem) || 999;
-      if (oa !== ob) return oa - ob;
-      return a.livro.localeCompare(b.livro);
-    });
-  }
-
-  // Selecionados sempre primeiro
-  pool = [...pool].sort((a,b) => {
-    const selA = gmSelecionados.has(a.livro) ? 0 : 1;
-    const selB = gmSelecionados.has(b.livro) ? 0 : 1;
-    return selA - selB;
-  });
-
-  const lista = document.getElementById('gmLista');
-  lista.innerHTML = pool.map(l => {
-    const checked = gmSelecionados.has(l.livro);
-    const capa = l.coverUrl
-      ? `<img src="${l.coverUrl}" style="width:100%;height:100%;object-fit:cover;border-radius:6px;" onerror="this.style.display='none'">`
-      : `<div style="width:100%;height:100%;background:#1a2035;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:24px;">📚</div>`;
-    const livroEsc = l.livro.replace(/'/g,"\\'");
-    const statusBadge = l.status === 'Completo'
-      ? `<div style="position:absolute;top:4px;left:4px;background:rgba(34,197,94,0.85);border-radius:4px;font-size:9px;padding:1px 4px;color:#fff;">✅</div>`
-      : '';
-    return `
-    <div onclick="toggleGmLivro('${livroEsc}')" title="${l.livro}"
-      style="position:relative;width:30%;flex-shrink:0;cursor:pointer;">
-      <div style="width:100%;aspect-ratio:5/7;position:relative;border-radius:6px;overflow:hidden;box-shadow:2px 4px 12px rgba(0,0,0,0.5);${checked?'outline:3px solid #A855F7;outline-offset:2px;':''}">
-        ${capa}
-        ${statusBadge}
-        ${checked ? `<div style="position:absolute;inset:0;background:rgba(168,85,247,0.25);display:flex;align-items:center;justify-content:center;">
-          <div style="width:28px;height:28px;border-radius:50%;background:#A855F7;display:flex;align-items:center;justify-content:center;font-size:16px;color:#fff;">✓</div>
-        </div>` : ''}
-      </div>
-      <div style="font-size:10px;color:${checked?'#A855F7':'rgba(248,250,252,0.4)'};text-align:center;margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:${checked?'700':'400'};">${l.livro}</div>
-    </div>`;
-  }).join('');
-
-  if (!pool.length) {
-    lista.innerHTML = '<div style="color:rgba(248,250,252,0.4);text-align:center;padding:30px;width:100%;">Nenhum livro encontrado para este filtro.</div>';
-  }
-
-  document.getElementById('gmContador').textContent = `${gmSelecionados.size} selecionado(s) para a meta ${gmAnoAtual} · ${pool.length} exibido(s)`;
-}
-window.renderGerenciarMeta = renderGerenciarMeta;
-
-function toggleGmLivro(livro) {
-  if (gmSelecionados.has(livro)) gmSelecionados.delete(livro);
-  else gmSelecionados.add(livro);
-  renderGerenciarMeta();
-}
-window.toggleGmLivro = toggleGmLivro;
-
-async function salvarGerenciarMeta() {
-  const btn = document.getElementById('gmBtnSalvar');
-  const ano = gmAnoAtual;
-
-  const tinhaMeta = new Set();
-  (window._livros || []).forEach(l => {
-    if (String(l.metaAno) === String(ano)) tinhaMeta.add(l.livro);
-  });
-
-  const adicionar = [...gmSelecionados].filter(l => !tinhaMeta.has(l));
-  const remover    = [...tinhaMeta].filter(l => !gmSelecionados.has(l));
-
-  if (!adicionar.length && !remover.length) {
-    fecharGerenciarMeta();
-    return;
-  }
-
-  btn.disabled = true;
-  btn.textContent = 'Salvando...';
-  try {
-    const r = await fetch(API_URL, {
-      method: 'POST',
-      body: JSON.stringify({ acao: 'definirMetaLote', ano, adicionar, remover })
-    });
-    const d = await r.json();
-    if (d.ok) {
-      mostrarMsg('gmMsg', '✅ ' + d.msg, 'ok');
-      // Atualiza localmente para refletir na hora, sem esperar o recarregamento remoto
-      (window._livros || []).forEach(l => {
-        if (adicionar.includes(l.livro)) l.metaAno = ano;
-        else if (remover.includes(l.livro)) l.metaAno = '';
-      });
-      if (window._dadosD && window._sessoes) {
-        ['livros','lendo','pausados','aguardando'].forEach(k => {
-          (window._dadosD[k]||[]).forEach(l => {
-            if (adicionar.includes(l.livro)) l.metaAno = ano;
-            else if (remover.includes(l.livro)) l.metaAno = '';
-          });
-        });
-        recalcularDados(window._dadosD, window._sessoes);
-      }
-      recarregarAteAtualizar((window._dadosD?.sessoes||[]).length);
-      setTimeout(() => fecharGerenciarMeta(), 1200);
-    } else {
-      mostrarMsg('gmMsg', '❌ ' + d.erro, 'err');
-    }
-  } catch(e) {
-    mostrarMsg('gmMsg', '❌ Erro de conexão', 'err');
-  }
-  btn.disabled = false;
-  btn.textContent = '✅ Salvar Meta';
-}
-window.salvarGerenciarMeta = salvarGerenciarMeta;
 function fecharPainel() {
   // Fecha qualquer painel overlay aberto
   ['painelStatus','painelGenero','painelMetaOverlay'].forEach(id => {
@@ -3953,7 +3741,7 @@ carregarDados();
       </div>
     </div>
     <div id="ee-msg" class="pwa-msg"></div>
-    <button class="pwa-btn" id="ee-btn" onclick="salvarEdicaoSessao()">💾 Salvar alterações</button>
+    <button class="pwa-btn" onclick="salvarEdicaoSessao()">💾 Salvar alterações</button>
     <button class="pwa-btn-cancel" onclick="fecharModal('editarSessao')">Cancelar</button>
   </div>
 </div>
@@ -4821,8 +4609,8 @@ function renderBatalha() {
 <!-- COMPETIÇÃO POR GÊNEROS — full width -->
 <div style="margin-bottom:20px;">
   <div class="bat-section-hdr">🌎 COMPETIÇÃO POR GÊNEROS</div>
-  <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:16px;overflow:hidden;">
-    <div><canvas id="bat-generos"></canvas></div>
+  <div style="background:rgba(15,23,42,0.72);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:20px;">
+    <div style="height:360px;"><canvas id="bat-generos"></canvas></div>
     <div id="bat-generos-vazio" style="display:none;font-family:'Exo 2',sans-serif;font-size:11px;color:rgba(248,250,252,0.3);text-align:center;padding:20px;">Adicione gêneros via ✏️ Atualizar Livro</div>
   </div>
 </div>
@@ -4853,18 +4641,20 @@ function renderBatalha() {
 </div>
 
 <!-- ARTEFATOS + MALDIÇÕES -->
-<div style="margin-bottom:20px;">
-  <div class="bat-section-hdr">⭐ ARTEFATOS LENDÁRIOS — MELHORES AVALIADOS</div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;overflow:visible;" id="bat-artefatos">
-    <div><div style="font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:#A855F7;margin-bottom:8px;letter-spacing:2px;">${pA.toUpperCase()}</div></div>
-    <div><div style="font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:#FB923C;margin-bottom:8px;letter-spacing:2px;">${pB.toUpperCase()}</div></div>
+<div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:20px;">
+  <div>
+    <div class="bat-section-hdr">⭐ ARTEFATOS LENDÁRIOS — MELHORES AVALIADOS</div>
+    <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr;gap:10px;overflow:visible;" id="bat-artefatos">
+      <div><div style="font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:#A855F7;margin-bottom:8px;letter-spacing:2px;">${pA.toUpperCase()}</div></div>
+      <div><div style="font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:#FB923C;margin-bottom:8px;letter-spacing:2px;">${pB.toUpperCase()}</div></div>
+    </div>
   </div>
-</div>
-<div style="margin-bottom:20px;">
-  <div class="bat-section-hdr">💀 MALDIÇÕES — PIORES AVALIADOS</div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;overflow:visible;" id="bat-maldicoes">
-    <div><div style="font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:#A855F7;margin-bottom:8px;letter-spacing:2px;">${pA.toUpperCase()}</div></div>
-    <div><div style="font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:#FB923C;margin-bottom:8px;letter-spacing:2px;">${pB.toUpperCase()}</div></div>
+  <div>
+    <div class="bat-section-hdr">💀 MALDIÇÕES — PIORES AVALIADOS</div>
+    <div data-desktop-grid="1" style="display:grid;grid-template-columns:1fr;gap:10px;overflow:visible;" id="bat-maldicoes">
+      <div><div style="font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:#A855F7;margin-bottom:8px;letter-spacing:2px;">${pA.toUpperCase()}</div></div>
+      <div><div style="font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:#FB923C;margin-bottom:8px;letter-spacing:2px;">${pB.toUpperCase()}</div></div>
+    </div>
   </div>
 </div>
 
@@ -4894,92 +4684,7 @@ function renderBatalha() {
       ${medalhas(dd, ts)}
     </div>`).join('')}
   </div>
-  <!-- Botão Ver Todas as Conquistas -->
-  <div style="text-align:center;margin-top:16px;">
-    <button onclick="document.getElementById('modal-todas-conquistas').style.display='flex'" style="background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.4);border-radius:20px;padding:10px 24px;font-family:'Orbitron',sans-serif;font-size:10px;color:#A855F7;letter-spacing:2px;cursor:pointer;" >📋 VER TODAS AS CONQUISTAS</button>
-  </div>
 </div>
-
-<!-- MODAL TODAS AS CONQUISTAS -->
-<div id="modal-todas-conquistas" onclick="if(event.target===this)this.style.display='none'" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:99999;align-items:flex-start;justify-content:center;padding:20px;overflow-y:auto;">
-  <div style="background:#0B1020;border:1px solid rgba(168,85,247,0.3);border-radius:18px;padding:20px;max-width:500px;width:100%;margin:auto;position:relative;">
-    <button onclick="document.getElementById('modal-todas-conquistas').style.display='none'" style="position:absolute;top:14px;right:14px;background:rgba(255,255,255,0.07);border:none;border-radius:50%;width:28px;height:28px;font-size:14px;color:#F8FAFC;cursor:pointer;line-height:28px;text-align:center;">✕</button>
-    <div style="font-family:'Orbitron',sans-serif;font-size:12px;font-weight:900;color:#A855F7;letter-spacing:3px;margin-bottom:20px;text-align:center;">📋 TODAS AS CONQUISTAS</div>
-
-    <div style="font-family:'Orbitron',sans-serif;font-size:9px;letter-spacing:2px;color:rgba(248,250,252,0.4);margin-bottom:10px;">🏅 CONQUISTAS</div>
-    <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:20px;">
-      ${(()=>{
-        const lista = [
-          {icon:'📖',nome:'Domínio de Páginas',thresholds:[1000,5000,15000,30000,60000,100000]},
-          {icon:'📚',nome:'Grimório Completo',thresholds:[5,15,30,50,80,120]},
-          {icon:'⏳',nome:'Stamina Total',thresholds:[50,150,300,500,800,1200]},
-          {icon:'🔥',nome:'Combo de Leitura',thresholds:[7,14,30,60,100,180]},
-          {icon:'⚡',nome:'Velocidade',thresholds:[10,30,50,80,120,200]},
-          {icon:'📅',nome:'Sessões de Treino',thresholds:[20,80,200,400,700,1000]},
-          {icon:'🧠',nome:'Crítico Literário',thresholds:[5,6,7,7.5,8,9]},
-          {icon:'💀',nome:'Boss Slayer',thresholds:[1,5,10,20,35,50]},
-          {icon:'🏛️',nome:'Explorador de Reinos',thresholds:[3,8,15,25,40,60]},
-          {icon:'✍️',nome:'Colecionador',thresholds:[5,15,30,50,80,120]},
-          {icon:'🏆',nome:'Senhor das Séries',thresholds:[1,3,5,8,12,20]},
-          {icon:'🌎',nome:'Mestre dos Gêneros',thresholds:[2,4,6,8,10,12]},
-        ];
-        const tiers=[{n:'Bronze',c:'#cd7f32'},{n:'Prata',c:'#c0c0c0'},{n:'Ouro',c:'#ffd700'},{n:'Platina',c:'#4ade80'},{n:'Diamante',c:'#38bdf8'},{n:'Mestre',c:'#c084fc'}];
-        const getValA=(nome)=>{const m={'Domínio de Páginas':dA.pagTotal,'Grimório Completo':dA.lidos.length,'Stamina Total':dA.horas,'Combo de Leitura':dA.streakRecord,'Velocidade':Math.round(dA.media),'Sessões de Treino':dA.sessoes,'Crítico Literário':dA.notaMedia||0,'Boss Slayer':dA.bosses.length,'Explorador de Reinos':dA.colSet.size,'Colecionador':Object.keys(dA.autMap||{}).length,'Senhor das Séries':dA.seriesConcluidas||0,'Mestre dos Gêneros':dA.generosSet?.size||0};return m[nome]??0;};
-        const getValB=(nome)=>{const m={'Domínio de Páginas':dB.pagTotal,'Grimório Completo':dB.lidos.length,'Stamina Total':dB.horas,'Combo de Leitura':dB.streakRecord,'Velocidade':Math.round(dB.media),'Sessões de Treino':dB.sessoes,'Crítico Literário':dB.notaMedia||0,'Boss Slayer':dB.bosses.length,'Explorador de Reinos':dB.colSet.size,'Colecionador':Object.keys(dB.autMap||{}).length,'Senhor das Séries':dB.seriesConcluidas||0,'Mestre dos Gêneros':dB.generosSet?.size||0};return m[nome]??0;};
-        return lista.map(({icon,nome,thresholds})=>{
-          const vA=getValA(nome),vB=getValB(nome);
-          const getTier=(v)=>{let t=-1;thresholds.forEach((th,i)=>{if(v>=th)t=i;});return t;};
-          const tA=getTier(vA),tB=getTier(vB);
-          const nenhum=tA<0&&tB<0;
-          const labelA=tA>=0?tiers[tA].n:'—',labelB=tB>=0?tiers[tB].n:'—';
-          const corA=tA>=0?tiers[tA].c:'rgba(255,255,255,0.15)',corB=tB>=0?tiers[tB].c:'rgba(255,255,255,0.15)';
-          const bg=nenhum?'rgba(255,255,255,0.01)':'rgba(255,255,255,0.03)';
-          const iconOpacity=nenhum?'opacity:0.3;':'';
-          return `<div style="display:grid;grid-template-columns:24px 1fr 72px 72px;align-items:center;gap:8px;padding:7px 10px;background:${bg};border-radius:8px;${nenhum?'border:1px solid rgba(255,255,255,0.04);':''}">
-            <span style="font-size:16px;${iconOpacity}">${icon}</span>
-            <div style="font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:600;color:${nenhum?'rgba(248,250,252,0.3)':'#F8FAFC'};">${nome}</div>
-            <div style="text-align:center;"><span style="font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:${corA};">${labelA}</span><div style="font-family:'Exo 2',sans-serif;font-size:9px;color:rgba(248,250,252,0.25);">${pA}</div></div>
-            <div style="text-align:center;"><span style="font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:${corB};">${labelB}</span><div style="font-family:'Exo 2',sans-serif;font-size:9px;color:rgba(248,250,252,0.25);">${pB}</div></div>
-          </div>`;
-        }).join('');
-      })()}
-    </div>
-
-    <div style="font-family:'Orbitron',sans-serif;font-size:9px;letter-spacing:2px;color:rgba(250,204,21,0.7);margin-bottom:10px;">✨ TÍTULOS EXCLUSIVOS</div>
-    <div style="display:flex;flex-direction:column;gap:6px;">
-      ${(()=>{
-        const todosT=[
-          {icon:'👑',nome:'Rei das Páginas',valA:dA.pagTotal,valB:dB.pagTotal},
-          {icon:'🏛️',nome:'Imperador da Biblioteca',valA:dA.lidos.length,valB:dB.lidos.length},
-          {icon:'⏳',nome:'Senhor do Tempo',valA:dA.horas,valB:dB.horas},
-          {icon:'🔥',nome:'Combo Supremo',valA:dA.streakRecord,valB:dB.streakRecord},
-          {icon:'🧠',nome:'Crítico Supremo',valA:dA.notaMedia||0,valB:dB.notaMedia||0},
-          {icon:'⚡',nome:'Leitor Relâmpago',valA:Math.round(dA.media),valB:Math.round(dB.media)},
-          {icon:'💀',nome:'Boss Slayer',valA:dA.bosses.length,valB:dB.bosses.length},
-          {icon:'📅',nome:'Dominador das Sessões',valA:dA.sessoes,valB:dB.sessoes},
-          {icon:'🏆',nome:'Senhor das Séries',valA:dA.seriesConcluidas||0,valB:dB.seriesConcluidas||0},
-          {icon:'🌎',nome:'Explorador Supremo',valA:Object.keys(dA.autMap||{}).length,valB:Object.keys(dB.autMap||{}).length},
-          {icon:'🛡️',nome:'Monarca da Consistência',valA:dA.diasSet?.size||0,valB:dB.diasSet?.size||0},
-          {icon:'🐛',nome:'Mestre dos Slimes',valA:dA.lidos.filter(l=>l.totalPag>0&&l.totalPag<=200).length,valB:dB.lidos.filter(l=>l.totalPag>0&&l.totalPag<=200).length},
-        ];
-        return todosT.map(({icon,nome,valA,valB})=>{
-          const dono=valA===0&&valB===0?'nenhum':valA>valB?pA:valB>valA?pB:'empate';
-          const cor=dono===pA?'#A855F7':dono===pB?'#FB923C':dono==='empate'?'rgba(248,250,252,0.4)':'rgba(248,250,252,0.15)';
-          const label=dono==='nenhum'?'⬜ Nenhum ainda':dono==='empate'?'🤝 Empate':'🏆 '+dono;
-          const bg=dono==='nenhum'?'rgba(250,204,21,0.02)':'rgba(250,204,21,0.04)';
-          const opacity=dono==='nenhum'?'opacity:0.4;':'';
-          return `<div style="display:grid;grid-template-columns:24px 1fr auto;align-items:center;gap:8px;padding:7px 10px;background:${bg};border:1px solid rgba(250,204,21,0.08);border-radius:8px;">
-            <span style="font-size:16px;${opacity}">${icon}</span>
-            <div style="font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:600;color:${dono==='nenhum'?'rgba(248,250,252,0.3)':'#F8FAFC'};">${nome}</div>
-            <div style="font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:${cor};text-align:right;">${label}</div>
-          </div>`;
-        }).join('');
-      })()}
-    </div>
-  </div>
-</div>
-
-
 
 <!-- CRÔNICAS DA GUERRA -->
 <div class="bat-section-hdr">📜 CRÔNICAS DA GUERRA — HISTÓRICO DA RIVALIDADE</div>
@@ -5273,20 +4978,18 @@ function renderBatalha() {
           ${allGen.map(g => {
             const pctA = Math.round((genA[g]||0)/totA*100);
             const pctB = Math.round((genB[g]||0)/totB*100);
-            const wA = Math.round(pctA/maxPct*100);
-            const wB = Math.round(pctB/maxPct*100);
+            const wA = Math.round(pctA/maxPct*45);
+            const wB = Math.round(pctB/maxPct*45);
             return `
-            <div style="margin-bottom:12px;">
-              <div style="font-family:'Rajdhani',sans-serif;font-size:11px;color:#c0c8d8;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-align:center;margin-bottom:4px;">${g}</div>
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;align-items:center;">
-                <div style="display:flex;align-items:center;justify-content:flex-end;gap:5px;overflow:hidden;">
-                  <span style="font-family:'Orbitron',sans-serif;font-size:10px;font-weight:700;color:#A855F7;flex-shrink:0;">${pctA}%</span>
-                  <div style="height:20px;width:${wA}%;max-width:100%;background:linear-gradient(90deg,rgba(168,85,247,0.4),#A855F7);border-radius:3px 0 0 3px;min-width:${pctA?3:0}px;flex-shrink:0;"></div>
-                </div>
-                <div style="display:flex;align-items:center;gap:5px;overflow:hidden;">
-                  <div style="height:20px;width:${wB}%;max-width:100%;background:linear-gradient(90deg,#FB923C,rgba(249,115,22,0.4));border-radius:0 3px 3px 0;min-width:${pctB?3:0}px;flex-shrink:0;"></div>
-                  <span style="font-family:'Orbitron',sans-serif;font-size:10px;font-weight:700;color:#FB923C;flex-shrink:0;">${pctB}%</span>
-                </div>
+            <div data-desktop-grid="1" style="display:grid;grid-template-columns:140px 1fr 1fr;align-items:center;gap:8px;margin-bottom:10px;">
+              <div style="font-family:'Rajdhani',sans-serif;font-size:12px;color:#c0c8d8;text-align:right;font-weight:600;letter-spacing:1px;text-transform:uppercase;">${g}</div>
+              <div style="display:flex;align-items:center;justify-content:flex-end;gap:6px;">
+                <span style="font-family:'Orbitron',sans-serif;font-size:11px;font-weight:700;color:#A855F7;">${pctA}%</span>
+                <div style="height:22px;width:${wA}%;background:linear-gradient(90deg,rgba(168,85,247,0.5),#A855F7);border-radius:3px 0 0 3px;min-width:${pctA?2:0}px;"></div>
+              </div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <div style="height:22px;width:${wB}%;background:linear-gradient(90deg,#FB923C,rgba(249,115,22,0.5));border-radius:0 3px 3px 0;min-width:${pctB?2:0}px;"></div>
+                <span style="font-family:'Orbitron',sans-serif;font-size:11px;font-weight:700;color:#FB923C;">${pctB}%</span>
               </div>
             </div>`;
           }).join('')}
@@ -5756,9 +5459,6 @@ function fecharModal(tipo) {
     const el = document.getElementById(id);
     if (el) { el.className = 'pwa-msg'; el.textContent = ''; }
   });
-  if (tipo === 'nota') {
-    limparBuscaSelect('n');
-  }
 }
 
 function renderSessoesExcluir() {
@@ -5819,7 +5519,6 @@ function editarSessao(s) {
 window.editarSessao = editarSessao;
 
 async function salvarEdicaoSessao() {
-  const btn          = document.getElementById('ee-btn');
   const livro        = document.getElementById('ee-livro-original').value;
   const dataOriginal = document.getElementById('ee-data-original').value;
   const paginasOrig  = Number(document.getElementById('ee-paginas-original').value);
@@ -5833,20 +5532,13 @@ async function salvarEdicaoSessao() {
   if (!novaData || !novasPaginas) {
     mostrarMsg('ee-msg', '⚠️ Preencha data e páginas', 'err'); return;
   }
-  btn.disabled = true;
-  const textoOriginal = btn.textContent;
-  btn.textContent = 'Salvando...';
   mostrarMsg('ee-msg', 'Salvando...', '');
   try {
     const r1 = await fetch(API_URL, { method:'POST',
       body: JSON.stringify({ acao:'excluirSessao', livro, data:dataOriginal, paginas:paginasOrig, usuario })
     });
     const d1 = await r1.json();
-    if (!d1.ok) {
-      mostrarMsg('ee-msg', '❌ Erro ao excluir: '+(d1.erro||''), 'err');
-      btn.disabled = false; btn.textContent = textoOriginal;
-      return;
-    }
+    if (!d1.ok) { mostrarMsg('ee-msg', '❌ Erro ao excluir: '+(d1.erro||''), 'err'); return; }
 
     const r2 = await fetch(API_URL, { method:'POST',
       body: JSON.stringify({ acao:'registrarSessao', livro, paginas:novasPaginas, minutos:totalMinutos, data:novaData, usuario })
@@ -5854,16 +5546,9 @@ async function salvarEdicaoSessao() {
     const d2 = await r2.json();
     if (d2.ok) {
       mostrarMsg('ee-msg', '✅ Sessão editada!', 'ok');
-      btn.textContent = '✅ Salvo!';
-      setTimeout(() => { fecharModal('editarSessao'); recarregarAteAtualizar(); btn.disabled=false; btn.textContent=textoOriginal; }, 1200);
-    } else {
-      mostrarMsg('ee-msg', '❌ Erro ao criar: '+(d2.erro||''), 'err');
-      btn.disabled = false; btn.textContent = textoOriginal;
-    }
-  } catch(e) {
-    mostrarMsg('ee-msg', '❌ Erro de conexão', 'err');
-    btn.disabled = false; btn.textContent = textoOriginal;
-  }
+      setTimeout(() => { fecharModal('editarSessao'); recarregarAteAtualizar(); }, 1200);
+    } else { mostrarMsg('ee-msg', '❌ Erro ao criar: '+(d2.erro||''), 'err'); }
+  } catch(e) { mostrarMsg('ee-msg', '❌ Erro de conexão', 'err'); }
 }
 window.salvarEdicaoSessao = salvarEdicaoSessao;
 
@@ -5994,56 +5679,12 @@ function selecionarBuscaSelect(buscaId, hiddenId, l) {
   sel.textContent = `✅ ${l.livro} — toque para limpar`;
   sel.style.display = 'block';
   if (prefix === 'l') preencherDadosLivro(l.livro);
-  if (prefix === 'n') preencherNotaExistente(l.livro);
-}
-
-const CRITERIOS_NOTA = ['Diálogos','Enredo','Estilo Visual','Finalização','Imersão',
-                   'Impacto Emocional','Originalidade','Personagens','Ritmo','Temas'];
-
-function preencherNotaExistente(livro) {
-  const notaExistente = (window.NOTES || []).find(n => n.livro === livro);
-  CRITERIOS_NOTA.forEach((c, i) => {
-    const el = document.getElementById('n-'+i);
-    if (!el) return;
-    const v = notaExistente?.criterios?.[c];
-    el.value = (v !== undefined && v > 0) ? v : '';
-  });
-  if (notaExistente?.ano > 2000) {
-    document.getElementById('n-ano').value = notaExistente.ano;
-  }
-  // Atualiza média exibida
-  const vals = CRITERIOS_NOTA.map((c,i) => parseFloat(document.getElementById('n-'+i)?.value) || 0).filter(v => v > 0);
-  const media = vals.length ? (vals.reduce((a,b)=>a+b,0)/vals.length).toFixed(1) : '—';
-  document.getElementById('n-media').textContent = media;
-  // Aviso visual de edição
-  const msgEl = document.getElementById('n-msg');
-  if (msgEl) {
-    if (notaExistente) {
-      msgEl.className = 'pwa-msg ok';
-      msgEl.textContent = 'ℹ️ Avaliação existente carregada — salvar irá sobrescrevê-la.';
-    } else {
-      msgEl.className = 'pwa-msg';
-      msgEl.textContent = '';
-    }
-  }
 }
 
 function limparBuscaSelect(prefix) {
   document.getElementById(prefix + '-livro').value = '';
   document.getElementById(prefix + '-livro-busca').placeholder = 'Digite para buscar...';
   document.getElementById(prefix + '-livro-sel').style.display = 'none';
-  if (prefix === 'n') limparCamposNota();
-}
-
-function limparCamposNota() {
-  CRITERIOS_NOTA.forEach((c, i) => {
-    const el = document.getElementById('n-'+i);
-    if (el) el.value = '';
-  });
-  document.getElementById('n-ano').value = new Date().getFullYear();
-  document.getElementById('n-media').textContent = '—';
-  const msgEl = document.getElementById('n-msg');
-  if (msgEl) { msgEl.className = 'pwa-msg'; msgEl.textContent = ''; }
 }
 
 function selecionarLivroSessao(l) {
@@ -6364,129 +6005,6 @@ async function enviarNovoLivro() {
 // Service Worker para PWA
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/sw.js').catch(() => {});
-}
-</script>
-
-<!-- PÁGINA RANKING COMPLETO (mobile full-screen) -->
-<div id="pagina-ranking-completo" style="display:none;position:fixed;inset:0;top:0;left:0;right:0;bottom:0;width:100%;height:100%;background:#0B1120;z-index:999999;overflow-y:auto;-webkit-overflow-scrolling:touch;">
-  <!-- Header -->
-  <div style="position:sticky;top:0;background:#0B1120;border-bottom:1px solid rgba(139,124,248,0.2);padding:14px 16px;display:flex;align-items:center;gap:12px;z-index:10;">
-    <button onclick="fecharRankingCompleto()" style="background:rgba(255,255,255,0.07);border:none;border-radius:10px;padding:8px 12px;color:#F8FAFC;font-size:14px;cursor:pointer;display:flex;align-items:center;gap:6px;font-family:'Exo 2',sans-serif;">← Voltar</button>
-    <div style="font-family:'Exo 2',sans-serif;font-size:15px;font-weight:700;color:#8b7cf8;">🏅 Ranking Completo</div>
-  </div>
-  <!-- Filtros -->
-  <div style="padding:12px 16px;display:flex;flex-direction:column;gap:8px;border-bottom:1px solid rgba(255,255,255,0.05);">
-    <select id="rcAno" onchange="buildRankingCompleto()" style="background:#1a2035;border:1px solid #2a3248;border-radius:8px;color:#F8FAFC;padding:8px 10px;font-size:13px;width:100%;"></select>
-    <select id="rcColecao" onchange="buildRankingCompleto()" style="background:#1a2035;border:1px solid #2a3248;border-radius:8px;color:#F8FAFC;padding:8px 10px;font-size:13px;width:100%;"></select>
-    <select id="rcTema" onchange="buildRankingCompleto()" style="background:#1a2035;border:1px solid #2a3248;border-radius:8px;color:#F8FAFC;padding:8px 10px;font-size:13px;width:100%;">
-      <option value="all">Todos os critérios</option>
-      <option value="Diálogos">Diálogos</option>
-      <option value="Enredo">Enredo</option>
-      <option value="Estilo Visual">Estilo Visual</option>
-      <option value="Finalização">Finalização</option>
-      <option value="Imersão">Imersão</option>
-      <option value="Impacto Emocional">Impacto Emocional</option>
-      <option value="Originalidade">Originalidade</option>
-      <option value="Personagens">Personagens</option>
-      <option value="Ritmo">Ritmo</option>
-      <option value="Temas">Temas</option>
-    </select>
-    <div style="display:flex;gap:8px;">
-      <button id="rcBtnBest" class="btn on" onclick="rankModeRC='best';updateBtnsRC();buildRankingCompleto()" style="flex:1;">🥇 Melhores</button>
-      <button id="rcBtnWorst" class="btn" onclick="rankModeRC='worst';updateBtnsRC();buildRankingCompleto()" style="flex:1;">💀 Piores</button>
-    </div>
-    <div id="rcTotal" style="font-family:'Exo 2',sans-serif;font-size:11px;color:rgba(248,250,252,0.4);"></div>
-  </div>
-  <!-- Lista -->
-  <div id="rcList" class="rank-list" style="padding:12px 16px;"></div>
-</div>
-
-<script>
-let rankModeRC = 'best';
-
-function updateBtnsRC() {
-  document.getElementById('rcBtnBest').className = 'btn' + (rankModeRC==='best'?' on':'');
-  document.getElementById('rcBtnWorst').className = 'btn' + (rankModeRC==='worst'?' on':'');
-}
-
-function abrirRankingCompleto() {
-  const pagina = document.getElementById('pagina-ranking-completo');
-  // Move para o topo do body para garantir z-index correcto
-  document.body.appendChild(pagina);
-  // Popula filtros
-  const rcAno = document.getElementById('rcAno');
-  if (rcAno.options.length <= 1) {
-    const notes = window.NOTES || [];
-    const anos = [...new Set(notes.map(n => n.ano).filter(a => a > 2000))].sort();
-    rcAno.innerHTML = '<option value="all">Todos os anos</option>';
-    anos.forEach(a => { rcAno.innerHTML += `<option value="${a}">${a}</option>`; });
-    const rcCol = document.getElementById('rcColecao');
-    rcCol.innerHTML = '<option value="all">Todas as coleções</option>';
-    const cols = [...new Set((window._livros||[]).map(l=>l.colecao).filter(Boolean))].sort();
-    cols.forEach(c => { rcCol.innerHTML += `<option value="${c}">${c}</option>`; });
-  }
-  document.getElementById('rcAno').value = document.getElementById('selNotasAno').value;
-  document.getElementById('rcColecao').value = document.getElementById('selNotasColecao')?.value || 'all';
-  document.getElementById('rcTema').value = document.getElementById('selNotasTema')?.value || 'all';
-  rankModeRC = rankMode;
-  updateBtnsRC();
-  buildRankingCompleto();
-  // Bloqueia scroll do body
-  document.body.style.position = 'fixed';
-  document.body.style.top = `-${window.scrollY}px`;
-  document.body.style.width = '100%';
-  pagina.style.display = 'block';
-  pagina.scrollTop = 0;
-}
-
-function fecharRankingCompleto() {
-  const pagina = document.getElementById('pagina-ranking-completo');
-  pagina.style.display = 'none';
-  // Restaura scroll do body
-  const scrollY = document.body.style.top;
-  document.body.style.position = '';
-  document.body.style.top = '';
-  document.body.style.width = '';
-  window.scrollTo(0, parseInt(scrollY || '0') * -1);
-}
-
-function buildRankingCompleto() {
-  const yr   = document.getElementById('rcAno').value;
-  const col  = document.getElementById('rcColecao').value;
-  const tema = document.getElementById('rcTema').value;
-  const allLivros = [...(window._livros||[])];
-
-  let pool = yr === 'all' ? NOTES : NOTES.filter(b => String(b.ano) === yr);
-  if (col !== 'all') pool = pool.filter(b => { const l = allLivros.find(x => x.livro === b.livro); return l?.colecao === col; });
-
-  const scored = pool.map(b => {
-    const score = tema === 'all' ? b.media : (b.criterios?.[tema] ?? b.media);
-    return { ...b, score };
-  }).filter(b => b.score != null);
-
-  const sorted = [...scored].sort((a,b) => rankModeRC==='best' ? b.score-a.score : a.score-b.score);
-  const maxA   = sorted[0]?.score || 10;
-  const medals = ['🥇','🥈','🥉'];
-  const el     = document.getElementById('rcList');
-  document.getElementById('rcTotal').textContent = `${sorted.length} livro${sorted.length!==1?'s':''} no ranking`;
-  el.innerHTML = '';
-  sorted.forEach((b, i) => {
-    const pct = Math.round(b.score/maxA*100);
-    const cor = rankModeRC==='best' ? (i<3?['#ffd166','#c0c0c0','#cd7f32'][i]:'#8b7cf8') : '#f88c6a';
-    const rankLivro = allLivros.find(l => l.livro === b.livro);
-    const capaHtml  = coverThumb(rankLivro?.isbn||'', rankLivro?.coverUrl||'');
-    el.innerHTML += `
-      <div class="rank-item" onclick="fecharRankingCompleto();abrirLivroDetalhes('${b.livro.replace(/'/g,"\\'")}');" style="cursor:pointer;">
-        ${capaHtml}
-        <span class="rank-num">${i<3?'':('#'+(i+1))}</span>
-        <span class="rank-medal">${medals[i]||''}</span>
-        <div style="flex:1;min-width:0">
-          <div class="rank-name">${b.livro}</div>
-          <span class="rank-year">${b.ano}</span>
-        </div>
-        <span class="rank-score" style="color:${cor}">${b.score.toFixed(1)}</span>
-      </div>`;
-  });
 }
 </script>
 </body>
