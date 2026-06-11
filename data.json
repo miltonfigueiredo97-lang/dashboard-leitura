@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-06-11T03:02:43.347Z",
+  "geradoEm": "2026-06-11T03:19:14.332Z",
   "meta": {
     "total": 54,
     "lidos": 33,
@@ -36677,7 +36677,7 @@
       "livro": "Allomancer jak and the pits of eltania",
       "autor": "Brandon Sanderson",
       "isbn": "",
-      "coverUrl": "",
+      "coverUrl": "https://imgv2-1-f.scribdassets.com/img/document/835939450/original/e6d8dae38b/1?v=1",
       "metaAno": "AINDA NÃO DEFINIDO",
       "anoConclusao": "",
       "depende": "Os Braceletes da perdição",
@@ -41219,7 +41219,7 @@
       "livro": "Allomancer jak and the pits of eltania",
       "autor": "Brandon Sanderson",
       "isbn": "",
-      "coverUrl": "",
+      "coverUrl": "https://imgv2-1-f.scribdassets.com/img/document/835939450/original/e6d8dae38b/1?v=1",
       "metaAno": "AINDA NÃO DEFINIDO",
       "anoConclusao": "",
       "depende": "Os Braceletes da perdição",
@@ -44404,14 +44404,14 @@
     {
       "livro": "Meio Mundo",
       "ano": 2026,
-      "media": 6.05,
+      "media": 6.25,
       "criterios": {
         "Diálogos": 7,
         "Enredo": 4,
         "Estilo Visual": 8,
         "Finalização": 7.5,
         "Imersão": 6,
-        "Impacto Emocional": 2,
+        "Impacto Emocional": 4,
         "Originalidade": 1,
         "Personagens": 8,
         "Ritmo": 8,
