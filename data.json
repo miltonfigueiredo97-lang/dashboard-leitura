@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-06-11T02:41:22.974Z",
+  "geradoEm": "2026-06-11T03:01:42.449Z",
   "meta": {
     "total": 54,
     "lidos": 33,
@@ -9,7 +9,7 @@
     "paginasFaltando": 11923,
     "mediaDiaria": 85.9,
     "ritmoAtual": 114.5,
-    "dataPrevistoAtual": "23/09/2026"
+    "dataPrevistoAtual": "24/09/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -80,7 +80,7 @@
       "faltando": 21,
       "mediaDiaria": 85.9,
       "ritmoAtual": 114.5,
-      "dataPrevistoAtual": "23/09/2026"
+      "dataPrevistoAtual": "24/09/2026"
     },
     "2027": {
       "total": 1,
@@ -111,15 +111,15 @@
       "dataPrevistoAtual": "—"
     },
     "AINDA NÃO DEFINIDO": {
-      "total": 210,
+      "total": 211,
       "lidos": 0,
       "lendo": 0,
       "pausados": 0,
-      "aguardando": 210,
-      "paginasTotal": 104638,
+      "aguardando": 211,
+      "paginasTotal": 104678,
       "paginasLidas": 0,
-      "paginasFaltando": 104638,
-      "faltando": 210,
+      "paginasFaltando": 104678,
+      "faltando": 211,
       "mediaDiaria": 50,
       "ritmoAtual": 0,
       "dataPrevistoAtual": "—"
@@ -36672,6 +36672,24 @@
       "pct": 0,
       "usuario": "Daniel",
       "genero": "Fantasia histórica"
+    },
+    {
+      "livro": "Allomancer jak and the pits of eltania",
+      "autor": "Brandon Sanderson",
+      "isbn": "",
+      "coverUrl": "",
+      "metaAno": "AINDA NÃO DEFINIDO",
+      "anoConclusao": "",
+      "depende": "Os Braceletes da perdição",
+      "colecao": "Cosmere",
+      "ordemColecao": 0,
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 40,
+      "pagAtual": 0,
+      "pct": 0,
+      "usuario": "Milton",
+      "genero": "Fantasia"
     }
   ],
   "pausados": [
@@ -41196,6 +41214,24 @@
       "pct": 0,
       "usuario": "Daniel",
       "genero": "Fantasia histórica"
+    },
+    {
+      "livro": "Allomancer jak and the pits of eltania",
+      "autor": "Brandon Sanderson",
+      "isbn": "",
+      "coverUrl": "",
+      "metaAno": "AINDA NÃO DEFINIDO",
+      "anoConclusao": "",
+      "depende": "Os Braceletes da perdição",
+      "colecao": "Cosmere",
+      "ordemColecao": 0,
+      "ordem": 0,
+      "status": "Aguardando",
+      "totalPag": 40,
+      "pagAtual": 0,
+      "pct": 0,
+      "usuario": "Milton",
+      "genero": "Fantasia"
     }
   ],
   "notas": [
