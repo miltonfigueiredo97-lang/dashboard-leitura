@@ -1,14 +1,14 @@
 {
-  "geradoEm": "2026-06-12T02:18:19.837Z",
+  "geradoEm": "2026-06-12T02:21:16.529Z",
   "meta": {
     "total": 58,
     "lidos": 34,
     "faltando": 24,
-    "paginasTotal": 28139,
+    "paginasTotal": 28138,
     "paginasLidas": 15223,
-    "paginasFaltando": 12916,
+    "paginasFaltando": 12915,
     "mediaDiaria": 86.1,
-    "ritmoAtual": 115.9,
+    "ritmoAtual": 115.8,
     "dataPrevistoAtual": "01/10/2026"
   },
   "metasPorAno": {
@@ -74,12 +74,12 @@
       "lendo": 1,
       "pausados": 0,
       "aguardando": 23,
-      "paginasTotal": 28139,
+      "paginasTotal": 28138,
       "paginasLidas": 15223,
-      "paginasFaltando": 12916,
+      "paginasFaltando": 12915,
       "faltando": 24,
       "mediaDiaria": 86.1,
-      "ritmoAtual": 115.9,
+      "ritmoAtual": 115.8,
       "dataPrevistoAtual": "01/10/2026"
     },
     "2027": {
@@ -27705,15 +27705,6 @@
       "minutos": 32,
       "ano": 2026,
       "usuario": "Daniel"
-    },
-    {
-      "livro": "Six of The Dust",
-      "colecao": "Cosmere",
-      "data": "2026-06-11",
-      "paginas": 4,
-      "minutos": 5,
-      "ano": 2026,
-      "usuario": "Milton"
     }
   ],
   "livros": [
@@ -36621,9 +36612,9 @@
       "ordemColecao": 0,
       "ordem": 0,
       "status": "Aguardando",
-      "totalPag": 60,
-      "pagAtual": 4,
-      "pct": 0.067,
+      "totalPag": 59,
+      "pagAtual": 0,
+      "pct": 0,
       "usuario": "Milton",
       "genero": "Fantasia épica"
     },
@@ -41163,9 +41154,9 @@
       "ordemColecao": 0,
       "ordem": 0,
       "status": "Aguardando",
-      "totalPag": 60,
-      "pagAtual": 4,
-      "pct": 0.067,
+      "totalPag": 59,
+      "pagAtual": 0,
+      "pct": 0,
       "usuario": "Milton",
       "genero": "Fantasia épica"
     },
