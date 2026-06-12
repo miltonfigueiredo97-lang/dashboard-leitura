@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-06-12T10:24:11.843Z",
+  "geradoEm": "2026-06-12T10:25:31.556Z",
   "meta": {
     "total": 58,
     "lidos": 35,
@@ -44381,6 +44381,24 @@
         "Temas": 9
       },
       "usuario": "Milton"
+    },
+    {
+      "livro": "Starsight",
+      "ano": 2026,
+      "media": 9.25,
+      "criterios": {
+        "Diálogos": 8.5,
+        "Enredo": 9,
+        "Estilo Visual": 9.5,
+        "Finalização": 9.5,
+        "Imersão": 10,
+        "Impacto Emocional": 10,
+        "Originalidade": 9,
+        "Personagens": 8.5,
+        "Ritmo": 9.5,
+        "Temas": 9
+      },
+      "usuario": "Daniel"
     }
   ]
 }
