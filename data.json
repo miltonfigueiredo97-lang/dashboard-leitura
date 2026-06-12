@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-06-12T10:25:31.556Z",
+  "geradoEm": "2026-06-12T22:59:17.584Z",
   "meta": {
     "total": 58,
     "lidos": 35,
     "faltando": 23,
     "paginasTotal": 28138,
-    "paginasLidas": 15277,
-    "paginasFaltando": 12861,
-    "mediaDiaria": 86.4,
-    "ritmoAtual": 117.5,
-    "dataPrevistoAtual": "30/09/2026"
+    "paginasLidas": 15287,
+    "paginasFaltando": 12851,
+    "mediaDiaria": 86.5,
+    "ritmoAtual": 120.2,
+    "dataPrevistoAtual": "27/09/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -71,16 +71,16 @@
     "2026": {
       "total": 58,
       "lidos": 35,
-      "lendo": 1,
+      "lendo": 2,
       "pausados": 0,
-      "aguardando": 22,
+      "aguardando": 21,
       "paginasTotal": 28138,
-      "paginasLidas": 15277,
-      "paginasFaltando": 12861,
+      "paginasLidas": 15287,
+      "paginasFaltando": 12851,
       "faltando": 23,
-      "mediaDiaria": 86.4,
-      "ritmoAtual": 117.5,
-      "dataPrevistoAtual": "30/09/2026"
+      "mediaDiaria": 86.5,
+      "ritmoAtual": 120.2,
+      "dataPrevistoAtual": "27/09/2026"
     },
     "2027": {
       "total": 14,
@@ -27723,6 +27723,15 @@
       "minutos": 45,
       "ano": 2026,
       "usuario": "Daniel"
+    },
+    {
+      "livro": "The Devils",
+      "colecao": "Sem Coleção",
+      "data": "2026-06-12",
+      "paginas": 10,
+      "minutos": 12,
+      "ano": 2026,
+      "usuario": "Daniel"
     }
   ],
   "livros": [
@@ -36251,10 +36260,10 @@
       "colecao": "The Devils",
       "ordemColecao": 0,
       "ordem": 0,
-      "status": "Aguardando",
+      "status": "Lendo",
       "totalPag": 560,
-      "pagAtual": 0,
-      "pct": 0,
+      "pagAtual": 10,
+      "pct": 0.018,
       "usuario": "Daniel",
       "genero": "Fantasia sombria"
     },
@@ -36730,6 +36739,24 @@
     }
   ],
   "lendo": [
+    {
+      "livro": "The Devils",
+      "autor": "Joe Abercrombie",
+      "isbn": "",
+      "coverUrl": "https://m.media-amazon.com/images/I/718oiEZui7L._AC_UY218_.jpg",
+      "metaAno": "2026",
+      "anoConclusao": "",
+      "depende": "",
+      "colecao": "The Devils",
+      "ordemColecao": 0,
+      "ordem": 0,
+      "status": "Lendo",
+      "totalPag": 560,
+      "pagAtual": 10,
+      "pct": 0.018,
+      "usuario": "Daniel",
+      "genero": "Fantasia sombria"
+    },
     {
       "livro": "Six of The Dust",
       "autor": "Brandon Sanderson",
@@ -40853,24 +40880,6 @@
       "pct": 0,
       "usuario": "Daniel",
       "genero": "Fantasia épica"
-    },
-    {
-      "livro": "The Devils",
-      "autor": "Joe Abercrombie",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/718oiEZui7L._AC_UY218_.jpg",
-      "metaAno": "2026",
-      "anoConclusao": "",
-      "depende": "",
-      "colecao": "The Devils",
-      "ordemColecao": 0,
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 560,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "Daniel",
-      "genero": "Fantasia sombria"
     },
     {
       "livro": "Alchemised",
