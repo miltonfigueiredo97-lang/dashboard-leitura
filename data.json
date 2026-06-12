@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-06-12T02:22:13.176Z",
+  "geradoEm": "2026-06-12T10:24:11.843Z",
   "meta": {
     "total": 58,
-    "lidos": 34,
-    "faltando": 24,
+    "lidos": 35,
+    "faltando": 23,
     "paginasTotal": 28138,
-    "paginasLidas": 15233,
-    "paginasFaltando": 12905,
-    "mediaDiaria": 86.1,
-    "ritmoAtual": 116.1,
-    "dataPrevistoAtual": "01/10/2026"
+    "paginasLidas": 15277,
+    "paginasFaltando": 12861,
+    "mediaDiaria": 86.4,
+    "ritmoAtual": 117.5,
+    "dataPrevistoAtual": "30/09/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -70,17 +70,17 @@
     },
     "2026": {
       "total": 58,
-      "lidos": 34,
-      "lendo": 2,
+      "lidos": 35,
+      "lendo": 1,
       "pausados": 0,
       "aguardando": 22,
       "paginasTotal": 28138,
-      "paginasLidas": 15233,
-      "paginasFaltando": 12905,
-      "faltando": 24,
-      "mediaDiaria": 86.1,
-      "ritmoAtual": 116.1,
-      "dataPrevistoAtual": "01/10/2026"
+      "paginasLidas": 15277,
+      "paginasFaltando": 12861,
+      "faltando": 23,
+      "mediaDiaria": 86.4,
+      "ritmoAtual": 117.5,
+      "dataPrevistoAtual": "30/09/2026"
     },
     "2027": {
       "total": 14,
@@ -27714,6 +27714,15 @@
       "minutos": 8,
       "ano": 2026,
       "usuario": "Milton"
+    },
+    {
+      "livro": "Starsight",
+      "colecao": "Skyward",
+      "data": "2026-06-12",
+      "paginas": 44,
+      "minutos": 45,
+      "ano": 2026,
+      "usuario": "Daniel"
     }
   ],
   "livros": [
@@ -36417,15 +36426,15 @@
       "isbn": "",
       "coverUrl": "https://m.media-amazon.com/images/I/91KxaoNJ9TL._AC_UY218_.jpg",
       "metaAno": "2026",
-      "anoConclusao": "",
+      "anoConclusao": "2026",
       "depende": "",
       "colecao": "Skyward",
       "ordemColecao": 0,
       "ordem": 0,
-      "status": "Lendo",
+      "status": "Completo",
       "totalPag": 348,
-      "pagAtual": 304,
-      "pct": 0.874,
+      "pagAtual": 348,
+      "pct": 1,
       "usuario": "Daniel",
       "genero": "Ficção científica YA"
     },
@@ -36721,24 +36730,6 @@
     }
   ],
   "lendo": [
-    {
-      "livro": "Starsight",
-      "autor": "Brandon Sanderson",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/91KxaoNJ9TL._AC_UY218_.jpg",
-      "metaAno": "2026",
-      "anoConclusao": "",
-      "depende": "",
-      "colecao": "Skyward",
-      "ordemColecao": 0,
-      "ordem": 0,
-      "status": "Lendo",
-      "totalPag": 348,
-      "pagAtual": 304,
-      "pct": 0.874,
-      "usuario": "Daniel",
-      "genero": "Ficção científica YA"
-    },
     {
       "livro": "Six of The Dust",
       "autor": "Brandon Sanderson",
