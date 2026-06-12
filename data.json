@@ -1,14 +1,14 @@
 {
-  "geradoEm": "2026-06-12T02:21:16.529Z",
+  "geradoEm": "2026-06-12T02:22:13.176Z",
   "meta": {
     "total": 58,
     "lidos": 34,
     "faltando": 24,
     "paginasTotal": 28138,
-    "paginasLidas": 15223,
-    "paginasFaltando": 12915,
+    "paginasLidas": 15233,
+    "paginasFaltando": 12905,
     "mediaDiaria": 86.1,
-    "ritmoAtual": 115.8,
+    "ritmoAtual": 116.1,
     "dataPrevistoAtual": "01/10/2026"
   },
   "metasPorAno": {
@@ -71,15 +71,15 @@
     "2026": {
       "total": 58,
       "lidos": 34,
-      "lendo": 1,
+      "lendo": 2,
       "pausados": 0,
-      "aguardando": 23,
+      "aguardando": 22,
       "paginasTotal": 28138,
-      "paginasLidas": 15223,
-      "paginasFaltando": 12915,
+      "paginasLidas": 15233,
+      "paginasFaltando": 12905,
       "faltando": 24,
       "mediaDiaria": 86.1,
-      "ritmoAtual": 115.8,
+      "ritmoAtual": 116.1,
       "dataPrevistoAtual": "01/10/2026"
     },
     "2027": {
@@ -27705,6 +27705,15 @@
       "minutos": 32,
       "ano": 2026,
       "usuario": "Daniel"
+    },
+    {
+      "livro": "Six of The Dust",
+      "colecao": "Cosmere",
+      "data": "2026-06-11",
+      "paginas": 10,
+      "minutos": 8,
+      "ano": 2026,
+      "usuario": "Milton"
     }
   ],
   "livros": [
@@ -36611,10 +36620,10 @@
       "colecao": "Cosmere",
       "ordemColecao": 0,
       "ordem": 0,
-      "status": "Aguardando",
+      "status": "Lendo",
       "totalPag": 59,
-      "pagAtual": 0,
-      "pct": 0,
+      "pagAtual": 10,
+      "pct": 0.169,
       "usuario": "Milton",
       "genero": "Fantasia épica"
     },
@@ -36729,6 +36738,24 @@
       "pct": 0.874,
       "usuario": "Daniel",
       "genero": "Ficção científica YA"
+    },
+    {
+      "livro": "Six of The Dust",
+      "autor": "Brandon Sanderson",
+      "isbn": "",
+      "coverUrl": "https://m.media-amazon.com/images/I/81saovWy0JL._UF1000,1000_QL80_.jpg",
+      "metaAno": "2026",
+      "anoConclusao": "",
+      "depende": "",
+      "colecao": "Cosmere",
+      "ordemColecao": 0,
+      "ordem": 0,
+      "status": "Lendo",
+      "totalPag": 59,
+      "pagAtual": 10,
+      "pct": 0.169,
+      "usuario": "Milton",
+      "genero": "Fantasia épica"
     }
   ],
   "aguardando": [
@@ -41141,24 +41168,6 @@
       "pct": 0,
       "usuario": "Daniel",
       "genero": "Cyberpunk"
-    },
-    {
-      "livro": "Six of The Dust",
-      "autor": "Brandon Sanderson",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/81saovWy0JL._UF1000,1000_QL80_.jpg",
-      "metaAno": "2026",
-      "anoConclusao": "",
-      "depende": "",
-      "colecao": "Cosmere",
-      "ordemColecao": 0,
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 59,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "Milton",
-      "genero": "Fantasia épica"
     },
     {
       "livro": "O Rei do Inverno",
