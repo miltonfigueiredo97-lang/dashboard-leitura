@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-06-13T07:44:03.746Z",
+  "geradoEm": "2026-06-13T17:21:27.798Z",
   "meta": {
     "total": 58,
-    "lidos": 35,
-    "faltando": 23,
+    "lidos": 36,
+    "faltando": 22,
     "paginasTotal": 28138,
-    "paginasLidas": 15301,
-    "paginasFaltando": 12837,
-    "mediaDiaria": 86.6,
-    "ritmoAtual": 120.6,
-    "dataPrevistoAtual": "28/09/2026"
+    "paginasLidas": 15336,
+    "paginasFaltando": 12802,
+    "mediaDiaria": 86.2,
+    "ritmoAtual": 118.1,
+    "dataPrevistoAtual": "30/09/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -70,17 +70,17 @@
     },
     "2026": {
       "total": 58,
-      "lidos": 35,
-      "lendo": 2,
+      "lidos": 36,
+      "lendo": 1,
       "pausados": 0,
       "aguardando": 21,
       "paginasTotal": 28138,
-      "paginasLidas": 15301,
-      "paginasFaltando": 12837,
-      "faltando": 23,
-      "mediaDiaria": 86.6,
-      "ritmoAtual": 120.6,
-      "dataPrevistoAtual": "28/09/2026"
+      "paginasLidas": 15336,
+      "paginasFaltando": 12802,
+      "faltando": 22,
+      "mediaDiaria": 86.2,
+      "ritmoAtual": 118.1,
+      "dataPrevistoAtual": "30/09/2026"
     },
     "2027": {
       "total": 14,
@@ -27741,6 +27741,15 @@
       "minutos": 18,
       "ano": 2026,
       "usuario": "Milton"
+    },
+    {
+      "livro": "Six of The Dust",
+      "colecao": "Cosmere",
+      "data": "2026-06-13",
+      "paginas": 35,
+      "minutos": 3000,
+      "ano": 2026,
+      "usuario": "Milton"
     }
   ],
   "livros": [
@@ -36642,15 +36651,15 @@
       "isbn": "",
       "coverUrl": "https://m.media-amazon.com/images/I/81saovWy0JL._UF1000,1000_QL80_.jpg",
       "metaAno": "2026",
-      "anoConclusao": "",
+      "anoConclusao": "2026",
       "depende": "",
       "colecao": "Cosmere",
       "ordemColecao": 0,
       "ordem": 0,
-      "status": "Lendo",
+      "status": "Completo",
       "totalPag": 59,
-      "pagAtual": 24,
-      "pct": 0.407,
+      "pagAtual": 59,
+      "pct": 1,
       "usuario": "Milton",
       "genero": "Fantasia épica"
     },
@@ -36765,24 +36774,6 @@
       "pct": 0.018,
       "usuario": "Daniel",
       "genero": "Fantasia sombria"
-    },
-    {
-      "livro": "Six of The Dust",
-      "autor": "Brandon Sanderson",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/81saovWy0JL._UF1000,1000_QL80_.jpg",
-      "metaAno": "2026",
-      "anoConclusao": "",
-      "depende": "",
-      "colecao": "Cosmere",
-      "ordemColecao": 0,
-      "ordem": 0,
-      "status": "Lendo",
-      "totalPag": 59,
-      "pagAtual": 24,
-      "pct": 0.407,
-      "usuario": "Milton",
-      "genero": "Fantasia épica"
     }
   ],
   "aguardando": [
