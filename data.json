@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-06-13T17:21:27.798Z",
+  "geradoEm": "2026-06-13T17:23:43.219Z",
   "meta": {
     "total": 58,
     "lidos": 36,
@@ -44408,6 +44408,24 @@
         "Temas": 9
       },
       "usuario": "Daniel"
+    },
+    {
+      "livro": "Six of The Dust",
+      "ano": 2026,
+      "media": 7.25,
+      "criterios": {
+        "Diálogos": 6,
+        "Enredo": 5.5,
+        "Estilo Visual": 9.5,
+        "Finalização": 6,
+        "Imersão": 9,
+        "Impacto Emocional": 8,
+        "Originalidade": 8,
+        "Personagens": 7,
+        "Ritmo": 6.5,
+        "Temas": 7
+      },
+      "usuario": "Milton"
     }
   ]
 }
