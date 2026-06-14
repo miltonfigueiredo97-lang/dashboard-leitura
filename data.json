@@ -1,14 +1,14 @@
 {
-  "geradoEm": "2026-06-14T02:12:54.579Z",
+  "geradoEm": "2026-06-14T02:41:17.028Z",
   "meta": {
     "total": 58,
     "lidos": 36,
     "faltando": 22,
     "paginasTotal": 28138,
-    "paginasLidas": 15402,
-    "paginasFaltando": 12736,
-    "mediaDiaria": 86.7,
-    "ritmoAtual": 120.3,
+    "paginasLidas": 15418,
+    "paginasFaltando": 12720,
+    "mediaDiaria": 86.8,
+    "ritmoAtual": 120.8,
     "dataPrevistoAtual": "27/09/2026"
   },
   "metasPorAno": {
@@ -71,15 +71,15 @@
     "2026": {
       "total": 58,
       "lidos": 36,
-      "lendo": 1,
+      "lendo": 2,
       "pausados": 0,
-      "aguardando": 21,
+      "aguardando": 20,
       "paginasTotal": 28138,
-      "paginasLidas": 15402,
-      "paginasFaltando": 12736,
+      "paginasLidas": 15418,
+      "paginasFaltando": 12720,
       "faltando": 22,
-      "mediaDiaria": 86.7,
-      "ritmoAtual": 120.3,
+      "mediaDiaria": 86.8,
+      "ritmoAtual": 120.8,
       "dataPrevistoAtual": "27/09/2026"
     },
     "2027": {
@@ -27768,6 +27768,15 @@
       "minutos": 43,
       "ano": 2026,
       "usuario": "Daniel"
+    },
+    {
+      "livro": "O Olho do Mundo",
+      "colecao": "A Roda do Tempo",
+      "data": "2026-06-13",
+      "paginas": 16,
+      "minutos": 10,
+      "ano": 2026,
+      "usuario": "Milton"
     }
   ],
   "livros": [
@@ -29060,10 +29069,10 @@
       "colecao": "A Roda do Tempo",
       "ordemColecao": 1,
       "ordem": 0,
-      "status": "Aguardando",
+      "status": "Lendo",
       "totalPag": 800,
-      "pagAtual": 0,
-      "pct": 0,
+      "pagAtual": 16,
+      "pct": 0.02,
       "usuario": "MILTON",
       "genero": "Fantasia épica"
     },
@@ -36776,6 +36785,24 @@
   ],
   "lendo": [
     {
+      "livro": "O Olho do Mundo",
+      "autor": "Robert Jordan",
+      "isbn": "9788580573619",
+      "coverUrl": "https://m.media-amazon.com/images/I/61luxgJKWHL._AC_UF1000,1000_QL80_.jpg",
+      "metaAno": "2026",
+      "anoConclusao": "",
+      "depende": "",
+      "colecao": "A Roda do Tempo",
+      "ordemColecao": 1,
+      "ordem": 0,
+      "status": "Lendo",
+      "totalPag": 800,
+      "pagAtual": 16,
+      "pct": 0.02,
+      "usuario": "MILTON",
+      "genero": "Fantasia épica"
+    },
+    {
       "livro": "The Devils",
       "autor": "Joe Abercrombie",
       "isbn": "",
@@ -36956,24 +36983,6 @@
       "pct": 0,
       "usuario": "MILTON",
       "genero": "Fantasia sombria"
-    },
-    {
-      "livro": "O Olho do Mundo",
-      "autor": "Robert Jordan",
-      "isbn": "9788580573619",
-      "coverUrl": "https://m.media-amazon.com/images/I/61luxgJKWHL._AC_UF1000,1000_QL80_.jpg",
-      "metaAno": "2026",
-      "anoConclusao": "",
-      "depende": "",
-      "colecao": "A Roda do Tempo",
-      "ordemColecao": 1,
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 800,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "MILTON",
-      "genero": "Fantasia épica"
     },
     {
       "livro": "Fúria vermelha",
