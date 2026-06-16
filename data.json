@@ -1,14 +1,14 @@
 {
-  "geradoEm": "2026-06-16T17:11:04.562Z",
+  "geradoEm": "2026-06-16T17:12:49.590Z",
   "meta": {
     "total": 58,
     "lidos": 36,
     "faltando": 22,
     "paginasTotal": 28138,
-    "paginasLidas": 15628,
-    "paginasFaltando": 12510,
+    "paginasLidas": 15632,
+    "paginasFaltando": 12506,
     "mediaDiaria": 86.5,
-    "ritmoAtual": 123.1,
+    "ritmoAtual": 123.2,
     "dataPrevistoAtual": "26/09/2026"
   },
   "metasPorAno": {
@@ -75,11 +75,11 @@
       "pausados": 0,
       "aguardando": 20,
       "paginasTotal": 28138,
-      "paginasLidas": 15628,
-      "paginasFaltando": 12510,
+      "paginasLidas": 15632,
+      "paginasFaltando": 12506,
       "faltando": 22,
       "mediaDiaria": 86.5,
-      "ritmoAtual": 123.1,
+      "ritmoAtual": 123.2,
       "dataPrevistoAtual": "26/09/2026"
     },
     "2027": {
@@ -27849,6 +27849,15 @@
       "minutos": 10,
       "ano": 2026,
       "usuario": "Milton"
+    },
+    {
+      "livro": "O Olho do Mundo",
+      "colecao": "A Roda do Tempo",
+      "data": "2026-06-16",
+      "paginas": 4,
+      "minutos": 4,
+      "ano": 2026,
+      "usuario": "Milton"
     }
   ],
   "livros": [
@@ -29143,8 +29152,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 800,
-      "pagAtual": 60,
-      "pct": 0.075,
+      "pagAtual": 64,
+      "pct": 0.08,
       "usuario": "MILTON",
       "genero": "Fantasia épica"
     },
@@ -36869,8 +36878,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 800,
-      "pagAtual": 60,
-      "pct": 0.075,
+      "pagAtual": 64,
+      "pct": 0.08,
       "usuario": "MILTON",
       "genero": "Fantasia épica"
     },
