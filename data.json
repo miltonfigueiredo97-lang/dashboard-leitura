@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-06-19T14:28:43.430Z",
+  "geradoEm": "2026-06-19T17:13:21.773Z",
   "meta": {
-    "total": 58,
+    "total": 59,
     "lidos": 36,
-    "faltando": 22,
-    "paginasTotal": 28138,
+    "faltando": 23,
+    "paginasTotal": 29129,
     "paginasLidas": 15838,
-    "paginasFaltando": 12300,
+    "paginasFaltando": 13291,
     "mediaDiaria": 86.2,
-    "ritmoAtual": 119.1,
-    "dataPrevistoAtual": "01/10/2026"
+    "ritmoAtual": 118.8,
+    "dataPrevistoAtual": "09/10/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -69,18 +69,18 @@
       "dataPrevistoAtual": "Concluída!"
     },
     "2026": {
-      "total": 58,
+      "total": 59,
       "lidos": 36,
       "lendo": 2,
       "pausados": 0,
-      "aguardando": 20,
-      "paginasTotal": 28138,
+      "aguardando": 21,
+      "paginasTotal": 29129,
       "paginasLidas": 15838,
-      "paginasFaltando": 12300,
-      "faltando": 22,
+      "paginasFaltando": 13291,
+      "faltando": 23,
       "mediaDiaria": 86.2,
-      "ritmoAtual": 119.1,
-      "dataPrevistoAtual": "01/10/2026"
+      "ritmoAtual": 118.8,
+      "dataPrevistoAtual": "09/10/2026"
     },
     "2027": {
       "total": 14,
@@ -30566,7 +30566,7 @@
       "autor": "Robert Jordan",
       "isbn": "",
       "coverUrl": "https://m.media-amazon.com/images/I/81zzvsX6AXL._AC_UY218_.jpg",
-      "metaAno": "",
+      "metaAno": "2026",
       "anoConclusao": "",
       "depende": "O Dragão Renascido",
       "colecao": "A Roda do Tempo",
@@ -37466,7 +37466,7 @@
       "autor": "Robert Jordan",
       "isbn": "",
       "coverUrl": "https://m.media-amazon.com/images/I/81zzvsX6AXL._AC_UY218_.jpg",
-      "metaAno": "",
+      "metaAno": "2026",
       "anoConclusao": "",
       "depende": "O Dragão Renascido",
       "colecao": "A Roda do Tempo",
