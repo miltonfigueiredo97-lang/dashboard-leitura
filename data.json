@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-06-20T02:48:04.811Z",
+  "geradoEm": "2026-06-20T02:48:50.602Z",
   "meta": {
     "total": 59,
     "lidos": 36,
     "faltando": 23,
     "paginasTotal": 29129,
-    "paginasLidas": 15856,
-    "paginasFaltando": 13273,
-    "mediaDiaria": 85.8,
-    "ritmoAtual": 115.5,
-    "dataPrevistoAtual": "12/10/2026"
+    "paginasLidas": 15838,
+    "paginasFaltando": 13291,
+    "mediaDiaria": 86.2,
+    "ritmoAtual": 118.8,
+    "dataPrevistoAtual": "09/10/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -75,12 +75,12 @@
       "pausados": 0,
       "aguardando": 21,
       "paginasTotal": 29129,
-      "paginasLidas": 15856,
-      "paginasFaltando": 13273,
+      "paginasLidas": 15838,
+      "paginasFaltando": 13291,
       "faltando": 23,
-      "mediaDiaria": 85.8,
-      "ritmoAtual": 115.5,
-      "dataPrevistoAtual": "12/10/2026"
+      "mediaDiaria": 86.2,
+      "ritmoAtual": 118.8,
+      "dataPrevistoAtual": "09/10/2026"
     },
     "2027": {
       "total": 14,
@@ -27912,15 +27912,6 @@
       "minutos": 36,
       "ano": 2026,
       "usuario": "Daniel"
-    },
-    {
-      "livro": "The Devils",
-      "colecao": "Sem Coleção",
-      "data": "2026-06-20",
-      "paginas": 18,
-      "minutos": 20,
-      "ano": 2026,
-      "usuario": "Daniel"
     }
   ],
   "livros": [
@@ -36451,8 +36442,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 560,
-      "pagAtual": 432,
-      "pct": 0.771,
+      "pagAtual": 414,
+      "pct": 0.739,
       "usuario": "Daniel",
       "genero": "Fantasia sombria"
     },
@@ -36959,8 +36950,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 560,
-      "pagAtual": 432,
-      "pct": 0.771,
+      "pagAtual": 414,
+      "pct": 0.739,
       "usuario": "Daniel",
       "genero": "Fantasia sombria"
     }
