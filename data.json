@@ -1,14 +1,14 @@
 {
-  "geradoEm": "2026-06-22T03:05:19.671Z",
+  "geradoEm": "2026-06-22T15:20:53.133Z",
   "meta": {
     "total": 59,
     "lidos": 37,
     "faltando": 22,
     "paginasTotal": 29129,
-    "paginasLidas": 15998,
-    "paginasFaltando": 13131,
-    "mediaDiaria": 86.1,
-    "ritmoAtual": 114.6,
+    "paginasLidas": 16028,
+    "paginasFaltando": 13101,
+    "mediaDiaria": 85.8,
+    "ritmoAtual": 114.2,
     "dataPrevistoAtual": "15/10/2026"
   },
   "metasPorAno": {
@@ -71,15 +71,15 @@
     "2026": {
       "total": 59,
       "lidos": 37,
-      "lendo": 1,
+      "lendo": 2,
       "pausados": 0,
-      "aguardando": 21,
+      "aguardando": 20,
       "paginasTotal": 29129,
-      "paginasLidas": 15998,
-      "paginasFaltando": 13131,
+      "paginasLidas": 16028,
+      "paginasFaltando": 13101,
       "faltando": 22,
-      "mediaDiaria": 86.1,
-      "ritmoAtual": 114.6,
+      "mediaDiaria": 85.8,
+      "ritmoAtual": 114.2,
       "dataPrevistoAtual": "15/10/2026"
     },
     "2027": {
@@ -27966,6 +27966,15 @@
       "minutos": 5,
       "ano": 2026,
       "usuario": "Milton"
+    },
+    {
+      "livro": "Isles of the Emberdark: A Cosmere Novel",
+      "colecao": "Cosmere",
+      "data": "2026-06-22",
+      "paginas": 30,
+      "minutos": 35,
+      "ano": 2026,
+      "usuario": "Daniel"
     }
   ],
   "livros": [
@@ -36530,10 +36539,10 @@
       "colecao": "Cosmere",
       "ordemColecao": 0,
       "ordem": 0,
-      "status": "Aguardando",
+      "status": "Lendo",
       "totalPag": 384,
-      "pagAtual": 0,
-      "pct": 0,
+      "pagAtual": 30,
+      "pct": 0.078,
       "usuario": "Daniel",
       "genero": "Fantasia épica"
     },
@@ -36989,6 +36998,24 @@
       "pagAtual": 112,
       "pct": 0.14,
       "usuario": "MILTON",
+      "genero": "Fantasia épica"
+    },
+    {
+      "livro": "Isles of the Emberdark: A Cosmere Novel",
+      "autor": "Brandon Sanderson",
+      "isbn": "",
+      "coverUrl": "https://m.media-amazon.com/images/I/81SZKaSxACL._AC_UY218_.jpg",
+      "metaAno": "2026",
+      "anoConclusao": "",
+      "depende": "",
+      "colecao": "Cosmere",
+      "ordemColecao": 0,
+      "ordem": 0,
+      "status": "Lendo",
+      "totalPag": 384,
+      "pagAtual": 30,
+      "pct": 0.078,
+      "usuario": "Daniel",
       "genero": "Fantasia épica"
     }
   ],
@@ -41096,24 +41123,6 @@
       "pct": 0,
       "usuario": "Daniel",
       "genero": "Fantasia sombria"
-    },
-    {
-      "livro": "Isles of the Emberdark: A Cosmere Novel",
-      "autor": "Brandon Sanderson",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/81SZKaSxACL._AC_UY218_.jpg",
-      "metaAno": "2026",
-      "anoConclusao": "",
-      "depende": "",
-      "colecao": "Cosmere",
-      "ordemColecao": 0,
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 384,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "Daniel",
-      "genero": "Fantasia épica"
     },
     {
       "livro": "As Torres de Wynlla",
