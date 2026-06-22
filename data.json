@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-06-22T01:03:24.631Z",
+  "geradoEm": "2026-06-22T01:04:44.044Z",
   "meta": {
     "total": 59,
     "lidos": 37,
@@ -44615,6 +44615,24 @@
         "Temas": 7
       },
       "usuario": "Milton"
+    },
+    {
+      "livro": "The Devils",
+      "ano": 2026,
+      "media": 8.75,
+      "criterios": {
+        "Diálogos": 8,
+        "Enredo": 8.5,
+        "Estilo Visual": 9,
+        "Finalização": 8.5,
+        "Imersão": 9,
+        "Impacto Emocional": 8.5,
+        "Originalidade": 8,
+        "Personagens": 10,
+        "Ritmo": 9,
+        "Temas": 9
+      },
+      "usuario": "Daniel"
     }
   ]
 }
