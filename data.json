@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-06-27T15:23:50.930Z",
+  "geradoEm": "2026-06-27T20:13:25.142Z",
   "meta": {
     "total": 59,
-    "lidos": 37,
-    "faltando": 22,
+    "lidos": 38,
+    "faltando": 21,
     "paginasTotal": 29129,
-    "paginasLidas": 16407,
-    "paginasFaltando": 12722,
-    "mediaDiaria": 85.5,
-    "ritmoAtual": 104.8,
-    "dataPrevistoAtual": "27/10/2026"
+    "paginasLidas": 16462,
+    "paginasFaltando": 12667,
+    "mediaDiaria": 85.8,
+    "ritmoAtual": 106.6,
+    "dataPrevistoAtual": "24/10/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -70,17 +70,17 @@
     },
     "2026": {
       "total": 59,
-      "lidos": 37,
-      "lendo": 2,
+      "lidos": 38,
+      "lendo": 1,
       "pausados": 0,
       "aguardando": 20,
       "paginasTotal": 29129,
-      "paginasLidas": 16407,
-      "paginasFaltando": 12722,
-      "faltando": 22,
-      "mediaDiaria": 85.5,
-      "ritmoAtual": 104.8,
-      "dataPrevistoAtual": "27/10/2026"
+      "paginasLidas": 16462,
+      "paginasFaltando": 12667,
+      "faltando": 21,
+      "mediaDiaria": 85.8,
+      "ritmoAtual": 106.6,
+      "dataPrevistoAtual": "24/10/2026"
     },
     "2027": {
       "total": 14,
@@ -28083,6 +28083,15 @@
       "minutos": 25,
       "ano": 2026,
       "usuario": "Daniel"
+    },
+    {
+      "livro": "Isles of the Emberdark: A Cosmere Novel",
+      "colecao": "Cosmere",
+      "data": "2026-06-27",
+      "paginas": 55,
+      "minutos": 58,
+      "ano": 2026,
+      "usuario": "Daniel"
     }
   ],
   "livros": [
@@ -36642,15 +36651,15 @@
       "isbn": "",
       "coverUrl": "https://m.media-amazon.com/images/I/81SZKaSxACL._AC_UY218_.jpg",
       "metaAno": "2026",
-      "anoConclusao": "",
+      "anoConclusao": "2026",
       "depende": "",
       "colecao": "Cosmere",
       "ordemColecao": 0,
       "ordem": 0,
-      "status": "Lendo",
+      "status": "Completo",
       "totalPag": 384,
-      "pagAtual": 329,
-      "pct": 0.857,
+      "pagAtual": 384,
+      "pct": 1,
       "usuario": "Daniel",
       "genero": "Fantasia épica"
     },
@@ -37106,24 +37115,6 @@
       "pagAtual": 192,
       "pct": 0.24,
       "usuario": "MILTON",
-      "genero": "Fantasia épica"
-    },
-    {
-      "livro": "Isles of the Emberdark: A Cosmere Novel",
-      "autor": "Brandon Sanderson",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/81SZKaSxACL._AC_UY218_.jpg",
-      "metaAno": "2026",
-      "anoConclusao": "",
-      "depende": "",
-      "colecao": "Cosmere",
-      "ordemColecao": 0,
-      "ordem": 0,
-      "status": "Lendo",
-      "totalPag": 384,
-      "pagAtual": 329,
-      "pct": 0.857,
-      "usuario": "Daniel",
       "genero": "Fantasia épica"
     }
   ],
