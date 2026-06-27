@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-06-27T20:13:25.142Z",
+  "geradoEm": "2026-06-27T20:14:22.320Z",
   "meta": {
     "total": 59,
     "lidos": 38,
@@ -44748,6 +44748,22 @@
         "Personagens": 10,
         "Ritmo": 9,
         "Temas": 9
+      },
+      "usuario": "Daniel"
+    },
+    {
+      "livro": "Isles of the Emberdark: A Cosmere Novel",
+      "ano": 2026,
+      "media": 8.38,
+      "criterios": {
+        "Diálogos": 8,
+        "Enredo": 8,
+        "Estilo Visual": 8.5,
+        "Finalização": 8.5,
+        "Imersão": 8,
+        "Impacto Emocional": 7.5,
+        "Originalidade": 9,
+        "Personagens": 9.5
       },
       "usuario": "Daniel"
     }
