@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-06-27T00:33:19.153Z",
+  "geradoEm": "2026-06-27T15:23:50.930Z",
   "meta": {
     "total": 59,
     "lidos": 37,
     "faltando": 22,
     "paginasTotal": 29129,
-    "paginasLidas": 16385,
-    "paginasFaltando": 12744,
-    "mediaDiaria": 85.8,
-    "ritmoAtual": 106.3,
-    "dataPrevistoAtual": "24/10/2026"
+    "paginasLidas": 16407,
+    "paginasFaltando": 12722,
+    "mediaDiaria": 85.5,
+    "ritmoAtual": 104.8,
+    "dataPrevistoAtual": "27/10/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -75,12 +75,12 @@
       "pausados": 0,
       "aguardando": 20,
       "paginasTotal": 29129,
-      "paginasLidas": 16385,
-      "paginasFaltando": 12744,
+      "paginasLidas": 16407,
+      "paginasFaltando": 12722,
       "faltando": 22,
-      "mediaDiaria": 85.8,
-      "ritmoAtual": 106.3,
-      "dataPrevistoAtual": "24/10/2026"
+      "mediaDiaria": 85.5,
+      "ritmoAtual": 104.8,
+      "dataPrevistoAtual": "27/10/2026"
     },
     "2027": {
       "total": 14,
@@ -28074,6 +28074,15 @@
       "minutos": 25,
       "ano": 2026,
       "usuario": "Daniel"
+    },
+    {
+      "livro": "Isles of the Emberdark: A Cosmere Novel",
+      "colecao": "Cosmere",
+      "data": "2026-06-27",
+      "paginas": 22,
+      "minutos": 25,
+      "ano": 2026,
+      "usuario": "Daniel"
     }
   ],
   "livros": [
@@ -36640,8 +36649,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 384,
-      "pagAtual": 307,
-      "pct": 0.799,
+      "pagAtual": 329,
+      "pct": 0.857,
       "usuario": "Daniel",
       "genero": "Fantasia épica"
     },
@@ -37112,8 +37121,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 384,
-      "pagAtual": 307,
-      "pct": 0.799,
+      "pagAtual": 329,
+      "pct": 0.857,
       "usuario": "Daniel",
       "genero": "Fantasia épica"
     }
