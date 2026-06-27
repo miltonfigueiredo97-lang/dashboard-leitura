@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-06-27T22:56:39.510Z",
+  "geradoEm": "2026-06-27T22:57:20.966Z",
   "meta": {
     "total": 59,
     "lidos": 38,
     "faltando": 21,
     "paginasTotal": 29129,
-    "paginasLidas": 16499,
-    "paginasFaltando": 12630,
-    "mediaDiaria": 86,
-    "ritmoAtual": 107.9,
-    "dataPrevistoAtual": "23/10/2026"
+    "paginasLidas": 16529,
+    "paginasFaltando": 12600,
+    "mediaDiaria": 86.2,
+    "ritmoAtual": 108.9,
+    "dataPrevistoAtual": "21/10/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -71,16 +71,16 @@
     "2026": {
       "total": 59,
       "lidos": 38,
-      "lendo": 2,
+      "lendo": 3,
       "pausados": 0,
-      "aguardando": 19,
+      "aguardando": 18,
       "paginasTotal": 29129,
-      "paginasLidas": 16499,
-      "paginasFaltando": 12630,
+      "paginasLidas": 16529,
+      "paginasFaltando": 12600,
       "faltando": 21,
-      "mediaDiaria": 86,
-      "ritmoAtual": 107.9,
-      "dataPrevistoAtual": "23/10/2026"
+      "mediaDiaria": 86.2,
+      "ritmoAtual": 108.9,
+      "dataPrevistoAtual": "21/10/2026"
     },
     "2027": {
       "total": 14,
@@ -28101,6 +28101,15 @@
       "minutos": 40,
       "ano": 2026,
       "usuario": "Daniel"
+    },
+    {
+      "livro": "O Rei do Inverno",
+      "colecao": "As Crônicas de Artur",
+      "data": "2026-06-27",
+      "paginas": 30,
+      "minutos": 31,
+      "ano": 2026,
+      "usuario": "Daniel"
     }
   ],
   "livros": [
@@ -37043,10 +37052,10 @@
       "colecao": "As Crônicas de Artur",
       "ordemColecao": 0,
       "ordem": 0,
-      "status": "Aguardando",
+      "status": "Lendo",
       "totalPag": 544,
-      "pagAtual": 0,
-      "pct": 0,
+      "pagAtual": 30,
+      "pct": 0.055,
       "usuario": "Daniel",
       "genero": "Fantasia histórica"
     },
@@ -37143,6 +37152,24 @@
       "pct": 0.064,
       "usuario": "Daniel",
       "genero": "Terror gótico"
+    },
+    {
+      "livro": "O Rei do Inverno",
+      "autor": "Bernard Cornwell",
+      "isbn": "",
+      "coverUrl": "https://m.media-amazon.com/images/I/91hlR+R60cL._SL1500_.jpg",
+      "metaAno": "2026",
+      "anoConclusao": "",
+      "depende": "",
+      "colecao": "As Crônicas de Artur",
+      "ordemColecao": 0,
+      "ordem": 0,
+      "status": "Lendo",
+      "totalPag": 544,
+      "pagAtual": 30,
+      "pct": 0.055,
+      "usuario": "Daniel",
+      "genero": "Fantasia histórica"
     }
   ],
   "aguardando": [
@@ -41483,24 +41510,6 @@
       "pct": 0,
       "usuario": "Daniel",
       "genero": "Cyberpunk"
-    },
-    {
-      "livro": "O Rei do Inverno",
-      "autor": "Bernard Cornwell",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/91hlR+R60cL._SL1500_.jpg",
-      "metaAno": "2026",
-      "anoConclusao": "",
-      "depende": "",
-      "colecao": "As Crônicas de Artur",
-      "ordemColecao": 0,
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 544,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "Daniel",
-      "genero": "Fantasia histórica"
     },
     {
       "livro": "Allomancer jak and the pits of eltania",
