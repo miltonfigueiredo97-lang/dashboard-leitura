@@ -1,14 +1,14 @@
 {
-  "geradoEm": "2026-07-05T17:58:16.305Z",
+  "geradoEm": "2026-07-07T02:03:06.484Z",
   "meta": {
     "total": 59,
     "lidos": 38,
     "faltando": 21,
     "paginasTotal": 29129,
-    "paginasLidas": 16859,
-    "paginasFaltando": 12270,
+    "paginasLidas": 16939,
+    "paginasFaltando": 12190,
     "mediaDiaria": 84.2,
-    "ritmoAtual": 74.5,
+    "ritmoAtual": 74.6,
     "dataPrevistoAtual": "17/12/2026"
   },
   "metasPorAno": {
@@ -75,11 +75,11 @@
       "pausados": 0,
       "aguardando": 18,
       "paginasTotal": 29129,
-      "paginasLidas": 16859,
-      "paginasFaltando": 12270,
+      "paginasLidas": 16939,
+      "paginasFaltando": 12190,
       "faltando": 21,
       "mediaDiaria": 84.2,
-      "ritmoAtual": 74.5,
+      "ritmoAtual": 74.6,
       "dataPrevistoAtual": "17/12/2026"
     },
     "2027": {
@@ -28200,6 +28200,15 @@
       "minutos": 30,
       "ano": 2026,
       "usuario": "Daniel"
+    },
+    {
+      "livro": "O Rei do Inverno",
+      "colecao": "As Crônicas de Artur",
+      "data": "2026-07-06",
+      "paginas": 80,
+      "minutos": 85,
+      "ano": 2026,
+      "usuario": "Daniel"
     }
   ],
   "livros": [
@@ -37144,8 +37153,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 544,
-      "pagAtual": 350,
-      "pct": 0.643,
+      "pagAtual": 430,
+      "pct": 0.79,
       "usuario": "Daniel",
       "genero": "Fantasia histórica"
     },
@@ -37256,8 +37265,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 544,
-      "pagAtual": 350,
-      "pct": 0.643,
+      "pagAtual": 430,
+      "pct": 0.79,
       "usuario": "Daniel",
       "genero": "Fantasia histórica"
     }
