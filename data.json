@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-07-08T00:28:01.779Z",
+  "geradoEm": "2026-07-08T10:21:42.855Z",
   "meta": {
     "total": 59,
-    "lidos": 38,
-    "faltando": 21,
+    "lidos": 39,
+    "faltando": 20,
     "paginasTotal": 29129,
-    "paginasLidas": 17017,
-    "paginasFaltando": 12112,
-    "mediaDiaria": 84.1,
-    "ritmoAtual": 74.5,
-    "dataPrevistoAtual": "17/12/2026"
+    "paginasLidas": 17053,
+    "paginasFaltando": 12076,
+    "mediaDiaria": 83.9,
+    "ritmoAtual": 73.3,
+    "dataPrevistoAtual": "20/12/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -70,17 +70,17 @@
     },
     "2026": {
       "total": 59,
-      "lidos": 38,
-      "lendo": 3,
+      "lidos": 39,
+      "lendo": 2,
       "pausados": 0,
       "aguardando": 18,
       "paginasTotal": 29129,
-      "paginasLidas": 17017,
-      "paginasFaltando": 12112,
-      "faltando": 21,
-      "mediaDiaria": 84.1,
-      "ritmoAtual": 74.5,
-      "dataPrevistoAtual": "17/12/2026"
+      "paginasLidas": 17053,
+      "paginasFaltando": 12076,
+      "faltando": 20,
+      "mediaDiaria": 83.9,
+      "ritmoAtual": 73.3,
+      "dataPrevistoAtual": "20/12/2026"
     },
     "2027": {
       "total": 14,
@@ -28227,6 +28227,15 @@
       "minutos": 38,
       "ano": 2026,
       "usuario": "Daniel"
+    },
+    {
+      "livro": "O Rei do Inverno",
+      "colecao": "As Crônicas de Artur",
+      "data": "2026-07-08",
+      "paginas": 36,
+      "minutos": 40,
+      "ano": 2026,
+      "usuario": "Daniel"
     }
   ],
   "livros": [
@@ -37169,10 +37178,10 @@
       "colecao": "As Crônicas de Artur",
       "ordemColecao": 0,
       "ordem": 0,
-      "status": "Lendo",
+      "status": "Completo",
       "totalPag": 544,
-      "pagAtual": 508,
-      "pct": 0.934,
+      "pagAtual": 544,
+      "pct": 1,
       "usuario": "Daniel",
       "genero": "Fantasia histórica"
     },
@@ -37269,24 +37278,6 @@
       "pct": 0.081,
       "usuario": "Daniel",
       "genero": "Terror gótico"
-    },
-    {
-      "livro": "O Rei do Inverno",
-      "autor": "Bernard Cornwell",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/91hlR+R60cL._SL1500_.jpg",
-      "metaAno": "2026",
-      "anoConclusao": "2026",
-      "depende": "",
-      "colecao": "As Crônicas de Artur",
-      "ordemColecao": 0,
-      "ordem": 0,
-      "status": "Lendo",
-      "totalPag": 544,
-      "pagAtual": 508,
-      "pct": 0.934,
-      "usuario": "Daniel",
-      "genero": "Fantasia histórica"
     }
   ],
   "aguardando": [
