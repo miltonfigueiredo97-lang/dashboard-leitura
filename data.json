@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-07-07T11:22:49.144Z",
+  "geradoEm": "2026-07-08T00:28:01.779Z",
   "meta": {
     "total": 59,
     "lidos": 38,
     "faltando": 21,
     "paginasTotal": 29129,
-    "paginasLidas": 16980,
-    "paginasFaltando": 12149,
-    "mediaDiaria": 83.9,
-    "ritmoAtual": 73.5,
-    "dataPrevistoAtual": "20/12/2026"
+    "paginasLidas": 17017,
+    "paginasFaltando": 12112,
+    "mediaDiaria": 84.1,
+    "ritmoAtual": 74.5,
+    "dataPrevistoAtual": "17/12/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -75,12 +75,12 @@
       "pausados": 0,
       "aguardando": 18,
       "paginasTotal": 29129,
-      "paginasLidas": 16980,
-      "paginasFaltando": 12149,
+      "paginasLidas": 17017,
+      "paginasFaltando": 12112,
       "faltando": 21,
-      "mediaDiaria": 83.9,
-      "ritmoAtual": 73.5,
-      "dataPrevistoAtual": "20/12/2026"
+      "mediaDiaria": 84.1,
+      "ritmoAtual": 74.5,
+      "dataPrevistoAtual": "17/12/2026"
     },
     "2027": {
       "total": 14,
@@ -28218,6 +28218,15 @@
       "minutos": 43,
       "ano": 2026,
       "usuario": "Daniel"
+    },
+    {
+      "livro": "O Rei do Inverno",
+      "colecao": "As Crônicas de Artur",
+      "data": "2026-07-07",
+      "paginas": 37,
+      "minutos": 38,
+      "ano": 2026,
+      "usuario": "Daniel"
     }
   ],
   "livros": [
@@ -37155,15 +37164,15 @@
       "isbn": "",
       "coverUrl": "https://m.media-amazon.com/images/I/91hlR+R60cL._SL1500_.jpg",
       "metaAno": "2026",
-      "anoConclusao": "",
+      "anoConclusao": "2026",
       "depende": "",
       "colecao": "As Crônicas de Artur",
       "ordemColecao": 0,
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 544,
-      "pagAtual": 471,
-      "pct": 0.866,
+      "pagAtual": 508,
+      "pct": 0.934,
       "usuario": "Daniel",
       "genero": "Fantasia histórica"
     },
@@ -37267,15 +37276,15 @@
       "isbn": "",
       "coverUrl": "https://m.media-amazon.com/images/I/91hlR+R60cL._SL1500_.jpg",
       "metaAno": "2026",
-      "anoConclusao": "",
+      "anoConclusao": "2026",
       "depende": "",
       "colecao": "As Crônicas de Artur",
       "ordemColecao": 0,
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 544,
-      "pagAtual": 471,
-      "pct": 0.866,
+      "pagAtual": 508,
+      "pct": 0.934,
       "usuario": "Daniel",
       "genero": "Fantasia histórica"
     }
