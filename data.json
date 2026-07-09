@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-07-08T12:27:03.809Z",
+  "geradoEm": "2026-07-09T13:07:56.339Z",
   "meta": {
     "total": 59,
     "lidos": 39,
     "faltando": 20,
     "paginasTotal": 29129,
-    "paginasLidas": 17071,
-    "paginasFaltando": 12058,
-    "mediaDiaria": 84,
-    "ritmoAtual": 73.8,
-    "dataPrevistoAtual": "19/12/2026"
+    "paginasLidas": 17101,
+    "paginasFaltando": 12028,
+    "mediaDiaria": 83.7,
+    "ritmoAtual": 69.4,
+    "dataPrevistoAtual": "30/12/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -75,12 +75,12 @@
       "pausados": 0,
       "aguardando": 18,
       "paginasTotal": 29129,
-      "paginasLidas": 17071,
-      "paginasFaltando": 12058,
+      "paginasLidas": 17101,
+      "paginasFaltando": 12028,
       "faltando": 20,
-      "mediaDiaria": 84,
-      "ritmoAtual": 73.8,
-      "dataPrevistoAtual": "19/12/2026"
+      "mediaDiaria": 83.7,
+      "ritmoAtual": 69.4,
+      "dataPrevistoAtual": "30/12/2026"
     },
     "2027": {
       "total": 14,
@@ -28245,6 +28245,15 @@
       "minutos": 20,
       "ano": 2026,
       "usuario": "Daniel"
+    },
+    {
+      "livro": "Drácula",
+      "colecao": "",
+      "data": "2026-07-09",
+      "paginas": 30,
+      "minutos": 32,
+      "ano": 2026,
+      "usuario": "Daniel"
     }
   ],
   "livros": [
@@ -36703,8 +36712,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 580,
-      "pagAtual": 65,
-      "pct": 0.112,
+      "pagAtual": 95,
+      "pct": 0.164,
       "usuario": "Daniel",
       "genero": "Terror gótico"
     },
@@ -37283,8 +37292,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 580,
-      "pagAtual": 65,
-      "pct": 0.112,
+      "pagAtual": 95,
+      "pct": 0.164,
       "usuario": "Daniel",
       "genero": "Terror gótico"
     }
