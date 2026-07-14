@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-07-14T11:24:45.155Z",
+  "geradoEm": "2026-07-14T11:26:22.110Z",
   "meta": {
     "total": 59,
     "lidos": 40,
@@ -44935,6 +44935,24 @@
         "Impacto Emocional": 7.5,
         "Originalidade": 9,
         "Personagens": 9.5
+      },
+      "usuario": "Daniel"
+    },
+    {
+      "livro": "Drácula",
+      "ano": 2026,
+      "media": 7.5,
+      "criterios": {
+        "Diálogos": 8,
+        "Enredo": 7.5,
+        "Estilo Visual": 8,
+        "Finalização": 7,
+        "Imersão": 7,
+        "Impacto Emocional": 7,
+        "Originalidade": 7,
+        "Personagens": 8,
+        "Ritmo": 7.5,
+        "Temas": 8
       },
       "usuario": "Daniel"
     }
