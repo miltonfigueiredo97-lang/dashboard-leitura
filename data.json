@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-07-14T11:26:22.110Z",
+  "geradoEm": "2026-07-14T11:41:46.276Z",
   "meta": {
     "total": 59,
     "lidos": 40,
     "faltando": 19,
     "paginasTotal": 29129,
-    "paginasLidas": 17586,
-    "paginasFaltando": 11543,
-    "mediaDiaria": 84,
-    "ritmoAtual": 69.9,
-    "dataPrevistoAtual": "27/12/2026"
+    "paginasLidas": 17606,
+    "paginasFaltando": 11523,
+    "mediaDiaria": 84.1,
+    "ritmoAtual": 70.6,
+    "dataPrevistoAtual": "25/12/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -71,16 +71,16 @@
     "2026": {
       "total": 59,
       "lidos": 40,
-      "lendo": 1,
+      "lendo": 2,
       "pausados": 0,
-      "aguardando": 18,
+      "aguardando": 17,
       "paginasTotal": 29129,
-      "paginasLidas": 17586,
-      "paginasFaltando": 11543,
+      "paginasLidas": 17606,
+      "paginasFaltando": 11523,
       "faltando": 19,
-      "mediaDiaria": 84,
-      "ritmoAtual": 69.9,
-      "dataPrevistoAtual": "27/12/2026"
+      "mediaDiaria": 84.1,
+      "ritmoAtual": 70.6,
+      "dataPrevistoAtual": "25/12/2026"
     },
     "2027": {
       "total": 14,
@@ -28299,6 +28299,15 @@
       "minutos": 200,
       "ano": 2026,
       "usuario": "Daniel"
+    },
+    {
+      "livro": "O Idiota",
+      "colecao": "",
+      "data": "2026-07-14",
+      "paginas": 20,
+      "minutos": 21,
+      "ano": 2026,
+      "usuario": "Daniel"
     }
   ],
   "livros": [
@@ -36773,10 +36782,10 @@
       "colecao": "",
       "ordemColecao": 0,
       "ordem": 0,
-      "status": "Aguardando",
+      "status": "Lendo",
       "totalPag": 774,
-      "pagAtual": 0,
-      "pct": 0,
+      "pagAtual": 20,
+      "pct": 0.026,
       "usuario": "Daniel",
       "genero": "Literatura clássica"
     },
@@ -37323,6 +37332,24 @@
       "pct": 0.24,
       "usuario": "MILTON",
       "genero": "Fantasia épica"
+    },
+    {
+      "livro": "O Idiota",
+      "autor": "Fiódor Dostoiévski",
+      "isbn": "",
+      "coverUrl": "https://m.media-amazon.com/images/I/81yztS6pgeL._AC_UY218_.jpg",
+      "metaAno": "2026",
+      "anoConclusao": "",
+      "depende": "",
+      "colecao": "",
+      "ordemColecao": 0,
+      "ordem": 0,
+      "status": "Lendo",
+      "totalPag": 774,
+      "pagAtual": 20,
+      "pct": 0.026,
+      "usuario": "Daniel",
+      "genero": "Literatura clássica"
     }
   ],
   "aguardando": [
@@ -41353,24 +41380,6 @@
       "ordem": 0,
       "status": "Aguardando",
       "totalPag": 96,
-      "pagAtual": 0,
-      "pct": 0,
-      "usuario": "Daniel",
-      "genero": "Literatura clássica"
-    },
-    {
-      "livro": "O Idiota",
-      "autor": "Fiódor Dostoiévski",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/81yztS6pgeL._AC_UY218_.jpg",
-      "metaAno": "2026",
-      "anoConclusao": "",
-      "depende": "",
-      "colecao": "",
-      "ordemColecao": 0,
-      "ordem": 0,
-      "status": "Aguardando",
-      "totalPag": 774,
       "pagAtual": 0,
       "pct": 0,
       "usuario": "Daniel",
