@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-07-14T09:26:27.695Z",
+  "geradoEm": "2026-07-14T11:24:45.155Z",
   "meta": {
     "total": 59,
-    "lidos": 39,
-    "faltando": 20,
+    "lidos": 40,
+    "faltando": 19,
     "paginasTotal": 29129,
-    "paginasLidas": 17396,
-    "paginasFaltando": 11733,
-    "mediaDiaria": 83.5,
-    "ritmoAtual": 65.9,
-    "dataPrevistoAtual": "09/01/2027"
+    "paginasLidas": 17586,
+    "paginasFaltando": 11543,
+    "mediaDiaria": 84,
+    "ritmoAtual": 69.9,
+    "dataPrevistoAtual": "27/12/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -70,17 +70,17 @@
     },
     "2026": {
       "total": 59,
-      "lidos": 39,
-      "lendo": 2,
+      "lidos": 40,
+      "lendo": 1,
       "pausados": 0,
       "aguardando": 18,
       "paginasTotal": 29129,
-      "paginasLidas": 17396,
-      "paginasFaltando": 11733,
-      "faltando": 20,
-      "mediaDiaria": 83.5,
-      "ritmoAtual": 65.9,
-      "dataPrevistoAtual": "09/01/2027"
+      "paginasLidas": 17586,
+      "paginasFaltando": 11543,
+      "faltando": 19,
+      "mediaDiaria": 84,
+      "ritmoAtual": 69.9,
+      "dataPrevistoAtual": "27/12/2026"
     },
     "2027": {
       "total": 14,
@@ -28290,6 +28290,15 @@
       "minutos": 80,
       "ano": 2026,
       "usuario": "Daniel"
+    },
+    {
+      "livro": "Drácula",
+      "colecao": "",
+      "data": "2026-07-14",
+      "paginas": 190,
+      "minutos": 200,
+      "ano": 2026,
+      "usuario": "Daniel"
     }
   ],
   "livros": [
@@ -36741,15 +36750,15 @@
       "isbn": "",
       "coverUrl": "https://m.media-amazon.com/images/I/61gfnGu9cTL._AC_UY218_.jpg",
       "metaAno": "2026",
-      "anoConclusao": "",
+      "anoConclusao": "2026",
       "depende": "",
       "colecao": "",
       "ordemColecao": 0,
       "ordem": 0,
-      "status": "Lendo",
+      "status": "Completo",
       "totalPag": 580,
-      "pagAtual": 390,
-      "pct": 0.672,
+      "pagAtual": 580,
+      "pct": 1,
       "usuario": "Daniel",
       "genero": "Terror gótico"
     },
@@ -37314,24 +37323,6 @@
       "pct": 0.24,
       "usuario": "MILTON",
       "genero": "Fantasia épica"
-    },
-    {
-      "livro": "Drácula",
-      "autor": "Bram Stoker",
-      "isbn": "",
-      "coverUrl": "https://m.media-amazon.com/images/I/61gfnGu9cTL._AC_UY218_.jpg",
-      "metaAno": "2026",
-      "anoConclusao": "",
-      "depende": "",
-      "colecao": "",
-      "ordemColecao": 0,
-      "ordem": 0,
-      "status": "Lendo",
-      "totalPag": 580,
-      "pagAtual": 390,
-      "pct": 0.672,
-      "usuario": "Daniel",
-      "genero": "Terror gótico"
     }
   ],
   "aguardando": [
