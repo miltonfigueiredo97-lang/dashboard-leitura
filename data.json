@@ -1,15 +1,15 @@
 {
-  "geradoEm": "2026-07-16T02:21:21.477Z",
+  "geradoEm": "2026-07-16T02:21:51.985Z",
   "meta": {
     "total": 59,
     "lidos": 40,
     "faltando": 19,
     "paginasTotal": 29129,
-    "paginasLidas": 17606,
-    "paginasFaltando": 11523,
-    "mediaDiaria": 84.1,
-    "ritmoAtual": 68.9,
-    "dataPrevistoAtual": "30/12/2026"
+    "paginasLidas": 17646,
+    "paginasFaltando": 11483,
+    "mediaDiaria": 83.9,
+    "ritmoAtual": 68,
+    "dataPrevistoAtual": "31/12/2026"
   },
   "metasPorAno": {
     "2022": {
@@ -75,12 +75,12 @@
       "pausados": 0,
       "aguardando": 17,
       "paginasTotal": 29129,
-      "paginasLidas": 17606,
-      "paginasFaltando": 11523,
+      "paginasLidas": 17646,
+      "paginasFaltando": 11483,
       "faltando": 19,
-      "mediaDiaria": 84.1,
-      "ritmoAtual": 68.9,
-      "dataPrevistoAtual": "30/12/2026"
+      "mediaDiaria": 83.9,
+      "ritmoAtual": 68,
+      "dataPrevistoAtual": "31/12/2026"
     },
     "2027": {
       "total": 14,
@@ -28308,6 +28308,15 @@
       "minutos": 21,
       "ano": 2026,
       "usuario": "Daniel"
+    },
+    {
+      "livro": "O Idiota",
+      "colecao": "",
+      "data": "2026-07-15",
+      "paginas": 40,
+      "minutos": 42,
+      "ano": 2026,
+      "usuario": "Daniel"
     }
   ],
   "livros": [
@@ -36784,8 +36793,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 774,
-      "pagAtual": 20,
-      "pct": 0.026,
+      "pagAtual": 60,
+      "pct": 0.078,
       "usuario": "Daniel",
       "genero": "Literatura clássica"
     },
@@ -37346,8 +37355,8 @@
       "ordem": 0,
       "status": "Lendo",
       "totalPag": 774,
-      "pagAtual": 20,
-      "pct": 0.026,
+      "pagAtual": 60,
+      "pct": 0.078,
       "usuario": "Daniel",
       "genero": "Literatura clássica"
     }
